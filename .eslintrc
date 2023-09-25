@@ -1,0 +1,96 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "plugins": ["react", "testing-library", "simple-import-sort"],
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "no-empty-pattern": "warn",
+    "@typescript-eslint/ban-types": "warn",
+    "react/prop-types": "off",
+    "react/display-name": "off",
+    "no-useless-escape": "off",
+    "semi": ["warn", "always"],
+    "quotes": ["error", "single"],
+    "jsx-quotes": ["error", "prefer-single"],
+    "object-curly-spacing": ["warn", "always"],
+    "keyword-spacing": [
+      "warn",
+      {
+        "before": true
+      }
+    ],
+    "space-before-blocks": ["warn", "always"],
+    "space-infix-ops": "warn",
+    "no-prototype-builtins": "warn",
+    "react/react-in-jsx-scope": "off",
+    "unicorn/prefer-query-selector": "off",
+    "unicorn/no-array-for-each": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "sonarjs/cognitive-complexity": "off",
+    "security/detect-unsafe-regex": "off",
+    "security/detect-non-literal-fs-filename": "off",
+    "simple-import-sort/exports": "error",
+    "unicorn/filename-case": "off",
+    "unicorn/no-null": "off",
+    "unicorn/consistent-function-scoping": "off",
+    "unicorn/prefer-module": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          [
+            "^(assert|buffer|child_process|cluster|console|constants|crypto|dgram|dns|domain|events|fs|http|https|module|net|os|path|punycode|querystring|readline|repl|stream|string_decoder|sys|timers|tls|tty|url|util|vm|zlib|freelist|v8|process|async_hooks|http2|perf_hooks)(/.*|$)"
+          ],
+          ["^react", "^@?\\w"],
+          [
+            "^(@|@company|@ui|components|utils|hooks|assets|config|api|types|vendored-lib|context)(/.*|$)"
+          ],
+          ["^\\u0000"],
+          ["^components"],
+          ["^\\u0000"],
+          [
+            "^src(\\/.*|$)",
+            "^features(\\/.*|$)",
+            "^assets(\\/.*|$)",
+            "^components(\\/.*|$)"
+          ],
+          ["^\\u0000"],
+          [
+            "^\\.\\.(?!/?$)",
+            "^\\.\\./?$",
+            "^\\./(?=.*/)(?!/?$)",
+            "^\\.(?!/?$)",
+            "^\\./?$"
+          ],
+          ["^.+\\.s?css$"],
+          ["^.+\\.(jpg|jpeg|png|svg)$"]
+        ]
+      }
+    ]
+  }
+}
