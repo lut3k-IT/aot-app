@@ -5,19 +5,17 @@
     "es2021": true,
     "node": true
   },
-  "extends": [
-    "plugin:@typescript-eslint/recommended",
-    "eslint:recommended",
-    "plugin:react/recommended"
-  ],
+  "extends": ["plugin:@typescript-eslint/recommended", "eslint:recommended", "plugin:react/recommended"],
   "plugins": ["react", "testing-library", "simple-import-sort"],
   "parserOptions": {
     "ecmaVersion": 12,
     "sourceType": "module",
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true
-    }
+    },
+    "project": "tsconfig.json"
   },
+  "ignorePatterns": ["vite.config.ts"],
   "settings": {
     "react": {
       "version": "detect"
@@ -25,6 +23,7 @@
   },
   "rules": {
     "no-unused-vars": "off",
+    "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/no-unused-vars": "off",
     "no-empty-pattern": "warn",
     "@typescript-eslint/ban-types": "warn",
@@ -67,29 +66,66 @@
             "^(assert|buffer|child_process|cluster|console|constants|crypto|dgram|dns|domain|events|fs|http|https|module|net|os|path|punycode|querystring|readline|repl|stream|string_decoder|sys|timers|tls|tty|url|util|vm|zlib|freelist|v8|process|async_hooks|http2|perf_hooks)(/.*|$)"
           ],
           ["^react", "^@?\\w"],
-          [
-            "^(@|@company|@ui|components|utils|hooks|assets|config|api|types|vendored-lib|context)(/.*|$)"
-          ],
+          ["^(@|@company|@ui|components|utils|hooks|assets|config|api|types|vendored-lib|context)(/.*|$)"],
           ["^\\u0000"],
           ["^components"],
           ["^\\u0000"],
-          [
-            "^src(\\/.*|$)",
-            "^features(\\/.*|$)",
-            "^assets(\\/.*|$)",
-            "^components(\\/.*|$)"
-          ],
+          ["^src(\\/.*|$)", "^features(\\/.*|$)", "^assets(\\/.*|$)", "^components(\\/.*|$)"],
           ["^\\u0000"],
-          [
-            "^\\.\\.(?!/?$)",
-            "^\\.\\./?$",
-            "^\\./(?=.*/)(?!/?$)",
-            "^\\.(?!/?$)",
-            "^\\./?$"
-          ],
+          ["^\\.\\.(?!/?$)", "^\\.\\./?$", "^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
           ["^.+\\.s?css$"],
           ["^.+\\.(jpg|jpeg|png|svg)$"]
         ]
+      }
+    ],
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "default",
+        "format": ["camelCase"]
+      },
+      {
+        "selector": "variable",
+        "format": ["camelCase", "PascalCase"]
+      },
+      {
+        "selector": "function",
+        "format": ["camelCase", "PascalCase"]
+      },
+      {
+        "selector": "variable",
+        "modifiers": ["const"],
+        "format": ["camelCase", "PascalCase", "UPPER_CASE"]
+      },
+      {
+        "selector": "variable",
+        "types": ["boolean"],
+        "format": ["PascalCase"],
+        "prefix": ["is", "should", "has", "can", "did", "will"]
+      },
+      {
+        "selector": "parameter",
+        "format": ["camelCase"],
+        "leadingUnderscore": "allow"
+      },
+      {
+        "selector": "memberLike",
+        "modifiers": ["private"],
+        "format": ["camelCase"],
+        "leadingUnderscore": "require"
+      },
+      {
+        "selector": "typeLike",
+        "format": ["PascalCase"]
+      },
+      {
+        "selector": "enumMember",
+        "format": ["UPPER_CASE"]
+      },
+      {
+        "selector": "default",
+        "modifiers": ["static"],
+        "format": ["UPPER_CASE"]
       }
     ]
   }

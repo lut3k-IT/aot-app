@@ -1,0 +1,15 @@
+{
+  "brand": "AoT app",
+  "titles": {
+    "heroes": "Heroes",
+    "titans": "Titans",
+    "favourite": "Favourite",
+    "quiz": "Quiz"
+  },
+  "button": {
+    "submit": "Submit",
+    "cancel": "Cancel"
+  },
+  "form": {},
+  "errorBoundaries": {}
+}

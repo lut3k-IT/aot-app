@@ -1,0 +1,15 @@
+{
+  "brand": "AoT app",
+  "titles": {
+    "heroes": "Bohaterzy",
+    "titans": "Tytani",
+    "favourite": "Ulubione",
+    "quiz": "Quiz"
+  },
+  "button": {
+    "submit": "Prześlij",
+    "cancel": "Anuluj"
+  },
+  "form": {},
+  "errorBoundaries": {}
+}
