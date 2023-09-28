@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "Founding Titan",
+    "other_names": "Coordinate, Royal family's power, Scream, God",
+    "abilities": "Titan behavorial control, Memory manipulation of Subjects of Ymir",
+    "current_inheritor": "Eren Jaeger",
+    "former_inheritors": "Grisha Jaeger, Frieda Reiss, Uri Reiss, Rod and Uri's father, Karl Fritz, Ymir Fritz",
+    "allegiance": "Eldia",
+    "height": 1300
+  },
+  {
+    "id": 2,
+    "name": "Armored Titan",
+    "other_names": "Armor, Marley's Shield",
+    "abilities": "Armored skin, Hardening",
+    "current_inheritor": "Reiner Braun",
+    "former_inheritors": null,
+    "allegiance": "Marley",
+    "height": 1500
+  },
+  {
+    "id": 3,
+    "name": "Attack Titan",
+    "other_names": "Mysterious Titan, Berserk Titan, Titan being rampant, Crazy-berserker Titan, Titan Eren/Eren's Titan",
+    "abilities": null,
+    "current_inheritor": "Eren Jaeger",
+    "former_inheritors": "Grisha Jaeger, Eren Kruger",
+    "allegiance": "Eldia",
+    "height": 1500
+  },
+  {
+    "id": 4,
+    "name": "Beast Titan",
+    "other_names": "Monkey",
+    "abilities": "Powerful and accurate throwing, Hardening, Speech, Can turn Subjects of Ymir into Titans that he can crudely control (Users with Royal Blood only)",
+    "current_inheritor": "Zeke Jaeger",
+    "former_inheritors": "Tom Xaver",
+    "allegiance": "None, Eldia (formerly), Marley (formerly)",
+    "height": 1700
+  },
+  {
+    "id": 5,
+    "name": "Cart Titan",
+    "other_names": "Cart, Cartman, Quadruped-type, Quadrupedal-type",
+    "abilities": "Quadrupedal form, High endurance, Great speed, Speech",
+    "current_inheritor": "Pieck",
+    "former_inheritors": null,
+    "allegiance": "Marley",
+    "height": 400
+  },
+  {
+    "id": 6,
+    "name": "Colossal Titan",
+    "other_names": "Colossal, God of Destruction",
+    "abilities": "Explosive transformation, Immense size and strength, Steam emission",
+    "current_inheritor": "Armin Arlelt",
+    "former_inheritors": "Bertholdt Hoover",
+    "allegiance": "Eldia, Marley (formerly)",
+    "height": 6000
+  },
+  {
+    "id": 7,
+    "name": "Female Titan",
+    "other_names": "Female-looking Titan, Woman Type Titan",
+    "abilities": "Versatility, Titan Attraction, Crystallization",
+    "current_inheritor": "Annie Leonhart",
+    "former_inheritors": null,
+    "allegiance": "Marley, Eldia (held custody)",
+    "height": 1400
+  },
+  {
+    "id": 8,
+    "name": "Jaw Titan",
+    "other_names": "Jaw",
+    "abilities": "Powerful jaw strength, Hardened claws, Great speed and agility",
+    "current_inheritor": "Porco Galliard",
+    "former_inheritors": "Ymir, Marcel Galliard",
+    "allegiance": "Marley",
+    "height": 500
+  },
+  {
+    "id": 9,
+    "name": "War Hammer Titan",
+    "other_names": "War Hammer",
+    "abilities": "Structural hardening, Remote operation",
+    "current_inheritor": "Eren Jaeger",
+    "former_inheritors": "Lara Tybur",
+    "allegiance": "Eldia, Marley (formerly)",
+    "height": 1500
+  }
+]
