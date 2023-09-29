@@ -10,7 +10,7 @@
     "residence": "Wall Rose",
     "status": "Alive",
     "alias": "Colossal Titan",
-    "mbti": null
+    "mbti": "INFJ"
   },
   {
     "id": 2,
@@ -23,7 +23,7 @@
     "residence": "Wall Rose",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "ISTJ"
   },
   {
     "id": 3,
@@ -36,7 +36,7 @@
     "residence": "Wall Rose",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "ENTP"
   },
   {
     "id": 4,
@@ -49,7 +49,7 @@
     "residence": "Wall Rose",
     "status": "Alive",
     "alias": "Horse face, Jean-boy",
-    "mbti": null
+    "mbti": "ESTJ"
   },
   {
     "id": 5,
@@ -62,7 +62,7 @@
     "residence": "Wall Rose",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "ESFP"
   },
   {
     "id": 6,
@@ -75,7 +75,7 @@
     "residence": "Wall Rose",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "ISFP"
   },
   {
     "id": 7,
@@ -101,7 +101,7 @@
     "residence": "Wall Rose",
     "status": "Alive",
     "alias": "Humanity's Strongest Soldier",
-    "mbti": null
+    "mbti": "ISTP"
   },
   {
     "id": 9,
@@ -153,7 +153,7 @@
     "residence": "Wall Rose",
     "status": "Deceased",
     "alias": "Potato Girl",
-    "mbti": null
+    "mbti": "ESFP"
   },
   {
     "id": 13,
@@ -166,7 +166,7 @@
     "residence": null,
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ESTJ"
   },
   {
     "id": 14,
@@ -179,7 +179,7 @@
     "residence": "Wall Rose",
     "status": "Deceased",
     "alias": "Eyebrow",
-    "mbti": null
+    "mbti": "ENTJ"
   },
   {
     "id": 15,
@@ -218,7 +218,7 @@
     "residence": "Wall Rose",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ISTJ"
   },
   {
     "id": 18,
@@ -335,7 +335,7 @@
     "residence": "Wall Rose",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ISFJ"
   },
   {
     "id": 27,
@@ -348,7 +348,7 @@
     "residence": "Wall Rose",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ESTJ"
   },
   {
     "id": 28,
@@ -374,7 +374,7 @@
     "residence": "Wall Rose",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ISTJ"
   },
   {
     "id": 30,
@@ -400,7 +400,7 @@
     "residence": "Wall Rose",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ESTJ"
   },
   {
     "id": 32,
@@ -413,7 +413,7 @@
     "residence": "Wall Rose",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ESTP"
   },
   {
     "id": 33,
@@ -439,7 +439,7 @@
     "residence": "Wall Rose",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ESFJ"
   },
   {
     "id": 35,
@@ -452,7 +452,7 @@
     "residence": "Wall Rose",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ISTP"
   },
   {
     "id": 36,
@@ -491,7 +491,7 @@
     "residence": "Wall Rose",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ESTP"
   },
   {
     "id": 39,
@@ -504,7 +504,7 @@
     "residence": "Wall Rose",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ESFJ"
   },
   {
     "id": 40,
@@ -517,7 +517,7 @@
     "residence": "Wall Rose",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ISTP"
   },
   {
     "id": 41,
@@ -530,7 +530,7 @@
     "residence": "Wall Rose",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ESTJ"
   },
   {
     "id": 42,
@@ -556,7 +556,7 @@
     "residence": "Wall Rose",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ENFP"
   },
   {
     "id": 44,
@@ -582,7 +582,7 @@
     "residence": "Wall Rose",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ISFP"
   },
   {
     "id": 46,
@@ -608,7 +608,7 @@
     "residence": "Wall Maria",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ENFJ"
   },
   {
     "id": 48,
@@ -634,7 +634,7 @@
     "residence": "Wall Maria",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ESFP"
   },
   {
     "id": 50,
@@ -660,7 +660,7 @@
     "residence": "Wall Rose",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "ESTJ"
   },
   {
     "id": 52,
@@ -686,7 +686,7 @@
     "residence": "Wall Sina",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "ISTP"
   },
   {
     "id": 54,
@@ -699,7 +699,7 @@
     "residence": "Wall Sina",
     "status": "Alive",
     "alias": "Marlo's officer",
-    "mbti": null
+    "mbti": "ISTP"
   },
   {
     "id": 55,
@@ -712,7 +712,7 @@
     "residence": "Wall Sina",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "ESTP"
   },
   {
     "id": 56,
@@ -725,7 +725,7 @@
     "residence": null,
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "ESTP"
   },
   {
     "id": 57,
@@ -738,20 +738,20 @@
     "residence": "Wall Sina",
     "status": "Deceased",
     "alias": "Kenny the Ripper",
-    "mbti": null
+    "mbti": "ESTP"
   },
   {
     "id": 58,
-    "first_name": "Caven",
-    "last_name": null,
+    "first_name": "Traute",
+    "last_name": "Caven",
     "species": "Human",
     "age": null,
-    "height": null,
-    "weight": null,
+    "height": 172,
+    "weight": 65,
     "residence": "Wall Sina",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ISTP"
   },
   {
     "id": 59,
@@ -777,7 +777,7 @@
     "residence": "Wall Rose",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "INTP"
   },
   {
     "id": 61,
@@ -803,7 +803,7 @@
     "residence": "Wall Rose",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "ISTJ"
   },
   {
     "id": 63,
@@ -816,7 +816,7 @@
     "residence": "Wall Rose",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "ISTJ"
   },
   {
     "id": 64,
@@ -829,7 +829,7 @@
     "residence": "Wall Rose",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "ISTJ"
   },
   {
     "id": 65,
@@ -842,7 +842,7 @@
     "residence": "Orvud District",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "ISFJ"
   },
   {
     "id": 66,
@@ -868,7 +868,7 @@
     "residence": "Shiganshina District",
     "status": "Unknown",
     "alias": null,
-    "mbti": null
+    "mbti": "ESFP"
   },
   {
     "id": 68,
@@ -881,7 +881,7 @@
     "residence": "Wall Rose",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ESFP"
   },
   {
     "id": 69,
@@ -894,7 +894,7 @@
     "residence": "Trost District",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ENTJ"
   },
   {
     "id": 70,
@@ -920,7 +920,7 @@
     "residence": "Wall Rose",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "INTJ"
   },
   {
     "id": 72,
@@ -933,7 +933,7 @@
     "residence": "Wall Rose",
     "status": "Unknown",
     "alias": null,
-    "mbti": null
+    "mbti": "ISFJ"
   },
   {
     "id": 73,
@@ -959,7 +959,7 @@
     "residence": "Wall Rose",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ENFJ"
   },
   {
     "id": 75,
@@ -985,7 +985,7 @@
     "residence": "Wall Rose",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ISFJ"
   },
   {
     "id": 77,
@@ -998,7 +998,7 @@
     "residence": "Wall Rose",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ISFJ"
   },
   {
     "id": 78,
@@ -1037,7 +1037,7 @@
     "residence": "Wall Rose",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ISFJ"
   },
   {
     "id": 81,
@@ -1050,7 +1050,7 @@
     "residence": "Marley",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "ESTJ"
   },
   {
     "id": 82,
@@ -1063,7 +1063,7 @@
     "residence": "Marley",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ESTJ"
   },
   {
     "id": 83,
@@ -1089,7 +1089,7 @@
     "residence": "Marley",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "INTJ"
   },
   {
     "id": 85,
@@ -1102,7 +1102,7 @@
     "residence": "Liberio",
     "status": "Alive",
     "alias": "Armored Titan, Armor",
-    "mbti": null
+    "mbti": "ESFJ"
   },
   {
     "id": 86,
@@ -1115,7 +1115,7 @@
     "residence": "Liberio",
     "status": "Alive",
     "alias": "Cart Titan, Cart, Quadruped-type",
-    "mbti": null
+    "mbti": "INTP"
   },
   {
     "id": 87,
@@ -1128,7 +1128,7 @@
     "residence": "Liberio",
     "status": "Alive",
     "alias": "Jaw Titan, Jaw, Pock",
-    "mbti": null
+    "mbti": "ESTP"
   },
   {
     "id": 88,
@@ -1141,7 +1141,7 @@
     "residence": "Liberio",
     "status": "Alive",
     "alias": "Ben",
-    "mbti": null
+    "mbti": "ENFJ"
   },
   {
     "id": 89,
@@ -1154,7 +1154,7 @@
     "residence": "Liberio",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "ESFJ"
   },
   {
     "id": 90,
@@ -1167,7 +1167,7 @@
     "residence": "Liberio",
     "status": "Alive",
     "alias": "Mia",
-    "mbti": null
+    "mbti": "ESFP"
   },
   {
     "id": 91,
@@ -1180,7 +1180,7 @@
     "residence": "Wall Sina",
     "status": "Unknown",
     "alias": "Female Titan, Female",
-    "mbti": null
+    "mbti": "ISTP"
   },
   {
     "id": 92,
@@ -1193,7 +1193,7 @@
     "residence": "Liberio",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ISFJ"
   },
   {
     "id": 93,
@@ -1206,7 +1206,7 @@
     "residence": "Liberio",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ISTP"
   },
   {
     "id": 94,
@@ -1219,7 +1219,7 @@
     "residence": "Wall Rose",
     "status": "Deceased",
     "alias": "Colossal Titan, Bertl",
-    "mbti": null
+    "mbti": "ISFJ"
   },
   {
     "id": 95,
@@ -1232,7 +1232,7 @@
     "residence": "Liberio",
     "status": "Deceased",
     "alias": "Jaw Titan, Jaw",
-    "mbti": null
+    "mbti": "ENFJ"
   },
   {
     "id": 96,
@@ -1245,7 +1245,7 @@
     "residence": "Liberio",
     "status": "Deceased",
     "alias": "Beast Titan",
-    "mbti": null
+    "mbti": "ENTP"
   },
   {
     "id": 97,
@@ -1258,7 +1258,7 @@
     "residence": "Marley",
     "status": "Deceased",
     "alias": "Attack Titan, The Owl",
-    "mbti": null
+    "mbti": "INTJ"
   },
   {
     "id": 98,
@@ -1271,7 +1271,7 @@
     "residence": "Marley",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ESTJ"
   },
   {
     "id": 99,
@@ -1284,7 +1284,7 @@
     "residence": "Wall Rose",
     "status": "Alive",
     "alias": "Christa Lenz, Goddess, True Queen of the Walls, Queen Historia",
-    "mbti": null
+    "mbti": "ESFJ"
   },
   {
     "id": 100,
@@ -1323,7 +1323,7 @@
     "residence": "Wall Sina",
     "status": "Deceased",
     "alias": "Lord Reiss, King of the Walls",
-    "mbti": null
+    "mbti": "ESTJ"
   },
   {
     "id": 103,
@@ -1401,7 +1401,7 @@
     "residence": "Wall Sina",
     "status": "Deceased",
     "alias": "King of the Walls, Founding Titan",
-    "mbti": null
+    "mbti": "ESFJ"
   },
   {
     "id": 109,
@@ -1414,7 +1414,7 @@
     "residence": "Wall Sina",
     "status": "Deceased",
     "alias": "King of the Walls, Founding Titan",
-    "mbti": null
+    "mbti": "INFJ"
   },
   {
     "id": 110,
@@ -1440,7 +1440,7 @@
     "residence": null,
     "status": "Deceased",
     "alias": "145th King, King of the Walls, Founding Titan, First Reiss King, First King, King Reiss, King Fritz",
-    "mbti": null
+    "mbti": "INFJ"
   },
   {
     "id": 112,
@@ -1479,7 +1479,7 @@
     "residence": "Marley",
     "status": "Deceased",
     "alias": "Lord Tybur, King of our savior",
-    "mbti": null
+    "mbti": "ENFJ"
   },
   {
     "id": 115,
@@ -1492,7 +1492,7 @@
     "residence": "Hizuru",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "ESTJ"
   },
   {
     "id": 116,
@@ -1570,7 +1570,7 @@
     "residence": "Wall Rose",
     "status": "Alive",
     "alias": "Sasha's father",
-    "mbti": null
+    "mbti": "ENFJ"
   },
   {
     "id": 122,
@@ -1583,7 +1583,7 @@
     "residence": "Wall Rose",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "INFP"
   },
   {
     "id": 123,
@@ -1609,7 +1609,7 @@
     "residence": "Stohess District",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "ESTP"
   },
   {
     "id": 125,
@@ -1622,7 +1622,7 @@
     "residence": "Stohess District",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "INTJ"
   },
   {
     "id": 126,
@@ -1648,7 +1648,7 @@
     "residence": "Wall Sina",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "ESTP"
   },
   {
     "id": 128,
@@ -1674,7 +1674,7 @@
     "residence": "Wall Sina",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "ISTP"
   },
   {
     "id": 130,
@@ -1726,7 +1726,7 @@
     "residence": "Trost District",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "ISFP"
   },
   {
     "id": 134,
@@ -1739,7 +1739,7 @@
     "residence": "Wall Sina",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "ISTJ"
   },
   {
     "id": 135,
@@ -1752,7 +1752,7 @@
     "residence": "Wall Sina",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "INTP"
   },
   {
     "id": 136,
@@ -1765,7 +1765,7 @@
     "residence": null,
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "ISFJ"
   },
   {
     "id": 137,
@@ -1778,7 +1778,7 @@
     "residence": "Wall Rose",
     "status": "Alive",
     "alias": "Sasha's mother",
-    "mbti": null
+    "mbti": "ISFJ"
   },
   {
     "id": 138,
@@ -1830,11 +1830,11 @@
     "residence": "Trost District",
     "status": "Deceased",
     "alias": "Committee Member",
-    "mbti": null
+    "mbti": "ENTJ"
   },
   {
     "id": 142,
-    "first_name": "Nick",
+    "first_name": "Pastor Nick",
     "last_name": null,
     "species": "Human",
     "age": null,
@@ -1843,7 +1843,7 @@
     "residence": "Wall Sina",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ISTJ"
   },
   {
     "id": 143,
@@ -1934,7 +1934,7 @@
     "residence": "Wall Sina",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ISTJ"
   },
   {
     "id": 150,
@@ -1947,7 +1947,7 @@
     "residence": "Shiganshina, District Liberio (former)",
     "status": "Deceased",
     "alias": "Attack Titan, Mysterious Titan, Founding Titan",
-    "mbti": null
+    "mbti": "INFJ"
   },
   {
     "id": 151,
@@ -1960,7 +1960,7 @@
     "residence": "Shiganshina District",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ESFJ"
   },
   {
     "id": 152,
@@ -2077,11 +2077,11 @@
     "residence": "Liberio",
     "status": "Deceased",
     "alias": ["Grisha's father", "Zeke's grandpa"],
-    "mbti": null
+    "mbti": "ISFJ"
   },
   {
     "id": 161,
-    "first_name": "Leonhart",
+    "first_name": "Mr. Leonhart",
     "last_name": null,
     "species": "Human",
     "age": null,
@@ -2090,7 +2090,7 @@
     "residence": null,
     "status": "Unknown",
     "alias": "Annie's father",
-    "mbti": null
+    "mbti": "ENTJ"
   },
   {
     "id": 162,
@@ -2103,7 +2103,7 @@
     "residence": "Liberio",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "ISTJ"
   },
   {
     "id": 163,
@@ -2116,7 +2116,7 @@
     "residence": null,
     "status": "Deceased",
     "alias": "Freckles, Lady Ymir, Jaw Titan",
-    "mbti": null
+    "mbti": "ISTP"
   },
   {
     "id": 164,
@@ -2129,7 +2129,7 @@
     "residence": "Liberio",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "ISFJ"
   },
   {
     "id": 165,
@@ -2168,7 +2168,7 @@
     "residence": "Liberio",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "INTP"
   },
   {
     "id": 168,
@@ -2181,7 +2181,7 @@
     "residence": "Liberio",
     "status": "Deceased",
     "alias": null,
-    "mbti": null
+    "mbti": "INFP"
   },
   {
     "id": 169,
@@ -2194,7 +2194,7 @@
     "residence": null,
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "INTJ"
   },
   {
     "id": 170,
@@ -2207,7 +2207,7 @@
     "residence": "Paradis Island",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "ENFJ"
   },
   {
     "id": 171,
@@ -2220,7 +2220,7 @@
     "residence": "Marley",
     "status": "Unknown",
     "alias": "Beast Titan, Monkey, Wonderboy, Beardo",
-    "mbti": null
+    "mbti": "INTP"
   },
   {
     "id": 172,
@@ -2272,7 +2272,7 @@
     "residence": "Wall Rose",
     "status": "Alive",
     "alias": "Suicidal Maniac, Titan boy, Attack Titan, Mysterious Titan, Berserk Titan, Titan being rampant,Founding Titan, Founder, Mister Kruger, Usurper, War Hammer Titan",
-    "mbti": null
+    "mbti": "ISFP"
   },
   {
     "id": 176,
@@ -2285,7 +2285,7 @@
     "residence": "Wall Rose",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "ESTP"
   },
   {
     "id": 177,
@@ -2298,7 +2298,7 @@
     "residence": "Trost District",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "INFJ"
   },
   {
     "id": 178,
@@ -2311,7 +2311,7 @@
     "residence": "Wall Rose",
     "status": "Alive",
     "alias": null,
-    "mbti": null
+    "mbti": "ENTJ"
   },
   {
     "id": 179,
@@ -2415,7 +2415,7 @@
     "residence": null,
     "status": "Deceased",
     "alias": "Christa, Founding Titan",
-    "mbti": null
+    "mbti": "ISFJ"
   },
   {
     "id": 187,
@@ -2429,5 +2429,44 @@
     "status": "Deceased",
     "alias": null,
     "mbti": null
+  },
+  {
+    "id": 188,
+    "first_name": "Darius",
+    "last_name": "Zackly",
+    "species": "Human",
+    "age": null,
+    "height": 165,
+    "weight": 82,
+    "residence": "Wall Sina",
+    "status": "Alive",
+    "alias": null,
+    "mbti": "ENTP"
+  },
+  {
+    "id": 189,
+    "first_name": "Halil",
+    "last_name": null,
+    "species": "Human",
+    "age": null,
+    "height": null,
+    "weight": null,
+    "residence": null,
+    "status": "Deceased",
+    "alias": null,
+    "mbti": "ISFJ"
+  },
+  {
+    "id": 190,
+    "first_name": "Ramzi",
+    "last_name": null,
+    "species": "Human",
+    "age": null,
+    "height": 135,
+    "weight": 30,
+    "residence": null,
+    "status": "Deceased",
+    "alias": null,
+    "mbti": "ENFP"
   }
 ]
