@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Analysts"
+  },
+  {
+    "id": 2,
+    "name": "Diplomats"
+  },
+  {
+    "id": 3,
+    "name": "Sentinels"
+  },
+  {
+    "id": 4,
+    "name": "Explorers"
+  }
+]

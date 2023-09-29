@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "shortName": "Alive",
+    "longName": "Alive",
+    "keyName": "alive"
+  },
+  {
+    "id": 2,
+    "shortName": "Dead",
+    "longName": "Dead",
+    "keyName": "dead"
+  },
+  {
+    "id": 3,
+    "shortName": "Unk.",
+    "longName": "Unknown",
+    "keyName": "unknown"
+  }
+]

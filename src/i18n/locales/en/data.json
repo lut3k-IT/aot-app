@@ -1,0 +1,41 @@
+{
+  "residence": {
+    "hizuru": "Hizuru",
+    "marley": "Marley",
+    "paradisIsland": "Paradis Island",
+    "underground": "Underground",
+    "wallMaria": "Wall Maria",
+    "wallRose": "Wall Rose",
+    "wallSina": "Wall Sina"
+  },
+  "status": {
+    "alive": {
+      "short": "Alive",
+      "long": "Alive"
+    },
+    "dead": {
+      "short": "Dead",
+      "long": "Dead"
+    },
+    "unknown": {
+      "short": "Unk.",
+      "long": "Unknown"
+    }
+  },
+  "species": {
+    "horse": "Horse",
+    "human": "Human",
+    "humanTitan": "Human, Intelligent Titan",
+    "titanHuman": "Titan (formerly human)",
+    "titan": "Titan",
+    "unknown": "Unknown"
+  },
+  "allegiance": {
+    "eldia": "Eldia",
+    "marley": "Marley",
+    "eldiaForm": "Eldia (formerly)",
+    "marleyForm": "Marley (formerly)",
+    "eldiaHeld": "Eldia (held custody)",
+    "none": "None"
+  }
+}

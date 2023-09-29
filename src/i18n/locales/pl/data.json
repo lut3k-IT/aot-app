@@ -1,0 +1,45 @@
+{
+  "residence": {
+    "title": "Pobyt",
+    "hizuru": "Hizuru",
+    "marley": "Mare",
+    "paradisIsland": "Wyspa Paradis",
+    "underground": "Podziemie",
+    "wallMaria": "Mur Maria",
+    "wallRose": "Mur Róża",
+    "wallSina": "Mur Sina"
+  },
+  "status": {
+    "title": "Status",
+    "alive": {
+      "short": "Żyw.",
+      "long": "Żywy/a"
+    },
+    "dead": {
+      "short": "Mart.",
+      "long": "Martwy/a"
+    },
+    "unknown": {
+      "short": "Niez.",
+      "long": "Nieznany"
+    }
+  },
+  "species": {
+    "title": "Gatunek",
+    "horse": "Koń",
+    "human": "Człowiek",
+    "humanTitan": "Człowiek, Inteligentny Tytan",
+    "titanHuman": "Tytan (dawniej człowiek)",
+    "titan": "Tytan",
+    "unknown": "Nieznany"
+  },
+  "allegiance": {
+    "title": "Przynależność",
+    "eldia": "Erdia",
+    "marley": "Mare",
+    "eldiaForm": "Erdia (dawniej)",
+    "marleyForm": "Mare (dawniej)",
+    "eldiaHeld": "Erdia (przetrzymywanie)",
+    "none": "Brak"
+  }
+}

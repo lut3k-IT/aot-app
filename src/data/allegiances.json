@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Eldia",
+    "keyName": "eldia"
+  },
+  {
+    "id": 2,
+    "name": "Marley",
+    "keyName": "marley"
+  },
+  {
+    "id": 3,
+    "name": "Eldia (formerly)",
+    "keyName": "eldiaForm"
+  },
+  {
+    "id": 4,
+    "name": "Marley (formerly)",
+    "keyName": "marleyForm"
+  },
+  {
+    "id": 5,
+    "name": "Eldia (held custody)",
+    "keyName": "eldiaHeld"
+  },
+  {
+    "id": 6,
+    "name": "None",
+    "keyName": "none"
+  }
+]
