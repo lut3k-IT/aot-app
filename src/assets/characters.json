@@ -145,7 +145,7 @@
   {
     "id": 12,
     "first_name": "Sasha",
-    "last_name": "Blouse",
+    "last_name": "Braus",
     "species": "Human",
     "age": null,
     "height": 173,
@@ -320,7 +320,7 @@
     "height": null,
     "weight": null,
     "residence": "Wall Rose",
-    "status": "Unknown",
+    "status": "Deceased",
     "alias": null,
     "mbti": null
   },
@@ -646,13 +646,13 @@
     "weight": null,
     "residence": "Wall Sina",
     "status": "Alive",
-    "alias": "Nile's aide, Aide soldie'",
+    "alias": ["Nile's aide", "Bodyguard"],
     "mbti": null
   },
   {
     "id": 51,
     "first_name": "Nile",
-    "last_name": "Dok",
+    "last_name": "Dawk",
     "species": "Human",
     "age": null,
     "height": 177,
@@ -912,7 +912,7 @@
   {
     "id": 71,
     "first_name": "Keith",
-    "last_name": "Shadis",
+    "last_name": "Sadies",
     "species": "Human",
     "age": null,
     "height": 198,
@@ -1061,7 +1061,7 @@
     "height": null,
     "weight": null,
     "residence": "Marley",
-    "status": "Unknown",
+    "status": "Deceased",
     "alias": null,
     "mbti": null
   },
@@ -1237,7 +1237,7 @@
   {
     "id": 96,
     "first_name": "Tom",
-    "last_name": "Ksaver",
+    "last_name": "Xaver",
     "species": "Human, Intelligent Titan",
     "age": null,
     "height": 169,
@@ -1536,7 +1536,7 @@
   {
     "id": 119,
     "first_name": "Roderich",
-    "last_name": "Roderich",
+    "last_name": null,
     "species": "Human",
     "age": null,
     "height": null,
@@ -1665,7 +1665,7 @@
   },
   {
     "id": 129,
-    "first_name": "Fritz (Figurehead)",
+    "first_name": "Fritz (figurehead)",
     "last_name": null,
     "species": "Human",
     "age": null,
