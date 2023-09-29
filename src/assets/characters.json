@@ -839,7 +839,7 @@
     "age": null,
     "height": null,
     "weight": null,
-    "residence": "Orvud District",
+    "residence": "Wall Sina",
     "status": "Alive",
     "alias": null,
     "mbti": "ISFJ"
@@ -865,7 +865,7 @@
     "age": null,
     "height": null,
     "weight": null,
-    "residence": "Shiganshina District",
+    "residence": "Wall Maria",
     "status": "Unknown",
     "alias": null,
     "mbti": "ESFP"
@@ -891,7 +891,7 @@
     "age": null,
     "height": 188,
     "weight": 82,
-    "residence": "Trost District",
+    "residence": "Wall Rose",
     "status": "Deceased",
     "alias": null,
     "mbti": "ENTJ"
@@ -904,7 +904,7 @@
     "age": null,
     "height": 191,
     "weight": 81,
-    "residence": "Trost District",
+    "residence": "Wall Rose",
     "status": "Deceased",
     "alias": null,
     "mbti": null
@@ -1099,7 +1099,7 @@
     "age": 21,
     "height": 188,
     "weight": 83,
-    "residence": "Liberio",
+    "residence": "Marley",
     "status": "Alive",
     "alias": "Armored Titan, Armor",
     "mbti": "ESFJ"
@@ -1112,7 +1112,7 @@
     "age": null,
     "height": 155,
     "weight": 42,
-    "residence": "Liberio",
+    "residence": "Marley",
     "status": "Alive",
     "alias": "Cart Titan, Cart, Quadruped-type",
     "mbti": "INTP"
@@ -1125,7 +1125,7 @@
     "age": null,
     "height": 175,
     "weight": 75,
-    "residence": "Liberio",
+    "residence": "Marley",
     "status": "Alive",
     "alias": "Jaw Titan, Jaw, Pock",
     "mbti": "ESTP"
@@ -1138,7 +1138,7 @@
     "age": null,
     "height": 140,
     "weight": 34,
-    "residence": "Liberio",
+    "residence": "Marley",
     "status": "Alive",
     "alias": "Ben",
     "mbti": "ENFJ"
@@ -1151,7 +1151,7 @@
     "age": null,
     "height": 180,
     "weight": 65,
-    "residence": "Liberio",
+    "residence": "Marley",
     "status": "Alive",
     "alias": null,
     "mbti": "ESFJ"
@@ -1164,7 +1164,7 @@
     "age": 12,
     "height": 138,
     "weight": 30,
-    "residence": "Liberio",
+    "residence": "Marley",
     "status": "Alive",
     "alias": "Mia",
     "mbti": "ESFP"
@@ -1190,7 +1190,7 @@
     "age": null,
     "height": 146,
     "weight": 39,
-    "residence": "Liberio",
+    "residence": "Marley",
     "status": "Deceased",
     "alias": null,
     "mbti": "ISFJ"
@@ -1203,7 +1203,7 @@
     "age": null,
     "height": 142,
     "weight": 34,
-    "residence": "Liberio",
+    "residence": "Marley",
     "status": "Deceased",
     "alias": null,
     "mbti": "ISTP"
@@ -1229,7 +1229,7 @@
     "age": null,
     "height": null,
     "weight": null,
-    "residence": "Liberio",
+    "residence": "Marley",
     "status": "Deceased",
     "alias": "Jaw Titan, Jaw",
     "mbti": "ENFJ"
@@ -1242,7 +1242,7 @@
     "age": null,
     "height": 169,
     "weight": 75,
-    "residence": "Liberio",
+    "residence": "Marley",
     "status": "Deceased",
     "alias": "Beast Titan",
     "mbti": "ENTP"
@@ -1418,7 +1418,7 @@
   },
   {
     "id": 110,
-    "first_name": "Rod's father",
+    "first_name": "Rod and Uri's father",
     "last_name": null,
     "species": "Human, Intelligent Titan",
     "age": null,
@@ -1502,7 +1502,7 @@
     "age": null,
     "height": null,
     "weight": null,
-    "residence": "Calaneth District",
+    "residence": "Wall Rose",
     "status": "Alive",
     "alias": null,
     "mbti": null
@@ -1515,7 +1515,7 @@
     "age": null,
     "height": 174,
     "weight": 78,
-    "residence": "Calaneth District",
+    "residence": "Wall Rose",
     "status": "Alive",
     "alias": null,
     "mbti": null
@@ -1528,7 +1528,7 @@
     "age": null,
     "height": null,
     "weight": null,
-    "residence": "Stohess District",
+    "residence": "Wall Sina",
     "status": "Alive",
     "alias": null,
     "mbti": null
@@ -1593,7 +1593,7 @@
     "age": null,
     "height": null,
     "weight": null,
-    "residence": "Ragako",
+    "residence": "Wall Rose",
     "status": "Alive",
     "alias": null,
     "mbti": null
@@ -1606,7 +1606,7 @@
     "age": 20,
     "height": 160,
     "weight": 50,
-    "residence": "Stohess District",
+    "residence": "Wall Sina",
     "status": "Alive",
     "alias": null,
     "mbti": "ESTP"
@@ -1619,7 +1619,7 @@
     "age": 50,
     "height": null,
     "weight": null,
-    "residence": "Stohess District",
+    "residence": "Wall Sina",
     "status": "Alive",
     "alias": null,
     "mbti": "INTJ"
@@ -1632,7 +1632,7 @@
     "age": null,
     "height": null,
     "weight": null,
-    "residence": "Stohess District",
+    "residence": "Wall Sina",
     "status": "Alive",
     "alias": null,
     "mbti": null
@@ -1723,7 +1723,7 @@
     "age": null,
     "height": 165,
     "weight": 74,
-    "residence": "Trost District",
+    "residence": "Wall Rose",
     "status": "Alive",
     "alias": null,
     "mbti": "ISFP"
@@ -1788,7 +1788,7 @@
     "age": null,
     "height": null,
     "weight": null,
-    "residence": "Shiganshina District",
+    "residence": "Wall Maria",
     "status": "Unknown",
     "alias": null,
     "mbti": null
@@ -1827,7 +1827,7 @@
     "age": null,
     "height": 162,
     "weight": 76,
-    "residence": "Trost District",
+    "residence": "Wall Rose",
     "status": "Deceased",
     "alias": "Committee Member",
     "mbti": "ENTJ"
@@ -1853,7 +1853,7 @@
     "age": null,
     "height": 3,
     "weight": null,
-    "residence": " Ragako",
+    "residence": "Wall Rose",
     "status": "Deceased",
     "alias": null,
     "mbti": null
@@ -1892,7 +1892,7 @@
     "age": null,
     "height": null,
     "weight": null,
-    "residence": "Stohess District",
+    "residence": "Wall Sina",
     "status": "Deceased",
     "alias": null,
     "mbti": null
@@ -1905,7 +1905,7 @@
     "age": null,
     "height": null,
     "weight": null,
-    "residence": "Stohess District",
+    "residence": "Wall Sina",
     "status": "Deceased",
     "alias": null,
     "mbti": null
@@ -1918,7 +1918,7 @@
     "age": null,
     "height": null,
     "weight": null,
-    "residence": "Wall Rose, Wall Maria",
+    "residence": "Wall Maria",
     "status": "Deceased",
     "alias": null,
     "mbti": null
@@ -1944,7 +1944,7 @@
     "age": 39,
     "height": 182,
     "weight": 78,
-    "residence": "Shiganshina, District Liberio (former)",
+    "residence": "Wall Maria",
     "status": "Deceased",
     "alias": "Attack Titan, Mysterious Titan, Founding Titan",
     "mbti": "INFJ"
@@ -1957,7 +1957,7 @@
     "age": null,
     "height": 165,
     "weight": 58,
-    "residence": "Shiganshina District",
+    "residence": "Wall Maria",
     "status": "Deceased",
     "alias": null,
     "mbti": "ESFJ"
@@ -2035,7 +2035,7 @@
     "age": null,
     "height": null,
     "weight": null,
-    "residence": "Liberio",
+    "residence": "Marley",
     "status": "Alive",
     "alias": ["Pieck's father"],
     "mbti": null
@@ -2048,7 +2048,7 @@
     "age": null,
     "height": null,
     "weight": null,
-    "residence": "Liberio",
+    "residence": "Marley",
     "status": "Unknown",
     "alias": null,
     "mbti": null
@@ -2061,7 +2061,7 @@
     "age": null,
     "height": null,
     "weight": null,
-    "residence": "Liberio",
+    "residence": "Marley",
     "status": "Deceased",
     "alias": null,
     "mbti": null
@@ -2074,7 +2074,7 @@
     "age": null,
     "height": null,
     "weight": null,
-    "residence": "Liberio",
+    "residence": "Marley",
     "status": "Deceased",
     "alias": ["Grisha's father", "Zeke's grandpa"],
     "mbti": "ISFJ"
@@ -2100,7 +2100,7 @@
     "age": null,
     "height": 170,
     "weight": 60,
-    "residence": "Liberio",
+    "residence": "Marley",
     "status": "Alive",
     "alias": null,
     "mbti": "ISTJ"
@@ -2126,7 +2126,7 @@
     "age": null,
     "height": 168,
     "weight": 45,
-    "residence": "Liberio",
+    "residence": "Marley",
     "status": "Deceased",
     "alias": null,
     "mbti": "ISFJ"
@@ -2139,7 +2139,7 @@
     "age": null,
     "height": 300,
     "weight": null,
-    "residence": "Liberio",
+    "residence": "Marley",
     "status": "Deceased",
     "alias": null,
     "mbti": null
@@ -2165,7 +2165,7 @@
     "age": null,
     "height": null,
     "weight": null,
-    "residence": "Liberio",
+    "residence": "Marley",
     "status": "Deceased",
     "alias": null,
     "mbti": "INTP"
@@ -2178,7 +2178,7 @@
     "age": 8,
     "height": null,
     "weight": null,
-    "residence": "Liberio",
+    "residence": "Marley",
     "status": "Deceased",
     "alias": null,
     "mbti": "INFP"
@@ -2295,7 +2295,7 @@
     "age": null,
     "height": 155,
     "weight": 45,
-    "residence": "Trost District",
+    "residence": "Wall Rose",
     "status": "Alive",
     "alias": null,
     "mbti": "INFJ"
