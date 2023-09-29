@@ -9,7 +9,7 @@
     "weight": 56,
     "residence": 6,
     "status": 1,
-    "alias": "Colossal Titan",
+    "alias": ["Colossal Titan"],
     "mbti": 5
   },
   {
@@ -48,7 +48,7 @@
     "weight": 89,
     "residence": 6,
     "status": 1,
-    "alias": "Horse face, Jean-boy",
+    "alias": ["Horse face", "Jean-boy"],
     "mbti": 11
   },
   {
@@ -100,7 +100,7 @@
     "weight": 65,
     "residence": 6,
     "status": 1,
-    "alias": "Humanity's Strongest Soldier",
+    "alias": ["Humanity's Strongest Soldier"],
     "mbti": 13
   },
   {
@@ -152,7 +152,7 @@
     "weight": 61,
     "residence": 6,
     "status": 2,
-    "alias": "Potato Girl",
+    "alias": ["Potato Girl"],
     "mbti": 16
   },
   {
@@ -178,7 +178,7 @@
     "weight": 92,
     "residence": 6,
     "status": 2,
-    "alias": "Eyebrow",
+    "alias": ["Eyebrow"],
     "mbti": 3
   },
   {
@@ -698,7 +698,7 @@
     "weight": null,
     "residence": 7,
     "status": 1,
-    "alias": "Marlo's officer",
+    "alias": ["Marlo's officer"],
     "mbti": 13
   },
   {
@@ -737,7 +737,7 @@
     "weight": 120,
     "residence": 7,
     "status": 2,
-    "alias": "Kenny the Ripper",
+    "alias": ["Kenny the Ripper"],
     "mbti": 15
   },
   {
@@ -1101,7 +1101,7 @@
     "weight": 83,
     "residence": 2,
     "status": 1,
-    "alias": "Armored Titan, Armor",
+    "alias": ["Armored Titan", "Armor"],
     "mbti": 12
   },
   {
@@ -1114,7 +1114,7 @@
     "weight": 42,
     "residence": 2,
     "status": 1,
-    "alias": "Cart Titan, Cart, Quadruped-type",
+    "alias": ["Cart Titan", "Cart", "Quadruped-type"],
     "mbti": 2
   },
   {
@@ -1127,7 +1127,7 @@
     "weight": 75,
     "residence": 2,
     "status": 1,
-    "alias": "Jaw Titan, Jaw, Pock",
+    "alias": ["Jaw Titan", "Jaw", "Pock"],
     "mbti": 15
   },
   {
@@ -1140,7 +1140,7 @@
     "weight": 34,
     "residence": 2,
     "status": 1,
-    "alias": "Ben",
+    "alias": ["Ben"],
     "mbti": 7
   },
   {
@@ -1166,7 +1166,7 @@
     "weight": 30,
     "residence": 2,
     "status": 1,
-    "alias": "Mia",
+    "alias": ["Mia"],
     "mbti": 16
   },
   {
@@ -1179,7 +1179,7 @@
     "weight": 54,
     "residence": 7,
     "status": 3,
-    "alias": "Female Titan, Female",
+    "alias": ["Female Titan", "Female"],
     "mbti": 13
   },
   {
@@ -1218,7 +1218,7 @@
     "weight": 81,
     "residence": 6,
     "status": 2,
-    "alias": "Colossal Titan, Bertl",
+    "alias": ["Colossal Titan", "Bertl"],
     "mbti": 10
   },
   {
@@ -1231,7 +1231,7 @@
     "weight": null,
     "residence": 2,
     "status": 2,
-    "alias": "Jaw Titan, Jaw",
+    "alias": ["Jaw Titan", "Jaw"],
     "mbti": 7
   },
   {
@@ -1244,7 +1244,7 @@
     "weight": 75,
     "residence": 2,
     "status": 2,
-    "alias": "Beast Titan",
+    "alias": ["Beast Titan"],
     "mbti": 4
   },
   {
@@ -1257,7 +1257,7 @@
     "weight": 78,
     "residence": 2,
     "status": 2,
-    "alias": "Attack Titan, The Owl",
+    "alias": ["Attack Titan", "The Owl"],
     "mbti": 1
   },
   {
@@ -1283,7 +1283,7 @@
     "weight": 42,
     "residence": 6,
     "status": 1,
-    "alias": "Christa Lenz, Goddess, True Queen of the Walls, Queen Historia",
+    "alias": ["Christa Lenz", "Goddess", "True Queen of the Walls", "Queen Historia"],
     "mbti": 12
   },
   {
@@ -1322,7 +1322,7 @@
     "weight": 68,
     "residence": 7,
     "status": 2,
-    "alias": "Lord Reiss, King of the Walls",
+    "alias": ["Lord Reiss", "King of the Walls"],
     "mbti": 11
   },
   {
@@ -1400,7 +1400,7 @@
     "weight": 57,
     "residence": 7,
     "status": 2,
-    "alias": "King of the Walls, Founding Titan",
+    "alias": ["King of the Walls", "Founding Titan"],
     "mbti": 12
   },
   {
@@ -1413,7 +1413,7 @@
     "weight": 54,
     "residence": 7,
     "status": 2,
-    "alias": "King of the Walls, Founding Titan",
+    "alias": ["King of the Walls", "Founding Titan"],
     "mbti": 5
   },
   {
@@ -1426,7 +1426,7 @@
     "weight": null,
     "residence": 7,
     "status": 2,
-    "alias": "King of the Walls, Founding Titan",
+    "alias": ["King of the Walls", "Founding Titan"],
     "mbti": null
   },
   {
@@ -1439,7 +1439,15 @@
     "weight": null,
     "residence": null,
     "status": 2,
-    "alias": "145th King, King of the Walls, Founding Titan, First Reiss King, First King, King Reiss, King Fritz",
+    "alias": [
+      "145th King",
+      "King of the Walls",
+      "Founding Titan",
+      "First Reiss King",
+      "First King",
+      "King Reiss",
+      "King Fritz"
+    ],
     "mbti": 5
   },
   {
@@ -1465,7 +1473,7 @@
     "weight": null,
     "residence": 2,
     "status": 2,
-    "alias": "War Hammer Titan",
+    "alias": ["War Hammer Titan"],
     "mbti": null
   },
   {
@@ -1478,7 +1486,7 @@
     "weight": 66,
     "residence": 2,
     "status": 2,
-    "alias": "Lord Tybur, King of our savior",
+    "alias": ["Lord Tybur", "King of our savior"],
     "mbti": 7
   },
   {
@@ -1548,8 +1556,8 @@
   },
   {
     "id": 120,
-    "first_name": "Jean's",
-    "last_name": "mother",
+    "first_name": "Jean's mother",
+    "last_name": null,
     "species": 2,
     "age": null,
     "height": null,
@@ -1569,7 +1577,7 @@
     "weight": 75,
     "residence": 6,
     "status": 1,
-    "alias": "Sasha's father",
+    "alias": ["Sasha's father"],
     "mbti": 7
   },
   {
@@ -1777,7 +1785,7 @@
     "weight": null,
     "residence": 6,
     "status": 1,
-    "alias": "Sasha's mother",
+    "alias": ["Sasha's mother"],
     "mbti": 10
   },
   {
@@ -1829,7 +1837,7 @@
     "weight": 76,
     "residence": 6,
     "status": 2,
-    "alias": "Committee Member",
+    "alias": ["Committee Member"],
     "mbti": 3
   },
   {
@@ -1946,7 +1954,7 @@
     "weight": 78,
     "residence": 5,
     "status": 2,
-    "alias": "Attack Titan, Mysterious Titan, Founding Titan",
+    "alias": ["Attack Titan", "Mysterious Titan", "Founding Titan"],
     "mbti": 5
   },
   {
@@ -1985,7 +1993,7 @@
     "weight": null,
     "residence": 5,
     "status": 2,
-    "alias": "Mr. Ackermann",
+    "alias": ["Mr. Ackermann"],
     "mbti": null
   },
   {
@@ -1998,7 +2006,7 @@
     "weight": 43,
     "residence": 4,
     "status": 2,
-    "alias": "Olympia",
+    "alias": ["Olympia"],
     "mbti": null
   },
   {
@@ -2089,7 +2097,7 @@
     "weight": 72,
     "residence": null,
     "status": 3,
-    "alias": "Annie's father",
+    "alias": ["Annie's father"],
     "mbti": 3
   },
   {
@@ -2115,7 +2123,7 @@
     "weight": 63,
     "residence": null,
     "status": 2,
-    "alias": "Freckles, Lady Ymir, Jaw Titan",
+    "alias": ["Freckles", "Lady Ymir", "Jaw Titan"],
     "mbti": 13
   },
   {
@@ -2219,7 +2227,7 @@
     "weight": 92,
     "residence": 2,
     "status": 3,
-    "alias": "Beast Titan, Monkey, Wonderboy, Beardo",
+    "alias": ["Beast Titan", "Monkey", "Wonderboy", "Beardo"],
     "mbti": 2
   },
   {
@@ -2271,7 +2279,18 @@
     "weight": 82,
     "residence": 6,
     "status": 1,
-    "alias": "Suicidal Maniac, Titan boy, Attack Titan, Mysterious Titan, Berserk Titan, Titan being rampant,Founding Titan, Founder, Mister Kruger, Usurper, War Hammer Titan",
+    "alias": [
+      "Suicidal Maniac",
+      "Titan boy",
+      "Attack Titan",
+      "Mysterious Titan",
+      "Berserk Titan",
+      "Titan being rampant,Founding Titan",
+      "Founder",
+      "Mister Kruger",
+      "Usurper",
+      "War Hammer Titan"
+    ],
     "mbti": 14
   },
   {
@@ -2414,7 +2433,7 @@
     "weight": null,
     "residence": null,
     "status": 2,
-    "alias": "Christa, Founding Titan",
+    "alias": ["Christa", "Founding Titan"],
     "mbti": 10
   },
   {
