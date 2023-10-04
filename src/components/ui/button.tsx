@@ -35,6 +35,7 @@ export interface ButtonProps
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
   // TODO: string ale tylko z obiektu z routera!
+  // TODO: ikony
   to?: string;
 }
 

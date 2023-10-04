@@ -31,5 +31,3 @@ export enum LanguageShortName {
 export enum LocalStorageKey {
   LANGUAGE_KEY = 'i18nextLng'
 }
-
-export const NsetnNSt = 'string';
