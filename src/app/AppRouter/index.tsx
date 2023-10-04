@@ -13,7 +13,7 @@ import HeroesCharts from '@/features/HeroesCharts';
 import HeroesComparison from '@/features/HeroesComparison';
 import HeroesGallery from '@/features/HeroesGallery';
 import Quiz from '@/features/Quiz';
-import Titans from '@/features/Titans';
+import Titans from '@/features/TitansGallery';
 
 import Init from './Init';
 
