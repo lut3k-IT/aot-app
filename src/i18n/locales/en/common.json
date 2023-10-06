@@ -11,5 +11,9 @@
     "cancel": "Cancel"
   },
   "form": {},
-  "errorBoundaries": {}
+  "error": {
+    "oops": "Oops",
+    "unexpectedError": "Unexpected error",
+    "routeNotFound": "Route not found"
+  }
 }

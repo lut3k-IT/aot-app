@@ -12,12 +12,11 @@ const ErrorPage = () => {
 
   return (
     <div>
-      <h1>{t('errorBoundaries:oops')}</h1>
-      <p>{t('errorBoundaries:unexpectedError')}</p>
+      <h1>{t('common:error.oops')}</h1>
+      <p>{t('common:error.unexpectedError')}</p>
       <pre>
         <i>{error.statusText || error.message}</i>
       </pre>
-      <Button to={'/'}>{t('')}</Button>
     </div>
   );
 };

@@ -1,5 +1,12 @@
+import AppHelmet from '@/components/ui/app-helmet';
+
 const HeroesGallery = () => {
-  return <div>gallery</div>;
+  return (
+    <>
+      <AppHelmet />
+      <div>gallery</div>
+    </>
+  );
 };
 
 export default HeroesGallery;

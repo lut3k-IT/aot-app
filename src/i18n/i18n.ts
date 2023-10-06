@@ -4,8 +4,6 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 import { initOptions } from './config';
 
-if (process.env.NODE_ENV !== 'test') {
-  i18n.use(LanguageDetector).use(initReactI18next).init(initOptions);
-}
+i18n.use(LanguageDetector).use(initReactI18next).init(initOptions);
 
 export default i18n;

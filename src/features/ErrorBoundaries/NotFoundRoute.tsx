@@ -3,8 +3,6 @@ import { useRouteError } from 'react-router-dom';
 
 import { Button } from '@/components/ui/button';
 
-import style from '../ErrorBoundaries.module.scss';
-
 // TODO:
 
 const NotFoundRoute = () => {
@@ -13,10 +11,10 @@ const NotFoundRoute = () => {
   const { t } = useTranslation();
 
   return (
-    <div className={style.container}>
-      <h1>{t('errorBoundaries:oops')}</h1>
+    <div>
+      <h1>{t('common:error.oops')}</h1>
       <span>404</span>
-      <p>{t('errorBoundaries:routeNotFound')}</p>
+      <p>{t('common:error.routeNotFound')}</p>
       <Button to={'/'}>{t('')}</Button>
     </div>
   );

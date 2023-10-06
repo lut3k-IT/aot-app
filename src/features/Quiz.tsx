@@ -1,7 +1,5 @@
-import style from './Quiz.module.scss';
-
 const Quiz = () => {
-  return <div className={style.container}></div>;
+  return <div></div>;
 };
 
 export default Quiz;

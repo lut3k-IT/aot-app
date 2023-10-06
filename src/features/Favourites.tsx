@@ -1,7 +1,5 @@
-import style from './Favourites.module.scss';
-
 const Favourites = () => {
-  return <div className={style.container}></div>;
+  return <div></div>;
 };
 
 export default Favourites;
