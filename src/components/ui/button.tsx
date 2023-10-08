@@ -1,11 +1,15 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 
+import { RoutePath } from '@/constants';
 import { cn } from '@/lib/utils';
 
+import Icon, { IconNames, IconProps } from './icon';
+
 const buttonVariants = cva(
-  'inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex gap-2 items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {
@@ -18,8 +22,8 @@ const buttonVariants = cva(
       },
       size: {
         default: 'h-10 px-4 py-2',
-        sm: 'h-9 rounded-md px-3',
-        lg: 'h-11 rounded-md px-8',
+        sm: 'h-9 px-3',
+        lg: 'h-11 px-8',
         icon: 'h-10 w-10'
       }
     },
@@ -34,22 +38,56 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
-  // TODO: string ale tylko z obiektu z routera!
-  // TODO: ikony
-  to?: string;
+  linkTo?: RoutePath | URL;
+  iconName?: IconNames;
+  iconPosition?: 'left' | 'right';
+  iconProps?: IconProps;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, to = '', ...props }, ref) => {
-    // TODO: warunkowo "to" zrobić button przekierowujący
-    const Comp = asChild ? Slot : 'button';
-    return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
+  (
+    {
+      className,
+      variant,
+      size,
+      asChild = false,
+      linkTo,
+      iconName,
+      iconPosition = 'left',
+      iconProps,
+      children,
+      ...props
+    },
+    ref
+  ) => {
+    const MainComponent = asChild ? Slot : 'button';
+    const IconComponent = iconName && (
+      <Icon
+        name={iconName}
+        {...iconProps}
       />
     );
+    const Content = (
+      <>
+        {iconPosition === 'left' ? IconComponent : null}
+        <span>{children}</span>
+        {iconPosition === 'right' ? IconComponent : null}
+      </>
+    );
+
+    const iconBasedClass = iconName ? (iconPosition === 'left' ? 'pl-3' : 'pr-3') : null;
+
+    const ButtonComponent = (
+      <MainComponent
+        className={cn(buttonVariants({ variant, size, className }), iconBasedClass)}
+        ref={ref}
+        {...props}
+      >
+        {Content}
+      </MainComponent>
+    );
+
+    return linkTo ? <Link to={linkTo}>{ButtonComponent}</Link> : ButtonComponent;
   }
 );
 Button.displayName = 'Button';

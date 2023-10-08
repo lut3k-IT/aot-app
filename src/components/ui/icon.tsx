@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import React from 'react';
-import { cva } from 'class-variance-authority';
+import { cva, type VariantProps } from 'class-variance-authority';
 import {
   ArrowDownWideNarrow,
   Dna,
@@ -22,19 +22,17 @@ import { cn } from '@/lib/utils';
 const iconVariants = cva('text-current', {
   variants: {
     size: {
+      default: 'w-6 h-6',
       sm: 'w-5 h-5',
-      md: 'w-6 h-6',
       lg: 'w-7 h-7'
     }
   },
   defaultVariants: {
-    size: 'md'
+    size: 'default'
   }
 });
 
-type IconSizes = 'sm' | 'md' | 'lg';
-
-type IconNames =
+export type IconNames =
   | 'arrowDownWideNarrow'
   | 'dna'
   | 'filter'
@@ -49,16 +47,15 @@ type IconNames =
 
 type Icons = Record<IconNames, React.ElementType>;
 
-interface IconProps extends Partial<LucideIcon> {
+export interface IconProps extends Partial<LucideIcon>, VariantProps<typeof iconVariants> {
   name: IconNames;
-  size?: IconSizes;
   color?: string;
   isFilled?: boolean;
   className?: string;
 }
 
 const Icon = ({ name, size, color, isFilled = false, className, ...props }: IconProps) => {
-  const Icons: Icons = {
+  const iconsSet: Icons = {
     arrowDownWideNarrow: ArrowDownWideNarrow,
     dna: Dna,
     filter: Filter,
@@ -71,7 +68,7 @@ const Icon = ({ name, size, color, isFilled = false, className, ...props }: Icon
     user: User,
     x: X
   };
-  const IconComponent = Icons[name];
+  const IconComponent = iconsSet[name];
 
   const iconClass = cn(
     iconVariants({
@@ -86,7 +83,7 @@ const Icon = ({ name, size, color, isFilled = false, className, ...props }: Icon
     <IconComponent
       className={iconClass}
       color={iconColor}
-      fill={isFilled ? iconColor : null}
+      fill={isFilled ? iconColor : 'transparent'}
       {...props}
     />
   );
