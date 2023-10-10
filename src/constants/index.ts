@@ -6,7 +6,7 @@ export enum RoutePath {
   HEROES_CHARTS = '/heroes-charts',
   HEROES_COMPARISON = '/heroes-comparison',
   TITANS = '/titans',
-  FAVOURITES = '/favourites',
+  FAVORITES = '/favorites',
   QUIZ = '/quiz',
   ABOUT = '/about',
   CHANGELOG = '/changelog',

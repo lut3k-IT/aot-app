@@ -7,13 +7,14 @@ module.exports = {
       center: true,
       padding: '2rem',
       screens: {
-        sm: '480px',
-        md: '600px',
-        '2md': '840px',
-        lg: '960px',
+        sm: '425px',
+        '2sm': '560px',
+        md: '768px',
+        '2md': '834px',
+        lg: '1024px',
         '2lg': '1280px',
         xl: '1440px',
-        '2xl': '1600px'
+        '2xl': '2560px'
       }
     },
     extend: {
@@ -51,6 +52,10 @@ module.exports = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))'
         }
+      },
+      spacing: {
+        'page-mobile': '16px',
+        'page-desktop': '32px'
       },
       borderRadius: {
         lg: 'var(--radius)',

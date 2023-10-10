@@ -1,9 +1,9 @@
 {
   "brand": "AoT app",
-  "titles": {
+  "title": {
     "heroes": "Heroes",
     "titans": "Titans",
-    "favourite": "Favourite",
+    "favorites": "Favorites",
     "quiz": "Quiz"
   },
   "button": {
