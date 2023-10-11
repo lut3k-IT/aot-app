@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useRouteError } from 'react-router-dom';
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
 
 // TODO:
 

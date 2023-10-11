@@ -6,7 +6,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { RoutePath } from '@/constants';
 import { cn } from '@/lib/utils';
 
-import Icon, { IconNames, IconProps, IconSizes } from './icon';
+import Icon, { IconNames, IconProps, IconSizes } from './Icon';
 
 const buttonVariants = cva(
   'inline-flex gap-2 items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
@@ -42,7 +42,7 @@ export interface ButtonProps
   iconName?: IconNames;
   iconPosition?: 'left' | 'right';
   iconSize?: IconSizes;
-  iconProps?: IconProps;
+  iconProps?: Partial<IconProps>;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -82,7 +82,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const ButtonComponent = (
       <MainComponent
-        className={cn(buttonVariants({ variant, size, className }), iconBasedClass)}
+        className={cn(buttonVariants({ variant, size }), iconBasedClass, className)}
         ref={ref}
         {...props}
       >

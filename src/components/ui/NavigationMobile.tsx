@@ -4,7 +4,7 @@ import { v4 } from 'uuid';
 
 import { RoutePath } from '@/constants';
 
-import Icon, { IconNames } from './icon';
+import Icon, { IconNames } from './Icon';
 
 interface INavigationElement {
   name: string;

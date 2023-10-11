@@ -1,8 +1,10 @@
+import HeroCard from '@/components/ui/HeroCard';
+
 const HeroesGallery = () => {
   return (
-    <>
-      <div>gallery</div>
-    </>
+    <div className={'p-4'}>
+      <HeroCard />
+    </div>
   );
 };
 
