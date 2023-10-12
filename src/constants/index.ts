@@ -2,9 +2,10 @@ export enum Param {}
 
 export enum RoutePath {
   LANDING = '/',
-  HEROES_GALLERY = '/heroes-gallery',
-  HEROES_CHARTS = '/heroes-charts',
-  HEROES_COMPARISON = '/heroes-comparison',
+  HEROES = '/heroes',
+  HEROES_GALLERY = '/heroes/gallery',
+  HEROES_CHARTS = '/heroes/charts',
+  HEROES_COMPARISON = '/heroes/comparison',
   TITANS = '/titans',
   FAVORITES = '/favorites',
   QUIZ = '/quiz',

@@ -10,6 +10,7 @@ import TermsOfService from '@/features/Additional/TermsOfService';
 import ErrorPage from '@/features/ErrorBoundaries/ErrorPage';
 import NotFoundRoute from '@/features/ErrorBoundaries/NotFoundRoute';
 import Favourites from '@/features/Favourites';
+import Heroes from '@/features/Heroes';
 import HeroesCharts from '@/features/HeroesCharts';
 import HeroesComparison from '@/features/HeroesComparison';
 import HeroesGallery from '@/features/HeroesGallery';
@@ -39,23 +40,41 @@ export const router = createBrowserRouter([
             path: RoutePath.LANDING,
             element: (
               <Navigate
-                to={RoutePath.HEROES_GALLERY}
+                to={RoutePath.HEROES}
                 replace
               />
             )
           },
           {
-            path: RoutePath.HEROES_GALLERY,
-            element: <HeroesGallery />
+            path: RoutePath.HEROES,
+            element: <Heroes />,
+            children: [
+              {
+                path: RoutePath.HEROES_GALLERY,
+                element: <HeroesGallery />
+              },
+              {
+                path: RoutePath.HEROES_CHARTS,
+                element: <HeroesCharts />
+              },
+              {
+                path: RoutePath.HEROES_COMPARISON,
+                element: <HeroesComparison />
+              }
+            ]
           },
-          {
-            path: RoutePath.HEROES_CHARTS,
-            element: <HeroesCharts />
-          },
-          {
-            path: RoutePath.HEROES_COMPARISON,
-            element: <HeroesComparison />
-          },
+          // {
+          //   path: RoutePath.GALLERY,
+          //   element: <HeroesGallery />
+          // },
+          // {
+          //   path: RoutePath.CHARTS,
+          //   element: <HeroesCharts />
+          // },
+          // {
+          //   path: RoutePath.COMPARISON,
+          //   element: <HeroesComparison />
+          // },
           {
             path: RoutePath.TITANS,
             element: <Titans />

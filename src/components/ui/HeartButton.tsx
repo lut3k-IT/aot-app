@@ -1,19 +1,32 @@
-import Icon from './Icon';
+import { cn } from '@/lib/utils';
+
+import { Button } from './Button';
+import Icon, { IconSizes } from './Icon';
 
 // TODO:
 // ts button element
 // quote id
 // is in favorites (filled icon)
 
-const HeartButton = () => {
+interface HeartButtonProps {
+  iconSize?: IconSizes;
+  className?: string;
+}
+
+const HeartButton = (props: HeartButtonProps) => {
+  const { iconSize, className } = props;
   return (
-    <button className={'p-1'}>
+    <Button
+      variant={'proxy'}
+      size={'proxy'}
+      className={cn('p-1', className)}
+    >
       <Icon
-        size={'sm'}
+        size={iconSize}
         name={'heart'}
         variant={'gray'}
       />
-    </button>
+    </Button>
   );
 };
 

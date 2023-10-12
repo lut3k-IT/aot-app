@@ -9,7 +9,7 @@ import { ModeToggle } from './ModeToggle';
 
 const TopBarMobile = () => {
   return (
-    <div className='w-full h-12 flex items-center px-page-mobile gap-2 bg-background border-b'>
+    <div className='w-full h-12 flex items-center px-page-mobile gap-2 bg-background border-b z-20 fixed'>
       <Link
         to={RoutePath.LANDING}
         className='flex gap-2'

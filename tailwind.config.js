@@ -55,7 +55,9 @@ module.exports = {
       },
       spacing: {
         'page-mobile': '16px',
-        'page-desktop': '32px'
+        'page-desktop': '32px',
+        'body-start': '84px',
+        'body-pad-start': '102px'
       },
       borderRadius: {
         lg: 'var(--radius)',
