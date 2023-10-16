@@ -92,7 +92,16 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       </MainComponent>
     );
 
-    return linkTo ? <Link to={linkTo}>{ButtonComponent}</Link> : ButtonComponent;
+    return linkTo ? (
+      <Link
+        className={'contents'}
+        to={linkTo}
+      >
+        {ButtonComponent}
+      </Link>
+    ) : (
+      ButtonComponent
+    );
   }
 );
 Button.displayName = 'Button';

@@ -62,7 +62,7 @@ const NavigationElement = (props: NavigationElementProps) => {
 
 const NavigationMobile = () => {
   return (
-    <div className='w-full fixed bottom-0 px-page-mobile bg-background border-t border-accent flex justify-between z-20'>
+    <div className='w-full fixed bottom-0  bg-background border-t border-accent flex justify-evenly z-20'>
       {navigationElements.map((element) => {
         return (
           <NavigationElement

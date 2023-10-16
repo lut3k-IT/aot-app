@@ -4,7 +4,11 @@
     "heroes": "Heroes",
     "titans": "Titans",
     "favorites": "Favorites",
-    "quiz": "Quiz"
+    "quiz": "Quiz",
+    "about": "About",
+    "privacyPolicy": "Privacy policy",
+    "termsOfService": "Terms of service",
+    "portfolio": "lut3k.com"
   },
   "button": {
     "submit": "Submit",

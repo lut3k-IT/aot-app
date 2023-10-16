@@ -16,12 +16,12 @@ const Heroes = (props: HeroesProps) => {
   return (
     <>
       <MovingPanel
-        translateClassName={'-translate-y-14'}
+        translateClassName={'-translate-y-20'}
         className={'bg-background'}
       >
         <Tabs
           defaultValue='gallery'
-          className='w-full'
+          className='w-full pb-2'
         >
           <TabsList>
             <TabsTrigger value='gallery'>Gallery</TabsTrigger>
