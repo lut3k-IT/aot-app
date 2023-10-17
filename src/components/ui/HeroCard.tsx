@@ -13,7 +13,7 @@ const HeroCard = () => {
       </MbtiFrame>
       <div className={'flex flex-col flex-1 justify-between'}>
         <div className={'w-full flex flex-col gap-1 mt-0.5 relative'}>
-          <div className={'text-lg leading-none font-medium pr-10'}>Mikasa Ackerman</div>
+          <div className={'text-lg leading-none font-medium pr-10'}>Eren Yeager</div>
           <div className={'text-sm leading-none font-medium text-muted-foreground pr-10'}>Wall Rose</div>
           <HeartButton className={'absolute top-0 right-0'} />
         </div>

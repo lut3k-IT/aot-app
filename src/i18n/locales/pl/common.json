@@ -10,6 +10,11 @@
     "termsOfService": "Warunki świadczenia usług",
     "portfolio": "lut3k.com"
   },
+  "tabs": {
+    "gallery": "Galeria",
+    "charts": "Wykresy",
+    "comparison": "Porównania"
+  },
   "button": {
     "submit": "Prześlij",
     "cancel": "Anuluj"

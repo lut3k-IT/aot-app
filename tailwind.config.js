@@ -77,6 +77,9 @@ module.exports = {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out'
+      },
+      boxShadow: {
+        'white-bottom': '0px 0px 6px 6px rgba(255,255,255)'
       }
     }
   },

@@ -10,6 +10,11 @@
     "termsOfService": "Terms of service",
     "portfolio": "lut3k.com"
   },
+  "tabs": {
+    "gallery": "Gallery",
+    "charts": "Charts",
+    "comparison": "Comparison"
+  },
   "button": {
     "submit": "Submit",
     "cancel": "Cancel"
