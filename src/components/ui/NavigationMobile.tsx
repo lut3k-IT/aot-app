@@ -16,7 +16,7 @@ interface NavigationElementProps {
   data: INavigationElement;
 }
 
-const navigationElements: INavigationElement[] = [
+const navigationData: INavigationElement[] = [
   {
     name: t('common:title.heroes'),
     route: RoutePath.HEROES_GALLERY,
@@ -62,8 +62,8 @@ const NavigationElement = (props: NavigationElementProps) => {
 
 const NavigationMobile = () => {
   return (
-    <div className='w-full fixed bottom-0  bg-background border-t border-accent flex justify-evenly z-20'>
-      {navigationElements.map((element) => {
+    <div className='w-full fixed bottom-0 bg-background border-t border-accent flex justify-evenly z-20'>
+      {navigationData.map((element) => {
         return (
           <NavigationElement
             key={v4()}

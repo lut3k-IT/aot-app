@@ -5,7 +5,7 @@ import { t } from 'i18next';
 import { RoutePath } from '@/constants';
 
 import { Button } from './Button';
-import { Dialog, DialogContent, DialogTrigger } from './dialog';
+import { Dialog, DialogContentSidebar, DialogTrigger } from './dialog';
 import Icon from './Icon';
 import { ModeToggle } from './ModeToggle';
 import SidebarMobile from './SidebarMobile';
@@ -27,14 +27,13 @@ const TopBarMobile = () => {
           iconSize={'lg'}
         />
       </DialogTrigger>
-      <DialogContent
-        noAnimation
+      <DialogContentSidebar
         className={
           'h-full w-[262px] transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-300 inset-y-0 right-0 data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right'
         }
       >
         <SidebarMobile />
-      </DialogContent>
+      </DialogContentSidebar>
     </Dialog>
   );
 

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 
-import { RoutePath } from '@/constants';
+import { RoutePath, URL } from '@/constants';
 import { cn } from '@/lib/utils';
 
 import Icon, { IconNames, IconProps, IconSizes } from './Icon';

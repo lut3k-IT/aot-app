@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/Button';
 import HeroCard from '@/components/ui/HeroCard';
 
 const HeroesGallery = () => {
@@ -20,7 +19,6 @@ const HeroesGallery = () => {
         <HeroCard />
         <HeroCard />
         <HeroCard />
-        <Button variant={'proxy'}>Button</Button>
       </div>
     </>
   );
