@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { t } from 'i18next';
 
@@ -11,12 +10,6 @@ import { ModeToggle } from './ModeToggle';
 import SidebarMobile from './SidebarMobile';
 
 const TopBarMobile = () => {
-  // const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  // const handleOpenSidebar = () => {
-  //   setIsSidebarOpen(true);
-  // };
-
   const SidebarAndButton = () => (
     <Dialog>
       <DialogTrigger asChild>
@@ -28,6 +21,7 @@ const TopBarMobile = () => {
         />
       </DialogTrigger>
       <DialogContentSidebar
+        forceMount
         className={
           'h-full w-[262px] transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-300 inset-y-0 right-0 data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right'
         }

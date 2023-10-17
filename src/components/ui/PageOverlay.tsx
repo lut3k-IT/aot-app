@@ -13,7 +13,6 @@ const PageOverlay = () => {
         id='inner'
         className={'[&>*]:px-4 pb-[80px]'}
       >
-        {/* pt-body-start relative */}
         <Outlet />
       </div>
       <NavigationMobile />

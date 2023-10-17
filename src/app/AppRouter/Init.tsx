@@ -1,9 +1,26 @@
+import { useEffect } from 'react';
+
 import AppHelmet from '@/components/ui/app-helmet';
+import { LocalStorageKey } from '@/constants';
+import i18n from '@/i18n/i18n';
+import { getLocalStorageItem } from '@/utils/storage';
+
+// perform code once the app is loaded
 
 const Init = () => {
-  // perform code once the app is loaded
+  // useEffect(() => {
+  //   handleInit();
+  // }, []);
 
-  return <AppHelmet />;
+  // const handleInit = () => {
+  //   i18n.changeLanguage(String(getLocalStorageItem(LocalStorageKey.LANGUAGE)));
+  // };
+
+  return (
+    <>
+      <AppHelmet />
+    </>
+  );
 };
 
 export default Init;

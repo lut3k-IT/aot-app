@@ -23,7 +23,7 @@ export const ns = ['common'];
 export const initOptions: InitOptions = {
   resources,
   fallbackLng: LanguageShortName.ENGLISH,
-  lng: getLocalStorageItem(LocalStorageKey.LANGUAGE_KEY) || LanguageShortName.ENGLISH,
+  lng: getLocalStorageItem(LocalStorageKey.LANGUAGE) || LanguageShortName.ENGLISH,
   debug: true,
   load: 'languageOnly',
   ns,

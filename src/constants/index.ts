@@ -30,5 +30,6 @@ export enum LanguageShortName {
 }
 
 export enum LocalStorageKey {
-  LANGUAGE_KEY = 'i18nextLng'
+  LANGUAGE = 'i18nextLng',
+  SPOILER_MODE = 'spoilerMode'
 }

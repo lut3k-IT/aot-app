@@ -1,5 +1,5 @@
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { t } from 'i18next';
 import { v4 } from 'uuid';
 
 import { RoutePath } from '@/constants';
@@ -15,29 +15,6 @@ interface INavigationElement {
 interface NavigationElementProps {
   data: INavigationElement;
 }
-
-const navigationData: INavigationElement[] = [
-  {
-    name: t('common:title.heroes'),
-    route: RoutePath.HEROES_GALLERY,
-    iconName: 'user'
-  },
-  {
-    name: t('common:title.titans'),
-    route: RoutePath.TITANS,
-    iconName: 'dna'
-  },
-  {
-    name: t('common:title.favorites'),
-    route: RoutePath.FAVORITES,
-    iconName: 'heart'
-  },
-  {
-    name: t('common:title.quiz'),
-    route: RoutePath.QUIZ,
-    iconName: 'penLine'
-  }
-];
 
 const NavigationElement = (props: NavigationElementProps) => {
   const { data } = props;
@@ -61,6 +38,31 @@ const NavigationElement = (props: NavigationElementProps) => {
 };
 
 const NavigationMobile = () => {
+  const { t } = useTranslation();
+
+  const navigationData: INavigationElement[] = [
+    {
+      name: t('common:title.heroes'),
+      route: RoutePath.HEROES_GALLERY,
+      iconName: 'user'
+    },
+    {
+      name: t('common:title.titans'),
+      route: RoutePath.TITANS,
+      iconName: 'dna'
+    },
+    {
+      name: t('common:title.favorites'),
+      route: RoutePath.FAVORITES,
+      iconName: 'heart'
+    },
+    {
+      name: t('common:title.quiz'),
+      route: RoutePath.QUIZ,
+      iconName: 'penLine'
+    }
+  ];
+
   return (
     <div className='w-full fixed bottom-0 bg-background border-t border-accent flex justify-evenly z-20'>
       {navigationData.map((element) => {

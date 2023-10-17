@@ -1,15 +1,14 @@
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import OutsideClickHandler from 'react-outside-click-handler';
 import dayjs from 'dayjs';
 
 import { LanguageName, LanguageShortName, LocalStorageKey } from '@/constants';
+import { setLocalStorageItem } from '@/utils/storage';
 
 import 'dayjs/locale/en';
 import 'dayjs/locale/pl';
 
-import useIsMobile from 'src/components/hooks/useIsMobile';
-import { setLocalStorageItem } from 'src/utils/storage';
+import { Button } from './Button';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './dropdown-menu';
 
 interface Language {
   id: LanguageShortName;
@@ -28,45 +27,39 @@ const availableLanguages: Language[] = [
 ];
 
 const LanguageSwitcher = () => {
-  const [isSelectionActive, setIsSelectionActive] = useState(false);
   const { i18n } = useTranslation();
-  const isMobile = useIsMobile();
 
   const handleChangeLanguage = (lang: LanguageShortName) => {
     i18n.changeLanguage(lang);
     dayjs.locale(lang);
-    setLocalStorageItem(LocalStorageKey.LANGUAGE_KEY, lang);
-    setIsSelectionActive(false);
+    setLocalStorageItem(LocalStorageKey.LANGUAGE, lang);
   };
 
-  const handleToggleSelectionActive = () => {
-    setIsSelectionActive((prev) => !prev);
-  };
+  const currentLanguageName = availableLanguages.find((obj) => obj.id === i18n.language)?.label;
 
   return (
-    <div>
-      <OutsideClickHandler
-        onOutsideClick={() => {
-          setIsSelectionActive(false);
-        }}
-        display={'contents'}
-      >
-        <div onClick={handleToggleSelectionActive}>{!isMobile && <div>{i18n.language}</div>}</div>
-
-        <div>
-          {availableLanguages
-            .filter((lang) => lang.id !== i18n.language)
-            .map((lang) => (
-              <div
-                onClick={() => handleChangeLanguage(lang.id)}
-                key={lang.id}
-              >
-                <div>{lang.label}</div>
-              </div>
-            ))}
-        </div>
-      </OutsideClickHandler>
-    </div>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button
+          variant='outline'
+          className={'w-min'}
+        >
+          {currentLanguageName}
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align='center'>
+        {availableLanguages
+          .filter((lang) => lang.id !== i18n.language)
+          .map((lang) => (
+            <DropdownMenuItem
+              key={lang.id}
+              onClick={() => handleChangeLanguage(lang.id)}
+            >
+              {lang.label}
+            </DropdownMenuItem>
+          ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 };
 

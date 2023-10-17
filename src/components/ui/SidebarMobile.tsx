@@ -1,12 +1,15 @@
-import { t } from 'i18next';
-
 import { RoutePath, URL } from '@/constants';
 
 import { Button } from './Button';
+import { Checkbox } from './checkbox';
+import LanguageSwitcher from './LanguageSwitcher';
+import { useTranslation } from 'react-i18next';
 
 const SidebarMobile = () => {
+  const { t } = useTranslation();
+
   return (
-    <div className={'h-full w-full bg-background rounded-md flex flex-col gap-4'}>
+    <div className={'h-full w-full bg-background rounded-md flex flex-col justify-between items-center gap-6'}>
       <div className={'flex flex-col w-full text-start [&_*]:text-foreground'}>
         <Button
           variant={'link'}
@@ -33,17 +36,20 @@ const SidebarMobile = () => {
           {t('common:title.portfolio')}
         </Button>
       </div>
-      <div className={'h-full'}>
-        <iframe
-          className={'rounded-md'}
-          src='https://open.spotify.com/embed/playlist/3Fi0nQ3SuAQFFdk6MViZwD?utm_source=generator'
-          width='100%'
-          height='100%'
-          frameBorder='0'
-          allowFullScreen
-          allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
-          loading='lazy'
-        ></iframe>
+      <div className={'flex flex-col gap-14 items-center'}>
+        <LanguageSwitcher />
+        <div className='flex justify-center items-center space-x-2'>
+          <Checkbox
+            id='spoiler-mode'
+            className={'w-5 h-5 rounded-sm'}
+          />
+          <label
+            htmlFor='spoiler-mode'
+            className='text-md font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
+          >
+            {t('common:spoilerMode')}
+          </label>
+        </div>
       </div>
     </div>
   );
