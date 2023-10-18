@@ -16,7 +16,7 @@ const PageHeading = (props: PageHeadingProps) => {
   const {} = props;
 
   return (
-    <div className={'flex justify-between items-center sticky py-3 mb-2'}>
+    <div className={'flex justify-between items-center sticky py-4 mb-2'}>
       <div className={'font-bold text-4xl text-neutral-300 leading-none tracking-wide'}>Year 956</div>
       <div
         id={'page-heading-options'}
@@ -25,11 +25,15 @@ const PageHeading = (props: PageHeadingProps) => {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
-              size={'icon'}
+              // size={'icon'}
+              iconSize={'sm'}
+              iconPosition={'right'}
               iconName={'filter'}
               variant={'outline'}
               // iconProps={{ className: 'text-neutral-300' }}
-            />
+            >
+              Filter
+            </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align={'end'}>
             <DropdownMenuLabel>Status</DropdownMenuLabel>

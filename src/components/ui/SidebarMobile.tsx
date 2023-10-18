@@ -19,6 +19,12 @@ const SidebarMobile = () => {
         </Button>
         <Button
           variant={'link'}
+          linkTo={RoutePath.CHANGELOG}
+        >
+          {t('common:title.changelog')}
+        </Button>
+        <Button
+          variant={'link'}
           linkTo={RoutePath.PRIVACY_POLICY}
         >
           {t('common:title.privacyPolicy')}

@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import classNames from 'classnames';
 import { v4 } from 'uuid';
 
 import { RoutePath } from '@/constants';
@@ -18,21 +19,37 @@ interface NavigationElementProps {
 
 const NavigationElement = (props: NavigationElementProps) => {
   const { data } = props;
+  const location = useLocation();
+
+  const currentRoute = location.pathname.split('/')[1];
+  const isActive = data.route.split('/')[1] === currentRoute;
 
   return (
     <Link
       to={data.route}
-      className='flex flex-col align-middle gap-1 pt-4 pb-3 min-w-[48px] text-muted-foreground'
+      className={'flex flex-col align-middle gap-1 pt-4 pb-3 min-w-[48px]'}
     >
       <div className={'flex justify-center relative'}>
         <Icon
           name={data.iconName}
           size={'sm'}
-          className={'z-10'}
+          className={classNames('z-10 text-muted-foreground', {
+            '!text-primary-foreground': isActive
+          })}
         />
-        <div className={'bg-primary rounded-full w-12 h-[22px] absolute -top-[1px]'} />
+        <div
+          className={classNames('bg-primary rounded-full w-12 h-[24px] absolute -top-0.5 transition-all', {
+            '!w-4 !bg-background': !isActive
+          })}
+        />
       </div>
-      <div className={'text-xs leading-none text-center font-semibold w-full'}>{data.name}</div>
+      <div
+        className={classNames('text-xs leading-none text-center font-semibold w-full text-muted-foreground', {
+          '!text-foreground': isActive
+        })}
+      >
+        {data.name}
+      </div>
     </Link>
   );
 };

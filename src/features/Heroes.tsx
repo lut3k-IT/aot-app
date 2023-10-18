@@ -22,13 +22,15 @@ const Heroes = (props: HeroesProps) => {
     <>
       <MovingPanel
         translateClassName={'-translate-y-[56px]'}
-        className={'bg-background shadow-white-bottom'}
+        className={'bg-background shadow-white-bottom dark:shadow-black-bottom'}
       >
         <Tabs
           defaultValue='gallery'
           className='w-full'
+          // className='w-full flex justify-center'
         >
-          <TabsList>
+          <TabsList className='w-full flex justify-between'>
+            {/* <TabsList> */}
             <TabsTrigger value='gallery'>{t('common:tabs.gallery')}</TabsTrigger>
             <TabsTrigger value='charts'>{t('common:tabs.charts')}</TabsTrigger>
             <TabsTrigger value='comparison'>{t('common:tabs.comparison')}</TabsTrigger>
