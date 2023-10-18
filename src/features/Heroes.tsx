@@ -17,6 +17,7 @@ const Heroes = (props: HeroesProps) => {
   const { t } = useTranslation();
 
   const tabsContentClassName = 'mt-0';
+  const tabsTriggerClassName = 'flex-1';
 
   return (
     <>
@@ -31,9 +32,24 @@ const Heroes = (props: HeroesProps) => {
         >
           <TabsList className='w-full flex justify-between'>
             {/* <TabsList> */}
-            <TabsTrigger value='gallery'>{t('common:tabs.gallery')}</TabsTrigger>
-            <TabsTrigger value='charts'>{t('common:tabs.charts')}</TabsTrigger>
-            <TabsTrigger value='comparison'>{t('common:tabs.comparison')}</TabsTrigger>
+            <TabsTrigger
+              value='gallery'
+              className={tabsTriggerClassName}
+            >
+              {t('common:tabs.gallery')}
+            </TabsTrigger>
+            <TabsTrigger
+              value='charts'
+              className={tabsTriggerClassName}
+            >
+              {t('common:tabs.charts')}
+            </TabsTrigger>
+            <TabsTrigger
+              value='comparison'
+              className={tabsTriggerClassName}
+            >
+              {t('common:tabs.comparison')}
+            </TabsTrigger>
           </TabsList>
           <TabsContent
             value='gallery'
