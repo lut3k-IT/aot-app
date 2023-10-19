@@ -5,6 +5,7 @@
     "titans": "Tytani",
     "favorites": "Ulubione",
     "quiz": "Quiz",
+    "quotations": "Cytaty",
     "about": "O aplikacji",
     "changelog": "Rejestr zmian",
     "privacyPolicy": "Polityka prywatności",
@@ -22,7 +23,7 @@
   },
   "spoilerMode": "Tryb ukrywania spoilerów",
   "form": {},
-  "errorBoundaries": {
+  "error": {
     "oops": "Ups",
     "unexpectedError": "Niespodziewany błąd",
     "routeNotFound": "Nie znaleziono ścieżki"

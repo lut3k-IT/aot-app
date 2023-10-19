@@ -6,6 +6,7 @@ import { v4 } from 'uuid';
 import { RoutePath } from '@/constants';
 
 import Icon, { IconNames } from './Icon';
+import { getFirstSegmentFromCurrentRoute } from '@/utils/helpers';
 
 interface INavigationElement {
   name: string;
@@ -21,7 +22,7 @@ const NavigationElement = (props: NavigationElementProps) => {
   const { data } = props;
   const location = useLocation();
 
-  const currentRoute = location.pathname.split('/')[1];
+  const currentRoute = getFirstSegmentFromCurrentRoute();
   const isActive = data.route.split('/')[1] === currentRoute;
 
   return (

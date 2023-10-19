@@ -1,25 +1,22 @@
-import React from 'react';
+import MovingPanel from '@/components/ui/MovingPanel';
+import PageHeading from '@/components/ui/PageHeading';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { RoutePath } from '@/constants';
+import { getCurrentRoute } from '@/utils/helpers';
 import { useTranslation } from 'react-i18next';
 import { Navigate, Outlet } from 'react-router-dom';
 
-import PageHeading from '@/components/ui/PageHeading';
-import { RoutePath } from '@/constants';
-
-import MovingPanel from '../components/ui/MovingPanel';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
-import { getCurrentRoute } from '@/utils/helpers';
-
 enum TabValue {
-  GALLERY = 'gallery',
-  CHARTS = 'charts',
-  COMPARISON = 'comparison'
+  HEROES = 'heroes',
+  TITANS = 'titans',
+  QUOTATIONS = 'quotations'
 }
 
-interface HeroesProps {
+interface FavoritesProps {
   children?: React.ReactNode;
 }
 
-const Heroes = (props: HeroesProps) => {
+const Favorites = (props: FavoritesProps) => {
   const { children } = props;
   const { t } = useTranslation();
 
@@ -27,14 +24,14 @@ const Heroes = (props: HeroesProps) => {
     const route = getCurrentRoute();
 
     switch (route) {
-      case RoutePath.HEROES_GALLERY:
-        return TabValue.GALLERY;
-      case RoutePath.HEROES_CHARTS:
-        return TabValue.CHARTS;
-      case RoutePath.HEROES_COMPARISON:
-        return TabValue.COMPARISON;
+      case RoutePath.FAVORITES_HEROES:
+        return TabValue.HEROES;
+      case RoutePath.FAVORITES_TITANS:
+        return TabValue.TITANS;
+      case RoutePath.FAVORITES_QUOTATIONS:
+        return TabValue.QUOTATIONS;
       default:
-        return TabValue.GALLERY;
+        return TabValue.HEROES;
     }
   };
 
@@ -54,41 +51,41 @@ const Heroes = (props: HeroesProps) => {
         >
           <TabsList className='w-full flex justify-between'>
             <TabsTrigger
-              value={TabValue.GALLERY}
+              value={TabValue.HEROES}
               className={tabsTriggerClassName}
             >
-              {t('common:tabs.gallery')}
+              {t('common:title.heroes')}
             </TabsTrigger>
             <TabsTrigger
-              value={TabValue.CHARTS}
+              value={TabValue.TITANS}
               className={tabsTriggerClassName}
             >
-              {t('common:tabs.charts')}
+              {t('common:title.titans')}
             </TabsTrigger>
             <TabsTrigger
-              value={TabValue.COMPARISON}
+              value={TabValue.QUOTATIONS}
               className={tabsTriggerClassName}
             >
-              {t('common:tabs.comparison')}
+              {t('common:title.quotations')}
             </TabsTrigger>
           </TabsList>
           <TabsContent
-            value={TabValue.GALLERY}
+            value={TabValue.HEROES}
             className={tabsContentClassName}
           >
-            <Navigate to={RoutePath.HEROES_GALLERY} />
+            <Navigate to={RoutePath.FAVORITES_HEROES} />
           </TabsContent>
           <TabsContent
-            value={TabValue.CHARTS}
+            value={TabValue.TITANS}
             className={tabsContentClassName}
           >
-            <Navigate to={RoutePath.HEROES_CHARTS} />
+            <Navigate to={RoutePath.FAVORITES_TITANS} />
           </TabsContent>
           <TabsContent
-            value={TabValue.COMPARISON}
+            value={TabValue.QUOTATIONS}
             className={tabsContentClassName}
           >
-            <Navigate to={RoutePath.HEROES_COMPARISON} />
+            <Navigate to={RoutePath.FAVORITES_QUOTATIONS} />
           </TabsContent>
         </Tabs>
         <PageHeading />
@@ -98,4 +95,4 @@ const Heroes = (props: HeroesProps) => {
   );
 };
 
-export default Heroes;
+export default Favorites;

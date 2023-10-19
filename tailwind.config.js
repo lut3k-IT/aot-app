@@ -57,7 +57,9 @@ module.exports = {
         'page-mobile': '16px',
         'page-desktop': '32px',
         'body-start': '84px',
-        'body-pad-start': '102px'
+        'body-pad-start': '102px',
+        'body-end': '64px',
+        'body-pad-end': '80px'
       },
       borderRadius: {
         lg: 'var(--radius)',
