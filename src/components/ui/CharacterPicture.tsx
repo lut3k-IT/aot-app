@@ -5,7 +5,7 @@ import { cva, VariantProps } from 'class-variance-authority';
 
 import { cn } from '@/lib/utils';
 
-import { Avatar, AvatarFallback, AvatarImage } from './avatar';
+import { Avatar, AvatarFallback, AvatarImage } from './Avatar';
 
 const characterPictureVariants = cva('', {
   variants: {

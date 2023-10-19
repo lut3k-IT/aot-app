@@ -6,7 +6,7 @@ import PageHeading from '@/components/ui/PageHeading';
 import { RoutePath } from '@/constants';
 
 import MovingPanel from '../components/ui/MovingPanel';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/Tabs';
 import { getCurrentRoute } from '@/utils/helpers';
 
 enum TabValue {

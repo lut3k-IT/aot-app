@@ -8,7 +8,7 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger
-} from './dropdown-menu';
+} from './DropdownMenu';
 
 interface PageHeadingProps {}
 

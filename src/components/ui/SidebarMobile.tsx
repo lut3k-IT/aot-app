@@ -1,11 +1,12 @@
 import { RoutePath, URL } from '@/constants';
 
 import { Button } from './Button';
-import { Checkbox } from './checkbox';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useTranslation } from 'react-i18next';
 import { DialogClose } from '@radix-ui/react-dialog';
 import { useRef } from 'react';
+import { Label } from './Label';
+import { Switch } from './switch';
 
 const SidebarMobile = () => {
   const { t } = useTranslation();
@@ -57,17 +58,14 @@ const SidebarMobile = () => {
       </div>
       <div className={'flex flex-col gap-14 items-center'}>
         <LanguageSwitcher />
-        <div className='flex justify-center items-center space-x-2'>
-          <Checkbox
-            id='spoiler-mode'
-            className={'w-5 h-5 rounded-sm'}
-          />
-          <label
+        <div className='flex justify-center items-center space-x-3'>
+          <Switch id='spoiler-mode' />
+          <Label
             htmlFor='spoiler-mode'
-            className='text-md font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
+            className='text-md font-medium leading-none'
           >
             {t('common:spoilerMode')}
-          </label>
+          </Label>
         </div>
       </div>
     </div>

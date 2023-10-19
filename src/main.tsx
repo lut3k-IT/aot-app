@@ -7,7 +7,7 @@ import i18next from 'i18next';
 import './i18n/i18n';
 
 import AppRouter from './app/AppRouter';
-import { ThemeProvider } from './components/ui/theme-provider';
+import { ThemeProvider } from './components/ui/ThemeProvider';
 
 import './index.css';
 

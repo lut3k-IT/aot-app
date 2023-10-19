@@ -3,18 +3,15 @@ import { cn } from '@/lib/utils';
 import { Button } from './Button';
 import Icon, { IconSizes } from './Icon';
 
-// TODO:
-// ts button element
-// quote id
-// is in favorites (filled icon)
-
 interface HeartButtonProps {
   iconSize?: IconSizes;
   className?: string;
+  fill?: boolean;
 }
 
 const HeartButton = (props: HeartButtonProps) => {
-  const { iconSize, className } = props;
+  const { iconSize, className, fill } = props;
+
   return (
     <Button
       variant={'proxy'}
@@ -25,6 +22,7 @@ const HeartButton = (props: HeartButtonProps) => {
         size={iconSize}
         name={'heart'}
         variant={'gray'}
+        className={fill ? 'text-red-500 fill-red-500' : ''}
       />
     </Button>
   );

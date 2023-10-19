@@ -1,7 +1,7 @@
 import { createBrowserRouter, Navigate, Outlet, RouterProvider } from 'react-router-dom';
 
 import PageOverlay from '@/components/ui/PageOverlay';
-import ScrollToTop from '@/components/ui/scroll-to-top';
+import ScrollToTop from '@/components/ui/ScrollToTop';
 import { RoutePath } from '@/constants';
 import About from '@/features/Additional/About';
 import Changelog from '@/features/Additional/Changelog';

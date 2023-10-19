@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import AppHelmet from '@/components/ui/app-helmet';
+import AppHelmet from '@/components/ui/AppHelmet';
 import { LocalStorageKey } from '@/constants';
 import i18n from '@/i18n/i18n';
 import { getLocalStorageItem } from '@/utils/storage';

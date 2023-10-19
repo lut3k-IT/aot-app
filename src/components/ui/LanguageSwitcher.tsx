@@ -8,7 +8,7 @@ import 'dayjs/locale/en';
 import 'dayjs/locale/pl';
 
 import { Button } from './Button';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './dropdown-menu';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './DropdownMenu';
 
 interface Language {
   id: LanguageShortName;

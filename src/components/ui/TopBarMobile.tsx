@@ -4,7 +4,7 @@ import { t } from 'i18next';
 import { RoutePath } from '@/constants';
 
 import { Button } from './Button';
-import { Dialog, DialogContentSidebar, DialogTrigger } from './dialog';
+import { Dialog, DialogContentSidebar, DialogTrigger } from './Dialog';
 import Icon from './Icon';
 import { ModeToggle } from './ModeToggle';
 import SidebarMobile from './SidebarMobile';
