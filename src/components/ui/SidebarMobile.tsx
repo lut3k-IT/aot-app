@@ -4,40 +4,53 @@ import { Button } from './Button';
 import { Checkbox } from './checkbox';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useTranslation } from 'react-i18next';
+import { DialogClose } from '@radix-ui/react-dialog';
+import { useRef } from 'react';
 
 const SidebarMobile = () => {
   const { t } = useTranslation();
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  const handleClick = () => {
+    buttonRef.current && buttonRef.current.click();
+  };
 
   return (
     <div className={'h-full w-full bg-background rounded-md flex flex-col justify-between items-center gap-6'}>
       <div className={'flex flex-col w-full text-start [&_*]:text-foreground'}>
+        <DialogClose ref={buttonRef} />
         <Button
           variant={'link'}
           linkTo={RoutePath.ABOUT}
+          onClick={handleClick}
         >
           {t('common:title.about')}
         </Button>
         <Button
           variant={'link'}
           linkTo={RoutePath.CHANGELOG}
+          onClick={handleClick}
         >
           {t('common:title.changelog')}
         </Button>
         <Button
           variant={'link'}
           linkTo={RoutePath.PRIVACY_POLICY}
+          onClick={handleClick}
         >
           {t('common:title.privacyPolicy')}
         </Button>
         <Button
           variant={'link'}
           linkTo={RoutePath.TERMS_OF_SERVICE}
+          onClick={handleClick}
         >
           {t('common:title.termsOfService')}
         </Button>
         <Button
           variant={'link'}
           linkTo={URL.PORTFOLIO}
+          onClick={handleClick}
         >
           {t('common:title.portfolio')}
         </Button>

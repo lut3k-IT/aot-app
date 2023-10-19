@@ -61,3 +61,7 @@
 html {
   -webkit-tap-highlight-color: transparent;
 }
+
+.h-body-no-scroll {
+  height: calc(100vh - 80px);
+}

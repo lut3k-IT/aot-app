@@ -40,7 +40,7 @@ const NavigationElement = (props: NavigationElementProps) => {
         />
         <div
           className={classNames('bg-primary rounded-full w-12 h-[24px] absolute -top-0.5 transition-all', {
-            '!w-4 !bg-background': !isActive
+            '!w-6 !bg-background': !isActive
           })}
         />
       </div>
@@ -82,7 +82,7 @@ const NavigationMobile = () => {
   ];
 
   return (
-    <div className='w-full fixed bottom-0 bg-background border-t border-accent flex justify-evenly z-20'>
+    <div className='w-full fixed bottom-0 bg-background border-t flex justify-evenly z-20'>
       {navigationData.map((element) => {
         return (
           <NavigationElement
