@@ -82,7 +82,7 @@ module.exports = {
       },
       boxShadow: {
         'white-bottom': '0px 0px 6px 6px rgba(255,255,255)',
-        'black-bottom': '0px 0px 6px 6px rgba(0,0,0)'
+        'black-bottom': '0px 0px 6px 6px hsl(var(--background))'
       }
     }
   },

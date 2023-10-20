@@ -39,7 +39,7 @@ const CharacterPicture = (props: CharacterPictureProps) => {
 
   return (
     <Avatar className={cn(characterPictureVariants({ variant, size }), className)}>
-      <AvatarImage src={'https://github.com/shadcn.png'} />
+      <AvatarImage src={imgSource} />
       <AvatarFallback className={cn(characterPictureVariants({ variant, size }))} />
     </Avatar>
   );
