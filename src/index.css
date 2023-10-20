@@ -65,3 +65,24 @@ html {
 .h-body-no-scroll {
   height: calc(100vh - 80px);
 }
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid-even-color {
+  & > div:nth-child(4n + 3),
+  & > div:nth-child(4n + 4) {
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.w-screen-pad {
+  width: calc(100vw - 32px);
+}
+
+.w-screen-pad-lg {
+  width: calc(100vw - 64px);
+}

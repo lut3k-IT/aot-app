@@ -1,3 +1,4 @@
+// TODO:
 // numer zdjecia
 // typ osobowosci
 
@@ -29,19 +30,18 @@ const characterPictureVariants = cva('', {
 });
 
 interface CharacterPictureProps extends VariantProps<typeof characterPictureVariants> {
-  ulr: string;
+  imgSource: string;
+  className?: string;
 }
 
 const CharacterPicture = (props: CharacterPictureProps) => {
-  const { variant, size } = props;
+  const { imgSource, className, variant, size } = props;
 
   return (
-    <div>
-      <Avatar className={cn(characterPictureVariants({ variant, size }))}>
-        <AvatarImage src={'https://github.com/shadcn.png'} />
-        <AvatarFallback className={cn(characterPictureVariants({ variant, size }))} />
-      </Avatar>
-    </div>
+    <Avatar className={cn(characterPictureVariants({ variant, size }), className)}>
+      <AvatarImage src={'https://github.com/shadcn.png'} />
+      <AvatarFallback className={cn(characterPictureVariants({ variant, size }))} />
+    </Avatar>
   );
 };
 
