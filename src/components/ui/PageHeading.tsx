@@ -17,7 +17,9 @@ const PageHeading = (props: PageHeadingProps) => {
 
   return (
     <div className={'flex justify-between items-center sticky py-4 mb-2 bg-background'}>
-      <div className={'font-bold text-4xl text-neutral-300 leading-none tracking-wide'}>Year 854</div>
+      <div className={'font-bold text-4xl text-neutral-300 dark:text-neutral-700 leading-none tracking-wide'}>
+        Year 854
+      </div>
       <div
         id={'page-heading-options'}
         className={''}

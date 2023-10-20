@@ -7,7 +7,7 @@ const HeroCard = () => {
     <div className='flex gap-4 h-[108px]'>
       <MbtiFrame>
         <CharacterPicture
-          ulr={''}
+          imgSource={''}
           variant={'roundedBtm'}
         />
       </MbtiFrame>
