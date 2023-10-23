@@ -4,10 +4,10 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 import PageHeading from '@/components/ui/PageHeading';
 import { RoutePath } from '@/constants';
+import { getCurrentRoute } from '@/utils/helpers';
 
 import MovingPanel from '../components/ui/MovingPanel';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/Tabs';
-import { getCurrentRoute } from '@/utils/helpers';
 
 enum TabValue {
   GALLERY = 'gallery',

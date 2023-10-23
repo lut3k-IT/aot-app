@@ -2,13 +2,18 @@ import { createBrowserRouter, Navigate, Outlet, RouterProvider } from 'react-rou
 
 import PageOverlay from '@/components/ui/PageOverlay';
 import ScrollToTop from '@/components/ui/ScrollToTop';
-import { RoutePath } from '@/constants';
+import { CharacterType, RoutePath } from '@/constants';
 import About from '@/features/Additional/About';
 import Changelog from '@/features/Additional/Changelog';
 import PrivacyPolicy from '@/features/Additional/PrivacyPolicy';
 import TermsOfService from '@/features/Additional/TermsOfService';
+import CharacterDetails from '@/features/CharacterDetails';
 import ErrorPage from '@/features/ErrorBoundaries/ErrorPage';
 import NotFoundRoute from '@/features/ErrorBoundaries/NotFoundRoute';
+import Favorites from '@/features/Favorites';
+import FavoritesHeroes from '@/features/FavoritesHeroes';
+import FavoritesQuotations from '@/features/FavoritesQuotations';
+import FavoritesTitans from '@/features/FavoritesTitans';
 import Heroes from '@/features/Heroes';
 import HeroesCharts from '@/features/HeroesCharts';
 import HeroesComparison from '@/features/HeroesComparison';
@@ -17,11 +22,6 @@ import Quiz from '@/features/Quiz';
 import Titans from '@/features/TitansGallery';
 
 import Init from './Init';
-import Favorites from '@/features/Favorites';
-import FavoritesHeroes from '@/features/FavoritesHeroes';
-import FavoritesTitans from '@/features/FavoritesTitans';
-import FavoritesQuotations from '@/features/FavoritesQuotations';
-import HeroDetailsModal from '@/features/HeroDetails';
 
 const RouterComponents = () => (
   <>
@@ -69,7 +69,7 @@ export const router = createBrowserRouter([
           },
           {
             path: RoutePath.HERO_DETAILS + '/:id',
-            element: <HeroDetailsModal />
+            element: <CharacterDetails type={CharacterType.HERO} />
           },
           {
             path: RoutePath.TITANS,
@@ -77,12 +77,7 @@ export const router = createBrowserRouter([
           },
           {
             path: RoutePath.TITAN_DETAILS + '/:id',
-            element: (
-              <Navigate
-                to={RoutePath.HEROES}
-                replace
-              />
-            )
+            element: <CharacterDetails type={CharacterType.TITAN} />
           },
           {
             path: RoutePath.FAVORITES,

@@ -6,11 +6,11 @@ import Icon, { IconSizes } from './Icon';
 interface HeartButtonProps {
   iconSize?: IconSizes;
   className?: string;
-  fill?: boolean;
+  isFilled?: boolean;
 }
 
 const HeartButton = (props: HeartButtonProps) => {
-  const { iconSize, className, fill } = props;
+  const { iconSize, className, isFilled } = props;
 
   return (
     <Button
@@ -22,7 +22,7 @@ const HeartButton = (props: HeartButtonProps) => {
         size={iconSize}
         name={'heart'}
         variant={'gray'}
-        className={fill ? 'text-red-500 fill-red-500' : ''}
+        className={isFilled ? 'text-red-500 fill-red-500' : ''}
       />
     </Button>
   );

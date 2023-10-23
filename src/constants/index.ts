@@ -40,3 +40,8 @@ export enum LocalStorageKey {
   LANGUAGE = 'i18nextLng',
   SPOILER_MODE = 'spoilerMode'
 }
+
+export enum CharacterType {
+  HERO,
+  TITAN
+}

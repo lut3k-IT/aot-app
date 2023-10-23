@@ -1,10 +1,12 @@
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { Navigate, Outlet } from 'react-router-dom';
+
 import MovingPanel from '@/components/ui/MovingPanel';
 import PageHeading from '@/components/ui/PageHeading';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
 import { RoutePath } from '@/constants';
 import { getCurrentRoute } from '@/utils/helpers';
-import { useTranslation } from 'react-i18next';
-import { Navigate, Outlet } from 'react-router-dom';
 
 enum TabValue {
   HEROES = 'heroes',

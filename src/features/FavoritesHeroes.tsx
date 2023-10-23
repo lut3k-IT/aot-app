@@ -1,5 +1,6 @@
+import CharacterCard from '@/components/ui/CharacterCard';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
-import HeroCard from '@/components/ui/HeroCard';
+import { CharacterType } from '@/constants';
 
 interface FavoritesHeroesProps {}
 
@@ -8,12 +9,12 @@ const FavoritesHeroes = (props: FavoritesHeroesProps) => {
 
   return (
     <GalleryWrapper>
-      <HeroCard />
-      <HeroCard />
-      <HeroCard />
-      <HeroCard />
-      <HeroCard />
-      <HeroCard />
+      <CharacterCard type={CharacterType.HERO} />
+      <CharacterCard type={CharacterType.HERO} />
+      <CharacterCard type={CharacterType.HERO} />
+      <CharacterCard type={CharacterType.HERO} />
+      <CharacterCard type={CharacterType.HERO} />
+      <CharacterCard type={CharacterType.HERO} />
     </GalleryWrapper>
   );
 };

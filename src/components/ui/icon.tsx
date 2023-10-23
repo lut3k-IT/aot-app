@@ -1,9 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import {
   ArrowDownWideNarrow,
+  ChevronLeft,
+  ChevronRight,
   Dna,
   Filter,
   Heart,
@@ -15,9 +15,7 @@ import {
   PenLine,
   Sun,
   User,
-  X,
-  ChevronLeft,
-  ChevronRight
+  X
 } from 'lucide-react';
 
 import { ReactComponent as AotLg } from '@/assets/icons/aot-icon-lg.svg';

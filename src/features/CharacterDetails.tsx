@@ -1,20 +1,42 @@
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
+import { v4 } from 'uuid';
+
+import { Button } from '@/components/ui/Button';
+import { CharacterType, RoutePath } from '@/constants';
+
 import ButtonGoBack from '../components/ui/ButtonGoBack';
 import CharacterPicture from '../components/ui/CharacterPicture';
-import React from 'react';
-import { v4 } from 'uuid';
-import { Button } from '@/components/ui/Button';
-import { useTranslation } from 'react-i18next';
-
-interface HeroDetailsProps {}
 
 interface GridRowProps {
   title: string;
   value?: React.ReactNode;
 }
 
-const HeroDetails = (props: HeroDetailsProps) => {
-  const {} = props;
+const GridRow = (props: GridRowProps) => {
+  const { title, value = '-' } = props;
+
+  return (
+    <>
+      <div
+        className={
+          'w-full bg-muted text-muted-foreground text-md uppercase px-2 py-0.5 rounded-md text-center font-bold'
+        }
+      >
+        {title}
+      </div>
+      <div className={'w-full self-center text-lg'}>{value}</div>
+    </>
+  );
+};
+
+interface CharacterDetailsProps {
+  type: CharacterType;
+}
+
+const CharacterDetails = (props: CharacterDetailsProps) => {
+  const { type = CharacterType.HERO } = props;
   const { id } = useParams();
   const { t } = useTranslation();
 
@@ -43,26 +65,11 @@ const HeroDetails = (props: HeroDetailsProps) => {
     }
   ];
 
-  const GridRow = (props: GridRowProps) => {
-    const { title, value = '-' } = props;
-
-    return (
-      <>
-        <div
-          className={
-            'w-full bg-muted text-muted-foreground text-md uppercase px-2 py-0.5 rounded-md text-center font-bold'
-          }
-        >
-          {title}
-        </div>
-        <div className={'w-full self-center text-lg'}>{value}</div>
-      </>
-    );
-  };
+  const goBackFallbackRoute = type === CharacterType.HERO ? RoutePath.HEROES_GALLERY : RoutePath.TITANS;
 
   return (
     <div className={'pt-body-pad-start'}>
-      <ButtonGoBack />
+      <ButtonGoBack fallbackRoute={goBackFallbackRoute} />
       <div className={'flex flex-col items-center mt-6 relative'}>
         <div className={'absolute w-full h-[120px] bg-violet-400 rounded-lg'} />
         <CharacterPicture
@@ -96,4 +103,4 @@ const HeroDetails = (props: HeroDetailsProps) => {
   );
 };
 
-export default HeroDetails;
+export default CharacterDetails;

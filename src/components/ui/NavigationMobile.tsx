@@ -4,9 +4,9 @@ import classNames from 'classnames';
 import { v4 } from 'uuid';
 
 import { RoutePath } from '@/constants';
+import { getFirstSegmentFromCurrentRoute } from '@/utils/helpers';
 
 import Icon, { IconNames } from './Icon';
-import { getFirstSegmentFromCurrentRoute } from '@/utils/helpers';
 
 interface INavigationElement {
   name: string;

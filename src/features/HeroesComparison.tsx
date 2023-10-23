@@ -1,8 +1,9 @@
+import React, { useState } from 'react';
+import { MousePointerSquare } from 'lucide-react';
+
 import CharacterPicture from '@/components/ui/CharacterPicture';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '@/components/ui/command';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { MousePointerSquare } from 'lucide-react';
-import React, { useState } from 'react';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/Popover';
 
 interface DetailItemProps {
   title: string;
@@ -32,7 +33,7 @@ const DetailItem = (props: DetailItemProps) => {
 
 const PictureWithSelect = (props: PictureWithSelectProps) => {
   const { data } = props;
-  const [open, setOpen] = useState(false);
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
   // FIXME: accessibility outline is orange instead of red
 
@@ -62,8 +63,8 @@ const PictureWithSelect = (props: PictureWithSelectProps) => {
 
   return (
     <Popover
-      open={open}
-      onOpenChange={setOpen}
+      open={isPopoverOpen}
+      onOpenChange={setIsPopoverOpen}
     >
       <PopoverTrigger asChild>{data ? characterPicture : emptyPicture}</PopoverTrigger>
       <PopoverContent

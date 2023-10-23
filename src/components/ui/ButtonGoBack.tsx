@@ -1,8 +1,10 @@
-import { useNavigate } from 'react-router-dom';
-import { Button } from './Button';
-import { cn } from '@/lib/utils';
-import { RoutePath } from '@/constants';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+
+import { RoutePath } from '@/constants';
+import { cn } from '@/lib/utils';
+
+import { Button } from './Button';
 
 interface ButtonGoBackProps {
   text?: string;

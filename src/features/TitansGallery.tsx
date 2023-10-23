@@ -1,7 +1,8 @@
+import CharacterCard from '@/components/ui/CharacterCard';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import MovingPanel from '@/components/ui/MovingPanel';
 import PageHeading from '@/components/ui/PageHeading';
-import TitanCard from '@/components/ui/TitanCard';
+import { CharacterType } from '@/constants';
 
 const TitansGallery = () => {
   return (
@@ -10,15 +11,15 @@ const TitansGallery = () => {
         <PageHeading />
       </MovingPanel>
       <GalleryWrapper>
-        <TitanCard />
-        <TitanCard />
-        <TitanCard />
-        <TitanCard />
-        <TitanCard />
-        <TitanCard />
-        <TitanCard />
-        <TitanCard />
-        <TitanCard />
+        <CharacterCard type={CharacterType.TITAN} />
+        <CharacterCard type={CharacterType.TITAN} />
+        <CharacterCard type={CharacterType.TITAN} />
+        <CharacterCard type={CharacterType.TITAN} />
+        <CharacterCard type={CharacterType.TITAN} />
+        <CharacterCard type={CharacterType.TITAN} />
+        <CharacterCard type={CharacterType.TITAN} />
+        <CharacterCard type={CharacterType.TITAN} />
+        <CharacterCard type={CharacterType.TITAN} />
       </GalleryWrapper>
     </>
   );

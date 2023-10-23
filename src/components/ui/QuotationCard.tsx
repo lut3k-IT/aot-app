@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils';
+
 import HeartButton from './HeartButton';
 
 interface QuotationCardProps {
