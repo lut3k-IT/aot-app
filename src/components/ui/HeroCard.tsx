@@ -1,11 +1,19 @@
 import CharacterPicture from './CharacterPicture';
 import HeartButton from './HeartButton';
 import MbtiFrame from './MbtiFrame';
+import { useNavigate } from 'react-router-dom';
+import { RoutePath } from '@/constants';
 
-const HeroCard = () => {
+interface HeroCardProps {}
+
+const tempId = 123;
+
+const HeroCard = (props: HeroCardProps) => {
+  const navigate = useNavigate();
+
   return (
     <div className='flex gap-4 h-[108px]'>
-      <MbtiFrame>
+      <MbtiFrame onClick={() => navigate(`${RoutePath.HERO_DETAILS}/${tempId}`, { state: { heroId: tempId } })}>
         <CharacterPicture
           imgSource={''}
           variant={'roundedBtm'}

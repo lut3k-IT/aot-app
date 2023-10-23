@@ -18,8 +18,8 @@ const characterPictureVariants = cva('', {
     },
     size: {
       md: 'w-[84px] h-[84px]',
-      lg: 'w-[96px] h-[96px]',
-      xl: 'w-[128px] h-[128px]',
+      lg: 'w-[128px] h-[128px]',
+      xl: 'w-[160px] h-[160px]',
       full: 'w-full h-full'
     }
   },

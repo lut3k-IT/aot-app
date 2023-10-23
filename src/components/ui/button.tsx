@@ -57,7 +57,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       linkTo,
       iconName,
       iconPosition = 'left',
-      iconSize = 'default',
+      iconSize = 'sm',
       iconProps,
       children,
       ...props

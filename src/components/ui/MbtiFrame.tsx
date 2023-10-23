@@ -18,15 +18,18 @@ const mbtiFrameVariants = cva('flex flex-col w-min rounded-md border-2 overflow-
   }
 });
 
-interface MbtiFrameProps extends VariantProps<typeof mbtiFrameVariants> {
+interface MbtiFrameProps extends VariantProps<typeof mbtiFrameVariants>, React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
 }
 
 const MbtiFrame = (props: MbtiFrameProps) => {
-  const { children, variant } = props;
+  const { children, variant, ...rest } = props;
 
   return (
-    <div className={cn(mbtiFrameVariants({ variant }))}>
+    <div
+      className={cn(mbtiFrameVariants({ variant }))}
+      {...rest}
+    >
       {children}
       <div className={'text-sm text-white dark:text-neutral-100 font-semibold w-full text-center'}>Unknown</div>
     </div>
