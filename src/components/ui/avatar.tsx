@@ -4,7 +4,7 @@ import { cva, VariantProps } from 'class-variance-authority';
 
 import { cn } from '@/lib/utils';
 
-const avatarVariants = cva('relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full', {
+const avatarVariants = cva('relative flex h-10 w-10 overflow-hidden', {
   variants: {
     variant: {
       circle: 'rounded-full',
@@ -17,7 +17,7 @@ const avatarVariants = cva('relative flex h-10 w-10 shrink-0 overflow-hidden rou
   }
 });
 
-const avatarFallbackVariants = cva('flex h-full w-full items-center justify-center bg-muted', {
+const avatarFallbackVariants = cva('relative flex h-full w-full items-center justify-center bg-muted', {
   variants: {
     variant: {
       circle: 'rounded-full',

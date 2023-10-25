@@ -57,3 +57,25 @@
     @apply bg-background text-foreground;
   }
 }
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.h-body-no-scroll {
+  height: calc(100vh - 80px);
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.w-screen-pad {
+  width: calc(100vw - 32px);
+}
+
+.w-screen-pad-lg {
+  width: calc(100vw - 64px);
+}

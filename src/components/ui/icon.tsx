@@ -1,9 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import {
   ArrowDownWideNarrow,
+  ChevronLeft,
+  ChevronRight,
   Dna,
   Filter,
   Heart,
@@ -59,7 +59,9 @@ export type IconNames =
   | 'penLine'
   | 'sun'
   | 'user'
-  | 'x';
+  | 'x'
+  | 'chevronLeft'
+  | 'chevronRight';
 
 type Icons = Record<IconNames, React.ElementType>;
 
@@ -86,7 +88,9 @@ const Icon = ({ name, size, variant, color, isFilled = false, className, ...prop
     penLine: PenLine,
     sun: Sun,
     user: User,
-    x: X
+    x: X,
+    chevronLeft: ChevronLeft,
+    chevronRight: ChevronRight
   };
   const IconComponent = iconsSet[name];
 

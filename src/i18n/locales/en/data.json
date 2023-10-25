@@ -37,5 +37,29 @@
     "marleyForm": "Marley (formerly)",
     "eldiaHeld": "Eldia (held custody)",
     "none": "None"
+  },
+  "mbti": {
+    "architect": "architect",
+    "logician": "logician",
+    "commander": "commander",
+    "debater": "debater",
+    "advocate": "advocate",
+    "mediator": "mediator",
+    "protagonist": "protagonist",
+    "campaigner": "campaigner",
+    "logistician": "logistician",
+    "defender": "defender",
+    "executive": "executive",
+    "consul": "consul",
+    "virtuoso": "virtuoso",
+    "adventurer": "adventurer",
+    "entrepreneur": "entrepreneur",
+    "entertainer": "entertainer"
+  },
+  "mbtiGroup": {
+    "analysts": "analysts",
+    "diplomats": "diplomats",
+    "sentinels": "sentinels",
+    "explorers": "explorers"
   }
 }

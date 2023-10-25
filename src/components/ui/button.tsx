@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 
-import { RoutePath } from '@/constants';
+import { ExternalUrl, RoutePath } from '@/constants/enums';
 import { cn } from '@/lib/utils';
 
 import Icon, { IconNames, IconProps, IconSizes } from './Icon';
@@ -18,13 +18,15 @@ const buttonVariants = cva(
         outline: 'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
         secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
-        link: 'text-primary underline-offset-4 hover:underline'
+        link: 'text-primary underline-offset-4 hover:underline',
+        proxy: ''
       },
       size: {
         default: 'h-10 px-4 py-2',
         sm: 'h-9 px-3',
         lg: 'h-11 px-8',
-        icon: 'h-10 w-10'
+        icon: 'h-10 w-10',
+        proxy: 'h-auto p-0'
       }
     },
     defaultVariants: {
@@ -38,7 +40,7 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
-  linkTo?: RoutePath | URL;
+  linkTo?: RoutePath | ExternalUrl;
   iconName?: IconNames;
   iconPosition?: 'left' | 'right';
   iconSize?: IconSizes;
@@ -55,7 +57,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       linkTo,
       iconName,
       iconPosition = 'left',
-      iconSize = 'default',
+      iconSize = 'sm',
       iconProps,
       children,
       ...props
@@ -90,7 +92,16 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       </MainComponent>
     );
 
-    return linkTo ? <Link to={linkTo}>{ButtonComponent}</Link> : ButtonComponent;
+    return linkTo ? (
+      <Link
+        className={'contents'}
+        to={linkTo}
+      >
+        {ButtonComponent}
+      </Link>
+    ) : (
+      ButtonComponent
+    );
   }
 );
 Button.displayName = 'Button';

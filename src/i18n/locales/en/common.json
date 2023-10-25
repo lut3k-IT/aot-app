@@ -4,16 +4,33 @@
     "heroes": "Heroes",
     "titans": "Titans",
     "favorites": "Favorites",
-    "quiz": "Quiz"
+    "quiz": "Quiz",
+    "quotations": "Quotations",
+    "about": "About",
+    "changelog": "Changelog",
+    "privacyPolicy": "Privacy policy",
+    "termsOfService": "Terms of service",
+    "portfolio": "lut3k.com"
+  },
+  "tabs": {
+    "gallery": "Gallery",
+    "charts": "Charts",
+    "comparison": "Comparison"
   },
   "button": {
     "submit": "Submit",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "addToFavorites": "Add to favorites",
+    "removeFromFavorites": "Remove from favorites"
   },
+  "spoilerMode": "Hide spoilers mode",
   "form": {},
   "error": {
     "oops": "Oops",
     "unexpectedError": "Unexpected error",
     "routeNotFound": "Route not found"
+  },
+  "navigation": {
+    "goBack": "Go back"
   }
 }

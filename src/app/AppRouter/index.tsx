@@ -1,15 +1,20 @@
 import { createBrowserRouter, Navigate, Outlet, RouterProvider } from 'react-router-dom';
 
 import PageOverlay from '@/components/ui/PageOverlay';
-import ScrollToTop from '@/components/ui/scroll-to-top';
-import { RoutePath } from '@/constants';
+import ScrollToTop from '@/components/ui/ScrollToTop';
+import { CharacterType, RoutePath } from '@/constants/enums';
 import About from '@/features/Additional/About';
 import Changelog from '@/features/Additional/Changelog';
 import PrivacyPolicy from '@/features/Additional/PrivacyPolicy';
 import TermsOfService from '@/features/Additional/TermsOfService';
+import CharacterDetails from '@/features/CharacterDetails';
 import ErrorPage from '@/features/ErrorBoundaries/ErrorPage';
 import NotFoundRoute from '@/features/ErrorBoundaries/NotFoundRoute';
-import Favourites from '@/features/Favourites';
+import Favorites from '@/features/Favorites';
+import FavoritesHeroes from '@/features/FavoritesHeroes';
+import FavoritesQuotations from '@/features/FavoritesQuotations';
+import FavoritesTitans from '@/features/FavoritesTitans';
+import Heroes from '@/features/Heroes';
 import HeroesCharts from '@/features/HeroesCharts';
 import HeroesComparison from '@/features/HeroesComparison';
 import HeroesGallery from '@/features/HeroesGallery';
@@ -39,34 +44,80 @@ export const router = createBrowserRouter([
             path: RoutePath.LANDING,
             element: (
               <Navigate
-                to={RoutePath.HEROES_GALLERY}
+                to={RoutePath.HEROES}
                 replace
               />
             )
           },
           {
-            path: RoutePath.HEROES_GALLERY,
-            element: <HeroesGallery />
+            path: RoutePath.HEROES,
+            element: <Heroes />,
+            children: [
+              {
+                path: RoutePath.HEROES_GALLERY,
+                element: <HeroesGallery />
+              },
+              {
+                path: RoutePath.HEROES_CHARTS,
+                element: <HeroesCharts />
+              },
+              {
+                path: RoutePath.HEROES_COMPARISON,
+                element: <HeroesComparison />
+              }
+            ]
           },
           {
-            path: RoutePath.HEROES_CHARTS,
-            element: <HeroesCharts />
-          },
-          {
-            path: RoutePath.HEROES_COMPARISON,
-            element: <HeroesComparison />
+            path: RoutePath.HERO_DETAILS + '/:id',
+            element: <CharacterDetails type={CharacterType.HERO} />
           },
           {
             path: RoutePath.TITANS,
             element: <Titans />
           },
           {
+            path: RoutePath.TITAN_DETAILS + '/:id',
+            element: <CharacterDetails type={CharacterType.TITAN} />
+          },
+          {
             path: RoutePath.FAVORITES,
-            element: <Favourites />
+            element: <Favorites />,
+            children: [
+              {
+                path: RoutePath.FAVORITES_HEROES,
+                element: <FavoritesHeroes />
+              },
+              {
+                path: RoutePath.FAVORITES_TITANS,
+                element: <FavoritesTitans />
+              },
+              {
+                path: RoutePath.FAVORITES_QUOTATIONS,
+                element: <FavoritesQuotations />
+              }
+            ]
           },
           {
             path: RoutePath.QUIZ,
             element: <Quiz />
+          },
+          {
+            path: RoutePath.QUOTATIONS,
+            element: (
+              <Navigate
+                to={RoutePath.HEROES}
+                replace
+              />
+            )
+          },
+          {
+            path: RoutePath.QUOTATION_DETAILS + '/:id',
+            element: (
+              <Navigate
+                to={RoutePath.HEROES}
+                replace
+              />
+            )
           },
           {
             path: RoutePath.ABOUT,

@@ -104,6 +104,10 @@
         "prefix": ["is", "should", "has", "can", "did", "will"]
       },
       {
+        "selector": "objectLiteralProperty",
+        "format": null
+      },
+      {
         "selector": "parameter",
         "format": ["camelCase"],
         "leadingUnderscore": "allow"

@@ -1,15 +1,31 @@
 {
   "brand": "AoT app",
-  "titles": {
+  "title": {
     "heroes": "Bohaterzy",
     "titans": "Tytani",
-    "favorite": "Ulubione",
-    "quiz": "Quiz"
+    "favorites": "Ulubione",
+    "quiz": "Quiz",
+    "quotations": "Cytaty",
+    "about": "O aplikacji",
+    "changelog": "Rejestr zmian",
+    "privacyPolicy": "Polityka prywatności",
+    "termsOfService": "Warunki świadczenia usług",
+    "portfolio": "lut3k.com"
+  },
+  "tabs": {
+    "gallery": "Galeria",
+    "charts": "Wykresy",
+    "comparison": "Porównania"
   },
   "button": {
     "submit": "Prześlij",
     "cancel": "Anuluj"
   },
+  "spoilerMode": "Tryb ukrywania spoilerów",
   "form": {},
-  "errorBoundaries": {}
+  "error": {
+    "oops": "Ups",
+    "unexpectedError": "Niespodziewany błąd",
+    "routeNotFound": "Nie znaleziono ścieżki"
+  }
 }

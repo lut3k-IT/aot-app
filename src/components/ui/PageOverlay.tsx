@@ -5,16 +5,14 @@ import QuoteBarMobile from './QuoteBarMobile';
 import TopBarMobile from './TopBarMobile';
 
 const PageOverlay = () => {
-  // 1. top bar
-  // 2. quote bar
-  // 3. mobile navigation
-  // 4. mobile menu (overlay)
-
   return (
     <>
       <TopBarMobile />
       <QuoteBarMobile />
-      <div id='inner'>
+      <div
+        id='inner'
+        className={'[&>*]:px-4 pb-body-pad-end'}
+      >
         <Outlet />
       </div>
       <NavigationMobile />

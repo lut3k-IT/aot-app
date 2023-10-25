@@ -55,7 +55,11 @@ module.exports = {
       },
       spacing: {
         'page-mobile': '16px',
-        'page-desktop': '32px'
+        'page-desktop': '32px',
+        'body-start': '84px',
+        'body-pad-start': '102px',
+        'body-end': '64px',
+        'body-pad-end': '80px'
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -75,6 +79,10 @@ module.exports = {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out'
+      },
+      boxShadow: {
+        'white-bottom': '0px 0px 6px 6px rgba(255,255,255)',
+        'black-bottom': '0px 0px 6px 6px hsl(var(--background))'
       }
     }
   },

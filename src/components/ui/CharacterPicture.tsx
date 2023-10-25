@@ -1,3 +1,4 @@
+// TODO:
 // numer zdjecia
 // typ osobowosci
 
@@ -5,7 +6,7 @@ import { cva, VariantProps } from 'class-variance-authority';
 
 import { cn } from '@/lib/utils';
 
-import { Avatar, AvatarFallback, AvatarImage } from './avatar';
+import { Avatar, AvatarFallback, AvatarImage } from './Avatar';
 
 const characterPictureVariants = cva('', {
   variants: {
@@ -17,8 +18,8 @@ const characterPictureVariants = cva('', {
     },
     size: {
       md: 'w-[84px] h-[84px]',
-      lg: 'w-[96px] h-[96px]',
-      xl: 'w-[128px] h-[128px]',
+      lg: 'w-[128px] h-[128px]',
+      xl: 'w-[160px] h-[160px]',
       full: 'w-full h-full'
     }
   },
@@ -29,19 +30,18 @@ const characterPictureVariants = cva('', {
 });
 
 interface CharacterPictureProps extends VariantProps<typeof characterPictureVariants> {
-  ulr: string;
+  imgSource: string;
+  className?: string;
 }
 
 const CharacterPicture = (props: CharacterPictureProps) => {
-  const { variant, size } = props;
+  const { imgSource, className, variant, size } = props;
 
   return (
-    <div>
-      <Avatar className={cn(characterPictureVariants({ variant, size }))}>
-        <AvatarImage src={'https://github.com/shadcn.png'} />
-        <AvatarFallback className={cn(characterPictureVariants({ variant, size }))} />
-      </Avatar>
-    </div>
+    <Avatar className={cn(characterPictureVariants({ variant, size }), className)}>
+      <AvatarImage src={imgSource} />
+      <AvatarFallback className={cn(characterPictureVariants({ variant, size }))} />
+    </Avatar>
   );
 };
 

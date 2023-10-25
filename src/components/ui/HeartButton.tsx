@@ -1,19 +1,30 @@
-import Icon from './Icon';
+import { cn } from '@/lib/utils';
 
-// TODO:
-// ts button element
-// quote id
-// is in favorites (filled icon)
+import { Button } from './Button';
+import Icon, { IconSizes } from './Icon';
 
-const HeartButton = () => {
+interface HeartButtonProps {
+  iconSize?: IconSizes;
+  className?: string;
+  isFilled?: boolean;
+}
+
+const HeartButton = (props: HeartButtonProps) => {
+  const { iconSize, className, isFilled } = props;
+
   return (
-    <button className={'p-1'}>
+    <Button
+      variant={'proxy'}
+      size={'proxy'}
+      className={cn('p-1', className)}
+    >
       <Icon
-        size={'sm'}
+        size={iconSize}
         name={'heart'}
         variant={'gray'}
+        className={isFilled ? 'text-red-500 fill-red-500' : ''}
       />
-    </button>
+    </Button>
   );
 };
 

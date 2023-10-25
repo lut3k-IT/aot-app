@@ -1,9 +1,22 @@
-import AppHelmet from '@/components/ui/app-helmet';
+import { useEffect } from 'react';
 
+import useAppDispatch from '@/components/hooks/useAppDispatch';
+import AppHelmet from '@/components/ui/AppHelmet';
+import { loadHeroes } from '@/store/heroesSlice';
+
+// perform code once the app is loaded
 const Init = () => {
-  // perform code once the app is loaded
+  const dispatch = useAppDispatch();
 
-  return <AppHelmet />;
+  useEffect(() => {
+    dispatch(loadHeroes());
+  }, []);
+
+  return (
+    <>
+      <AppHelmet />
+    </>
+  );
 };
 
 export default Init;

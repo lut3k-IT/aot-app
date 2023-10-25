@@ -30,3 +30,7 @@ export const clearText = (text: string) => {
 };
 
 export const getFullURL = () => `${window.location.protocol}//${window.location.host}`;
+
+export const getCurrentRoute = () => location.pathname;
+
+export const getFirstSegmentFromCurrentRoute = () => location.pathname.split('/')[1];
