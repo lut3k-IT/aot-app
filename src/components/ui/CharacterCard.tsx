@@ -67,7 +67,10 @@ const CharacterCard = (props: CharacterCardProps) => {
 
   return (
     <div className={cnContainer}>
-      <MbtiFrame onClick={() => navigate(`${conditionalRoute}/${data.id}`)}>
+      <MbtiFrame
+        mbtiId={data.mbti}
+        onClick={() => navigate(`${conditionalRoute}/${data.id}`)}
+      >
         <CharacterPicture
           imgSource={image}
           variant={'roundedBtm'}
