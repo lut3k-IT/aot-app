@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Navigate, Outlet } from 'react-router-dom';
 
 import PageHeading from '@/components/ui/PageHeading';
-import { RoutePath } from '@/constants';
+import { RoutePath } from '@/constants/enums';
 import { getCurrentRoute } from '@/utils/helpers';
 
 import MovingPanel from '../components/ui/MovingPanel';

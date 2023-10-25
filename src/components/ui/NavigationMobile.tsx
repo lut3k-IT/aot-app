@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { v4 } from 'uuid';
 
-import { RoutePath } from '@/constants';
+import { RoutePath } from '@/constants/enums';
 import { getFirstSegmentFromCurrentRoute } from '@/utils/helpers';
 
 import Icon, { IconNames } from './Icon';

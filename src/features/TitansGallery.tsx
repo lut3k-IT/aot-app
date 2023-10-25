@@ -2,7 +2,7 @@ import CharacterCard from '@/components/ui/CharacterCard';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import MovingPanel from '@/components/ui/MovingPanel';
 import PageHeading from '@/components/ui/PageHeading';
-import { CharacterType } from '@/constants';
+import { CharacterType } from '@/constants/enums';
 
 const TitansGallery = () => {
   return (

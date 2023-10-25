@@ -1,6 +1,6 @@
 import CharacterCard from '@/components/ui/CharacterCard';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
-import { CharacterType } from '@/constants';
+import { CharacterType } from '@/constants/enums';
 
 interface FavoritesTitansProps {}
 

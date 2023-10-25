@@ -5,7 +5,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 import MovingPanel from '@/components/ui/MovingPanel';
 import PageHeading from '@/components/ui/PageHeading';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
-import { RoutePath } from '@/constants';
+import { RoutePath } from '@/constants/enums';
 import { getCurrentRoute } from '@/utils/helpers';
 
 enum TabValue {

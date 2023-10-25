@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DialogClose } from '@radix-ui/react-dialog';
 
-import { RoutePath, URL } from '@/constants';
+import { ExternalUrl, RoutePath } from '@/constants/enums';
 
 import { Button } from './Button';
 import { Label } from './Label';
@@ -51,7 +51,7 @@ const SidebarMobile = () => {
         </Button>
         <Button
           variant={'link'}
-          linkTo={URL.PORTFOLIO}
+          linkTo={ExternalUrl.PORTFOLIO}
           onClick={handleClick}
         >
           {t('common:title.portfolio')}

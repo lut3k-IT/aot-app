@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { RoutePath } from '@/constants';
+import { RoutePath } from '@/constants/enums';
 import { cn } from '@/lib/utils';
 
 import { Button } from './Button';

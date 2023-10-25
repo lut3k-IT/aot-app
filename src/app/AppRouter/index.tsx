@@ -2,7 +2,7 @@ import { createBrowserRouter, Navigate, Outlet, RouterProvider } from 'react-rou
 
 import PageOverlay from '@/components/ui/PageOverlay';
 import ScrollToTop from '@/components/ui/ScrollToTop';
-import { CharacterType, RoutePath } from '@/constants';
+import { CharacterType, RoutePath } from '@/constants/enums';
 import About from '@/features/Additional/About';
 import Changelog from '@/features/Additional/Changelog';
 import PrivacyPolicy from '@/features/Additional/PrivacyPolicy';

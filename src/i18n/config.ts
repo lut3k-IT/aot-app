@@ -1,6 +1,6 @@
 import { InitOptions } from 'i18next';
 
-import { LanguageShortName, LocalStorageKey } from '@/constants';
+import { LanguageShortName, LocalStorageKey } from '@/constants/enums';
 import { getLocalStorageItem } from '@/utils/storage';
 
 import { commonEN, commonPL, dataEN, dataPL, notificationsEN, notificationsPL } from './locales';

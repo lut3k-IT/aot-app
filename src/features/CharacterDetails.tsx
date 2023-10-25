@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { v4 } from 'uuid';
 
 import { Button } from '@/components/ui/Button';
-import { CharacterType, RoutePath } from '@/constants';
+import { CharacterType, RoutePath } from '@/constants/enums';
 
 import ButtonGoBack from '../components/ui/ButtonGoBack';
 import CharacterPicture from '../components/ui/CharacterPicture';

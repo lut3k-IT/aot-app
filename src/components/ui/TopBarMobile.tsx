@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { t } from 'i18next';
 
-import { RoutePath } from '@/constants';
+import { RoutePath } from '@/constants/enums';
 
 import { Button } from './Button';
 import { Dialog, DialogContentSidebar, DialogTrigger } from './Dialog';

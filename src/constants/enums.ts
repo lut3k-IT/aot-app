@@ -22,7 +22,7 @@ export enum RoutePath {
   TERMS_OF_SERVICE = '/terms-of-service'
 }
 
-export enum URL {
+export enum ExternalUrl {
   PORTFOLIO = 'https://lut3k.com/'
 }
 
@@ -38,10 +38,20 @@ export enum LanguageShortName {
 
 export enum LocalStorageKey {
   LANGUAGE = 'i18nextLng',
-  SPOILER_MODE = 'spoilerMode'
+  SPOILER_MODE = 'spoilerMode',
+  FAV_HEROES = 'favHeroes',
+  FAV_TITANS = 'favTitans',
+  FAV_QUOTATIONS = 'favQuotations'
 }
 
 export enum CharacterType {
   HERO,
   TITAN
+}
+
+export enum PromiseStatus {
+  IDLE = 'idle', // before operation has started
+  LOADING = 'loading', // operation in progress
+  SUCCEDED = 'succeeded', // promise fullfilled
+  FAILED = 'failed' // promise rejected
 }

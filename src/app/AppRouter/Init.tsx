@@ -1,20 +1,16 @@
 import { useEffect } from 'react';
 
+import useAppDispatch from '@/components/hooks/useAppDispatch';
 import AppHelmet from '@/components/ui/AppHelmet';
-import { LocalStorageKey } from '@/constants';
-import i18n from '@/i18n/i18n';
-import { getLocalStorageItem } from '@/utils/storage';
+import { loadHeroes } from '@/store/heroesSlice';
 
 // perform code once the app is loaded
-
 const Init = () => {
-  // useEffect(() => {
-  //   handleInit();
-  // }, []);
+  const dispatch = useAppDispatch();
 
-  // const handleInit = () => {
-  //   i18n.changeLanguage(String(getLocalStorageItem(LocalStorageKey.LANGUAGE)));
-  // };
+  useEffect(() => {
+    dispatch(loadHeroes());
+  }, []);
 
   return (
     <>

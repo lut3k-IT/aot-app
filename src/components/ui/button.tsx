@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 
-import { RoutePath, URL } from '@/constants';
+import { ExternalUrl, RoutePath } from '@/constants/enums';
 import { cn } from '@/lib/utils';
 
 import Icon, { IconNames, IconProps, IconSizes } from './Icon';
@@ -40,7 +40,7 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
-  linkTo?: RoutePath | URL;
+  linkTo?: RoutePath | ExternalUrl;
   iconName?: IconNames;
   iconPosition?: 'left' | 'right';
   iconSize?: IconSizes;

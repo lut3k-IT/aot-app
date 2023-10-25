@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import dayjs from 'dayjs';
 
-import { LanguageName, LanguageShortName, LocalStorageKey } from '@/constants';
+import { LanguageName, LanguageShortName, LocalStorageKey } from '@/constants/enums';
 import { setLocalStorageItem } from '@/utils/storage';
 
 import 'dayjs/locale/en';
