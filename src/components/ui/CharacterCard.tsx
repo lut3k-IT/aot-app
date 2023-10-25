@@ -1,13 +1,15 @@
-import { useTranslation } from 'react-i18next';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { v4 } from 'uuid';
 
 import { CharacterType, RoutePath } from '@/constants/enums';
-import { HeroType } from '@/constants/types';
-import residences from '@/data/residences';
+import { HeroType, ImageSourceType } from '@/constants/types';
+import { getResidenceName } from '@/utils/dataProcessing';
+import { loadDynamicImage } from '@/utils/helpers';
 
 import CharacterPicture from './CharacterPicture';
 import HeartButton from './HeartButton';
+import HeroStatus from './HeroStatus';
 import MbtiFrame from './MbtiFrame';
 
 interface CharacterCardProps {
@@ -15,11 +17,9 @@ interface CharacterCardProps {
   type: CharacterType;
 }
 
-const tempId = 123;
-
 const CharacterCard = (props: CharacterCardProps) => {
   const { data, type = CharacterType.HERO } = props;
-  const { t } = useTranslation();
+  const [image, setImage] = useState<ImageSourceType>(undefined);
   const navigate = useNavigate();
 
   const cnContainer = 'flex gap-4 h-[108px]';
@@ -28,6 +28,7 @@ const CharacterCard = (props: CharacterCardProps) => {
   const cnDetailValue = 'text-lg font-semibold leading-none';
 
   const conditionalRoute = type === CharacterType.HERO ? RoutePath.HERO_DETAILS : RoutePath.TITAN_DETAILS;
+  const residenceName = getResidenceName(data.residence);
 
   const showedDetails = [
     {
@@ -40,7 +41,7 @@ const CharacterCard = (props: CharacterCardProps) => {
     },
     {
       title: 'Status',
-      value: data.status
+      value: <HeroStatus statusId={data.status} />
     }
   ];
 
@@ -55,20 +56,28 @@ const CharacterCard = (props: CharacterCardProps) => {
       </div>
     ));
 
-  const residenceKeyName = residences.find((res) => res.id === data.residence)?.keyName;
-  const residenceName = residenceKeyName ? t(`data:residence.${residenceKeyName}`) : '';
+  useEffect(() => {
+    const loadMyImage = async () => {
+      const image = await loadDynamicImage('/src/assets/img/heroes', data.id.toString(), 'jpg');
+      setImage(image);
+    };
+
+    loadMyImage();
+  }, []);
 
   return (
     <div className={cnContainer}>
-      <MbtiFrame onClick={() => navigate(`${conditionalRoute}/${tempId}`)}>
+      <MbtiFrame onClick={() => navigate(`${conditionalRoute}/${data.id}`)}>
         <CharacterPicture
-          imgSource={''}
+          imgSource={image}
           variant={'roundedBtm'}
         />
       </MbtiFrame>
       <div className={'flex flex-col flex-1 justify-between'}>
         <div className={'w-full flex flex-col gap-1 mt-0.5 relative'}>
-          <div className={'text-lg leading-none font-medium pr-10'}>{`${data.firstName} ${data.lastName}`}</div>
+          <div className={'text-lg leading-none font-medium pr-10'}>{`${data.firstName || ''} ${
+            data.lastName || ''
+          }`}</div>
           <div className={'text-sm leading-none font-medium text-muted-foreground pr-10 capitalize'}>
             {residenceName}
           </div>

@@ -31,3 +31,5 @@ export interface QuotationType {
 export type FavoriteType = number;
 
 export type ErrorType = string | undefined;
+
+export type ImageSourceType = string | undefined;
