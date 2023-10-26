@@ -1,5 +1,5 @@
-import CharacterCard from '@/components/ui/CharacterCard';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
+import CharacterCard from '@/components/ui/HeroCard';
 import { CharacterType } from '@/constants/enums';
 
 interface FavoritesHeroesProps {}

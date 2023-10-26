@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 
 import useAppSelector from '@/components/hooks/useAppSelector';
-import CharacterCard from '@/components/ui/CharacterCard';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
-import { CharacterType } from '@/constants/enums';
+import HeroCard from '@/components/ui/HeroCard';
 
 const HeroesGallery = () => {
   // TODO: here I will assign params and manage them for <PageHeading>
@@ -22,10 +21,9 @@ const HeroesGallery = () => {
     setpaginatedHeroes(originalHeroes);
   }, [originalHeroes]);
 
-  const MappedCharacterCards = () =>
+  const MappedHeroCards = () =>
     paginatedHeroes.map((hero) => (
-      <CharacterCard
-        type={CharacterType.HERO}
+      <HeroCard
         data={hero}
         key={hero.id}
       />
@@ -33,7 +31,7 @@ const HeroesGallery = () => {
 
   return (
     <GalleryWrapper>
-      <MappedCharacterCards />
+      <MappedHeroCards />
     </GalleryWrapper>
   );
 };

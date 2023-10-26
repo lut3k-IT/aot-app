@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
+import { HeroType } from '@/constants/types';
 import mbti from '@/data/mbti';
 import mbtiGroup from '@/data/mbti-group';
 import residences from '@/data/residences';
@@ -29,4 +30,9 @@ export const getMbtiGroupName = (id: number) => {
   const { t } = useTranslation();
   const mbtiGroupKeyName = mbtiGroup.find((x) => x.id === id)?.keyName;
   return mbtiGroupKeyName ? t(`data:mbtiGroup.${mbtiGroupKeyName}`) : null;
+};
+
+export const getHeroName = (id: number, heroes: HeroType[]) => {
+  const hero = heroes.find((hero) => hero.id === id);
+  return `${hero?.firstName || ''} ${hero?.lastName || ''}`;
 };

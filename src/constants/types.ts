@@ -21,6 +21,7 @@ export interface TitanType {
   formerInheritors: number[];
   allegiance: number[];
   height: number;
+  mbti: number;
 }
 
 export interface QuotationType {
