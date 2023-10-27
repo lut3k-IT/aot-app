@@ -1,23 +1,47 @@
 import { useEffect, useRef, useState } from 'react';
 import { v4 } from 'uuid';
 
+import { addFavorite, removeFavorite } from '@/store/quotationsSlice';
+import { isInFavorites } from '@/utils/dataProcessing';
+import { getRandomQuotation } from '@/utils/quotationHelpers';
+
+import useAppDispatch from '../hooks/useAppDispatch';
 import useAppSelector from '../hooks/useAppSelector';
 import HeartButton from './HeartButton';
 
+const MAX_LOOP = 2;
+
 const QuotationBarMobile = () => {
+  const dispatch = useAppDispatch();
+  const textRef = useRef<HTMLDivElement>(null);
+
   const originalQuotations = useAppSelector((state) => state.quotations.data);
   const favoriteQuotationsIds = useAppSelector((state) => state.quotations.favoriteIds);
-  const fetchingStatus = useAppSelector((state) => state.quotations.status);
-  const fetchingError = useAppSelector((state) => state.quotations.error);
+  // const fetchingStatus = useAppSelector((state) => state.quotations.status);
+  // const fetchingError = useAppSelector((state) => state.quotations.error);
 
-  const textRef = useRef<HTMLDivElement>(null);
-  const [currentQuotation, setCurrentQuotation] = useState(originalQuotations[0]);
+  const [remainingQuotations, setRemainingQuotations] = useState([...originalQuotations]);
+  const [currentQuotation, setCurrentQuotation] = useState(getRandomQuotation(remainingQuotations));
   const [loopCount, setLoopCount] = useState(0);
   const [animationDuration, setAnimationDuration] = useState('20s');
 
+  console.log({ currentQuotation });
+
+  const isCurrentFavorite = !!currentQuotation && isInFavorites(currentQuotation.id, favoriteQuotationsIds);
+
+  const handleToggleFavorite = () => {
+    const action = isCurrentFavorite ? removeFavorite : addFavorite;
+    dispatch(action(currentQuotation.id));
+  };
+
+  /* ---------------------------------- Init ---------------------------------- */
+
   useEffect(() => {
-    setCurrentQuotation(originalQuotations[0]);
+    setRemainingQuotations([...originalQuotations]);
+    setCurrentQuotation(getRandomQuotation(remainingQuotations));
   }, [originalQuotations]);
+
+  /* --------------------------- Animation duration --------------------------- */
 
   useEffect(() => {
     if (textRef.current && textRef.current.parentElement) {
@@ -27,10 +51,6 @@ const QuotationBarMobile = () => {
       setAnimationDuration(`${newAnimationDuration}s`);
     }
   }, [currentQuotation]);
-
-  /* -------------------------------------------------------------------------- */
-  /*                                   testing                                  */
-  /* -------------------------------------------------------------------------- */
 
   useEffect(() => {
     const textElement = textRef.current;
@@ -46,18 +66,17 @@ const QuotationBarMobile = () => {
   }, [currentQuotation]);
 
   useEffect(() => {
-    if (loopCount === 2) {
-      const currentIndex = originalQuotations.indexOf(currentQuotation);
-      setCurrentQuotation(originalQuotations[currentIndex + 1] || originalQuotations[0]);
+    if (loopCount === MAX_LOOP) {
+      setRemainingQuotations((prevRemaining) =>
+        prevRemaining.filter((quotation) => quotation.id !== currentQuotation.id)
+      );
+      if (remainingQuotations.length === 0) {
+        setRemainingQuotations([...originalQuotations]);
+      }
+      setCurrentQuotation(getRandomQuotation(remainingQuotations));
       setLoopCount(0);
     }
-  }, [loopCount, currentQuotation, originalQuotations]);
-
-  /* -------------------------------------------------------------------------- */
-  /*                                   testing                                  */
-  /* -------------------------------------------------------------------------- */
-
-  const handleToggleFavorite = () => {};
+  }, [loopCount, currentQuotation, originalQuotations, remainingQuotations]);
 
   return (
     <div
@@ -79,7 +98,7 @@ const QuotationBarMobile = () => {
       </div>
       <HeartButton
         iconSize={'sm'}
-        isFilled={false}
+        isFilled={isCurrentFavorite}
         onToggleFavorite={handleToggleFavorite}
       />
     </div>

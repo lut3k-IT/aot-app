@@ -4,6 +4,8 @@ import useAppSelector from '@/components/hooks/useAppSelector';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import HeroCard from '@/components/ui/HeroCard';
 
+// TODO: react memo for optimization?
+
 const HeroesGallery = () => {
   // TODO: here I will assign params and manage them for <PageHeading>
 

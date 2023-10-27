@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { HeroType } from '@/constants/types';
+import { FavoriteType, HeroType } from '@/constants/types';
 import mbti from '@/data/mbti';
 import mbtiGroup from '@/data/mbti-group';
 import residences from '@/data/residences';
@@ -36,3 +36,6 @@ export const getHeroName = (id: number, heroes: HeroType[]) => {
   const hero = heroes.find((hero) => hero.id === id);
   return `${hero?.firstName || ''} ${hero?.lastName || ''}`;
 };
+
+export const isInFavorites = (currentId: number, favoritesIdsArray: FavoriteType[]) =>
+  !!favoritesIdsArray.find((fav) => fav === currentId);
