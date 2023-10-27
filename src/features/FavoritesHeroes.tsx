@@ -9,12 +9,12 @@ const FavoritesHeroes = (props: FavoritesHeroesProps) => {
 
   return (
     <GalleryWrapper>
-      <CharacterCard type={CharacterType.HERO} />
-      <CharacterCard type={CharacterType.HERO} />
-      <CharacterCard type={CharacterType.HERO} />
-      <CharacterCard type={CharacterType.HERO} />
-      <CharacterCard type={CharacterType.HERO} />
-      <CharacterCard type={CharacterType.HERO} />
+      {/* <CharacterCard />
+      <CharacterCard />
+      <CharacterCard />
+      <CharacterCard />
+      <CharacterCard />
+      <CharacterCard /> */}
     </GalleryWrapper>
   );
 };

@@ -63,6 +63,8 @@ const HeroCard = (props: HeroCardProps) => {
     loadMyImage();
   }, []);
 
+  const handleToggleFavorite = () => {};
+
   return (
     <div className={cnContainer}>
       <MbtiFrame
@@ -82,7 +84,10 @@ const HeroCard = (props: HeroCardProps) => {
           <div className={'text-sm leading-none font-medium text-muted-foreground pr-10 capitalize'}>
             {residenceName}
           </div>
-          <HeartButton className={'absolute top-0 right-0'} />
+          <HeartButton
+            className={'absolute top-0 right-0'}
+            onToggleFavorite={handleToggleFavorite}
+          />
         </div>
         <div className={'flex items-center justify-center px-4 gap-8 w-full h-[52px] bg-accent rounded-md'}>
           <DetailsBoxes />

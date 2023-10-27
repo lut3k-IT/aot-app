@@ -15,7 +15,6 @@ const HeroesGallery = () => {
   const [filteredHeroes, setFilteredHeroes] = useState(originalHeroes);
   const [paginatedHeroes, setpaginatedHeroes] = useState(originalHeroes);
 
-  // sets filtered after original has loaded
   useEffect(() => {
     setFilteredHeroes(originalHeroes);
     setpaginatedHeroes(originalHeroes);

@@ -1,14 +1,14 @@
 import { Outlet } from 'react-router-dom';
 
 import NavigationMobile from './NavigationMobile';
-import QuoteBarMobile from './QuoteBarMobile';
+import QuotationBarMobile from './QuotationBarMobile';
 import TopBarMobile from './TopBarMobile';
 
 const PageOverlay = () => {
   return (
     <>
       <TopBarMobile />
-      <QuoteBarMobile />
+      <QuotationBarMobile />
       <div
         id='inner'
         className={'[&>*]:px-4 pb-body-pad-end'}

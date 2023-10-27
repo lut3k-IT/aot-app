@@ -79,3 +79,13 @@ html {
 .w-screen-pad-lg {
   width: calc(100vw - 64px);
 }
+
+@keyframes horizontal-scroll-animation {
+  from {
+    /* transform: translateX(100vw); */
+    /* transform: inherit; */
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}

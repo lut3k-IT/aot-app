@@ -7,7 +7,7 @@ import { ExternalUrl, RoutePath } from '@/constants/enums';
 import { Button } from './Button';
 import { Label } from './Label';
 import LanguageSwitcher from './LanguageSwitcher';
-import { Switch } from './switch';
+import { Switch } from './Switch';
 
 const SidebarMobile = () => {
   const { t } = useTranslation();

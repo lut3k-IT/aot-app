@@ -1,13 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import heroesSlice from './heroesSlice';
+import quotationsSlice from './quotationsSlice';
 import titansSlice from './titanSlice';
 
 export const store = configureStore({
   reducer: {
     heroes: heroesSlice.reducer,
-    titans: titansSlice.reducer
-    // quotations: quotationsSlice.reducer
+    titans: titansSlice.reducer,
+    quotations: quotationsSlice.reducer
   }
 });
 
