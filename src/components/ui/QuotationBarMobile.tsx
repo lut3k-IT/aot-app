@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { v4 } from 'uuid';
 
 import { addFavorite, removeFavorite } from '@/store/quotationsSlice';
@@ -25,20 +25,18 @@ const QuotationBarMobile = () => {
   const [loopCount, setLoopCount] = useState(0);
   const [animationDuration, setAnimationDuration] = useState('20s');
 
-  console.log({ currentQuotation });
-
   const isCurrentFavorite = !!currentQuotation && isInFavorites(currentQuotation.id, favoriteQuotationsIds);
 
-  const handleToggleFavorite = () => {
+  const handleToggleFavorite = useCallback(() => {
     const action = isCurrentFavorite ? removeFavorite : addFavorite;
     dispatch(action(currentQuotation.id));
-  };
+  }, [isCurrentFavorite, currentQuotation, dispatch]);
 
   /* ---------------------------------- Init ---------------------------------- */
 
   useEffect(() => {
     setRemainingQuotations([...originalQuotations]);
-    setCurrentQuotation(getRandomQuotation(remainingQuotations));
+    setCurrentQuotation(getRandomQuotation(originalQuotations));
   }, [originalQuotations]);
 
   /* --------------------------- Animation duration --------------------------- */
