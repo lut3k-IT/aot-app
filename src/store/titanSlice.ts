@@ -5,7 +5,7 @@ import { ErrorType, FavoriteType, TitanType } from '@/constants/types';
 import { getLocalStorageItem, setLocalStorageItem } from '@/utils/storage';
 
 export const loadTitans = createAsyncThunk('titans/load', async () => {
-  const response = await fetch('/src/data/titans.json');
+  const response = await fetch('/data/titans.json');
   const data = await response.json();
   return data;
 });

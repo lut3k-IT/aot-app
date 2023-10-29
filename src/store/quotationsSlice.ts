@@ -5,7 +5,7 @@ import { ErrorType, FavoriteType, QuotationType } from '@/constants/types';
 import { getLocalStorageItem, setLocalStorageItem } from '@/utils/storage';
 
 export const loadQuotations = createAsyncThunk('quotations/load', async () => {
-  const response = await fetch('/src/data/quotations.json');
+  const response = await fetch('/data/quotations.json');
   const data = await response.json();
   return data;
 });

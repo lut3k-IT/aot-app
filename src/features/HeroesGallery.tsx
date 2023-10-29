@@ -5,9 +5,7 @@ import useAppSelector from '@/components/hooks/useAppSelector';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import HeroCard from '@/components/ui/HeroCard';
 
-// TODO: react memo for optimization?
-
-const PER_PAGE = 20;
+const PER_PAGE = 30;
 
 const HeroesGallery = () => {
   // TODO: here I will assign params and manage them for <PageHeading>
@@ -18,8 +16,9 @@ const HeroesGallery = () => {
   const fetchingError = useAppSelector((state) => state.heroes.error);
 
   const [filteredHeroes, setFilteredHeroes] = useState(originalHeroes);
-  const [paginatedHeroes, setpaginatedHeroes] = useState(originalHeroes.slice(0, PER_PAGE)); // initial page size of 20
-  const [hasMore, setHasMore] = useState(true); // flag to indicate if there is more data to load
+  const [paginatedHeroes, setpaginatedHeroes] = useState(originalHeroes.slice(0, PER_PAGE));
+
+  const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
     setFilteredHeroes(originalHeroes);

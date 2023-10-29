@@ -1,11 +1,9 @@
-import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { v4 } from 'uuid';
 
 import { RoutePath } from '@/constants/enums';
-import { HeroType, ImageSourceType } from '@/constants/types';
+import { HeroType } from '@/constants/types';
 import { getResidenceName } from '@/utils/dataProcessing';
-import { loadDynamicImage } from '@/utils/helpers';
 
 import CharacterPicture from './CharacterPicture';
 import HeartButton from './HeartButton';
@@ -18,7 +16,6 @@ interface HeroCardProps {
 
 const HeroCard = (props: HeroCardProps) => {
   const { data } = props;
-  const [image, setImage] = useState<ImageSourceType>(undefined);
   const navigate = useNavigate();
 
   const cnContainer = 'flex gap-4 h-[108px]';
@@ -54,15 +51,6 @@ const HeroCard = (props: HeroCardProps) => {
       </div>
     ));
 
-  useEffect(() => {
-    const loadMyImage = async () => {
-      const image = await loadDynamicImage('/src/assets/img/heroes', data.id.toString(), 'jpg');
-      setImage(image);
-    };
-
-    loadMyImage();
-  }, []);
-
   const handleToggleFavorite = () => {};
 
   return (
@@ -72,7 +60,7 @@ const HeroCard = (props: HeroCardProps) => {
         onClick={() => navigate(`${RoutePath.HERO_DETAILS}/${data.id}`)}
       >
         <CharacterPicture
-          imgSource={image}
+          imgSource={`/assets/img/heroes/${data.id}.jpg`}
           variant={'roundedBtm'}
         />
       </MbtiFrame>

@@ -1,11 +1,9 @@
-import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { v4 } from 'uuid';
 
 import { RoutePath } from '@/constants/enums';
-import { HeroType, ImageSourceType, TitanType } from '@/constants/types';
+import { HeroType, TitanType } from '@/constants/types';
 import { getHeroName } from '@/utils/dataProcessing';
-import { loadDynamicImage } from '@/utils/helpers';
 
 import CharacterPicture from './CharacterPicture';
 import HeartButton from './HeartButton';
@@ -18,7 +16,6 @@ interface TitanCardProps {
 
 const TitanCard = (props: TitanCardProps) => {
   const { data, heroesData } = props;
-  const [image, setImage] = useState<ImageSourceType>(undefined);
   const navigate = useNavigate();
 
   const cnContainer = 'flex gap-4 h-[108px]';
@@ -46,15 +43,6 @@ const TitanCard = (props: TitanCardProps) => {
       </div>
     ));
 
-  useEffect(() => {
-    const loadMyImage = async () => {
-      const image = await loadDynamicImage('/src/assets/img/titans', data.id.toString(), 'jpg');
-      setImage(image);
-    };
-
-    loadMyImage();
-  }, []);
-
   const handleToggleFavorite = () => {};
 
   return (
@@ -64,7 +52,7 @@ const TitanCard = (props: TitanCardProps) => {
         onClick={() => navigate(`${RoutePath.TITAN_DETAILS}/${data.id}`)}
       >
         <CharacterPicture
-          imgSource={image}
+          imgSource={`/assets/img/titans/${data.id}.jpg`}
           variant={'roundedBtm'}
         />
       </MbtiFrame>

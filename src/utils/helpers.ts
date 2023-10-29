@@ -12,14 +12,6 @@ export const toNumberFormat = (value: number | string) => {
 
 /* ------------------------------ URL & Routes ------------------------------ */
 
-export const checkLink =
-  (domain: string) =>
-  (link: string | undefined): boolean =>
-    Boolean(
-      link?.match(new RegExp(/[\w#%+.:=@~-]{1,256}\.[\d()a-z]{1,6}\b([\w#%&()+./:=?@~-]*)?/gi)) ||
-        link?.includes(domain)
-    );
-
 export const getFullURL = () => `${window.location.protocol}//${window.location.host}`;
 export const getCurrentRoute = () => location.pathname;
 export const getFirstSegmentFromCurrentRoute = () => location.pathname.split('/')[1];

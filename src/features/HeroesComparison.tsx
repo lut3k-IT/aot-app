@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { MousePointerSquare } from 'lucide-react';
 
 import CharacterPicture from '@/components/ui/CharacterPicture';
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '@/components/ui/command';
+import { Command, CommandEmpty, CommandGroup, CommandInput } from '@/components/ui/Command';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/Popover';
 
 interface DetailItemProps {

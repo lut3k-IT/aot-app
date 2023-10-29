@@ -5,7 +5,7 @@ import { ErrorType, FavoriteType, HeroType } from '@/constants/types';
 import { getLocalStorageItem, setLocalStorageItem } from '@/utils/storage';
 
 export const loadHeroes = createAsyncThunk('heroes/load', async () => {
-  const response = await fetch('/src/data/heroes.json');
+  const response = await fetch('/data/heroes.json');
   const data = await response.json();
   return data;
 });
