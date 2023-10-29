@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
 
 import useAppSelector from '@/components/hooks/useAppSelector';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
@@ -16,27 +15,15 @@ const HeroesGallery = () => {
   const fetchingError = useAppSelector((state) => state.heroes.error);
 
   const [filteredHeroes, setFilteredHeroes] = useState(originalHeroes);
-  const [paginatedHeroes, setpaginatedHeroes] = useState(originalHeroes.slice(0, PER_PAGE));
+  const [paginatedHeroes, setpaginatedHeroes] = useState(originalHeroes);
 
   const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
     setFilteredHeroes(originalHeroes);
-    setpaginatedHeroes(originalHeroes.slice(0, PER_PAGE));
+    setpaginatedHeroes(originalHeroes);
     setHasMore(true);
   }, [originalHeroes]);
-
-  const fetchData = () => {
-    if (paginatedHeroes.length >= filteredHeroes.length) {
-      setHasMore(false);
-      return;
-    }
-    setTimeout(() => {
-      setpaginatedHeroes(
-        paginatedHeroes.concat(filteredHeroes.slice(paginatedHeroes.length, paginatedHeroes.length + PER_PAGE))
-      );
-    }, 400);
-  };
 
   const MappedHeroCards = () =>
     paginatedHeroes.map((hero) => (
@@ -47,17 +34,9 @@ const HeroesGallery = () => {
     ));
 
   return (
-    <InfiniteScroll
-      dataLength={paginatedHeroes.length}
-      next={fetchData}
-      hasMore={hasMore}
-      loader={<h4>Loading...</h4>}
-      endMessage={<p>No more heroes</p>}
-    >
-      <GalleryWrapper>
-        <MappedHeroCards />
-      </GalleryWrapper>
-    </InfiniteScroll>
+    <GalleryWrapper>
+      <MappedHeroCards />
+    </GalleryWrapper>
   );
 };
 
