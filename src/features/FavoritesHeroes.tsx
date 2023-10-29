@@ -1,5 +1,5 @@
-import CharacterCard from '@/components/ui/CharacterCard';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
+import CharacterCard from '@/components/ui/HeroCard';
 import { CharacterType } from '@/constants/enums';
 
 interface FavoritesHeroesProps {}
@@ -9,12 +9,12 @@ const FavoritesHeroes = (props: FavoritesHeroesProps) => {
 
   return (
     <GalleryWrapper>
-      <CharacterCard type={CharacterType.HERO} />
-      <CharacterCard type={CharacterType.HERO} />
-      <CharacterCard type={CharacterType.HERO} />
-      <CharacterCard type={CharacterType.HERO} />
-      <CharacterCard type={CharacterType.HERO} />
-      <CharacterCard type={CharacterType.HERO} />
+      {/* <CharacterCard />
+      <CharacterCard />
+      <CharacterCard />
+      <CharacterCard />
+      <CharacterCard />
+      <CharacterCard /> */}
     </GalleryWrapper>
   );
 };

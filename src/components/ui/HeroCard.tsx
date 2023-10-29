@@ -1,25 +1,21 @@
-import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { v4 } from 'uuid';
 
-import { CharacterType, RoutePath } from '@/constants/enums';
+import { RoutePath } from '@/constants/enums';
 import { HeroType } from '@/constants/types';
-import residences from '@/data/residences';
+import { getResidenceName } from '@/utils/dataProcessing';
 
 import CharacterPicture from './CharacterPicture';
 import HeartButton from './HeartButton';
+import HeroStatus from './HeroStatus';
 import MbtiFrame from './MbtiFrame';
 
-interface CharacterCardProps {
+interface HeroCardProps {
   data: HeroType;
-  type: CharacterType;
 }
 
-const tempId = 123;
-
-const CharacterCard = (props: CharacterCardProps) => {
-  const { data, type = CharacterType.HERO } = props;
-  const { t } = useTranslation();
+const HeroCard = (props: HeroCardProps) => {
+  const { data } = props;
   const navigate = useNavigate();
 
   const cnContainer = 'flex gap-4 h-[108px]';
@@ -27,7 +23,7 @@ const CharacterCard = (props: CharacterCardProps) => {
   const cnDetailTitle = 'text-sm font-medium text-muted-foreground leading-none';
   const cnDetailValue = 'text-lg font-semibold leading-none';
 
-  const conditionalRoute = type === CharacterType.HERO ? RoutePath.HERO_DETAILS : RoutePath.TITAN_DETAILS;
+  const residenceName = getResidenceName(data.residence);
 
   const showedDetails = [
     {
@@ -40,7 +36,7 @@ const CharacterCard = (props: CharacterCardProps) => {
     },
     {
       title: 'Status',
-      value: data.status
+      value: <HeroStatus statusId={data.status} />
     }
   ];
 
@@ -55,24 +51,31 @@ const CharacterCard = (props: CharacterCardProps) => {
       </div>
     ));
 
-  const residenceKeyName = residences.find((res) => res.id === data.residence)?.keyName;
-  const residenceName = residenceKeyName ? t(`data:residence.${residenceKeyName}`) : '';
+  const handleToggleFavorite = () => {};
 
   return (
     <div className={cnContainer}>
-      <MbtiFrame onClick={() => navigate(`${conditionalRoute}/${tempId}`)}>
+      <MbtiFrame
+        mbtiId={data.mbti}
+        onClick={() => navigate(`${RoutePath.HERO_DETAILS}/${data.id}`)}
+      >
         <CharacterPicture
-          imgSource={''}
+          imgSource={`/assets/img/heroes/${data.id}.jpg`}
           variant={'roundedBtm'}
         />
       </MbtiFrame>
       <div className={'flex flex-col flex-1 justify-between'}>
         <div className={'w-full flex flex-col gap-1 mt-0.5 relative'}>
-          <div className={'text-lg leading-none font-medium pr-10'}>{`${data.firstName} ${data.lastName}`}</div>
+          <div className={'text-lg leading-none font-medium pr-10'}>{`${data.firstName || ''} ${
+            data.lastName || ''
+          }`}</div>
           <div className={'text-sm leading-none font-medium text-muted-foreground pr-10 capitalize'}>
             {residenceName}
           </div>
-          <HeartButton className={'absolute top-0 right-0'} />
+          <HeartButton
+            className={'absolute top-0 right-0'}
+            onToggleFavorite={handleToggleFavorite}
+          />
         </div>
         <div className={'flex items-center justify-center px-4 gap-8 w-full h-[52px] bg-accent rounded-md'}>
           <DetailsBoxes />
@@ -82,4 +85,4 @@ const CharacterCard = (props: CharacterCardProps) => {
   );
 };
 
-export default CharacterCard;
+export default HeroCard;

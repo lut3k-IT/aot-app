@@ -8,9 +8,9 @@ const AlertDialog = AlertDialogPrimitive.Root;
 
 const AlertDialogTrigger = AlertDialogPrimitive.Trigger;
 
-const AlertDialogPortal = ({ className, ...props }: AlertDialogPrimitive.AlertDialogPortalProps) => (
+const AlertDialogPortal = ({ ...props }: AlertDialogPrimitive.AlertDialogPortalProps) => (
   <AlertDialogPrimitive.Portal
-    className={cn(className)}
+    // className={cn(className)}
     {...props}
   />
 );

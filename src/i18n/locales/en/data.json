@@ -54,7 +54,8 @@
     "virtuoso": "virtuoso",
     "adventurer": "adventurer",
     "entrepreneur": "entrepreneur",
-    "entertainer": "entertainer"
+    "entertainer": "entertainer",
+    "unknown": "unknown"
   },
   "mbtiGroup": {
     "analysts": "analysts",

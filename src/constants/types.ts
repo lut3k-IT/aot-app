@@ -1,33 +1,44 @@
+export type ErrorType = string | undefined;
+
+export type ImageSourceType = string | undefined;
+
 export interface HeroType {
-  id: number;
-  firstName: string;
-  lastName: string;
-  species: number;
-  age: number;
-  height: number;
-  weight: number;
-  residence: number;
-  status: number;
-  alias: string[];
-  mbti: number;
+  readonly id: number;
+  readonly firstName: string;
+  readonly lastName: string;
+  readonly species: number;
+  readonly age: number;
+  readonly height: number;
+  readonly weight: number;
+  readonly residence: number;
+  readonly status: number;
+  readonly alias: string[];
+  readonly mbti: number;
+}
+
+export interface AppHeroType extends HeroType {
+  image?: ImageSourceType;
 }
 
 export interface TitanType {
-  id: number;
-  name: string;
-  otherNames: string[];
-  abilities: string[];
-  currentInheritor: number;
-  formerInheritors: number[];
-  allegiance: number[];
-  height: number;
+  readonly id: number;
+  readonly name: string;
+  readonly otherNames: string[];
+  readonly abilities: string[];
+  readonly currentInheritor: number;
+  readonly formerInheritors: number[];
+  readonly allegiance: number[];
+  readonly height: number;
+  readonly mbti: number;
+}
+
+export interface AppTitanType extends TitanType {
+  image?: ImageSourceType;
 }
 
 export interface QuotationType {
-  id: number;
-  text: string;
+  readonly id: number;
+  readonly text: string;
 }
 
 export type FavoriteType = number;
-
-export type ErrorType = string | undefined;

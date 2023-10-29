@@ -1,22 +1,22 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import { LocalStorageKey, PromiseStatus } from '@/constants/enums';
-import { ErrorType, FavoriteType, HeroType } from '@/constants/types';
+import { ErrorType, FavoriteType, QuotationType } from '@/constants/types';
 import { getLocalStorageItem, setLocalStorageItem } from '@/utils/storage';
 
-export const loadHeroes = createAsyncThunk('heroes/load', async () => {
-  const response = await fetch('/data/heroes.json');
+export const loadQuotations = createAsyncThunk('quotations/load', async () => {
+  const response = await fetch('/data/quotations.json');
   const data = await response.json();
   return data;
 });
 
-const savedFavoriteIds = getLocalStorageItem(LocalStorageKey.FAV_HEROES);
+const savedFavoriteIds = getLocalStorageItem(LocalStorageKey.FAV_QUOTATIONS);
 const initialFavoriteIds: FavoriteType[] = savedFavoriteIds ? JSON.parse(savedFavoriteIds) : [];
 
-const heroesSlice = createSlice({
-  name: 'heroes',
+const quotationsSlice = createSlice({
+  name: 'quotations',
   initialState: {
-    data: [] as HeroType[],
+    data: [] as QuotationType[],
     status: PromiseStatus.IDLE,
     error: undefined as ErrorType,
     favoriteIds: initialFavoriteIds
@@ -25,30 +25,30 @@ const heroesSlice = createSlice({
     addFavorite: (state, action) => {
       if (!state.favoriteIds.includes(action.payload)) {
         state.favoriteIds.push(action.payload);
-        setLocalStorageItem(LocalStorageKey.FAV_HEROES, JSON.stringify(state.favoriteIds));
+        setLocalStorageItem(LocalStorageKey.FAV_QUOTATIONS, JSON.stringify(state.favoriteIds));
       }
     },
     removeFavorite: (state, action) => {
       state.favoriteIds = state.favoriteIds.filter((id: number) => id !== action.payload);
-      setLocalStorageItem(LocalStorageKey.FAV_HEROES, JSON.stringify(state.favoriteIds));
+      setLocalStorageItem(LocalStorageKey.FAV_QUOTATIONS, JSON.stringify(state.favoriteIds));
     }
   },
   extraReducers: (builder) => {
     builder
-      .addCase(loadHeroes.pending, (state) => {
+      .addCase(loadQuotations.pending, (state) => {
         state.status = PromiseStatus.LOADING;
       })
-      .addCase(loadHeroes.fulfilled, (state, action) => {
+      .addCase(loadQuotations.fulfilled, (state, action) => {
         state.status = PromiseStatus.SUCCEDED;
         state.data = action.payload;
       })
-      .addCase(loadHeroes.rejected, (state, action) => {
+      .addCase(loadQuotations.rejected, (state, action) => {
         state.status = PromiseStatus.FAILED;
         state.error = action.error.message;
       });
   }
 });
 
-export const { addFavorite, removeFavorite } = heroesSlice.actions;
+export const { addFavorite, removeFavorite } = quotationsSlice.actions;
 
-export default heroesSlice;
+export default quotationsSlice;

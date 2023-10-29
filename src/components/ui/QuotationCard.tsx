@@ -9,6 +9,8 @@ interface QuotationCardProps {
 const QuotationCard = (props: QuotationCardProps) => {
   const { className } = props;
 
+  const handleToggleFavorite = () => {};
+
   return (
     <div className={cn('w-full p-4 pr-12 border rounded-md relative', className)}>
       <div className={'line-clamp-4 overflow-hidden text-md'}>
@@ -20,7 +22,10 @@ const QuotationCard = (props: QuotationCardProps) => {
         eveniet quo iste dolorem et laudantium. Dignissimos quas recusandae aliquid harum doloremque laudantium ducimus
         architecto a sed labore placeat blanditiis sint magni, dicta odit. Sint.
       </div>
-      <HeartButton className={'h-min absolute top-3 right-3'} />
+      <HeartButton
+        onToggleFavorite={handleToggleFavorite}
+        className={'h-min absolute top-3 right-3'}
+      />
     </div>
   );
 };

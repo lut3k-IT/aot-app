@@ -1,9 +1,6 @@
-// TODO:
-// numer zdjecia
-// typ osobowosci
-
 import { cva, VariantProps } from 'class-variance-authority';
 
+import { ImageSourceType } from '@/constants/types';
 import { cn } from '@/lib/utils';
 
 import { Avatar, AvatarFallback, AvatarImage } from './Avatar';
@@ -30,7 +27,7 @@ const characterPictureVariants = cva('', {
 });
 
 interface CharacterPictureProps extends VariantProps<typeof characterPictureVariants> {
-  imgSource: string;
+  imgSource: ImageSourceType;
   className?: string;
 }
 

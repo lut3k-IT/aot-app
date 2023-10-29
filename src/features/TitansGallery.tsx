@@ -1,25 +1,43 @@
-import CharacterCard from '@/components/ui/CharacterCard';
+import { useEffect, useState } from 'react';
+
+import useAppSelector from '@/components/hooks/useAppSelector';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import MovingPanel from '@/components/ui/MovingPanel';
 import PageHeading from '@/components/ui/PageHeading';
-import { CharacterType } from '@/constants/enums';
+import TitanCard from '@/components/ui/TitanCard';
 
 const TitansGallery = () => {
+  const originalTitans = useAppSelector((state) => state.titans.data);
+  const originalHeroes = useAppSelector((state) => state.heroes.data);
+
+  const favoriteTitansIds = useAppSelector((state) => state.titans.favoriteIds);
+  const fetchingStatus = useAppSelector((state) => state.titans.status);
+  const fetchingError = useAppSelector((state) => state.titans.error);
+
+  const [filteredTitans, setFilteredTitans] = useState(originalTitans);
+  const [paginatedTitans, setpaginatedTitans] = useState(originalTitans);
+
+  useEffect(() => {
+    setFilteredTitans(originalTitans);
+    setpaginatedTitans(originalTitans);
+  }, [originalTitans]);
+
+  const MappedCharacterCards = () =>
+    paginatedTitans.map((titan) => (
+      <TitanCard
+        data={titan}
+        heroesData={originalHeroes}
+        key={titan.id}
+      />
+    ));
+
   return (
     <>
       <MovingPanel>
         <PageHeading />
       </MovingPanel>
       <GalleryWrapper>
-        <CharacterCard type={CharacterType.TITAN} />
-        <CharacterCard type={CharacterType.TITAN} />
-        <CharacterCard type={CharacterType.TITAN} />
-        <CharacterCard type={CharacterType.TITAN} />
-        <CharacterCard type={CharacterType.TITAN} />
-        <CharacterCard type={CharacterType.TITAN} />
-        <CharacterCard type={CharacterType.TITAN} />
-        <CharacterCard type={CharacterType.TITAN} />
-        <CharacterCard type={CharacterType.TITAN} />
+        <MappedCharacterCards />
       </GalleryWrapper>
     </>
   );

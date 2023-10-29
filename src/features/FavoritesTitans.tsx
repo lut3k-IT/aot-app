@@ -1,5 +1,5 @@
-import CharacterCard from '@/components/ui/CharacterCard';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
+import CharacterCard from '@/components/ui/HeroCard';
 import { CharacterType } from '@/constants/enums';
 
 interface FavoritesTitansProps {}
@@ -9,12 +9,12 @@ const FavoritesTitans = (props: FavoritesTitansProps) => {
 
   return (
     <GalleryWrapper>
-      <CharacterCard type={CharacterType.TITAN} />
-      <CharacterCard type={CharacterType.TITAN} />
-      <CharacterCard type={CharacterType.TITAN} />
-      <CharacterCard type={CharacterType.TITAN} />
-      <CharacterCard type={CharacterType.TITAN} />
-      <CharacterCard type={CharacterType.TITAN} />
+      {/* <CharacterCard  />
+      <CharacterCard  />
+      <CharacterCard  />
+      <CharacterCard  />
+      <CharacterCard  />
+      <CharacterCard  /> */}
     </GalleryWrapper>
   );
 };

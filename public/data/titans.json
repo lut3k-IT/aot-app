@@ -7,7 +7,8 @@
     "currentInheritor": 175,
     "formerInheritors": [150, 108, 109, 110, 111, 186],
     "allegiance": [1],
-    "height": 1300
+    "height": 1300,
+    "mbti": 7
   },
   {
     "id": 2,
@@ -17,7 +18,8 @@
     "currentInheritor": 85,
     "formerInheritors": null,
     "allegiance": [2],
-    "height": 1500
+    "height": 1500,
+    "mbti": 15
   },
   {
     "id": 3,
@@ -33,7 +35,8 @@
     "currentInheritor": 175,
     "formerInheritors": [150, 97],
     "allegiance": [1],
-    "height": 1500
+    "height": 1500,
+    "mbti": 1
   },
   {
     "id": 4,
@@ -48,7 +51,8 @@
     "currentInheritor": 171,
     "formerInheritors": [96],
     "allegiance": [6, 3, 4],
-    "height": 1700
+    "height": 1700,
+    "mbti": 4
   },
   {
     "id": 5,
@@ -58,7 +62,8 @@
     "currentInheritor": 86,
     "formerInheritors": null,
     "allegiance": [2],
-    "height": 400
+    "height": 400,
+    "mbti": null
   },
   {
     "id": 6,
@@ -68,7 +73,8 @@
     "currentInheritor": 1,
     "formerInheritors": 94,
     "allegiance": [1, 4],
-    "height": 6000
+    "height": 6000,
+    "mbti": 9
   },
   {
     "id": 7,
@@ -78,7 +84,8 @@
     "currentInheritor": 91,
     "formerInheritors": null,
     "allegiance": [2, 5],
-    "height": 1400
+    "height": 1400,
+    "mbti": 13
   },
   {
     "id": 8,
@@ -88,7 +95,8 @@
     "currentInheritor": 87,
     "formerInheritors": [163, 95],
     "allegiance": [2],
-    "height": 500
+    "height": 500,
+    "mbti": 16
   },
   {
     "id": 9,
@@ -98,6 +106,7 @@
     "currentInheritor": 175,
     "formerInheritors": [113],
     "allegiance": [1, 4],
-    "height": 1500
+    "height": 1500,
+    "mbti": 1
   }
 ]

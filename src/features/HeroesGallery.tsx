@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 import useAppSelector from '@/components/hooks/useAppSelector';
-import CharacterCard from '@/components/ui/CharacterCard';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
-import { CharacterType } from '@/constants/enums';
+import HeroCard from '@/components/ui/HeroCard';
+
+const PER_PAGE = 30;
 
 const HeroesGallery = () => {
   // TODO: here I will assign params and manage them for <PageHeading>
@@ -14,27 +16,48 @@ const HeroesGallery = () => {
   const fetchingError = useAppSelector((state) => state.heroes.error);
 
   const [filteredHeroes, setFilteredHeroes] = useState(originalHeroes);
-  const [paginatedHeroes, setpaginatedHeroes] = useState(originalHeroes);
+  const [paginatedHeroes, setpaginatedHeroes] = useState(originalHeroes.slice(0, PER_PAGE));
 
-  // sets filtered after original has loaded
+  const [hasMore, setHasMore] = useState(true);
+
   useEffect(() => {
     setFilteredHeroes(originalHeroes);
-    setpaginatedHeroes(originalHeroes);
+    setpaginatedHeroes(originalHeroes.slice(0, PER_PAGE));
+    setHasMore(true);
   }, [originalHeroes]);
 
-  const MappedCharacterCards = () =>
+  const fetchData = () => {
+    if (paginatedHeroes.length >= filteredHeroes.length) {
+      setHasMore(false);
+      return;
+    }
+    setTimeout(() => {
+      setpaginatedHeroes(
+        paginatedHeroes.concat(filteredHeroes.slice(paginatedHeroes.length, paginatedHeroes.length + PER_PAGE))
+      );
+    }, 400);
+  };
+
+  const MappedHeroCards = () =>
     paginatedHeroes.map((hero) => (
-      <CharacterCard
-        type={CharacterType.HERO}
+      <HeroCard
         data={hero}
         key={hero.id}
       />
     ));
 
   return (
-    <GalleryWrapper>
-      <MappedCharacterCards />
-    </GalleryWrapper>
+    <InfiniteScroll
+      dataLength={paginatedHeroes.length}
+      next={fetchData}
+      hasMore={hasMore}
+      loader={<h4>Loading...</h4>}
+      endMessage={<p>No more heroes</p>}
+    >
+      <GalleryWrapper>
+        <MappedHeroCards />
+      </GalleryWrapper>
+    </InfiniteScroll>
   );
 };
 

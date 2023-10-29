@@ -1,7 +1,5 @@
 import numeral from 'numeral';
 
-export const getNumberAmount = (value: number) => value.toFixed(2);
-
 export const toCommas = (value: number | string) => {
   const number = numeral(value).format('0.[0]').replace(/\./, ',');
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
@@ -12,25 +10,13 @@ export const toNumberFormat = (value: number | string) => {
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 };
 
-export const checkLink =
-  (domain: string) =>
-  (link: string | undefined): boolean =>
-    Boolean(
-      link?.match(new RegExp(/[\w#%+.:=@~-]{1,256}\.[\d()a-z]{1,6}\b([\w#%&()+./:=?@~-]*)?/gi)) ||
-        link?.includes(domain)
-    );
-
-export const checkVideoLink = (videoLink: string) =>
-  videoLink?.match(new RegExp(/^(http:\/\/|https:\/\/)(vimeo\.com|youtu\.be|www\.youtube\.com)\/([\w/]+)(\?.*)?$/gim));
-
-export const checkZipCode = (code: string) => /^\d{2}-\d{3}$/.test(code);
-
-export const clearText = (text: string) => {
-  return text.replace(/<\/?[^>]+(>|$)/g, '');
-};
+/* ------------------------------ URL & Routes ------------------------------ */
 
 export const getFullURL = () => `${window.location.protocol}//${window.location.host}`;
-
 export const getCurrentRoute = () => location.pathname;
-
 export const getFirstSegmentFromCurrentRoute = () => location.pathname.split('/')[1];
+
+export const loadDynamicImage = async (path: string, imageName: string, extension: string): Promise<string> => {
+  const imageModule = await import(`./${path}/${imageName}.${extension}`);
+  return imageModule.default;
+};
