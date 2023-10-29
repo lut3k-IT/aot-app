@@ -25,14 +25,6 @@ const Init = () => {
     });
   }, [heroes]);
 
-  console.log('render init');
-
-  useEffect(() => {
-    return () => {
-      console.log('unmount init');
-    };
-  }, []);
-
   return (
     <>
       <AppHelmet />

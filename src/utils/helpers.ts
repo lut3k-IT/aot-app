@@ -17,6 +17,6 @@ export const getCurrentRoute = () => location.pathname;
 export const getFirstSegmentFromCurrentRoute = () => location.pathname.split('/')[1];
 
 export const loadDynamicImage = async (path: string, imageName: string, extension: string): Promise<string> => {
-  const imageModule = await import(`${path}/${imageName}.${extension}`);
+  const imageModule = await import(`./${path}/${imageName}.${extension}`);
   return imageModule.default;
 };
