@@ -1,3 +1,5 @@
+import { SortDirection } from './enums';
+
 export type ErrorType = string | undefined;
 
 export type ImageSourceType = string | undefined;
@@ -42,3 +44,28 @@ export interface QuotationType {
 }
 
 export type FavoriteType = number;
+
+export interface FilterNumeralRange {
+  min?: number;
+  max?: number;
+}
+
+export interface FilterCriteria {
+  status?: number;
+  age?: FilterNumeralRange;
+  height?: FilterNumeralRange;
+  weight?: FilterNumeralRange;
+  mbti?: number;
+  species?: number;
+  residence?: number;
+  hasAge?: boolean;
+  hasHeight?: boolean;
+  hasWeight?: boolean;
+}
+
+export interface SortCriteria {
+  name?: SortDirection;
+  age?: SortDirection;
+  height?: SortDirection;
+  weight?: SortDirection;
+}

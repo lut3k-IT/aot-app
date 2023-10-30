@@ -1,10 +1,14 @@
+import { useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { v4 } from 'uuid';
 
 import { RoutePath } from '@/constants/enums';
-import { HeroType } from '@/constants/types';
-import { getResidenceName } from '@/utils/dataProcessing';
+import { FavoriteType, HeroType } from '@/constants/types';
+import { addFavorite, removeFavorite } from '@/store/heroesSlice';
+import { getResidenceName, isInFavorites } from '@/utils/dataProcessing';
 
+import useAppDispatch from '../hooks/useAppDispatch';
 import CharacterPicture from './CharacterPicture';
 import HeartButton from './HeartButton';
 import HeroStatus from './HeroStatus';
@@ -12,33 +16,42 @@ import MbtiFrame from './MbtiFrame';
 
 interface HeroCardProps {
   data: HeroType;
+  favorites: FavoriteType[];
 }
 
-const HeroCard = (props: HeroCardProps) => {
-  const { data } = props;
-  const navigate = useNavigate();
+const cnContainer = 'flex gap-4 h-[108px]';
+const cnDetailBox = 'flex flex-col justify-between items-center gap-1';
+const cnDetailTitle = 'text-sm font-medium text-muted-foreground leading-none';
+const cnDetailValue = 'text-lg font-semibold leading-none';
 
-  const cnContainer = 'flex gap-4 h-[108px]';
-  const cnDetailBox = 'flex flex-col justify-between items-center gap-1';
-  const cnDetailTitle = 'text-sm font-medium text-muted-foreground leading-none';
-  const cnDetailValue = 'text-lg font-semibold leading-none';
+const HeroCard = (props: HeroCardProps) => {
+  const { data, favorites } = props;
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   const residenceName = getResidenceName(data.residence);
+  const isCurrentFavorite = isInFavorites(data.id, favorites);
 
   const showedDetails = [
     {
-      title: 'Age',
+      title: t('data:age.title'),
       value: data.age
     },
     {
-      title: 'Height',
+      title: t('data:height.title'),
       value: data.height
     },
     {
-      title: 'Status',
+      title: t('data:status.title'),
       value: <HeroStatus statusId={data.status} />
     }
   ];
+
+  const handleToggleFavorite = useCallback(() => {
+    const action = isCurrentFavorite ? removeFavorite : addFavorite;
+    dispatch(action(data.id));
+  }, [data, favorites, dispatch]);
 
   const DetailsBoxes = () =>
     showedDetails.map((detail) => (
@@ -50,8 +63,6 @@ const HeroCard = (props: HeroCardProps) => {
         <div className={cnDetailValue}>{detail.value || '-'}</div>
       </div>
     ));
-
-  const handleToggleFavorite = () => {};
 
   return (
     <div className={cnContainer}>
@@ -74,6 +85,7 @@ const HeroCard = (props: HeroCardProps) => {
           </div>
           <HeartButton
             className={'absolute top-0 right-0'}
+            isFilled={isCurrentFavorite}
             onToggleFavorite={handleToggleFavorite}
           />
         </div>

@@ -32,6 +32,7 @@ const iconVariants = cva('text-current', {
     },
     size: {
       default: 'w-6 h-6',
+      xs: 'w-4 h-4',
       sm: 'w-5 h-5',
       lg: 'w-7 h-7'
     }

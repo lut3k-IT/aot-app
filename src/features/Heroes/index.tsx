@@ -6,8 +6,8 @@ import PageHeading from '@/components/ui/PageHeading';
 import { RoutePath } from '@/constants/enums';
 import { getCurrentRoute } from '@/utils/helpers';
 
-import MovingPanel from '../components/ui/MovingPanel';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/Tabs';
+import MovingPanel from '../../components/ui/MovingPanel';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/Tabs';
 
 enum TabValue {
   GALLERY = 'gallery',
@@ -43,33 +43,29 @@ const Heroes = (props: HeroesProps) => {
 
   return (
     <>
-      <MovingPanel
-        translateClassName={'-translate-y-[56px]'}
-        // className={'shadow-white-bottom dark:shadow-black-bottom'}
-      >
+      <MovingPanel translateClassName={'-translate-y-[56px]'}>
         <Tabs
           defaultValue={defaultValueBasedOnTheRoute()}
           className='w-full pt-4'
-          // className='w-full flex justify-center'
         >
           <TabsList className='w-full flex justify-between'>
             <TabsTrigger
               value={TabValue.GALLERY}
               className={tabsTriggerClassName}
             >
-              {t('common:tabs.gallery')}
+              {t('common:tab.gallery')}
             </TabsTrigger>
             <TabsTrigger
               value={TabValue.CHARTS}
               className={tabsTriggerClassName}
             >
-              {t('common:tabs.charts')}
+              {t('common:tab.charts')}
             </TabsTrigger>
             <TabsTrigger
               value={TabValue.COMPARISON}
               className={tabsTriggerClassName}
             >
-              {t('common:tabs.comparison')}
+              {t('common:tab.comparison')}
             </TabsTrigger>
           </TabsList>
           <TabsContent

@@ -6,8 +6,8 @@ import { v4 } from 'uuid';
 import { Button } from '@/components/ui/Button';
 import { CharacterType, RoutePath } from '@/constants/enums';
 
-import ButtonGoBack from '../components/ui/ButtonGoBack';
-import CharacterPicture from '../components/ui/CharacterPicture';
+import ButtonGoBack from '../../components/ui/ButtonGoBack';
+import CharacterPicture from '../../components/ui/CharacterPicture';
 
 interface GridRowProps {
   title: string;
@@ -96,7 +96,7 @@ const CharacterDetails = (props: CharacterDetailsProps) => {
           variant={isFavorite ? 'secondary' : 'default'}
           iconProps={{ isFilled: isFavorite, className: isFavorite ? 'text-red-500 fill-red-500' : '' }}
         >
-          {isFavorite ? t('common:button.removeFromFavorites') : t('common:button.addToFavorites')}
+          {isFavorite ? t('common:action.removeFromFavorites') : t('common:action.addToFavorites')}
         </Button>
       </div>
     </div>

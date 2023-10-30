@@ -45,7 +45,6 @@ const QuotationBarMobile = () => {
     if (textRef.current && textRef.current.parentElement) {
       const textWidth = textRef.current.offsetWidth;
       const scrollContainerWidth = textRef.current.parentElement.offsetWidth;
-      // const newAnimationDuration = (scrollContainerWidth * textWidth) / 10000;
       const newAnimationDuration = scrollContainerWidth * (textWidth / 10000);
       setAnimationDuration(`${newAnimationDuration}s`);
     }

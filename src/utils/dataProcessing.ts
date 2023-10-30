@@ -1,35 +1,45 @@
 import { useTranslation } from 'react-i18next';
 
 import { FavoriteType, HeroType } from '@/constants/types';
+import allegiances from '@/data/allegiances';
 import mbti from '@/data/mbti';
-import mbtiGroup from '@/data/mbti-group';
+import mbtiGroup from '@/data/mbtiGroup';
 import residences from '@/data/residences';
 import statuses from '@/data/statuses';
 
 export const getResidenceName = (id: number) => {
   const { t } = useTranslation();
-  const residenceKeyName = residences.find((x) => x.id === id)?.keyName;
-  return residenceKeyName ? t(`data:residence.${residenceKeyName}`) : null;
+  const keyName = residences.find((data) => data.id === id)?.keyName;
+  return keyName ? t(`data:residence.${keyName}`) : null;
 };
 
 export const getStatusName = (id: number) => {
   const { t } = useTranslation();
-  const statusKeyName = statuses.find((x) => x.id === id)?.keyName;
-  return statusKeyName ? t(`data:status.${statusKeyName}.short`) : null;
+  const keyName = statuses.find((data) => data.id === id)?.keyName;
+  return keyName ? t(`data:status.${keyName}.short`) : null;
 };
 
-export const getMbtiShortName = (id: number) => mbti.find((x) => x.id === id)?.shortName;
+export const getAllegianceNames = (ids: number[]) => {
+  const { t } = useTranslation();
+  const namesArray = ids.map((id) => {
+    const keyName = allegiances.find((data) => data.id === id)?.keyName;
+    return keyName ? t(`data:allegiance.${keyName}`) : null;
+  });
+  return namesArray;
+};
+
+export const getMbtiShortName = (id: number) => mbti.find((data) => data.id === id)?.shortName;
 
 export const getMbtiLongName = (id: number) => {
   const { t } = useTranslation();
-  const mbtiKeyName = mbti.find((x) => x.id === id)?.keyName;
-  return mbtiKeyName ? t(`data:mbti.${mbtiKeyName}`) : null;
+  const keyName = mbti.find((data) => data.id === id)?.keyName;
+  return keyName ? t(`data:mbti.${keyName}`) : null;
 };
 
 export const getMbtiGroupName = (id: number) => {
   const { t } = useTranslation();
-  const mbtiGroupKeyName = mbtiGroup.find((x) => x.id === id)?.keyName;
-  return mbtiGroupKeyName ? t(`data:mbtiGroup.${mbtiGroupKeyName}`) : null;
+  const keyName = mbtiGroup.find((data) => data.id === id)?.keyName;
+  return keyName ? t(`data:mbtiGroup.${keyName}`) : null;
 };
 
 export const getHeroName = (id: number, heroes: HeroType[]) => {

@@ -55,3 +55,13 @@ export enum PromiseStatus {
   SUCCEDED = 'succeeded', // promise fullfilled
   FAILED = 'failed' // promise rejected
 }
+
+export enum SortDirection {
+  ASC,
+  DESC
+}
+
+export enum ElementsIds {
+  ROOT = 'root',
+  PAGE_HEADING_OPTIONS = 'page-heading-options'
+}

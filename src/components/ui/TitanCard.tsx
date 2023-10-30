@@ -1,39 +1,57 @@
+import { useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { v4 } from 'uuid';
 
 import { RoutePath } from '@/constants/enums';
-import { HeroType, TitanType } from '@/constants/types';
-import { getHeroName } from '@/utils/dataProcessing';
+import { FavoriteType, HeroType, TitanType } from '@/constants/types';
+import { addFavorite, removeFavorite } from '@/store/titanSlice';
+import { getAllegianceNames, getHeroName, isInFavorites } from '@/utils/dataProcessing';
 
+import useAppDispatch from '../hooks/useAppDispatch';
 import CharacterPicture from './CharacterPicture';
 import HeartButton from './HeartButton';
 import MbtiFrame from './MbtiFrame';
 
 interface TitanCardProps {
   data: TitanType;
+  favorites: FavoriteType[];
   heroesData: HeroType[];
 }
 
-const TitanCard = (props: TitanCardProps) => {
-  const { data, heroesData } = props;
-  const navigate = useNavigate();
+const cnContainer = 'flex gap-4 h-[108px]';
+const cnDetailBox = 'flex flex-col justify-between items-center gap-1';
+const cnDetailTitle = 'text-sm font-medium text-muted-foreground leading-none';
+const cnDetailValue = 'text-lg font-semibold leading-none';
 
-  const cnContainer = 'flex gap-4 h-[108px]';
-  const cnDetailBox = 'flex flex-col justify-between items-center gap-1';
-  const cnDetailTitle = 'text-sm font-medium text-muted-foreground leading-none';
-  const cnDetailValue = 'text-lg font-semibold leading-none';
+const TitanCard = (props: TitanCardProps) => {
+  const { data, favorites, heroesData } = props;
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   const currentInheritor = getHeroName(data.currentInheritor, heroesData);
+  const allegianceNames = getAllegianceNames(data.allegiance);
+  const isCurrentFavorite = isInFavorites(data.id, favorites);
 
-  const showedDetails = [
+  const visibleDetails = [
     {
-      title: 'Height',
+      title: t('data:height.title'),
       value: data.height
+    },
+    {
+      title: t('data:allegiance.title'),
+      value: allegianceNames[0]
     }
   ];
 
+  const handleToggleFavorite = useCallback(() => {
+    const action = isCurrentFavorite ? removeFavorite : addFavorite;
+    dispatch(action(data.id));
+  }, [data, favorites, dispatch]);
+
   const DetailsBoxes = () =>
-    showedDetails.map((detail) => (
+    visibleDetails.map((detail) => (
       <div
         className={cnDetailBox}
         key={v4()}
@@ -42,8 +60,6 @@ const TitanCard = (props: TitanCardProps) => {
         <div className={cnDetailValue}>{detail.value || '-'}</div>
       </div>
     ));
-
-  const handleToggleFavorite = () => {};
 
   return (
     <div className={cnContainer}>
@@ -64,6 +80,7 @@ const TitanCard = (props: TitanCardProps) => {
           </div>
           <HeartButton
             className={'absolute top-0 right-0'}
+            isFilled={isCurrentFavorite}
             onToggleFavorite={handleToggleFavorite}
           />
         </div>

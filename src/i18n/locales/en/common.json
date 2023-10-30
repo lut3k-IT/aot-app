@@ -12,16 +12,20 @@
     "termsOfService": "Terms of service",
     "portfolio": "lut3k.com"
   },
-  "tabs": {
+  "tab": {
     "gallery": "Gallery",
     "charts": "Charts",
     "comparison": "Comparison"
   },
-  "button": {
+  "action": {
     "submit": "Submit",
     "cancel": "Cancel",
     "addToFavorites": "Add to favorites",
     "removeFromFavorites": "Remove from favorites"
+  },
+  "option": {
+    "filter": "Filter",
+    "sort": "Sort"
   },
   "spoilerMode": "Hide spoilers mode",
   "form": {},

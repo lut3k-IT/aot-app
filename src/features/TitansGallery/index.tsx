@@ -26,6 +26,7 @@ const TitansGallery = () => {
     paginatedTitans.map((titan) => (
       <TitanCard
         data={titan}
+        favorites={favoriteTitansIds}
         heroesData={originalHeroes}
         key={titan.id}
       />
