@@ -21,7 +21,11 @@
     "submit": "Submit",
     "cancel": "Cancel",
     "addToFavorites": "Add to favorites",
-    "removeFromFavorites": "Remove from favorites"
+    "removeFromFavorites": "Remove from favorites",
+    "save": "Save",
+    "saveChanges": "Save changes",
+    "reset": "Reset",
+    "resetAll": "Reset all"
   },
   "option": {
     "filter": "Filter",

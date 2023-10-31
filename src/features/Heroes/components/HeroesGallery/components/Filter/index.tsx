@@ -1,47 +1,137 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { UserPlus } from 'lucide-react';
 
-import { Button } from '@/components/ui/Button';
+import { Button, ButtonProps } from '@/components/ui/Button';
 import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuPortal,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuSeparator,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuTrigger
-} from '@/components/ui/DropdownMenu';
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger
+} from '@/components/ui/Dialog';
+import { Input } from '@/components/ui/Input';
+import { ScrollArea } from '@/components/ui/ScrollArea';
 import { Slider } from '@/components/ui/Slider';
+import mbti, { MbtiType } from '@/data/mbti';
+import residences, { ResidenceType } from '@/data/residences';
+import species, { SpeciesType } from '@/data/species';
+import statuses, { StatusType } from '@/data/statuses';
+import { cn } from '@/lib/utils';
 
 interface FilterProps {}
+
+interface FilterSegmentProps {
+  title: string;
+  children: React.ReactNode;
+  onReset?: () => void;
+}
+
+interface FilterButtonProps extends ButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement> {
+  children: React.ReactNode;
+  isActive?: boolean;
+}
+
+const FilterSegment = (props: FilterSegmentProps) => {
+  const { title, children, onReset } = props;
+  return (
+    <div className={'flex flex-col gap-2'}>
+      <div className={'flex gap-2 justify-between items-center h-8'}>
+        <h3 className={'font-semibold'}>{title}</h3>
+        {onReset && (
+          <Button
+            variant={'link'}
+            className={'h-full p-0 px-3'}
+            onClick={() => onReset()}
+          >
+            Reset
+          </Button>
+        )}
+      </div>
+      {children}
+    </div>
+  );
+};
+
+const FilterButton = (props: FilterButtonProps) => {
+  const { children, isActive, className, ...rest } = props;
+  return (
+    <Button
+      variant={'outline'}
+      className={cn(
+        'w-full h-auto py-1 px-2 whitespace-normal hover:bg-inherit',
+        className,
+        isActive ? 'border-primary !text-primary' : ''
+      )}
+      {...rest}
+    >
+      {children}
+    </Button>
+  );
+};
+
+// TODO: filter has to be a modal
+// TODO: make an indicator to show filtering is active
+
+const DEFAULT_AGE = [0, 75];
+const DEFAULT_HEIGHT = [100, 700];
+const DEFAULT_WEIGHT = [40, 150];
 
 const Filter = (props: FilterProps) => {
   const {} = props;
   const { t } = useTranslation();
 
-  const [status, setStatus] = useState<number>();
-  const [age, setAge] = useState([0, 75]);
-  const [height, setHeight] = useState([100, 700]);
-  const [weight, setWeight] = useState([40, 150]);
-  const [mbti, setMbti] = useState<number>();
-  const [species, setSpecies] = useState<number>();
-  const [residence, setResidence] = useState<number>();
+  const [selectedStatuses, setSelectedStatuses] = useState<StatusType[]>([]);
+  const [selectedAge, setSelectedAge] = useState(DEFAULT_AGE);
+  const [selectedHeight, setSelectedHeight] = useState(DEFAULT_HEIGHT);
+  const [selectedWeight, setSelectedWeight] = useState(DEFAULT_WEIGHT);
+  const [selectedMbti, setSelectedMbti] = useState<MbtiType[]>([]);
+  const [selectedSpecies, setSelectedSpecies] = useState<SpeciesType[]>([]);
+  const [selectedResidence, setSelectedResidence] = useState<ResidenceType[]>([]);
   const [hasAge, setHasAge] = useState<boolean>();
   const [hasHeight, setHasHeight] = useState<boolean>();
   const [hasWeight, setHasWeight] = useState<boolean>();
 
   const sliderContainerCn = '';
 
+  // TODO: uniwersalna funkcja generyk z <T> przyjmująca parametry 'data' i funkcje setstate
+
+  const handleSetStatuses = (passedStatus: StatusType) => {
+    setSelectedStatuses((latest) =>
+      latest.some((x) => x.id === passedStatus.id)
+        ? latest.filter((x) => x.id !== passedStatus.id)
+        : [...latest, passedStatus]
+    );
+  };
+
+  const handleSetMbti = (passedMbti: MbtiType) => {
+    setSelectedMbti((latest) =>
+      latest.some((x) => x.id === passedMbti.id)
+        ? latest.filter((x) => x.id !== passedMbti.id)
+        : [...latest, passedMbti]
+    );
+  };
+
+  const handleSetSpecies = (passedSpecies: SpeciesType) => {
+    setSelectedSpecies((latest) =>
+      latest.some((x) => x.id === passedSpecies.id)
+        ? latest.filter((x) => x.id !== passedSpecies.id)
+        : [...latest, passedSpecies]
+    );
+  };
+
+  const handleSetResidences = (passedResidences: SpeciesType) => {
+    setSelectedResidence((latest) =>
+      latest.some((x) => x.id === passedResidences.id)
+        ? latest.filter((x) => x.id !== passedResidences.id)
+        : [...latest, passedResidences]
+    );
+  };
+
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+    <Dialog>
+      <DialogTrigger asChild>
         <Button
           iconSize={'sm'}
           iconPosition={'right'}
@@ -52,108 +142,214 @@ const Filter = (props: FilterProps) => {
         >
           {t('common:option.filter')}
         </Button>
-      </DropdownMenuTrigger>
-      {/* --------------------------------- status -------------------------------- */}
-      <DropdownMenuContent align={'end'}>
-        <DropdownMenuSub>
-          <DropdownMenuSubTrigger>
-            <UserPlus className='mr-2 h-4 w-4' />
-            <span>{t('data:status.title')}</span>
-          </DropdownMenuSubTrigger>
-          <DropdownMenuPortal>
-            <DropdownMenuSubContent>
-              <DropdownMenuCheckboxItem
-              //  checked={showActivityBar}
-              //  onCheckedChange={setShowActivityBar}
-              //  disabled
-              >
-                {t('data:status.alive.long')}
-              </DropdownMenuCheckboxItem>
-              <DropdownMenuCheckboxItem>{t('data:status.dead.long')}</DropdownMenuCheckboxItem>
-              <DropdownMenuCheckboxItem>{t('data:status.unknown.long')}</DropdownMenuCheckboxItem>
-            </DropdownMenuSubContent>
-          </DropdownMenuPortal>
-        </DropdownMenuSub>
-        {/* --------------------------------- age -------------------------------- */}
-        <DropdownMenuSub>
-          <DropdownMenuSubTrigger>
-            <UserPlus className='mr-2 h-4 w-4' />
-            <span>{t('data:age.title')}</span>
-          </DropdownMenuSubTrigger>
-          <DropdownMenuPortal>
-            <DropdownMenuSubContent className={'min-h-[100px] py-6'}>
+      </DialogTrigger>
+      <DialogContent className={'h-[600px] max-h-[100vh]'}>
+        <DialogHeader>
+          <DialogTitle>Filter heroes</DialogTitle>
+          <DialogDescription>Select the appropriate filters. Click save when you&apos;re done.</DialogDescription>
+        </DialogHeader>
+        <ScrollArea className={'h-full -mr-4 pr-4'}>
+          <div className='grid gap-6 py-4'>
+            <FilterSegment
+              title={t('data:status.title')}
+              onReset={() => setSelectedStatuses([])}
+            >
+              <div className={'flex flex-1 gap-2'}>
+                {statuses.map((data) => {
+                  return (
+                    <FilterButton
+                      key={data.id}
+                      isActive={selectedStatuses.some((selected) => selected.id === data.id)}
+                      onClick={() => handleSetStatuses(data)}
+                    >
+                      {t(`data:status.${data.keyName}.long`)}
+                    </FilterButton>
+                  );
+                })}
+              </div>
+            </FilterSegment>
+            <FilterSegment
+              title={t('data:age.title')}
+              onReset={() => setSelectedAge(DEFAULT_AGE)}
+            >
+              <div className={'flex gap-2 justify-between'}>
+                <Input
+                  className={'max-w-[100px]'}
+                  value={selectedAge[0]}
+                  onChange={(e) => setSelectedAge((prev) => [+e.target.value, prev[1]])}
+                />
+                <Input
+                  className={'max-w-[100px]'}
+                  value={selectedAge[1]}
+                  onChange={(e) => setSelectedAge((prev) => [prev[0], +e.target.value])}
+                />
+              </div>
               <Slider
-                defaultValue={age}
-                onValueChange={(v: number[]) => setAge(v)}
+                defaultValue={DEFAULT_AGE}
+                value={selectedAge}
+                onValueChange={(v: number[]) => setSelectedAge(v)}
                 min={0}
                 max={75}
                 step={1}
                 minStepsBetweenThumbs={1}
+                className={'py-2'}
               />
-            </DropdownMenuSubContent>
-          </DropdownMenuPortal>
-        </DropdownMenuSub>
-        {/* --------------------------------- height -------------------------------- */}
-        <DropdownMenuSub>
-          <DropdownMenuSubTrigger>
-            <UserPlus className='mr-2 h-4 w-4' />
-            <span>{t('data:height.title')}</span>
-          </DropdownMenuSubTrigger>
-          <DropdownMenuPortal>
-            <DropdownMenuSubContent className={'min-h-[100px] py-6'}>
+            </FilterSegment>
+            <FilterSegment
+              title={`${t('data:height.title')} (cm)`}
+              onReset={() => setSelectedHeight(DEFAULT_HEIGHT)}
+            >
+              <div className={'flex gap-2 justify-between'}>
+                <Input
+                  className={'max-w-[100px]'}
+                  value={selectedHeight[0]}
+                  onChange={(e) => setSelectedHeight((prev) => [+e.target.value, prev[1]])}
+                />
+                <Input
+                  className={'max-w-[100px]'}
+                  value={selectedHeight[1]}
+                  onChange={(e) => setSelectedHeight((prev) => [prev[0], +e.target.value])}
+                />
+              </div>
               <Slider
-                defaultValue={height}
-                onValueChange={(v: number[]) => setHeight(v)}
+                defaultValue={DEFAULT_HEIGHT}
+                value={selectedHeight}
+                onValueChange={(v: number[]) => setSelectedHeight(v)}
                 min={100}
                 max={700}
-                step={10}
+                step={1}
                 minStepsBetweenThumbs={1}
+                className={'py-2'}
               />
-            </DropdownMenuSubContent>
-          </DropdownMenuPortal>
-        </DropdownMenuSub>
-        {/* --------------------------------- weight -------------------------------- */}
-        <DropdownMenuSub>
-          <DropdownMenuSubTrigger>
-            <UserPlus className='mr-2 h-4 w-4' />
-            <span>{t('data:weight.title')}</span>
-          </DropdownMenuSubTrigger>
-          <DropdownMenuPortal>
-            <DropdownMenuSubContent className={'min-h-[100px] py-6'}>
+            </FilterSegment>
+            <FilterSegment
+              title={`${t('data:weight.title')} (kg)`}
+              onReset={() => setSelectedWeight(DEFAULT_WEIGHT)}
+            >
+              <div className={'flex gap-2 justify-between'}>
+                <Input
+                  className={'max-w-[100px]'}
+                  value={selectedWeight[0]}
+                  onChange={(e) => setSelectedWeight((prev) => [+e.target.value, prev[1]])}
+                />
+                <Input
+                  className={'max-w-[100px]'}
+                  value={selectedWeight[1]}
+                  onChange={(e) => setSelectedWeight((prev) => [prev[0], +e.target.value])}
+                />
+              </div>
               <Slider
-                defaultValue={weight}
-                onValueChange={(v: number[]) => setWeight(v)}
+                defaultValue={DEFAULT_WEIGHT}
+                value={selectedWeight}
+                onValueChange={(v: number[]) => setSelectedWeight(v)}
                 min={40}
                 max={150}
-                step={5}
+                step={1}
                 minStepsBetweenThumbs={1}
+                className={'py-2'}
               />
-            </DropdownMenuSubContent>
-          </DropdownMenuPortal>
-        </DropdownMenuSub>
-        {/* --------------------------------- mbti -------------------------------- */}
-        <DropdownMenuSub>
-          <DropdownMenuSubTrigger>
-            <UserPlus className='mr-2 h-4 w-4' />
-            <span>{t('data:mbti.title')}</span>
-          </DropdownMenuSubTrigger>
-          <DropdownMenuPortal>
-            <DropdownMenuSubContent>
-              {/* TODO: map here */}
-              <DropdownMenuCheckboxItem>{t('data:status.alive.long')}</DropdownMenuCheckboxItem>
-            </DropdownMenuSubContent>
-          </DropdownMenuPortal>
-        </DropdownMenuSub>
-        {/* <DropdownMenuRadioGroup
-        // value={position}
-        // onValueChange={setPosition}
-        >
-          <DropdownMenuRadioItem value='all'>All</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value='favorites'>Favorites</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value='noFavorites'>Not favorites</DropdownMenuRadioItem>
-        </DropdownMenuRadioGroup> */}
-      </DropdownMenuContent>
-    </DropdownMenu>
+            </FilterSegment>
+            <FilterSegment
+              title={t('data:mbti.title')}
+              onReset={() => setSelectedMbti([])}
+            >
+              <div className={'grid grid-cols-4 gap-2'}>
+                {mbti.map((data) => {
+                  return (
+                    <FilterButton
+                      key={data.id}
+                      isActive={selectedMbti.some((selected) => selected.id === data.id)}
+                      onClick={() => handleSetMbti(data)}
+                    >
+                      {data.shortName}
+                    </FilterButton>
+                  );
+                })}
+              </div>
+            </FilterSegment>
+            <FilterSegment
+              title={t('data:species.title')}
+              onReset={() => setSelectedSpecies([])}
+            >
+              <div className={'grid grid-cols-2 gap-2'}>
+                {species.map((data) => {
+                  return (
+                    <FilterButton
+                      key={data.id}
+                      isActive={selectedSpecies.some((selected) => selected.id === data.id)}
+                      onClick={() => handleSetSpecies(data)}
+                    >
+                      {t(`data:species.${data.keyName}`)}
+                    </FilterButton>
+                  );
+                })}
+              </div>
+            </FilterSegment>
+            <FilterSegment
+              title={t('data:residence.title')}
+              onReset={() => setSelectedResidence([])}
+            >
+              <div className={'grid grid-cols-2 gap-2 sm:grid-cols-3'}>
+                {residences.map((data) => {
+                  return (
+                    <FilterButton
+                      key={data.id}
+                      isActive={selectedResidence.some((selected) => selected.id === data.id)}
+                      onClick={() => handleSetResidences(data)}
+                    >
+                      {t(`data:residence.${data.keyName}`)}
+                    </FilterButton>
+                  );
+                })}
+              </div>
+            </FilterSegment>
+            <FilterSegment
+              title={'Has info about'}
+              onReset={() => {
+                setHasAge(undefined);
+                setHasHeight(undefined);
+                setHasWeight(undefined);
+              }}
+            >
+              <div className={'grid grid-cols-3 gap-2'}>
+                <FilterButton
+                  isActive={hasAge}
+                  onClick={() => setHasAge((prev) => !prev)}
+                >
+                  {t('data:age.title')}
+                </FilterButton>
+                <FilterButton
+                  isActive={hasHeight}
+                  onClick={() => setHasHeight((prev) => !prev)}
+                >
+                  {t('data:height.title')}
+                </FilterButton>
+                <FilterButton
+                  isActive={hasWeight}
+                  onClick={() => setHasWeight((prev) => !prev)}
+                >
+                  {t('data:weight.title')}
+                </FilterButton>
+              </div>
+            </FilterSegment>
+          </div>
+        </ScrollArea>
+        <DialogFooter className={'flex flex-auto flex-row gap-3'}>
+          <Button
+            className={'w-fit whitespace-nowrap'}
+            variant={'secondary'}
+          >
+            {t('common:action.resetAll')}
+          </Button>
+          <Button
+            type='submit'
+            className={'w-full'}
+          >
+            {t('common:action.saveChanges')}
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   );
 };
 

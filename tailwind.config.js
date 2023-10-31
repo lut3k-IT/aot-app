@@ -3,19 +3,19 @@ module.exports = {
   darkMode: ['class'],
   content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
   theme: {
+    screens: {
+      sm: '425px',
+      '2sm': '560px',
+      md: '768px',
+      '2md': '834px',
+      lg: '1024px',
+      '2lg': '1280px',
+      xl: '1440px',
+      '2xl': '2560px'
+    },
     container: {
       center: true,
-      padding: '2rem',
-      screens: {
-        sm: '425px',
-        '2sm': '560px',
-        md: '768px',
-        '2md': '834px',
-        lg: '1024px',
-        '2lg': '1280px',
-        xl: '1440px',
-        '2xl': '2560px'
-      }
+      padding: '2rem'
     },
     extend: {
       colors: {

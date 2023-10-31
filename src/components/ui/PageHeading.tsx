@@ -2,8 +2,6 @@ import { ElementsIds } from '@/constants/enums';
 
 interface PageHeadingProps {}
 
-export const filterDestination = document.getElementById(ElementsIds.PAGE_HEADING_OPTIONS);
-
 const PageHeading = (props: PageHeadingProps) => {
   const {} = props;
 

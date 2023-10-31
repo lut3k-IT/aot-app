@@ -4,13 +4,15 @@ import { createPortal } from 'react-dom';
 import useAppSelector from '@/components/hooks/useAppSelector';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import HeroCard from '@/components/ui/HeroCard';
-import { filterDestination } from '@/components/ui/PageHeading';
+import { ElementsIds } from '@/constants/enums';
 
 import Filter from './components/Filter';
 
 const PER_PAGE = 30;
 
 const HeroesGallery = () => {
+  const filterDestination = document.getElementById(ElementsIds.PAGE_HEADING_OPTIONS);
+
   const originalHeroes = useAppSelector((state) => state.heroes.data);
   const favoriteHeroesIds = useAppSelector((state) => state.heroes.favoriteIds);
   const fetchingStatus = useAppSelector((state) => state.heroes.status);
