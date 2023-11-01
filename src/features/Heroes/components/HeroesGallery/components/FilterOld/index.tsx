@@ -53,7 +53,7 @@ const Filter = (props: FilterProps) => {
           className={'text-muted-foreground'}
           iconProps={{ className: 'text-muted-foreground' }}
         >
-          {t('common:option.filter')}
+          {t('common:filter.title')}
         </Button>
       </DropdownMenuTrigger>
       {/* --------------------------------- status -------------------------------- */}

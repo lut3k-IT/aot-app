@@ -80,7 +80,22 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       </>
     );
 
-    const iconBasedClass = children ? (iconName ? (iconPosition === 'left' ? 'pl-3' : 'pr-3') : null) : null;
+    let iconBasedClass = null;
+    if (children && iconName) {
+      switch (size) {
+        case 'default':
+          iconBasedClass = iconPosition === 'left' ? 'pl-3' : 'pr-3';
+          break;
+        case 'sm':
+          iconBasedClass = iconPosition === 'left' ? 'pl-2.5' : 'pr-2.5';
+          break;
+        case 'lg':
+          iconBasedClass = iconPosition === 'left' ? 'pl-7' : 'pr-7';
+          break;
+        default:
+          break;
+      }
+    }
 
     const ButtonComponent = (
       <MainComponent

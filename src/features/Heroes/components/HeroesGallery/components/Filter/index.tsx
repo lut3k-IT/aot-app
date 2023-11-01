@@ -89,11 +89,24 @@ const Filter = (props: FilterProps) => {
   const [selectedMbti, setSelectedMbti] = useState<MbtiType[]>([]);
   const [selectedSpecies, setSelectedSpecies] = useState<SpeciesType[]>([]);
   const [selectedResidence, setSelectedResidence] = useState<ResidenceType[]>([]);
-  const [hasAge, setHasAge] = useState<boolean>();
-  const [hasHeight, setHasHeight] = useState<boolean>();
-  const [hasWeight, setHasWeight] = useState<boolean>();
+  const [hasAge, setHasAge] = useState<boolean>(false);
+  const [hasHeight, setHasHeight] = useState<boolean>(false);
+  const [hasWeight, setHasWeight] = useState<boolean>(false);
 
   const sliderContainerCn = '';
+
+  const handleResetAll = () => {
+    setSelectedStatuses([]);
+    setSelectedAge(DEFAULT_AGE);
+    setSelectedHeight(DEFAULT_HEIGHT);
+    setSelectedWeight(DEFAULT_WEIGHT);
+    setSelectedMbti([]);
+    setSelectedSpecies([]);
+    setSelectedResidence([]);
+    setHasAge(false);
+    setHasHeight(false);
+    setHasWeight(false);
+  };
 
   // TODO: uniwersalna funkcja generyk z <T> przyjmująca parametry 'data' i funkcje setstate
 
@@ -133,23 +146,28 @@ const Filter = (props: FilterProps) => {
     <Dialog>
       <DialogTrigger asChild>
         <Button
-          iconSize={'sm'}
+          iconSize={'xs'}
           iconPosition={'right'}
           iconName={'filter'}
           variant={'outline'}
           className={'text-muted-foreground'}
+          size={'sm'}
           iconProps={{ className: 'text-muted-foreground' }}
         >
-          {t('common:option.filter')}
+          {t('common:filter.title')}
         </Button>
       </DialogTrigger>
       <DialogContent className={'h-[600px] max-h-[100vh]'}>
         <DialogHeader>
-          <DialogTitle>Filter heroes</DialogTitle>
-          <DialogDescription>Select the appropriate filters. Click save when you&apos;re done.</DialogDescription>
+          <DialogTitle>
+            {t('common:filter.title')} {t('common:title.heroes')}
+          </DialogTitle>
+          <DialogDescription>{t('common:filter.heroesDesc')}</DialogDescription>
         </DialogHeader>
-        <ScrollArea className={'h-full -mr-4 pr-4'}>
-          <div className='grid gap-6 py-4'>
+        {/* <ScrollArea className={'h-full -mr-4 pr-4'}> */}
+        <ScrollArea className={'h-full -mx-2 -mr-4 pr-2'}>
+          {/* <div className='grid gap-6 py-4'> */}
+          <div className='grid gap-6 mx-2 py-4'>
             <FilterSegment
               title={t('data:status.title')}
               onReset={() => setSelectedStatuses([])}
@@ -304,11 +322,11 @@ const Filter = (props: FilterProps) => {
               </div>
             </FilterSegment>
             <FilterSegment
-              title={'Has info about'}
+              title={t('common:filter.hasInfoAbout')}
               onReset={() => {
-                setHasAge(undefined);
-                setHasHeight(undefined);
-                setHasWeight(undefined);
+                setHasAge(false);
+                setHasHeight(false);
+                setHasWeight(false);
               }}
             >
               <div className={'grid grid-cols-3 gap-2'}>
@@ -338,6 +356,7 @@ const Filter = (props: FilterProps) => {
           <Button
             className={'w-fit whitespace-nowrap'}
             variant={'secondary'}
+            onClick={() => handleResetAll()}
           >
             {t('common:action.resetAll')}
           </Button>

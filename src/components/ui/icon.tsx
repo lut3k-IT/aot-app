@@ -43,7 +43,7 @@ const iconVariants = cva('text-current', {
   }
 });
 
-export type IconSizes = 'default' | 'sm' | 'lg';
+export type IconSizes = 'default' | 'xs' | 'sm' | 'lg';
 
 export type IconNames =
   | 'arrowDownWideNarrow'

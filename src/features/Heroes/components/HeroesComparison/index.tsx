@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { MousePointerSquare } from 'lucide-react';
 
+import AppHelmet from '@/components/ui/AppHelmet';
 import CharacterPicture from '@/components/ui/CharacterPicture';
 import { Command, CommandEmpty, CommandGroup, CommandInput } from '@/components/ui/Command';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/Popover';
@@ -96,9 +98,11 @@ const PictureWithSelect = (props: PictureWithSelectProps) => {
 
 const HeroesComparison = () => {
   const [characterList, setCharacterList] = useState([{}]);
+  const { t } = useTranslation();
 
   return (
     <div className={'w-full grid grid-cols-2 gap-2 mt-4'}>
+      <AppHelmet title={`${t('common:title.heroes')} ${t('common:tab.comparison')}`} />
       <div className={'flex-center flex-col gap-8'}>
         <PictureWithSelect />
         <div className={'flex-center flex-col gap-4 w-full'}>

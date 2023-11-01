@@ -27,9 +27,13 @@
     "reset": "Reset",
     "resetAll": "Reset all"
   },
-  "option": {
-    "filter": "Filter",
-    "sort": "Sort"
+  "filter": {
+    "title": "Filter",
+    "hasInfoAbout": "Has info about",
+    "heroesDesc": "Set filters and save the changes."
+  },
+  "sort": {
+    "title": "Sort"
   },
   "spoilerMode": "Hide spoilers mode",
   "form": {},
