@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Button, ButtonProps } from '@/components/ui/Button';
@@ -19,6 +19,7 @@ import residences, { ResidenceType } from '@/data/residences';
 import species, { SpeciesType } from '@/data/species';
 import statuses, { StatusType } from '@/data/statuses';
 import { cn } from '@/lib/utils';
+import { toggleStateDataById } from '@/utils/dataProcessing';
 
 interface FilterProps {}
 
@@ -71,7 +72,6 @@ const FilterButton = (props: FilterButtonProps) => {
   );
 };
 
-// TODO: filter has to be a modal
 // TODO: make an indicator to show filtering is active
 
 const DEFAULT_AGE = [0, 75];
@@ -93,9 +93,7 @@ const Filter = (props: FilterProps) => {
   const [hasHeight, setHasHeight] = useState<boolean>(false);
   const [hasWeight, setHasWeight] = useState<boolean>(false);
 
-  const sliderContainerCn = '';
-
-  const handleResetAll = () => {
+  const handleResetAll = useCallback(() => {
     setSelectedStatuses([]);
     setSelectedAge(DEFAULT_AGE);
     setSelectedHeight(DEFAULT_HEIGHT);
@@ -106,40 +104,22 @@ const Filter = (props: FilterProps) => {
     setHasAge(false);
     setHasHeight(false);
     setHasWeight(false);
-  };
-
-  // TODO: uniwersalna funkcja generyk z <T> przyjmująca parametry 'data' i funkcje setstate
+  }, []);
 
   const handleSetStatuses = (passedStatus: StatusType) => {
-    setSelectedStatuses((latest) =>
-      latest.some((x) => x.id === passedStatus.id)
-        ? latest.filter((x) => x.id !== passedStatus.id)
-        : [...latest, passedStatus]
-    );
+    toggleStateDataById(passedStatus, setSelectedStatuses);
   };
 
   const handleSetMbti = (passedMbti: MbtiType) => {
-    setSelectedMbti((latest) =>
-      latest.some((x) => x.id === passedMbti.id)
-        ? latest.filter((x) => x.id !== passedMbti.id)
-        : [...latest, passedMbti]
-    );
+    toggleStateDataById(passedMbti, setSelectedMbti);
   };
 
   const handleSetSpecies = (passedSpecies: SpeciesType) => {
-    setSelectedSpecies((latest) =>
-      latest.some((x) => x.id === passedSpecies.id)
-        ? latest.filter((x) => x.id !== passedSpecies.id)
-        : [...latest, passedSpecies]
-    );
+    toggleStateDataById(passedSpecies, setSelectedSpecies);
   };
 
   const handleSetResidences = (passedResidences: SpeciesType) => {
-    setSelectedResidence((latest) =>
-      latest.some((x) => x.id === passedResidences.id)
-        ? latest.filter((x) => x.id !== passedResidences.id)
-        : [...latest, passedResidences]
-    );
+    toggleStateDataById(passedResidences, setSelectedResidence);
   };
 
   return (

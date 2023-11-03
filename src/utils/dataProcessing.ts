@@ -1,3 +1,4 @@
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { FavoriteType, HeroType } from '@/constants/types';
@@ -6,6 +7,15 @@ import mbti from '@/data/mbti';
 import mbtiGroup from '@/data/mbtiGroup';
 import residences from '@/data/residences';
 import statuses from '@/data/statuses';
+
+export const toggleStateDataById = <T extends { id: number }>(
+  data: T,
+  setState: React.Dispatch<React.SetStateAction<T[]>>
+) => {
+  setState((latest) =>
+    latest.some((x) => x.id === data.id) ? latest.filter((x) => x.id !== data.id) : [...latest, data]
+  );
+};
 
 export const getResidenceName = (id: number) => {
   const { t } = useTranslation();

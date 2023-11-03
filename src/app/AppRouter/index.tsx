@@ -2,23 +2,24 @@ import { createBrowserRouter, Navigate, Outlet, RouterProvider } from 'react-rou
 
 import PageOverlay from '@/components/ui/PageOverlay';
 import ScrollToTop from '@/components/ui/ScrollToTop';
-import { CharacterType, RoutePath } from '@/constants/enums';
+import { RoutePath } from '@/constants/enums';
 import About from '@/features/Additional/About';
 import Changelog from '@/features/Additional/Changelog';
 import PrivacyPolicy from '@/features/Additional/PrivacyPolicy';
 import TermsOfService from '@/features/Additional/TermsOfService';
-import CharacterDetails from '@/features/CharacterDetails';
 import ErrorPage from '@/features/ErrorBoundaries/ErrorPage';
 import NotFoundRoute from '@/features/ErrorBoundaries/NotFoundRoute';
 import Favorites from '@/features/Favorites/Favorites';
 import FavoritesHeroes from '@/features/Favorites/FavoritesHeroes';
 import FavoritesQuotations from '@/features/Favorites/FavoritesQuotations';
 import FavoritesTitans from '@/features/Favorites/FavoritesTitans';
+import HeroDetails from '@/features/HeroDetails';
 import Heroes from '@/features/Heroes';
 import HeroesCharts from '@/features/Heroes/components/HeroesCharts';
 import HeroesComparison from '@/features/Heroes/components/HeroesComparison';
 import HeroesGallery from '@/features/Heroes/components/HeroesGallery';
 import Quiz from '@/features/Quiz';
+import TitanDetails from '@/features/TitanDetails';
 import Titans from '@/features/TitansGallery';
 
 import Init from './Init';
@@ -69,7 +70,7 @@ export const router = createBrowserRouter([
           },
           {
             path: RoutePath.HERO_DETAILS + '/:id',
-            element: <CharacterDetails type={CharacterType.HERO} />
+            element: <HeroDetails />
           },
           {
             path: RoutePath.TITANS,
@@ -77,7 +78,7 @@ export const router = createBrowserRouter([
           },
           {
             path: RoutePath.TITAN_DETAILS + '/:id',
-            element: <CharacterDetails type={CharacterType.TITAN} />
+            element: <TitanDetails />
           },
           {
             path: RoutePath.FAVORITES,

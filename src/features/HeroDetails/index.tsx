@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { v4 } from 'uuid';
 
 import { Button } from '@/components/ui/Button';
-import { CharacterType, RoutePath } from '@/constants/enums';
+import { RoutePath } from '@/constants/enums';
 
 import ButtonGoBack from '../../components/ui/ButtonGoBack';
 import CharacterPicture from '../../components/ui/CharacterPicture';
@@ -31,12 +31,7 @@ const GridRow = (props: GridRowProps) => {
   );
 };
 
-interface CharacterDetailsProps {
-  type: CharacterType;
-}
-
-const CharacterDetails = (props: CharacterDetailsProps) => {
-  const { type = CharacterType.HERO } = props;
+const HeroDetails = () => {
   const { id } = useParams();
   const { t } = useTranslation();
 
@@ -65,11 +60,9 @@ const CharacterDetails = (props: CharacterDetailsProps) => {
     }
   ];
 
-  const goBackFallbackRoute = type === CharacterType.HERO ? RoutePath.HEROES_GALLERY : RoutePath.TITANS;
-
   return (
     <div className={'pt-body-pad-start'}>
-      <ButtonGoBack fallbackRoute={goBackFallbackRoute} />
+      <ButtonGoBack fallbackRoute={RoutePath.HEROES_GALLERY} />
       <div className={'flex flex-col items-center mt-6 relative'}>
         <div className={'absolute w-full h-[120px] bg-violet-400 rounded-lg'} />
         <CharacterPicture
@@ -103,4 +96,4 @@ const CharacterDetails = (props: CharacterDetailsProps) => {
   );
 };
 
-export default CharacterDetails;
+export default HeroDetails;
