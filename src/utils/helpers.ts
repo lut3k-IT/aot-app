@@ -20,3 +20,9 @@ export const loadDynamicImage = async (path: string, imageName: string, extensio
   const imageModule = await import(`./${path}/${imageName}.${extension}`);
   return imageModule.default;
 };
+
+/* --------------------------------- Others --------------------------------- */
+
+export const filterArrayFromNullish = <T>(array: (T | null | undefined)[]): T[] => {
+  return array.filter((value): value is T => value != null);
+};

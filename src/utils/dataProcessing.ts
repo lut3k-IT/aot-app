@@ -22,11 +22,17 @@ export const getResidenceName = (id: number) => {
   const keyName = residences.find((data) => data.id === id)?.keyName;
   return keyName ? t(`data:residence.${keyName}`) : null;
 };
+export const getResidenceByKeyName = (keyName: string) => {
+  return residences.find((data) => data.keyName === keyName);
+};
 
 export const getStatusName = (id: number) => {
   const { t } = useTranslation();
   const keyName = statuses.find((data) => data.id === id)?.keyName;
   return keyName ? t(`data:status.${keyName}.short`) : null;
+};
+export const getStatusByKeyName = (keyName: string) => {
+  return statuses.find((data) => data.keyName === keyName);
 };
 
 export const getAllegianceNames = (ids: number[]) => {

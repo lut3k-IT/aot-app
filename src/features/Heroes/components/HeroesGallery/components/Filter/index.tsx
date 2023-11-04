@@ -1,5 +1,6 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSearchParams } from 'react-router-dom';
 
 import { Button, ButtonProps } from '@/components/ui/Button';
 import {
@@ -14,12 +15,14 @@ import {
 import { Input } from '@/components/ui/Input';
 import { ScrollArea } from '@/components/ui/ScrollArea';
 import { Slider } from '@/components/ui/Slider';
+import { Param } from '@/constants/enums';
 import mbti, { MbtiType } from '@/data/mbti';
 import residences, { ResidenceType } from '@/data/residences';
 import species, { SpeciesType } from '@/data/species';
 import statuses, { StatusType } from '@/data/statuses';
 import { cn } from '@/lib/utils';
-import { toggleStateDataById } from '@/utils/dataProcessing';
+import { getResidenceByKeyName, getStatusByKeyName, toggleStateDataById } from '@/utils/dataProcessing';
+import { filterArrayFromNullish } from '@/utils/helpers';
 
 interface FilterProps {}
 
@@ -32,6 +35,16 @@ interface FilterSegmentProps {
 interface FilterButtonProps extends ButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   isActive?: boolean;
+}
+
+interface Params {
+  status: string;
+  age: number;
+  height: number;
+  weight: number;
+  mbti: string;
+  species: string;
+  residence: string;
 }
 
 const FilterSegment = (props: FilterSegmentProps) => {
@@ -82,6 +95,8 @@ const Filter = (props: FilterProps) => {
   const {} = props;
   const { t } = useTranslation();
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const [selectedStatuses, setSelectedStatuses] = useState<StatusType[]>([]);
   const [selectedAge, setSelectedAge] = useState(DEFAULT_AGE);
   const [selectedHeight, setSelectedHeight] = useState(DEFAULT_HEIGHT);
@@ -92,6 +107,16 @@ const Filter = (props: FilterProps) => {
   const [hasAge, setHasAge] = useState<boolean>(false);
   const [hasHeight, setHasHeight] = useState<boolean>(false);
   const [hasWeight, setHasWeight] = useState<boolean>(false);
+
+  // const [paramsState, setParamsState] = useState<Params>({
+  //   status: '',
+  //   age: 0,
+  //   height: 0,
+  //   weight: 0,
+  //   mbti: '',
+  //   species: '',
+  //   residence: ''
+  // });
 
   const handleResetAll = useCallback(() => {
     setSelectedStatuses([]);
@@ -106,21 +131,51 @@ const Filter = (props: FilterProps) => {
     setHasWeight(false);
   }, []);
 
-  const handleSetStatuses = (passedStatus: StatusType) => {
-    toggleStateDataById(passedStatus, setSelectedStatuses);
+  const handleSetStatuses = (status: StatusType) => {
+    toggleStateDataById(status, setSelectedStatuses);
   };
 
-  const handleSetMbti = (passedMbti: MbtiType) => {
-    toggleStateDataById(passedMbti, setSelectedMbti);
+  const handleSetMbti = (mbti: MbtiType) => {
+    toggleStateDataById(mbti, setSelectedMbti);
   };
 
-  const handleSetSpecies = (passedSpecies: SpeciesType) => {
-    toggleStateDataById(passedSpecies, setSelectedSpecies);
+  const handleSetSpecies = (species: SpeciesType) => {
+    toggleStateDataById(species, setSelectedSpecies);
   };
 
-  const handleSetResidences = (passedResidences: SpeciesType) => {
-    toggleStateDataById(passedResidences, setSelectedResidence);
+  const handleSetResidences = (residences: SpeciesType) => {
+    toggleStateDataById(residences, setSelectedResidence);
   };
+
+  /* --------------------------------- params --------------------------------- */
+
+  const handleApplyFilters = () => {
+    setSearchParams({
+      [Param.STATUS]: selectedStatuses.map((x) => x.keyName),
+      ...(selectedAge[0] !== DEFAULT_AGE[0] ? { [Param.AGE_MIN]: selectedAge[0].toString() } : {}),
+      ...(selectedAge[1] !== DEFAULT_AGE[1] ? { [Param.AGE_MAX]: selectedAge[1].toString() } : {}),
+      ...(selectedHeight[0] !== DEFAULT_HEIGHT[0] ? { [Param.HEIGHT_MIN]: selectedHeight[0].toString() } : {}),
+      ...(selectedHeight[1] !== DEFAULT_HEIGHT[1] ? { [Param.HEIGHT_MAX]: selectedHeight[1].toString() } : {}),
+      ...(selectedWeight[0] !== DEFAULT_WEIGHT[0] ? { [Param.WEIGHT_MIN]: selectedWeight[0].toString() } : {}),
+      ...(selectedWeight[1] !== DEFAULT_WEIGHT[1] ? { [Param.WEIGHT_MAX]: selectedWeight[1].toString() } : {}),
+      [Param.MBTI]: selectedMbti.map((x) => x.keyName),
+      [Param.SPECIES]: selectedSpecies.map((x) => x.keyName),
+      [Param.RESIDENCE]: selectedResidence.map((x) => x.keyName),
+      ...(hasAge ? { [Param.HAS_AGE]: hasAge.toString() } : {}),
+      ...(hasHeight ? { [Param.HAS_HEIGHT]: hasHeight.toString() } : {}),
+      ...(hasWeight ? { [Param.HAS_WEIGHT]: hasWeight.toString() } : {})
+    });
+  };
+
+  useEffect(() => {
+    const statuses = searchParams.getAll(Param.STATUS).map((param) => getStatusByKeyName(param));
+    const ageMin = searchParams.getAll(Param.AGE_MIN);
+
+    console.log(statuses);
+
+    setSelectedStatuses(filterArrayFromNullish(statuses));
+  }, []);
+  // }, [location]);
 
   return (
     <Dialog>
@@ -336,13 +391,14 @@ const Filter = (props: FilterProps) => {
           <Button
             className={'w-fit whitespace-nowrap'}
             variant={'secondary'}
-            onClick={() => handleResetAll()}
+            onClick={handleResetAll}
           >
             {t('common:action.resetAll')}
           </Button>
           <Button
             type='submit'
             className={'w-full'}
+            onClick={handleApplyFilters}
           >
             {t('common:action.saveChanges')}
           </Button>
