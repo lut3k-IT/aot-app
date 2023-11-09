@@ -1,6 +1,5 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Navigate, Outlet } from 'react-router-dom';
+import { createSearchParams, Navigate, Outlet, useSearchParams } from 'react-router-dom';
 
 import PageHeading from '@/components/ui/PageHeading';
 import { RoutePath } from '@/constants/enums';
@@ -15,13 +14,14 @@ enum TabValue {
   COMPARISON = 'comparison'
 }
 
-interface HeroesProps {
-  children?: React.ReactNode;
-}
+const tabsContentClassName = 'mt-0';
+const tabsTriggerClassName = 'flex-1';
 
-const Heroes = (props: HeroesProps) => {
-  const { children } = props;
+const Heroes = () => {
   const { t } = useTranslation();
+
+  const [searchParams] = useSearchParams();
+  const searchParamsString = createSearchParams(searchParams);
 
   const defaultValueBasedOnTheRoute = () => {
     const route = getCurrentRoute();
@@ -38,8 +38,11 @@ const Heroes = (props: HeroesProps) => {
     }
   };
 
-  const tabsContentClassName = 'mt-0';
-  const tabsTriggerClassName = 'flex-1';
+  const handleClearParams = () => {
+    searchParams.forEach((_, key) => {
+      searchParams.delete(key);
+    });
+  };
 
   return (
     <>
@@ -48,7 +51,10 @@ const Heroes = (props: HeroesProps) => {
           defaultValue={defaultValueBasedOnTheRoute()}
           className='w-full pt-4'
         >
-          <TabsList className='w-full flex justify-between'>
+          <TabsList
+            className='w-full flex justify-between'
+            onClick={handleClearParams}
+          >
             <TabsTrigger
               value={TabValue.GALLERY}
               className={tabsTriggerClassName}
@@ -72,19 +78,19 @@ const Heroes = (props: HeroesProps) => {
             value={TabValue.GALLERY}
             className={tabsContentClassName}
           >
-            <Navigate to={RoutePath.HEROES_GALLERY} />
+            <Navigate to={`${RoutePath.HEROES_GALLERY}?${searchParamsString}`} />
           </TabsContent>
           <TabsContent
             value={TabValue.CHARTS}
             className={tabsContentClassName}
           >
-            <Navigate to={RoutePath.HEROES_CHARTS} />
+            <Navigate to={`${RoutePath.HEROES_CHARTS}?${searchParamsString}`} />
           </TabsContent>
           <TabsContent
             value={TabValue.COMPARISON}
             className={tabsContentClassName}
           >
-            <Navigate to={RoutePath.HEROES_COMPARISON} />
+            <Navigate to={`${RoutePath.HEROES_COMPARISON}?${searchParamsString}`} />
           </TabsContent>
         </Tabs>
         <PageHeading />

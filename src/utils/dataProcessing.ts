@@ -6,15 +6,22 @@ import allegiances from '@/data/allegiances';
 import mbti from '@/data/mbti';
 import mbtiGroup from '@/data/mbtiGroup';
 import residences from '@/data/residences';
+import species from '@/data/species';
 import statuses from '@/data/statuses';
 
 export const toggleStateDataById = <T extends { id: number }>(
   data: T,
   setState: React.Dispatch<React.SetStateAction<T[]>>
 ) => {
-  setState((latest) =>
-    latest.some((x) => x.id === data.id) ? latest.filter((x) => x.id !== data.id) : [...latest, data]
-  );
+  setState((prev) => (prev.some((x) => x.id === data.id) ? prev.filter((x) => x.id !== data.id) : [...prev, data]));
+};
+
+export const toggleStatePropertyArrayById = <T extends { id: number }>(data: T, prev: T[]) => {
+  const isFound = prev.some((s) => s.id === data.id);
+  if (isFound) {
+    return prev.filter((s) => s.id !== data.id);
+  }
+  return [...prev, data];
 };
 
 export const getResidenceName = (id: number) => {
@@ -22,6 +29,7 @@ export const getResidenceName = (id: number) => {
   const keyName = residences.find((data) => data.id === id)?.keyName;
   return keyName ? t(`data:residence.${keyName}`) : null;
 };
+
 export const getResidenceByKeyName = (keyName: string) => {
   return residences.find((data) => data.keyName === keyName);
 };
@@ -31,6 +39,7 @@ export const getStatusName = (id: number) => {
   const keyName = statuses.find((data) => data.id === id)?.keyName;
   return keyName ? t(`data:status.${keyName}.short`) : null;
 };
+
 export const getStatusByKeyName = (keyName: string) => {
   return statuses.find((data) => data.keyName === keyName);
 };
@@ -58,10 +67,18 @@ export const getMbtiGroupName = (id: number) => {
   return keyName ? t(`data:mbtiGroup.${keyName}`) : null;
 };
 
+export const getMbtiByShortName = (shortName: string) => {
+  return mbti.find((data) => data.shortName === shortName);
+};
+
 export const getHeroName = (id: number, heroes: HeroType[]) => {
   const hero = heroes.find((hero) => hero.id === id);
   return `${hero?.firstName || ''} ${hero?.lastName || ''}`;
 };
 
-export const isInFavorites = (currentId: number, favoritesIdsArray: FavoriteType[]) =>
-  !!favoritesIdsArray.find((fav) => fav === currentId);
+export const getSpeciesByKeyName = (keyName: string) => {
+  return species.find((data) => data.keyName === keyName);
+};
+
+export const isInFavorites = (currId: number, favIdsArray: FavoriteType[]) =>
+  !!favIdsArray.find((fav) => fav === currId);
