@@ -1,7 +1,6 @@
-import React, { Key, useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
-import { ObjectKeys } from 'node_modules/react-hook-form/dist/types/path/common';
 
 import { Button, ButtonProps } from '@/components/ui/Button';
 import {
@@ -27,11 +26,9 @@ import {
   getResidenceByKeyName,
   getSpeciesByKeyName,
   getStatusByKeyName,
-  toggleStatePropertyArrayById
+  toggleStateDataById
 } from '@/utils/dataProcessing';
 import { filterArrayFromNullish } from '@/utils/helpers';
-
-interface FilterProps {}
 
 interface FilterSegmentProps {
   title: string;
@@ -106,134 +103,64 @@ const Filter = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // const [selectedStatuses, setSelectedStatuses] = useState<StatusType[]>([]);
-  // const [selectedAge, setSelectedAge] = useState<number[]>(DEFAULT_AGE);
-  // const [selectedHeight, setSelectedHeight] = useState<number[]>(DEFAULT_HEIGHT);
-  // const [selectedWeight, setSelectedWeight] = useState<number[]>(DEFAULT_WEIGHT);
-  // const [selectedMbti, setSelectedMbti] = useState<MbtiType[]>([]);
-  // const [selectedSpecies, setSelectedSpecies] = useState<SpeciesType[]>([]);
-  // const [selectedResidence, setSelectedResidence] = useState<ResidenceType[]>([]);
-  // const [hasAge, setHasAge] = useState<boolean>(false);
-  // const [hasHeight, setHasHeight] = useState<boolean>(false);
-  // const [hasWeight, setHasWeight] = useState<boolean>(false);
-
-  const [filters, setFilters] = useState<HeroFilters>({
-    selectedStatuses: [],
-    selectedAge: DEFAULT_AGE,
-    selectedHeight: DEFAULT_HEIGHT,
-    selectedWeight: DEFAULT_WEIGHT,
-    selectedMbti: [],
-    selectedSpecies: [],
-    selectedResidence: [],
-    hasAge: false,
-    hasHeight: false,
-    hasWeight: false
-  });
-
-  // const handleResetAll = useCallback(() => {
-  //   setSelectedStatuses([]);
-  //   setSelectedAge(DEFAULT_AGE);
-  //   setSelectedHeight(DEFAULT_HEIGHT);
-  //   setSelectedWeight(DEFAULT_WEIGHT);
-  //   setSelectedMbti([]);
-  //   setSelectedSpecies([]);
-  //   setSelectedResidence([]);
-  //   setHasAge(false);
-  //   setHasHeight(false);
-  //   setHasWeight(false);
-  // }, []);
+  const [selectedStatuses, setSelectedStatuses] = useState<StatusType[]>([]);
+  const [selectedAge, setSelectedAge] = useState(DEFAULT_AGE);
+  const [selectedHeight, setSelectedHeight] = useState(DEFAULT_HEIGHT);
+  const [selectedWeight, setSelectedWeight] = useState(DEFAULT_WEIGHT);
+  const [selectedMbti, setSelectedMbti] = useState<MbtiType[]>([]);
+  const [selectedSpecies, setSelectedSpecies] = useState<SpeciesType[]>([]);
+  const [selectedResidence, setSelectedResidence] = useState<ResidenceType[]>([]);
+  const [hasAge, setHasAge] = useState<boolean>(false);
+  const [hasHeight, setHasHeight] = useState<boolean>(false);
+  const [hasWeight, setHasWeight] = useState<boolean>(false);
 
   const handleResetAll = useCallback(() => {
-    setFilters((prevState) => ({
-      ...prevState,
-      selectedStatuses: [],
-      selectedAge: DEFAULT_AGE,
-      selectedHeight: DEFAULT_HEIGHT,
-      selectedWeight: DEFAULT_WEIGHT,
-      selectedMbti: [],
-      selectedSpecies: [],
-      selectedResidence: [],
-      hasAge: false,
-      hasHeight: false,
-      hasWeight: false
-    }));
+    setSelectedStatuses([]);
+    setSelectedAge(DEFAULT_AGE);
+    setSelectedHeight(DEFAULT_HEIGHT);
+    setSelectedWeight(DEFAULT_WEIGHT);
+    setSelectedMbti([]);
+    setSelectedSpecies([]);
+    setSelectedResidence([]);
+    setHasAge(false);
+    setHasHeight(false);
+    setHasWeight(false);
   }, []);
 
   const handleSetStatuses = (status: StatusType) => {
-    // toggleStateDataById(status, setSelectedStatuses);
-    // setFilters((prev) =>
-    //   prev.selectedStatuses.some((selected) => selected.id === status.id)
-    //     ? { ...prev, selectedStatuses: prev.selectedStatuses.filter((selected) => selected.id !== status.id) }
-    //     : { ...prev, selectedStatuses: [...prev.selectedStatuses] }
-    // );
-    setFilters((prev) => ({
-      ...prev,
-      selectedStatuses: toggleStatePropertyArrayById(status, prev.selectedStatuses)
-    }));
+    toggleStateDataById(status, setSelectedStatuses);
   };
 
   const handleSetMbti = (mbti: MbtiType) => {
-    // toggleStateDataById(mbti, setSelectedMbti);
-    setFilters((prev) => ({
-      ...prev,
-      selectedMbti: toggleStatePropertyArrayById(mbti, prev.selectedMbti)
-    }));
+    toggleStateDataById(mbti, setSelectedMbti);
   };
 
   const handleSetSpecies = (species: SpeciesType) => {
-    // toggleStateDataById(species, setSelectedSpecies);
-    setFilters((prev) => ({
-      ...prev,
-      selectedSpecies: toggleStatePropertyArrayById(species, prev.selectedSpecies)
-    }));
+    toggleStateDataById(species, setSelectedSpecies);
   };
 
   const handleSetResidences = (residences: SpeciesType) => {
-    // toggleStateDataById(residences, setSelectedResidence);
-    setFilters((prev) => ({
-      ...prev,
-      selectedResidence: toggleStatePropertyArrayById(residences, prev.selectedResidence)
-    }));
+    toggleStateDataById(residences, setSelectedResidence);
   };
 
   /* --------------------------------- params --------------------------------- */
 
-  const setParamIfDiffersFromDefault = (paramName: Param, currentState: number, defaultState: number) =>
-    currentState !== defaultState ? { [paramName]: currentState.toString() } : {};
-
   // apply params
-  // const handleApplyFilters = () => {
-  //   setSearchParams({
-  //     [Param.STATUS]: selectedStatuses.map((x) => x.keyName),
-  //     ...setParamIfDiffersFromDefault(Param.AGE_MIN, selectedAge[0], DEFAULT_AGE[0]),
-  //     ...setParamIfDiffersFromDefault(Param.AGE_MAX, selectedAge[1], DEFAULT_AGE[1]),
-  //     ...setParamIfDiffersFromDefault(Param.HEIGHT_MIN, selectedHeight[0], DEFAULT_HEIGHT[0]),
-  //     ...setParamIfDiffersFromDefault(Param.HEIGHT_MAX, selectedHeight[1], DEFAULT_HEIGHT[1]),
-  //     ...setParamIfDiffersFromDefault(Param.WEIGHT_MIN, selectedWeight[0], DEFAULT_WEIGHT[0]),
-  //     ...setParamIfDiffersFromDefault(Param.WEIGHT_MAX, selectedWeight[1], DEFAULT_WEIGHT[1]),
-  //     [Param.MBTI]: selectedMbti.map((x) => x.shortName),
-  //     [Param.SPECIES]: selectedSpecies.map((x) => x.keyName),
-  //     [Param.RESIDENCE]: selectedResidence.map((x) => x.keyName),
-  //     ...(hasAge ? { [Param.HAS_AGE]: hasAge.toString() } : {}),
-  //     ...(hasHeight ? { [Param.HAS_HEIGHT]: hasHeight.toString() } : {}),
-  //     ...(hasWeight ? { [Param.HAS_WEIGHT]: hasWeight.toString() } : {})
-  //   });
-  // };
   const handleApplyFilters = () => {
     setSearchParams({
-      [Param.STATUS]: filters.selectedStatuses.map((x) => x.keyName),
-      ...setParamIfDiffersFromDefault(Param.AGE_MIN, filters.selectedAge[0], DEFAULT_AGE[0]),
-      ...setParamIfDiffersFromDefault(Param.AGE_MAX, filters.selectedAge[1], DEFAULT_AGE[1]),
-      ...setParamIfDiffersFromDefault(Param.HEIGHT_MIN, filters.selectedHeight[0], DEFAULT_HEIGHT[0]),
-      ...setParamIfDiffersFromDefault(Param.HEIGHT_MAX, filters.selectedHeight[1], DEFAULT_HEIGHT[1]),
-      ...setParamIfDiffersFromDefault(Param.WEIGHT_MIN, filters.selectedWeight[0], DEFAULT_WEIGHT[0]),
-      ...setParamIfDiffersFromDefault(Param.WEIGHT_MAX, filters.selectedWeight[1], DEFAULT_WEIGHT[1]),
-      [Param.MBTI]: filters.selectedMbti.map((x) => x.shortName),
-      [Param.SPECIES]: filters.selectedSpecies.map((x) => x.keyName),
-      [Param.RESIDENCE]: filters.selectedResidence.map((x) => x.keyName),
-      ...(filters.hasAge ? { [Param.HAS_AGE]: filters.hasAge.toString() } : {}),
-      ...(filters.hasHeight ? { [Param.HAS_HEIGHT]: filters.hasHeight.toString() } : {}),
-      ...(filters.hasWeight ? { [Param.HAS_WEIGHT]: filters.hasWeight.toString() } : {})
+      [Param.STATUS]: selectedStatuses.map((x) => x.keyName),
+      ...(selectedAge[0] !== DEFAULT_AGE[0] ? { [Param.AGE_MIN]: selectedAge[0].toString() } : {}),
+      ...(selectedAge[1] !== DEFAULT_AGE[1] ? { [Param.AGE_MAX]: selectedAge[1].toString() } : {}),
+      ...(selectedHeight[0] !== DEFAULT_HEIGHT[0] ? { [Param.HEIGHT_MIN]: selectedHeight[0].toString() } : {}),
+      ...(selectedHeight[1] !== DEFAULT_HEIGHT[1] ? { [Param.HEIGHT_MAX]: selectedHeight[1].toString() } : {}),
+      ...(selectedWeight[0] !== DEFAULT_WEIGHT[0] ? { [Param.WEIGHT_MIN]: selectedWeight[0].toString() } : {}),
+      ...(selectedWeight[1] !== DEFAULT_WEIGHT[1] ? { [Param.WEIGHT_MAX]: selectedWeight[1].toString() } : {}),
+      [Param.MBTI]: selectedMbti.map((x) => x.keyName),
+      [Param.SPECIES]: selectedSpecies.map((x) => x.keyName),
+      [Param.RESIDENCE]: selectedResidence.map((x) => x.keyName),
+      ...(hasAge ? { [Param.HAS_AGE]: hasAge.toString() } : {}),
+      ...(hasHeight ? { [Param.HAS_HEIGHT]: hasHeight.toString() } : {}),
+      ...(hasWeight ? { [Param.HAS_WEIGHT]: hasWeight.toString() } : {})
     });
   };
 
@@ -253,27 +180,16 @@ const Filter = () => {
     const hasHeight = !!searchParams.get(Param.HAS_HEIGHT);
     const hasWeight = !!searchParams.get(Param.HAS_WEIGHT);
 
-    // setSelectedStatuses(filterArrayFromNullish(statuses));
-    // setSelectedAge([+ageMin, +ageMax]);
-    // setSelectedHeight([+heightMin, +heightMax]);
-    // setSelectedWeight([+weightMin, +weightMax]);
-    // setSelectedMbti(filterArrayFromNullish(mbti));
-    // setSelectedSpecies(filterArrayFromNullish(species));
-    // setSelectedResidence(filterArrayFromNullish(residences));
-
-    setFilters((prevState) => ({
-      ...prevState,
-      selectedStatuses: filterArrayFromNullish(statuses),
-      selectedAge: [+ageMin, +ageMax],
-      selectedHeight: [+heightMin, +heightMax],
-      selectedWeight: [+weightMin, +weightMax],
-      selectedMbti: filterArrayFromNullish(mbti),
-      selectedSpecies: filterArrayFromNullish(species),
-      selectedResidence: filterArrayFromNullish(residences),
-      hasAge: hasAge,
-      hasHeight: hasHeight,
-      hasWeight: hasWeight
-    }));
+    setSelectedStatuses(filterArrayFromNullish(statuses));
+    setSelectedAge([+ageMin, +ageMax]);
+    setSelectedHeight([+heightMin, +heightMax]);
+    setSelectedWeight([+weightMin, +weightMax]);
+    setSelectedMbti(filterArrayFromNullish(mbti));
+    setSelectedSpecies(filterArrayFromNullish(species));
+    setSelectedResidence(filterArrayFromNullish(residences));
+    setHasAge(hasAge);
+    setHasWeight(hasHeight);
+    setHasWeight(hasWeight);
   }, []);
 
   return (
@@ -302,15 +218,14 @@ const Filter = () => {
           <div className='grid gap-6 mx-2 py-4'>
             <FilterSegment
               title={t('data:status.title')}
-              // onReset={() => setSelectedStatuses([])}
-              onReset={() => setFilters((prev) => ({ ...prev, selectedStatuses: [] }))}
+              onReset={() => setSelectedStatuses([])}
             >
               <div className={'flex flex-1 gap-2'}>
                 {statuses.map((data) => {
                   return (
                     <FilterButton
                       key={data.id}
-                      isActive={filters.selectedStatuses.some((selected) => selected.id === data.id)}
+                      isActive={selectedStatuses.some((selected) => selected.id === data.id)}
                       onClick={() => handleSetStatuses(data)}
                     >
                       {t(`data:status.${data.keyName}.long`)}
@@ -321,32 +236,24 @@ const Filter = () => {
             </FilterSegment>
             <FilterSegment
               title={t('data:age.title')}
-              // onReset={() => setSelectedAge(DEFAULT_AGE)}
-              onReset={() => setFilters((prev) => ({ ...prev, selectedAge: DEFAULT_AGE }))}
+              onReset={() => setSelectedAge(DEFAULT_AGE)}
             >
               <div className={'flex gap-2 justify-between'}>
                 <Input
                   className={'max-w-[100px]'}
-                  value={filters.selectedAge[0]}
-                  // onChange={(e) => setSelectedAge((prev) => [+e.target.value, prev[1]])}
-                  onChange={(e) =>
-                    setFilters((prev) => ({ ...prev, selectedAge: [+e.target.value, prev.selectedAge[1]] }))
-                  }
+                  value={selectedAge[0]}
+                  onChange={(e) => setSelectedAge((prev) => [+e.target.value, prev[1]])}
                 />
                 <Input
                   className={'max-w-[100px]'}
-                  value={filters.selectedAge[1]}
-                  // onChange={(e) => setSelectedAge((prev) => [prev[0], +e.target.value])}
-                  onChange={(e) =>
-                    setFilters((prev) => ({ ...prev, selectedAge: [prev.selectedAge[0], +e.target.value] }))
-                  }
+                  value={selectedAge[1]}
+                  onChange={(e) => setSelectedAge((prev) => [prev[0], +e.target.value])}
                 />
               </div>
               <Slider
                 defaultValue={DEFAULT_AGE}
-                value={filters.selectedAge}
-                // onValueChange={(v: number[]) => setSelectedAge(v)}
-                onValueChange={(v: number[]) => setFilters((prev) => ({ ...prev, selectedAge: v }))}
+                value={selectedAge}
+                onValueChange={(v: number[]) => setSelectedAge(v)}
                 min={0}
                 max={75}
                 step={1}
@@ -356,32 +263,24 @@ const Filter = () => {
             </FilterSegment>
             <FilterSegment
               title={`${t('data:height.title')} (cm)`}
-              // onReset={() => setSelectedHeight(DEFAULT_HEIGHT)}
-              onReset={() => setFilters((prev) => ({ ...prev, selectedHeight: DEFAULT_HEIGHT }))}
+              onReset={() => setSelectedHeight(DEFAULT_HEIGHT)}
             >
               <div className={'flex gap-2 justify-between'}>
                 <Input
                   className={'max-w-[100px]'}
-                  value={filters.selectedHeight[0]}
-                  // onChange={(e) => setSelectedHeight((prev) => [+e.target.value, prev[1]])}
-                  onChange={(e) =>
-                    setFilters((prev) => ({ ...prev, selectedHeight: [+e.target.value, prev.selectedHeight[1]] }))
-                  }
+                  value={selectedHeight[0]}
+                  onChange={(e) => setSelectedHeight((prev) => [+e.target.value, prev[1]])}
                 />
                 <Input
                   className={'max-w-[100px]'}
-                  value={filters.selectedHeight[1]}
-                  // onChange={(e) => setSelectedHeight((prev) => [prev[0], +e.target.value])}
-                  onChange={(e) =>
-                    setFilters((prev) => ({ ...prev, selectedHeight: [prev.selectedHeight[1], +e.target.value] }))
-                  }
+                  value={selectedHeight[1]}
+                  onChange={(e) => setSelectedHeight((prev) => [prev[0], +e.target.value])}
                 />
               </div>
               <Slider
                 defaultValue={DEFAULT_HEIGHT}
-                value={filters.selectedHeight}
-                // onValueChange={(v: number[]) => setSelectedHeight(v)}
-                onValueChange={(v: number[]) => setFilters((prev) => ({ ...prev, selectedHeight: v }))}
+                value={selectedHeight}
+                onValueChange={(v: number[]) => setSelectedHeight(v)}
                 min={100}
                 max={700}
                 step={1}
@@ -391,32 +290,24 @@ const Filter = () => {
             </FilterSegment>
             <FilterSegment
               title={`${t('data:weight.title')} (kg)`}
-              // onReset={() => setSelectedWeight(DEFAULT_WEIGHT)}
-              onReset={() => setFilters((prev) => ({ ...prev, selectedWeight: DEFAULT_WEIGHT }))}
+              onReset={() => setSelectedWeight(DEFAULT_WEIGHT)}
             >
               <div className={'flex gap-2 justify-between'}>
                 <Input
                   className={'max-w-[100px]'}
-                  value={filters.selectedWeight[0]}
-                  // onChange={(e) => setSelectedWeight((prev) => [+e.target.value, prev[1]])}
-                  onChange={(e) =>
-                    setFilters((prev) => ({ ...prev, selectedWeight: [+e.target.value, prev.selectedWeight[1]] }))
-                  }
+                  value={selectedWeight[0]}
+                  onChange={(e) => setSelectedWeight((prev) => [+e.target.value, prev[1]])}
                 />
                 <Input
                   className={'max-w-[100px]'}
-                  value={filters.selectedWeight[1]}
-                  // onChange={(e) => setSelectedWeight((prev) => [prev[0], +e.target.value])}
-                  onChange={(e) =>
-                    setFilters((prev) => ({ ...prev, selectedWeight: [prev.selectedWeight[0], +e.target.value] }))
-                  }
+                  value={selectedWeight[1]}
+                  onChange={(e) => setSelectedWeight((prev) => [prev[0], +e.target.value])}
                 />
               </div>
               <Slider
                 defaultValue={DEFAULT_WEIGHT}
-                value={filters.selectedWeight}
-                // onValueChange={(v: number[]) => setSelectedWeight(v)}
-                onValueChange={(v: number[]) => setFilters((prev) => ({ ...prev, selectedWeight: v }))}
+                value={selectedWeight}
+                onValueChange={(v: number[]) => setSelectedWeight(v)}
                 min={40}
                 max={150}
                 step={1}
@@ -426,16 +317,14 @@ const Filter = () => {
             </FilterSegment>
             <FilterSegment
               title={t('data:mbti.title')}
-              // onReset={() => setSelectedMbti([])}
-              onReset={() => setFilters((prev) => ({ ...prev, selectedMbti: [] }))}
+              onReset={() => setSelectedMbti([])}
             >
               <div className={'grid grid-cols-4 gap-2'}>
                 {mbti.map((data) => {
                   return (
                     <FilterButton
                       key={data.id}
-                      // isActive={selectedMbti.some((selected) => selected.id === data.id)}
-                      isActive={filters.selectedMbti.some((selected) => selected.id === data.id)}
+                      isActive={selectedMbti.some((selected) => selected.id === data.id)}
                       onClick={() => handleSetMbti(data)}
                     >
                       {data.shortName}
@@ -446,15 +335,14 @@ const Filter = () => {
             </FilterSegment>
             <FilterSegment
               title={t('data:species.title')}
-              // onReset={() => setSelectedSpecies([])}
-              onReset={() => setFilters((prev) => ({ ...prev, selectedSpecies: [] }))}
+              onReset={() => setSelectedSpecies([])}
             >
               <div className={'grid grid-cols-2 gap-2'}>
                 {species.map((data) => {
                   return (
                     <FilterButton
                       key={data.id}
-                      isActive={filters.selectedSpecies.some((selected) => selected.id === data.id)}
+                      isActive={selectedSpecies.some((selected) => selected.id === data.id)}
                       onClick={() => handleSetSpecies(data)}
                     >
                       {t(`data:species.${data.keyName}`)}
@@ -465,15 +353,14 @@ const Filter = () => {
             </FilterSegment>
             <FilterSegment
               title={t('data:residence.title')}
-              // onReset={() => setSelectedResidence([])}
-              onReset={() => setFilters((prev) => ({ ...prev, selectedResidence: [] }))}
+              onReset={() => setSelectedResidence([])}
             >
               <div className={'grid grid-cols-2 gap-2 sm:grid-cols-3'}>
                 {residences.map((data) => {
                   return (
                     <FilterButton
                       key={data.id}
-                      isActive={filters.selectedResidence.some((selected) => selected.id === data.id)}
+                      isActive={selectedResidence.some((selected) => selected.id === data.id)}
                       onClick={() => handleSetResidences(data)}
                     >
                       {t(`data:residence.${data.keyName}`)}
@@ -485,31 +372,27 @@ const Filter = () => {
             <FilterSegment
               title={t('common:filter.hasInfoAbout')}
               onReset={() => {
-                // setHasAge(false);
-                // setHasHeight(false);
-                // setHasWeight(false);
-                () => setFilters((prev) => ({ ...prev, hasAge: false, hasHeight: false, hasWeight: false }));
+                setHasAge(false);
+                setHasHeight(false);
+                setHasWeight(false);
               }}
             >
               <div className={'grid grid-cols-3 gap-2'}>
                 <FilterButton
-                  isActive={filters.hasAge}
-                  // onClick={() => setHasAge((prev) => !prev)}
-                  onClick={() => setFilters((prev) => ({ ...prev, hasAge: !prev.hasAge }))}
+                  isActive={hasAge}
+                  onClick={() => setHasAge((prev) => !prev)}
                 >
                   {t('data:age.title')}
                 </FilterButton>
                 <FilterButton
-                  isActive={filters.hasHeight}
-                  // onClick={() => setHasHeight((prev) => !prev)}
-                  onClick={() => setFilters((prev) => ({ ...prev, hasHeight: !prev.hasHeight }))}
+                  isActive={hasHeight}
+                  onClick={() => setHasHeight((prev) => !prev)}
                 >
                   {t('data:height.title')}
                 </FilterButton>
                 <FilterButton
-                  isActive={filters.hasWeight}
-                  // onClick={() => setHasWeight((prev) => !prev)}
-                  onClick={() => setFilters((prev) => ({ ...prev, hasWeight: !prev.hasWeight }))}
+                  isActive={hasWeight}
+                  onClick={() => setHasWeight((prev) => !prev)}
                 >
                   {t('data:weight.title')}
                 </FilterButton>
