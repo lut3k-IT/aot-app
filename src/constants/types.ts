@@ -1,8 +1,15 @@
-import { SortDirection } from './enums';
+import { MbtiType } from '@/data/mbti';
+import { ResidenceType } from '@/data/residences';
+import { SpeciesType } from '@/data/species';
+import { StatusType } from '@/data/statuses';
+
+import { HeroFilterNames, SortDirection } from './enums';
 
 export type ErrorType = string | undefined;
 
 export type ImageSourceType = string | undefined;
+
+/* ---------------------------------- Data ---------------------------------- */
 
 export interface HeroType {
   readonly id: number;
@@ -18,10 +25,6 @@ export interface HeroType {
   readonly mbti: number;
 }
 
-export interface AppHeroType extends HeroType {
-  image?: ImageSourceType;
-}
-
 export interface TitanType {
   readonly id: number;
   readonly name: string;
@@ -34,10 +37,6 @@ export interface TitanType {
   readonly mbti: number;
 }
 
-export interface AppTitanType extends TitanType {
-  image?: ImageSourceType;
-}
-
 export interface QuotationType {
   readonly id: number;
   readonly text: string;
@@ -45,22 +44,31 @@ export interface QuotationType {
 
 export type FavoriteType = number;
 
+/* --------------------------------- Filters -------------------------------- */
+
 export interface FilterNumeralRange {
   min?: number;
   max?: number;
 }
 
-export interface FilterCriteria {
-  status?: number;
-  age?: FilterNumeralRange;
-  height?: FilterNumeralRange;
-  weight?: FilterNumeralRange;
-  mbti?: number;
-  species?: number;
-  residence?: number;
-  hasAge?: boolean;
-  hasHeight?: boolean;
-  hasWeight?: boolean;
+export interface HeroFilterCriteria {
+  status: StatusType[];
+  age: number[];
+  height: number[];
+  weight: number[];
+  mbti: MbtiType[];
+  species: SpeciesType[];
+  residences: ResidenceType[];
+  hasAge: boolean;
+  hasHeight: boolean;
+  hasWeight: boolean;
+}
+
+export interface HeroFilters {
+  search?: string;
+  sort?: HeroFilterNames;
+  sortDirection?: SortDirection;
+  filters: HeroFilterCriteria;
 }
 
 export interface SortCriteria {

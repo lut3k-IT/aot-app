@@ -1,3 +1,10 @@
+export enum ElementsIds {
+  ROOT = 'root',
+  PAGE_HEADING_OPTIONS = 'page-heading-options'
+}
+
+/* ------------------------------- URL related ------------------------------ */
+
 export enum Param {
   STATUS = 'status',
   AGE_MIN = 'min_age',
@@ -40,6 +47,8 @@ export enum ExternalUrl {
   PORTFOLIO = 'https://lut3k.com/'
 }
 
+/* ---------------------------- Language related ---------------------------- */
+
 export enum LanguageName {
   ENGLISH = 'English',
   POLISH = 'Polski'
@@ -50,6 +59,8 @@ export enum LanguageShortName {
   POLISH = 'pl'
 }
 
+/* ------------------------------ LocalStorage ------------------------------ */
+
 export enum LocalStorageKey {
   LANGUAGE = 'i18nextLng',
   SPOILER_MODE = 'spoilerMode',
@@ -58,24 +69,29 @@ export enum LocalStorageKey {
   FAV_QUOTATIONS = 'favQuotations'
 }
 
-export enum CharacterType {
-  HERO,
-  TITAN
-}
+/* ------------------------------ Data related ------------------------------ */
 
 export enum PromiseStatus {
-  IDLE = 'idle', // before operation has started
-  LOADING = 'loading', // operation in progress
-  SUCCEDED = 'succeeded', // promise fullfilled
-  FAILED = 'failed' // promise rejected
+  IDLE = 'idle',
+  LOADING = 'loading',
+  SUCCEDED = 'succeeded',
+  FAILED = 'failed'
 }
 
 export enum SortDirection {
-  ASC,
-  DESC
+  ASC = 'asc',
+  DESC = 'desc'
 }
 
-export enum ElementsIds {
-  ROOT = 'root',
-  PAGE_HEADING_OPTIONS = 'page-heading-options'
+export enum HeroFilterNames {
+  STATUS = 'status',
+  AGE = 'age',
+  HEIGHT = 'height',
+  WEIGHT = 'weight',
+  MBTI = 'mbti',
+  SPECIES = 'species',
+  RESIDENCE = 'residence',
+  HAS_AGE = 'hasAge',
+  HAS_HEIGHT = 'hasHeight',
+  HAS_WEIGHT = 'hasWeight'
 }

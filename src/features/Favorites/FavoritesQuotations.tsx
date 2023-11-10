@@ -1,11 +1,7 @@
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import QuotationCard from '@/components/ui/QuotationCard';
 
-interface FavoritesQuotationsProps {}
-
-const FavoritesQuotations = (props: FavoritesQuotationsProps) => {
-  const {} = props;
-
+const FavoritesQuotations = () => {
   return (
     <GalleryWrapper>
       <QuotationCard />

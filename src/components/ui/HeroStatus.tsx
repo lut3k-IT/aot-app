@@ -1,4 +1,4 @@
-import { getStatusName } from '@/utils/dataProcessing';
+import { getStatusName } from '@/utils/dataHelpers';
 
 interface HeroStatusProps {
   statusId: number;

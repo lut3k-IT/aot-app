@@ -1,8 +1,4 @@
-interface TitanDetailsProps {}
-
-const TitanDetails = (props: TitanDetailsProps) => {
-  const {} = props;
-
+const TitanDetails = () => {
   return <div></div>;
 };
 

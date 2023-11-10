@@ -27,31 +27,13 @@ import {
   getSpeciesByKeyName,
   getStatusByKeyName,
   toggleStateDataById
-} from '@/utils/dataProcessing';
+} from '@/utils/dataHelpers';
 import { filterArrayFromNullish } from '@/utils/helpers';
 
 interface FilterSegmentProps {
   title: string;
   children: React.ReactNode;
   onReset?: () => void;
-}
-
-interface FilterButtonProps extends ButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode;
-  isActive?: boolean;
-}
-
-export interface HeroFilters {
-  selectedStatuses: StatusType[];
-  selectedAge: number[];
-  selectedHeight: number[];
-  selectedWeight: number[];
-  selectedMbti: MbtiType[];
-  selectedSpecies: SpeciesType[];
-  selectedResidence: ResidenceType[];
-  hasAge: boolean;
-  hasHeight: boolean;
-  hasWeight: boolean;
 }
 
 const FilterSegment = (props: FilterSegmentProps) => {
@@ -75,6 +57,11 @@ const FilterSegment = (props: FilterSegmentProps) => {
   );
 };
 
+interface FilterButtonProps extends ButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement> {
+  children: React.ReactNode;
+  isActive?: boolean;
+}
+
 const FilterButton = (props: FilterButtonProps) => {
   const { children, isActive, className, ...rest } = props;
   return (
@@ -94,9 +81,9 @@ const FilterButton = (props: FilterButtonProps) => {
 
 // TODO: make an indicator to show filtering is active
 
-const DEFAULT_AGE = [0, 75];
-const DEFAULT_HEIGHT = [100, 700];
-const DEFAULT_WEIGHT = [40, 150];
+export const DEFAULT_AGE = [0, 75];
+export const DEFAULT_HEIGHT = [100, 700];
+export const DEFAULT_WEIGHT = [40, 150];
 
 const Filter = () => {
   const { t } = useTranslation();
@@ -113,6 +100,8 @@ const Filter = () => {
   const [hasAge, setHasAge] = useState<boolean>(false);
   const [hasHeight, setHasHeight] = useState<boolean>(false);
   const [hasWeight, setHasWeight] = useState<boolean>(false);
+
+  const [sortBy, setSortBy] = useState();
 
   const handleResetAll = useCallback(() => {
     setSelectedStatuses([]);

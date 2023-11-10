@@ -7,9 +7,18 @@ import useAppSelector from '@/components/hooks/useAppSelector';
 import AppHelmet from '@/components/ui/AppHelmet';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import HeroCard from '@/components/ui/HeroCard';
-import { ElementsIds } from '@/constants/enums';
+import { ElementsIds, HeroFilterNames, Param, SortDirection } from '@/constants/enums';
+import { HeroFilterCriteria, HeroFilters } from '@/constants/types';
+import {
+  getMbtiByShortName,
+  getResidenceByKeyName,
+  getSpeciesByKeyName,
+  getStatusByKeyName
+} from '@/utils/dataHelpers';
+import { filterArrayFromNullish } from '@/utils/helpers';
+import { getFilteredHeroes } from '@/utils/heroesProcessing';
 
-import Filter from './components/Filter';
+import Filter, { DEFAULT_AGE, DEFAULT_HEIGHT, DEFAULT_WEIGHT } from './components/Filter';
 
 const PER_PAGE = 30;
 
@@ -29,14 +38,51 @@ const HeroesGallery = () => {
   const [filteredHeroes, setFilteredHeroes] = useState(originalHeroes);
   const [paginatedHeroes, setpaginatedHeroes] = useState(originalHeroes);
 
+  // ? temporary — transform it to paginate later
   useEffect(() => {
-    setFilteredHeroes(originalHeroes);
-    setpaginatedHeroes(originalHeroes);
-  }, [originalHeroes]);
+    setpaginatedHeroes(filteredHeroes);
+  }, [filteredHeroes]);
 
   useEffect(() => {
+    // TODO: skip if there is no search params
+
+    // get params
+    const statuses = searchParams.getAll(Param.STATUS).map((param) => getStatusByKeyName(param));
+    const ageMin = searchParams.get(Param.AGE_MIN) || DEFAULT_AGE[0];
+    const ageMax = searchParams.get(Param.AGE_MAX) || DEFAULT_AGE[1];
+    const heightMin = searchParams.get(Param.HEIGHT_MIN) || DEFAULT_HEIGHT[0];
+    const heightMax = searchParams.get(Param.HEIGHT_MAX) || DEFAULT_HEIGHT[1];
+    const weightMin = searchParams.get(Param.WEIGHT_MIN) || DEFAULT_WEIGHT[0];
+    const weightMax = searchParams.get(Param.WEIGHT_MAX) || DEFAULT_WEIGHT[1];
+    const mbti = searchParams.getAll(Param.MBTI).map((param) => getMbtiByShortName(param));
+    const species = searchParams.getAll(Param.SPECIES).map((param) => getSpeciesByKeyName(param));
+    const residences = searchParams.getAll(Param.RESIDENCE).map((param) => getResidenceByKeyName(param));
+    const hasAge = !!searchParams.get(Param.HAS_AGE);
+    const hasHeight = !!searchParams.get(Param.HAS_HEIGHT);
+    const hasWeight = !!searchParams.get(Param.HAS_WEIGHT);
+
+    // set filters
+    const filters: HeroFilters = {
+      search: undefined,
+      sort: undefined,
+      sortDirection: SortDirection.ASC,
+      filters: {
+        status: filterArrayFromNullish(statuses),
+        age: [+ageMin, +ageMax],
+        height: [+heightMin, +heightMax],
+        weight: [+weightMin, +weightMax],
+        mbti: filterArrayFromNullish(mbti),
+        species: filterArrayFromNullish(species),
+        residences: filterArrayFromNullish(residences),
+        hasAge: hasAge,
+        hasHeight: hasHeight,
+        hasWeight: hasWeight
+      }
+    };
+
     // filter and paginate
-  }, [searchParams]);
+    setFilteredHeroes(getFilteredHeroes(originalHeroes, filters));
+  }, [originalHeroes, searchParams]);
 
   return (
     <GalleryWrapper>

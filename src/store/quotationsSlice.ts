@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import { LocalStorageKey, PromiseStatus } from '@/constants/enums';
 import { ErrorType, FavoriteType, QuotationType } from '@/constants/types';
-import { getLocalStorageItem, setLocalStorageItem } from '@/utils/storage';
+import { getLocalStorageItem, setLocalStorageItem } from '@/utils/storageHelpers';
 
 export const loadQuotations = createAsyncThunk('quotations/load', async () => {
   const response = await fetch('/data/quotations.json');

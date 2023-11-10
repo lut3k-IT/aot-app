@@ -4,7 +4,7 @@ import { cva, VariantProps } from 'class-variance-authority';
 
 import mbti from '@/data/mbti';
 import { cn } from '@/lib/utils';
-import { getMbtiGroupName, getMbtiShortName } from '@/utils/dataProcessing';
+import { getMbtiGroupName, getMbtiShortName } from '@/utils/dataHelpers';
 
 const mbtiFrameVariants = cva('flex flex-col w-min rounded-md border-2 overflow-hidden', {
   variants: {

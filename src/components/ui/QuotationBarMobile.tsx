@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { v4 } from 'uuid';
 
 import { addFavorite, removeFavorite } from '@/store/quotationsSlice';
-import { isInFavorites } from '@/utils/dataProcessing';
+import { isInFavorites } from '@/utils/dataHelpers';
 import { getRandomQuotation } from '@/utils/quotationHelpers';
 
 import useAppDispatch from '../hooks/useAppDispatch';

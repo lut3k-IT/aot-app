@@ -1,10 +1,6 @@
 import { ElementsIds } from '@/constants/enums';
 
-interface PageHeadingProps {}
-
-const PageHeading = (props: PageHeadingProps) => {
-  const {} = props;
-
+const PageHeading = () => {
   return (
     <div className={'flex justify-between items-center sticky py-4 mb-2 bg-background'}>
       <div className={'font-bold text-4xl text-neutral-300 dark:text-neutral-700 leading-none tracking-wide'}>
