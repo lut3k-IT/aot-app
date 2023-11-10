@@ -70,9 +70,9 @@ const NavigationMobile = () => {
       iconName: 'dna'
     },
     {
-      name: t('common:title.favorites'),
-      route: RoutePath.FAVORITES,
-      iconName: 'heart'
+      name: t('common:title.quotations'),
+      route: RoutePath.QUOTATIONS,
+      iconName: 'quote'
     },
     {
       name: t('common:title.quiz'),

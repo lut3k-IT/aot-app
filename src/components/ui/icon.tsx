@@ -15,7 +15,8 @@ import {
   PenLine,
   Sun,
   User,
-  X
+  X,
+  Quote
 } from 'lucide-react';
 
 import { ReactComponent as AotLg } from '@/assets/icons/aot-icon-lg.svg';
@@ -61,6 +62,7 @@ export type IconNames =
   | 'sun'
   | 'user'
   | 'x'
+  | 'quote'
   | 'chevronLeft'
   | 'chevronRight';
 
@@ -90,6 +92,7 @@ const Icon = ({ name, size, variant, color, isFilled = false, className, ...prop
     sun: Sun,
     user: User,
     x: X,
+    quote: Quote,
     chevronLeft: ChevronLeft,
     chevronRight: ChevronRight
   };

@@ -3,22 +3,19 @@ import { createBrowserRouter, Navigate, Outlet, RouterProvider } from 'react-rou
 import PageOverlay from '@/components/ui/PageOverlay';
 import ScrollToTop from '@/components/ui/ScrollToTop';
 import { RoutePath } from '@/constants/enums';
-import About from '@/features/Additional/About';
-import Changelog from '@/features/Additional/Changelog';
-import PrivacyPolicy from '@/features/Additional/PrivacyPolicy';
-import TermsOfService from '@/features/Additional/TermsOfService';
 import ErrorPage from '@/features/ErrorBoundaries/ErrorPage';
 import NotFoundRoute from '@/features/ErrorBoundaries/NotFoundRoute';
-import Favorites from '@/features/Favorites/Favorites';
-import FavoritesHeroes from '@/features/Favorites/FavoritesHeroes';
-import FavoritesQuotations from '@/features/Favorites/FavoritesQuotations';
-import FavoritesTitans from '@/features/Favorites/FavoritesTitans';
 import HeroDetails from '@/features/HeroDetails';
 import Heroes from '@/features/Heroes';
 import HeroesCharts from '@/features/Heroes/components/HeroesCharts';
 import HeroesComparison from '@/features/Heroes/components/HeroesComparison';
 import HeroesGallery from '@/features/Heroes/components/HeroesGallery';
+import About from '@/features/Minor/About';
+import Changelog from '@/features/Minor/Changelog';
+import PrivacyPolicy from '@/features/Minor/PrivacyPolicy';
+import TermsOfService from '@/features/Minor/TermsOfService';
 import Quiz from '@/features/Quiz';
+import Quotations from '@/features/Quotations';
 import TitanDetails from '@/features/TitanDetails';
 import Titans from '@/features/TitansGallery';
 
@@ -81,35 +78,8 @@ export const router = createBrowserRouter([
             element: <TitanDetails />
           },
           {
-            path: RoutePath.FAVORITES,
-            element: <Favorites />,
-            children: [
-              {
-                path: RoutePath.FAVORITES_HEROES,
-                element: <FavoritesHeroes />
-              },
-              {
-                path: RoutePath.FAVORITES_TITANS,
-                element: <FavoritesTitans />
-              },
-              {
-                path: RoutePath.FAVORITES_QUOTATIONS,
-                element: <FavoritesQuotations />
-              }
-            ]
-          },
-          {
-            path: RoutePath.QUIZ,
-            element: <Quiz />
-          },
-          {
             path: RoutePath.QUOTATIONS,
-            element: (
-              <Navigate
-                to={RoutePath.HEROES}
-                replace
-              />
-            )
+            element: <Quotations />
           },
           {
             path: RoutePath.QUOTATION_DETAILS + '/:id',
@@ -119,6 +89,10 @@ export const router = createBrowserRouter([
                 replace
               />
             )
+          },
+          {
+            path: RoutePath.QUIZ,
+            element: <Quiz />
           },
           {
             path: RoutePath.ABOUT,
