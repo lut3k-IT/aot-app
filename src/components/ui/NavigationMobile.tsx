@@ -20,8 +20,8 @@ interface NavigationElementProps {
 
 const NavigationElement = (props: NavigationElementProps) => {
   const { data } = props;
-  const location = useLocation();
 
+  useLocation();
   const currentRoute = getFirstSegmentFromCurrentRoute();
   const isActive = data.route.split('/')[1] === currentRoute;
 

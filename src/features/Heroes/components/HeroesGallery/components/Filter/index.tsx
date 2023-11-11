@@ -144,7 +144,7 @@ const Filter = () => {
       ...(selectedHeight[1] !== DEFAULT_HEIGHT[1] ? { [Param.HEIGHT_MAX]: selectedHeight[1].toString() } : {}),
       ...(selectedWeight[0] !== DEFAULT_WEIGHT[0] ? { [Param.WEIGHT_MIN]: selectedWeight[0].toString() } : {}),
       ...(selectedWeight[1] !== DEFAULT_WEIGHT[1] ? { [Param.WEIGHT_MAX]: selectedWeight[1].toString() } : {}),
-      [Param.MBTI]: selectedMbti.map((x) => x.keyName),
+      [Param.MBTI]: selectedMbti.map((x) => x.shortName),
       [Param.SPECIES]: selectedSpecies.map((x) => x.keyName),
       [Param.RESIDENCE]: selectedResidence.map((x) => x.keyName),
       ...(hasAge ? { [Param.HAS_AGE]: hasAge.toString() } : {}),

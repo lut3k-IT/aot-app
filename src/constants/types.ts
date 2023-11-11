@@ -14,15 +14,15 @@ export type ImageSourceType = string | undefined;
 export interface HeroType {
   readonly id: number;
   readonly firstName: string;
-  readonly lastName: string;
+  readonly lastName: string | null;
   readonly species: number;
-  readonly age: number;
-  readonly height: number;
-  readonly weight: number;
-  readonly residence: number;
+  readonly age: number | null;
+  readonly height: number | null;
+  readonly weight: number | null;
+  readonly residence: number | null;
   readonly status: number;
-  readonly alias: string[];
-  readonly mbti: number;
+  readonly alias: string[] | null;
+  readonly mbti: number | null;
 }
 
 export interface TitanType {
@@ -30,11 +30,11 @@ export interface TitanType {
   readonly name: string;
   readonly otherNames: string[];
   readonly abilities: string[];
-  readonly currentInheritor: number;
-  readonly formerInheritors: number[];
+  readonly currentInheritor: number | null;
+  readonly formerInheritors: number[] | null;
   readonly allegiance: number[];
-  readonly height: number;
-  readonly mbti: number;
+  readonly height: number | null;
+  readonly mbti: number | null;
 }
 
 export interface QuotationType {
