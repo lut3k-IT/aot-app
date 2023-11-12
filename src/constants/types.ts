@@ -3,7 +3,7 @@ import { ResidenceType } from '@/data/residences';
 import { SpeciesType } from '@/data/species';
 import { StatusType } from '@/data/statuses';
 
-import { HeroFilterNames, SortDirection } from './enums';
+import { SortDirection } from './enums';
 
 export type ErrorType = string | undefined;
 
@@ -21,7 +21,7 @@ export interface HeroType {
   readonly weight: number | null;
   readonly residence: number | null;
   readonly status: number;
-  readonly alias: string[] | null;
+  readonly alias: string[];
   readonly mbti: number | null;
 }
 
@@ -31,7 +31,7 @@ export interface TitanType {
   readonly otherNames: string[];
   readonly abilities: string[];
   readonly currentInheritor: number | null;
-  readonly formerInheritors: number[] | null;
+  readonly formerInheritors: number[];
   readonly allegiance: number[];
   readonly height: number | null;
   readonly mbti: number | null;
@@ -64,16 +64,11 @@ export interface HeroFilterCriteria {
   hasWeight: boolean;
 }
 
+export type HeroSortOption = keyof HeroType;
+
 export interface HeroFilters {
   search?: string;
-  sort?: HeroFilterNames;
-  sortDirection?: SortDirection;
+  sort: HeroSortOption;
+  sortDirection: SortDirection;
   filters: HeroFilterCriteria;
-}
-
-export interface SortCriteria {
-  name?: SortDirection;
-  age?: SortDirection;
-  height?: SortDirection;
-  weight?: SortDirection;
 }

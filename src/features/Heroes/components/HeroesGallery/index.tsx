@@ -7,8 +7,8 @@ import useAppSelector from '@/components/hooks/useAppSelector';
 import AppHelmet from '@/components/ui/AppHelmet';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import HeroCard from '@/components/ui/HeroCard';
-import { ElementsIds, HeroFilterNames, Param, SortDirection } from '@/constants/enums';
-import { HeroFilterCriteria, HeroFilters } from '@/constants/types';
+import { ElementsIds, Param, SortDirection } from '@/constants/enums';
+import { HeroFilterCriteria, HeroFilters, HeroSortOption } from '@/constants/types';
 import {
   getMbtiByShortName,
   getResidenceByKeyName,
@@ -18,7 +18,15 @@ import {
 import { filterArrayFromNullish } from '@/utils/helpers';
 import { getFilteredHeroes } from '@/utils/heroesProcessing';
 
-import Filter, { DEFAULT_AGE, DEFAULT_HEIGHT, DEFAULT_WEIGHT } from './components/Filter';
+import Filter from './components/Filter';
+import {
+  DEFAULT_AGE,
+  DEFAULT_HEIGHT,
+  DEFAULT_SORT,
+  DEFAULT_SORT_DIRECTION,
+  DEFAULT_WEIGHT,
+  sortOptions
+} from './components/Filter/helpers';
 
 const PER_PAGE = 30;
 
@@ -60,12 +68,14 @@ const HeroesGallery = () => {
     const hasAge = !!searchParams.get(Param.HAS_AGE);
     const hasHeight = !!searchParams.get(Param.HAS_HEIGHT);
     const hasWeight = !!searchParams.get(Param.HAS_WEIGHT);
+    const sortBy = (searchParams.get(Param.SORT) as HeroSortOption) || DEFAULT_SORT;
+    const sortDirection = (searchParams.get(Param.SORT_DIRECTION) as SortDirection) || DEFAULT_SORT_DIRECTION;
 
     // set filters
     const filters: HeroFilters = {
       search: undefined,
-      sort: undefined,
-      sortDirection: SortDirection.ASC,
+      sort: sortBy,
+      sortDirection: sortDirection,
       filters: {
         status: filterArrayFromNullish(statuses),
         age: [+ageMin, +ageMax],

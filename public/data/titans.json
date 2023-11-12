@@ -16,7 +16,7 @@
     "otherNames": ["Armor", "Marley's Shield"],
     "abilities": ["Armored skin", "Hardening"],
     "currentInheritor": 85,
-    "formerInheritors": null,
+    "formerInheritors": [],
     "allegiance": [2],
     "height": 1500,
     "mbti": 15
@@ -60,7 +60,7 @@
     "otherNames": ["Cart, Cartman", "Quadruped-type", "Quadrupedal-type"],
     "abilities": ["Quadrupedal form", "High endurance", "Great speed", "Speech"],
     "currentInheritor": 86,
-    "formerInheritors": null,
+    "formerInheritors": [],
     "allegiance": [2],
     "height": 400,
     "mbti": null
@@ -82,7 +82,7 @@
     "otherNames": ["Female-looking Titan", "Woman Type Titan"],
     "abilities": ["Versatility", "Titan Attraction", "Crystallization"],
     "currentInheritor": 91,
-    "formerInheritors": null,
+    "formerInheritors": [],
     "allegiance": [2, 5],
     "height": 1400,
     "mbti": 13

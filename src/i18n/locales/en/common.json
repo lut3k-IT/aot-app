@@ -30,10 +30,23 @@
   "filter": {
     "title": "Filter",
     "hasInfoAbout": "Has info about",
-    "heroesDesc": "Set filters and save the changes."
+    "heroesDesc": "Set filters and save the changes.",
+    "sortBy": "Sort by"
   },
   "sort": {
-    "title": "Sort"
+    "title": "Sort",
+    "value": {
+      "id": "Default",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "status": "Status",
+      "age": "Age",
+      "height": "Height",
+      "weight": "Weight",
+      "mbti": "MBTI",
+      "species": "Species",
+      "residence": "Residence"
+    }
   },
   "spoilerMode": "Hide spoilers mode",
   "form": {},

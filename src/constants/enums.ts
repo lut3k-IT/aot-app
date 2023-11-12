@@ -18,7 +18,9 @@ export enum Param {
   RESIDENCE = 'residence',
   HAS_AGE = 'has_age',
   HAS_HEIGHT = 'has_height',
-  HAS_WEIGHT = 'has_weight'
+  HAS_WEIGHT = 'has_weight',
+  SORT = 'sort',
+  SORT_DIRECTION = 'order'
 }
 
 export enum RoutePath {

@@ -1,8 +1,8 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 
-import { Button, ButtonProps } from '@/components/ui/Button';
+import { Button } from '@/components/ui/Button';
 import {
   Dialog,
   DialogContent,
@@ -14,13 +14,14 @@ import {
 } from '@/components/ui/Dialog';
 import { Input } from '@/components/ui/Input';
 import { ScrollArea } from '@/components/ui/ScrollArea';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/Select';
 import { Slider } from '@/components/ui/Slider';
-import { Param } from '@/constants/enums';
+import { Param, SortDirection } from '@/constants/enums';
+import { HeroSortOption } from '@/constants/types';
 import mbti, { MbtiType } from '@/data/mbti';
 import residences, { ResidenceType } from '@/data/residences';
 import species, { SpeciesType } from '@/data/species';
 import statuses, { StatusType } from '@/data/statuses';
-import { cn } from '@/lib/utils';
 import {
   getMbtiByShortName,
   getResidenceByKeyName,
@@ -30,60 +31,18 @@ import {
 } from '@/utils/dataHelpers';
 import { filterArrayFromNullish } from '@/utils/helpers';
 
-interface FilterSegmentProps {
-  title: string;
-  children: React.ReactNode;
-  onReset?: () => void;
-}
-
-const FilterSegment = (props: FilterSegmentProps) => {
-  const { title, children, onReset } = props;
-  return (
-    <div className={'flex flex-col gap-2'}>
-      <div className={'flex gap-2 justify-between items-center h-8'}>
-        <h3 className={'font-semibold'}>{title}</h3>
-        {onReset && (
-          <Button
-            variant={'link'}
-            className={'h-full p-0 px-3'}
-            onClick={() => onReset()}
-          >
-            Reset
-          </Button>
-        )}
-      </div>
-      {children}
-    </div>
-  );
-};
-
-interface FilterButtonProps extends ButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode;
-  isActive?: boolean;
-}
-
-const FilterButton = (props: FilterButtonProps) => {
-  const { children, isActive, className, ...rest } = props;
-  return (
-    <Button
-      variant={'outline'}
-      className={cn(
-        'w-full h-auto py-1 px-2 whitespace-normal hover:bg-inherit',
-        className,
-        isActive ? 'border-primary !text-primary' : ''
-      )}
-      {...rest}
-    >
-      {children}
-    </Button>
-  );
-};
+import FilterButton from './components/FilterButton';
+import FilterSegment from './components/FilterSegment';
+import {
+  DEFAULT_AGE,
+  DEFAULT_HEIGHT,
+  DEFAULT_SORT,
+  DEFAULT_SORT_DIRECTION,
+  DEFAULT_WEIGHT,
+  sortOptions
+} from './helpers';
 
 // TODO: make an indicator to show filtering is active
-
-export const DEFAULT_AGE = [0, 75];
-export const DEFAULT_HEIGHT = [100, 700];
-export const DEFAULT_WEIGHT = [40, 150];
 
 const Filter = () => {
   const { t } = useTranslation();
@@ -97,11 +56,12 @@ const Filter = () => {
   const [selectedMbti, setSelectedMbti] = useState<MbtiType[]>([]);
   const [selectedSpecies, setSelectedSpecies] = useState<SpeciesType[]>([]);
   const [selectedResidence, setSelectedResidence] = useState<ResidenceType[]>([]);
-  const [hasAge, setHasAge] = useState<boolean>(false);
-  const [hasHeight, setHasHeight] = useState<boolean>(false);
-  const [hasWeight, setHasWeight] = useState<boolean>(false);
+  const [hasAge, setHasAge] = useState(false);
+  const [hasHeight, setHasHeight] = useState(false);
+  const [hasWeight, setHasWeight] = useState(false);
 
-  const [sortBy, setSortBy] = useState();
+  const [sortBy, setSortBy] = useState(DEFAULT_SORT);
+  const [sortDirection, setSortDirection] = useState(DEFAULT_SORT_DIRECTION);
 
   const handleResetAll = useCallback(() => {
     setSelectedStatuses([]);
@@ -114,6 +74,7 @@ const Filter = () => {
     setHasAge(false);
     setHasHeight(false);
     setHasWeight(false);
+    setSortBy(DEFAULT_SORT);
   }, []);
 
   const handleSetStatuses = (status: StatusType) => {
@@ -149,7 +110,9 @@ const Filter = () => {
       [Param.RESIDENCE]: selectedResidence.map((x) => x.keyName),
       ...(hasAge ? { [Param.HAS_AGE]: hasAge.toString() } : {}),
       ...(hasHeight ? { [Param.HAS_HEIGHT]: hasHeight.toString() } : {}),
-      ...(hasWeight ? { [Param.HAS_WEIGHT]: hasWeight.toString() } : {})
+      ...(hasWeight ? { [Param.HAS_WEIGHT]: hasWeight.toString() } : {}),
+      ...(sortBy !== DEFAULT_SORT ? { [Param.SORT]: sortBy.toString() } : {}),
+      ...(sortDirection !== DEFAULT_SORT_DIRECTION ? { [Param.SORT_DIRECTION]: sortBy.toString() } : {})
     });
   };
 
@@ -168,6 +131,8 @@ const Filter = () => {
     const hasAge = !!searchParams.get(Param.HAS_AGE);
     const hasHeight = !!searchParams.get(Param.HAS_HEIGHT);
     const hasWeight = !!searchParams.get(Param.HAS_WEIGHT);
+    const sortBy = (searchParams.get(Param.SORT) as HeroSortOption) || DEFAULT_SORT;
+    const sortDirection = (searchParams.get(Param.SORT_DIRECTION) as SortDirection) || DEFAULT_SORT_DIRECTION;
 
     setSelectedStatuses(filterArrayFromNullish(statuses));
     setSelectedAge([+ageMin, +ageMax]);
@@ -177,8 +142,10 @@ const Filter = () => {
     setSelectedSpecies(filterArrayFromNullish(species));
     setSelectedResidence(filterArrayFromNullish(residences));
     setHasAge(hasAge);
-    setHasWeight(hasHeight);
+    setHasHeight(hasHeight);
     setHasWeight(hasWeight);
+    setSortBy(sortBy);
+    setSortDirection(sortDirection);
   }, []);
 
   return (
@@ -205,6 +172,31 @@ const Filter = () => {
         </DialogHeader>
         <ScrollArea className={'h-full -mx-2 -mr-4 pr-2'}>
           <div className='grid gap-6 mx-2 py-4'>
+            <FilterSegment title={t('common:filter.sortBy')}>
+              <div className={'flex gap-3'}>
+                <Select
+                  value={sortBy}
+                  onValueChange={(v: HeroSortOption) => setSortBy(v)}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder={t('common:filter.sortBy')} />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      {sortOptions.map((option) => (
+                        <SelectItem
+                          key={option}
+                          value={option}
+                        >
+                          {t(`common:sort.value.${option}`)}
+                        </SelectItem>
+                      ))}
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+                <Button>Asc</Button>
+              </div>
+            </FilterSegment>
             <FilterSegment
               title={t('data:status.title')}
               onReset={() => setSelectedStatuses([])}
@@ -391,7 +383,7 @@ const Filter = () => {
         </ScrollArea>
         <DialogFooter className={'flex flex-auto flex-row gap-3'}>
           <Button
-            className={'w-fit whitespace-nowrap'}
+            className={'w-fit whitespace-nowrap text-destructive bg-destructive-foreground'}
             variant={'secondary'}
             onClick={handleResetAll}
           >

@@ -22,7 +22,7 @@
     "weight": 70,
     "residence": 6,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 9
   },
   {
@@ -35,7 +35,7 @@
     "weight": 60,
     "residence": 6,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 4
   },
   {
@@ -61,7 +61,7 @@
     "weight": null,
     "residence": 6,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 16
   },
   {
@@ -74,7 +74,7 @@
     "weight": 64,
     "residence": 6,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 14
   },
   {
@@ -87,7 +87,7 @@
     "weight": 450,
     "residence": 6,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -113,7 +113,7 @@
     "weight": null,
     "residence": null,
     "status": 3,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -126,7 +126,7 @@
     "weight": 450,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -139,7 +139,7 @@
     "weight": null,
     "residence": null,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -165,7 +165,7 @@
     "weight": 72,
     "residence": null,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 11
   },
   {
@@ -191,7 +191,7 @@
     "weight": null,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -204,7 +204,7 @@
     "weight": null,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -217,7 +217,7 @@
     "weight": 66,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 9
   },
   {
@@ -230,7 +230,7 @@
     "weight": null,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -243,7 +243,7 @@
     "weight": null,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 14
   },
   {
@@ -256,7 +256,7 @@
     "weight": 72,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -269,7 +269,7 @@
     "weight": 55,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -282,7 +282,7 @@
     "weight": 75,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -295,7 +295,7 @@
     "weight": null,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -308,7 +308,7 @@
     "weight": null,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -321,7 +321,7 @@
     "weight": null,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -334,7 +334,7 @@
     "weight": 65,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 10
   },
   {
@@ -347,7 +347,7 @@
     "weight": 59,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 11
   },
   {
@@ -373,7 +373,7 @@
     "weight": 58,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 9
   },
   {
@@ -386,7 +386,7 @@
     "weight": null,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -399,7 +399,7 @@
     "weight": 59,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 11
   },
   {
@@ -412,7 +412,7 @@
     "weight": 75,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 15
   },
   {
@@ -425,7 +425,7 @@
     "weight": 72,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -438,7 +438,7 @@
     "weight": null,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 12
   },
   {
@@ -451,7 +451,7 @@
     "weight": 57,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 13
   },
   {
@@ -464,7 +464,7 @@
     "weight": null,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -477,7 +477,7 @@
     "weight": null,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -490,7 +490,7 @@
     "weight": null,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 15
   },
   {
@@ -503,7 +503,7 @@
     "weight": 55,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 12
   },
   {
@@ -516,7 +516,7 @@
     "weight": null,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 13
   },
   {
@@ -529,7 +529,7 @@
     "weight": 82,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 11
   },
   {
@@ -542,7 +542,7 @@
     "weight": null,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -555,7 +555,7 @@
     "weight": 84,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 8
   },
   {
@@ -568,7 +568,7 @@
     "weight": 80,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -581,7 +581,7 @@
     "weight": 58,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 14
   },
   {
@@ -594,7 +594,7 @@
     "weight": null,
     "residence": 5,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -607,7 +607,7 @@
     "weight": null,
     "residence": 5,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 7
   },
   {
@@ -620,7 +620,7 @@
     "weight": null,
     "residence": 5,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -633,7 +633,7 @@
     "weight": null,
     "residence": 5,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 16
   },
   {
@@ -659,7 +659,7 @@
     "weight": 80,
     "residence": 6,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 11
   },
   {
@@ -672,7 +672,7 @@
     "weight": 53,
     "residence": 7,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 15
   },
   {
@@ -685,7 +685,7 @@
     "weight": null,
     "residence": 7,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 13
   },
   {
@@ -711,7 +711,7 @@
     "weight": null,
     "residence": 7,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 15
   },
   {
@@ -724,7 +724,7 @@
     "weight": 95,
     "residence": null,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 15
   },
   {
@@ -750,7 +750,7 @@
     "weight": 65,
     "residence": 7,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 13
   },
   {
@@ -763,7 +763,7 @@
     "weight": null,
     "residence": 7,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -776,7 +776,7 @@
     "weight": 73,
     "residence": 6,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 2
   },
   {
@@ -789,7 +789,7 @@
     "weight": 80,
     "residence": 6,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -802,7 +802,7 @@
     "weight": 53,
     "residence": 6,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 9
   },
   {
@@ -815,7 +815,7 @@
     "weight": null,
     "residence": 6,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 9
   },
   {
@@ -828,7 +828,7 @@
     "weight": 52,
     "residence": 6,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 9
   },
   {
@@ -841,7 +841,7 @@
     "weight": null,
     "residence": 7,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 10
   },
   {
@@ -854,7 +854,7 @@
     "weight": 56,
     "residence": 6,
     "status": 3,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -867,7 +867,7 @@
     "weight": null,
     "residence": 5,
     "status": 3,
-    "alias": null,
+    "alias": [],
     "mbti": 16
   },
   {
@@ -880,7 +880,7 @@
     "weight": 88,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 16
   },
   {
@@ -893,7 +893,7 @@
     "weight": 82,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 3
   },
   {
@@ -906,7 +906,7 @@
     "weight": 81,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -919,7 +919,7 @@
     "weight": 107,
     "residence": 6,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 1
   },
   {
@@ -932,7 +932,7 @@
     "weight": 50,
     "residence": 6,
     "status": 3,
-    "alias": null,
+    "alias": [],
     "mbti": 10
   },
   {
@@ -945,7 +945,7 @@
     "weight": null,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -958,7 +958,7 @@
     "weight": 70,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 7
   },
   {
@@ -971,7 +971,7 @@
     "weight": null,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -984,7 +984,7 @@
     "weight": 74,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 10
   },
   {
@@ -997,7 +997,7 @@
     "weight": 48,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 10
   },
   {
@@ -1010,7 +1010,7 @@
     "weight": null,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1023,7 +1023,7 @@
     "weight": null,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1036,7 +1036,7 @@
     "weight": null,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 10
   },
   {
@@ -1049,7 +1049,7 @@
     "weight": 80,
     "residence": 2,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 11
   },
   {
@@ -1062,7 +1062,7 @@
     "weight": null,
     "residence": 2,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 11
   },
   {
@@ -1075,7 +1075,7 @@
     "weight": null,
     "residence": 2,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1088,7 +1088,7 @@
     "weight": null,
     "residence": 2,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 1
   },
   {
@@ -1153,7 +1153,7 @@
     "weight": 65,
     "residence": 2,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 12
   },
   {
@@ -1192,7 +1192,7 @@
     "weight": 39,
     "residence": 2,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 10
   },
   {
@@ -1205,7 +1205,7 @@
     "weight": 34,
     "residence": 2,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 13
   },
   {
@@ -1270,7 +1270,7 @@
     "weight": 95,
     "residence": 2,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 11
   },
   {
@@ -1296,7 +1296,7 @@
     "weight": null,
     "residence": null,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1309,7 +1309,7 @@
     "weight": null,
     "residence": 7,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1335,7 +1335,7 @@
     "weight": null,
     "residence": 7,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1348,7 +1348,7 @@
     "weight": null,
     "residence": 7,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1361,7 +1361,7 @@
     "weight": null,
     "residence": 7,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1374,7 +1374,7 @@
     "weight": null,
     "residence": 7,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1387,7 +1387,7 @@
     "weight": null,
     "residence": 7,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1460,7 +1460,7 @@
     "weight": null,
     "residence": 2,
     "status": 3,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1499,7 +1499,7 @@
     "weight": 45,
     "residence": 1,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 11
   },
   {
@@ -1512,7 +1512,7 @@
     "weight": null,
     "residence": 6,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1525,7 +1525,7 @@
     "weight": 78,
     "residence": 6,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1538,7 +1538,7 @@
     "weight": null,
     "residence": 7,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1551,7 +1551,7 @@
     "weight": null,
     "residence": 7,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1564,7 +1564,7 @@
     "weight": null,
     "residence": 6,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1590,7 +1590,7 @@
     "weight": 41,
     "residence": 6,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 6
   },
   {
@@ -1603,7 +1603,7 @@
     "weight": null,
     "residence": 6,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1616,7 +1616,7 @@
     "weight": 50,
     "residence": 7,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 15
   },
   {
@@ -1629,7 +1629,7 @@
     "weight": null,
     "residence": 7,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 1
   },
   {
@@ -1642,7 +1642,7 @@
     "weight": null,
     "residence": 7,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1655,7 +1655,7 @@
     "weight": 71,
     "residence": 7,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 15
   },
   {
@@ -1668,7 +1668,7 @@
     "weight": 76,
     "residence": 7,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1681,7 +1681,7 @@
     "weight": 62,
     "residence": 7,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 13
   },
   {
@@ -1694,7 +1694,7 @@
     "weight": null,
     "residence": 7,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1707,7 +1707,7 @@
     "weight": null,
     "residence": 7,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1720,7 +1720,7 @@
     "weight": null,
     "residence": 7,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1733,7 +1733,7 @@
     "weight": 74,
     "residence": 6,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 14
   },
   {
@@ -1746,7 +1746,7 @@
     "weight": 60,
     "residence": 7,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 9
   },
   {
@@ -1759,7 +1759,7 @@
     "weight": 62,
     "residence": 7,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 2
   },
   {
@@ -1772,7 +1772,7 @@
     "weight": 74,
     "residence": null,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 10
   },
   {
@@ -1798,7 +1798,7 @@
     "weight": null,
     "residence": 5,
     "status": 3,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1811,7 +1811,7 @@
     "weight": null,
     "residence": null,
     "status": 3,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1824,7 +1824,7 @@
     "weight": null,
     "residence": 4,
     "status": 3,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1850,7 +1850,7 @@
     "weight": 72,
     "residence": 7,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 9
   },
   {
@@ -1863,7 +1863,7 @@
     "weight": null,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1876,7 +1876,7 @@
     "weight": null,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1889,7 +1889,7 @@
     "weight": null,
     "residence": 6,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1902,7 +1902,7 @@
     "weight": null,
     "residence": 7,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1915,7 +1915,7 @@
     "weight": null,
     "residence": 7,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1928,7 +1928,7 @@
     "weight": null,
     "residence": 5,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -1941,7 +1941,7 @@
     "weight": 54,
     "residence": 7,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 9
   },
   {
@@ -1967,7 +1967,7 @@
     "weight": 58,
     "residence": 5,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 12
   },
   {
@@ -1980,7 +1980,7 @@
     "weight": 45,
     "residence": 5,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -2019,7 +2019,7 @@
     "weight": 58,
     "residence": null,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -2058,7 +2058,7 @@
     "weight": null,
     "residence": 2,
     "status": 3,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -2071,7 +2071,7 @@
     "weight": null,
     "residence": 2,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -2110,7 +2110,7 @@
     "weight": 60,
     "residence": 2,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 9
   },
   {
@@ -2136,7 +2136,7 @@
     "weight": 45,
     "residence": 2,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 10
   },
   {
@@ -2149,7 +2149,7 @@
     "weight": null,
     "residence": 2,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -2162,7 +2162,7 @@
     "weight": null,
     "residence": 2,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -2175,7 +2175,7 @@
     "weight": null,
     "residence": 2,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 2
   },
   {
@@ -2188,7 +2188,7 @@
     "weight": null,
     "residence": 2,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": 6
   },
   {
@@ -2201,7 +2201,7 @@
     "weight": 63,
     "residence": null,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 1
   },
   {
@@ -2214,7 +2214,7 @@
     "weight": 75,
     "residence": 3,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 7
   },
   {
@@ -2240,7 +2240,7 @@
     "weight": null,
     "residence": null,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -2253,7 +2253,7 @@
     "weight": null,
     "residence": null,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -2266,7 +2266,7 @@
     "weight": null,
     "residence": null,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -2303,7 +2303,7 @@
     "weight": null,
     "residence": 6,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 15
   },
   {
@@ -2316,7 +2316,7 @@
     "weight": 45,
     "residence": 6,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 5
   },
   {
@@ -2329,7 +2329,7 @@
     "weight": 71,
     "residence": 6,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 3
   },
   {
@@ -2342,7 +2342,7 @@
     "weight": null,
     "residence": null,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -2355,7 +2355,7 @@
     "weight": null,
     "residence": null,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -2368,7 +2368,7 @@
     "weight": 65,
     "residence": null,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -2381,7 +2381,7 @@
     "weight": null,
     "residence": null,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -2394,7 +2394,7 @@
     "weight": null,
     "residence": null,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -2407,7 +2407,7 @@
     "weight": null,
     "residence": 2,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -2420,7 +2420,7 @@
     "weight": null,
     "residence": null,
     "status": 2,
-    "alias": null,
+    "alias": [],
     "mbti": null
   },
   {
@@ -2446,7 +2446,7 @@
     "weight": 82,
     "residence": 7,
     "status": 1,
-    "alias": null,
+    "alias": [],
     "mbti": 4
   }
 ]
