@@ -20,7 +20,7 @@ const sortWithNullsLastDesc = (a: any, b: any) => {
   return a < b ? 1 : a > b ? -1 : 0;
 };
 
-export const getFilteredHeroes = (data: HeroType[], filters: HeroFilters) => {
+export const filterHeroes = (data: HeroType[], filters: HeroFilters) => {
   /* --------------------------------- Filter --------------------------------- */
   const filteredData = data.filter((hero) => {
     const isAgeFilterSameAsDefault =
@@ -92,4 +92,23 @@ export const getFilteredHeroes = (data: HeroType[], filters: HeroFilters) => {
       : filteredData;
 
   return sortedData;
+};
+
+export const paginateHeroes = (data: HeroType[], page: number, pageSize: number) => {
+  if (typeof page !== 'number' || page < 1) {
+    throw new Error('Invalid page number');
+  }
+  if (typeof pageSize !== 'number' || pageSize < 1) {
+    throw new Error('Invalid page size');
+  }
+
+  const start = (page - 1) * pageSize;
+  const end = start + pageSize;
+
+  const paginatedHeroes = data.slice(start, end);
+
+  const totalItems = data.length;
+  const totalPages = Math.ceil(totalItems / pageSize);
+
+  return { paginatedHeroes, totalPages };
 };

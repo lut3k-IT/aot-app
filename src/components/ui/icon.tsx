@@ -13,10 +13,10 @@ import {
   Menu,
   Moon,
   PenLine,
+  Quote,
   Sun,
   User,
-  X,
-  Quote
+  X
 } from 'lucide-react';
 
 import { ReactComponent as AotLg } from '@/assets/icons/aot-icon-lg.svg';

@@ -7,6 +7,7 @@ import useAppSelector from '@/components/hooks/useAppSelector';
 import AppHelmet from '@/components/ui/AppHelmet';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import HeroCard from '@/components/ui/HeroCard';
+import Pagination from '@/components/ui/Pagination';
 import { ElementsIds, Param, SortDirection } from '@/constants/enums';
 import { HeroFilterCriteria, HeroFilters, HeroSortOption } from '@/constants/types';
 import {
@@ -16,7 +17,7 @@ import {
   getStatusByKeyName
 } from '@/utils/dataHelpers';
 import { filterArrayFromNullish } from '@/utils/helpers';
-import { getFilteredHeroes } from '@/utils/heroesProcessing';
+import { filterHeroes, paginateHeroes } from '@/utils/heroesProcessing';
 
 import Filter from './components/Filter';
 import {
@@ -24,11 +25,10 @@ import {
   DEFAULT_HEIGHT,
   DEFAULT_SORT,
   DEFAULT_SORT_DIRECTION,
-  DEFAULT_WEIGHT,
-  sortOptions
+  DEFAULT_WEIGHT
 } from './components/Filter/helpers';
 
-const PER_PAGE = 30;
+const PAGE_SIZES = [50, 100, 200];
 
 const HeroesGallery = () => {
   const { t } = useTranslation();
@@ -38,6 +38,10 @@ const HeroesGallery = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(PAGE_SIZES[0]);
+  const [totalPages, setTotalPages] = useState(1);
+
   const originalHeroes = useAppSelector((state) => state.heroes.data);
   const favoriteHeroesIds = useAppSelector((state) => state.heroes.favoriteIds);
   const fetchingStatus = useAppSelector((state) => state.heroes.status);
@@ -46,14 +50,15 @@ const HeroesGallery = () => {
   const [filteredHeroes, setFilteredHeroes] = useState(originalHeroes);
   const [paginatedHeroes, setpaginatedHeroes] = useState(originalHeroes);
 
-  // ? temporary — transform it to paginate later
-  useEffect(() => {
-    setpaginatedHeroes(filteredHeroes);
-  }, [filteredHeroes]);
+  // console.log({ originalHeroes, filteredHeroes, paginatedHeroes });
 
   useEffect(() => {
-    // TODO: skip if there is no search params
+    const { paginatedHeroes, totalPages } = paginateHeroes(filteredHeroes, page, pageSize);
+    setpaginatedHeroes(paginatedHeroes);
+    setTotalPages(totalPages);
+  }, [filteredHeroes, page, pageSize]);
 
+  useEffect(() => {
     // get params
     const statuses = searchParams.getAll(Param.STATUS).map((param) => getStatusByKeyName(param));
     const ageMin = searchParams.get(Param.AGE_MIN) || DEFAULT_AGE[0];
@@ -91,7 +96,7 @@ const HeroesGallery = () => {
     };
 
     // filter and paginate
-    setFilteredHeroes(getFilteredHeroes(originalHeroes, filters));
+    setFilteredHeroes(filterHeroes(originalHeroes, filters));
   }, [originalHeroes, searchParams]);
 
   return (
@@ -105,6 +110,15 @@ const HeroesGallery = () => {
           key={hero.id}
         />
       ))}
+      <Pagination
+        itemsCount={filteredHeroes.length}
+        page={page}
+        setPage={setPage}
+        totalPages={totalPages}
+        pageSizeOptions={PAGE_SIZES}
+        pageSize={pageSize}
+        setPageSize={setPageSize}
+      />
     </GalleryWrapper>
   );
 };

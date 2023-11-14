@@ -48,6 +48,9 @@ const Filter = () => {
   const { t } = useTranslation();
 
   const [searchParams, setSearchParams] = useSearchParams();
+  const hasParams = searchParams.size > 0;
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [selectedStatuses, setSelectedStatuses] = useState<StatusType[]>([]);
   const [selectedAge, setSelectedAge] = useState(DEFAULT_AGE);
@@ -114,6 +117,8 @@ const Filter = () => {
       ...(sortBy !== DEFAULT_SORT ? { [Param.SORT]: sortBy.toString() } : {}),
       ...(sortDirection !== DEFAULT_SORT_DIRECTION ? { [Param.SORT_DIRECTION]: sortBy.toString() } : {})
     });
+
+    setIsModalOpen(false);
   };
 
   // set state from params on mount
@@ -149,18 +154,24 @@ const Filter = () => {
   }, []);
 
   return (
-    <Dialog>
+    <Dialog
+      open={isModalOpen}
+      onOpenChange={setIsModalOpen}
+    >
       <DialogTrigger asChild>
         <Button
           iconSize={'xs'}
           iconPosition={'right'}
           iconName={'filter'}
           variant={'outline'}
-          className={'text-muted-foreground'}
+          className={'text-muted-foreground relative'}
           size={'sm'}
           iconProps={{ className: 'text-muted-foreground' }}
         >
           {t('common:filter.title')}
+          {hasParams && (
+            <div className={'absolute -top-0.5 -right-0.5 w-2 h-2 bg-red-300 dark:bg-red-900 rounded-full'} />
+          )}
         </Button>
       </DialogTrigger>
       <DialogContent className={'h-[600px] max-h-[100vh]'}>
@@ -173,7 +184,7 @@ const Filter = () => {
         <ScrollArea className={'h-full -mx-2 -mr-4 pr-2'}>
           <div className='grid gap-6 mx-2 py-4'>
             <FilterSegment title={t('common:filter.sortBy')}>
-              <div className={'flex gap-3'}>
+              <div className={'flex gap-4'}>
                 <Select
                   value={sortBy}
                   onValueChange={(v: HeroSortOption) => setSortBy(v)}
@@ -194,6 +205,7 @@ const Filter = () => {
                     </SelectGroup>
                   </SelectContent>
                 </Select>
+                {/* TODO: */}
                 <Button>Asc</Button>
               </div>
             </FilterSegment>
