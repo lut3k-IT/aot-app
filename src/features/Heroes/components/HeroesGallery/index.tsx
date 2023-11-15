@@ -7,6 +7,7 @@ import useAppSelector from '@/components/hooks/useAppSelector';
 import AppHelmet from '@/components/ui/AppHelmet';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import HeroCard from '@/components/ui/HeroCard';
+import NewPagination from '@/components/ui/NewPagination';
 import Pagination from '@/components/ui/Pagination';
 import { ElementsIds, Param, SortDirection } from '@/constants/enums';
 import { HeroFilterCriteria, HeroFilters, HeroSortOption } from '@/constants/types';
@@ -49,8 +50,6 @@ const HeroesGallery = () => {
 
   const [filteredHeroes, setFilteredHeroes] = useState(originalHeroes);
   const [paginatedHeroes, setpaginatedHeroes] = useState(originalHeroes);
-
-  // console.log({ originalHeroes, filteredHeroes, paginatedHeroes });
 
   useEffect(() => {
     const { paginatedHeroes, totalPages } = paginateHeroes(filteredHeroes, page, pageSize);
@@ -97,6 +96,7 @@ const HeroesGallery = () => {
 
     // filter and paginate
     setFilteredHeroes(filterHeroes(originalHeroes, filters));
+    setPage(1);
   }, [originalHeroes, searchParams]);
 
   return (
@@ -110,7 +110,16 @@ const HeroesGallery = () => {
           key={hero.id}
         />
       ))}
-      <Pagination
+      {/* <Pagination
+        itemsCount={filteredHeroes.length}
+        page={page}
+        setPage={setPage}
+        totalPages={totalPages}
+        pageSizeOptions={PAGE_SIZES}
+        pageSize={pageSize}
+        setPageSize={setPageSize}
+      /> */}
+      <NewPagination
         itemsCount={filteredHeroes.length}
         page={page}
         setPage={setPage}

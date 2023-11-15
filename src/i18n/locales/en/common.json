@@ -17,6 +17,9 @@
     "charts": "Charts",
     "comparison": "Comparison"
   },
+  "preposition": {
+    "of": "of"
+  },
   "action": {
     "submit": "Submit",
     "cancel": "Cancel",

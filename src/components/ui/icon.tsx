@@ -2,6 +2,8 @@ import React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import {
   ArrowDownWideNarrow,
+  ChevronFirst,
+  ChevronLast,
   ChevronLeft,
   ChevronRight,
   Dna,
@@ -64,7 +66,9 @@ export type IconNames =
   | 'x'
   | 'quote'
   | 'chevronLeft'
-  | 'chevronRight';
+  | 'chevronRight'
+  | 'chevronFirst'
+  | 'chevronLast';
 
 type Icons = Record<IconNames, React.ElementType>;
 
@@ -94,7 +98,9 @@ const Icon = ({ name, size, variant, color, isFilled = false, className, ...prop
     x: X,
     quote: Quote,
     chevronLeft: ChevronLeft,
-    chevronRight: ChevronRight
+    chevronRight: ChevronRight,
+    chevronFirst: ChevronFirst,
+    chevronLast: ChevronLast
   };
   const IconComponent = iconsSet[name];
 
