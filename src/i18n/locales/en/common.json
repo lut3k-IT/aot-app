@@ -56,7 +56,8 @@
   "error": {
     "oops": "Oops",
     "unexpectedError": "Unexpected error",
-    "routeNotFound": "Route not found"
+    "routeNotFound": "Route not found",
+    "backToHomepage": "Back to homepage"
   },
   "navigation": {
     "goBack": "Go back"

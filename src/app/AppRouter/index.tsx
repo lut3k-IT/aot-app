@@ -29,14 +29,21 @@ const RouterComponents = () => (
   </>
 );
 
+// FIXME:
 export const router = createBrowserRouter([
   {
-    element: <RouterComponents />,
-    errorElement: <ErrorPage />,
+    // element: <RouterComponents />,
+    // errorElement: <ErrorPage />,
+    // children: [
+    path: RoutePath.LANDING,
+    element: <PageOverlay />,
     children: [
       {
-        path: RoutePath.LANDING,
-        element: <PageOverlay />,
+        // path: RoutePath.LANDING,
+        // element: <PageOverlay />,
+        // children: [
+        element: <RouterComponents />,
+        errorElement: <ErrorPage />,
         children: [
           {
             path: RoutePath.LANDING,

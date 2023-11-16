@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import heroesSlice from './heroesSlice';
 import quotationsSlice from './quotationsSlice';
-import titansSlice from './titanSlice';
+import titansSlice from './titansSlice';
 
 export const store = configureStore({
   reducer: {

@@ -5,7 +5,7 @@ import { v4 } from 'uuid';
 
 import { RoutePath } from '@/constants/enums';
 import { FavoriteType, HeroType, TitanType } from '@/constants/types';
-import { addFavorite, removeFavorite } from '@/store/titanSlice';
+import { addFavorite, removeFavorite } from '@/store/titansSlice';
 import { getAllegianceNames, getHeroName, isInFavorites } from '@/utils/dataHelpers';
 
 import useAppDispatch from '../hooks/useAppDispatch';

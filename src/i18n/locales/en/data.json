@@ -80,5 +80,9 @@
   "weight": {
     "title": "Weight",
     "boolean": "Has weight"
-  }
+  },
+  "otherNames": "Aliases",
+  "abilities": "Abilities",
+  "currentInheritor": "Current inheritor",
+  "formerInheritors": "Former inheritors"
 }

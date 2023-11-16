@@ -8,9 +8,8 @@ import AppHelmet from '@/components/ui/AppHelmet';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import HeroCard from '@/components/ui/HeroCard';
 import NewPagination from '@/components/ui/NewPagination';
-import Pagination from '@/components/ui/Pagination';
 import { ElementsIds, Param, SortDirection } from '@/constants/enums';
-import { HeroFilterCriteria, HeroFilters, HeroSortOption } from '@/constants/types';
+import { HeroFilters, HeroSortOption } from '@/constants/types';
 import {
   getMbtiByShortName,
   getResidenceByKeyName,
@@ -29,7 +28,7 @@ import {
   DEFAULT_WEIGHT
 } from './components/Filter/helpers';
 
-const PAGE_SIZES = [50, 100, 200];
+const PAGE_SIZES = [20, 50, 100, 200];
 
 const HeroesGallery = () => {
   const { t } = useTranslation();
@@ -37,7 +36,7 @@ const HeroesGallery = () => {
   // FIXME: sometimes it doesn't show
   const filterDestination = document.getElementById(ElementsIds.PAGE_HEADING_OPTIONS);
 
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(PAGE_SIZES[0]);
@@ -50,6 +49,8 @@ const HeroesGallery = () => {
 
   const [filteredHeroes, setFilteredHeroes] = useState(originalHeroes);
   const [paginatedHeroes, setPaginatedHeroes] = useState(originalHeroes);
+
+  const hasData = paginatedHeroes.length > 0;
 
   useEffect(() => {
     const { paginatedHeroes, totalPages } = paginateHeroes(filteredHeroes, page, pageSize);
@@ -110,24 +111,17 @@ const HeroesGallery = () => {
           key={hero.id}
         />
       ))}
-      {/* <Pagination
-        itemsCount={filteredHeroes.length}
-        page={page}
-        setPage={setPage}
-        totalPages={totalPages}
-        pageSizeOptions={PAGE_SIZES}
-        pageSize={pageSize}
-        setPageSize={setPageSize}
-      /> */}
-      <NewPagination
-        itemsCount={filteredHeroes.length}
-        page={page}
-        setPage={setPage}
-        totalPages={totalPages}
-        pageSizeOptions={PAGE_SIZES}
-        pageSize={pageSize}
-        setPageSize={setPageSize}
-      />
+      {hasData && (
+        <NewPagination
+          itemsCount={filteredHeroes.length}
+          page={page}
+          setPage={setPage}
+          totalPages={totalPages}
+          pageSizeOptions={PAGE_SIZES}
+          pageSize={pageSize}
+          setPageSize={setPageSize}
+        />
+      )}
     </GalleryWrapper>
   );
 };

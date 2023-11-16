@@ -15,11 +15,11 @@ const TitansGallery = () => {
   const fetchingError = useAppSelector((state) => state.titans.error);
 
   const [filteredTitans, setFilteredTitans] = useState(originalTitans);
-  const [paginatedTitans, setpaginatedTitans] = useState(originalTitans);
+  const [paginatedTitans, setPaginatedTitans] = useState(originalTitans);
 
   useEffect(() => {
     setFilteredTitans(originalTitans);
-    setpaginatedTitans(originalTitans);
+    setPaginatedTitans(originalTitans);
   }, [originalTitans]);
 
   const MappedCharacterCards = () =>

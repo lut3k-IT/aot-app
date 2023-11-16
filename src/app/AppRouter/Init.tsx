@@ -5,7 +5,7 @@ import useAppSelector from '@/components/hooks/useAppSelector';
 import AppHelmet from '@/components/ui/AppHelmet';
 import { loadHeroes } from '@/store/heroesSlice';
 import { loadQuotations } from '@/store/quotationsSlice';
-import { loadTitans } from '@/store/titanSlice';
+import { loadTitans } from '@/store/titansSlice';
 
 const Init = () => {
   const dispatch = useAppDispatch();

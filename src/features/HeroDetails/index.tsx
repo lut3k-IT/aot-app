@@ -1,55 +1,30 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import classNames from 'classnames';
-import { v4 } from 'uuid';
 
+import useAppDispatch from '@/components/hooks/useAppDispatch';
 import useAppSelector from '@/components/hooks/useAppSelector';
+import useValidateIdFromParam from '@/components/hooks/useValidateIdFromParam';
 import { Button } from '@/components/ui/Button';
 import HeroStatus from '@/components/ui/HeroStatus';
+import { MBTI_GROUPS_NAMES } from '@/constants/constants';
 import { RoutePath } from '@/constants/enums';
-import {
-  getMbtiGroupName,
-  getMbtiShortName,
-  getResidenceName,
-  getSpeciesName,
-  getStatusName,
-  isInFavorites
-} from '@/utils/dataHelpers';
+import { MbtiGroups } from '@/constants/types';
+import mbti from '@/data/mbti';
+import { addFavorite, removeFavorite } from '@/store/heroesSlice';
+import { getMbtiShortName, getResidenceName, getSpeciesName, isInFavorites } from '@/utils/dataHelpers';
 
 import ButtonGoBack from '../../components/ui/ButtonGoBack';
 import CharacterPicture from '../../components/ui/CharacterPicture';
-
-interface GridRowProps {
-  title: string;
-  value?: React.ReactNode;
-}
-
-const GridRow = (props: GridRowProps) => {
-  const { title, value = '-' } = props;
-
-  return (
-    <>
-      <div
-        className={
-          'w-full bg-muted text-muted-foreground text-md uppercase px-2 py-0.5 rounded-md text-center font-bold'
-        }
-      >
-        {title}
-      </div>
-      <div className={'w-full self-center text-lg -mt-0.5'}>{value}</div>
-    </>
-  );
-};
+import { DetailsGridRow } from '../../components/ui/DetailsGridRow';
 
 const HeroDetails = () => {
   const { id } = useParams();
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
 
-  if (!id) throw new Error('TODO: write error');
-  if (isNaN(Number(id))) throw new Error('TODO:');
-
-  const paramHeroId = +id;
+  const paramHeroId = useValidateIdFromParam(id);
 
   const originalHeroes = useAppSelector((state) => state.heroes.data);
   const favoriteHeroesIds = useAppSelector((state) => state.heroes.favoriteIds);
@@ -59,17 +34,28 @@ const HeroDetails = () => {
   const hero = originalHeroes.find((hero) => hero.id === paramHeroId);
   const isFavorite = isInFavorites(paramHeroId, favoriteHeroesIds);
 
-  // TODO: if there is no hero, show something
+  const mbtiObj = mbti.find((data) => data.id === hero?.mbti);
+  const mbtiGroupName: MbtiGroups = mbtiObj ? MBTI_GROUPS_NAMES[mbtiObj.mbtiGroup - 1] : 'default';
 
-  if (!hero) return <div>no hero</div>;
+  const handleToggleFavorite = useCallback(() => {
+    const action = isFavorite ? removeFavorite : addFavorite;
+    dispatch(action(paramHeroId));
+  }, [isFavorite, dispatch]);
+
+  if (!hero && originalHeroes.length > 0) throw new Error('Hero with this ID does not exist.');
+  if (!hero) return;
 
   return (
     <div className={'pt-body-pad-start'}>
       <ButtonGoBack fallbackRoute={RoutePath.HEROES_GALLERY} />
       <div className={'flex flex-col items-center mt-6 relative'}>
         <div
-          className={classNames('absolute w-full h-[120px] bg-violet-400 rounded-lg', {
-            '': getMbtiGroupName(hero.mbti, t) === ''
+          className={classNames('absolute w-full h-[120px] rounded-lg', {
+            'bg-neutral-400': mbtiGroupName === 'default',
+            'bg-violet-500': mbtiGroupName === 'analysts',
+            'bg-emerald-600': mbtiGroupName === 'diplomats',
+            'bg-cyan-600': mbtiGroupName === 'sentinels',
+            'bg-yellow-400': mbtiGroupName === 'explorers'
           })}
         />
         <CharacterPicture
@@ -83,15 +69,15 @@ const HeroDetails = () => {
         hero?.lastName || ''
       }`}</div>
       <div className={'grid grid-cols-[minmax(100px,_120px)_minmax(120px,_2fr)] mt-6 gap-x-4 gap-y-3 items-start'}>
-        <GridRow
+        <DetailsGridRow
           title={t('data:species.title')}
           value={getSpeciesName(hero.species, t) || '-'}
         />
-        <GridRow
+        <DetailsGridRow
           title={t('data:residence.title')}
           value={getResidenceName(hero.residence, t) || '-'}
         />
-        <GridRow
+        <DetailsGridRow
           title={t('data:status.title')}
           value={
             <HeroStatus
@@ -100,19 +86,19 @@ const HeroDetails = () => {
             />
           }
         />
-        <GridRow
+        <DetailsGridRow
           title={t('data:mbti.title')}
           value={getMbtiShortName(hero.mbti) || '-'}
         />
-        <GridRow
+        <DetailsGridRow
           title={t('data:age.title')}
           value={hero.age || '-'}
         />
-        <GridRow
+        <DetailsGridRow
           title={t('data:height.title')}
           value={hero.height ? `${hero.height} cm` : '-'}
         />
-        <GridRow
+        <DetailsGridRow
           title={t('data:weight.title')}
           value={hero.height ? `${hero.weight} kg` : '-'}
         />
@@ -123,6 +109,7 @@ const HeroDetails = () => {
           iconName={'heart'}
           variant={isFavorite ? 'secondary' : 'default'}
           iconProps={{ isFilled: isFavorite, className: isFavorite ? 'text-red-500 fill-red-500' : '' }}
+          onClick={handleToggleFavorite}
         >
           {isFavorite ? t('common:action.removeFromFavorites') : t('common:action.addToFavorites')}
         </Button>

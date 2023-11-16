@@ -48,6 +48,8 @@ export interface QuotationType {
 
 export type FavoriteType = number;
 
+export type MbtiGroups = 'default' | 'analysts' | 'diplomats' | 'sentinels' | 'explorers';
+
 /* --------------------------------- Filters -------------------------------- */
 
 export interface FilterNumeralRange {

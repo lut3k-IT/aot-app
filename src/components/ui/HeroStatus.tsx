@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import classNames from 'classnames';
 
 import { getStatusName } from '@/utils/dataHelpers';
 
@@ -13,20 +14,20 @@ const HeroStatus = (props: HeroStatusProps) => {
 
   const statusName = getStatusName(statusId, t);
 
-  let statusClassName = '';
-
-  switch (statusId) {
-    case 1:
-      statusClassName = 'text-green-800 dark:text-green-200';
-      break;
-    case 2:
-      statusClassName = 'text-red-800 dark:text-red-200';
-      break;
-    default:
-      break;
-  }
-
-  return <span className={`contents ${statusClassName} ${className}`}>{statusName}</span>;
+  return (
+    <span
+      className={classNames(
+        'contents',
+        {
+          'text-green-800 dark:text-green-200': statusId === 1,
+          'text-red-800 dark:text-red-200': statusId === 2
+        },
+        className
+      )}
+    >
+      {statusName}
+    </span>
+  );
 };
 
 export default HeroStatus;
