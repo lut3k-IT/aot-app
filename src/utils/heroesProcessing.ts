@@ -83,7 +83,7 @@ export const filterHeroes = (data: HeroType[], filters: HeroFilters) => {
   const sortDirection = filters.sortDirection;
 
   const sortedData =
-    sort === 'id'
+    sort !== 'id'
       ? filteredData.sort((a, b) =>
           sortDirection === SortDirection.ASC
             ? sortWithNullsLast(a[sort], b[sort])
@@ -96,6 +96,7 @@ export const filterHeroes = (data: HeroType[], filters: HeroFilters) => {
 
 export const paginateHeroes = (data: HeroType[], page: number, pageSize: number) => {
   if (typeof page !== 'number' || page < 1) {
+    // TODO: return string 'keyName' and in error boundary assign this to translation
     throw new Error('Invalid page number');
   }
   if (typeof pageSize !== 'number' || pageSize < 1) {

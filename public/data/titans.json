@@ -31,7 +31,7 @@
       "Crazy-berserker Titan",
       "Titan Eren/Eren's Titan"
     ],
-    "abilities": null,
+    "abilities": [],
     "currentInheritor": 175,
     "formerInheritors": [150, 97],
     "allegiance": [1],
@@ -71,7 +71,7 @@
     "otherNames": ["Colossal", "God of Destruction"],
     "abilities": ["Explosive transformation", "Immense size and strength", "Steam emission"],
     "currentInheritor": 1,
-    "formerInheritors": 94,
+    "formerInheritors": [94],
     "allegiance": [1, 4],
     "height": 6000,
     "mbti": 9

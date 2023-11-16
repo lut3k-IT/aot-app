@@ -78,6 +78,7 @@ const Filter = () => {
     setHasHeight(false);
     setHasWeight(false);
     setSortBy(DEFAULT_SORT);
+    setSortDirection(DEFAULT_SORT_DIRECTION);
   }, []);
 
   const handleSetStatuses = (status: StatusType) => {
@@ -94,6 +95,10 @@ const Filter = () => {
 
   const handleSetResidences = (residences: SpeciesType) => {
     toggleStateDataById(residences, setSelectedResidence);
+  };
+
+  const handleToggleSortDirection = () => {
+    setSortDirection((prev) => (prev === SortDirection.ASC ? SortDirection.DESC : SortDirection.ASC));
   };
 
   /* --------------------------------- params --------------------------------- */
@@ -115,7 +120,7 @@ const Filter = () => {
       ...(hasHeight ? { [Param.HAS_HEIGHT]: hasHeight.toString() } : {}),
       ...(hasWeight ? { [Param.HAS_WEIGHT]: hasWeight.toString() } : {}),
       ...(sortBy !== DEFAULT_SORT ? { [Param.SORT]: sortBy.toString() } : {}),
-      ...(sortDirection !== DEFAULT_SORT_DIRECTION ? { [Param.SORT_DIRECTION]: sortBy.toString() } : {})
+      ...(sortDirection !== DEFAULT_SORT_DIRECTION ? { [Param.SORT_DIRECTION]: sortDirection.toString() } : {})
     });
 
     setIsModalOpen(false);
@@ -184,7 +189,7 @@ const Filter = () => {
         <ScrollArea className={'h-full -mx-2 -mr-4 pr-2'}>
           <div className='grid gap-6 mx-2 py-4'>
             <FilterSegment title={t('common:filter.sortBy')}>
-              <div className={'flex gap-4'}>
+              <div className={'flex gap-2'}>
                 <Select
                   value={sortBy}
                   onValueChange={(v: HeroSortOption) => setSortBy(v)}
@@ -205,8 +210,15 @@ const Filter = () => {
                     </SelectGroup>
                   </SelectContent>
                 </Select>
-                {/* TODO: */}
-                <Button>Asc</Button>
+                <Button
+                  variant={'outline'}
+                  iconName={sortDirection === SortDirection.ASC ? 'arrowDownNarrowWide' : 'arrowDownWideNarrow'}
+                  iconPosition={'right'}
+                  className={'w-32'}
+                  onClick={handleToggleSortDirection}
+                >
+                  {t(`common:sort.direction.${sortDirection}.short`)}
+                </Button>
               </div>
             </FilterSegment>
             <FilterSegment

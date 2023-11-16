@@ -38,6 +38,16 @@
   },
   "sort": {
     "title": "Sort",
+    "direction": {
+      "asc": {
+        "short": "Asc",
+        "long": "Ascending"
+      },
+      "desc": {
+        "short": "Desc",
+        "long": "Descending"
+      }
+    },
     "value": {
       "id": "Default",
       "firstName": "First name",

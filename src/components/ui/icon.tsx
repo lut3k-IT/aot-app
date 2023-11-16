@@ -2,6 +2,7 @@ import React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import {
   ArrowDownWideNarrow,
+  ArrowDownNarrowWide,
   ChevronFirst,
   ChevronLast,
   ChevronLeft,
@@ -50,6 +51,7 @@ export type IconSizes = 'default' | 'xs' | 'sm' | 'lg';
 
 export type IconNames =
   | 'arrowDownWideNarrow'
+  | 'arrowDownNarrowWide'
   | 'aotSm'
   | 'aotMd'
   | 'aotLg'
@@ -82,6 +84,7 @@ export interface IconProps extends Partial<LucideIcon>, VariantProps<typeof icon
 const Icon = ({ name, size, variant, color, isFilled = false, className, ...props }: IconProps) => {
   const iconsSet: Icons = {
     arrowDownWideNarrow: ArrowDownWideNarrow,
+    arrowDownNarrowWide: ArrowDownNarrowWide,
     aotSm: AotSm,
     aotMd: AotMd,
     aotLg: AotLg,
