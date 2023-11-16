@@ -1,3 +1,5 @@
+import { TOptions } from 'i18next';
+
 import { MbtiType } from '@/data/mbti';
 import { ResidenceType } from '@/data/residences';
 import { SpeciesType } from '@/data/species';
@@ -8,6 +10,8 @@ import { SortDirection } from './enums';
 export type ErrorType = string | undefined;
 
 export type ImageSourceType = string | undefined;
+
+export type TranslateFunction = (key: string, options?: TOptions) => string;
 
 /* ---------------------------------- Data ---------------------------------- */
 

@@ -36,13 +36,13 @@ const MbtiFrame = (props: MbtiFrameProps) => {
 
   const mbtiObj = mbti.find((data) => data.id === mbtiId);
 
-  const autonomusVariant = variant
+  const autonomousVariant = variant
     ? variant
-    : ((mbtiObj?.mbtiGroup ? getMbtiGroupName(mbtiObj.mbtiGroup) : 'default') as FrameVariantType);
+    : ((mbtiObj?.mbtiGroup ? getMbtiGroupName(mbtiObj.mbtiGroup, t) : 'default') as FrameVariantType);
 
   return (
     <div
-      className={cn(mbtiFrameVariants({ variant: autonomusVariant }))}
+      className={cn(mbtiFrameVariants({ variant: autonomousVariant }))}
       {...rest}
     >
       {children}

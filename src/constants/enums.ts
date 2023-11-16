@@ -72,7 +72,7 @@ export enum LocalStorageKey {
 export enum PromiseStatus {
   IDLE = 'idle',
   LOADING = 'loading',
-  SUCCEDED = 'succeeded',
+  SUCCEEDED = 'succeeded',
   FAILED = 'failed'
 }
 

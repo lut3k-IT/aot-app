@@ -4,7 +4,6 @@ import { v4 } from 'uuid';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/Select';
 
 import { Button } from './Button';
-import Icon from './Icon';
 
 interface PaginationProps {
   itemsCount: number;
@@ -44,7 +43,7 @@ const NewPagination = (props: PaginationProps) => {
   };
 
   return (
-    <div className={'flex gap-4 justify-between items-center'}>
+    <div className={'flex gap-4 justify-between items-center mt-2 h-9'}>
       <div className={'flex gap-2'}>
         <Select
           value={pageSize.toString()}

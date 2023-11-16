@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { FavoriteType, HeroType } from '@/constants/types';
+import { FavoriteType, HeroType, TranslateFunction } from '@/constants/types';
 import allegiances from '@/data/allegiances';
 import mbti from '@/data/mbti';
 import mbtiGroup from '@/data/mbtiGroup';
@@ -24,8 +24,7 @@ export const toggleStatePropertyArrayById = <T extends { id: number }>(data: T, 
   return [...prev, data];
 };
 
-export const getResidenceName = (id: number) => {
-  const { t } = useTranslation();
+export const getResidenceName = (id: number | null, t: TranslateFunction) => {
   const keyName = residences.find((data) => data.id === id)?.keyName;
   return keyName ? t(`data:residence.${keyName}`) : null;
 };
@@ -34,8 +33,12 @@ export const getResidenceByKeyName = (keyName: string) => {
   return residences.find((data) => data.keyName === keyName);
 };
 
-export const getStatusName = (id: number) => {
-  const { t } = useTranslation();
+export const getSpeciesName = (id: number, t: TranslateFunction) => {
+  const keyName = species.find((data) => data.id === id)?.keyName;
+  return keyName ? t(`data:species.${keyName}`) : null;
+};
+
+export const getStatusName = (id: number, t: TranslateFunction) => {
   const keyName = statuses.find((data) => data.id === id)?.keyName;
   return keyName ? t(`data:status.${keyName}.short`) : null;
 };
@@ -44,8 +47,7 @@ export const getStatusByKeyName = (keyName: string) => {
   return statuses.find((data) => data.keyName === keyName);
 };
 
-export const getAllegianceNames = (ids: number[]) => {
-  const { t } = useTranslation();
+export const getAllegianceNames = (ids: number[], t: TranslateFunction) => {
   const namesArray = ids.map((id) => {
     const keyName = allegiances.find((data) => data.id === id)?.keyName;
     return keyName ? t(`data:allegiance.${keyName}`) : null;
@@ -53,16 +55,14 @@ export const getAllegianceNames = (ids: number[]) => {
   return namesArray;
 };
 
-export const getMbtiShortName = (id: number) => mbti.find((data) => data.id === id)?.shortName;
+export const getMbtiShortName = (id: number | null) => mbti.find((data) => data.id === id)?.shortName;
 
-export const getMbtiLongName = (id: number) => {
-  const { t } = useTranslation();
+export const getMbtiLongName = (id: number, t: TranslateFunction) => {
   const keyName = mbti.find((data) => data.id === id)?.keyName;
   return keyName ? t(`data:mbti.${keyName}`) : null;
 };
 
-export const getMbtiGroupName = (id: number) => {
-  const { t } = useTranslation();
+export const getMbtiGroupName = (id: number | null, t: TranslateFunction) => {
   const keyName = mbtiGroup.find((data) => data.id === id)?.keyName;
   return keyName ? t(`data:mbtiGroup.${keyName}`) : null;
 };
@@ -71,7 +71,7 @@ export const getMbtiByShortName = (shortName: string) => {
   return mbti.find((data) => data.shortName === shortName);
 };
 
-export const getHeroName = (id: number, heroes: HeroType[]) => {
+export const getHeroName = (id: number | null, heroes: HeroType[]) => {
   const hero = heroes.find((hero) => hero.id === id);
   return `${hero?.firstName || ''} ${hero?.lastName || ''}`;
 };

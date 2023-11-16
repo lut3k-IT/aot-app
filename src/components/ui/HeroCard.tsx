@@ -30,7 +30,7 @@ const HeroCard = (props: HeroCardProps) => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
-  const residenceName = getResidenceName(data.residence);
+  const residenceName = getResidenceName(data.residence, t);
   const isCurrentFavorite = isInFavorites(data.id, favorites);
 
   const showedDetails = [

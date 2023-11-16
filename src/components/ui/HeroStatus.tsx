@@ -1,12 +1,17 @@
+import { useTranslation } from 'react-i18next';
+
 import { getStatusName } from '@/utils/dataHelpers';
 
 interface HeroStatusProps {
   statusId: number;
+  className?: string;
 }
 
 const HeroStatus = (props: HeroStatusProps) => {
-  const { statusId } = props;
-  const statusName = getStatusName(statusId);
+  const { statusId, className } = props;
+  const { t } = useTranslation();
+
+  const statusName = getStatusName(statusId, t);
 
   let statusClassName = '';
 
@@ -21,7 +26,7 @@ const HeroStatus = (props: HeroStatusProps) => {
       break;
   }
 
-  return <span className={`contents ${statusClassName}`}>{statusName}</span>;
+  return <span className={`contents ${statusClassName} ${className}`}>{statusName}</span>;
 };
 
 export default HeroStatus;

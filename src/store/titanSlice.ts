@@ -39,7 +39,7 @@ const titansSlice = createSlice({
         state.status = PromiseStatus.LOADING;
       })
       .addCase(loadTitans.fulfilled, (state, action) => {
-        state.status = PromiseStatus.SUCCEDED;
+        state.status = PromiseStatus.SUCCEEDED;
         state.data = action.payload;
       })
       .addCase(loadTitans.rejected, (state, action) => {

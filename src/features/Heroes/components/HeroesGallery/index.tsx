@@ -49,11 +49,11 @@ const HeroesGallery = () => {
   const fetchingError = useAppSelector((state) => state.heroes.error);
 
   const [filteredHeroes, setFilteredHeroes] = useState(originalHeroes);
-  const [paginatedHeroes, setpaginatedHeroes] = useState(originalHeroes);
+  const [paginatedHeroes, setPaginatedHeroes] = useState(originalHeroes);
 
   useEffect(() => {
     const { paginatedHeroes, totalPages } = paginateHeroes(filteredHeroes, page, pageSize);
-    setpaginatedHeroes(paginatedHeroes);
+    setPaginatedHeroes(paginatedHeroes);
     setTotalPages(totalPages);
   }, [filteredHeroes, page, pageSize]);
 

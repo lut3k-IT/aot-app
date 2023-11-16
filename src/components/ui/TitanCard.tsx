@@ -26,12 +26,13 @@ const cnDetailValue = 'text-lg font-semibold leading-none';
 
 const TitanCard = (props: TitanCardProps) => {
   const { data, favorites, heroesData } = props;
-  const navigate = useNavigate();
-  const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
   const currentInheritor = getHeroName(data.currentInheritor, heroesData);
-  const allegianceNames = getAllegianceNames(data.allegiance);
+  const allegianceNames = getAllegianceNames(data.allegiance, t);
   const isCurrentFavorite = isInFavorites(data.id, favorites);
 
   const visibleDetails = [

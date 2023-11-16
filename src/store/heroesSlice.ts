@@ -39,7 +39,7 @@ const heroesSlice = createSlice({
         state.status = PromiseStatus.LOADING;
       })
       .addCase(loadHeroes.fulfilled, (state, action) => {
-        state.status = PromiseStatus.SUCCEDED;
+        state.status = PromiseStatus.SUCCEEDED;
         state.data = action.payload;
       })
       .addCase(loadHeroes.rejected, (state, action) => {

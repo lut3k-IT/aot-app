@@ -39,7 +39,7 @@ const quotationsSlice = createSlice({
         state.status = PromiseStatus.LOADING;
       })
       .addCase(loadQuotations.fulfilled, (state, action) => {
-        state.status = PromiseStatus.SUCCEDED;
+        state.status = PromiseStatus.SUCCEEDED;
         state.data = action.payload;
       })
       .addCase(loadQuotations.rejected, (state, action) => {
