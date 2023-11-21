@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import useAppDispatch from '@/components/hooks/useAppDispatch';
 import useAppSelector from '@/components/hooks/useAppSelector';
 import useValidateIdFromParam from '@/components/hooks/useValidateIdFromParam';
+import AppHelmet from '@/components/ui/AppHelmet';
 import { Button } from '@/components/ui/Button';
 import { MBTI_GROUPS_NAMES } from '@/constants/constants';
 import { RoutePath } from '@/constants/enums';
@@ -52,6 +53,7 @@ const TitanDetails = () => {
 
   return (
     <div className={'pt-body-pad-start'}>
+      <AppHelmet title={titan.name} />
       <ButtonGoBack fallbackRoute={RoutePath.HEROES_GALLERY} />
       <div className={'flex flex-col items-center mt-6 relative'}>
         <div

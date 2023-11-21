@@ -80,11 +80,15 @@ html {
   width: calc(100vw - 64px);
 }
 
+.focus-visible-styles {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+}
+
+a {
+  @apply focus-visible-styles;
+}
+
 @keyframes horizontal-scroll-animation {
-  from {
-    /* transform: translateX(100vw); */
-    /* transform: inherit; */
-  }
   to {
     transform: translateX(-100%);
   }

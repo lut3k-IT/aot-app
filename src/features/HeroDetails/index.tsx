@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import useAppDispatch from '@/components/hooks/useAppDispatch';
 import useAppSelector from '@/components/hooks/useAppSelector';
 import useValidateIdFromParam from '@/components/hooks/useValidateIdFromParam';
+import AppHelmet from '@/components/ui/AppHelmet';
 import { Button } from '@/components/ui/Button';
 import HeroStatus from '@/components/ui/HeroStatus';
 import { MBTI_GROUPS_NAMES } from '@/constants/constants';
@@ -47,6 +48,7 @@ const HeroDetails = () => {
 
   return (
     <div className={'pt-body-pad-start'}>
+      <AppHelmet title={`${hero.firstName} ${hero.lastName || ''}`} />
       <ButtonGoBack fallbackRoute={RoutePath.HEROES_GALLERY} />
       <div className={'flex flex-col items-center mt-6 relative'}>
         <div

@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { v4 } from 'uuid';
 
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/Select';
+import { scrollToTop } from '@/utils/helpers';
 
 import { Button } from './Button';
 
@@ -35,6 +36,7 @@ const NewPagination = (props: PaginationProps) => {
     }
 
     setPage(newPage);
+    scrollToTop();
   };
 
   const handleChangePageSize = (v: string) => {
@@ -66,14 +68,17 @@ const NewPagination = (props: PaginationProps) => {
           </SelectContent>
         </Select>
       </div>
-      <p className={'text-sm'}>{`${firstElement}-${lastElement} ${t('common:preposition.of')} ${itemsCount}`}</p>
+      <p className={'text-sm'}>{`${firstElement}–${lastElement} ${t('common:preposition.of')} ${itemsCount}`}</p>
       <div className={'flex gap-1'}>
         <Button
           variant={'outline'}
           size={'icon'}
           className={'w-9 h-9'}
           iconName={'chevronFirst'}
-          onClick={() => setPage(1)}
+          onClick={() => {
+            setPage(1);
+            scrollToTop();
+          }}
         />
         <Button
           variant={'outline'}
@@ -94,7 +99,10 @@ const NewPagination = (props: PaginationProps) => {
           size={'icon'}
           className={'w-9 h-9'}
           iconName={'chevronLast'}
-          onClick={() => setPage(totalPages)}
+          onClick={() => {
+            setPage(totalPages);
+            scrollToTop();
+          }}
         />
       </div>
     </div>

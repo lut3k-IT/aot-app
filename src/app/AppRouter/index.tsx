@@ -15,6 +15,7 @@ import Changelog from '@/features/Minor/Changelog';
 import PrivacyPolicy from '@/features/Minor/PrivacyPolicy';
 import TermsOfService from '@/features/Minor/TermsOfService';
 import Quiz from '@/features/Quiz';
+import QuotationDetails from '@/features/QuotationDetails';
 import Quotations from '@/features/Quotations';
 import TitanDetails from '@/features/TitanDetails';
 import Titans from '@/features/TitansGallery';
@@ -90,12 +91,7 @@ export const router = createBrowserRouter([
           },
           {
             path: RoutePath.QUOTATION_DETAILS + '/:id',
-            element: (
-              <Navigate
-                to={RoutePath.HEROES}
-                replace
-              />
-            )
+            element: <QuotationDetails />
           },
           {
             path: RoutePath.QUIZ,

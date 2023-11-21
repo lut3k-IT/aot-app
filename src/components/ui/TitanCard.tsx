@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { v4 } from 'uuid';
 
 import { RoutePath } from '@/constants/enums';
@@ -64,15 +64,20 @@ const TitanCard = (props: TitanCardProps) => {
 
   return (
     <div className={cnContainer}>
-      <MbtiFrame
-        mbtiId={data.mbti}
-        onClick={() => navigate(`${RoutePath.TITAN_DETAILS}/${data.id}`)}
+      <Link
+        to={`${RoutePath.TITAN_DETAILS}/${data.id}`}
+        className={'rounded-md'}
       >
-        <CharacterPicture
-          imgSource={`/assets/img/titans/${data.id}.jpg`}
-          variant={'roundedBtm'}
-        />
-      </MbtiFrame>
+        <MbtiFrame
+          mbtiId={data.mbti}
+          onClick={() => navigate(`${RoutePath.TITAN_DETAILS}/${data.id}`)}
+        >
+          <CharacterPicture
+            imgSource={`/assets/img/titans/${data.id}.jpg`}
+            variant={'roundedBtm'}
+          />
+        </MbtiFrame>
+      </Link>
       <div className={'flex flex-col flex-1 justify-between'}>
         <div className={'w-full flex flex-col gap-1 mt-0.5 relative'}>
           <div className={'text-lg leading-none font-medium pr-10'}>{data.name || ''}</div>

@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { v4 } from 'uuid';
 
+import { RoutePath } from '@/constants/enums';
 import { addFavorite, removeFavorite } from '@/store/quotationsSlice';
 import { isInFavorites } from '@/utils/dataHelpers';
 import { getRandomQuotation } from '@/utils/quotationHelpers';
@@ -17,8 +19,8 @@ const QuotationBarMobile = () => {
 
   const originalQuotations = useAppSelector((state) => state.quotations.data);
   const favoriteQuotationsIds = useAppSelector((state) => state.quotations.favoriteIds);
-  // const fetchingStatus = useAppSelector((state) => state.quotations.status);
-  // const fetchingError = useAppSelector((state) => state.quotations.error);
+  const fetchingStatus = useAppSelector((state) => state.quotations.status);
+  const fetchingError = useAppSelector((state) => state.quotations.error);
 
   const [remainingQuotations, setRemainingQuotations] = useState([...originalQuotations]);
   const [currentQuotation, setCurrentQuotation] = useState(getRandomQuotation(remainingQuotations));
@@ -79,26 +81,35 @@ const QuotationBarMobile = () => {
   return (
     <div
       className={
-        'flex items-center justify-between px-[22px] py-1 gap-2 bg-background border-b z-20 w-full fixed top-12'
+        'flex items-center justify-between px-[22px] py-1 gap-2 bg-background border-b z-30 w-full h-9 fixed top-12'
       }
     >
-      <div className={'overflow-hidden line-clamp-1 w-full'}>
-        <div
-          ref={textRef}
-          key={currentQuotation?.id || v4()}
-          className={'text-sm font-normal italic text-muted-foreground w-max min-w-full translate-x-[100vw]'}
-          style={{
-            animation: `horizontal-scroll-animation ${animationDuration} linear infinite`
-          }}
-        >
-          {currentQuotation?.text || ''}
-        </div>
-      </div>
-      <HeartButton
-        iconSize={'sm'}
-        isFilled={isCurrentFavorite}
-        onToggleFavorite={handleToggleFavorite}
-      />
+      {currentQuotation ? (
+        <>
+          <Link
+            to={`${RoutePath.QUOTATION_DETAILS}/${currentQuotation.id}`}
+            className={'overflow-hidden line-clamp-1 w-full focus-visible-styles'}
+          >
+            <div
+              ref={textRef}
+              key={currentQuotation.id || v4()}
+              className={'text-sm font-normal italic text-muted-foreground w-max min-w-full translate-x-[100vw]'}
+              style={{
+                animation: `horizontal-scroll-animation ${animationDuration} linear infinite`
+              }}
+            >
+              {currentQuotation.text || ''}
+            </div>
+          </Link>
+          <HeartButton
+            iconSize={'sm'}
+            isFilled={isCurrentFavorite}
+            onToggleFavorite={handleToggleFavorite}
+          />
+        </>
+      ) : (
+        <div />
+      )}
     </div>
   );
 };

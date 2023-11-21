@@ -14,6 +14,12 @@ export const filterArrayFromNullish = <T>(array: (T | null | undefined)[]): T[] 
   return array.filter((value): value is T => value != null);
 };
 
+export const scrollToTop = () =>
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+
 /* ------------------------------ URL & Routes ------------------------------ */
 
 export const getFullURL = () => `${window.location.protocol}//${window.location.host}`;

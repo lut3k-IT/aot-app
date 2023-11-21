@@ -82,14 +82,15 @@ export const filterHeroes = (data: HeroType[], filters: HeroFilters) => {
   const sort = filters.sort;
   const sortDirection = filters.sortDirection;
 
-  const sortedData =
-    sort !== 'id'
-      ? filteredData.sort((a, b) =>
-          sortDirection === SortDirection.ASC
-            ? sortWithNullsLast(a[sort], b[sort])
-            : sortWithNullsLastDesc(a[sort], b[sort])
-        )
-      : filteredData;
+  const shouldSkipDefaultSort = sort === 'id' && (sortDirection as SortDirection) === SortDirection.ASC;
+
+  const sortedData = shouldSkipDefaultSort
+    ? filteredData
+    : filteredData.sort((a, b) =>
+        sortDirection === SortDirection.ASC
+          ? sortWithNullsLast(a[sort], b[sort])
+          : sortWithNullsLastDesc(a[sort], b[sort])
+      );
 
   return sortedData;
 };

@@ -34,7 +34,7 @@ const NavigationElement = (props: NavigationElementProps) => {
         <Icon
           name={data.iconName}
           size={'sm'}
-          className={classNames('z-10 text-muted-foreground', {
+          className={classNames('z-30 text-muted-foreground', {
             '!text-primary-foreground': isActive
           })}
         />

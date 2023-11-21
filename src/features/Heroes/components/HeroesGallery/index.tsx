@@ -28,15 +28,12 @@ import {
   DEFAULT_WEIGHT
 } from './components/Filter/helpers';
 
-const PAGE_SIZES = [20, 50, 100, 200];
+const PAGE_SIZES = [50, 100, 200];
 
 const HeroesGallery = () => {
   const { t } = useTranslation();
-  // TODO: move filters here, but make a hook from it called useHeroFilterParams
-  // FIXME: sometimes it doesn't show
-  const filterDestination = document.getElementById(ElementsIds.PAGE_HEADING_OPTIONS);
-
   const [searchParams] = useSearchParams();
+  const filterDestination = document.getElementById(ElementsIds.PAGE_HEADING_OPTIONS);
 
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(PAGE_SIZES[0]);
@@ -99,6 +96,10 @@ const HeroesGallery = () => {
     setFilteredHeroes(filterHeroes(originalHeroes, filters));
     setPage(1);
   }, [originalHeroes, searchParams]);
+
+  // TODO: add page param
+  // TODO: add pagesize param
+  // TODO: save pagesize in local storage
 
   return (
     <GalleryWrapper>

@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import useAppSelector from '@/components/hooks/useAppSelector';
+import AppHelmet from '@/components/ui/AppHelmet';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import MovingPanel from '@/components/ui/MovingPanel';
 import PageHeading from '@/components/ui/PageHeading';
 import TitanCard from '@/components/ui/TitanCard';
 
 const TitansGallery = () => {
+  const { t } = useTranslation();
   const originalTitans = useAppSelector((state) => state.titans.data);
   const originalHeroes = useAppSelector((state) => state.heroes.data);
 
@@ -22,23 +25,21 @@ const TitansGallery = () => {
     setPaginatedTitans(originalTitans);
   }, [originalTitans]);
 
-  const MappedCharacterCards = () =>
-    paginatedTitans.map((titan) => (
-      <TitanCard
-        data={titan}
-        favorites={favoriteTitansIds}
-        heroesData={originalHeroes}
-        key={titan.id}
-      />
-    ));
-
   return (
     <>
+      <AppHelmet title={`${t('common:title.titans')} ${t('common:tab.gallery')}`} />
       <MovingPanel>
         <PageHeading />
       </MovingPanel>
       <GalleryWrapper>
-        <MappedCharacterCards />
+        {paginatedTitans.map((titan) => (
+          <TitanCard
+            data={titan}
+            favorites={favoriteTitansIds}
+            heroesData={originalHeroes}
+            key={titan.id}
+          />
+        ))}
       </GalleryWrapper>
     </>
   );

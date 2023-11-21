@@ -32,7 +32,7 @@ const TopBarMobile = () => {
   );
 
   return (
-    <div className='w-full h-12 flex items-center px-page-mobile gap-2 bg-background border-b z-20 fixed'>
+    <div className='w-full h-12 flex items-center px-page-mobile gap-2 bg-background border-b z-30 fixed'>
       <Link
         to={RoutePath.LANDING}
         className='flex gap-2 rounded-md ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2'
