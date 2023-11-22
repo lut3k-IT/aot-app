@@ -1,8 +1,9 @@
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { v4 } from 'uuid';
 
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/Select';
-import { scrollToTop } from '@/utils/helpers';
+import { preventEventPropagationFix, scrollToTop } from '@/utils/helpers';
 
 import { Button } from './Button';
 
@@ -46,7 +47,10 @@ const NewPagination = (props: PaginationProps) => {
 
   return (
     <div className={'flex gap-4 justify-between items-center mt-2 h-9'}>
-      <div className={'flex gap-2'}>
+      <div
+        className={'flex gap-2'}
+        // onClick={(e: React.MouseEvent) => e.stopPropagation()}
+      >
         <Select
           value={pageSize.toString()}
           onValueChange={(v: string) => handleChangePageSize(v)}
@@ -76,8 +80,8 @@ const NewPagination = (props: PaginationProps) => {
           className={'w-9 h-9'}
           iconName={'chevronFirst'}
           onClick={() => {
+            page !== 1 && scrollToTop();
             setPage(1);
-            scrollToTop();
           }}
         />
         <Button
@@ -100,8 +104,8 @@ const NewPagination = (props: PaginationProps) => {
           className={'w-9 h-9'}
           iconName={'chevronLast'}
           onClick={() => {
+            page !== totalPages && scrollToTop();
             setPage(totalPages);
-            scrollToTop();
           }}
         />
       </div>

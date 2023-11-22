@@ -1,3 +1,4 @@
+import React from 'react';
 import numeral from 'numeral';
 
 export const toCommas = (value: number | string) => {
@@ -14,11 +15,25 @@ export const filterArrayFromNullish = <T>(array: (T | null | undefined)[]): T[] 
   return array.filter((value): value is T => value != null);
 };
 
-export const scrollToTop = () =>
+export const scrollToTop = (smooth?: boolean) =>
   window.scrollTo({
     top: 0,
-    behavior: 'smooth'
+    behavior: smooth ? 'smooth' : 'auto'
   });
+
+// export const preventEventPropagationFix = (ref: React.RefObject<HTMLElement> | null) => {
+//   if (!ref || !ref.current) return;
+//   ref.current.ontouchstart = (e: TouchEvent) => {
+//     e.preventDefault();
+//   };
+// };
+
+export const preventEventPropagationFix = (ref: HTMLDivElement | null) => {
+  if (!ref) return;
+  ref.ontouchstart = (e: TouchEvent) => {
+    e.preventDefault();
+  };
+};
 
 /* ------------------------------ URL & Routes ------------------------------ */
 
