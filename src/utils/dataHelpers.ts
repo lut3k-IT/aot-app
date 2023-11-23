@@ -1,13 +1,14 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 
-import { FavoriteType, HeroType, TranslateFunction } from '@/constants/types';
+import { SortDirection } from '@/constants/enums';
+import { FavoriteType, HeroSortOption, HeroType, TranslateFunction } from '@/constants/types';
 import allegiances from '@/data/allegiances';
 import mbti from '@/data/mbti';
 import mbtiGroup from '@/data/mbtiGroup';
 import residences from '@/data/residences';
 import species from '@/data/species';
 import statuses from '@/data/statuses';
+import { sortOptions } from '@/features/Heroes/components/HeroesGallery/components/Filter/helpers';
 
 export const toggleStateDataById = <T extends { id: number }>(
   data: T,
@@ -82,3 +83,11 @@ export const getSpeciesByKeyName = (keyName: string) => {
 
 export const isInFavorites = (currId: number, favIdsArray: FavoriteType[]) =>
   !!favIdsArray.find((fav) => fav === currId);
+
+export const findHeroSortBy = (option: string | null) =>
+  sortOptions.includes(option as HeroSortOption) ? (option as HeroSortOption) : null;
+
+export const findSortDirection = (direction: string | null) => {
+  const values = Object.values(SortDirection);
+  return values.includes(direction as SortDirection) ? (direction as SortDirection) : null;
+};

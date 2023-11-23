@@ -28,7 +28,7 @@ const NavigationElement = (props: NavigationElementProps) => {
   return (
     <Link
       to={data.route}
-      className={'flex flex-col align-middle gap-1 pt-4 pb-3 min-w-[48px]'}
+      className={'flex flex-col align-middle gap-1 pt-4 pb-3 w-16'}
     >
       <div className={'flex justify-center relative'}>
         <Icon

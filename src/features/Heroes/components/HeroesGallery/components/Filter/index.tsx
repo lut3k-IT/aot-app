@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 
@@ -23,6 +23,8 @@ import residences, { ResidenceType } from '@/data/residences';
 import species, { SpeciesType } from '@/data/species';
 import statuses, { StatusType } from '@/data/statuses';
 import {
+  findHeroSortBy,
+  findSortDirection,
   getMbtiByShortName,
   getResidenceByKeyName,
   getSpeciesByKeyName,
@@ -30,6 +32,12 @@ import {
   toggleStateDataById
 } from '@/utils/dataHelpers';
 import { filterArrayFromNullish } from '@/utils/helpers';
+import {
+  getBooleanParam,
+  getNumberParam,
+  updateSearchParams,
+  UpdateSearchParamsParameters
+} from '@/utils/paramsHelpers';
 
 import FilterButton from './components/FilterButton';
 import FilterSegment from './components/FilterSegment';
@@ -41,8 +49,6 @@ import {
   DEFAULT_WEIGHT,
   sortOptions
 } from './helpers';
-
-// TODO: make an indicator to show filtering is active
 
 const Filter = () => {
   const { t } = useTranslation();
@@ -66,7 +72,9 @@ const Filter = () => {
   const [sortBy, setSortBy] = useState(DEFAULT_SORT);
   const [sortDirection, setSortDirection] = useState(DEFAULT_SORT_DIRECTION);
 
-  const handleResetAll = useCallback(() => {
+  /* -------------------------------- handlers -------------------------------- */
+
+  const handleResetAll = () => {
     setSelectedStatuses([]);
     setSelectedAge(DEFAULT_AGE);
     setSelectedHeight(DEFAULT_HEIGHT);
@@ -79,7 +87,7 @@ const Filter = () => {
     setHasWeight(false);
     setSortBy(DEFAULT_SORT);
     setSortDirection(DEFAULT_SORT_DIRECTION);
-  }, []);
+  };
 
   const handleSetStatuses = (status: StatusType) => {
     toggleStateDataById(status, setSelectedStatuses);
@@ -103,51 +111,56 @@ const Filter = () => {
 
   /* --------------------------------- params --------------------------------- */
 
-  // apply params
+  // set params from state
   const handleApplyFilters = () => {
-    setSearchParams({
-      [Param.STATUS]: selectedStatuses.map((x) => x.keyName),
-      ...(selectedAge[0] !== DEFAULT_AGE[0] ? { [Param.AGE_MIN]: selectedAge[0].toString() } : {}),
-      ...(selectedAge[1] !== DEFAULT_AGE[1] ? { [Param.AGE_MAX]: selectedAge[1].toString() } : {}),
-      ...(selectedHeight[0] !== DEFAULT_HEIGHT[0] ? { [Param.HEIGHT_MIN]: selectedHeight[0].toString() } : {}),
-      ...(selectedHeight[1] !== DEFAULT_HEIGHT[1] ? { [Param.HEIGHT_MAX]: selectedHeight[1].toString() } : {}),
-      ...(selectedWeight[0] !== DEFAULT_WEIGHT[0] ? { [Param.WEIGHT_MIN]: selectedWeight[0].toString() } : {}),
-      ...(selectedWeight[1] !== DEFAULT_WEIGHT[1] ? { [Param.WEIGHT_MAX]: selectedWeight[1].toString() } : {}),
-      [Param.MBTI]: selectedMbti.map((x) => x.shortName),
-      [Param.SPECIES]: selectedSpecies.map((x) => x.keyName),
-      [Param.RESIDENCE]: selectedResidence.map((x) => x.keyName),
-      ...(hasAge ? { [Param.HAS_AGE]: hasAge.toString() } : {}),
-      ...(hasHeight ? { [Param.HAS_HEIGHT]: hasHeight.toString() } : {}),
-      ...(hasWeight ? { [Param.HAS_WEIGHT]: hasWeight.toString() } : {}),
-      ...(sortBy !== DEFAULT_SORT ? { [Param.SORT]: sortBy.toString() } : {}),
-      ...(sortDirection !== DEFAULT_SORT_DIRECTION ? { [Param.SORT_DIRECTION]: sortDirection.toString() } : {})
+    const parameters: UpdateSearchParamsParameters = [
+      [Param.STATUS, selectedStatuses.map((x) => x.keyName)],
+      [Param.AGE_MIN, selectedAge[0] !== DEFAULT_AGE[0] ? selectedAge[0].toString() : null],
+      [Param.AGE_MAX, selectedAge[1] !== DEFAULT_AGE[1] ? selectedAge[1].toString() : null],
+      [Param.HEIGHT_MIN, selectedHeight[0] !== DEFAULT_HEIGHT[0] ? selectedHeight[0].toString() : null],
+      [Param.HEIGHT_MAX, selectedHeight[1] !== DEFAULT_HEIGHT[1] ? selectedHeight[1].toString() : null],
+      [Param.WEIGHT_MIN, selectedWeight[0] !== DEFAULT_WEIGHT[0] ? selectedWeight[0].toString() : null],
+      [Param.WEIGHT_MAX, selectedWeight[1] !== DEFAULT_WEIGHT[1] ? selectedWeight[1].toString() : null],
+      [Param.MBTI, selectedMbti.map((x) => x.shortName)],
+      [Param.SPECIES, selectedSpecies.map((x) => x.keyName)],
+      [Param.RESIDENCE, selectedResidence.map((x) => x.keyName)],
+      [Param.HAS_AGE, hasAge ? hasAge.toString() : null],
+      [Param.HAS_HEIGHT, hasHeight ? hasHeight.toString() : null],
+      [Param.HAS_WEIGHT, hasWeight ? hasWeight.toString() : null],
+      [Param.SORT, sortBy !== DEFAULT_SORT ? sortBy.toString() : null],
+      [Param.SORT_DIRECTION, sortDirection !== DEFAULT_SORT_DIRECTION ? sortDirection.toString() : null]
+    ];
+
+    setSearchParams((searchParams) => {
+      updateSearchParams(searchParams, parameters);
+      return searchParams;
     });
 
     setIsModalOpen(false);
   };
 
-  // set state from params on mount
+  // set states from params on mount
   useEffect(() => {
     const statuses = searchParams.getAll(Param.STATUS).map((param) => getStatusByKeyName(param));
-    const ageMin = searchParams.get(Param.AGE_MIN) || DEFAULT_AGE[0];
-    const ageMax = searchParams.get(Param.AGE_MAX) || DEFAULT_AGE[1];
-    const heightMin = searchParams.get(Param.HEIGHT_MIN) || DEFAULT_HEIGHT[0];
-    const heightMax = searchParams.get(Param.HEIGHT_MAX) || DEFAULT_HEIGHT[1];
-    const weightMin = searchParams.get(Param.WEIGHT_MIN) || DEFAULT_WEIGHT[0];
-    const weightMax = searchParams.get(Param.WEIGHT_MAX) || DEFAULT_WEIGHT[1];
+    const ageMin = getNumberParam(searchParams, Param.AGE_MIN, DEFAULT_AGE[0]);
+    const ageMax = getNumberParam(searchParams, Param.AGE_MAX, DEFAULT_AGE[1]);
+    const heightMin = getNumberParam(searchParams, Param.HEIGHT_MIN, DEFAULT_HEIGHT[0]);
+    const heightMax = getNumberParam(searchParams, Param.HEIGHT_MAX, DEFAULT_HEIGHT[1]);
+    const weightMin = getNumberParam(searchParams, Param.WEIGHT_MIN, DEFAULT_WEIGHT[0]);
+    const weightMax = getNumberParam(searchParams, Param.WEIGHT_MAX, DEFAULT_WEIGHT[1]);
     const mbti = searchParams.getAll(Param.MBTI).map((param) => getMbtiByShortName(param));
     const species = searchParams.getAll(Param.SPECIES).map((param) => getSpeciesByKeyName(param));
     const residences = searchParams.getAll(Param.RESIDENCE).map((param) => getResidenceByKeyName(param));
-    const hasAge = !!searchParams.get(Param.HAS_AGE);
-    const hasHeight = !!searchParams.get(Param.HAS_HEIGHT);
-    const hasWeight = !!searchParams.get(Param.HAS_WEIGHT);
-    const sortBy = (searchParams.get(Param.SORT) as HeroSortOption) || DEFAULT_SORT;
-    const sortDirection = (searchParams.get(Param.SORT_DIRECTION) as SortDirection) || DEFAULT_SORT_DIRECTION;
+    const hasAge = getBooleanParam(searchParams, Param.HAS_AGE);
+    const hasHeight = getBooleanParam(searchParams, Param.HAS_HEIGHT);
+    const hasWeight = getBooleanParam(searchParams, Param.HAS_WEIGHT);
+    const sortBy = findHeroSortBy(searchParams.get(Param.SORT)) || DEFAULT_SORT;
+    const sortDirection = findSortDirection(searchParams.get(Param.SORT_DIRECTION)) || DEFAULT_SORT_DIRECTION;
 
     setSelectedStatuses(filterArrayFromNullish(statuses));
-    setSelectedAge([+ageMin, +ageMax]);
-    setSelectedHeight([+heightMin, +heightMax]);
-    setSelectedWeight([+weightMin, +weightMax]);
+    setSelectedAge([ageMin, ageMax]);
+    setSelectedHeight([heightMin, heightMax]);
+    setSelectedWeight([weightMin, weightMax]);
     setSelectedMbti(filterArrayFromNullish(mbti));
     setSelectedSpecies(filterArrayFromNullish(species));
     setSelectedResidence(filterArrayFromNullish(residences));
@@ -158,6 +171,7 @@ const Filter = () => {
     setSortDirection(sortDirection);
   }, []);
 
+  // todo: prompt: try to move as much to separate components for better readability
   return (
     <Dialog
       open={isModalOpen}

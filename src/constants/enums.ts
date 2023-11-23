@@ -20,7 +20,9 @@ export enum Param {
   HAS_HEIGHT = 'has_height',
   HAS_WEIGHT = 'has_weight',
   SORT = 'sort',
-  SORT_DIRECTION = 'order'
+  SORT_DIRECTION = 'order',
+  PAGE = 'page',
+  PAGE_SIZE = 'page_size'
 }
 
 export enum RoutePath {

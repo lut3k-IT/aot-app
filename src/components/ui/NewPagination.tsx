@@ -1,56 +1,68 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { v4 } from 'uuid';
+import { useSearchParams } from 'react-router-dom';
 
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/Select';
-import { preventEventPropagationFix, scrollToTop } from '@/utils/helpers';
+import { Param } from '@/constants/enums';
+import { scrollToTop } from '@/utils/helpers';
+import { deleteSomeSearchParams, getSafePageNumberFromSearchParam } from '@/utils/paramsHelpers';
 
 import { Button } from './Button';
 
 interface PaginationProps {
   itemsCount: number;
-  page: number;
-  setPage: (v: number) => void;
   totalPages: number;
   pageSizeOptions?: number[];
-  pageSize: number;
-  setPageSize: (v: number) => void;
 }
 
+export const DEFAULT_PAGE = 1;
 export const DEFAULT_PAGE_SIZES = [50, 100, 200];
 
 const NewPagination = (props: PaginationProps) => {
-  const { itemsCount, page, setPage, totalPages, pageSizeOptions = DEFAULT_PAGE_SIZES, pageSize, setPageSize } = props;
+  const { itemsCount, totalPages, pageSizeOptions = DEFAULT_PAGE_SIZES } = props;
+
   const { t } = useTranslation();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const page = getSafePageNumberFromSearchParam(searchParams);
+  const pageSize = Number(searchParams.get(Param.PAGE_SIZE)) || DEFAULT_PAGE_SIZES[0];
 
   const firstElement = page * pageSize - pageSize + 1;
   const lastElement = page !== totalPages ? page * pageSize : itemsCount;
 
+  /* -------------------------------- handlers -------------------------------- */
+
   const handleChangePage = (newPage: number) => {
-    if (newPage < 1) {
-      setPage(1);
+    if (newPage <= 1) {
+      deleteSomeSearchParams(setSearchParams, [Param.PAGE]);
       return;
     }
     if (newPage > totalPages) {
-      setPage(totalPages);
+      setSearchParams((searchParams) => {
+        searchParams.set(Param.PAGE, totalPages.toString());
+        return searchParams;
+      });
       return;
     }
-
-    setPage(newPage);
-    scrollToTop();
+    page !== newPage && scrollToTop();
+    setSearchParams((searchParams) => {
+      searchParams.set(Param.PAGE, newPage.toString());
+      return searchParams;
+    });
   };
 
-  const handleChangePageSize = (v: string) => {
-    setPage(1);
-    setPageSize(+v || pageSizeOptions[0]);
+  const handleChangePageSize = (pageSize: string) => {
+    setSearchParams((searchParams) => {
+      searchParams.delete(Param.PAGE);
+      +pageSize !== DEFAULT_PAGE_SIZES[0]
+        ? searchParams.set(Param.PAGE_SIZE, pageSize)
+        : searchParams.delete(Param.PAGE_SIZE);
+      return searchParams;
+    });
   };
 
   return (
     <div className={'flex gap-4 justify-between items-center mt-2 h-9'}>
-      <div
-        className={'flex gap-2'}
-        // onClick={(e: React.MouseEvent) => e.stopPropagation()}
-      >
+      <div className={'flex gap-2'}>
         <Select
           value={pageSize.toString()}
           onValueChange={(v: string) => handleChangePageSize(v)}
@@ -60,9 +72,9 @@ const NewPagination = (props: PaginationProps) => {
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              {pageSizeOptions.map((size) => (
+              {pageSizeOptions.map((size, i) => (
                 <SelectItem
-                  key={v4()}
+                  key={i}
                   value={size.toString()}
                 >
                   {size}
@@ -81,7 +93,7 @@ const NewPagination = (props: PaginationProps) => {
           iconName={'chevronFirst'}
           onClick={() => {
             page !== 1 && scrollToTop();
-            setPage(1);
+            handleChangePage(1);
           }}
         />
         <Button
@@ -96,7 +108,7 @@ const NewPagination = (props: PaginationProps) => {
           size={'icon'}
           className={'w-9 h-9'}
           iconName={'chevronRight'}
-          onClick={() => handleChangePage(page + 1)}
+          onClick={() => handleChangePage(page + 1 < totalPages ? page + 1 : totalPages)}
         />
         <Button
           variant={'outline'}
@@ -105,7 +117,7 @@ const NewPagination = (props: PaginationProps) => {
           iconName={'chevronLast'}
           onClick={() => {
             page !== totalPages && scrollToTop();
-            setPage(totalPages);
+            handleChangePage(totalPages);
           }}
         />
       </div>

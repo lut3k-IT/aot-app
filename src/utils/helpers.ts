@@ -21,13 +21,6 @@ export const scrollToTop = (smooth?: boolean) =>
     behavior: smooth ? 'smooth' : 'auto'
   });
 
-// export const preventEventPropagationFix = (ref: React.RefObject<HTMLElement> | null) => {
-//   if (!ref || !ref.current) return;
-//   ref.current.ontouchstart = (e: TouchEvent) => {
-//     e.preventDefault();
-//   };
-// };
-
 export const preventEventPropagationFix = (ref: HTMLDivElement | null) => {
   if (!ref) return;
   ref.ontouchstart = (e: TouchEvent) => {
