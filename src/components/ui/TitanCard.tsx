@@ -78,19 +78,19 @@ const TitanCard = (props: TitanCardProps) => {
           />
         </MbtiFrame>
       </Link>
-      <div className={'flex flex-col flex-1 justify-between'}>
-        <div className={'w-full flex flex-col gap-1 mt-0.5 relative'}>
-          <div className={'text-lg leading-none font-medium pr-10'}>{data.name || ''}</div>
-          <div className={'text-sm leading-none font-medium text-muted-foreground pr-10 capitalize'}>
+      <div className={'flex flex-1 flex-col justify-between'}>
+        <div className={'relative mt-0.5 flex w-full flex-col gap-1'}>
+          <div className={'pr-10 text-lg font-medium leading-none'}>{data.name || ''}</div>
+          <div className={'pr-10 text-sm font-medium capitalize leading-none text-muted-foreground'}>
             {currentInheritor}
           </div>
           <HeartButton
-            className={'absolute top-0 right-0'}
+            className={'absolute right-0 top-0'}
             isFilled={isCurrentFavorite}
             onToggleFavorite={handleToggleFavorite}
           />
         </div>
-        <div className={'flex items-center justify-center px-4 gap-8 w-full h-[52px] bg-accent rounded-md'}>
+        <div className={'flex h-[52px] w-full items-center justify-center gap-8 rounded-md bg-accent px-4'}>
           <DetailsBoxes />
         </div>
       </div>

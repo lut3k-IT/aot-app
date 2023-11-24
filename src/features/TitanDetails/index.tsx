@@ -51,13 +51,15 @@ const TitanDetails = () => {
   if (!titan && originalTitans.length > 0) throw new Error('Titan with this ID does not exist.');
   if (!titan) return;
 
+  // fixme: buttongoback works only after second click — maybe history is duplicated?
+
   return (
     <div className={'pt-body-pad-start'}>
       <AppHelmet title={titan.name} />
       <ButtonGoBack fallbackRoute={RoutePath.HEROES_GALLERY} />
-      <div className={'flex flex-col items-center mt-6 relative'}>
+      <div className={'relative mt-6 flex flex-col items-center'}>
         <div
-          className={classNames('absolute w-full h-[120px] rounded-lg', {
+          className={classNames('absolute h-[120px] w-full rounded-lg', {
             'bg-neutral-400': mbtiGroupName === 'default',
             'bg-violet-500': mbtiGroupName === 'analysts',
             'bg-emerald-600': mbtiGroupName === 'diplomats',
@@ -72,8 +74,8 @@ const TitanDetails = () => {
           className={'mt-5 border-4 border-background'}
         />
       </div>
-      <div className={'w-full text-center mt-2 font-semibold text-2xl'}>{titan.name}</div>
-      <div className={'grid grid-cols-[minmax(100px,_120px)_minmax(120px,_2fr)] mt-6 gap-x-4 gap-y-3 items-start'}>
+      <div className={'mt-2 w-full text-center text-2xl font-semibold'}>{titan.name}</div>
+      <div className={'mt-6 grid grid-cols-[minmax(100px,_120px)_minmax(120px,_2fr)] items-start gap-x-4 gap-y-3'}>
         <DetailsGridRow
           title={t('data:mbti.title')}
           value={getMbtiShortName(titan.mbti)}

@@ -28,9 +28,9 @@ const NavigationElement = (props: NavigationElementProps) => {
   return (
     <Link
       to={data.route}
-      className={'flex flex-col align-middle gap-1 pt-4 pb-3 w-16'}
+      className={'flex w-16 flex-col gap-1 pb-3 pt-4 align-middle'}
     >
-      <div className={'flex justify-center relative'}>
+      <div className={'relative flex justify-center'}>
         <Icon
           name={data.iconName}
           size={'sm'}
@@ -39,13 +39,13 @@ const NavigationElement = (props: NavigationElementProps) => {
           })}
         />
         <div
-          className={classNames('bg-primary rounded-full w-12 h-[24px] absolute -top-0.5 transition-all', {
+          className={classNames('absolute -top-0.5 h-[24px] w-12 rounded-full bg-primary transition-all', {
             '!w-6 !bg-background': !isActive
           })}
         />
       </div>
       <div
-        className={classNames('text-xs leading-none text-center font-semibold w-full text-muted-foreground', {
+        className={classNames('w-full text-center text-xs font-semibold leading-none text-muted-foreground', {
           '!text-foreground': isActive
         })}
       >
@@ -82,7 +82,7 @@ const NavigationMobile = () => {
   ];
 
   return (
-    <div className='w-full fixed bottom-0 bg-background border-t flex justify-evenly z-20'>
+    <div className='fixed bottom-0 z-20 flex w-full justify-evenly border-t bg-background'>
       {navigationData.map((element) => {
         return (
           <NavigationElement

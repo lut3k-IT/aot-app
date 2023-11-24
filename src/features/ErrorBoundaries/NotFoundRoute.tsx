@@ -10,7 +10,7 @@ const NotFoundRoute = () => {
   const { t } = useTranslation();
 
   return (
-    <div className={'pt-body-pad-start flex-center flex-col gap-4'}>
+    <div className={'flex-center flex-col gap-4 pt-body-pad-start'}>
       <h1 className={'text-2xl font-normal'}>{t('common:error.oops')}</h1>
       <span className={'text-7xl font-bold text-neutral-300 dark:text-neutral-700'}>404</span>
       <p>{t('common:error.routeNotFound')}</p>

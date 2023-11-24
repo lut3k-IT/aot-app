@@ -23,7 +23,7 @@ const TopBarMobile = () => {
       <DialogContentSidebar
         forceMount
         className={
-          'h-full w-[262px] transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-300 inset-y-0 right-0 data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right'
+          'inset-y-0 right-0 h-full w-[262px] transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right'
         }
       >
         <SidebarMobile />
@@ -32,7 +32,7 @@ const TopBarMobile = () => {
   );
 
   return (
-    <div className='w-full h-12 flex items-center px-page-mobile gap-2 bg-background border-b z-30 fixed'>
+    <div className='fixed z-30 flex h-12 w-full items-center gap-2 border-b bg-background px-page-mobile'>
       <Link
         to={RoutePath.LANDING}
         className='flex gap-2 rounded-md ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2'
@@ -43,7 +43,7 @@ const TopBarMobile = () => {
         />
         <div className='text-xl font-bold'>{t('common:brand')}</div>
       </Link>
-      <div className='flex flex-row-reverse flex-1 gap-0'>
+      <div className='flex flex-1 flex-row-reverse gap-0'>
         <SidebarAndButton />
         <ModeToggle />
         <Button

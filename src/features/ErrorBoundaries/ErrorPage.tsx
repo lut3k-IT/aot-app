@@ -12,7 +12,7 @@ const ErrorPage = () => {
   const { t } = useTranslation();
 
   return (
-    <div className={'pt-body-pad-start flex-center flex-col gap-4'}>
+    <div className={'flex-center flex-col gap-4 pt-body-pad-start'}>
       <h1 className={'text-2xl font-normal'}>{t('common:error.oops')}</h1>
       <span className={'text-4xl font-bold text-neutral-300 dark:text-neutral-700'}>
         {t('common:error.unexpectedError')}

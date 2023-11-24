@@ -17,10 +17,10 @@ const MovingPanel = (props: MovingPanelProps) => {
 
   return (
     <div
-      className={`w-full sticky top-0 z-20 transition-transform bg-background shadow-panel-bottom ${computedClass} ${className}`}
+      className={`sticky top-0 z-20 w-full bg-background shadow-panel-bottom transition-transform ${computedClass} ${className}`}
       {...rest}
     >
-      <div className={`w-full h-body-start bg-background ${classNameSpacer}`} />
+      <div className={`h-body-start w-full bg-background ${classNameSpacer}`} />
       {children}
     </div>
   );

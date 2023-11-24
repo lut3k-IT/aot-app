@@ -2,8 +2,8 @@ import { ElementsIds } from '@/constants/enums';
 
 const PageHeading = () => {
   return (
-    <div className={'flex justify-between items-center sticky py-4 mb-2 bg-background'}>
-      <div className={'font-bold text-4xl text-neutral-300 dark:text-neutral-700 leading-none tracking-wide'}>
+    <div className={'sticky mb-2 flex items-center justify-between bg-background py-4'}>
+      <div className={'text-4xl font-bold leading-none tracking-wide text-neutral-300 dark:text-neutral-700'}>
         Year 854
       </div>
       <div id={ElementsIds.PAGE_HEADING_OPTIONS} />

@@ -18,15 +18,15 @@ interface PictureWithSelectProps {
 }
 
 const RowHighlighter = () => (
-  <div className={'absolute left-0 top-0 w-screen-pad h-[130%] -translate-y-[15%] bg-accent rounded-md -z-10'} />
+  <div className={'w-screen-pad absolute left-0 top-0 -z-10 h-[130%] -translate-y-[15%] rounded-md bg-accent'} />
 );
 
 const DetailItem = (props: DetailItemProps) => {
   const { title, value = '-', isOdd } = props;
 
   return (
-    <div className={'flex-center flex-col w-full relative'}>
-      <div className={'text-lg font-bold text-muted-foreground leading-none'}>{title}</div>
+    <div className={'flex-center relative w-full flex-col'}>
+      <div className={'text-lg font-bold leading-none text-muted-foreground'}>{title}</div>
       <div className={'text-xl'}>{value}</div>
       {isOdd && <RowHighlighter />}
     </div>
@@ -45,16 +45,16 @@ const PictureWithSelect = (props: PictureWithSelectProps) => {
         imgSource={'https://github.com/shadcn.png'}
         size={'full'}
         variant={'circle'}
-        className={'max-w-[128px] max-h-[128px]'}
+        className={'max-h-[128px] max-w-[128px]'}
       />
     </button>
   );
 
   const emptyPicture = (
-    <button className={'w-full max-w-[128px] max-h-[128px]'}>
+    <button className={'max-h-[128px] w-full max-w-[128px]'}>
       <div
         className={
-          'w-full h-auto aspect-square rounded-full bg-accent flex-center flex-col gap-1 text-muted-foreground outline-2 outline-dashed outline-offset-4 outline-neutral-300 dark:outline-neutral-700'
+          'flex-center aspect-square h-auto w-full flex-col gap-1 rounded-full bg-accent text-muted-foreground outline-dashed outline-2 outline-offset-4 outline-neutral-300 dark:outline-neutral-700'
         }
       >
         <MousePointerSquare size={'40px'} />
@@ -101,11 +101,11 @@ const HeroesComparison = () => {
   const { t } = useTranslation();
 
   return (
-    <div className={'w-full grid grid-cols-2 gap-2 mt-4'}>
+    <div className={'mt-4 grid w-full grid-cols-2 gap-2'}>
       <AppHelmet title={`${t('common:title.heroes')} ${t('common:tab.comparison')}`} />
       <div className={'flex-center flex-col gap-8'}>
         <PictureWithSelect />
-        <div className={'flex-center flex-col gap-4 w-full'}>
+        <div className={'flex-center w-full flex-col gap-4'}>
           <DetailItem
             title={'First name'}
             value={'Eren'}
@@ -133,7 +133,7 @@ const HeroesComparison = () => {
       </div>
       <div className={'flex-center flex-col gap-8'}>
         <PictureWithSelect />
-        <div className={'flex-center flex-col gap-4 w-full'}>
+        <div className={'flex-center w-full flex-col gap-4'}>
           <DetailItem
             title={'First name'}
             value={'Eren'}

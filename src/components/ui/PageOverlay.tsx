@@ -11,7 +11,7 @@ const PageOverlay = () => {
       <QuotationBarMobile />
       <div
         id='inner'
-        className={'[&>*]:px-4 pb-body-pad-end'}
+        className={'pb-body-pad-end [&>*]:px-4'}
       >
         <Outlet />
       </div>

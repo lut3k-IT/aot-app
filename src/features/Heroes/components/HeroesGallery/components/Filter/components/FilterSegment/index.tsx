@@ -12,7 +12,7 @@ const FilterSegment = (props: FilterSegmentProps) => {
   const { title, children, onReset } = props;
   return (
     <div className={'flex flex-col gap-2'}>
-      <div className={'flex gap-2 justify-between items-center h-8'}>
+      <div className={'flex h-8 items-center justify-between gap-2'}>
         <h3 className={'font-semibold'}>{title}</h3>
         {onReset && (
           <Button

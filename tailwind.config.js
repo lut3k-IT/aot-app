@@ -1,4 +1,8 @@
 /** @type {import('tailwindcss').Config} */
+
+const BASE = 16; // your base size
+const rem = (px, key = px) => ({ [key]: `${px / BASE}rem` });
+
 module.exports = {
   darkMode: ['class'],
   content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
@@ -54,12 +58,12 @@ module.exports = {
         }
       },
       spacing: {
-        'page-mobile': '16px',
-        'page-desktop': '32px',
-        'body-start': '84px',
-        'body-pad-start': '102px',
-        'body-end': '64px',
-        'body-pad-end': '80px'
+        ...rem(16, 'page-mobile'),
+        ...rem(32, 'page-desktop'),
+        ...rem(84, 'body-start'),
+        ...rem(102, 'body-pad-start'),
+        ...rem(64, 'body-end'),
+        ...rem(80, 'body-pad-end')
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -82,7 +86,6 @@ module.exports = {
       },
       boxShadow: {
         'panel-bottom': '0px 0px 6px 6px hsl(var(--background))'
-        // 'sides-inner': 'inset 0 0 8px -2px hsl(var(--foreground))'
       }
     }
   },

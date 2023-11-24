@@ -183,13 +183,13 @@ const Filter = () => {
           iconPosition={'right'}
           iconName={'filter'}
           variant={'outline'}
-          className={'text-muted-foreground relative'}
+          className={'relative text-muted-foreground'}
           size={'sm'}
           iconProps={{ className: 'text-muted-foreground' }}
         >
           {t('common:filter.title')}
           {hasParams && (
-            <div className={'absolute -top-0.5 -right-0.5 w-2 h-2 bg-red-300 dark:bg-red-900 rounded-full'} />
+            <div className={'absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full bg-red-300 dark:bg-red-900'} />
           )}
         </Button>
       </DialogTrigger>
@@ -200,8 +200,8 @@ const Filter = () => {
           </DialogTitle>
           <DialogDescription>{t('common:filter.heroesDesc')}</DialogDescription>
         </DialogHeader>
-        <ScrollArea className={'h-full -mx-2 -mr-4 pr-2'}>
-          <div className='grid gap-6 mx-2 py-4'>
+        <ScrollArea className={'-mx-2 -mr-4 h-full pr-2'}>
+          <div className='mx-2 grid gap-6 py-4'>
             <FilterSegment title={t('common:filter.sortBy')}>
               <div className={'flex gap-2'}>
                 <Select
@@ -257,7 +257,7 @@ const Filter = () => {
               title={t('data:age.title')}
               onReset={() => setSelectedAge(DEFAULT_AGE)}
             >
-              <div className={'flex gap-2 justify-between'}>
+              <div className={'flex justify-between gap-2'}>
                 <Input
                   className={'max-w-[100px]'}
                   value={selectedAge[0]}
@@ -284,7 +284,7 @@ const Filter = () => {
               title={`${t('data:height.title')} (cm)`}
               onReset={() => setSelectedHeight(DEFAULT_HEIGHT)}
             >
-              <div className={'flex gap-2 justify-between'}>
+              <div className={'flex justify-between gap-2'}>
                 <Input
                   className={'max-w-[100px]'}
                   value={selectedHeight[0]}
@@ -311,7 +311,7 @@ const Filter = () => {
               title={`${t('data:weight.title')} (kg)`}
               onReset={() => setSelectedWeight(DEFAULT_WEIGHT)}
             >
-              <div className={'flex gap-2 justify-between'}>
+              <div className={'flex justify-between gap-2'}>
                 <Input
                   className={'max-w-[100px]'}
                   value={selectedWeight[0]}
@@ -421,7 +421,7 @@ const Filter = () => {
         </ScrollArea>
         <DialogFooter className={'flex flex-auto flex-row gap-3'}>
           <Button
-            className={'w-fit whitespace-nowrap text-destructive bg-destructive-foreground'}
+            className={'w-fit whitespace-nowrap bg-destructive-foreground text-destructive'}
             variant={'secondary'}
             onClick={handleResetAll}
           >

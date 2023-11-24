@@ -45,7 +45,7 @@ const MbtiFrame = (props: MbtiFrameProps) => {
       {...rest}
     >
       {children}
-      <div className={'text-sm text-white dark:text-neutral-100 font-semibold w-full text-center capitalize'}>
+      <div className={'w-full text-center text-sm font-semibold capitalize text-white dark:text-neutral-100'}>
         {mbtiName}
       </div>
     </div>

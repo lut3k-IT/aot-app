@@ -53,43 +53,49 @@
   * {
     @apply border-border;
   }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
   body {
     @apply bg-background text-foreground;
   }
+
+  a {
+    @apply focus-visible-styles;
+  }
 }
 
-html {
-  -webkit-tap-highlight-color: transparent;
+@layer components {
 }
 
-.h-body-no-scroll {
-  height: calc(100vh - 80px);
-}
+@layer utilities {
+  .h-body-no-scroll {
+    height: calc(100vh - 80px);
+  }
 
-.flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  .flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-.w-screen-pad {
-  width: calc(100vw - 32px);
-}
+  .w-screen-pad {
+    width: calc(100vw - 32px);
+  }
 
-.w-screen-pad-lg {
-  width: calc(100vw - 64px);
-}
+  .w-screen-pad-lg {
+    width: calc(100vw - 64px);
+  }
 
-.focus-visible-styles {
-  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
-}
+  .focus-visible-styles {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
 
-a {
-  @apply focus-visible-styles;
-}
-
-@keyframes horizontal-scroll-animation {
-  to {
-    transform: translateX(-100%);
+  @keyframes horizontal-scroll-animation {
+    to {
+      transform: translateX(-100%);
+    }
   }
 }

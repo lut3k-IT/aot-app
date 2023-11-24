@@ -52,7 +52,7 @@ const Heroes = () => {
           className='w-full pt-4'
         >
           <TabsList
-            className='w-full flex justify-between'
+            className='flex w-full justify-between'
             onClick={handleClearParams}
           >
             <TabsTrigger

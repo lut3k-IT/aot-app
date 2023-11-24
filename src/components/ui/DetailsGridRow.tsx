@@ -11,12 +11,12 @@ export const DetailsGridRow = (props: DetailsGridRowProps) => {
     <>
       <div
         className={
-          'w-full bg-muted text-muted-foreground text-md uppercase px-2 py-0.5 rounded-md text-center font-bold'
+          'text-md w-full rounded-md bg-muted px-2 py-0.5 text-center font-bold uppercase text-muted-foreground'
         }
       >
         {title}
       </div>
-      <div className={'w-full self-center text-lg -mt-0.5'}>{value}</div>
+      <div className={'-mt-0.5 w-full self-center text-lg'}>{value}</div>
     </>
   );
 };

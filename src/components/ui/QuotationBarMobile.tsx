@@ -81,19 +81,19 @@ const QuotationBarMobile = () => {
   return (
     <div
       className={
-        'flex items-center justify-between px-[22px] py-1 gap-2 bg-background border-b z-30 w-full h-9 fixed top-12'
+        'fixed top-12 z-30 flex h-9 w-full items-center justify-between gap-2 border-b bg-background px-[22px] py-1'
       }
     >
       {currentQuotation ? (
         <>
           <Link
             to={`${RoutePath.QUOTATION_DETAILS}/${currentQuotation.id}`}
-            className={'overflow-hidden line-clamp-1 w-full focus-visible-styles'}
+            className={'focus-visible-styles line-clamp-1 w-full overflow-hidden'}
           >
             <div
               ref={textRef}
               key={currentQuotation.id || v4()}
-              className={'text-sm font-normal italic text-muted-foreground w-max min-w-full translate-x-[100vw]'}
+              className={'w-max min-w-full translate-x-[100vw] text-sm font-normal italic text-muted-foreground'}
               style={{
                 animation: `horizontal-scroll-animation ${animationDuration} linear infinite`
               }}

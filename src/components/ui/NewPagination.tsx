@@ -61,13 +61,13 @@ const NewPagination = (props: PaginationProps) => {
   };
 
   return (
-    <div className={'flex gap-4 justify-between items-center mt-2 h-9'}>
+    <div className={'mt-2 flex h-9 items-center justify-between gap-4'}>
       <div className={'flex gap-2'}>
         <Select
           value={pageSize.toString()}
           onValueChange={(v: string) => handleChangePageSize(v)}
         >
-          <SelectTrigger className='w-[72px] h-9'>
+          <SelectTrigger className='h-9 w-[72px]'>
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -89,7 +89,7 @@ const NewPagination = (props: PaginationProps) => {
         <Button
           variant={'outline'}
           size={'icon'}
-          className={'w-9 h-9'}
+          className={'h-9 w-9'}
           iconName={'chevronFirst'}
           onClick={() => {
             page !== 1 && scrollToTop();
@@ -99,21 +99,21 @@ const NewPagination = (props: PaginationProps) => {
         <Button
           variant={'outline'}
           size={'icon'}
-          className={'w-9 h-9'}
+          className={'h-9 w-9'}
           iconName={'chevronLeft'}
           onClick={() => handleChangePage(page - 1)}
         />
         <Button
           variant={'outline'}
           size={'icon'}
-          className={'w-9 h-9'}
+          className={'h-9 w-9'}
           iconName={'chevronRight'}
           onClick={() => handleChangePage(page + 1 < totalPages ? page + 1 : totalPages)}
         />
         <Button
           variant={'outline'}
           size={'icon'}
-          className={'w-9 h-9'}
+          className={'h-9 w-9'}
           iconName={'chevronLast'}
           onClick={() => {
             page !== totalPages && scrollToTop();

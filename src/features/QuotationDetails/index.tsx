@@ -41,7 +41,7 @@ const QuotationDetails = () => {
     <div className={'pt-body-pad-start'}>
       <ButtonGoBack fallbackRoute={RoutePath.QUOTATIONS} />
       <AppHelmet title={`${quotation.text.substring(0, 20)}${quotation.text.length > 20 ? '...' : ''}`} />
-      <Card className={'p-4 mt-4'}>
+      <Card className={'mt-4 p-4'}>
         <p>{quotation.text}</p>
       </Card>
       <Button
