@@ -45,7 +45,7 @@ const QuotationDetails = () => {
         <p>{quotation.text}</p>
       </Card>
       <Button
-        className={'mt-4 w-full max-w-[500px]'}
+        className={'mt-4 w-full max-w-[31.25rem]'}
         iconName={'heart'}
         variant={isFavorite ? 'secondary' : 'default'}
         iconProps={{ isFilled: isFavorite, className: isFavorite ? 'text-red-500 fill-red-500' : '' }}

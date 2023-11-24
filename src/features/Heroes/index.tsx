@@ -46,7 +46,7 @@ const Heroes = () => {
 
   return (
     <>
-      <MovingPanel translateClassName={'-translate-y-[56px]'}>
+      <MovingPanel translateClassName={'-translate-y-[3.5rem]'}>
         <Tabs
           defaultValue={defaultValueBasedOnTheRoute()}
           className='w-full pt-4'

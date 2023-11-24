@@ -23,7 +23,7 @@ const TopBarMobile = () => {
       <DialogContentSidebar
         forceMount
         className={
-          'inset-y-0 right-0 h-full w-[262px] transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right'
+          'inset-y-0 right-0 h-full w-[16.375rem] transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right'
         }
       >
         <SidebarMobile />

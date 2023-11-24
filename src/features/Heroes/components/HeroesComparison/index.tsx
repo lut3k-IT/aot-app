@@ -45,19 +45,19 @@ const PictureWithSelect = (props: PictureWithSelectProps) => {
         imgSource={'https://github.com/shadcn.png'}
         size={'full'}
         variant={'circle'}
-        className={'max-h-[128px] max-w-[128px]'}
+        className={'max-h-[8rem] max-w-[8rem]'}
       />
     </button>
   );
 
   const emptyPicture = (
-    <button className={'max-h-[128px] w-full max-w-[128px]'}>
+    <button className={'max-h-[8rem] w-full max-w-[8rem]'}>
       <div
         className={
           'flex-center aspect-square h-auto w-full flex-col gap-1 rounded-full bg-accent text-muted-foreground outline-dashed outline-2 outline-offset-4 outline-neutral-300 dark:outline-neutral-700'
         }
       >
-        <MousePointerSquare size={'40px'} />
+        <MousePointerSquare size={'2.5rem'} />
         <div className={'leading-none'}>Select</div>
       </div>
     </button>
@@ -70,7 +70,7 @@ const PictureWithSelect = (props: PictureWithSelectProps) => {
     >
       <PopoverTrigger asChild>{data ? characterPicture : emptyPicture}</PopoverTrigger>
       <PopoverContent
-        className='w-[200px] p-0'
+        className='w-[12.5rem] p-0'
         sideOffset={16}
       >
         <Command>

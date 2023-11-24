@@ -39,7 +39,7 @@ const NavigationElement = (props: NavigationElementProps) => {
           })}
         />
         <div
-          className={classNames('absolute -top-0.5 h-[24px] w-12 rounded-full bg-primary transition-all', {
+          className={classNames('absolute -top-0.5 h-[1.5rem] w-12 rounded-full bg-primary transition-all', {
             '!w-6 !bg-background': !isActive
           })}
         />

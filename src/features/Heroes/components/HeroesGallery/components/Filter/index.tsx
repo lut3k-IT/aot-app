@@ -193,7 +193,7 @@ const Filter = () => {
           )}
         </Button>
       </DialogTrigger>
-      <DialogContent className={'h-[600px] max-h-[100vh]'}>
+      <DialogContent className={'h-[37.5rem] max-h-[100vh]'}>
         <DialogHeader>
           <DialogTitle>
             {t('common:filter.title')} {t('common:title.heroes')}
@@ -259,12 +259,12 @@ const Filter = () => {
             >
               <div className={'flex justify-between gap-2'}>
                 <Input
-                  className={'max-w-[100px]'}
+                  className={'max-w-[6.25rem]'}
                   value={selectedAge[0]}
                   onChange={(e) => setSelectedAge((prev) => [+e.target.value, prev[1]])}
                 />
                 <Input
-                  className={'max-w-[100px]'}
+                  className={'max-w-[6.25rem]'}
                   value={selectedAge[1]}
                   onChange={(e) => setSelectedAge((prev) => [prev[0], +e.target.value])}
                 />
@@ -286,12 +286,12 @@ const Filter = () => {
             >
               <div className={'flex justify-between gap-2'}>
                 <Input
-                  className={'max-w-[100px]'}
+                  className={'max-w-[6.25rem]'}
                   value={selectedHeight[0]}
                   onChange={(e) => setSelectedHeight((prev) => [+e.target.value, prev[1]])}
                 />
                 <Input
-                  className={'max-w-[100px]'}
+                  className={'max-w-[6.25rem]'}
                   value={selectedHeight[1]}
                   onChange={(e) => setSelectedHeight((prev) => [prev[0], +e.target.value])}
                 />
@@ -313,12 +313,12 @@ const Filter = () => {
             >
               <div className={'flex justify-between gap-2'}>
                 <Input
-                  className={'max-w-[100px]'}
+                  className={'max-w-[6.25rem]'}
                   value={selectedWeight[0]}
                   onChange={(e) => setSelectedWeight((prev) => [+e.target.value, prev[1]])}
                 />
                 <Input
-                  className={'max-w-[100px]'}
+                  className={'max-w-[6.25rem]'}
                   value={selectedWeight[1]}
                   onChange={(e) => setSelectedWeight((prev) => [prev[0], +e.target.value])}
                 />

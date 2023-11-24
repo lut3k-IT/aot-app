@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 
-const BASE = 16; // your base size
+const BASE = 16;
 const rem = (px, key = px) => ({ [key]: `${px / BASE}rem` });
 
 module.exports = {
@@ -58,6 +58,8 @@ module.exports = {
         }
       },
       spacing: {
+        ...rem(52, '13'),
+        ...rem(108, '27'),
         ...rem(16, 'page-mobile'),
         ...rem(32, 'page-desktop'),
         ...rem(84, 'body-start'),

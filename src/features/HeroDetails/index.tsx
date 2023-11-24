@@ -52,7 +52,7 @@ const HeroDetails = () => {
       <ButtonGoBack fallbackRoute={RoutePath.HEROES_GALLERY} />
       <div className={'relative mt-6 flex flex-col items-center'}>
         <div
-          className={classNames('absolute h-[120px] w-full rounded-lg', {
+          className={classNames('absolute h-[7.5rem] w-full rounded-lg', {
             'bg-neutral-400': mbtiGroupName === 'default',
             'bg-violet-500': mbtiGroupName === 'analysts',
             'bg-emerald-600': mbtiGroupName === 'diplomats',
@@ -107,7 +107,7 @@ const HeroDetails = () => {
       </div>
       <div className={'flex-center'}>
         <Button
-          className={'mt-8 w-full max-w-[500px]'}
+          className={'mt-8 w-full max-w-[31.25rem]'}
           iconName={'heart'}
           variant={isFavorite ? 'secondary' : 'default'}
           iconProps={{ isFilled: isFavorite, className: isFavorite ? 'text-red-500 fill-red-500' : '' }}

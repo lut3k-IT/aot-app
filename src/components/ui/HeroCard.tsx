@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { v4 } from 'uuid';
 
 import { RoutePath } from '@/constants/enums';
@@ -19,14 +19,13 @@ interface HeroCardProps {
   favorites: FavoriteType[];
 }
 
-const cnContainer = 'flex gap-4 h-[108px]';
+const cnContainer = 'flex gap-4 h-27';
 const cnDetailBox = 'flex flex-col justify-between items-center gap-1';
 const cnDetailTitle = 'text-sm font-medium text-muted-foreground leading-none';
 const cnDetailValue = 'text-lg font-semibold leading-none';
 
 const HeroCard = (props: HeroCardProps) => {
   const { data, favorites } = props;
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
@@ -91,7 +90,7 @@ const HeroCard = (props: HeroCardProps) => {
             onToggleFavorite={handleToggleFavorite}
           />
         </div>
-        <div className={'flex h-[52px] w-full items-center justify-center gap-8 rounded-md bg-accent px-4'}>
+        <div className={'h-13 flex w-full items-center justify-center gap-8 rounded-md bg-accent px-4'}>
           <DetailsBoxes />
         </div>
       </div>

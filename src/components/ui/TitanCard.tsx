@@ -19,7 +19,7 @@ interface TitanCardProps {
   heroesData: HeroType[];
 }
 
-const cnContainer = 'flex gap-4 h-[108px]';
+const cnContainer = 'flex gap-4 h-27';
 const cnDetailBox = 'flex flex-col justify-between items-center gap-1';
 const cnDetailTitle = 'text-sm font-medium text-muted-foreground leading-none';
 const cnDetailValue = 'text-lg font-semibold leading-none';
@@ -27,8 +27,6 @@ const cnDetailValue = 'text-lg font-semibold leading-none';
 const TitanCard = (props: TitanCardProps) => {
   const { data, favorites, heroesData } = props;
   const { t } = useTranslation();
-
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const currentInheritor = getHeroName(data.currentInheritor, heroesData);
@@ -68,10 +66,7 @@ const TitanCard = (props: TitanCardProps) => {
         to={`${RoutePath.TITAN_DETAILS}/${data.id}`}
         className={'rounded-md'}
       >
-        <MbtiFrame
-          mbtiId={data.mbti}
-          onClick={() => navigate(`${RoutePath.TITAN_DETAILS}/${data.id}`)}
-        >
+        <MbtiFrame mbtiId={data.mbti}>
           <CharacterPicture
             imgSource={`/assets/img/titans/${data.id}.jpg`}
             variant={'roundedBtm'}
@@ -90,7 +85,7 @@ const TitanCard = (props: TitanCardProps) => {
             onToggleFavorite={handleToggleFavorite}
           />
         </div>
-        <div className={'flex h-[52px] w-full items-center justify-center gap-8 rounded-md bg-accent px-4'}>
+        <div className={'h-13 flex w-full items-center justify-center gap-8 rounded-md bg-accent px-4'}>
           <DetailsBoxes />
         </div>
       </div>

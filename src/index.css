@@ -23,7 +23,10 @@
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
     --ring: 0 72.2% 50.6%;
+
+    /* sizes */
     --radius: 0.75rem;
+    --pad-mobile: 3rem;
   }
 
   .dark {
