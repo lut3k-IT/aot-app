@@ -67,7 +67,7 @@ const HeroDetails = () => {
           className={'mt-5 border-4 border-background'}
         />
       </div>
-      <div className={'mt-2 w-full text-center text-2xl font-semibold'}>{`${hero.firstName} ${
+      <div className={'mt-2 w-full text-center text-2xl font-medium'}>{`${hero.firstName} ${
         hero?.lastName || ''
       }`}</div>
       <div className={'mt-6 grid grid-cols-[minmax(100px,_120px)_minmax(120px,_2fr)] items-start gap-x-4 gap-y-3'}>
@@ -84,7 +84,7 @@ const HeroDetails = () => {
           value={
             <HeroStatus
               statusId={hero.status}
-              className={'font-semibold'}
+              className={'font-medium'}
             />
           }
         />

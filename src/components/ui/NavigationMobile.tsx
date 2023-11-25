@@ -45,7 +45,7 @@ const NavigationElement = (props: NavigationElementProps) => {
         />
       </div>
       <div
-        className={classNames('w-full text-center text-xs font-semibold leading-none text-muted-foreground', {
+        className={classNames('w-full text-center text-xs font-medium leading-none text-muted-foreground', {
           '!text-foreground': isActive
         })}
       >

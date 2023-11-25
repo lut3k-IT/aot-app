@@ -13,7 +13,7 @@ const FilterSegment = (props: FilterSegmentProps) => {
   return (
     <div className={'flex flex-col gap-2'}>
       <div className={'flex h-8 items-center justify-between gap-2'}>
-        <h3 className={'font-semibold'}>{title}</h3>
+        <h3 className={'font-medium'}>{title}</h3>
         {onReset && (
           <Button
             variant={'link'}

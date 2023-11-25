@@ -89,6 +89,11 @@ const Filter = () => {
     setSortDirection(DEFAULT_SORT_DIRECTION);
   };
 
+  const handleResetSorting = () => {
+    setSortBy(DEFAULT_SORT);
+    setSortDirection(DEFAULT_SORT_DIRECTION);
+  };
+
   const handleSetStatuses = (status: StatusType) => {
     toggleStateDataById(status, setSelectedStatuses);
   };
@@ -202,7 +207,10 @@ const Filter = () => {
         </DialogHeader>
         <ScrollArea className={'-mx-2 -mr-4 h-full pr-2'}>
           <div className='mx-2 grid gap-6 py-4'>
-            <FilterSegment title={t('common:filter.sortBy')}>
+            <FilterSegment
+              title={t('common:filter.sortBy')}
+              onReset={handleResetSorting}
+            >
               <div className={'flex gap-2'}>
                 <Select
                   value={sortBy}
@@ -421,8 +429,8 @@ const Filter = () => {
         </ScrollArea>
         <DialogFooter className={'flex flex-auto flex-row gap-3'}>
           <Button
-            className={'w-fit whitespace-nowrap bg-destructive-foreground text-destructive'}
-            variant={'secondary'}
+            className={'w-fit'}
+            variant={'destructiveLite'}
             onClick={handleResetAll}
           >
             {t('common:action.resetAll')}

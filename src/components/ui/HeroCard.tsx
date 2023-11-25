@@ -22,7 +22,7 @@ interface HeroCardProps {
 const cnContainer = 'flex gap-4 h-27';
 const cnDetailBox = 'flex flex-col justify-between items-center gap-1';
 const cnDetailTitle = 'text-sm font-medium text-muted-foreground leading-none';
-const cnDetailValue = 'text-lg font-semibold leading-none';
+const cnDetailValue = 'text-lg font-medium leading-none';
 
 const HeroCard = (props: HeroCardProps) => {
   const { data, favorites } = props;

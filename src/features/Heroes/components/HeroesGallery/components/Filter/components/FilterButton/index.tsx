@@ -14,7 +14,7 @@ const FilterButton = (props: FilterButtonProps) => {
     <Button
       variant={'outline'}
       className={cn(
-        'h-auto w-full whitespace-normal px-2 py-1 hover:bg-inherit',
+        'h-auto w-full whitespace-normal px-2 py-1.5 hover:bg-inherit',
         className,
         isActive ? 'border-red-300 !text-primary' : ''
       )}

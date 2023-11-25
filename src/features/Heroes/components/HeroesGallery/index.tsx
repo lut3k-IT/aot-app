@@ -29,7 +29,8 @@ import {
   DEFAULT_WEIGHT
 } from './components/Filter/helpers';
 
-// TODO: save pagesize in local storage
+// todo: save pagesize in local storage
+// fixme: when on page 2 and in hero details, when go back the page 1 is shown but page 2 in params
 
 const HeroesGallery = () => {
   const { t } = useTranslation();

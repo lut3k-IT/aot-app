@@ -22,7 +22,7 @@ interface TitanCardProps {
 const cnContainer = 'flex gap-4 h-27';
 const cnDetailBox = 'flex flex-col justify-between items-center gap-1';
 const cnDetailTitle = 'text-sm font-medium text-muted-foreground leading-none';
-const cnDetailValue = 'text-lg font-semibold leading-none';
+const cnDetailValue = 'text-lg font-medium leading-none';
 
 const TitanCard = (props: TitanCardProps) => {
   const { data, favorites, heroesData } = props;

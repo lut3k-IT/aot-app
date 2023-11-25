@@ -18,35 +18,32 @@
     --muted-foreground: 0 0% 45.1%;
     --accent: 0 0% 96.1%;
     --accent-foreground: 0 0% 9%;
-    --destructive: 24.6 95% 47.1%;
-    --destructive-foreground: 60 9.1% 97.8%;
+    --destructive: 269, 66%, 50%;
+    --destructive-foreground: 266, 95%, 97%;
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
     --ring: 0 72.2% 50.6%;
-
-    /* sizes */
     --radius: 0.75rem;
-    --pad-mobile: 3rem;
   }
 
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
+    --background: 0 0% 5.4%;
+    --foreground: 0 0% 94%;
     --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
     --primary: 0 52.2% 50.6%;
     --primary-foreground: 0 65.7% 97.3%;
-    --secondary: 0 0% 14.9%;
+    --secondary: 0 0% 9%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
+    --muted: 0 0% 9%;
     --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
+    --accent: 0 0% 9%;
     --accent-foreground: 0 0% 98%;
-    --destructive: 20.5 90.2% 61.2%;
-    --destructive-foreground: 60 9.1% 97.8%;
-    --border: 0 0% 14.9%;
+    --destructive: 269, 86%, 66%;
+    --destructive-foreground: 266, 95%, 97%;
+    --border: 0 0% 9%;
     --input: 0 0% 14.9%;
     --ring: 0 52.2% 50.6%;
   }
@@ -71,17 +68,26 @@
 }
 
 @layer components {
+  .h-input {
+    @apply h-10;
+  }
+
+  .min-touch-target-wrapper {
+    @apply flex-center;
+    min-width: 2rem;
+    min-height: 2rem;
+  }
 }
 
 @layer utilities {
-  .h-body-no-scroll {
-    height: calc(100vh - 80px);
-  }
-
   .flex-center {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .h-body-no-scroll {
+    height: calc(100vh - 80px);
   }
 
   .w-screen-pad {
