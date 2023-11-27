@@ -1,4 +1,6 @@
 {
+  "firstName": "First name",
+  "lastName": "Last name",
   "residence": {
     "title": "Residence",
     "hizuru": "Hizuru",

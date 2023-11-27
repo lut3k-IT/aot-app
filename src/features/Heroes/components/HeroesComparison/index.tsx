@@ -1,161 +1,126 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { MousePointerSquare } from 'lucide-react';
 
+import useAppSelector from '@/components/hooks/useAppSelector';
 import AppHelmet from '@/components/ui/AppHelmet';
-import CharacterPicture from '@/components/ui/CharacterPicture';
-import { Command, CommandEmpty, CommandGroup, CommandInput } from '@/components/ui/Command';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/Popover';
+import HeroStatus from '@/components/ui/HeroStatus';
+import { HeroType } from '@/constants/types';
+import { getMbtiShortName, getResidenceName, getSpeciesName } from '@/utils/dataHelpers';
 
-interface DetailItemProps {
-  title: string;
-  value?: React.ReactNode;
-  isOdd?: boolean;
-}
+import DetailItem from './components/DetailItem';
+import PictureWithSelect from './components/PictureWithSelect';
 
-interface PictureWithSelectProps {
-  data?: string;
-}
-
-const RowHighlighter = () => (
-  <div className={'w-screen-pad absolute left-0 top-0 -z-10 h-[130%] -translate-y-[15%] rounded-md bg-accent'} />
-);
-
-const DetailItem = (props: DetailItemProps) => {
-  const { title, value = '-', isOdd } = props;
-
-  return (
-    <div className={'flex-center relative w-full flex-col'}>
-      <div className={'text-lg font-bold leading-none text-muted-foreground'}>{title}</div>
-      <div className={'text-xl'}>{value}</div>
-      {isOdd && <RowHighlighter />}
-    </div>
-  );
+export type HeroTypeSelected = HeroType | null;
+export type HeroForSelect = {
+  id: number;
+  value: string;
 };
+const DEFAULT_COMPARISON_STATE = [null, null];
 
-const PictureWithSelect = (props: PictureWithSelectProps) => {
-  const { data } = props;
-  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
-
-  // FIXME: accessibility outline is orange instead of red
-
-  const characterPicture = (
-    <button>
-      <CharacterPicture
-        imgSource={'https://github.com/shadcn.png'}
-        size={'full'}
-        variant={'circle'}
-        className={'max-h-[8rem] max-w-[8rem]'}
-      />
-    </button>
-  );
-
-  const emptyPicture = (
-    <button className={'max-h-[8rem] w-full max-w-[8rem]'}>
-      <div
-        className={
-          'flex-center aspect-square h-auto w-full flex-col gap-1 rounded-full bg-accent text-muted-foreground outline-dashed outline-2 outline-offset-4 outline-neutral-300 dark:outline-neutral-700'
-        }
-      >
-        <MousePointerSquare size={'2.5rem'} />
-        <div className={'leading-none'}>Select</div>
-      </div>
-    </button>
-  );
-
-  return (
-    <Popover
-      open={isPopoverOpen}
-      onOpenChange={setIsPopoverOpen}
-    >
-      <PopoverTrigger asChild>{data ? characterPicture : emptyPicture}</PopoverTrigger>
-      <PopoverContent
-        className='w-[12.5rem] p-0'
-        sideOffset={16}
-      >
-        <Command>
-          <CommandInput placeholder='Search hero...' />
-          <CommandEmpty>No hero found.</CommandEmpty>
-          <CommandGroup>
-            {/* {heroesFromRedux.map((hero) => (
-                <CommandItem
-                  key={hero.id}
-                  onSelect={(currentValue) => {
-                    setValue(currentValue === value ? '' : currentValue);
-                    setOpen(false);
-                  }}
-                >
-                  <Check className={cn('mr-2 h-4 w-4', value === hero.value ? 'opacity-100' : 'opacity-0')} />
-                  {hero.label}
-                </CommandItem>
-              ))} */}
-          </CommandGroup>
-        </Command>
-      </PopoverContent>
-    </Popover>
-  );
-};
+// todo: save heroes in params
 
 const HeroesComparison = () => {
-  const [characterList, setCharacterList] = useState([{}]);
   const { t } = useTranslation();
+
+  const [selectedHeroes, setSelectedHeroes] = useState<HeroTypeSelected[]>(DEFAULT_COMPARISON_STATE);
+  const [heroesForSelect, setHeroesForSelect] = useState<HeroForSelect[]>([]);
+
+  const heroes = useAppSelector((state) => state.heroes.data);
+  const favoriteHeroesIds = useAppSelector((state) => state.heroes.favoriteIds);
+  const fetchingStatus = useAppSelector((state) => state.heroes.status);
+  const fetchingError = useAppSelector((state) => state.heroes.error);
+
+  useEffect(() => {
+    setHeroesForSelect(
+      heroes.map((hero) => {
+        return {
+          id: hero.id,
+          value: `${hero.firstName} ${hero.lastName}`
+        };
+      })
+    );
+  }, [heroes]);
+
+  const handleUpdateColumn = (chosenHero: HeroForSelect, columnId: number) => {
+    const foundHero = heroes.find((original) => chosenHero.id === original.id);
+
+    setSelectedHeroes((currSelected) => {
+      return currSelected.map((arrayItem: HeroTypeSelected, arrayId: number) => {
+        return arrayId === columnId ? foundHero || arrayItem : arrayItem;
+      });
+    });
+  };
 
   return (
     <div className={'mt-4 grid w-full grid-cols-2 gap-2'}>
       <AppHelmet title={`${t('common:title.heroes')} ${t('common:tab.comparison')}`} />
-      <div className={'flex-center flex-col gap-8'}>
-        <PictureWithSelect />
-        <div className={'flex-center w-full flex-col gap-4'}>
-          <DetailItem
-            title={'First name'}
-            value={'Eren'}
-            isOdd
-          />
-          <DetailItem
-            title={'Last name'}
-            value={'Yeager'}
-          />
-          <DetailItem
-            title={'MBTI'}
-            value={'INFJ'}
-            isOdd
-          />
-          <DetailItem
-            title={'Last name'}
-            value={'Yeager'}
-          />
-          <DetailItem
-            title={'MBTI'}
-            value={'INFJ'}
-            isOdd
-          />
-        </div>
-      </div>
-      <div className={'flex-center flex-col gap-8'}>
-        <PictureWithSelect />
-        <div className={'flex-center w-full flex-col gap-4'}>
-          <DetailItem
-            title={'First name'}
-            value={'Eren'}
-          />
-          <DetailItem
-            title={'Last name'}
-            value={'Yeager'}
-          />
-          <DetailItem
-            title={'MBTI'}
-            value={'INFJ'}
-          />
-          <DetailItem
-            title={'Last name'}
-            value={'Yeager'}
-          />
-          <DetailItem
-            title={'MBTI'}
-            value={'INFJ'}
-          />
-        </div>
-      </div>
+      {selectedHeroes.map((data, index) => {
+        const isOdd = index === 0;
+        return (
+          <div
+            className={'flex-center flex-col gap-10'}
+            key={index}
+          >
+            <PictureWithSelect
+              componentId={index}
+              heroesForSelect={heroesForSelect}
+              selectedHero={data}
+              onSelectHero={handleUpdateColumn}
+            />
+            <div className={'flex-center w-full flex-col gap-4'}>
+              <DetailItem
+                title={t('data:firstName')}
+                value={data?.firstName}
+                isOdd={isOdd}
+              />
+              <DetailItem
+                title={t('data:lastname')}
+                value={data?.lastName}
+              />
+              <DetailItem
+                title={t('data:species.title')}
+                value={data && getSpeciesName(data.species, t)}
+                isOdd={isOdd}
+              />
+              <DetailItem
+                title={t('data:residence.title')}
+                value={data && getResidenceName(data.residence, t)}
+              />
+
+              <DetailItem
+                title={t('data:status.title')}
+                value={
+                  data && (
+                    <HeroStatus
+                      statusId={data.status}
+                      className={'font-medium'}
+                    />
+                  )
+                }
+                isOdd={isOdd}
+              />
+              <DetailItem
+                title={t('data:mbti.title')}
+                value={data && getMbtiShortName(data.mbti)}
+              />
+              <DetailItem
+                title={t('data:age.title')}
+                value={data?.age}
+                isOdd={isOdd}
+              />
+              <DetailItem
+                title={t('data:height.title')}
+                value={`${data?.height || '-'} cm`}
+              />
+              <DetailItem
+                title={t('data:weight.title')}
+                value={`${data?.weight || '-'} kg`}
+                isOdd={isOdd}
+              />
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };
