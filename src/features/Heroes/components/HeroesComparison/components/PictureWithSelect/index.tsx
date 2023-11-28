@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Check, MousePointerSquare } from 'lucide-react';
 
 import CharacterPicture from '@/components/ui/CharacterPicture';
@@ -14,27 +14,28 @@ interface PictureWithSelectProps {
   heroesForSelect: HeroForSelect[];
   selectedHero?: HeroTypeSelected;
   onSelectHero: (chosenHero: HeroForSelect, columnId: number) => void;
+  className?: string;
 }
 
 const PictureWithSelect = (props: PictureWithSelectProps) => {
-  const { componentId, heroesForSelect, selectedHero, onSelectHero } = props;
+  const { componentId, heroesForSelect, selectedHero, onSelectHero, className } = props;
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
-  // FIXME: accessibility outline is orange instead of red
-
   const characterPicture = (
-    <button className={'focus-visible-styles max-h-[8rem] w-full max-w-[8rem] rounded-full'}>
+    <button className={cn('focus-visible-styles max-h-[8rem] w-full max-w-[8rem] rounded-full', className)}>
       <CharacterPicture
         imgSource={selectedHero ? `/assets/img/heroes/${selectedHero.id}.jpg` : undefined}
         size={'full'}
         variant={'circle'}
-        className={'max-h-[8rem] max-w-[8rem]'}
+        className={
+          'max-h-[8rem] max-w-[8rem] outline-dashed outline-2 outline-offset-4 outline-neutral-300 dark:outline-neutral-700'
+        }
       />
     </button>
   );
 
   const emptyPicture = (
-    <button className={'focus-visible-styles max-h-[8rem] w-full max-w-[8rem] rounded-full'}>
+    <button className={cn('focus-visible-styles max-h-[8rem] w-full max-w-[8rem] rounded-full', className)}>
       <div
         className={
           'flex-center aspect-square h-auto w-full flex-col gap-1 rounded-full bg-accent text-muted-foreground outline-dashed outline-2 outline-offset-4 outline-neutral-300 dark:outline-neutral-700'

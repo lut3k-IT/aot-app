@@ -62,7 +62,8 @@
     @apply bg-background text-foreground;
   }
 
-  a {
+  a,
+  button {
     @apply focus-visible-styles;
   }
 }

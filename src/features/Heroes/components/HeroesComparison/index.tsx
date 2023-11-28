@@ -35,7 +35,7 @@ const HeroesComparison = () => {
       heroes.map((hero) => {
         return {
           id: hero.id,
-          value: `${hero.firstName} ${hero.lastName}`
+          value: `${hero.firstName} ${hero.lastName || ''}`
         };
       })
     );
@@ -52,73 +52,73 @@ const HeroesComparison = () => {
   };
 
   return (
-    <div className={'mt-4 grid w-full grid-cols-2 gap-2'}>
+    <div
+      className={
+        'mt-4 grid w-full grid-flow-col grid-cols-2 grid-rows-[repeat(10,auto)] justify-items-center gap-x-2 gap-y-6'
+      }
+    >
       <AppHelmet title={`${t('common:title.heroes')} ${t('common:tab.comparison')}`} />
       {selectedHeroes.map((data, index) => {
         const isOdd = index === 0;
         return (
-          <div
-            className={'flex-center flex-col gap-10'}
-            key={index}
-          >
+          <>
             <PictureWithSelect
               componentId={index}
               heroesForSelect={heroesForSelect}
               selectedHero={data}
               onSelectHero={handleUpdateColumn}
+              className={'mb-4'}
             />
-            <div className={'flex-center w-full flex-col gap-4'}>
-              <DetailItem
-                title={t('data:firstName')}
-                value={data?.firstName}
-                isOdd={isOdd}
-              />
-              <DetailItem
-                title={t('data:lastname')}
-                value={data?.lastName}
-              />
-              <DetailItem
-                title={t('data:species.title')}
-                value={data && getSpeciesName(data.species, t)}
-                isOdd={isOdd}
-              />
-              <DetailItem
-                title={t('data:residence.title')}
-                value={data && getResidenceName(data.residence, t)}
-              />
+            <DetailItem
+              title={t('data:firstName')}
+              value={data?.firstName}
+              isOdd={isOdd}
+            />
+            <DetailItem
+              title={t('data:lastName')}
+              value={data?.lastName}
+            />
+            <DetailItem
+              title={t('data:species.title')}
+              value={data && getSpeciesName(data.species, t)}
+              isOdd={isOdd}
+            />
+            <DetailItem
+              title={t('data:residence.title')}
+              value={data && getResidenceName(data.residence, t)}
+            />
 
-              <DetailItem
-                title={t('data:status.title')}
-                value={
-                  data && (
-                    <HeroStatus
-                      statusId={data.status}
-                      className={'font-medium'}
-                    />
-                  )
-                }
-                isOdd={isOdd}
-              />
-              <DetailItem
-                title={t('data:mbti.title')}
-                value={data && getMbtiShortName(data.mbti)}
-              />
-              <DetailItem
-                title={t('data:age.title')}
-                value={data?.age}
-                isOdd={isOdd}
-              />
-              <DetailItem
-                title={t('data:height.title')}
-                value={`${data?.height || '-'} cm`}
-              />
-              <DetailItem
-                title={t('data:weight.title')}
-                value={`${data?.weight || '-'} kg`}
-                isOdd={isOdd}
-              />
-            </div>
-          </div>
+            <DetailItem
+              title={t('data:status.title')}
+              value={
+                data && (
+                  <HeroStatus
+                    statusId={data.status}
+                    className={'font-medium'}
+                  />
+                )
+              }
+              isOdd={isOdd}
+            />
+            <DetailItem
+              title={t('data:mbti.title')}
+              value={data && getMbtiShortName(data.mbti)}
+            />
+            <DetailItem
+              title={t('data:age.title')}
+              value={data?.age}
+              isOdd={isOdd}
+            />
+            <DetailItem
+              title={t('data:height.title')}
+              value={data?.height ? `${data.height} cm` : '-'}
+            />
+            <DetailItem
+              title={t('data:weight.title')}
+              value={data?.weight ? `${data.weight} kg` : '-'}
+              isOdd={isOdd}
+            />
+          </>
         );
       })}
     </div>
