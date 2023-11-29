@@ -54,14 +54,17 @@ const HeroesComparison = () => {
   return (
     <div
       className={
-        'mt-4 grid w-full grid-flow-col grid-cols-2 grid-rows-[repeat(10,auto)] justify-items-center gap-x-2 gap-y-6'
+        'mb-2 mt-4 grid w-full grid-flow-col grid-cols-2 grid-rows-[repeat(10,auto)] justify-items-center gap-x-2 gap-y-6'
       }
     >
       <AppHelmet title={`${t('common:title.heroes')} ${t('common:tab.comparison')}`} />
       {selectedHeroes.map((data, index) => {
         const isOdd = index === 0;
         return (
-          <>
+          <div
+            className={'contents'}
+            key={index}
+          >
             <PictureWithSelect
               componentId={index}
               heroesForSelect={heroesForSelect}
@@ -118,7 +121,7 @@ const HeroesComparison = () => {
               value={data?.weight ? `${data.weight} kg` : '-'}
               isOdd={isOdd}
             />
-          </>
+          </div>
         );
       })}
     </div>

@@ -52,9 +52,7 @@ import {
 
 const Filter = () => {
   const { t } = useTranslation();
-
   const [searchParams, setSearchParams] = useSearchParams();
-  const hasParams = searchParams.size > 0;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -71,6 +69,41 @@ const Filter = () => {
 
   const [sortBy, setSortBy] = useState(DEFAULT_SORT);
   const [sortDirection, setSortDirection] = useState(DEFAULT_SORT_DIRECTION);
+
+  const [isFilterActive, setIsFilterActive] = useState(false);
+
+  useEffect(() => {
+    setIsFilterActive(
+      selectedStatuses.length > 0 ||
+        selectedAge[0] !== DEFAULT_AGE[0] ||
+        selectedAge[1] !== DEFAULT_AGE[1] ||
+        selectedHeight[0] !== DEFAULT_HEIGHT[0] ||
+        selectedHeight[1] !== DEFAULT_HEIGHT[1] ||
+        selectedWeight[0] !== DEFAULT_WEIGHT[0] ||
+        selectedWeight[1] !== DEFAULT_WEIGHT[1] ||
+        selectedMbti.length > 0 ||
+        selectedSpecies.length > 0 ||
+        selectedResidence.length > 0 ||
+        hasAge ||
+        hasHeight ||
+        hasWeight ||
+        sortBy !== DEFAULT_SORT ||
+        sortDirection !== DEFAULT_SORT_DIRECTION
+    );
+  }, [
+    selectedStatuses,
+    selectedAge,
+    selectedHeight,
+    selectedWeight,
+    selectedMbti,
+    selectedSpecies,
+    selectedResidence,
+    hasAge,
+    hasWeight,
+    hasWeight,
+    sortBy,
+    sortDirection
+  ]);
 
   /* -------------------------------- handlers -------------------------------- */
 
@@ -193,7 +226,7 @@ const Filter = () => {
           iconProps={{ className: 'text-muted-foreground' }}
         >
           {t('common:filter.title')}
-          {hasParams && (
+          {isFilterActive && (
             <div className={'absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full bg-red-300 dark:bg-red-900'} />
           )}
         </Button>
