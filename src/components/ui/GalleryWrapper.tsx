@@ -12,7 +12,7 @@ const GalleryWrapper = (props: GalleryWrapperProps) => {
 
   return (
     <div
-      className={cn('w-full flex flex-col gap-4', className)}
+      className={cn('flex flex-col gap-4', className)}
       {...rest}
     >
       {children}

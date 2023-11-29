@@ -1,21 +1,25 @@
 /** @type {import('tailwindcss').Config} */
+
+const BASE = 16;
+const rem = (px, key = px) => ({ [key]: `${px / BASE}rem` });
+
 module.exports = {
   darkMode: ['class'],
   content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
   theme: {
+    screens: {
+      sm: '425px',
+      '2sm': '560px',
+      md: '768px',
+      '2md': '834px',
+      lg: '1024px',
+      '2lg': '1280px',
+      xl: '1440px',
+      '2xl': '2560px'
+    },
     container: {
       center: true,
-      padding: '2rem',
-      screens: {
-        sm: '425px',
-        '2sm': '560px',
-        md: '768px',
-        '2md': '834px',
-        lg: '1024px',
-        '2lg': '1280px',
-        xl: '1440px',
-        '2xl': '2560px'
-      }
+      padding: '2rem'
     },
     extend: {
       colors: {
@@ -24,6 +28,18 @@ module.exports = {
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))'
+        },
+        muted2: {
+          DEFAULT: 'hsl(var(--muted2))',
+          foreground: 'hsl(var(--muted2-foreground))'
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))'
+        },
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))'
@@ -36,30 +52,24 @@ module.exports = {
           DEFAULT: 'hsl(var(--destructive))',
           foreground: 'hsl(var(--destructive-foreground))'
         },
-        muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))'
-        },
-        accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))'
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))'
         },
         popover: {
           DEFAULT: 'hsl(var(--popover))',
           foreground: 'hsl(var(--popover-foreground))'
-        },
-        card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))'
         }
       },
       spacing: {
-        'page-mobile': '16px',
-        'page-desktop': '32px',
-        'body-start': '84px',
-        'body-pad-start': '102px',
-        'body-end': '64px',
-        'body-pad-end': '80px'
+        ...rem(52, '13'),
+        ...rem(108, '27'),
+        ...rem(16, 'page-mobile'),
+        ...rem(32, 'page-desktop'),
+        ...rem(84, 'body-start'),
+        ...rem(102, 'body-pad-start'),
+        ...rem(64, 'body-end'),
+        ...rem(80, 'body-pad-end')
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -82,7 +92,6 @@ module.exports = {
       },
       boxShadow: {
         'panel-bottom': '0px 0px 6px 6px hsl(var(--background))'
-        // 'sides-inner': 'inset 0 0 8px -2px hsl(var(--foreground))'
       }
     }
   },

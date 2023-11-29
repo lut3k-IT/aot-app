@@ -12,25 +12,73 @@
     "termsOfService": "Terms of service",
     "portfolio": "lut3k.com"
   },
-  "tabs": {
+  "tab": {
     "gallery": "Gallery",
     "charts": "Charts",
     "comparison": "Comparison"
   },
-  "button": {
+  "preposition": {
+    "of": "of"
+  },
+  "action": {
     "submit": "Submit",
     "cancel": "Cancel",
     "addToFavorites": "Add to favorites",
-    "removeFromFavorites": "Remove from favorites"
+    "removeFromFavorites": "Remove from favorites",
+    "save": "Save",
+    "saveChanges": "Save changes",
+    "reset": "Reset",
+    "resetAll": "Reset all"
   },
-  "spoilerMode": "Hide spoilers mode",
+  "filter": {
+    "title": "Filter",
+    "hasInfoAbout": "Has info about",
+    "heroesDesc": "Set filters and save the changes.",
+    "sortBy": "Sort by"
+  },
+  "sort": {
+    "title": "Sort",
+    "direction": {
+      "asc": {
+        "short": "Asc",
+        "long": "Ascending"
+      },
+      "desc": {
+        "short": "Desc",
+        "long": "Descending"
+      }
+    },
+    "value": {
+      "id": "Default",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "status": "Status",
+      "age": "Age",
+      "height": "Height",
+      "weight": "Weight",
+      "mbti": "MBTI",
+      "species": "Species",
+      "residence": "Residence"
+    }
+  },
+  "spoilerMode": {
+    "hide": "Hide spoilers",
+    "show": "Show spoilers"
+  },
   "form": {},
   "error": {
     "oops": "Oops",
     "unexpectedError": "Unexpected error",
-    "routeNotFound": "Route not found"
+    "routeNotFound": "Route not found",
+    "backToHomepage": "Back to homepage"
   },
   "navigation": {
     "goBack": "Go back"
+  },
+  "time": {
+    "year": {
+      "singular": "Year",
+      "plural": "Years"
+    }
   }
 }

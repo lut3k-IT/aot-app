@@ -2,23 +2,22 @@ import { createBrowserRouter, Navigate, Outlet, RouterProvider } from 'react-rou
 
 import PageOverlay from '@/components/ui/PageOverlay';
 import ScrollToTop from '@/components/ui/ScrollToTop';
-import { CharacterType, RoutePath } from '@/constants/enums';
-import About from '@/features/Additional/About';
-import Changelog from '@/features/Additional/Changelog';
-import PrivacyPolicy from '@/features/Additional/PrivacyPolicy';
-import TermsOfService from '@/features/Additional/TermsOfService';
-import CharacterDetails from '@/features/CharacterDetails';
+import { RoutePath } from '@/constants/enums';
 import ErrorPage from '@/features/ErrorBoundaries/ErrorPage';
 import NotFoundRoute from '@/features/ErrorBoundaries/NotFoundRoute';
-import Favorites from '@/features/Favorites';
-import FavoritesHeroes from '@/features/FavoritesHeroes';
-import FavoritesQuotations from '@/features/FavoritesQuotations';
-import FavoritesTitans from '@/features/FavoritesTitans';
+import HeroDetails from '@/features/HeroDetails';
 import Heroes from '@/features/Heroes';
-import HeroesCharts from '@/features/HeroesCharts';
-import HeroesComparison from '@/features/HeroesComparison';
-import HeroesGallery from '@/features/HeroesGallery';
+import HeroesCharts from '@/features/Heroes/components/HeroesCharts';
+import HeroesComparison from '@/features/Heroes/components/HeroesComparison';
+import HeroesGallery from '@/features/Heroes/components/HeroesGallery';
+import About from '@/features/Minor/About';
+import Changelog from '@/features/Minor/Changelog';
+import PrivacyPolicy from '@/features/Minor/PrivacyPolicy';
+import TermsOfService from '@/features/Minor/TermsOfService';
 import Quiz from '@/features/Quiz';
+import QuotationDetails from '@/features/QuotationDetails';
+import Quotations from '@/features/Quotations';
+import TitanDetails from '@/features/TitanDetails';
 import Titans from '@/features/TitansGallery';
 
 import Init from './Init';
@@ -31,14 +30,21 @@ const RouterComponents = () => (
   </>
 );
 
+// FIXME:
 export const router = createBrowserRouter([
   {
-    element: <RouterComponents />,
-    errorElement: <ErrorPage />,
+    // element: <RouterComponents />,
+    // errorElement: <ErrorPage />,
+    // children: [
+    path: RoutePath.LANDING,
+    element: <PageOverlay />,
     children: [
       {
-        path: RoutePath.LANDING,
-        element: <PageOverlay />,
+        // path: RoutePath.LANDING,
+        // element: <PageOverlay />,
+        // children: [
+        element: <RouterComponents />,
+        errorElement: <ErrorPage />,
         children: [
           {
             path: RoutePath.LANDING,
@@ -69,7 +75,7 @@ export const router = createBrowserRouter([
           },
           {
             path: RoutePath.HERO_DETAILS + '/:id',
-            element: <CharacterDetails type={CharacterType.HERO} />
+            element: <HeroDetails />
           },
           {
             path: RoutePath.TITANS,
@@ -77,47 +83,19 @@ export const router = createBrowserRouter([
           },
           {
             path: RoutePath.TITAN_DETAILS + '/:id',
-            element: <CharacterDetails type={CharacterType.TITAN} />
+            element: <TitanDetails />
           },
           {
-            path: RoutePath.FAVORITES,
-            element: <Favorites />,
-            children: [
-              {
-                path: RoutePath.FAVORITES_HEROES,
-                element: <FavoritesHeroes />
-              },
-              {
-                path: RoutePath.FAVORITES_TITANS,
-                element: <FavoritesTitans />
-              },
-              {
-                path: RoutePath.FAVORITES_QUOTATIONS,
-                element: <FavoritesQuotations />
-              }
-            ]
+            path: RoutePath.QUOTATIONS,
+            element: <Quotations />
+          },
+          {
+            path: RoutePath.QUOTATION_DETAILS + '/:id',
+            element: <QuotationDetails />
           },
           {
             path: RoutePath.QUIZ,
             element: <Quiz />
-          },
-          {
-            path: RoutePath.QUOTATIONS,
-            element: (
-              <Navigate
-                to={RoutePath.HEROES}
-                replace
-              />
-            )
-          },
-          {
-            path: RoutePath.QUOTATION_DETAILS + '/:id',
-            element: (
-              <Navigate
-                to={RoutePath.HEROES}
-                replace
-              />
-            )
           },
           {
             path: RoutePath.ABOUT,

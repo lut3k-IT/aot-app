@@ -1,5 +1,8 @@
 {
+  "firstName": "First name",
+  "lastName": "Last name",
   "residence": {
+    "title": "Residence",
     "hizuru": "Hizuru",
     "marley": "Marley",
     "paradisIsland": "Paradis Island",
@@ -9,6 +12,7 @@
     "wallSina": "Wall Sina"
   },
   "status": {
+    "title": "Status",
     "alive": {
       "short": "Alive",
       "long": "Alive"
@@ -23,6 +27,7 @@
     }
   },
   "species": {
+    "title": "Species",
     "horse": "Horse",
     "human": "Human",
     "humanTitan": "Human, Intelligent Titan",
@@ -31,6 +36,7 @@
     "unknown": "Unknown"
   },
   "allegiance": {
+    "title": "Allegiance",
     "eldia": "Eldia",
     "marley": "Marley",
     "eldiaForm": "Eldia (formerly)",
@@ -39,6 +45,7 @@
     "none": "None"
   },
   "mbti": {
+    "title": "MBTI",
     "architect": "architect",
     "logician": "logician",
     "commander": "commander",
@@ -58,9 +65,26 @@
     "unknown": "unknown"
   },
   "mbtiGroup": {
+    "title": "MBTI group",
     "analysts": "analysts",
     "diplomats": "diplomats",
     "sentinels": "sentinels",
     "explorers": "explorers"
-  }
+  },
+  "age": {
+    "title": "Age",
+    "boolean": "Has age"
+  },
+  "height": {
+    "title": "Height",
+    "boolean": "Has height"
+  },
+  "weight": {
+    "title": "Weight",
+    "boolean": "Has weight"
+  },
+  "otherNames": "Aliases",
+  "abilities": "Abilities",
+  "currentInheritor": "Current inheritor",
+  "formerInheritors": "Former inheritors"
 }

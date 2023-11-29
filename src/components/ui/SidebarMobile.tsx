@@ -18,8 +18,8 @@ const SidebarMobile = () => {
   };
 
   return (
-    <div className={'h-full w-full bg-background rounded-md flex flex-col justify-between items-center gap-6'}>
-      <div className={'flex flex-col w-full text-start [&_*]:text-foreground'}>
+    <div className={'flex h-full w-full flex-col items-center justify-between gap-6 rounded-md bg-background'}>
+      <div className={'flex w-full flex-col text-start [&_*]:text-foreground'}>
         <DialogClose ref={buttonRef} />
         <Button
           variant={'link'}
@@ -57,15 +57,15 @@ const SidebarMobile = () => {
           {t('common:title.portfolio')}
         </Button>
       </div>
-      <div className={'flex flex-col gap-14 items-center'}>
+      <div className={'flex flex-col items-center gap-14'}>
         <LanguageSwitcher />
-        <div className='flex justify-center items-center space-x-3'>
+        <div className='flex items-center justify-center space-x-3'>
           <Switch id='spoiler-mode' />
           <Label
             htmlFor='spoiler-mode'
             className='text-md font-medium leading-none'
           >
-            {t('common:spoilerMode')}
+            {t('common:spoilerMode.hide')}
           </Label>
         </div>
       </div>

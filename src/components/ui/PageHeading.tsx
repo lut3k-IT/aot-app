@@ -1,70 +1,21 @@
-import { Button } from './Button';
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger
-} from './DropdownMenu';
+import { useTranslation } from 'react-i18next';
 
-interface PageHeadingProps {}
+import { ElementsIds } from '@/constants/enums';
+
+interface PageHeadingProps {
+  year?: number;
+}
 
 const PageHeading = (props: PageHeadingProps) => {
-  const {} = props;
+  const { year = 854 } = props;
+  const { t } = useTranslation();
 
   return (
-    <div className={'flex justify-between items-center sticky py-4 mb-2 bg-background'}>
-      <div className={'font-bold text-4xl text-neutral-300 dark:text-neutral-700 leading-none tracking-wide'}>
-        Year 854
+    <div className={'sticky mb-2 flex items-center justify-between bg-background py-4'}>
+      <div className={'text-muted2-foreground text-4xl font-bold leading-none tracking-wide'}>
+        {t('common:time.year.singular')} {year}
       </div>
-      <div
-        id={'page-heading-options'}
-        className={''}
-      >
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              // size={'icon'}
-              iconSize={'sm'}
-              iconPosition={'right'}
-              iconName={'filter'}
-              variant={'outline'}
-              // iconProps={{ className: 'text-neutral-300' }}
-            >
-              Filter
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align={'end'}>
-            <DropdownMenuLabel>Status</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuCheckboxItem
-            // checked={showStatusBar}
-            // onCheckedChange={setShowStatusBar}
-            >
-              Alive
-            </DropdownMenuCheckboxItem>
-            <DropdownMenuCheckboxItem>Dead</DropdownMenuCheckboxItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuLabel>Residence</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuCheckboxItem>Wall Rose</DropdownMenuCheckboxItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuLabel>In favorites</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuRadioGroup
-            // value={position}
-            // onValueChange={setPosition}
-            >
-              <DropdownMenuRadioItem value='all'>All</DropdownMenuRadioItem>
-              <DropdownMenuRadioItem value='favorites'>Favorites</DropdownMenuRadioItem>
-              <DropdownMenuRadioItem value='noFavorites'>Not favorites</DropdownMenuRadioItem>
-            </DropdownMenuRadioGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </div>
+      <div id={ElementsIds.PAGE_HEADING_OPTIONS} />
     </div>
   );
 };

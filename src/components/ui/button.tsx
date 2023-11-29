@@ -9,20 +9,24 @@ import { cn } from '@/lib/utils';
 import Icon, { IconNames, IconProps, IconSizes } from './Icon';
 
 const buttonVariants = cva(
-  'inline-flex gap-2 items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex gap-2 items-center justify-center rounded-md text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {
         default: 'bg-primary text-primary-foreground hover:bg-primary/90',
+        defaultLite: 'bg-primary-foreground text-primary hover:bg-primary-foreground/50',
         destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
+        destructiveLite:
+          'bg-destructive-foreground text-destructive hover:bg-purple-50 dark:bg-purple-900/20 dark:hover:bg-purple-900/10',
         outline: 'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
         secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
+        secondaryLite: 'bg-secondary-foreground text-secondary hover:bg-secondary-foreground/50',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
         proxy: ''
       },
       size: {
-        default: 'h-10 px-4 py-2',
+        default: 'h-10 px-4 py-2 h-input',
         sm: 'h-9 px-3',
         lg: 'h-11 px-8',
         icon: 'h-10 w-10',
@@ -80,7 +84,22 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       </>
     );
 
-    const iconBasedClass = children ? (iconName ? (iconPosition === 'left' ? 'pl-3' : 'pr-3') : null) : null;
+    let iconBasedClass = null;
+    if (children && iconName) {
+      switch (size) {
+        case 'default':
+          iconBasedClass = iconPosition === 'left' ? 'pl-3' : 'pr-3';
+          break;
+        case 'sm':
+          iconBasedClass = iconPosition === 'left' ? 'pl-2.5' : 'pr-2.5';
+          break;
+        case 'lg':
+          iconBasedClass = iconPosition === 'left' ? 'pl-7' : 'pr-7';
+          break;
+        default:
+          break;
+      }
+    }
 
     const ButtonComponent = (
       <MainComponent

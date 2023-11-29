@@ -1,7 +1,10 @@
 import React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import {
+  ArrowDownNarrowWide,
   ArrowDownWideNarrow,
+  ChevronFirst,
+  ChevronLast,
   ChevronLeft,
   ChevronRight,
   Dna,
@@ -13,6 +16,7 @@ import {
   Menu,
   Moon,
   PenLine,
+  Quote,
   Sun,
   User,
   X
@@ -27,11 +31,12 @@ const iconVariants = cva('text-current', {
   variants: {
     variant: {
       default: 'text-current',
-      gray: 'text-neutral-300 dark:text-neutral-400',
+      gray: 'text-muted2-foreground',
       primary: 'text-primary'
     },
     size: {
       default: 'w-6 h-6',
+      xs: 'w-4 h-4',
       sm: 'w-5 h-5',
       lg: 'w-7 h-7'
     }
@@ -42,10 +47,11 @@ const iconVariants = cva('text-current', {
   }
 });
 
-export type IconSizes = 'default' | 'sm' | 'lg';
+export type IconSizes = 'default' | 'xs' | 'sm' | 'lg';
 
 export type IconNames =
   | 'arrowDownWideNarrow'
+  | 'arrowDownNarrowWide'
   | 'aotSm'
   | 'aotMd'
   | 'aotLg'
@@ -60,8 +66,11 @@ export type IconNames =
   | 'sun'
   | 'user'
   | 'x'
+  | 'quote'
   | 'chevronLeft'
-  | 'chevronRight';
+  | 'chevronRight'
+  | 'chevronFirst'
+  | 'chevronLast';
 
 type Icons = Record<IconNames, React.ElementType>;
 
@@ -75,6 +84,7 @@ export interface IconProps extends Partial<LucideIcon>, VariantProps<typeof icon
 const Icon = ({ name, size, variant, color, isFilled = false, className, ...props }: IconProps) => {
   const iconsSet: Icons = {
     arrowDownWideNarrow: ArrowDownWideNarrow,
+    arrowDownNarrowWide: ArrowDownNarrowWide,
     aotSm: AotSm,
     aotMd: AotMd,
     aotLg: AotLg,
@@ -89,8 +99,11 @@ const Icon = ({ name, size, variant, color, isFilled = false, className, ...prop
     sun: Sun,
     user: User,
     x: X,
+    quote: Quote,
     chevronLeft: ChevronLeft,
-    chevronRight: ChevronRight
+    chevronRight: ChevronRight,
+    chevronFirst: ChevronFirst,
+    chevronLast: ChevronLast
   };
   const IconComponent = iconsSet[name];
 

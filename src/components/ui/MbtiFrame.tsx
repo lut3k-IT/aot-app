@@ -2,9 +2,11 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { cva, VariantProps } from 'class-variance-authority';
 
+import { MBTI_GROUPS_NAMES } from '@/constants/constants';
+import { MbtiGroups } from '@/constants/types';
 import mbti from '@/data/mbti';
 import { cn } from '@/lib/utils';
-import { getMbtiGroupName, getMbtiShortName } from '@/utils/dataProcessing';
+import { getMbtiGroupName, getMbtiShortName } from '@/utils/dataHelpers';
 
 const mbtiFrameVariants = cva('flex flex-col w-min rounded-md border-2 overflow-hidden', {
   variants: {
@@ -21,8 +23,6 @@ const mbtiFrameVariants = cva('flex flex-col w-min rounded-md border-2 overflow-
   }
 });
 
-type FrameVariantType = 'default' | 'analysts' | 'diplomats' | 'sentinels' | 'explorers';
-
 interface MbtiFrameProps extends VariantProps<typeof mbtiFrameVariants>, React.HTMLAttributes<HTMLDivElement> {
   mbtiId: number | null;
   children: React.ReactNode;
@@ -33,20 +33,19 @@ const MbtiFrame = (props: MbtiFrameProps) => {
   const { t } = useTranslation();
 
   const mbtiName = mbtiId ? getMbtiShortName(mbtiId) : t('data:mbti.unknown');
-
   const mbtiObj = mbti.find((data) => data.id === mbtiId);
 
-  const autonomusVariant = variant
+  const autonomousVariant = variant
     ? variant
-    : ((mbtiObj?.mbtiGroup ? getMbtiGroupName(mbtiObj.mbtiGroup) : 'default') as FrameVariantType);
+    : ((mbtiObj?.mbtiGroup ? MBTI_GROUPS_NAMES[mbtiObj.mbtiGroup - 1] : 'default') as MbtiGroups);
 
   return (
     <div
-      className={cn(mbtiFrameVariants({ variant: autonomusVariant }))}
+      className={cn(mbtiFrameVariants({ variant: autonomousVariant }))}
       {...rest}
     >
       {children}
-      <div className={'text-sm text-white dark:text-neutral-100 font-semibold w-full text-center capitalize'}>
+      <div className={'w-full text-center text-sm font-medium capitalize text-white dark:text-neutral-100'}>
         {mbtiName}
       </div>
     </div>

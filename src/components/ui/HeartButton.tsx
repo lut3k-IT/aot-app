@@ -20,13 +20,13 @@ const HeartButton = (props: HeartButtonProps) => {
       variant={'proxy'}
       size={'proxy'}
       className={cn('p-1', className)}
-      onClick={() => onToggleFavorite()}
+      onClick={onToggleFavorite}
     >
       <Icon
         size={iconSize}
         name={'heart'}
         variant={'gray'}
-        className={isFilled ? 'text-red-500 fill-red-500' : ''}
+        className={isFilled ? 'fill-red-500 text-red-500 dark:text-red-500' : ''}
       />
     </Button>
   );

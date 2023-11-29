@@ -1,21 +1,42 @@
-export enum Param {}
+export enum ElementsIds {
+  ROOT = 'root',
+  PAGE_HEADING_OPTIONS = 'page-heading-options'
+}
+
+/* ------------------------------- URL related ------------------------------ */
+
+export enum Param {
+  STATUS = 'status',
+  AGE_MIN = 'min_age',
+  AGE_MAX = 'max_age',
+  HEIGHT_MIN = 'min_height',
+  HEIGHT_MAX = 'max_height',
+  WEIGHT_MIN = 'min_weight',
+  WEIGHT_MAX = 'max_weight',
+  MBTI = 'mbti',
+  SPECIES = 'species',
+  RESIDENCE = 'residence',
+  HAS_AGE = 'has_age',
+  HAS_HEIGHT = 'has_height',
+  HAS_WEIGHT = 'has_weight',
+  SORT = 'sort',
+  SORT_DIRECTION = 'order',
+  PAGE = 'page',
+  PAGE_SIZE = 'page_size'
+}
 
 export enum RoutePath {
   LANDING = '/',
   HEROES = '/heroes',
+  HERO_DETAILS = '/hero',
   HEROES_GALLERY = '/heroes/gallery',
   HEROES_CHARTS = '/heroes/charts',
   HEROES_COMPARISON = '/heroes/comparison',
   TITANS = '/titans',
-  FAVORITES = '/favorites',
-  FAVORITES_HEROES = '/favorites/heroes',
-  FAVORITES_TITANS = '/favorites/titans',
-  FAVORITES_QUOTATIONS = '/favorites/quotations',
-  QUIZ = '/quiz',
-  QUOTATIONS = '/quotations',
-  HERO_DETAILS = '/hero',
   TITAN_DETAILS = '/titan',
+  QUOTATIONS = '/quotations',
   QUOTATION_DETAILS = '/quotation',
+  QUIZ = '/quiz',
   ABOUT = '/about',
   CHANGELOG = '/changelog',
   PRIVACY_POLICY = '/privacy-policy',
@@ -25,6 +46,8 @@ export enum RoutePath {
 export enum ExternalUrl {
   PORTFOLIO = 'https://lut3k.com/'
 }
+
+/* ---------------------------- Language related ---------------------------- */
 
 export enum LanguageName {
   ENGLISH = 'English',
@@ -36,6 +59,8 @@ export enum LanguageShortName {
   POLISH = 'pl'
 }
 
+/* ------------------------------ LocalStorage ------------------------------ */
+
 export enum LocalStorageKey {
   LANGUAGE = 'i18nextLng',
   SPOILER_MODE = 'spoilerMode',
@@ -44,14 +69,29 @@ export enum LocalStorageKey {
   FAV_QUOTATIONS = 'favQuotations'
 }
 
-export enum CharacterType {
-  HERO,
-  TITAN
-}
+/* ------------------------------ Data related ------------------------------ */
 
 export enum PromiseStatus {
-  IDLE = 'idle', // before operation has started
-  LOADING = 'loading', // operation in progress
-  SUCCEDED = 'succeeded', // promise fullfilled
-  FAILED = 'failed' // promise rejected
+  IDLE = 'idle',
+  LOADING = 'loading',
+  SUCCEEDED = 'succeeded',
+  FAILED = 'failed'
+}
+
+export enum SortDirection {
+  ASC = 'asc',
+  DESC = 'desc'
+}
+
+export enum HeroFilterNames {
+  STATUS = 'status',
+  AGE = 'age',
+  HEIGHT = 'height',
+  WEIGHT = 'weight',
+  MBTI = 'mbti',
+  SPECIES = 'species',
+  RESIDENCE = 'residence',
+  HAS_AGE = 'hasAge',
+  HAS_HEIGHT = 'hasHeight',
+  HAS_WEIGHT = 'hasWeight'
 }

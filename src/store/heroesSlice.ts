@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import { LocalStorageKey, PromiseStatus } from '@/constants/enums';
 import { ErrorType, FavoriteType, HeroType } from '@/constants/types';
-import { getLocalStorageItem, setLocalStorageItem } from '@/utils/storage';
+import { getLocalStorageItem, setLocalStorageItem } from '@/utils/storageHelpers';
 
 export const loadHeroes = createAsyncThunk('heroes/load', async () => {
   const response = await fetch('/data/heroes.json');
@@ -39,7 +39,7 @@ const heroesSlice = createSlice({
         state.status = PromiseStatus.LOADING;
       })
       .addCase(loadHeroes.fulfilled, (state, action) => {
-        state.status = PromiseStatus.SUCCEDED;
+        state.status = PromiseStatus.SUCCEEDED;
         state.data = action.payload;
       })
       .addCase(loadHeroes.rejected, (state, action) => {

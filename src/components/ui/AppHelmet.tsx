@@ -20,8 +20,8 @@ const AppHelmet = (props: AppHelmetProps) => {
         {!title || title?.trim()?.length === 0
           ? t('common:brand')
           : forceTitle
-          ? `${title}`
-          : `${title} - ${t('common:brand')}`}
+            ? `${title}`
+            : `${title} - ${t('common:brand')}`}
       </title>
 
       {description && (

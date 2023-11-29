@@ -16,7 +16,7 @@
     "otherNames": ["Armor", "Marley's Shield"],
     "abilities": ["Armored skin", "Hardening"],
     "currentInheritor": 85,
-    "formerInheritors": null,
+    "formerInheritors": [],
     "allegiance": [2],
     "height": 1500,
     "mbti": 15
@@ -31,7 +31,7 @@
       "Crazy-berserker Titan",
       "Titan Eren/Eren's Titan"
     ],
-    "abilities": null,
+    "abilities": [],
     "currentInheritor": 175,
     "formerInheritors": [150, 97],
     "allegiance": [1],
@@ -60,7 +60,7 @@
     "otherNames": ["Cart, Cartman", "Quadruped-type", "Quadrupedal-type"],
     "abilities": ["Quadrupedal form", "High endurance", "Great speed", "Speech"],
     "currentInheritor": 86,
-    "formerInheritors": null,
+    "formerInheritors": [],
     "allegiance": [2],
     "height": 400,
     "mbti": null
@@ -71,7 +71,7 @@
     "otherNames": ["Colossal", "God of Destruction"],
     "abilities": ["Explosive transformation", "Immense size and strength", "Steam emission"],
     "currentInheritor": 1,
-    "formerInheritors": 94,
+    "formerInheritors": [94],
     "allegiance": [1, 4],
     "height": 6000,
     "mbti": 9
@@ -82,7 +82,7 @@
     "otherNames": ["Female-looking Titan", "Woman Type Titan"],
     "abilities": ["Versatility", "Titan Attraction", "Crystallization"],
     "currentInheritor": 91,
-    "formerInheritors": null,
+    "formerInheritors": [],
     "allegiance": [2, 5],
     "height": 1400,
     "mbti": 13
