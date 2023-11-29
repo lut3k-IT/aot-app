@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @layer base {
+  /* todo: match others with "muted" */
   :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
@@ -16,6 +17,8 @@
     --secondary-foreground: 0 0% 9%;
     --muted: 0 0% 96.1%;
     --muted-foreground: 0 0% 45.1%;
+    --muted2: 0, 0%, 96.1%;
+    --muted2-foreground: 0 0% 82%;
     --accent: 0 0% 96.1%;
     --accent-foreground: 0 0% 9%;
     --destructive: 269, 66%, 50%;
@@ -28,19 +31,21 @@
 
   .dark {
     --background: 0 0% 5.4%;
-    --foreground: 0 0% 94%;
+    --foreground: 0 0% 88%;
     --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
+    --card-foreground: 0 0% 88%;
     --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
+    --popover-foreground: 0 0% 88%;
     --primary: 0 52.2% 50.6%;
     --primary-foreground: 0 65.7% 97.3%;
     --secondary: 0 0% 9%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary-foreground: 0 0% 88%;
     --muted: 0 0% 9%;
-    --muted-foreground: 0 0% 63.9%;
+    --muted-foreground: 0 0% 58%;
+    --muted2: 0, 0%, 9%;
+    --muted2-foreground: 0 0% 20%;
     --accent: 0 0% 9%;
-    --accent-foreground: 0 0% 98%;
+    --accent-foreground: 0 0% 88%;
     --destructive: 269, 86%, 66%;
     --destructive-foreground: 266, 95%, 97%;
     --border: 0 0% 9%;

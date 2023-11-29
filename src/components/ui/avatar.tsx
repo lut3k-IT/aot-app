@@ -17,7 +17,7 @@ const avatarVariants = cva('relative flex h-10 w-10 overflow-hidden', {
   }
 });
 
-const avatarFallbackVariants = cva('relative flex h-full w-full items-center justify-center bg-muted', {
+const avatarFallbackVariants = cva('relative flex h-full w-full items-center justify-center bg-muted2', {
   variants: {
     variant: {
       circle: 'rounded-full',

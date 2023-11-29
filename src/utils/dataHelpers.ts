@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { SortDirection } from '@/constants/enums';
-import { FavoriteType, HeroSortOption, HeroType, TranslateFunction } from '@/constants/types';
+import { FavoriteType, HeroSortOption, HeroType, TextAbbreviation, TranslateFunction } from '@/constants/types';
 import allegiances from '@/data/allegiances';
 import mbti from '@/data/mbti';
 import mbtiGroup from '@/data/mbtiGroup';
@@ -39,9 +39,9 @@ export const getSpeciesName = (id: number, t: TranslateFunction) => {
   return keyName ? t(`data:species.${keyName}`) : null;
 };
 
-export const getStatusName = (id: number, t: TranslateFunction) => {
+export const getStatusName = (id: number, t: TranslateFunction, abbreviation: TextAbbreviation = 'short') => {
   const keyName = statuses.find((data) => data.id === id)?.keyName;
-  return keyName ? t(`data:status.${keyName}.short`) : null;
+  return keyName ? t(`data:status.${keyName}.${abbreviation}`) : null;
 };
 
 export const getStatusByKeyName = (keyName: string) => {

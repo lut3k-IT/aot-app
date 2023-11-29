@@ -31,7 +31,7 @@ const iconVariants = cva('text-current', {
   variants: {
     variant: {
       default: 'text-current',
-      gray: 'text-neutral-300 dark:text-neutral-400',
+      gray: 'text-muted2-foreground',
       primary: 'text-primary'
     },
     size: {

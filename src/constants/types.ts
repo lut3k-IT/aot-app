@@ -13,6 +13,8 @@ export type ImageSourceType = string | undefined;
 
 export type TranslateFunction = (key: string, options?: TOptions) => string;
 
+export type TextAbbreviation = 'short' | 'long';
+
 /* ---------------------------------- Data ---------------------------------- */
 
 export interface HeroType {

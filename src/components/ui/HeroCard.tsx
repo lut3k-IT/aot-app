@@ -90,7 +90,7 @@ const HeroCard = (props: HeroCardProps) => {
             onToggleFavorite={handleToggleFavorite}
           />
         </div>
-        <div className={'h-13 flex w-full items-center justify-center gap-8 rounded-md bg-accent px-4'}>
+        <div className={'flex h-13 w-full items-center justify-center gap-8 rounded-md bg-muted px-4'}>
           <DetailsBoxes />
         </div>
       </div>

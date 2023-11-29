@@ -41,6 +41,7 @@ import {
 
 import FilterButton from './components/FilterButton';
 import FilterSegment from './components/FilterSegment';
+import Indicator from './components/Indicator';
 import {
   DEFAULT_AGE,
   DEFAULT_HEIGHT,
@@ -226,9 +227,7 @@ const Filter = () => {
           iconProps={{ className: 'text-muted-foreground' }}
         >
           {t('common:filter.title')}
-          {isFilterActive && (
-            <div className={'absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full bg-red-300 dark:bg-red-900'} />
-          )}
+          {isFilterActive && <Indicator />}
         </Button>
       </DialogTrigger>
       <DialogContent className={'h-[37.5rem] max-h-[100vh]'}>

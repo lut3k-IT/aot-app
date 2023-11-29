@@ -61,7 +61,10 @@
       "residence": "Residence"
     }
   },
-  "spoilerMode": "Hide spoilers mode",
+  "spoilerMode": {
+    "hide": "Hide spoilers",
+    "show": "Show spoilers"
+  },
   "form": {},
   "error": {
     "oops": "Oops",
@@ -71,5 +74,11 @@
   },
   "navigation": {
     "goBack": "Go back"
+  },
+  "time": {
+    "year": {
+      "singular": "Year",
+      "plural": "Years"
+    }
   }
 }

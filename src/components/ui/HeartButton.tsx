@@ -20,10 +20,7 @@ const HeartButton = (props: HeartButtonProps) => {
       variant={'proxy'}
       size={'proxy'}
       className={cn('p-1', className)}
-      onClick={(e) => {
-        e.preventDefault();
-        onToggleFavorite();
-      }}
+      onClick={onToggleFavorite}
     >
       <Icon
         size={iconSize}

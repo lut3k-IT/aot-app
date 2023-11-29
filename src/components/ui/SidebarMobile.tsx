@@ -65,7 +65,7 @@ const SidebarMobile = () => {
             htmlFor='spoiler-mode'
             className='text-md font-medium leading-none'
           >
-            {t('common:spoilerMode')}
+            {t('common:spoilerMode.hide')}
           </Label>
         </div>
       </div>

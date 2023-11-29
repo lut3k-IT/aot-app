@@ -16,7 +16,7 @@ const FilterButton = (props: FilterButtonProps) => {
       className={cn(
         'h-auto w-full whitespace-normal px-2 py-1.5 hover:bg-inherit',
         className,
-        isActive ? 'border-red-300 !text-primary' : ''
+        isActive ? 'border-red-300 !text-primary dark:border-red-500/50' : ''
       )}
       {...rest}
     >

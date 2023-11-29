@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import classNames from 'classnames';
@@ -85,6 +85,7 @@ const HeroDetails = () => {
             <HeroStatus
               statusId={hero.status}
               className={'font-medium'}
+              textAbbreviation={'long'}
             />
           }
         />
