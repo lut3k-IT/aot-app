@@ -78,7 +78,8 @@
   "time": {
     "year": {
       "singular": "Year",
-      "plural": "Years"
+      "plural": "Years",
+      "pluralFew": "Years"
     }
   }
 }

@@ -1,31 +1,85 @@
 {
   "brand": "AoT app",
   "title": {
-    "heroes": "Bohaterzy",
+    "heroes": "Postacie",
     "titans": "Tytani",
     "favorites": "Ulubione",
     "quiz": "Quiz",
     "quotations": "Cytaty",
     "about": "O aplikacji",
-    "changelog": "Rejestr zmian",
+    "changelog": "Historia zmian",
     "privacyPolicy": "Polityka prywatności",
-    "termsOfService": "Warunki świadczenia usług",
+    "termsOfService": "Warunki korzystania",
     "portfolio": "lut3k.com"
   },
   "tab": {
     "gallery": "Galeria",
     "charts": "Wykresy",
-    "comparison": "Porównania"
+    "comparison": "Porównanie"
+  },
+  "preposition": {
+    "of": "z"
   },
   "action": {
-    "submit": "Prześlij",
-    "cancel": "Anuluj"
+    "submit": "Zatwierdź",
+    "cancel": "Anuluj",
+    "addToFavorites": "Dodaj do ulubionych",
+    "removeFromFavorites": "Usuń z ulubionych",
+    "save": "Zapisz",
+    "saveChanges": "Zapisz zmiany",
+    "reset": "Resetuj",
+    "resetAll": "Resetuj wszystko"
   },
-  "spoilerMode": "Tryb ukrywania spoilerów",
+  "filter": {
+    "title": "Filtr",
+    "hasInfoAbout": "Ma informacje o",
+    "heroesDesc": "Ustaw filtry i zapisz zmiany.",
+    "sortBy": "Sortuj według"
+  },
+  "sort": {
+    "title": "Sortuj",
+    "direction": {
+      "asc": {
+        "short": "Ros.",
+        "long": "Rosnąco"
+      },
+      "desc": {
+        "short": "Mal.",
+        "long": "Malejąco"
+      }
+    },
+    "value": {
+      "id": "Domyślne",
+      "firstName": "Imię",
+      "lastName": "Nazwisko",
+      "status": "Status",
+      "age": "Wiek",
+      "height": "Wzrost",
+      "weight": "Waga",
+      "mbti": "MBTI",
+      "species": "Gatunek",
+      "residence": "Miejsce zamieszkania"
+    }
+  },
+  "spoilerMode": {
+    "hide": "Ukryj spoilery",
+    "show": "Pokaż spoilery"
+  },
   "form": {},
   "error": {
     "oops": "Ups",
-    "unexpectedError": "Niespodziewany błąd",
-    "routeNotFound": "Nie znaleziono ścieżki"
+    "unexpectedError": "Nieoczekiwany błąd",
+    "routeNotFound": "Nie znaleziono ścieżki",
+    "backToHomepage": "Powrót do strony głównej"
+  },
+  "navigation": {
+    "goBack": "Wróć"
+  },
+  "time": {
+    "year": {
+      "singular": "Rok",
+      "plural": "Lat",
+      "pluralFew": "Lata"
+    }
   }
 }

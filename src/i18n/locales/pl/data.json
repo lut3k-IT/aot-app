@@ -1,4 +1,6 @@
 {
+  "firstName": "Imię",
+  "lastName": "Nazwisko",
   "residence": {
     "title": "Pobyt",
     "hizuru": "Hizuru",
@@ -6,18 +8,18 @@
     "paradisIsland": "Wyspa Paradis",
     "underground": "Podziemie",
     "wallMaria": "Mur Maria",
-    "wallRose": "Mur Róża",
+    "wallRose": "Mur Rose",
     "wallSina": "Mur Sina"
   },
   "status": {
     "title": "Status",
     "alive": {
-      "short": "Żyw.",
-      "long": "Żywy/a"
+      "short": "Żywy",
+      "long": "Żywy"
     },
     "dead": {
-      "short": "Mart.",
-      "long": "Martwy/a"
+      "short": "Mar.",
+      "long": "Martwy"
     },
     "unknown": {
       "short": "Niez.",
@@ -28,7 +30,7 @@
     "title": "Gatunek",
     "horse": "Koń",
     "human": "Człowiek",
-    "humanTitan": "Człowiek, Inteligentny Tytan",
+    "humanTitan": "Człowiek, Tytan inteligentny",
     "titanHuman": "Tytan (dawniej człowiek)",
     "titan": "Tytan",
     "unknown": "Nieznany"
@@ -38,8 +40,51 @@
     "eldia": "Erdia",
     "marley": "Mare",
     "eldiaForm": "Erdia (dawniej)",
-    "marleyForm": "Mare (dawniej)",
+    "marleyForm": "Marley (dawniej)",
     "eldiaHeld": "Erdia (przetrzymywanie)",
     "none": "Brak"
-  }
+  },
+  "mbti": {
+    "title": "MBTI",
+    "architect": "architekt",
+    "logician": "logik",
+    "commander": "dowódca",
+    "debater": "dyskutant",
+    "advocate": "rzecznik",
+    "mediator": "pośrednik",
+    "protagonist": "protagonista",
+    "campaigner": "działacz",
+    "logistician": "logistyk",
+    "defender": "obrońca",
+    "executive": "wykonawca",
+    "consul": "doradca",
+    "virtuoso": "wirtuoz",
+    "adventurer": "poszukiwacz przygód",
+    "entrepreneur": "przedsiębiorca",
+    "entertainer": "animator",
+    "unknown": "nieznany"
+  },
+  "mbtiGroup": {
+    "title": "MBTI group",
+    "analysts": "analysts",
+    "diplomats": "diplomats",
+    "sentinels": "sentinels",
+    "explorers": "explorers"
+  },
+  "age": {
+    "title": "Wiek",
+    "boolean": "Ma wiek"
+  },
+  "height": {
+    "title": "Wzrost",
+    "boolean": "Ma wzrost"
+  },
+  "weight": {
+    "title": "Waga",
+    "boolean": "Ma wagę"
+  },
+  "otherNames": "Pseudonimy",
+  "abilities": "Umiejętności",
+  "currentInheritor": "Obecny dziedzic",
+  "formerInheritors": "Dawni dziedzice"
 }
