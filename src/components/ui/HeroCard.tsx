@@ -1,7 +1,6 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { v4 } from 'uuid';
 
 import { RoutePath } from '@/constants/enums';
 import { FavoriteType, HeroType } from '@/constants/types';
@@ -26,61 +25,66 @@ const cnDetailValue = 'text-lg font-medium leading-none';
 
 const HeroCard = (props: HeroCardProps) => {
   const { data, favorites } = props;
-  const dispatch = useAppDispatch();
+  const { id, mbti, age, height, status, firstName = '', lastName = '', residence } = data;
+
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
 
-  const residenceName = getResidenceName(data.residence, t);
-  const isCurrentFavorite = isInFavorites(data.id, favorites);
-
-  const showedDetails = [
-    {
-      title: t('data:age.title'),
-      value: data.age
-    },
-    {
-      title: t('data:height.title'),
-      value: data.height
-    },
-    {
-      title: t('data:status.title'),
-      value: <HeroStatus statusId={data.status} />
-    }
-  ];
+  const residenceName = useMemo(() => getResidenceName(residence, t), [residence, t]);
+  const isCurrentFavorite = useMemo(() => isInFavorites(id, favorites), [id, favorites]);
 
   const handleToggleFavorite = useCallback(() => {
-    const action = isCurrentFavorite ? removeFavorite : addFavorite;
-    dispatch(action(data.id));
-  }, [data, favorites, dispatch]);
+    dispatch(isCurrentFavorite ? removeFavorite(id) : addFavorite(id));
+  }, [dispatch, isCurrentFavorite, id]);
 
-  const DetailsBoxes = () =>
-    showedDetails.map((detail) => (
-      <div
-        className={cnDetailBox}
-        key={v4()}
-      >
-        <div className={cnDetailTitle}>{detail.title}</div>
-        <div className={cnDetailValue}>{detail.value || '-'}</div>
-      </div>
-    ));
+  const showedDetails = useMemo(
+    () => [
+      {
+        title: t('data:age.title'),
+        value: age
+      },
+      {
+        title: t('data:height.title'),
+        value: height
+      },
+      {
+        title: t('data:status.title'),
+        value: <HeroStatus statusId={status} />
+      }
+    ],
+    [data, t]
+  );
+
+  const DetailsBoxes = useCallback(
+    () =>
+      showedDetails.map((detail) => (
+        <div
+          className={cnDetailBox}
+          key={detail.title}
+        >
+          <div className={cnDetailTitle}>{detail.title}</div>
+          <div className={cnDetailValue}>{detail.value || '-'}</div>
+        </div>
+      )),
+    [showedDetails]
+  );
 
   return (
     <div className={cnContainer}>
       <Link
-        to={`${RoutePath.HERO_DETAILS}/${data.id}`}
+        to={`${RoutePath.HERO_DETAILS}/${id}`}
         className={'rounded-md'}
       >
-        <MbtiFrame mbtiId={data.mbti}>
+        <MbtiFrame mbtiId={mbti}>
           <CharacterPicture
-            imgSource={`/assets/img/heroes/${data.id}.jpg`}
+            imgSource={`/assets/img/heroes/${id}.jpg`}
             variant={'roundedBtm'}
           />
         </MbtiFrame>
       </Link>
       <div className={'flex flex-1 flex-col justify-between'}>
         <div className={'relative mt-0.5 flex w-full flex-col gap-1'}>
-          <div className={'pr-10 text-lg font-medium leading-none'}>{`${data.firstName || ''} ${
-            data.lastName || ''
-          }`}</div>
+          <div className={'pr-10 text-lg font-medium leading-none'}>{`${firstName || ''} ${lastName || ''}`}</div>
           <div className={'pr-10 text-sm font-medium capitalize leading-none text-muted-foreground'}>
             {residenceName}
           </div>
@@ -97,5 +101,4 @@ const HeroCard = (props: HeroCardProps) => {
     </div>
   );
 };
-
 export default HeroCard;
