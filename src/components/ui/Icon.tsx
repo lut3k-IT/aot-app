@@ -22,11 +22,10 @@ import {
   X
 } from 'lucide-react';
 
+import { ReactComponent as AotLg } from '@/assets/icons/aot-icon-lg.svg';
+import { ReactComponent as AotMd } from '@/assets/icons/aot-icon-md.svg';
+import { ReactComponent as AotSm } from '@/assets/icons/aot-icon-sm.svg';
 import { cn } from '@/lib/utils';
-
-import { ReactComponent as AotLg } from 'src/assets/icons/aot-icon-lg.svg';
-import { ReactComponent as AotMd } from 'src/assets/icons/aot-icon-md.svg';
-import { ReactComponent as AotSm } from 'src/assets/icons/aot-icon-sm.svg';
 
 const iconVariants = cva('text-current', {
   variants: {
