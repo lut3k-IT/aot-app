@@ -62,16 +62,16 @@ const Heroes = () => {
               {t('common:tab.gallery')}
             </TabsTrigger>
             <TabsTrigger
-              value={TabValue.CHARTS}
-              className={tabsTriggerClassName}
-            >
-              {t('common:tab.charts')}
-            </TabsTrigger>
-            <TabsTrigger
               value={TabValue.COMPARISON}
               className={tabsTriggerClassName}
             >
               {t('common:tab.comparison')}
+            </TabsTrigger>
+            <TabsTrigger
+              value={TabValue.CHARTS}
+              className={tabsTriggerClassName}
+            >
+              {t('common:tab.charts')}
             </TabsTrigger>
           </TabsList>
           <TabsContent

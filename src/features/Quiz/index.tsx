@@ -4,6 +4,7 @@ import AppHelmet from '@/components/ui/AppHelmet';
 
 const Quiz = () => {
   const { t } = useTranslation();
+
   return (
     <div
       className={
@@ -11,7 +12,7 @@ const Quiz = () => {
       }
     >
       <AppHelmet title={t('common:title.quiz')} />
-      <div>Soon...</div>
+      <div>{t('common:soon')}...</div>
     </div>
   );
 };

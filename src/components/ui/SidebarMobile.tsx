@@ -4,6 +4,7 @@ import { DialogClose } from '@radix-ui/react-dialog';
 
 import { ExternalUrl, RoutePath } from '@/constants/enums';
 
+import { Badge } from './Badge';
 import { Button } from './Button';
 import { Label } from './Label';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -68,7 +69,15 @@ const SidebarMobile = () => {
             {t('common:spoilerMode.hide')}
           </Label>
         </div>
+        {/* TODO: find better solution to add space */}
+        <div className={'h-1'}></div>
       </div>
+      <Badge
+        variant={'outline'}
+        className={'flex-center absolute bottom-3 text-xs'}
+      >
+        Beta
+      </Badge>
     </div>
   );
 };
