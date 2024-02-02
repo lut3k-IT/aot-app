@@ -2,8 +2,8 @@ import React from 'react';
 
 import { cn } from '@/lib/utils';
 
-import { Button } from './Button';
-import Icon, { IconSizes } from './Icon';
+import { Button } from './bbutton';
+import Icon, { IconSizes } from './iicon';
 
 interface HeartButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   onToggleFavorite: () => void;

@@ -4,7 +4,7 @@ import { Image } from 'lucide-react';
 import { ImageSourceType } from '@/constants/types';
 import { cn } from '@/lib/utils';
 
-import { Avatar, AvatarFallback, AvatarImage } from './Avatar';
+import { Avatar, AvatarFallback, AvatarImage } from './aavatar';
 
 const characterPictureVariants = cva('', {
   variants: {
@@ -39,7 +39,7 @@ const CharacterPicture = (props: CharacterPictureProps) => {
     <Avatar className={cn(characterPictureVariants({ variant, size }), className)}>
       <AvatarImage src={imgSource} />
       <AvatarFallback className={cn(characterPictureVariants({ variant, size }))}>
-        <Image className={'text-muted2-foreground h-1/2 w-1/2'} />
+        <Image className={'h-1/2 w-1/2 text-muted2-foreground'} />
       </AvatarFallback>
     </Avatar>
   );

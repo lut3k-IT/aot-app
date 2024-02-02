@@ -7,7 +7,7 @@ import { setLocalStorageItem } from '@/utils/storageHelpers';
 import 'dayjs/locale/en';
 import 'dayjs/locale/pl';
 
-import { Button } from './Button';
+import { Button } from './bbutton';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './DropdownMenu';
 
 interface Language {

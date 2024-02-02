@@ -3,9 +3,9 @@ import { t } from 'i18next';
 
 import { RoutePath } from '@/constants/enums';
 
-import { Button } from './Button';
-import { Dialog, DialogContentSidebar, DialogTrigger } from './Dialog';
-import Icon from './Icon';
+import { Button } from './bbutton';
+import { Dialog, DialogContentSidebar, DialogTrigger } from './ddialog';
+import Icon from './iicon';
 import { ModeToggle } from './ModeToggle';
 import SidebarMobile from './SidebarMobile';
 

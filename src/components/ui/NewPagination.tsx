@@ -6,7 +6,7 @@ import { Param } from '@/constants/enums';
 import { scrollToTop } from '@/utils/helpers';
 import { deleteSomeSearchParams, getSafePageNumberFromSearchParam } from '@/utils/paramsHelpers';
 
-import { Button } from './Button';
+import { Button } from './bbutton';
 
 interface PaginationProps {
   itemsCount: number;

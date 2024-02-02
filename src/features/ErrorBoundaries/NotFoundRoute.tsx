@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useRouteError } from 'react-router-dom';
 
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/bbutton';
 import { RoutePath } from '@/constants/enums';
 
 const NotFoundRoute = () => {
@@ -12,7 +12,7 @@ const NotFoundRoute = () => {
   return (
     <div className={'flex-center flex-col gap-4 pt-body-pad-start'}>
       <h1 className={'text-2xl font-normal'}>{t('common:error.oops')}</h1>
-      <span className={'text-muted2 text-7xl font-bold'}>404</span>
+      <span className={'text-7xl font-bold text-muted2'}>404</span>
       <p>{t('common:error.routeNotFound')}</p>
       <Button
         linkTo={RoutePath.HEROES_GALLERY}

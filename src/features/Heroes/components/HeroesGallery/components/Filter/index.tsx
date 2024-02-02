@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/bbutton';
 import {
   Dialog,
   DialogContent,
@@ -11,11 +11,11 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger
-} from '@/components/ui/Dialog';
-import { Input } from '@/components/ui/Input';
+} from '@/components/ui/ddialog';
+import { Input } from '@/components/ui/iinput';
 import { ScrollArea } from '@/components/ui/ScrollArea';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/Select';
-import { Slider } from '@/components/ui/Slider';
+import { Slider } from '@/components/ui/sslider';
 import { Param, SortDirection } from '@/constants/enums';
 import { HeroSortOption } from '@/constants/types';
 import mbti, { MbtiType } from '@/data/mbti';

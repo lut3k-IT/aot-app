@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { RoutePath } from '@/constants/enums';
 import { cn } from '@/lib/utils';
 
-import { Button } from './Button';
+import { Button } from './bbutton';
 
 interface ButtonGoBackProps {
   text?: string;

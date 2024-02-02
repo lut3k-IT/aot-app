@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useRouteError } from 'react-router-dom';
 
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/bbutton';
 import { RoutePath } from '@/constants/enums';
 
 // TODO:
@@ -14,7 +14,7 @@ const ErrorPage = () => {
   return (
     <div className={'flex-center flex-col gap-4 pt-body-pad-start'}>
       <h1 className={'text-2xl font-normal'}>{t('common:error.oops')}</h1>
-      <span className={'text-muted2 text-4xl font-bold'}>{t('common:error.unexpectedError')}</span>
+      <span className={'text-4xl font-bold text-muted2'}>{t('common:error.unexpectedError')}</span>
       <pre>
         <i>{error.statusText || error.message}</i>
       </pre>

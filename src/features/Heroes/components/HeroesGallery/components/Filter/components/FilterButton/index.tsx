@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button, ButtonProps } from '@/components/ui/Button';
+import { Button, ButtonProps } from '@/components/ui/bbutton';
 import { cn } from '@/lib/utils';
 
 interface FilterButtonProps extends ButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement> {

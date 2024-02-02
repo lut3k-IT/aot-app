@@ -3,7 +3,7 @@ import { Check, MousePointerSquare } from 'lucide-react';
 
 import CharacterPicture from '@/components/ui/CharacterPicture';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '@/components/ui/Command';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/Popover';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/ppopover';
 import { cn } from '@/lib/utils';
 
 import { HeroForSelect, HeroTypeSelected } from '../..';
@@ -26,7 +26,7 @@ const PictureWithSelect = (props: PictureWithSelectProps) => {
         imgSource={selectedHero ? `/assets/img/heroes/${selectedHero.id}.jpg` : undefined}
         size={'full'}
         variant={'circle'}
-        className={'outline-muted2 max-h-[8rem] max-w-[8rem] outline-dashed outline-2 outline-offset-4'}
+        className={'max-h-[8rem] max-w-[8rem] outline-dashed outline-2 outline-offset-4 outline-muted2'}
       />
     </button>
   );
@@ -35,7 +35,7 @@ const PictureWithSelect = (props: PictureWithSelectProps) => {
     <button className={cn('focus-visible-styles max-h-[8rem] w-full max-w-[8rem] rounded-full', className)}>
       <div
         className={
-          'flex-center outline-muted2 aspect-square h-auto w-full flex-col gap-1 rounded-full bg-accent text-muted-foreground outline-dashed outline-2 outline-offset-4'
+          'flex-center aspect-square h-auto w-full flex-col gap-1 rounded-full bg-accent text-muted-foreground outline-dashed outline-2 outline-offset-4 outline-muted2'
         }
       >
         <MousePointerSquare size={'2.5rem'} />

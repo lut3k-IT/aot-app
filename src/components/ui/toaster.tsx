@@ -1,4 +1,4 @@
-import { Toast, ToastClose, ToastDescription, ToastProvider, ToastTitle, ToastViewport } from '@/components/ui/Toast';
+import { Toast, ToastClose, ToastDescription, ToastProvider, ToastTitle, ToastViewport } from '@/components/ui/ttoast';
 // import { useToast } from '@/components/hooks/useToast';
 
 // TODO: fix that

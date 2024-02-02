@@ -7,7 +7,7 @@ import { addFavorite, removeFavorite } from '@/store/quotationsSlice';
 import { isInFavorites } from '@/utils/dataHelpers';
 
 import useAppDispatch from '../hooks/useAppDispatch';
-import { Card } from './Card';
+import { Card } from './ccard';
 import HeartButton from './HeartButton';
 
 interface QuotationCardProps {
