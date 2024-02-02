@@ -6,7 +6,7 @@ import { v4 } from 'uuid';
 import { RoutePath } from '@/constants/enums';
 import { getFirstSegmentFromCurrentRoute } from '@/utils/helpers';
 
-import Icon, { IconNames } from './iicon';
+import Icon, { IconNames } from './Icon';
 
 interface INavigationElement {
   name: string;

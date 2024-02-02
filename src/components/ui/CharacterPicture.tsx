@@ -4,7 +4,7 @@ import { Image } from 'lucide-react';
 import { ImageSourceType } from '@/constants/types';
 import { cn } from '@/lib/utils';
 
-import { Avatar, AvatarFallback, AvatarImage } from './aavatar';
+import { Avatar, AvatarFallback, AvatarImage } from './Avatar';
 
 const characterPictureVariants = cva('', {
   variants: {

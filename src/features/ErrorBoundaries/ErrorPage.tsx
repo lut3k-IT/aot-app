@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useRouteError } from 'react-router-dom';
 
-import { Button } from '@/components/ui/bbutton';
+import { Button } from '@/components/ui/Button';
 import { RoutePath } from '@/constants/enums';
 
 // TODO:

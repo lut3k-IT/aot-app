@@ -3,7 +3,7 @@ import { Controller, ControllerProps, FieldPath, FieldValues, FormProvider, useF
 import * as LabelPrimitive from '@radix-ui/react-label';
 import { Slot } from '@radix-ui/react-slot';
 
-import { Label } from '@/components/ui/llabel';
+import { Label } from '@/components/ui/Label';
 import { cn } from '@/lib/utils';
 
 const Form = FormProvider;

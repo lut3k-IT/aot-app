@@ -4,10 +4,10 @@ import { DialogClose } from '@radix-ui/react-dialog';
 
 import { ExternalUrl, RoutePath } from '@/constants/enums';
 
-import { Button } from './bbutton';
+import { Button } from './Button';
+import { Label } from './Label';
 import LanguageSwitcher from './LanguageSwitcher';
-import { Label } from './llabel';
-import { Switch } from './sswitch';
+import { Switch } from './Switch';
 
 const SidebarMobile = () => {
   const { t } = useTranslation();

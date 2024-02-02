@@ -1,8 +1,8 @@
-import { Button } from '@/components/ui/bbutton';
+import { Button } from '@/components/ui/Button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/DropdownMenu';
 import { useTheme } from '@/components/ui/ThemeProvider';
 
-import Icon from './iicon';
+import Icon from './Icon';
 
 export function ModeToggle() {
   const { setTheme } = useTheme();

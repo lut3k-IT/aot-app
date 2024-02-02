@@ -6,7 +6,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { ExternalUrl, RoutePath } from '@/constants/enums';
 import { cn } from '@/lib/utils';
 
-import Icon, { IconNames, IconProps, IconSizes } from './iicon';
+import Icon, { IconNames, IconProps, IconSizes } from './Icon';
 
 const buttonVariants = cva(
   'inline-flex gap-2 items-center justify-center rounded-md text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',

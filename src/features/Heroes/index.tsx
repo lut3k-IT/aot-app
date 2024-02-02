@@ -6,7 +6,7 @@ import { RoutePath } from '@/constants/enums';
 import { getCurrentRoute } from '@/utils/helpers';
 
 import MovingPanel from '../../components/ui/MovingPanel';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/ttabs';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/Tabs';
 
 enum TabValue {
   GALLERY = 'gallery',

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button } from '@/components/ui/bbutton';
+import { Button } from '@/components/ui/Button';
 
 interface FilterSegmentProps {
   title: string;

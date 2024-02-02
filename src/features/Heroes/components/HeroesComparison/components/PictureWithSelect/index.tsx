@@ -3,7 +3,7 @@ import { Check, MousePointerSquare } from 'lucide-react';
 
 import CharacterPicture from '@/components/ui/CharacterPicture';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '@/components/ui/Command';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/ppopover';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/Popover';
 import { cn } from '@/lib/utils';
 
 import { HeroForSelect, HeroTypeSelected } from '../..';

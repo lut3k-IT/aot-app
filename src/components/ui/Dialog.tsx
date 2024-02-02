@@ -4,7 +4,7 @@ import { X } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 
-import Icon from './iicon';
+import Icon from './Icon';
 
 const Dialog = DialogPrimitive.Root;
 

@@ -7,7 +7,7 @@ import useAppDispatch from '@/components/hooks/useAppDispatch';
 import useAppSelector from '@/components/hooks/useAppSelector';
 import useValidateIdFromParam from '@/components/hooks/useValidateIdFromParam';
 import AppHelmet from '@/components/ui/AppHelmet';
-import { Button } from '@/components/ui/bbutton';
+import { Button } from '@/components/ui/Button';
 import HeroStatus from '@/components/ui/HeroStatus';
 import { MBTI_GROUPS_NAMES } from '@/constants/constants';
 import { RoutePath } from '@/constants/enums';
