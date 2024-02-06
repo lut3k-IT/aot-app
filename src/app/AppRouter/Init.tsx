@@ -28,7 +28,7 @@ const Init = () => {
   return (
     <>
       <AppHelmet />
-      <LaunchDialog />
+      {/* <LaunchDialog /> */}
     </>
   );
 };

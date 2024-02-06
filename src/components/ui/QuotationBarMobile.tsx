@@ -13,6 +13,7 @@ import HeartButton from './HeartButton';
 
 const MAX_LOOP = 2;
 
+// @todo - refactor to use useQuotations custom hook
 const QuotationBarMobile = () => {
   const dispatch = useAppDispatch();
   const textRef = useRef<HTMLDivElement>(null);

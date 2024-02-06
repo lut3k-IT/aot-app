@@ -268,7 +268,7 @@ const Filter = () => {
                   variant={'outline'}
                   iconName={sortDirection === SortDirection.ASC ? 'arrowDownNarrowWide' : 'arrowDownWideNarrow'}
                   iconPosition={'right'}
-                  className={'w-32'}
+                  className={'w-32 hover:bg-background'}
                   onClick={handleToggleSortDirection}
                 >
                   {t(`common:sort.direction.${sortDirection}.short`)}

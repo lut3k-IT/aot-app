@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const useIsMobile = (breakpoint = 1024) => {
+const useIsMobile = (breakpoint = 768) => {
   const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= breakpoint);
 
   const handleCheckSize = () => {
