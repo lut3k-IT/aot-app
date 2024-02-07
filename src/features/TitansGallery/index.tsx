@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import useAppSelector from '@/components/hooks/useAppSelector';
+import useIsMobile from '@/components/hooks/useIsMobile';
 import AppHelmet from '@/components/ui/AppHelmet';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import MovingPanel from '@/components/ui/MovingPanel';
@@ -10,6 +11,8 @@ import TitanCard from '@/components/ui/TitanCard';
 
 const TitansGallery = () => {
   const { t } = useTranslation();
+  const isMobile = useIsMobile();
+
   const originalTitans = useAppSelector((state) => state.titans.data);
   const originalHeroes = useAppSelector((state) => state.heroes.data);
 
@@ -28,8 +31,8 @@ const TitansGallery = () => {
   return (
     <>
       <AppHelmet title={`${t('common:title.titans')} ${t('common:tab.gallery')}`} />
-      <MovingPanel>
-        <PageHeading />
+      <MovingPanel className={!isMobile ? '!pt-0' : ''}>
+        <PageHeading className={!isMobile ? '!pt-0' : ''} />
       </MovingPanel>
       <GalleryWrapper>
         {paginatedTitans.map((titan) => (

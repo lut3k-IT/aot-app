@@ -12,7 +12,7 @@ interface MovingPanelProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const MovingPanel = (props: MovingPanelProps) => {
-  const { children, translateClassName = '', className = '', classNameSpacer = '', ...rest } = props;
+  const { children, translateClassName, className, classNameSpacer, ...rest } = props;
   const isMobile = useIsMobile();
 
   const scrollDirection = useScrollDirection();
@@ -23,10 +23,10 @@ const MovingPanel = (props: MovingPanelProps) => {
       className={classNames(
         'sticky top-0 z-20 w-full bg-background shadow-panel-bottom transition-transform',
         computedClass,
-        className,
         {
           '-mt-2 pt-2': !isMobile
-        }
+        },
+        className
       )}
       {...rest}
     >

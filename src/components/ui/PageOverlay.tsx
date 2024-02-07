@@ -28,43 +28,32 @@ const PageOverlay = () => {
     </>
   );
 
+  // @todo - make more configuration and apply DRY principle and utility first approach (classes)
+
   const DesktopOverlay = () => (
     <div className={'mx-auto h-[100svh] max-w-7xl'}>
       <div className={'relative grid h-full grid-cols-[16.75rem_1fr] gap-6 p-page-desktop'}>
         <SidebarDesktop />
-        <div className={''}>
+        <div className={'grid h-[calc(100svh-64px)] w-full grid-rows-[100px_1fr_24px] gap-6'}>
           {/* <QuotationBarDesktop /> */}
-          {/* @todo obliczyć wysokosc 100vh odejmujac male przestrzenie i dodac do konfiguracji tailwind */}
-          <Card className={'h-[calc(100svh-100px)] p-4'}>
+          <div>temp quotation bar</div>
+          <Card className={'h-full overflow-hidden p-4'}>
             <ScrollArea
               id='inner'
-              className={'-mr-9 h-full pr-9'}
+              className={'-mr-3 h-full pr-3'}
             >
               <div className={'p-2'}>
                 <CommonOutlet />
               </div>
             </ScrollArea>
           </Card>
+          <div>temp footer</div>
         </div>
       </div>
     </div>
   );
 
   return isMobile ? <MobileOverlay /> : <DesktopOverlay />;
-
-  // return (
-  //   <>
-  //     {isMobile ? <TopBarMobile /> : <></>}
-  //     {isMobile && <QuotationBarMobile />}
-  //     <div
-  //       id='inner'
-  //       className={'pb-body-pad-end [&>*]:px-4'}
-  //     >
-  //       <Outlet />
-  //     </div>
-  //     {isMobile ? <NavigationMobile /> : <SidebarDesktop />}
-  //   </>
-  // );
 };
 
 export default PageOverlay;
