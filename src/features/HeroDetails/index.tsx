@@ -9,17 +9,17 @@ import useIsMobile from '@/components/hooks/useIsMobile';
 import useValidateIdFromParam from '@/components/hooks/useValidateIdFromParam';
 import AppHelmet from '@/components/ui/AppHelmet';
 import { Button } from '@/components/ui/Button';
-import HeroStatus from '@/components/ui/HeroStatus';
 import { MBTI_GROUPS_NAMES } from '@/constants/constants';
 import { RoutePath } from '@/constants/enums';
 import { MbtiGroups } from '@/constants/types';
 import mbti from '@/data/mbti';
 import { addFavorite, removeFavorite } from '@/store/heroesSlice';
-import { getMbtiShortName, getResidenceName, getSpeciesName, isInFavorites } from '@/utils/dataHelpers';
+import { isInFavorites } from '@/utils/dataHelpers';
 
 import ButtonGoBack from '../../components/ui/ButtonGoBack';
 import CharacterPicture from '../../components/ui/CharacterPicture';
-import { DetailsGridRow } from '../../components/ui/DetailsGridRow';
+import DesktopTiles from './components/DesktopTiles';
+import MobileTIles from './components/MobileTiles';
 
 const HeroDetails = () => {
   const { id } = useParams();
@@ -76,42 +76,7 @@ const HeroDetails = () => {
       <div className={'mt-2 w-full text-center text-2xl font-medium'}>{`${hero.firstName} ${
         hero?.lastName || ''
       }`}</div>
-      <div className={'mt-6 grid grid-cols-[minmax(100px,_120px)_minmax(120px,_2fr)] items-start gap-x-4 gap-y-3'}>
-        <DetailsGridRow
-          title={t('data:species.title')}
-          value={getSpeciesName(hero.species, t) || '-'}
-        />
-        <DetailsGridRow
-          title={t('data:residence.title')}
-          value={getResidenceName(hero.residence, t) || '-'}
-        />
-        <DetailsGridRow
-          title={t('data:status.title')}
-          value={
-            <HeroStatus
-              statusId={hero.status}
-              className={'font-medium'}
-              textAbbreviation={'long'}
-            />
-          }
-        />
-        <DetailsGridRow
-          title={t('data:mbti.title')}
-          value={getMbtiShortName(hero.mbti) || '-'}
-        />
-        <DetailsGridRow
-          title={t('data:age.title')}
-          value={hero.age || '-'}
-        />
-        <DetailsGridRow
-          title={t('data:height.title')}
-          value={hero.height ? `${hero.height} cm` : '-'}
-        />
-        <DetailsGridRow
-          title={t('data:weight.title')}
-          value={hero.height ? `${hero.weight} kg` : '-'}
-        />
-      </div>
+      {isMobile ? <MobileTIles hero={hero} /> : <DesktopTiles hero={hero} />}
       <div className={'flex-center'}>
         <Button
           className={'mt-8 w-full'}

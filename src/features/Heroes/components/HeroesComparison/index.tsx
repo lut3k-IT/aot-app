@@ -26,8 +26,6 @@ const HeroesComparison = () => {
   const { t } = useTranslation();
   const isTwoColumns = useIsMobile(848);
 
-  // const DEFAULT_COMPARISON_STATE = Array.from({ length: isTwoColumns ? 2 : 3 }, () => null);
-
   const [selectedHeroes, setSelectedHeroes] = useState<HeroTypeSelected[]>(DEFAULT_COMPARISON_STATE);
   const [heroesForSelect, setHeroesForSelect] = useState<HeroForSelect[]>([]);
 
@@ -35,16 +33,6 @@ const HeroesComparison = () => {
   const favoriteHeroesIds = useAppSelector((state) => state.heroes.favoriteIds);
   const fetchingStatus = useAppSelector((state) => state.heroes.status);
   const fetchingError = useAppSelector((state) => state.heroes.error);
-
-  // useEffect(() => {
-  //   setSelectedHeroes((prev) => {
-  //     if (isTwoColumns) {
-  //       return prev.slice(0, 2);
-  //     } else {
-  //       return prev.length === 2 ? [...prev, null] : prev;
-  //     }
-  //   });
-  // }, [isTwoColumns]);
 
   useEffect(() => {
     setHeroesForSelect(
