@@ -12,6 +12,7 @@ interface ModeToggleProps {
 }
 
 // @todo - i18next for labels
+// @todo - system theme application issue
 
 const ModeToggle = (props: ModeToggleProps) => {
   const { variant = 'mobile' } = props;

@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import classNames from 'classnames';
 
 import useAppSelector from '@/components/hooks/useAppSelector';
+import useIsMobile from '@/components/hooks/useIsMobile';
 import AppHelmet from '@/components/ui/AppHelmet';
 import HeroStatus from '@/components/ui/HeroStatus';
 import { HeroType } from '@/constants/types';
@@ -15,12 +17,14 @@ export type HeroForSelect = {
   id: number;
   value: string;
 };
-const DEFAULT_COMPARISON_STATE = [null, null];
 
-// todo: save heroes in params
+// @todo save heroes in params
 
 const HeroesComparison = () => {
   const { t } = useTranslation();
+  const canFitThreeColumns = useIsMobile(848);
+
+  const DEFAULT_COMPARISON_STATE = Array.from({ length: canFitThreeColumns ? 2 : 3 }, () => null);
 
   const [selectedHeroes, setSelectedHeroes] = useState<HeroTypeSelected[]>(DEFAULT_COMPARISON_STATE);
   const [heroesForSelect, setHeroesForSelect] = useState<HeroForSelect[]>([]);
@@ -29,6 +33,16 @@ const HeroesComparison = () => {
   const favoriteHeroesIds = useAppSelector((state) => state.heroes.favoriteIds);
   const fetchingStatus = useAppSelector((state) => state.heroes.status);
   const fetchingError = useAppSelector((state) => state.heroes.error);
+
+  useEffect(() => {
+    setSelectedHeroes((prev) => {
+      if (canFitThreeColumns) {
+        return prev.slice(0, 2);
+      } else {
+        return prev.length === 2 ? [...prev, null] : prev;
+      }
+    });
+  }, [canFitThreeColumns]);
 
   useEffect(() => {
     setHeroesForSelect(
@@ -53,13 +67,16 @@ const HeroesComparison = () => {
 
   return (
     <div
-      className={
-        'mb-2 mt-4 grid w-full grid-flow-col grid-cols-2 grid-rows-[repeat(10,auto)] justify-items-center gap-x-2 gap-y-6'
-      }
+      className={classNames('mb-2 mt-4 grid w-full grid-flow-col grid-rows-[repeat(10,auto)] justify-items-center', {
+        'grid-cols-2': canFitThreeColumns,
+        'grid-cols-3': !canFitThreeColumns
+      })}
     >
       <AppHelmet title={`${t('common:title.heroes')} ${t('common:tab.comparison')}`} />
       {selectedHeroes.map((data, index) => {
-        const isOdd = index === 0;
+        const isFirstColumn = index === 0;
+        const isLastColumn = index === selectedHeroes.length - 1;
+
         return (
           <div
             className={'contents'}
@@ -70,12 +87,14 @@ const HeroesComparison = () => {
               heroesForSelect={heroesForSelect}
               selectedHero={data}
               onSelectHero={handleUpdateColumn}
-              className={'mb-4'}
+              className={'mb-8'}
             />
             <DetailItem
               title={t('data:firstName')}
               value={data?.firstName}
-              isOdd={isOdd}
+              isFirstColumn={isFirstColumn}
+              isLastColumn={isLastColumn}
+              isOddRow
             />
             <DetailItem
               title={t('data:lastName')}
@@ -84,7 +103,9 @@ const HeroesComparison = () => {
             <DetailItem
               title={t('data:species.title')}
               value={data && getSpeciesName(data.species, t)}
-              isOdd={isOdd}
+              isFirstColumn={isFirstColumn}
+              isLastColumn={isLastColumn}
+              isOddRow
             />
             <DetailItem
               title={t('data:residence.title')}
@@ -101,7 +122,9 @@ const HeroesComparison = () => {
                   />
                 )
               }
-              isOdd={isOdd}
+              isFirstColumn={isFirstColumn}
+              isLastColumn={isLastColumn}
+              isOddRow
             />
             <DetailItem
               title={t('data:mbti.title')}
@@ -110,7 +133,9 @@ const HeroesComparison = () => {
             <DetailItem
               title={t('data:age.title')}
               value={data?.age}
-              isOdd={isOdd}
+              isFirstColumn={isFirstColumn}
+              isLastColumn={isLastColumn}
+              isOddRow
             />
             <DetailItem
               title={t('data:height.title')}
@@ -119,7 +144,9 @@ const HeroesComparison = () => {
             <DetailItem
               title={t('data:weight.title')}
               value={data?.weight ? `${data.weight} kg` : '-'}
-              isOdd={isOdd}
+              isFirstColumn={isFirstColumn}
+              isLastColumn={isLastColumn}
+              isOddRow
             />
           </div>
         );

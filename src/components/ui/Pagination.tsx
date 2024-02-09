@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/Select';
 import { Param } from '@/constants/enums';
+import { cn } from '@/lib/utils';
 import { scrollToTop } from '@/utils/helpers';
 import { deleteSomeSearchParams, getSafePageNumberFromSearchParam } from '@/utils/paramsHelpers';
 
@@ -12,13 +13,14 @@ interface PaginationProps {
   itemsCount: number;
   totalPages: number;
   pageSizeOptions?: number[];
+  className?: string;
 }
 
 export const DEFAULT_PAGE = 1;
 export const DEFAULT_PAGE_SIZES = [50, 100, 200];
 
-const NewPagination = (props: PaginationProps) => {
-  const { itemsCount, totalPages, pageSizeOptions = DEFAULT_PAGE_SIZES } = props;
+const Pagination = (props: PaginationProps) => {
+  const { itemsCount, totalPages, pageSizeOptions = DEFAULT_PAGE_SIZES, className } = props;
 
   const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -61,7 +63,7 @@ const NewPagination = (props: PaginationProps) => {
   };
 
   return (
-    <div className={'mt-2 flex h-9 items-center justify-between gap-4'}>
+    <div className={cn('mt-2 flex h-9 items-center justify-between gap-4', className)}>
       <div className={'flex gap-2'}>
         <Select
           value={pageSize.toString()}
@@ -125,4 +127,4 @@ const NewPagination = (props: PaginationProps) => {
   );
 };
 
-export default NewPagination;
+export default Pagination;

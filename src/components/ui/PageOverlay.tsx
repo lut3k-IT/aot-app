@@ -1,6 +1,10 @@
+import { useTranslation } from 'react-i18next';
 import { Outlet } from 'react-router-dom';
 
+import { ExternalUrl, RoutePath } from '@/constants/enums';
+
 import useIsMobile from '../hooks/useIsMobile';
+import { Button } from './Button';
 import { Card } from './Card';
 import NavigationMobile from './NavigationMobile';
 import QuotationBarMobile from './QuotationBarMobile';
@@ -10,6 +14,7 @@ import TopBarMobile from './TopBarMobile';
 
 const PageOverlay = () => {
   const isMobile = useIsMobile();
+  const { t } = useTranslation();
 
   // @audit - it shouldn't rerender the entire component
   const CommonOutlet = () => <Outlet />;
@@ -32,11 +37,10 @@ const PageOverlay = () => {
 
   const DesktopOverlay = () => (
     <div className={'mx-auto h-[100svh] max-w-7xl'}>
-      <div className={'relative grid h-full grid-cols-[16.75rem_1fr] gap-6 p-page-desktop'}>
+      <div className={'grid h-full grid-cols-[15rem_1fr] gap-6 p-page-desktop'}>
         <SidebarDesktop />
-        <div className={'grid h-[calc(100svh-64px)] w-full grid-rows-[100px_1fr_24px] gap-6'}>
-          {/* <QuotationBarDesktop /> */}
-          <div>temp quotation bar</div>
+        <div className={'grid h-[calc(100svh-64px)] grid-rows-[2.5rem_1fr_1.5rem] gap-6'}>
+          <QuotationBarMobile />
           <Card className={'h-full overflow-hidden p-4'}>
             <ScrollArea
               id='inner'
@@ -47,7 +51,47 @@ const PageOverlay = () => {
               </div>
             </ScrollArea>
           </Card>
-          <div>temp footer</div>
+          {/* @todo move to separate component - maybe make it common for mobile too */}
+          <div className={'flex-center  flex-wrap [&_*]:text-muted-foreground'}>
+            <a
+              href={ExternalUrl.PORTFOLIO}
+              target='_blank'
+              rel='noreferrer'
+              className={'text-sm hover:underline'}
+            >
+              {t('common:title.portfolio')}
+            </a>
+            {/* <Button
+              variant={'link'}
+              linkTo={RoutePath.ABOUT}
+            >
+              {t('common:title.about')}
+            </Button> */}
+            {/* <Button
+              variant={'link'}
+              linkTo={RoutePath.CHANGELOG}
+            >
+              {t('common:title.changelog')}
+            </Button>
+            <Button
+              variant={'link'}
+              linkTo={RoutePath.PRIVACY_POLICY}
+            >
+              {t('common:title.privacyPolicy')}
+            </Button>
+            <Button
+              variant={'link'}
+              linkTo={RoutePath.TERMS_OF_SERVICE}
+            >
+              {t('common:title.termsOfService')}
+            </Button>
+            <Button
+              variant={'link'}
+              linkTo={ExternalUrl.PORTFOLIO}
+            >
+              {t('common:title.portfolio')}
+            </Button> */}
+          </div>
         </div>
       </div>
     </div>
