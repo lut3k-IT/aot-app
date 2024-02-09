@@ -5,6 +5,7 @@ import classNames from 'classnames';
 
 import useAppDispatch from '@/components/hooks/useAppDispatch';
 import useAppSelector from '@/components/hooks/useAppSelector';
+import useIsMobile from '@/components/hooks/useIsMobile';
 import useValidateIdFromParam from '@/components/hooks/useValidateIdFromParam';
 import AppHelmet from '@/components/ui/AppHelmet';
 import { Button } from '@/components/ui/Button';
@@ -23,6 +24,7 @@ import { DetailsGridRow } from '../../components/ui/DetailsGridRow';
 const HeroDetails = () => {
   const { id } = useParams();
   const { t } = useTranslation();
+  const isMobile = useIsMobile();
   const dispatch = useAppDispatch();
 
   const paramHeroId = useValidateIdFromParam(id);
@@ -47,7 +49,11 @@ const HeroDetails = () => {
   if (!hero) return;
 
   return (
-    <div className={'pt-body-pad-start'}>
+    <div
+      className={classNames({
+        'pt-body-pad-start': isMobile
+      })}
+    >
       <AppHelmet title={`${hero.firstName} ${hero.lastName || ''}`} />
       <ButtonGoBack fallbackRoute={RoutePath.HEROES_GALLERY} />
       <div className={'relative mt-6 flex flex-col items-center'}>
@@ -108,7 +114,7 @@ const HeroDetails = () => {
       </div>
       <div className={'flex-center'}>
         <Button
-          className={'mt-8 w-full max-w-[31.25rem]'}
+          className={'mt-8 w-full'}
           iconName={'heart'}
           variant={isFavorite ? 'secondary' : 'default'}
           iconProps={{ isFilled: isFavorite, className: isFavorite ? 'text-red-500 fill-red-500' : '' }}

@@ -20,11 +20,13 @@ export type HeroForSelect = {
 
 // @todo save heroes in params
 
+const DEFAULT_COMPARISON_STATE = Array(3).fill(null);
+
 const HeroesComparison = () => {
   const { t } = useTranslation();
-  const canFitThreeColumns = useIsMobile(848);
+  const isTwoColumns = useIsMobile(848);
 
-  const DEFAULT_COMPARISON_STATE = Array.from({ length: canFitThreeColumns ? 2 : 3 }, () => null);
+  // const DEFAULT_COMPARISON_STATE = Array.from({ length: isTwoColumns ? 2 : 3 }, () => null);
 
   const [selectedHeroes, setSelectedHeroes] = useState<HeroTypeSelected[]>(DEFAULT_COMPARISON_STATE);
   const [heroesForSelect, setHeroesForSelect] = useState<HeroForSelect[]>([]);
@@ -34,15 +36,15 @@ const HeroesComparison = () => {
   const fetchingStatus = useAppSelector((state) => state.heroes.status);
   const fetchingError = useAppSelector((state) => state.heroes.error);
 
-  useEffect(() => {
-    setSelectedHeroes((prev) => {
-      if (canFitThreeColumns) {
-        return prev.slice(0, 2);
-      } else {
-        return prev.length === 2 ? [...prev, null] : prev;
-      }
-    });
-  }, [canFitThreeColumns]);
+  // useEffect(() => {
+  //   setSelectedHeroes((prev) => {
+  //     if (isTwoColumns) {
+  //       return prev.slice(0, 2);
+  //     } else {
+  //       return prev.length === 2 ? [...prev, null] : prev;
+  //     }
+  //   });
+  // }, [isTwoColumns]);
 
   useEffect(() => {
     setHeroesForSelect(
@@ -68,14 +70,16 @@ const HeroesComparison = () => {
   return (
     <div
       className={classNames('mb-2 mt-4 grid w-full grid-flow-col grid-rows-[repeat(10,auto)] justify-items-center', {
-        'grid-cols-2': canFitThreeColumns,
-        'grid-cols-3': !canFitThreeColumns
+        'grid-cols-2': isTwoColumns,
+        'grid-cols-3': !isTwoColumns
       })}
     >
       <AppHelmet title={`${t('common:title.heroes')} ${t('common:tab.comparison')}`} />
       {selectedHeroes.map((data, index) => {
         const isFirstColumn = index === 0;
         const isLastColumn = index === selectedHeroes.length - 1;
+
+        if (isTwoColumns && index === 2) return null;
 
         return (
           <div

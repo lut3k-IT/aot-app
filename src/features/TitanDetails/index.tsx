@@ -5,6 +5,7 @@ import classNames from 'classnames';
 
 import useAppDispatch from '@/components/hooks/useAppDispatch';
 import useAppSelector from '@/components/hooks/useAppSelector';
+import useIsMobile from '@/components/hooks/useIsMobile';
 import useValidateIdFromParam from '@/components/hooks/useValidateIdFromParam';
 import AppHelmet from '@/components/ui/AppHelmet';
 import { Button } from '@/components/ui/Button';
@@ -22,6 +23,7 @@ import { DetailsGridRow } from '../../components/ui/DetailsGridRow';
 const TitanDetails = () => {
   const { id } = useParams();
   const { t } = useTranslation();
+  const isMobile = useIsMobile();
   const dispatch = useAppDispatch();
 
   const paramTitanId = useValidateIdFromParam(id);
@@ -52,7 +54,11 @@ const TitanDetails = () => {
   if (!titan) return;
 
   return (
-    <div className={'pt-body-pad-start'}>
+    <div
+      className={classNames({
+        'pt-body-pad-start': isMobile
+      })}
+    >
       <AppHelmet title={titan.name} />
       <ButtonGoBack fallbackRoute={RoutePath.HEROES_GALLERY} />
       <div className={'relative mt-6 flex flex-col items-center'}>
