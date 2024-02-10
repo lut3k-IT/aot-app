@@ -29,7 +29,11 @@ const DesktopTiles = (props: DesktopTilesProps) => {
   const { t } = useTranslation();
 
   return (
-    <div className={'mt-6 grid grid-cols-[repeat(auto-fill,_minmax(9rem,_1fr))] gap-4'}>
+    <div className={'mt-8 grid grid-cols-[repeat(auto-fill,_minmax(9rem,_1fr))] gap-4'}>
+      <Tile
+        title={t('data:mbti.title')}
+        value={getMbtiShortName(hero.mbti) || '-'}
+      />
       <Tile
         title={t('data:species.title')}
         value={getSpeciesName(hero.species, t) || '-'}
@@ -47,10 +51,6 @@ const DesktopTiles = (props: DesktopTilesProps) => {
             textAbbreviation={'long'}
           />
         }
-      />
-      <Tile
-        title={t('data:mbti.title')}
-        value={getMbtiShortName(hero.mbti) || '-'}
       />
       <Tile
         title={t('data:age.title')}

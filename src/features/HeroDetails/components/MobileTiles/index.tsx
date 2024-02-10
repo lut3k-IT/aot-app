@@ -16,6 +16,10 @@ const MobileTiles = (props: MobileTIlesProps) => {
   return (
     <div className={'mt-6 grid grid-cols-[minmax(100px,_120px)_minmax(120px,_2fr)] items-start gap-x-4 gap-y-3'}>
       <DetailsGridRow
+        title={t('data:mbti.title')}
+        value={getMbtiShortName(hero.mbti) || '-'}
+      />
+      <DetailsGridRow
         title={t('data:species.title')}
         value={getSpeciesName(hero.species, t) || '-'}
       />
@@ -32,10 +36,6 @@ const MobileTiles = (props: MobileTIlesProps) => {
             textAbbreviation={'long'}
           />
         }
-      />
-      <DetailsGridRow
-        title={t('data:mbti.title')}
-        value={getMbtiShortName(hero.mbti) || '-'}
       />
       <DetailsGridRow
         title={t('data:age.title')}

@@ -47,13 +47,13 @@ const QuotationDetails = () => {
     >
       <ButtonGoBack fallbackRoute={RoutePath.QUOTATIONS} />
       <AppHelmet title={`${quotation.text.substring(0, 20)}${quotation.text.length > 20 ? '...' : ''}`} />
-      <Card className={'mt-4 p-4'}>
+      <Card className={'mt-8 p-4'}>
         <p>{quotation.text}</p>
       </Card>
       <Button
-        className={'mt-4 w-full'}
+        className={'mt-8 w-full'}
         iconName={'heart'}
-        variant={isFavorite ? 'secondary' : 'default'}
+        variant={isFavorite ? 'secondary' : 'defaultLite'}
         iconProps={{ isFilled: isFavorite, className: isFavorite ? 'text-red-500 fill-red-500' : '' }}
         onClick={handleToggleFavorite}
       >

@@ -39,7 +39,7 @@ const DesktopTiles = (props: DesktopTilesProps) => {
   // @follow-up pracujesz teraz nad grid-flow-row-dense
 
   return (
-    <div className={'mt-6 grid grid-flow-row-dense grid-cols-[repeat(auto-fill,_minmax(9rem,_1fr))] gap-4'}>
+    <div className={'mt-8 grid grid-flow-row-dense grid-cols-[repeat(auto-fill,_minmax(9rem,_1fr))] gap-4'}>
       <Tile
         title={t('data:mbti.title')}
         value={getMbtiShortName(titan.mbti) || '-'}

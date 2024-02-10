@@ -77,17 +77,15 @@ const HeroDetails = () => {
         hero?.lastName || ''
       }`}</div>
       {isMobile ? <MobileTiles hero={hero} /> : <DesktopTiles hero={hero} />}
-      <div className={'flex-center'}>
-        <Button
-          className={'mt-8 w-full'}
-          iconName={'heart'}
-          variant={isFavorite ? 'secondary' : 'default'}
-          iconProps={{ isFilled: isFavorite, className: isFavorite ? 'text-red-500 fill-red-500' : '' }}
-          onClick={handleToggleFavorite}
-        >
-          {isFavorite ? t('common:action.removeFromFavorites') : t('common:action.addToFavorites')}
-        </Button>
-      </div>
+      <Button
+        className={'mt-8 w-full'}
+        iconName={'heart'}
+        variant={isFavorite ? 'secondary' : 'defaultLite'}
+        iconProps={{ isFilled: isFavorite, className: isFavorite ? 'text-red-500 fill-red-500' : '' }}
+        onClick={handleToggleFavorite}
+      >
+        {isFavorite ? t('common:action.removeFromFavorites') : t('common:action.addToFavorites')}
+      </Button>
     </div>
   );
 };
