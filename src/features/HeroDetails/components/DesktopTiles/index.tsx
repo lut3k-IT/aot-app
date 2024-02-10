@@ -5,19 +5,24 @@ import HeroStatus from '@/components/ui/HeroStatus';
 import { HeroType } from '@/constants/types';
 import { getMbtiShortName, getResidenceName, getSpeciesName } from '@/utils/dataHelpers';
 
-interface DesktopTilesProps {
-  hero: HeroType;
+interface TileProps {
+  title: string;
+  value: string | React.ReactNode;
 }
 
-const Tile = (props: { title: string; value: string | React.ReactNode }) => {
+const Tile = (props: TileProps) => {
   const { title, value } = props;
   return (
     <div className={'flex-center flex flex-col gap-2 rounded-md bg-muted p-4'}>
-      <div className={'font-bold text-muted-foreground'}>{title}</div>
+      <div className={'text-center font-bold text-muted-foreground'}>{title}</div>
       <div className={'flex-1 text-center text-lg'}>{value}</div>
     </div>
   );
 };
+
+interface DesktopTilesProps {
+  hero: HeroType;
+}
 
 const DesktopTiles = (props: DesktopTilesProps) => {
   const { hero } = props;

@@ -9,7 +9,7 @@ interface MobileTIlesProps {
   hero: HeroType;
 }
 
-const MobileTIles = (props: MobileTIlesProps) => {
+const MobileTiles = (props: MobileTIlesProps) => {
   const { hero } = props;
   const { t } = useTranslation();
 
@@ -53,4 +53,4 @@ const MobileTIles = (props: MobileTIlesProps) => {
   );
 };
 
-export default MobileTIles;
+export default MobileTiles;

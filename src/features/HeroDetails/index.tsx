@@ -19,7 +19,7 @@ import { isInFavorites } from '@/utils/dataHelpers';
 import ButtonGoBack from '../../components/ui/ButtonGoBack';
 import CharacterPicture from '../../components/ui/CharacterPicture';
 import DesktopTiles from './components/DesktopTiles';
-import MobileTIles from './components/MobileTiles';
+import MobileTiles from './components/MobileTiles';
 
 const HeroDetails = () => {
   const { id } = useParams();
@@ -76,7 +76,7 @@ const HeroDetails = () => {
       <div className={'mt-2 w-full text-center text-2xl font-medium'}>{`${hero.firstName} ${
         hero?.lastName || ''
       }`}</div>
-      {isMobile ? <MobileTIles hero={hero} /> : <DesktopTiles hero={hero} />}
+      {isMobile ? <MobileTiles hero={hero} /> : <DesktopTiles hero={hero} />}
       <div className={'flex-center'}>
         <Button
           className={'mt-8 w-full'}

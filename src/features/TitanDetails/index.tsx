@@ -14,11 +14,12 @@ import { RoutePath } from '@/constants/enums';
 import { MbtiGroups } from '@/constants/types';
 import mbti from '@/data/mbti';
 import { addFavorite, removeFavorite } from '@/store/titansSlice';
-import { getAllegianceNames, getHeroName, getMbtiShortName, isInFavorites } from '@/utils/dataHelpers';
+import { getHeroName, isInFavorites } from '@/utils/dataHelpers';
 
 import ButtonGoBack from '../../components/ui/ButtonGoBack';
 import CharacterPicture from '../../components/ui/CharacterPicture';
-import { DetailsGridRow } from '../../components/ui/DetailsGridRow';
+import DesktopTiles from './components/DesktopTiles';
+import MobileTiles from './components/MobileTiles';
 
 const TitanDetails = () => {
   const { id } = useParams();
@@ -79,39 +80,22 @@ const TitanDetails = () => {
         />
       </div>
       <div className={'mt-2 w-full text-center text-2xl font-medium'}>{titan.name}</div>
-      <div className={'mt-6 grid grid-cols-[minmax(100px,_120px)_minmax(120px,_2fr)] items-start gap-x-4 gap-y-3'}>
-        <DetailsGridRow
-          title={t('data:mbti.title')}
-          value={getMbtiShortName(titan.mbti) || '-'}
+      {isMobile ? (
+        <MobileTiles
+          titan={titan}
+          currentInheritor={currentInheritor}
+          formerInheritors={formerInheritors}
         />
-        <DetailsGridRow
-          title={t('data:height.title')}
-          value={`${titan.height} cm`}
+      ) : (
+        <DesktopTiles
+          titan={titan}
+          currentInheritor={currentInheritor}
+          formerInheritors={formerInheritors}
         />
-        <DetailsGridRow
-          title={t('data:allegiance.title')}
-          value={getAllegianceNames(titan.allegiance, t).join(', ')}
-        />
-        <DetailsGridRow
-          title={t('data:currentInheritor')}
-          value={currentInheritor || '-'}
-        />
-        <DetailsGridRow
-          title={t('data:formerInheritors')}
-          value={formerInheritors || '-'}
-        />
-        <DetailsGridRow
-          title={t('data:otherNames')}
-          value={titan.otherNames.length > 0 ? titan.otherNames.join(', ') : '-'}
-        />
-        <DetailsGridRow
-          title={t('data:abilities')}
-          value={titan.abilities.length > 0 ? titan.abilities.join(', ') : '-'}
-        />
-      </div>
+      )}
       <div className={'flex-center'}>
         <Button
-          className={'mt-8 w-full max-w-[31.25rem]'}
+          className={'mt-8 w-full'}
           iconName={'heart'}
           variant={isFavorite ? 'secondary' : 'default'}
           iconProps={{ isFilled: isFavorite, className: isFavorite ? 'text-red-500 fill-red-500' : '' }}
