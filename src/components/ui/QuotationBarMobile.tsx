@@ -70,7 +70,7 @@ const QuotationBarMobile = () => {
   );
 
   const DesktopBar = () => (
-    <Card className={'flex h-10 w-full items-center justify-between overflow-hidden px-4'}>
+    <Card className={'flex h-10 w-full items-center justify-between gap-2 overflow-hidden px-6'}>
       {currentQuotation ? (
         <>
           <Link
