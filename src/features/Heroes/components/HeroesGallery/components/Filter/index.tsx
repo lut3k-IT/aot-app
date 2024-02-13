@@ -462,7 +462,7 @@ const Filter = () => {
         <DialogFooter className={'flex flex-auto flex-row gap-3'}>
           <Button
             className={'w-fit'}
-            variant={'destructiveLite'}
+            variant={'destructiveInvert'}
             onClick={handleResetAll}
           >
             {t('common:action.resetAll')}

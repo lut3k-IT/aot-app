@@ -52,22 +52,22 @@ const PageOverlay = () => {
             </ScrollArea>
           </Card>
           {/* @todo move to separate component - maybe make it common for mobile too */}
-          <div className={'flex-center  flex-wrap [&_*]:text-muted-foreground'}>
-            <a
+          <div className={'flex-center flex-wrap [&_*]:text-muted-foreground'}>
+            {/* <a
               href={ExternalUrl.PORTFOLIO}
               target='_blank'
               rel='noreferrer'
               className={'text-sm hover:underline'}
             >
               {t('common:title.portfolio')}
-            </a>
-            {/* <Button
+            </a> */}
+            <Button
               variant={'link'}
               linkTo={RoutePath.ABOUT}
             >
               {t('common:title.about')}
-            </Button> */}
-            {/* <Button
+            </Button>
+            <Button
               variant={'link'}
               linkTo={RoutePath.CHANGELOG}
             >
@@ -90,7 +90,7 @@ const PageOverlay = () => {
               linkTo={ExternalUrl.PORTFOLIO}
             >
               {t('common:title.portfolio')}
-            </Button> */}
+            </Button>
           </div>
         </div>
       </div>

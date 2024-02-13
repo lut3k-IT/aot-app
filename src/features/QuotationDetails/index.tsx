@@ -53,7 +53,7 @@ const QuotationDetails = () => {
       <Button
         className={'mt-8 w-full'}
         iconName={'heart'}
-        variant={isFavorite ? 'secondary' : 'defaultLite'}
+        variant={isFavorite ? 'secondary' : 'defaultInvert'}
         iconProps={{ isFilled: isFavorite, className: isFavorite ? 'text-red-500 fill-red-500' : '' }}
         onClick={handleToggleFavorite}
       >
