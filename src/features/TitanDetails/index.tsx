@@ -1,5 +1,4 @@
 import { useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import classNames from 'classnames';
 
@@ -8,7 +7,7 @@ import useAppSelector from '@/components/hooks/useAppSelector';
 import useIsMobile from '@/components/hooks/useIsMobile';
 import useValidateIdFromParam from '@/components/hooks/useValidateIdFromParam';
 import AppHelmet from '@/components/ui/AppHelmet';
-import { Button } from '@/components/ui/Button';
+import FavoriteButton from '@/components/ui/FavoriteButton';
 import { MBTI_GROUPS_NAMES } from '@/constants/constants';
 import { RoutePath } from '@/constants/enums';
 import { MbtiGroups } from '@/constants/types';
@@ -23,7 +22,6 @@ import MobileTiles from './components/MobileTiles';
 
 const TitanDetails = () => {
   const { id } = useParams();
-  const { t } = useTranslation();
   const isMobile = useIsMobile();
   const dispatch = useAppDispatch();
 
@@ -93,15 +91,10 @@ const TitanDetails = () => {
           formerInheritors={formerInheritors}
         />
       )}{' '}
-      <Button
-        className={'mt-8 w-full'}
-        iconName={'heart'}
-        variant={isFavorite ? 'secondary' : 'defaultInvert'}
-        iconProps={{ isFilled: isFavorite, className: isFavorite ? 'text-red-500 fill-red-500' : '' }}
-        onClick={handleToggleFavorite}
-      >
-        {isFavorite ? t('common:action.removeFromFavorites') : t('common:action.addToFavorites')}
-      </Button>
+      <FavoriteButton
+        isFavorite={isFavorite}
+        handleToggleFavorite={handleToggleFavorite}
+      />
     </div>
   );
 };
