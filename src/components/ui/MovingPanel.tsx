@@ -21,10 +21,10 @@ const MovingPanel = (props: MovingPanelProps) => {
   return (
     <div
       className={classNames(
-        'sticky top-0 z-20 w-full bg-background shadow-panel-bottom transition-transform',
+        'shadow-panel-bottom-bg sticky top-0 z-20 w-full bg-background transition-transform',
         computedClass,
         {
-          '-mt-2 pt-2': !isMobile
+          'shadow-panel-bottom-card -mt-2 pt-2 dark:bg-card': !isMobile
         },
         className
       )}

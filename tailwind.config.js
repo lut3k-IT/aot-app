@@ -91,7 +91,8 @@ module.exports = {
         'accordion-up': 'accordion-up 0.2s ease-out'
       },
       boxShadow: {
-        'panel-bottom': '0px 0px 6px 6px hsl(var(--background))'
+        'panel-bottom-bg': '0px 0px 6px 6px hsl(var(--background))',
+        'panel-bottom-card': '0px 0px 6px 6px hsl(var(--card))'
       }
     }
   },

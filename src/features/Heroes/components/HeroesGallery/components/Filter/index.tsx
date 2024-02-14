@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 
@@ -210,7 +210,8 @@ const Filter = () => {
     setSortDirection(sortDirection);
   }, []);
 
-  // todo: prompt: try to move as much to separate components for better readability
+  // @todo prompt: try to move as much to separate components for better readability
+
   return (
     <Dialog
       open={isModalOpen}
@@ -222,7 +223,7 @@ const Filter = () => {
           iconPosition={'right'}
           iconName={'filter'}
           variant={'outline'}
-          className={'relative text-muted-foreground'}
+          className={'relative text-muted-foreground hover:text-muted-foreground'}
           size={'sm'}
           iconProps={{ className: 'text-muted-foreground' }}
         >
@@ -299,12 +300,18 @@ const Filter = () => {
             >
               <div className={'flex justify-between gap-2'}>
                 <Input
+                  type={'number'}
                   className={'max-w-[6.25rem]'}
+                  min={DEFAULT_AGE[0]}
+                  max={DEFAULT_AGE[1]}
                   value={selectedAge[0]}
                   onChange={(e) => setSelectedAge((prev) => [+e.target.value, prev[1]])}
                 />
                 <Input
+                  type={'number'}
                   className={'max-w-[6.25rem]'}
+                  min={DEFAULT_AGE[0]}
+                  max={DEFAULT_AGE[1]}
                   value={selectedAge[1]}
                   onChange={(e) => setSelectedAge((prev) => [prev[0], +e.target.value])}
                 />
@@ -313,8 +320,8 @@ const Filter = () => {
                 defaultValue={DEFAULT_AGE}
                 value={selectedAge}
                 onValueChange={(v: number[]) => setSelectedAge(v)}
-                min={0}
-                max={75}
+                min={DEFAULT_AGE[0]}
+                max={DEFAULT_AGE[1]}
                 step={1}
                 minStepsBetweenThumbs={1}
                 className={'py-2'}
@@ -326,12 +333,18 @@ const Filter = () => {
             >
               <div className={'flex justify-between gap-2'}>
                 <Input
+                  type={'number'}
                   className={'max-w-[6.25rem]'}
+                  min={DEFAULT_HEIGHT[0]}
+                  max={DEFAULT_HEIGHT[1]}
                   value={selectedHeight[0]}
                   onChange={(e) => setSelectedHeight((prev) => [+e.target.value, prev[1]])}
                 />
                 <Input
+                  type={'number'}
                   className={'max-w-[6.25rem]'}
+                  min={DEFAULT_HEIGHT[0]}
+                  max={DEFAULT_HEIGHT[1]}
                   value={selectedHeight[1]}
                   onChange={(e) => setSelectedHeight((prev) => [prev[0], +e.target.value])}
                 />
@@ -340,8 +353,8 @@ const Filter = () => {
                 defaultValue={DEFAULT_HEIGHT}
                 value={selectedHeight}
                 onValueChange={(v: number[]) => setSelectedHeight(v)}
-                min={100}
-                max={700}
+                min={DEFAULT_HEIGHT[0]}
+                max={DEFAULT_HEIGHT[1]}
                 step={1}
                 minStepsBetweenThumbs={1}
                 className={'py-2'}
@@ -353,12 +366,18 @@ const Filter = () => {
             >
               <div className={'flex justify-between gap-2'}>
                 <Input
+                  type={'number'}
                   className={'max-w-[6.25rem]'}
+                  min={DEFAULT_WEIGHT[0]}
+                  max={DEFAULT_WEIGHT[1]}
                   value={selectedWeight[0]}
                   onChange={(e) => setSelectedWeight((prev) => [+e.target.value, prev[1]])}
                 />
                 <Input
+                  type={'number'}
                   className={'max-w-[6.25rem]'}
+                  min={DEFAULT_WEIGHT[0]}
+                  max={DEFAULT_WEIGHT[1]}
                   value={selectedWeight[1]}
                   onChange={(e) => setSelectedWeight((prev) => [prev[0], +e.target.value])}
                 />
@@ -367,8 +386,8 @@ const Filter = () => {
                 defaultValue={DEFAULT_WEIGHT}
                 value={selectedWeight}
                 onValueChange={(v: number[]) => setSelectedWeight(v)}
-                min={40}
-                max={150}
+                min={DEFAULT_WEIGHT[0]}
+                max={DEFAULT_WEIGHT[1]}
                 step={1}
                 minStepsBetweenThumbs={1}
                 className={'py-2'}

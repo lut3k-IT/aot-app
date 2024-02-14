@@ -14,8 +14,8 @@ export const sortOptions: HeroSortOption[] = [
   'residence'
 ];
 
-export const DEFAULT_AGE = [0, 75];
-export const DEFAULT_HEIGHT = [100, 700];
-export const DEFAULT_WEIGHT = [40, 150];
+export const DEFAULT_AGE = [8, 75];
+export const DEFAULT_HEIGHT = [138, 700];
+export const DEFAULT_WEIGHT = [30, 450];
 export const DEFAULT_SORT = sortOptions[0];
 export const DEFAULT_SORT_DIRECTION = SortDirection.ASC;

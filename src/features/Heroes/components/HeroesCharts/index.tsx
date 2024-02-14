@@ -8,8 +8,7 @@ const HeroesCharts = () => {
   return (
     <div className={'flex w-full items-center justify-center text-7xl font-bold text-muted2-foreground'}>
       <AppHelmet title={`${t('common:title.heroes')} ${t('common:tab.charts')}`} />
-
-      <div>{t('common:soon')}...</div>
+      <div className={'mt-32'}>{t('common:soon')}...</div>
     </div>
   );
 };
