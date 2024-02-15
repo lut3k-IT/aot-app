@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import { TitanType } from '@/constants/types';
 import { getAllegianceNames, getMbtiShortName } from '@/utils/dataHelpers';
+import { SpoilerContent } from '@/utils/layoutHelpers';
 
 interface TileProps {
   title: string;
@@ -54,7 +55,7 @@ const DesktopTiles = (props: DesktopTilesProps) => {
       />
       <Tile
         title={t('data:currentInheritor')}
-        value={currentInheritor || '-'}
+        value={SpoilerContent(currentInheritor)}
       />
       <Tile
         title={t('data:otherNames')}
@@ -68,7 +69,7 @@ const DesktopTiles = (props: DesktopTilesProps) => {
       />
       <Tile
         title={t('data:formerInheritors')}
-        value={formerInheritors || '-'}
+        value={SpoilerContent(formerInheritors)}
       />
     </div>
   );

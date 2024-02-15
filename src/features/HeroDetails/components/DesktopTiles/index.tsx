@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import HeroStatus from '@/components/ui/HeroStatus';
 import { HeroType } from '@/constants/types';
 import { getMbtiShortName, getResidenceName, getSpeciesName } from '@/utils/dataHelpers';
+import { SpoilerContent } from '@/utils/layoutHelpers';
 
 interface TileProps {
   title: string;
@@ -36,7 +37,7 @@ const DesktopTiles = (props: DesktopTilesProps) => {
       />
       <Tile
         title={t('data:species.title')}
-        value={getSpeciesName(hero.species, t) || '-'}
+        value={SpoilerContent(getSpeciesName(hero.species, t))}
       />
       <Tile
         title={t('data:residence.title')}
@@ -44,13 +45,13 @@ const DesktopTiles = (props: DesktopTilesProps) => {
       />
       <Tile
         title={t('data:status.title')}
-        value={
+        value={SpoilerContent(
           <HeroStatus
             statusId={hero.status}
             className={'font-medium'}
             textAbbreviation={'long'}
           />
-        }
+        )}
       />
       <Tile
         title={t('data:age.title')}

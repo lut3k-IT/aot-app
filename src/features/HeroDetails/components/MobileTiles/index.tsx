@@ -4,6 +4,7 @@ import { DetailsGridRow } from '@/components/ui/DetailsGridRow';
 import HeroStatus from '@/components/ui/HeroStatus';
 import { HeroType } from '@/constants/types';
 import { getMbtiShortName, getResidenceName, getSpeciesName } from '@/utils/dataHelpers';
+import { SpoilerContent } from '@/utils/layoutHelpers';
 
 interface MobileTIlesProps {
   hero: HeroType;
@@ -21,7 +22,7 @@ const MobileTiles = (props: MobileTIlesProps) => {
       />
       <DetailsGridRow
         title={t('data:species.title')}
-        value={getSpeciesName(hero.species, t) || '-'}
+        value={SpoilerContent(getSpeciesName(hero.species, t))}
       />
       <DetailsGridRow
         title={t('data:residence.title')}
@@ -29,13 +30,13 @@ const MobileTiles = (props: MobileTIlesProps) => {
       />
       <DetailsGridRow
         title={t('data:status.title')}
-        value={
+        value={SpoilerContent(
           <HeroStatus
             statusId={hero.status}
             className={'font-medium'}
             textAbbreviation={'long'}
           />
-        }
+        )}
       />
       <DetailsGridRow
         title={t('data:age.title')}

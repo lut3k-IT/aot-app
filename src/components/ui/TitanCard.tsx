@@ -8,6 +8,7 @@ import { addFavorite, removeFavorite } from '@/store/titansSlice';
 import { getAllegianceNames, getHeroName, isInFavorites } from '@/utils/dataHelpers';
 
 import useAppDispatch from '../hooks/useAppDispatch';
+import useAppSelector from '../hooks/useAppSelector';
 import CharacterPicture from './CharacterPicture';
 import HeartButton from './HeartButton';
 import MbtiFrame from './MbtiFrame';
@@ -29,6 +30,7 @@ const TitanCard = (props: TitanCardProps) => {
 
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const isShowingSpoilers = useAppSelector((state) => state.spoilerMode);
 
   const currentInheritorName = useMemo(() => getHeroName(currentInheritor, heroesData), [currentInheritor, heroesData]);
   const allegianceNames = useMemo(() => getAllegianceNames(allegiance, t), [allegiance, t]);
@@ -82,9 +84,11 @@ const TitanCard = (props: TitanCardProps) => {
       <div className={'flex flex-1 flex-col justify-between'}>
         <div className={'relative mt-0.5 flex w-full flex-col gap-1'}>
           <div className={'pr-10 text-lg font-medium leading-none'}>{name || ''}</div>
-          <div className={'pr-10 text-sm font-medium capitalize leading-none text-muted-foreground'}>
-            {currentInheritorName}
-          </div>
+          {isShowingSpoilers && (
+            <div className={'pr-10 text-sm font-medium capitalize leading-none text-muted-foreground'}>
+              {currentInheritorName}
+            </div>
+          )}
           <HeartButton
             className={'absolute right-0 top-0'}
             isFilled={isCurrentFavorite}

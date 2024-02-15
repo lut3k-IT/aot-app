@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { DetailsGridRow } from '@/components/ui/DetailsGridRow';
 import { TitanType } from '@/constants/types';
 import { getAllegianceNames, getMbtiShortName } from '@/utils/dataHelpers';
+import { SpoilerContent } from '@/utils/layoutHelpers';
 
 interface MobileTIlesProps {
   titan: TitanType;
@@ -30,11 +31,11 @@ const MobileTiles = (props: MobileTIlesProps) => {
       />
       <DetailsGridRow
         title={t('data:currentInheritor')}
-        value={currentInheritor || '-'}
+        value={SpoilerContent(currentInheritor)}
       />
       <DetailsGridRow
         title={t('data:formerInheritors')}
-        value={formerInheritors || '-'}
+        value={SpoilerContent(formerInheritors)}
       />
       <DetailsGridRow
         title={t('data:otherNames')}
