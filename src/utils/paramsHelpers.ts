@@ -2,7 +2,7 @@ import { URLSearchParams } from 'url';
 
 import { SetURLSearchParams } from 'react-router-dom';
 
-import { DEFAULT_PAGE } from '@/components/ui/NewPagination';
+import { DEFAULT_PAGE } from '@/components/ui/Pagination';
 import { Param } from '@/constants/enums';
 
 export const getNumberParam = (searchParams: URLSearchParams, paramName: Param, defaultValue: number) => {

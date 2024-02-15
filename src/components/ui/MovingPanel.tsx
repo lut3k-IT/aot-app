@@ -1,5 +1,7 @@
 import React from 'react';
+import classNames from 'classnames';
 
+import useIsMobile from '../hooks/useIsMobile';
 import { ScrollDirectionName, useScrollDirection } from '../hooks/useScrollDirection';
 
 interface MovingPanelProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -10,17 +12,25 @@ interface MovingPanelProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const MovingPanel = (props: MovingPanelProps) => {
-  const { children, translateClassName = '', className = '', classNameSpacer = '', ...rest } = props;
+  const { children, translateClassName, className, classNameSpacer, ...rest } = props;
+  const isMobile = useIsMobile();
 
   const scrollDirection = useScrollDirection();
   const computedClass = scrollDirection === ScrollDirectionName.DOWN ? translateClassName : 'translate-y-0';
 
   return (
     <div
-      className={`sticky top-0 z-20 w-full bg-background shadow-panel-bottom transition-transform ${computedClass} ${className}`}
+      className={classNames(
+        'shadow-panel-bottom-bg sticky top-0 z-20 w-full bg-background transition-transform',
+        computedClass,
+        {
+          'shadow-panel-bottom-card -mt-2 pt-2 dark:bg-card': !isMobile
+        },
+        className
+      )}
       {...rest}
     >
-      <div className={`h-body-start w-full bg-background ${classNameSpacer}`} />
+      {isMobile && <div className={classNames('h-body-start w-full bg-background', classNameSpacer)} />}
       {children}
     </div>
   );

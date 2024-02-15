@@ -1,3 +1,8 @@
+export enum Bool {
+  TRUE = 'true',
+  FALSE = 'false'
+}
+
 export enum ElementsIds {
   ROOT = 'root',
   PAGE_HEADING_OPTIONS = 'page-heading-options'

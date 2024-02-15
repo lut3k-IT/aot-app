@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import dayjs from 'dayjs';
 
 import { LanguageName, LanguageShortName, LocalStorageKey } from '@/constants/enums';
+import { DeviceType } from '@/constants/types';
 import { setLocalStorageItem } from '@/utils/storageHelpers';
 
 import 'dayjs/locale/en';
@@ -26,7 +27,12 @@ const availableLanguages: Language[] = [
   }
 ];
 
-const LanguageSwitcher = () => {
+interface LanguageSwitcherProps {
+  variant?: DeviceType;
+}
+
+const LanguageSwitcher = (props: LanguageSwitcherProps) => {
+  const { variant = 'mobile' } = props;
   const { i18n } = useTranslation();
 
   const handleChangeLanguage = (lang: LanguageShortName) => {
@@ -37,16 +43,27 @@ const LanguageSwitcher = () => {
 
   const currentLanguageName = availableLanguages.find((obj) => obj.id === i18n.language)?.label;
 
+  const MobileButton = (
+    <Button
+      variant='outline'
+      className={'w-min'}
+    >
+      {currentLanguageName}
+    </Button>
+  );
+
+  const DesktopButton = (
+    <Button
+      variant='ghost'
+      className={'w-28 text-sm'}
+    >
+      {currentLanguageName}
+    </Button>
+  );
+
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          variant='outline'
-          className={'w-min'}
-        >
-          {currentLanguageName}
-        </Button>
-      </DropdownMenuTrigger>
+      <DropdownMenuTrigger asChild>{variant === 'mobile' ? MobileButton : DesktopButton}</DropdownMenuTrigger>
       <DropdownMenuContent align='center'>
         {availableLanguages
           .filter((lang) => lang.id !== i18n.language)

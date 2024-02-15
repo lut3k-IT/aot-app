@@ -1,23 +1,28 @@
 import React from 'react';
-
-const RowHighlighter = () => (
-  <div className={'w-screen-pad absolute left-0 top-0 -z-10 h-[140%] -translate-y-[14%] rounded-md bg-accent'} />
-);
+import classNames from 'classnames';
 
 interface DetailItemProps {
   title: string;
   value?: React.ReactNode;
-  isOdd?: boolean;
+  isFirstColumn?: boolean;
+  isLastColumn?: boolean;
+  isOddRow?: boolean;
 }
 
 const DetailItem = (props: DetailItemProps) => {
-  const { title, value, isOdd } = props;
+  const { title, value, isFirstColumn, isLastColumn, isOddRow } = props;
 
   return (
-    <div className={'h-min-[3.75rem] relative flex h-full w-full flex-col items-center gap-1 px-2'}>
+    <div
+      className={classNames('h-min-[3.75rem] relative flex h-full w-full flex-col items-center gap-1 px-2 ', {
+        'py-3': !isOddRow,
+        'bg-accent py-2': isOddRow,
+        'rounded-s-md': isFirstColumn,
+        'rounded-e-md': isLastColumn
+      })}
+    >
       <div className={'text-base font-bold leading-none text-muted-foreground'}>{title}</div>
       <div className={'break-words text-center text-lg leading-6'}>{value || '-'}</div>
-      {isOdd && <RowHighlighter />}
     </div>
   );
 };

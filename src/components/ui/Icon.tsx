@@ -8,6 +8,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Dna,
+  EyeOff,
   Filter,
   Heart,
   HelpCircle,
@@ -66,6 +67,7 @@ export type IconNames =
   | 'sun'
   | 'user'
   | 'x'
+  | 'eyeOff'
   | 'quote'
   | 'chevronLeft'
   | 'chevronRight'
@@ -99,6 +101,7 @@ const Icon = ({ name, size, variant, color, isFilled = false, className, ...prop
     sun: Sun,
     user: User,
     x: X,
+    eyeOff: EyeOff,
     quote: Quote,
     chevronLeft: ChevronLeft,
     chevronRight: ChevronRight,

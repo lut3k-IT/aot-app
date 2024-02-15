@@ -4,10 +4,12 @@ import { DialogClose } from '@radix-ui/react-dialog';
 
 import { ExternalUrl, RoutePath } from '@/constants/enums';
 
+import AppVersionBadge from './AppVersionBadge';
 import { Button } from './Button';
 import { Label } from './Label';
 import LanguageSwitcher from './LanguageSwitcher';
 import { Switch } from './Switch';
+import SwitchSpoilerMode from './SwitchSpoilerMode';
 
 const SidebarMobile = () => {
   const { t } = useTranslation();
@@ -58,17 +60,12 @@ const SidebarMobile = () => {
         </Button>
       </div>
       <div className={'flex flex-col items-center gap-14'}>
+        <SwitchSpoilerMode />
         <LanguageSwitcher />
-        <div className='flex items-center justify-center space-x-3'>
-          <Switch id='spoiler-mode' />
-          <Label
-            htmlFor='spoiler-mode'
-            className='text-md font-medium leading-none'
-          >
-            {t('common:spoilerMode.hide')}
-          </Label>
-        </div>
+        {/* TODO: find better solution to add space */}
+        <div className={'h-1'}></div>
       </div>
+      <AppVersionBadge className={'absolute bottom-3'} />
     </div>
   );
 };

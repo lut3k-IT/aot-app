@@ -22,6 +22,7 @@
   },
   "action": {
     "submit": "Zatwierdź",
+    "continue": "Kontynuuj",
     "cancel": "Anuluj",
     "addToFavorites": "Dodaj do ulubionych",
     "removeFromFavorites": "Usuń z ulubionych",
@@ -81,5 +82,6 @@
       "plural": "Lat",
       "pluralFew": "Lata"
     }
-  }
+  },
+  "soon": "Wkrótce"
 }

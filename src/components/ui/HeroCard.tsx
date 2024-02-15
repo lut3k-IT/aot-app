@@ -8,6 +8,7 @@ import { addFavorite, removeFavorite } from '@/store/heroesSlice';
 import { getResidenceName, isInFavorites } from '@/utils/dataHelpers';
 
 import useAppDispatch from '../hooks/useAppDispatch';
+import useAppSelector from '../hooks/useAppSelector';
 import CharacterPicture from './CharacterPicture';
 import HeartButton from './HeartButton';
 import HeroStatus from './HeroStatus';
@@ -19,16 +20,17 @@ interface HeroCardProps {
 }
 
 const cnContainer = 'flex gap-4 h-27';
-const cnDetailBox = 'flex flex-col justify-between items-center gap-1';
+const cnDetailBox = 'flex flex-col items-center gap-1';
 const cnDetailTitle = 'text-sm font-medium text-muted-foreground leading-none';
 const cnDetailValue = 'text-lg font-medium leading-none';
 
 const HeroCard = (props: HeroCardProps) => {
   const { data, favorites } = props;
-  const { id, mbti, age, height, status, firstName = '', lastName = '', residence } = data;
+  const { id, mbti, age, height, weight, status, firstName = '', lastName = '', residence } = data;
 
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const isShowingSpoilers = useAppSelector((state) => state.spoilerMode);
 
   const residenceName = useMemo(() => getResidenceName(residence, t), [residence, t]);
   const isCurrentFavorite = useMemo(() => isInFavorites(id, favorites), [id, favorites]);
@@ -55,19 +57,36 @@ const HeroCard = (props: HeroCardProps) => {
     [data, t]
   );
 
-  const DetailsBoxes = useCallback(
-    () =>
-      showedDetails.map((detail) => (
-        <div
-          className={cnDetailBox}
-          key={detail.title}
-        >
-          <div className={cnDetailTitle}>{detail.title}</div>
-          <div className={cnDetailValue}>{detail.value || '-'}</div>
-        </div>
-      )),
-    [showedDetails]
+  const showedDetailsSpoiler = useMemo(
+    () => [
+      {
+        title: t('data:age.title'),
+        value: age
+      },
+      {
+        title: t('data:height.title'),
+        value: height
+      },
+      {
+        title: t('data:weight.title'),
+        value: weight
+      }
+    ],
+    [data, t]
   );
+
+  const DetailsBoxes = useCallback(() => {
+    const detailsToShow = isShowingSpoilers === true ? showedDetails : showedDetailsSpoiler;
+    return detailsToShow.map((detail) => (
+      <div
+        className={cnDetailBox}
+        key={detail.title}
+      >
+        <div className={cnDetailTitle}>{detail.title}</div>
+        <div className={cnDetailValue}>{detail.value || '-'}</div>
+      </div>
+    ));
+  }, [showedDetails, isShowingSpoilers, showedDetailsSpoiler]);
 
   return (
     <div className={cnContainer}>
@@ -94,8 +113,12 @@ const HeroCard = (props: HeroCardProps) => {
             onToggleFavorite={handleToggleFavorite}
           />
         </div>
-        <div className={'flex h-13 w-full items-center justify-center gap-8 rounded-md bg-muted px-4'}>
-          <DetailsBoxes />
+        <div className={'flex h-13 justify-center rounded-md bg-muted px-2'}>
+          {/* @todo make a container query for the card (more info in gray bar - when card is larger) */}
+          {/* @todo zamiast max width zrob tak, ze kazdy box ma swoj max i standardowo sie on rozpycha */}
+          <div className={'flex w-full max-w-[260px] items-center justify-evenly'}>
+            <DetailsBoxes />
+          </div>
         </div>
       </div>
     </div>

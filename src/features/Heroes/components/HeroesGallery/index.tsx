@@ -7,7 +7,7 @@ import useAppSelector from '@/components/hooks/useAppSelector';
 import AppHelmet from '@/components/ui/AppHelmet';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import HeroCard from '@/components/ui/HeroCard';
-import NewPagination, { DEFAULT_PAGE, DEFAULT_PAGE_SIZES } from '@/components/ui/NewPagination';
+import Pagination, { DEFAULT_PAGE, DEFAULT_PAGE_SIZES } from '@/components/ui/Pagination';
 import { ElementsIds, Param, SortDirection } from '@/constants/enums';
 import { HeroFilters, HeroSortOption } from '@/constants/types';
 import {
@@ -127,9 +127,10 @@ const HeroesGallery = () => {
         />
       ))}
       {hasData && (
-        <NewPagination
+        <Pagination
           itemsCount={filteredHeroes.length}
           totalPages={totalPages}
+          className={'col-span-full'}
         />
       )}
     </GalleryWrapper>

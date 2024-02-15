@@ -1,27 +1,28 @@
 import { useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import classNames from 'classnames';
 
 import useAppDispatch from '@/components/hooks/useAppDispatch';
 import useAppSelector from '@/components/hooks/useAppSelector';
+import useIsMobile from '@/components/hooks/useIsMobile';
 import useValidateIdFromParam from '@/components/hooks/useValidateIdFromParam';
 import AppHelmet from '@/components/ui/AppHelmet';
-import { Button } from '@/components/ui/Button';
+import FavoriteButton from '@/components/ui/FavoriteButton';
 import { MBTI_GROUPS_NAMES } from '@/constants/constants';
 import { RoutePath } from '@/constants/enums';
 import { MbtiGroups } from '@/constants/types';
 import mbti from '@/data/mbti';
 import { addFavorite, removeFavorite } from '@/store/titansSlice';
-import { getAllegianceNames, getHeroName, getMbtiShortName, isInFavorites } from '@/utils/dataHelpers';
+import { getHeroName, isInFavorites } from '@/utils/dataHelpers';
 
 import ButtonGoBack from '../../components/ui/ButtonGoBack';
 import CharacterPicture from '../../components/ui/CharacterPicture';
-import { DetailsGridRow } from '../../components/ui/DetailsGridRow';
+import DesktopTiles from './components/DesktopTiles';
+import MobileTiles from './components/MobileTiles';
 
 const TitanDetails = () => {
   const { id } = useParams();
-  const { t } = useTranslation();
+  const isMobile = useIsMobile();
   const dispatch = useAppDispatch();
 
   const paramTitanId = useValidateIdFromParam(id);
@@ -52,7 +53,11 @@ const TitanDetails = () => {
   if (!titan) return;
 
   return (
-    <div className={'pt-body-pad-start'}>
+    <div
+      className={classNames({
+        'pt-body-pad-start': isMobile
+      })}
+    >
       <AppHelmet title={titan.name} />
       <ButtonGoBack fallbackRoute={RoutePath.HEROES_GALLERY} />
       <div className={'relative mt-6 flex flex-col items-center'}>
@@ -73,47 +78,23 @@ const TitanDetails = () => {
         />
       </div>
       <div className={'mt-2 w-full text-center text-2xl font-medium'}>{titan.name}</div>
-      <div className={'mt-6 grid grid-cols-[minmax(100px,_120px)_minmax(120px,_2fr)] items-start gap-x-4 gap-y-3'}>
-        <DetailsGridRow
-          title={t('data:mbti.title')}
-          value={getMbtiShortName(titan.mbti) || '-'}
+      {isMobile ? (
+        <MobileTiles
+          titan={titan}
+          currentInheritor={currentInheritor}
+          formerInheritors={formerInheritors}
         />
-        <DetailsGridRow
-          title={t('data:height.title')}
-          value={`${titan.height} cm`}
+      ) : (
+        <DesktopTiles
+          titan={titan}
+          currentInheritor={currentInheritor}
+          formerInheritors={formerInheritors}
         />
-        <DetailsGridRow
-          title={t('data:allegiance.title')}
-          value={getAllegianceNames(titan.allegiance, t).join(', ')}
-        />
-        <DetailsGridRow
-          title={t('data:currentInheritor')}
-          value={currentInheritor || '-'}
-        />
-        <DetailsGridRow
-          title={t('data:formerInheritors')}
-          value={formerInheritors || '-'}
-        />
-        <DetailsGridRow
-          title={t('data:otherNames')}
-          value={titan.otherNames.length > 0 ? titan.otherNames.join(', ') : '-'}
-        />
-        <DetailsGridRow
-          title={t('data:abilities')}
-          value={titan.abilities.length > 0 ? titan.abilities.join(', ') : '-'}
-        />
-      </div>
-      <div className={'flex-center'}>
-        <Button
-          className={'mt-8 w-full max-w-[31.25rem]'}
-          iconName={'heart'}
-          variant={isFavorite ? 'secondary' : 'default'}
-          iconProps={{ isFilled: isFavorite, className: isFavorite ? 'text-red-500 fill-red-500' : '' }}
-          onClick={handleToggleFavorite}
-        >
-          {isFavorite ? t('common:action.removeFromFavorites') : t('common:action.addToFavorites')}
-        </Button>
-      </div>
+      )}{' '}
+      <FavoriteButton
+        isFavorite={isFavorite}
+        handleToggleFavorite={handleToggleFavorite}
+      />
     </div>
   );
 };

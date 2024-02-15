@@ -22,6 +22,7 @@
   },
   "action": {
     "submit": "Submit",
+    "continue": "Continue",
     "cancel": "Cancel",
     "addToFavorites": "Add to favorites",
     "removeFromFavorites": "Remove from favorites",
@@ -81,5 +82,6 @@
       "plural": "Years",
       "pluralFew": "Years"
     }
-  }
+  },
+  "soon": "Soon"
 }

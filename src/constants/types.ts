@@ -15,6 +15,8 @@ export type TranslateFunction = (key: string, options?: TOptions) => string;
 
 export type TextAbbreviation = 'short' | 'long';
 
+export type DeviceType = 'mobile' | 'desktop';
+
 /* ---------------------------------- Data ---------------------------------- */
 
 export interface HeroType {

@@ -65,7 +65,7 @@ module.exports = {
         ...rem(52, '13'),
         ...rem(108, '27'),
         ...rem(16, 'page-mobile'),
-        ...rem(32, 'page-desktop'),
+        ...rem(24, 'page-desktop'),
         ...rem(84, 'body-start'),
         ...rem(102, 'body-pad-start'),
         ...rem(64, 'body-end'),
@@ -91,7 +91,8 @@ module.exports = {
         'accordion-up': 'accordion-up 0.2s ease-out'
       },
       boxShadow: {
-        'panel-bottom': '0px 0px 6px 6px hsl(var(--background))'
+        'panel-bottom-bg': '0px 0px 6px 6px hsl(var(--background))',
+        'panel-bottom-card': '0px 0px 6px 6px hsl(var(--card))'
       }
     }
   },
