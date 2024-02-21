@@ -1,5 +1,10 @@
 {
-  "error": {},
+  "error": {
+    "noResults": "Brak wyników",
+    "tryDifferentSettings": "Spróbuj innych ustawień",
+    "somethingWentWrong": "Coś poszło nie tak!",
+    "tryAgainLater": "Spróbuj ponownie później."
+  },
   "success": {},
   "common": {},
   "launchDialog": {

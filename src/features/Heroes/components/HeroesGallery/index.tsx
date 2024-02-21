@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 
 import useAppSelector from '@/components/hooks/useAppSelector';
+import { useToast } from '@/components/hooks/useToast';
 import AppHelmet from '@/components/ui/AppHelmet';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import HeroCard from '@/components/ui/HeroCard';
 import HeroCardSkeleton from '@/components/ui/HeroCardSkeleton';
+import NoResults from '@/components/ui/NoResults';
 import Pagination, { DEFAULT_PAGE, DEFAULT_PAGE_SIZES } from '@/components/ui/Pagination';
 import { CARD_SKELETONS } from '@/constants/constants';
 import { ElementsIds, Param, SortDirection } from '@/constants/enums';
@@ -34,8 +36,11 @@ import {
 // todo: save pagesize in local storage
 // fixme: when on page 2 and in hero details, when go back the page 1 is shown but page 2 in params
 
+const SkeletonCards = () => Array.from({ length: CARD_SKELETONS }, (_, index) => <HeroCardSkeleton key={index} />);
+
 const HeroesGallery = () => {
   const { t } = useTranslation();
+  const { toast } = useToast();
   const [searchParams, setSearchParams] = useSearchParams();
   const filterDestination = document.getElementById(ElementsIds.PAGE_HEADING_OPTIONS);
 
@@ -49,11 +54,11 @@ const HeroesGallery = () => {
 
   const [filteredHeroes, setFilteredHeroes] = useState(originalHeroes);
   const [paginatedHeroes, setPaginatedHeroes] = useState(originalHeroes);
-  const [heroesJsx, setHeroesJsx] = useState<React.ReactElement[]>([]);
 
   // todo: if there is no data and there is no error and fetching, show an announcement to try other filters
 
-  const hasRenderedData = heroesJsx.length > 0;
+  const hasData = originalHeroes.length > 0;
+  const hasDataToShow = filteredHeroes.length > 0;
 
   /* --------------------------------- filters -------------------------------- */
 
@@ -121,29 +126,38 @@ const HeroesGallery = () => {
     }
   }, [searchParams, filteredHeroes, totalPages]);
 
-  /* ----------------------------------- JSX ---------------------------------- */
+  /* ------------------------------- error toast ------------------------------- */
 
   useEffect(() => {
-    if (!isLoading) {
-      const mappedHeroes = paginatedHeroes.map((hero) => (
-        <HeroCard
-          data={hero}
-          favorites={favoriteHeroesIds}
-          key={hero.id}
-        />
-      ));
-      setHeroesJsx(mappedHeroes);
+    if (fetchingError) {
+      toast({
+        variant: 'destructive',
+        title: t('notifications:error.somethingWentWrong'),
+        description: t('notifications:error.tryAgainLater')
+      });
     }
-  }, [isLoading, paginatedHeroes, favoriteHeroesIds]);
-
-  const skeletonCards = Array.from({ length: CARD_SKELETONS }, (_, index) => <HeroCardSkeleton key={index} />);
+  }, [fetchingError]);
 
   return (
     <GalleryWrapper>
       <AppHelmet title={`${t('common:title.heroes')} ${t('common:tab.gallery')}`} />
       {filterDestination && createPortal(<Filter />, filterDestination)}
-      {hasRenderedData ? heroesJsx : skeletonCards}
-      {hasRenderedData && (
+      {hasData && !isLoading ? (
+        hasDataToShow ? (
+          paginatedHeroes.map((hero) => (
+            <HeroCard
+              data={hero}
+              favorites={favoriteHeroesIds}
+              key={hero.id}
+            />
+          ))
+        ) : (
+          <NoResults />
+        )
+      ) : (
+        <SkeletonCards />
+      )}
+      {hasDataToShow && !isLoading && (
         <Pagination
           itemsCount={filteredHeroes.length}
           totalPages={totalPages}
