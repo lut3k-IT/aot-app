@@ -9,6 +9,7 @@ import { getAllegianceNames, getHeroName, isInFavorites } from '@/utils/dataHelp
 
 import useAppDispatch from '../hooks/useAppDispatch';
 import useAppSelector from '../hooks/useAppSelector';
+import { useToast } from '../hooks/useToast';
 import CharacterPicture from './CharacterPicture';
 import HeartButton from './HeartButton';
 import MbtiFrame from './MbtiFrame';
@@ -29,6 +30,7 @@ const TitanCard = (props: TitanCardProps) => {
   const { id, mbti, name = '', height, allegiance, currentInheritor } = data;
 
   const { t } = useTranslation();
+  const { toast } = useToast();
   const dispatch = useAppDispatch();
   const isShowingSpoilers = useAppSelector((state) => state.spoilerMode);
 
@@ -52,6 +54,11 @@ const TitanCard = (props: TitanCardProps) => {
 
   const handleToggleFavorite = useCallback(() => {
     dispatch(isCurrentFavorite ? removeFavorite(id) : addFavorite(id));
+    toast({
+      title: isCurrentFavorite
+        ? t('notifications:common.removedFromFavorites')
+        : t('notifications:common.addedToFavorites')
+    });
   }, [dispatch, isCurrentFavorite, id]);
 
   const DetailsBoxes = useCallback(

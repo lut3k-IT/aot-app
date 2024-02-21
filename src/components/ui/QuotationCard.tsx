@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import { RoutePath } from '@/constants/enums';
@@ -7,6 +8,7 @@ import { addFavorite, removeFavorite } from '@/store/quotationsSlice';
 import { isInFavorites } from '@/utils/dataHelpers';
 
 import useAppDispatch from '../hooks/useAppDispatch';
+import { useToast } from '../hooks/useToast';
 import { Card } from './Card';
 import HeartButton from './HeartButton';
 
@@ -20,12 +22,17 @@ interface QuotationCardProps {
 const QuotationCard = (props: QuotationCardProps) => {
   const { id, text, favoritesList, className } = props;
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
+  const { toast } = useToast();
 
   const isFavorite = isInFavorites(id, favoritesList);
 
   const handleToggleFavorite = useCallback(() => {
     const action = isFavorite ? removeFavorite : addFavorite;
     dispatch(action(id));
+    toast({
+      title: isFavorite ? t('notifications:common.removedFromFavorites') : t('notifications:common.addedToFavorites')
+    });
   }, [isFavorite, dispatch]);
 
   return (

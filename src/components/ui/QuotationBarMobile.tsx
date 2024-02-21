@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import { RoutePath } from '@/constants/enums';
@@ -9,6 +10,7 @@ import useAppDispatch from '../hooks/useAppDispatch';
 import useAppSelector from '../hooks/useAppSelector';
 import useIsMobile from '../hooks/useIsMobile';
 import { useQuotationsSlideshow } from '../hooks/useQuotationsSlideshow';
+import { useToast } from '../hooks/useToast';
 import { Card } from './Card';
 import HeartButton from './HeartButton';
 
@@ -16,6 +18,8 @@ import HeartButton from './HeartButton';
 const QuotationBarMobile = () => {
   const dispatch = useAppDispatch();
   const isMobile = useIsMobile();
+  const { t } = useTranslation();
+  const { toast } = useToast();
 
   const favoriteQuotationsIds = useAppSelector((state) => state.quotations.favoriteIds);
   const fetchingStatus = useAppSelector((state) => state.quotations.status);
@@ -30,6 +34,11 @@ const QuotationBarMobile = () => {
   const handleToggleFavorite = useCallback(() => {
     const action = isCurrentFavorite ? removeFavorite : addFavorite;
     dispatch(action(currentQuotation.id));
+    toast({
+      title: isCurrentFavorite
+        ? t('notifications:common.removedFromFavorites')
+        : t('notifications:common.addedToFavorites')
+    });
   }, [isCurrentFavorite, currentQuotation, dispatch]);
 
   /* ---------------------------- proxy components ---------------------------- */
