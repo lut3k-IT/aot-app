@@ -33,8 +33,8 @@ const NavigationElement = (props: NavigationElementProps) => {
         />
       </div>
       <div
-        className={classNames('w-full text-center text-xs font-medium leading-none text-muted-foreground', {
-          '!text-foreground': isActive
+        className={classNames('w-full text-center text-xs font-medium leading-none text-muted-foreground transition', {
+          'translate-y-0.5 !text-foreground': isActive
         })}
       >
         {t(data.name)}

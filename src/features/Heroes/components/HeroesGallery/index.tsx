@@ -6,9 +6,9 @@ import { useSearchParams } from 'react-router-dom';
 import useAppSelector from '@/components/hooks/useAppSelector';
 import { useToast } from '@/components/hooks/useToast';
 import AppHelmet from '@/components/ui/AppHelmet';
+import CharacterCardSkeleton from '@/components/ui/CharacterCardSkeleton';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import HeroCard from '@/components/ui/HeroCard';
-import HeroCardSkeleton from '@/components/ui/HeroCardSkeleton';
 import NoResults from '@/components/ui/NoResults';
 import Pagination, { DEFAULT_PAGE, DEFAULT_PAGE_SIZES } from '@/components/ui/Pagination';
 import { CARD_SKELETONS } from '@/constants/constants';
@@ -36,7 +36,7 @@ import {
 // todo: save pagesize in local storage
 // fixme: when on page 2 and in hero details, when go back the page 1 is shown but page 2 in params
 
-const SkeletonCards = () => Array.from({ length: CARD_SKELETONS }, (_, index) => <HeroCardSkeleton key={index} />);
+const SkeletonCards = () => Array.from({ length: CARD_SKELETONS }, (_, index) => <CharacterCardSkeleton key={index} />);
 
 const HeroesGallery = () => {
   const { t } = useTranslation();

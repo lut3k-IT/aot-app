@@ -1,6 +1,6 @@
 import { Skeleton } from './Skeleton';
 
-const HeroCardSkeleton = () => {
+const CharacterCardSkeleton = () => {
   return (
     <div className={'flex h-27 gap-4'}>
       <Skeleton className={'w-[88px]'} />
@@ -15,4 +15,4 @@ const HeroCardSkeleton = () => {
   );
 };
 
-export default HeroCardSkeleton;
+export default CharacterCardSkeleton;
