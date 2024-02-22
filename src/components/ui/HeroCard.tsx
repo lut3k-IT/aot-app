@@ -9,6 +9,7 @@ import { getResidenceName, isInFavorites } from '@/utils/dataHelpers';
 
 import useAppDispatch from '../hooks/useAppDispatch';
 import useAppSelector from '../hooks/useAppSelector';
+import { useToast } from '../hooks/useToast';
 import CharacterPicture from './CharacterPicture';
 import HeartButton from './HeartButton';
 import HeroStatus from './HeroStatus';
@@ -29,6 +30,7 @@ const HeroCard = (props: HeroCardProps) => {
   const { id, mbti, age, height, weight, status, firstName = '', lastName = '', residence } = data;
 
   const { t } = useTranslation();
+  const { toast } = useToast();
   const dispatch = useAppDispatch();
   const isShowingSpoilers = useAppSelector((state) => state.spoilerMode);
 
@@ -37,6 +39,11 @@ const HeroCard = (props: HeroCardProps) => {
 
   const handleToggleFavorite = useCallback(() => {
     dispatch(isCurrentFavorite ? removeFavorite(id) : addFavorite(id));
+    toast({
+      title: isCurrentFavorite
+        ? t('notifications:common.removedFromFavorites')
+        : t('notifications:common.addedToFavorites')
+    });
   }, [dispatch, isCurrentFavorite, id]);
 
   const showedDetails = useMemo(

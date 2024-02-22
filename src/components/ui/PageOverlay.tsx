@@ -9,6 +9,7 @@ import NavigationMobile from './NavigationMobile';
 import QuotationBarMobile from './QuotationBarMobile';
 import { ScrollArea, ScrollBar } from './ScrollArea';
 import SidebarDesktop from './SidebarDesktop';
+import { Toaster } from './Toaster';
 import TopBarMobile from './TopBarMobile';
 
 const PageOverlay = () => {
@@ -29,6 +30,7 @@ const PageOverlay = () => {
         <CommonOutlet />
       </div>
       <NavigationMobile />
+      <Toaster />
     </>
   );
 
@@ -74,6 +76,7 @@ const PageOverlay = () => {
           </ScrollArea>
         </div>
       </div>
+      <Toaster />
     </div>
   );
 

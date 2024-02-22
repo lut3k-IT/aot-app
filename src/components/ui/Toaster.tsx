@@ -1,14 +1,12 @@
+import { useToast } from '@/components/hooks/useToast';
 import { Toast, ToastClose, ToastDescription, ToastProvider, ToastTitle, ToastViewport } from '@/components/ui/Toast';
-// import { useToast } from '@/components/hooks/useToast';
-
-// TODO: fix that
 
 export function Toaster() {
-  // const { toasts } = useToast();
+  const { toasts } = useToast();
 
   return (
     <ToastProvider>
-      {/* {toasts.map(function ({ id, title, description, action, ...props }) {
+      {toasts.map(function ({ id, title, description, action, ...props }) {
         return (
           <Toast
             key={id}
@@ -23,7 +21,7 @@ export function Toaster() {
           </Toast>
         );
       })}
-      <ToastViewport /> */}
+      <ToastViewport />
     </ToastProvider>
   );
 }

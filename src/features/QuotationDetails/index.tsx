@@ -1,10 +1,12 @@
 import { useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import classNames from 'classnames';
 
 import useAppDispatch from '@/components/hooks/useAppDispatch';
 import useAppSelector from '@/components/hooks/useAppSelector';
 import useIsMobile from '@/components/hooks/useIsMobile';
+import { useToast } from '@/components/hooks/useToast';
 import useValidateIdFromParam from '@/components/hooks/useValidateIdFromParam';
 import AppHelmet from '@/components/ui/AppHelmet';
 import ButtonGoBack from '@/components/ui/ButtonGoBack';
@@ -18,6 +20,8 @@ const QuotationDetails = () => {
   const { id } = useParams();
   const isMobile = useIsMobile();
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
+  const { toast } = useToast();
 
   const paramQuotationId = useValidateIdFromParam(id);
 
@@ -32,6 +36,9 @@ const QuotationDetails = () => {
   const handleToggleFavorite = useCallback(() => {
     const action = isFavorite ? removeFavorite : addFavorite;
     dispatch(action(paramQuotationId));
+    toast({
+      title: isFavorite ? t('notifications:common.removedFromFavorites') : t('notifications:common.addedToFavorites')
+    });
   }, [isFavorite, dispatch]);
 
   if (!quotation && quotations.length > 0) throw new Error('Quotation with this ID does not exist.');

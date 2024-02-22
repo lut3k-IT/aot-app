@@ -4,10 +4,14 @@ import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 
 import useAppSelector from '@/components/hooks/useAppSelector';
+import { useToast } from '@/components/hooks/useToast';
 import AppHelmet from '@/components/ui/AppHelmet';
+import CharacterCardSkeleton from '@/components/ui/CharacterCardSkeleton';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import HeroCard from '@/components/ui/HeroCard';
+import NoResults from '@/components/ui/NoResults';
 import Pagination, { DEFAULT_PAGE, DEFAULT_PAGE_SIZES } from '@/components/ui/Pagination';
+import { CARD_SKELETONS } from '@/constants/constants';
 import { ElementsIds, Param, SortDirection } from '@/constants/enums';
 import { HeroFilters, HeroSortOption } from '@/constants/types';
 import {
@@ -32,8 +36,11 @@ import {
 // todo: save pagesize in local storage
 // fixme: when on page 2 and in hero details, when go back the page 1 is shown but page 2 in params
 
+const SkeletonCards = () => Array.from({ length: CARD_SKELETONS }, (_, index) => <CharacterCardSkeleton key={index} />);
+
 const HeroesGallery = () => {
   const { t } = useTranslation();
+  const { toast } = useToast();
   const [searchParams, setSearchParams] = useSearchParams();
   const filterDestination = document.getElementById(ElementsIds.PAGE_HEADING_OPTIONS);
 
@@ -43,14 +50,17 @@ const HeroesGallery = () => {
   const favoriteHeroesIds = useAppSelector((state) => state.heroes.favoriteIds);
   const fetchingStatus = useAppSelector((state) => state.heroes.status);
   const fetchingError = useAppSelector((state) => state.heroes.error);
+  const isLoading = fetchingStatus === 'loading';
 
   const [filteredHeroes, setFilteredHeroes] = useState(originalHeroes);
   const [paginatedHeroes, setPaginatedHeroes] = useState(originalHeroes);
 
   // todo: if there is no data and there is no error and fetching, show an announcement to try other filters
-  const hasData = paginatedHeroes.length > 0;
 
-  /* ----------------------------- data management ---------------------------- */
+  const hasData = originalHeroes.length > 0;
+  const hasDataToShow = filteredHeroes.length > 0;
+
+  /* --------------------------------- filters -------------------------------- */
 
   // filter heroes on redux or param change
   useEffect(() => {
@@ -91,7 +101,8 @@ const HeroesGallery = () => {
     setFilteredHeroes(filterHeroes(originalHeroes, filters));
   }, [originalHeroes, searchParams]);
 
-  // paginate heroes
+  /* ------------------------------- pagination ------------------------------- */
+
   useEffect(() => {
     const page = getSafePageNumberFromSearchParam(searchParams);
     const pageSize = Number(searchParams.get(Param.PAGE_SIZE)) || DEFAULT_PAGE_SIZES[0];
@@ -105,7 +116,7 @@ const HeroesGallery = () => {
 
   /* --------------------------------- params --------------------------------- */
 
-  // go back to page 1 if page param is higher than the total page count
+  // goes back to page 1 if page param is higher than the total page count
   useEffect(() => {
     const page = getSafePageNumberFromSearchParam(searchParams);
     const isPageParamOutOfRange = page > totalPages && totalPages !== 0 && filteredHeroes.length > 0;
@@ -115,18 +126,38 @@ const HeroesGallery = () => {
     }
   }, [searchParams, filteredHeroes, totalPages]);
 
+  /* ------------------------------- error toast ------------------------------- */
+
+  useEffect(() => {
+    if (fetchingError) {
+      toast({
+        variant: 'destructive',
+        title: t('notifications:error.somethingWentWrong'),
+        description: t('notifications:error.tryAgainLater')
+      });
+    }
+  }, [fetchingError]);
+
   return (
     <GalleryWrapper>
       <AppHelmet title={`${t('common:title.heroes')} ${t('common:tab.gallery')}`} />
       {filterDestination && createPortal(<Filter />, filterDestination)}
-      {paginatedHeroes.map((hero) => (
-        <HeroCard
-          data={hero}
-          favorites={favoriteHeroesIds}
-          key={hero.id}
-        />
-      ))}
-      {hasData && (
+      {hasData && !isLoading ? (
+        hasDataToShow ? (
+          paginatedHeroes.map((hero) => (
+            <HeroCard
+              data={hero}
+              favorites={favoriteHeroesIds}
+              key={hero.id}
+            />
+          ))
+        ) : (
+          <NoResults />
+        )
+      ) : (
+        <SkeletonCards />
+      )}
+      {hasDataToShow && !isLoading && (
         <Pagination
           itemsCount={filteredHeroes.length}
           totalPages={totalPages}

@@ -1,10 +1,12 @@
 import { useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import classNames from 'classnames';
 
 import useAppDispatch from '@/components/hooks/useAppDispatch';
 import useAppSelector from '@/components/hooks/useAppSelector';
 import useIsMobile from '@/components/hooks/useIsMobile';
+import { useToast } from '@/components/hooks/useToast';
 import useValidateIdFromParam from '@/components/hooks/useValidateIdFromParam';
 import AppHelmet from '@/components/ui/AppHelmet';
 import FavoriteButton from '@/components/ui/FavoriteButton';
@@ -24,6 +26,8 @@ const TitanDetails = () => {
   const { id } = useParams();
   const isMobile = useIsMobile();
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
+  const { toast } = useToast();
 
   const paramTitanId = useValidateIdFromParam(id);
 
@@ -47,6 +51,9 @@ const TitanDetails = () => {
   const handleToggleFavorite = useCallback(() => {
     const action = isFavorite ? removeFavorite : addFavorite;
     dispatch(action(paramTitanId));
+    toast({
+      title: isFavorite ? t('notifications:common.removedFromFavorites') : t('notifications:common.addedToFavorites')
+    });
   }, [isFavorite, dispatch]);
 
   if (!titan && originalTitans.length > 0) throw new Error('Titan with this ID does not exist.');

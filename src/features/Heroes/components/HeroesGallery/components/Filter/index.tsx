@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 
+import { useToast } from '@/components/hooks/useToast';
 import { Button } from '@/components/ui/Button';
 import {
   Dialog,
@@ -53,6 +54,7 @@ import {
 
 const Filter = () => {
   const { t } = useTranslation();
+  const { toast } = useToast();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -173,6 +175,10 @@ const Filter = () => {
     setSearchParams((searchParams) => {
       updateSearchParams(searchParams, parameters);
       return searchParams;
+    });
+
+    toast({
+      title: t('notifications:common.filtersApplied')
     });
 
     setIsModalOpen(false);

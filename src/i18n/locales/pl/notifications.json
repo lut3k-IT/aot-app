@@ -1,7 +1,17 @@
 {
-  "error": {},
+  "error": {
+    "noResults": "Brak wyników",
+    "tryDifferentSettings": "Spróbuj innych ustawień",
+    "somethingWentWrong": "Coś poszło nie tak!",
+    "tryAgainLater": "Spróbuj ponownie później."
+  },
   "success": {},
-  "common": {},
+  "common": {
+    "changesApplied": "Zmiany zostały zastosowane",
+    "filtersApplied": "Filtry zostały zastosowane",
+    "removedFromFavorites": "Usunięto z ulubionych",
+    "addedToFavorites": "Dodano do ulubionych"
+  },
   "launchDialog": {
     "title": "Witaj w wersji Beta AoT app!",
     "description1": "Jest to aplikacja internetowa, na której możesz znaleźć informacje na temat postaci z anime Attack on Titan (Shingeki no Kyojin), przeglądać zbiór cytatów i dodawać je do ulubionych. Aplikacja jest w fazie rozwoju, więc mogą wystąpić błędy.",

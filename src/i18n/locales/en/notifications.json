@@ -1,7 +1,17 @@
 {
-  "error": {},
+  "error": {
+    "noResults": "No results found",
+    "tryDifferentSettings": "Try different settings",
+    "somethingWentWrong": "Something went wrong!",
+    "tryAgainLater": "Please try again later."
+  },
   "success": {},
-  "common": {},
+  "common": {
+    "changesApplied": "Changes applied",
+    "filtersApplied": "Filters applied",
+    "removedFromFavorites": "Removed from favorites",
+    "addedToFavorites": "Added to favorites"
+  },
   "launchDialog": {
     "title": "Welcome to the Beta version of the AoT app!",
     "description1": "This is a web application where you can find information about characters from the anime Attack on Titan (Shingeki no Kyojin), browse a collection of quotes and add them to your favourites.",
