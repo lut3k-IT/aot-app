@@ -83,5 +83,13 @@
       "pluralFew": "Years"
     }
   },
+  "ui": {
+    "modeToggle": {
+      "title": "Toggle mode",
+      "dark": "Dark",
+      "light": "Light",
+      "system": "System"
+    }
+  },
   "soon": "Soon"
 }

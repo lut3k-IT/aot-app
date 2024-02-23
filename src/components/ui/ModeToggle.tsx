@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { Button } from '@/components/ui/Button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/DropdownMenu';
@@ -11,14 +12,15 @@ interface ModeToggleProps {
   variant?: DeviceType;
 }
 
-// @todo - i18next for labels
 // @todo - system theme application issue
 
 const ModeToggle = (props: ModeToggleProps) => {
   const { variant = 'mobile' } = props;
-  const { setTheme } = useTheme();
+  const { t } = useTranslation();
 
-  const [themeName, setThemeName] = useState('Light');
+  const { theme, setTheme } = useTheme();
+  // @audit make a types for this || make a helper function to get the theme name || Enum
+  const [themeName, setThemeName] = useState(t(`common:ui.modeToggle.${theme}`));
 
   const MobileButton = (
     <Button
@@ -33,7 +35,7 @@ const ModeToggle = (props: ModeToggleProps) => {
         name={'moon'}
         className='absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100'
       />
-      <span className='sr-only'>Toggle theme</span>
+      <span className='sr-only'>{t('common:ui.modeToggle.title')}</span>
     </Button>
   );
 
@@ -54,7 +56,7 @@ const ModeToggle = (props: ModeToggleProps) => {
             className='absolute top-0 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100'
           />
         </div>
-        <span className='sr-only'>Toggle theme</span>
+        <span className='sr-only'>{t('common:ui.modeToggle.title')}</span>
         <span className={'px-1 font-medium'}>{themeName}</span>
       </Button>
     </span>
@@ -67,26 +69,26 @@ const ModeToggle = (props: ModeToggleProps) => {
         <DropdownMenuItem
           onClick={() => {
             setTheme('light');
-            setThemeName('Light');
+            setThemeName(t('common:ui.modeToggle.light'));
           }}
         >
-          Light
+          {t('common:ui.modeToggle.light')}
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => {
             setTheme('dark');
-            setThemeName('Dark');
+            setThemeName(t('common:ui.modeToggle.dark'));
           }}
         >
-          Dark
+          {t('common:ui.modeToggle.dark')}
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => {
             setTheme('system');
-            setThemeName('System');
+            setThemeName(t('common:ui.modeToggle.system'));
           }}
         >
-          System
+          {t('common:ui.modeToggle.system')}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

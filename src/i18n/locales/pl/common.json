@@ -83,5 +83,13 @@
       "pluralFew": "Lata"
     }
   },
+  "ui": {
+    "modeToggle": {
+      "title": "Przełącz tryb",
+      "dark": "Ciemny",
+      "light": "Jasny",
+      "system": "Systemowy"
+    }
+  },
   "soon": "Wkrótce"
 }
