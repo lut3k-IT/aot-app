@@ -6,7 +6,7 @@ import { Button } from './Button';
 import Icon, { IconSizes } from './Icon';
 
 interface HeartButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  onToggleFavorite: () => void;
+  onToggleFavorite: (event: React.MouseEvent) => void;
   iconSize?: IconSizes;
   className?: string;
   isFilled?: boolean;

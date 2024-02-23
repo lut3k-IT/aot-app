@@ -27,22 +27,26 @@ const QuotationCard = (props: QuotationCardProps) => {
 
   const isFavorite = isInFavorites(id, favoritesList);
 
-  const handleToggleFavorite = useCallback(() => {
-    const action = isFavorite ? removeFavorite : addFavorite;
-    dispatch(action(id));
-    toast({
-      title: isFavorite ? t('notifications:common.removedFromFavorites') : t('notifications:common.addedToFavorites')
-    });
-  }, [isFavorite, dispatch]);
+  const handleToggleFavorite = useCallback(
+    (event: React.MouseEvent) => {
+      event.preventDefault();
+      const action = isFavorite ? removeFavorite : addFavorite;
+      dispatch(action(id));
+      toast({
+        title: isFavorite ? t('notifications:common.removedFromFavorites') : t('notifications:common.addedToFavorites')
+      });
+    },
+    [isFavorite, dispatch]
+  );
 
   return (
     <Link to={`${RoutePath.QUOTATION_DETAILS}/${id}`}>
       <Card className={cn('relative h-full w-full rounded-md border p-4 pr-14', className)}>
         <div className={'text-md line-clamp-3 overflow-hidden'}>{text}</div>
         <HeartButton
-          onToggleFavorite={handleToggleFavorite}
-          className={'absolute right-3 top-3 h-min'}
+          className={'absolute right-3 top-3'}
           isFilled={isFavorite}
+          onToggleFavorite={(event: React.MouseEvent) => handleToggleFavorite(event)}
         />
       </Card>
     </Link>

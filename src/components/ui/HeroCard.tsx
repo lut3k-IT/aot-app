@@ -38,7 +38,8 @@ const HeroCard = (props: HeroCardProps) => {
   const isCurrentFavorite = useMemo(() => isInFavorites(id, favorites), [id, favorites]);
 
   const handleToggleFavorite = useCallback(() => {
-    dispatch(isCurrentFavorite ? removeFavorite(id) : addFavorite(id));
+    const action = isCurrentFavorite ? removeFavorite : addFavorite;
+    dispatch(action(id));
     toast({
       title: isCurrentFavorite
         ? t('notifications:common.removedFromFavorites')
