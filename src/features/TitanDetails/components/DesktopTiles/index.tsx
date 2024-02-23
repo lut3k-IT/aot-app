@@ -8,7 +8,7 @@ import { SpoilerContent } from '@/utils/layoutHelpers';
 
 interface TileProps {
   title: string;
-  value: string | React.ReactNode;
+  value: React.ReactNode;
   span?: number;
 }
 

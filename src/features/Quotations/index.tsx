@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import useAppSelector from '@/components/hooks/useAppSelector';
-import useIsMobile from '@/components/hooks/useIsMobile';
 import { useToast } from '@/components/hooks/useToast';
 import AppHelmet from '@/components/ui/AppHelmet';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
@@ -18,7 +17,6 @@ const SkeletonCards = () => Array.from({ length: CARD_SKELETONS }, (_, index) =>
 const Quotations = () => {
   const { t } = useTranslation();
   const { toast } = useToast();
-  const isMobile = useIsMobile();
 
   const quotations = useAppSelector((state) => state.quotations.data);
   const favoriteIds = useAppSelector((state) => state.quotations.favoriteIds);
@@ -44,8 +42,8 @@ const Quotations = () => {
     <>
       <AppHelmet title={`${t('common:title.quotations')} ${t('common:tab.gallery')}`} />
       {/* @remind this is a bad practice - fix it later */}
-      <MovingPanel className={!isMobile ? '!pt-0' : ''}>
-        <PageHeading className={!isMobile ? '!pt-0' : ''} />
+      <MovingPanel className={'md:pt-0'}>
+        <PageHeading className={'md:pt-0'} />
       </MovingPanel>
       <GalleryWrapper>
         {hasData && !isLoading ? (

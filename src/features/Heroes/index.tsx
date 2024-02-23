@@ -1,8 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { createSearchParams, Navigate, Outlet, useSearchParams } from 'react-router-dom';
-import classNames from 'classnames';
 
-import useIsMobile from '@/components/hooks/useIsMobile';
 import PageHeading from '@/components/ui/PageHeading';
 import { RoutePath } from '@/constants/enums';
 import { getCurrentRoute } from '@/utils/helpers';
@@ -21,7 +19,6 @@ const tabsTriggerClassName = 'flex-1';
 
 const Heroes = () => {
   const { t } = useTranslation();
-  const isMobile = useIsMobile();
 
   const [searchParams] = useSearchParams();
   const searchParamsString = createSearchParams(searchParams);
@@ -52,9 +49,7 @@ const Heroes = () => {
       <MovingPanel translateClassName={'-translate-y-[3.5rem]'}>
         <Tabs
           defaultValue={defaultValueBasedOnTheRoute()}
-          className={classNames('w-full pt-4', {
-            '!pt-0': !isMobile
-          })}
+          className={'w-full pt-4 md:pt-0'}
         >
           <TabsList
             className='flex w-full justify-between'

@@ -41,6 +41,7 @@ const QuotationDetails = () => {
     });
   }, [isFavorite, dispatch]);
 
+  // @audit this should be handled by the custom hook
   if (!quotation && quotations.length > 0) throw new Error('Quotation with this ID does not exist.');
   if (!quotation) return;
 

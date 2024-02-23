@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import useAppSelector from '@/components/hooks/useAppSelector';
-import useIsMobile from '@/components/hooks/useIsMobile';
 import { useToast } from '@/components/hooks/useToast';
 import AppHelmet from '@/components/ui/AppHelmet';
 import CharacterCardSkeleton from '@/components/ui/CharacterCardSkeleton';
@@ -19,7 +18,6 @@ const SkeletonCards = () => Array.from({ length: CARD_SKELETONS }, (_, index) =>
 const TitansGallery = () => {
   const { t } = useTranslation();
   const { toast } = useToast();
-  const isMobile = useIsMobile();
 
   const originalTitans = useAppSelector((state) => state.titans.data);
   const originalHeroes = useAppSelector((state) => state.heroes.data);
@@ -57,8 +55,8 @@ const TitansGallery = () => {
   return (
     <>
       <AppHelmet title={`${t('common:title.titans')} ${t('common:tab.gallery')}`} />
-      <MovingPanel className={!isMobile ? '!pt-0' : ''}>
-        <PageHeading className={!isMobile ? '!pt-0' : ''} />
+      <MovingPanel className={'md:pt-0'}>
+        <PageHeading className={'md:pt-0'} />
       </MovingPanel>
       <GalleryWrapper>
         {hasData && !isLoading ? (

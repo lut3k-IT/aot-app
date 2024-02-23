@@ -1,5 +1,6 @@
 import React from 'react';
-import classNames from 'classnames';
+
+import { cn } from '@/lib/utils';
 
 import useIsMobile from '../hooks/useIsMobile';
 import { ScrollDirectionName, useScrollDirection } from '../hooks/useScrollDirection';
@@ -20,17 +21,14 @@ const MovingPanel = (props: MovingPanelProps) => {
 
   return (
     <div
-      className={classNames(
-        'shadow-panel-bottom-bg sticky top-0 z-20 w-full bg-background transition-transform',
+      className={cn(
+        'sticky top-0 z-20 w-full bg-background shadow-panel-bottom-bg transition-transform md:-mt-2 md:pt-2 md:shadow-panel-bottom-card md:dark:bg-card',
         computedClass,
-        {
-          'shadow-panel-bottom-card -mt-2 pt-2 dark:bg-card': !isMobile
-        },
         className
       )}
       {...rest}
     >
-      {isMobile && <div className={classNames('h-body-start w-full bg-background', classNameSpacer)} />}
+      {isMobile && <div className={cn('h-body-start w-full bg-background', classNameSpacer)} />}
       {children}
     </div>
   );
