@@ -30,7 +30,7 @@ const DesktopTiles = (props: DesktopTilesProps) => {
   const { t } = useTranslation();
 
   return (
-    <div className={'mt-8 grid grid-cols-[repeat(auto-fill,_minmax(9rem,_1fr))] gap-4'}>
+    <div className={'mt-8 grid grid-cols-[repeat(auto-fill,_minmax(10rem,_1fr))] gap-4'}>
       <Tile
         title={t('data:mbti.title')}
         value={getMbtiShortName(hero.mbti) || '-'}

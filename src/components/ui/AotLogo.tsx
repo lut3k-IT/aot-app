@@ -25,7 +25,7 @@ const AotLogo = (props: AotLogoProps) => {
         name={'aotLg'}
         size={'lg'}
       />
-      <div className='font-vector h-5 text-3xl leading-none'>{t('common:brand')}</div>
+      <div className='font-vector mt-0.5 h-5 text-3xl leading-none'>{t('common:brand')}</div>
     </Link>
   );
 };

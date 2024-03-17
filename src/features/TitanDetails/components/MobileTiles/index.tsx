@@ -16,7 +16,7 @@ const MobileTiles = (props: MobileTIlesProps) => {
   const { t } = useTranslation();
 
   return (
-    <div className={'mt-6 grid grid-cols-[minmax(100px,_120px)_minmax(120px,_2fr)] items-start gap-x-4 gap-y-3'}>
+    <div className={'mt-8 grid grid-cols-[repeat(auto-fill,_minmax(10rem,_1fr))] gap-4'}>
       <DetailsGridRow
         title={t('data:mbti.title')}
         value={getMbtiShortName(titan.mbti) || '-'}
