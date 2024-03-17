@@ -15,7 +15,7 @@ import { Card } from './Card';
 import HeartButton from './HeartButton';
 
 // @todo - refactor to use useQuotations custom hook
-const QuotationBarMobile = () => {
+const QuotationBar = () => {
   const dispatch = useAppDispatch();
   const isMobile = useIsMobile();
   const { t } = useTranslation();
@@ -112,4 +112,4 @@ const QuotationBarMobile = () => {
   return isMobile ? <MobileBar /> : <DesktopBar />;
 };
 
-export default QuotationBarMobile;
+export default QuotationBar;

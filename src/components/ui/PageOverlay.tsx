@@ -6,7 +6,7 @@ import { ExternalUrl, RoutePath } from '@/constants/enums';
 import useIsMobile from '../hooks/useIsMobile';
 import { Card } from './Card';
 import NavigationMobile from './NavigationMobile';
-import QuotationBarMobile from './QuotationBarMobile';
+import QuotationBar from './QuotationBar';
 import { ScrollArea, ScrollBar } from './ScrollArea';
 import SidebarDesktop from './SidebarDesktop';
 import { Toaster } from './Toaster';
@@ -22,7 +22,7 @@ const PageOverlay = () => {
   const MobileOverlay = () => (
     <>
       <TopBarMobile />
-      <QuotationBarMobile />
+      <QuotationBar />
       <div
         id='inner'
         className={'pb-body-pad-end [&>*]:px-4'}
@@ -41,7 +41,7 @@ const PageOverlay = () => {
       <div className={'grid h-full grid-cols-[15rem_1fr] gap-6 p-page-desktop'}>
         <SidebarDesktop />
         <div className={'grid h-[calc(100svh-3rem)] grid-rows-[2.5rem_1fr_1.25rem] gap-6'}>
-          <QuotationBarMobile />
+          <QuotationBar />
           <Card className={'h-full overflow-hidden p-4'}>
             <ScrollArea
               id='inner'
