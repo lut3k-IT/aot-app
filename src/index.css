@@ -54,6 +54,15 @@
   }
 }
 
+@font-face {
+  font-family: 'Vector';
+  src:
+    url('/src/assets/fonts/vector_regular_otf-webfont.woff2') format('woff2'),
+    url('/src/assets/fonts/vector_regular_otf-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @layer base {
   * {
     @apply border-border;

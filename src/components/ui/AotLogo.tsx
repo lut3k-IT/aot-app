@@ -17,7 +17,7 @@ const AotLogo = (props: AotLogoProps) => {
     <Link
       to={RoutePath.LANDING}
       className={cn(
-        'flex gap-2 rounded-md ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+        'flex items-center gap-2 rounded-md ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
         className
       )}
     >
@@ -25,7 +25,7 @@ const AotLogo = (props: AotLogoProps) => {
         name={'aotLg'}
         size={'lg'}
       />
-      <div className='text-xl font-bold'>{t('common:brand')}</div>
+      <div className='font-vector h-5 text-3xl leading-none'>{t('common:brand')}</div>
     </Link>
   );
 };
