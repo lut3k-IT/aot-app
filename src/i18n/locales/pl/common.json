@@ -3,7 +3,6 @@
   "title": {
     "heroes": "Postacie",
     "titans": "Tytani",
-    "favorites": "Ulubione",
     "quiz": "Quiz",
     "quotations": "Cytaty",
     "about": "O aplikacji",
@@ -12,6 +11,7 @@
     "termsOfService": "Warunki korzystania",
     "portfolio": "lut3k.com"
   },
+  "favorites": "Ulubione",
   "tab": {
     "gallery": "Galeria",
     "charts": "Wykresy",
@@ -35,7 +35,8 @@
     "title": "Filtr",
     "hasInfoAbout": "Ma informacje o",
     "heroesDesc": "Ustaw filtry i zapisz zmiany.",
-    "sortBy": "Sortuj według"
+    "sortBy": "Sortuj według",
+    "showOnlyFavorites": "Pokaż tylko ulubione"
   },
   "sort": {
     "title": "Sortuj",

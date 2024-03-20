@@ -72,6 +72,7 @@ export interface HeroFilterCriteria {
   hasAge: boolean;
   hasHeight: boolean;
   hasWeight: boolean;
+  hasOnlyFavorites: boolean;
 }
 
 export type HeroSortOption = keyof HeroType;

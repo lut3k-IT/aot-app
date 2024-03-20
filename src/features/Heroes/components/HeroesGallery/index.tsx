@@ -79,6 +79,7 @@ const HeroesGallery = () => {
     const hasWeight = !!searchParams.get(Param.HAS_WEIGHT);
     const sortBy = (searchParams.get(Param.SORT) as HeroSortOption) || DEFAULT_SORT;
     const sortDirection = (searchParams.get(Param.SORT_DIRECTION) as SortDirection) || DEFAULT_SORT_DIRECTION;
+    const hasOnlyFavorites = !!searchParams.get(Param.FAVORITES);
 
     const filters: HeroFilters = {
       search: undefined,
@@ -94,11 +95,12 @@ const HeroesGallery = () => {
         residences: filterArrayFromNullish(residences),
         hasAge: hasAge,
         hasHeight: hasHeight,
-        hasWeight: hasWeight
+        hasWeight: hasWeight,
+        hasOnlyFavorites: hasOnlyFavorites
       }
     };
 
-    setFilteredHeroes(filterHeroes(originalHeroes, filters));
+    setFilteredHeroes(filterHeroes(originalHeroes, filters, favoriteHeroesIds));
   }, [originalHeroes, searchParams]);
 
   /* ------------------------------- pagination ------------------------------- */

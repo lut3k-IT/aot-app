@@ -3,7 +3,7 @@
   "title": {
     "heroes": "Heroes",
     "titans": "Titans",
-    "favorites": "Favorites",
+
     "quiz": "Quiz",
     "quotations": "Quotations",
     "about": "About",
@@ -12,6 +12,7 @@
     "termsOfService": "Terms of service",
     "portfolio": "lut3k.com"
   },
+  "favorites": "Favorites",
   "tab": {
     "gallery": "Gallery",
     "charts": "Charts",
@@ -35,7 +36,8 @@
     "title": "Filter",
     "hasInfoAbout": "Has info about",
     "heroesDesc": "Set filters and save the changes.",
-    "sortBy": "Sort by"
+    "sortBy": "Sort by",
+    "showOnlyFavorites": "Show only favorites"
   },
   "sort": {
     "title": "Sort",

@@ -1,5 +1,5 @@
 import { SortDirection } from '@/constants/enums';
-import { HeroFilters, HeroType } from '@/constants/types';
+import { FavoriteType, HeroFilters, HeroType } from '@/constants/types';
 import {
   DEFAULT_AGE,
   DEFAULT_HEIGHT,
@@ -20,9 +20,10 @@ const sortWithNullsLastDesc = (a: any, b: any) => {
   return a < b ? 1 : a > b ? -1 : 0;
 };
 
-export const filterHeroes = (data: HeroType[], filters: HeroFilters) => {
-  /* --------------------------------- Filter --------------------------------- */
+export const filterHeroes = (data: HeroType[], filters: HeroFilters, favoriteHeroesIds?: FavoriteType[]) => {
   const filteredData = data.filter((hero) => {
+    const matchFavorite = filters.filters.hasOnlyFavorites ? (favoriteHeroesIds ?? []).includes(hero.id) : true;
+
     const isAgeFilterSameAsDefault =
       filters.filters.age[0] === DEFAULT_AGE[0] && filters.filters.age[1] === DEFAULT_AGE[1];
     const isHeightFilterSameAsDefault =
@@ -65,6 +66,7 @@ export const filterHeroes = (data: HeroType[], filters: HeroFilters) => {
     const matchHasWeight = !(filters.filters.hasWeight && !hero.weight);
 
     return (
+      matchFavorite &&
       matchAge &&
       matchHeight &&
       matchWeight &&

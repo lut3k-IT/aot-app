@@ -27,7 +27,8 @@ export enum Param {
   SORT = 'sort',
   SORT_DIRECTION = 'order',
   PAGE = 'page',
-  PAGE_SIZE = 'page_size'
+  PAGE_SIZE = 'page_size',
+  FAVORITES = 'favorites'
 }
 
 export enum RoutePath {

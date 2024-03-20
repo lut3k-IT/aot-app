@@ -1,19 +1,17 @@
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 
 import useAppSelector from '@/components/hooks/useAppSelector';
 import { useToast } from '@/components/hooks/useToast';
 import AppHelmet from '@/components/ui/AppHelmet';
-import CharacterCardSkeleton from '@/components/ui/CharacterCardSkeleton';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import MovingPanel from '@/components/ui/MovingPanel';
-import NoResults from '@/components/ui/NoResults';
 import PageHeading from '@/components/ui/PageHeading';
-import TitanCard from '@/components/ui/TitanCard';
-import { CARD_SKELETONS } from '@/constants/constants';
+import { ElementsIds } from '@/constants/enums';
 
-// @todo DRY this up
-const SkeletonCards = () => Array.from({ length: CARD_SKELETONS }, (_, index) => <CharacterCardSkeleton key={index} />);
+import SwitchFavorites from '../../components/ui/SwitchFavorites';
+import RenderTitans from './components/RenderTitans';
 
 const TitansGallery = () => {
   const { t } = useTranslation();
@@ -31,8 +29,12 @@ const TitansGallery = () => {
   const [filteredTitans, setFilteredTitans] = useState(originalTitans);
   const [paginatedTitans, setPaginatedTitans] = useState(originalTitans);
 
+  const [shouldShowFavorites, setShouldShowFavorites] = useState(false);
   const hasData = originalTitans.length > 0;
   const hasDataToShow = paginatedTitans.length > 0;
+
+  // @todo move it to constants
+  const pageHeadingDestination = document.getElementById(ElementsIds.PAGE_HEADING_OPTIONS);
 
   useEffect(() => {
     setFilteredTitans(originalTitans);
@@ -57,24 +59,24 @@ const TitansGallery = () => {
       <AppHelmet title={`${t('common:title.titans')} ${t('common:tab.gallery')}`} />
       <MovingPanel className={'md:pt-0'}>
         <PageHeading className={'md:pt-0'} />
+        {pageHeadingDestination &&
+          createPortal(
+            <SwitchFavorites
+              shouldShowFavorites={shouldShowFavorites}
+              onCheckedChange={setShouldShowFavorites}
+            />,
+            pageHeadingDestination
+          )}
       </MovingPanel>
       <GalleryWrapper>
-        {hasData && !isLoading ? (
-          hasDataToShow ? (
-            paginatedTitans.map((titan) => (
-              <TitanCard
-                data={titan}
-                favorites={favoriteTitansIds}
-                heroesData={originalHeroes}
-                key={titan.id}
-              />
-            ))
-          ) : (
-            <NoResults />
-          )
-        ) : (
-          <SkeletonCards />
-        )}
+        <RenderTitans
+          paginatedTitans={paginatedTitans}
+          shouldShowFavorites={shouldShowFavorites}
+          favoriteTitansIds={favoriteTitansIds}
+          originalHeroes={originalHeroes}
+          isLoading={isLoading}
+          hasData={hasData}
+        />
       </GalleryWrapper>
     </>
   );

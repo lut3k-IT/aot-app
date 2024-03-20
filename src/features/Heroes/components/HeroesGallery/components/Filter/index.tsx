@@ -17,6 +17,7 @@ import { Input } from '@/components/ui/Input';
 import { ScrollArea } from '@/components/ui/ScrollArea';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/Select';
 import { Slider } from '@/components/ui/Slider';
+import { Switch } from '@/components/ui/Switch';
 import { Param, SortDirection } from '@/constants/enums';
 import { HeroSortOption } from '@/constants/types';
 import mbti, { MbtiType } from '@/data/mbti';
@@ -69,6 +70,7 @@ const Filter = () => {
   const [hasAge, setHasAge] = useState(false);
   const [hasHeight, setHasHeight] = useState(false);
   const [hasWeight, setHasWeight] = useState(false);
+  const [hasOnlyFavorites, setHasOnlyFavorites] = useState(false);
 
   const [sortBy, setSortBy] = useState(DEFAULT_SORT);
   const [sortDirection, setSortDirection] = useState(DEFAULT_SORT_DIRECTION);
@@ -91,7 +93,8 @@ const Filter = () => {
         hasHeight ||
         hasWeight ||
         sortBy !== DEFAULT_SORT ||
-        sortDirection !== DEFAULT_SORT_DIRECTION
+        sortDirection !== DEFAULT_SORT_DIRECTION ||
+        hasOnlyFavorites
     );
   }, [
     selectedStatuses,
@@ -105,7 +108,8 @@ const Filter = () => {
     hasWeight,
     hasWeight,
     sortBy,
-    sortDirection
+    sortDirection,
+    hasOnlyFavorites
   ]);
 
   /* -------------------------------- handlers -------------------------------- */
@@ -123,6 +127,7 @@ const Filter = () => {
     setHasWeight(false);
     setSortBy(DEFAULT_SORT);
     setSortDirection(DEFAULT_SORT_DIRECTION);
+    setHasOnlyFavorites(false);
   };
 
   const handleResetSorting = () => {
@@ -169,7 +174,8 @@ const Filter = () => {
       [Param.HAS_HEIGHT, hasHeight ? hasHeight.toString() : null],
       [Param.HAS_WEIGHT, hasWeight ? hasWeight.toString() : null],
       [Param.SORT, sortBy !== DEFAULT_SORT ? sortBy.toString() : null],
-      [Param.SORT_DIRECTION, sortDirection !== DEFAULT_SORT_DIRECTION ? sortDirection.toString() : null]
+      [Param.SORT_DIRECTION, sortDirection !== DEFAULT_SORT_DIRECTION ? sortDirection.toString() : null],
+      [Param.FAVORITES, hasOnlyFavorites ? hasOnlyFavorites.toString() : null]
     ];
 
     setSearchParams((searchParams) => {
@@ -201,6 +207,7 @@ const Filter = () => {
     const hasWeight = getBooleanParam(searchParams, Param.HAS_WEIGHT);
     const sortBy = findHeroSortBy(searchParams.get(Param.SORT)) || DEFAULT_SORT;
     const sortDirection = findSortDirection(searchParams.get(Param.SORT_DIRECTION)) || DEFAULT_SORT_DIRECTION;
+    const hasOnlyFavorites = getBooleanParam(searchParams, Param.FAVORITES);
 
     setSelectedStatuses(filterArrayFromNullish(statuses));
     setSelectedAge([ageMin, ageMax]);
@@ -214,6 +221,7 @@ const Filter = () => {
     setHasWeight(hasWeight);
     setSortBy(sortBy);
     setSortDirection(sortDirection);
+    setHasOnlyFavorites(hasOnlyFavorites);
   }, []);
 
   // @todo prompt: try to move as much to separate components for better readability
@@ -481,6 +489,13 @@ const Filter = () => {
                   {t('data:weight.title')}
                 </FilterButton>
               </div>
+            </FilterSegment>
+            <FilterSegment title={t('common:filter.showOnlyFavorites')}>
+              <Switch
+                id='show-only-favorites'
+                checked={hasOnlyFavorites}
+                onCheckedChange={setHasOnlyFavorites}
+              />
             </FilterSegment>
           </div>
         </ScrollArea>
