@@ -14,6 +14,8 @@ const AppHelmet = (props: AppHelmetProps) => {
 
   const { t } = useTranslation();
 
+  const descriptionFallback = description || t('common:description');
+
   return (
     <Helmet>
       <title>
@@ -23,14 +25,10 @@ const AppHelmet = (props: AppHelmetProps) => {
             ? `${title}`
             : `${title} - ${t('common:brand')}`}
       </title>
-
-      {description && (
-        <meta
-          name='description'
-          content={description}
-        />
-      )}
-
+      <meta
+        name='description'
+        content={descriptionFallback}
+      />
       {children}
     </Helmet>
   );
