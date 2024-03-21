@@ -6,9 +6,8 @@ import { ExternalUrl, RoutePath } from '@/constants/enums';
 
 import AppVersionBadge from './AppVersionBadge';
 import { Button } from './Button';
-import { Label } from './Label';
+import BuyMeACoffee from './BuyMeACoffee';
 import LanguageSwitcher from './LanguageSwitcher';
-import { Switch } from './Switch';
 import SwitchSpoilerMode from './SwitchSpoilerMode';
 
 const SidebarMobile = () => {
@@ -60,9 +59,10 @@ const SidebarMobile = () => {
         </Button>
       </div>
       <div className={'flex flex-col items-center gap-14'}>
-        <SwitchSpoilerMode />
         <LanguageSwitcher />
-        {/* TODO: find better solution to add space */}
+        <SwitchSpoilerMode />
+        <BuyMeACoffee className={'mx-auto'} />
+        {/* @todo find better solution to add space */}
         <div className={'h-1'}></div>
       </div>
       <AppVersionBadge className={'absolute bottom-3'} />
