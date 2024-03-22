@@ -92,6 +92,47 @@
     min-width: 2rem;
     min-height: 2rem;
   }
+
+  .article {
+    @apply px-page-mobile pt-page-mobile md:pt-0;
+
+    & h1,
+    & h2,
+    & h3,
+    & h4,
+    & h5,
+    & h6 {
+      @apply mb-4 font-bold;
+    }
+
+    & h1 {
+      @apply text-3xl;
+    }
+
+    & h2 {
+      @apply text-2xl;
+    }
+
+    & h3 {
+      @apply text-xl;
+    }
+
+    & p {
+      @apply mb-4;
+    }
+
+    & ul {
+      @apply mb-4 ml-6 list-disc;
+    }
+
+    & ol {
+      @apply mb-4 ml-6 list-decimal;
+    }
+
+    & li {
+      @apply mb-1;
+    }
+  }
 }
 
 @layer utilities {

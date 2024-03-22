@@ -6,6 +6,7 @@ import { RoutePath } from '@/constants/enums';
 import About from '@/features/Aside/About';
 import Changelog from '@/features/Aside/Changelog';
 import PrivacyPolicy from '@/features/Aside/PrivacyPolicy';
+import TermsAndConditions from '@/features/Aside/TermsAndConditions';
 import TermsOfService from '@/features/Aside/TermsOfService';
 import ErrorPage from '@/features/ErrorBoundaries/ErrorPage';
 import NotFoundRoute from '@/features/ErrorBoundaries/NotFoundRoute';
@@ -95,17 +96,17 @@ export const router = createBrowserRouter([
             path: RoutePath.ABOUT,
             element: <About />
           },
-          {
-            path: RoutePath.CHANGELOG,
-            element: <Changelog />
-          },
-          {
-            path: RoutePath.PRIVACY_POLICY,
-            element: <PrivacyPolicy />
-          },
+          // {
+          //   path: RoutePath.CHANGELOG,
+          //   element: <Changelog />
+          // },
+          // {
+          //   path: RoutePath.PRIVACY_POLICY,
+          //   element: <PrivacyPolicy />
+          // },
           {
             path: RoutePath.TERMS_OF_SERVICE,
-            element: <TermsOfService />
+            element: <TermsAndConditions />
           },
           {
             path: '*',

@@ -29,26 +29,26 @@ const SidebarMobile = () => {
         >
           {t('common:title.about')}
         </Button>
-        <Button
+        {/* <Button
           variant={'link'}
           linkTo={RoutePath.CHANGELOG}
           onClick={handleClick}
         >
           {t('common:title.changelog')}
-        </Button>
-        <Button
+        </Button> */}
+        {/* <Button
           variant={'link'}
           linkTo={RoutePath.PRIVACY_POLICY}
           onClick={handleClick}
         >
           {t('common:title.privacyPolicy')}
-        </Button>
+        </Button> */}
         <Button
           variant={'link'}
           linkTo={RoutePath.TERMS_OF_SERVICE}
           onClick={handleClick}
         >
-          {t('common:title.termsOfService')}
+          {t('common:title.termsAndConditions')}
         </Button>
         <Button
           variant={'link'}

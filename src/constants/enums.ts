@@ -46,7 +46,7 @@ export enum RoutePath {
   ABOUT = '/about',
   CHANGELOG = '/changelog',
   PRIVACY_POLICY = '/privacy-policy',
-  TERMS_OF_SERVICE = '/terms-of-service'
+  TERMS_OF_SERVICE = '/terms-and-conditions'
 }
 
 export enum ExternalUrl {

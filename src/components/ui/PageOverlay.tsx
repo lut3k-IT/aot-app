@@ -56,13 +56,13 @@ const PageOverlay = () => {
           <ScrollArea className={'h-5 w-full whitespace-nowrap px-4'}>
             <div
               className={
-                'mx-auto flex w-full max-w-[35rem] items-center justify-between gap-4  [&>*:hover]:underline [&>*]:text-sm [&>*]:text-muted-foreground'
+                'mx-auto flex w-full items-center justify-center gap-8 [&>*:hover]:underline [&>*]:text-sm [&>*]:text-muted-foreground'
               }
             >
               <Link to={RoutePath.ABOUT}>{t('common:title.about')}</Link>
-              <Link to={RoutePath.CHANGELOG}>{t('common:title.changelog')}</Link>
-              <Link to={RoutePath.PRIVACY_POLICY}>{t('common:title.privacyPolicy')}</Link>
-              <Link to={RoutePath.TERMS_OF_SERVICE}>{t('common:title.termsOfService')}</Link>
+              {/* <Link to={RoutePath.CHANGELOG}>{t('common:title.changelog')}</Link>
+              <Link to={RoutePath.PRIVACY_POLICY}>{t('common:title.privacyPolicy')}</Link> */}
+              <Link to={RoutePath.TERMS_OF_SERVICE}>{t('common:title.termsAndConditions')}</Link>
               <a
                 href={ExternalUrl.PORTFOLIO}
                 target='_blank'
