@@ -1,3 +1,5 @@
+import HowToUse from '@/features/Aside/HowToUse';
+
 import AotLogo from './AotLogo';
 import { Button } from './Button';
 import { Dialog, DialogContentSidebar, DialogTrigger } from './Dialog';
@@ -32,12 +34,13 @@ const TopBarMobile = () => {
       <div className='flex flex-1 flex-row-reverse gap-0'>
         <SidebarAndButton />
         <ModeToggle />
-        <Button
+        {/* <Button
           iconName={'helpCircle'}
           size={'icon'}
           variant={'ghost'}
           iconProps={{ variant: 'gray' }}
-        />
+        /> */}
+        <HowToUse />
       </div>
     </div>
   );

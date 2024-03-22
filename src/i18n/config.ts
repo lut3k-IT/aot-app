@@ -3,18 +3,29 @@ import { InitOptions } from 'i18next';
 import { LanguageShortName, LocalStorageKey } from '@/constants/enums';
 import { getLocalStorageItem } from '@/utils/storageHelpers';
 
-import { commonEN, commonPL, dataEN, dataPL, notificationsEN, notificationsPL } from './locales';
+import {
+  commonEN,
+  commonPL,
+  dataEN,
+  dataPL,
+  howToUseEN,
+  howToUsePL,
+  notificationsEN,
+  notificationsPL
+} from './locales';
 
 const resources = {
   en: {
     common: commonEN,
     notifications: notificationsEN,
-    data: dataEN
+    data: dataEN,
+    howToUse: howToUseEN
   },
   pl: {
     common: commonPL,
     notifications: notificationsPL,
-    data: dataPL
+    data: dataPL,
+    howToUse: howToUsePL
   }
 };
 

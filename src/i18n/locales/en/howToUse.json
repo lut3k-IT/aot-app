@@ -1,0 +1,60 @@
+{
+  "dialog": {
+    "title": "How to use",
+    "description": "Understand the app functionality."
+  },
+  "example": "Example",
+  "spoilerMode": {
+    "title": "Spoiler mode",
+    "description": "The application has a \"Show spoilers\" option, which is disabled by default. This way, if you are still watching an anime, the application will hide elements that could reveal future events to you."
+  },
+  "actionYear": {
+    "title": "Year of Action",
+    "description": "Keep in mind that the information about the characters is only relevant for a specific year. Pay attention to this fact when browsing the data."
+  },
+  "details": {
+    "title": "Character details",
+    "description": "Click on the character's image to go to their detailed description and get more information."
+  },
+  "mbti": {
+    "title": "MBTI",
+    "description": "Next to the characters in the application, you will find four letters and a colored frame. These symbols represent the character's MBTI personality type. MBTI is a questionnaire that describes preferences in the way people perceive the world and make decisions, dividing people into 16 types.",
+    "sourceTitle": "Personality type source",
+    "source": "Data source",
+    "updateDate": {
+      "title": "Last Updated",
+      "date": "09/30/2023"
+    },
+    "types": {
+      "title": "Short descriptions of personality types",
+      "analysts": {
+        "title": "Analysts (purple color)",
+        "intj": "INTJ - A strategic thinker with a plan for everything.",
+        "intp": "INTP - An ingenious inventor with an insatiable thirst for knowledge.",
+        "entj": "ENTJ - A bold and charismatic leader who always finds a solution.",
+        "entp": "ENTP - An intelligent and curious thinker who loves intellectual challenges."
+      },
+      "diplomats": {
+        "title": "Diplomats (green color)",
+        "infj": "INFJ - An idealist who strives to make the world a better place.",
+        "infp": "INFP - Sensitive and empathetic, caring for others.",
+        "enfj": "ENFJ - A charismatic and inspiring leader who can unite people.",
+        "enfp": "ENFP - Energetic and enthusiastic, infecting others with their optimism."
+      },
+      "sentinels": {
+        "title": "Sentinels (blue color)",
+        "istj": "ISTJ - Pragmatic and action-oriented, valuing order and stability.",
+        "isfj": "ISFJ - Caring and protective, devoted to their loved ones.",
+        "estj": "ESTJ - Energetic and entrepreneurial, enjoying managing and organizing.",
+        "esfj": "ESFJ - Warm and sociable, caring about good relationships with people."
+      },
+      "explorers": {
+        "title": "Explorers (yellow color)",
+        "istp": "ISTP - Practical and independent, valuing freedom and autonomy.",
+        "isfp": "ISFP - Sensitive and artistic, seeking beauty in everyday life.",
+        "estp": "ESTP - Energetic and spontaneous, loving new challenges.",
+        "esfp": "ESFP - Lively and sociable, loving fun and entertainment."
+      }
+    }
+  }
+}

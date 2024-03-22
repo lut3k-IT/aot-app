@@ -245,13 +245,14 @@ const Filter = () => {
           {isFilterActive && <Indicator />}
         </Button>
       </DialogTrigger>
-      <DialogContent className={'h-[37.5rem] max-h-[100vh]'}>
+      <DialogContent className={'h-[37.5rem] max-h-[100svh]'}>
         <DialogHeader>
           <DialogTitle>
             {t('common:filter.title')} {t('common:title.heroes')}
           </DialogTitle>
           <DialogDescription>{t('common:filter.heroesDesc')}</DialogDescription>
         </DialogHeader>
+        {/* @todo DRY scroll */}
         <ScrollArea className={'-mx-2 -mr-4 h-full pr-2'}>
           <div className='mx-2 grid gap-6 py-4'>
             <FilterSegment

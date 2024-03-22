@@ -1,0 +1,60 @@
+{
+  "dialog": {
+    "title": "Jak korzystać",
+    "description": "Zrozum jak działa aplikacja."
+  },
+  "example": "Przykład",
+  "spoilerMode": {
+    "title": "Tryb spoilerów",
+    "description": "Aplikacja posiada opcję „Pokaż spoilery”, która domyślnie jest wyłączona. Dzięki temu, jeśli jesteś jeszcze w trakcie oglądania anime, aplikacja ukryje elementy, które mogłyby zdradzić Ci przyszłe wydarzenia."
+  },
+  "actionYear": {
+    "title": "Rok akcji",
+    "description": "Pamiętaj, że informacje o postaciach są aktualne tylko na konkretny rok. Zwróć uwagę na ten fakt podczas przeglądania danych."
+  },
+  "details": {
+    "title": "Detale postaci",
+    "description": "Kliknij na zdjęcie postaci, aby przejść do jej szczegółowego opisu i uzyskać więcej informacji."
+  },
+  "mbti": {
+    "title": "MBTI",
+    "description": "Przy postaciach w aplikacji znajdziesz cztery litery i kolorową ramkę. Te symbole reprezentują typ osobowości MBTI danej postaci. MBTI to kwestionariusz, który opisuje preferencje w sposobie postrzegania świata i podejmowania decyzji, dzieląc ludzi na 16 typów.",
+    "sourceTitle": "Źródło danych",
+    "source": "Źródło danych",
+    "updateDate": {
+      "title": "Data aktualizacji",
+      "date": "30/09/2023"
+    },
+    "types": {
+      "title": "Krótkie opisy typów osobowości",
+      "analysts": {
+        "title": "Analitycy (kolor fioletowy)",
+        "intj": "INTJ - Strategiczny myśliciel z planem na wszystko.",
+        "intp": "INTP - Pomysłowy wynalazca z niezaspokojonym pragnieniem wiedzy.",
+        "entj": "ENTJ - Odważny i charyzmatyczny lider, który zawsze znajdzie rozwiązanie.",
+        "entp": "ENTP - Inteligentny i ciekawy świata myśliciel, uwielbiający intelektualne wyzwania."
+      },
+      "diplomats": {
+        "title": "Dyplomaci (kolor zielony)",
+        "infj": "INFJ - Idealista, który pragnie zmieniać świat na lepsze.",
+        "infp": "INFP - Wrażliwy i empatyczny, troszczący się o innych.",
+        "enfj": "ENFJ - Charyzmatyczny i inspirujący lider, potrafiący jednoczyć ludzi.",
+        "enfp": "ENFP - Energiczny i entuzjastyczny, zarażający innych swoim optymizmem."
+      },
+      "sentinels": {
+        "title": "Strażnicy (kolor niebieski)",
+        "istj": "ISTJ - Pragmatyczny i zorientowany na działanie, ceni porządek i stabilność.",
+        "isfj": "ISFJ - Troskliwy i opiekuńczy, oddany swoim bliskim.",
+        "estj": "ESTJ - Energiczny i przedsiębiorczy, lubiący zarządzać i organizować.",
+        "esfj": "ESFJ - Serdeczny i towarzyski, dba o dobre relacje z ludźmi."
+      },
+      "explorers": {
+        "title": "Poszukiwacze (kolor żółty)",
+        "istp": "ISTP - Praktyczny i niezależny, ceniący wolność i autonomię.",
+        "isfp": "ISFP - Wrażliwy i artystyczny, poszukujący piękna w codzienności.",
+        "estp": "ESTP - Energiczny i spontaniczny, uwielbiający nowe wyzwania.",
+        "esfp": "ESFP - Żywiołowy i towarzyski, uwielbiający zabawę i rozrywkę."
+      }
+    }
+  }
+}

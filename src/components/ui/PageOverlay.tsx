@@ -59,6 +59,7 @@ const PageOverlay = () => {
                 'mx-auto flex w-full items-center justify-center gap-8 [&>*:hover]:underline [&>*]:text-sm [&>*]:text-muted-foreground'
               }
             >
+              How to use
               <Link to={RoutePath.ABOUT}>{t('common:title.about')}</Link>
               {/* <Link to={RoutePath.CHANGELOG}>{t('common:title.changelog')}</Link>
               <Link to={RoutePath.PRIVACY_POLICY}>{t('common:title.privacyPolicy')}</Link> */}

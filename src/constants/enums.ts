@@ -50,7 +50,8 @@ export enum RoutePath {
 }
 
 export enum ExternalUrl {
-  PORTFOLIO = 'https://lut3k.com/'
+  PORTFOLIO = 'https://lut3k.com/',
+  PERSONALITY_DATABASE = 'https://www.personality-database.com'
 }
 
 /* ---------------------------- Language related ---------------------------- */
