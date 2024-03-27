@@ -73,7 +73,8 @@ export enum LocalStorageKey {
   SPOILER_MODE = 'spoilerMode',
   FAV_HEROES = 'favHeroes',
   FAV_TITANS = 'favTitans',
-  FAV_QUOTATIONS = 'favQuotations'
+  FAV_QUOTATIONS = 'favQuotations',
+  THEME = 'vite-ui-theme'
 }
 
 /* ------------------------------ Data related ------------------------------ */

@@ -12,31 +12,27 @@ import SidebarDesktop from './SidebarDesktop';
 import { Toaster } from './Toaster';
 import TopBarMobile from './TopBarMobile';
 
-const PageOverlay = () => {
-  const isMobile = useIsMobile();
+const MobileOverlay = () => (
+  <>
+    <TopBarMobile />
+    <QuotationBar />
+    <div
+      id='inner'
+      className={'pb-body-pad-end [&>*]:px-4'}
+    >
+      {/* @audit - it shouldn't rerender the entire component, but only the part that changes */}
+      <Outlet />
+    </div>
+    <NavigationMobile />
+    <Toaster />
+  </>
+);
+
+// @todo - make more configuration and apply DRY principle and utility first approach (classes)
+const DesktopOverlay = () => {
   const { t } = useTranslation();
 
-  // @audit - it shouldn't rerender the entire component
-  const CommonOutlet = () => <Outlet />;
-
-  const MobileOverlay = () => (
-    <>
-      <TopBarMobile />
-      <QuotationBar />
-      <div
-        id='inner'
-        className={'pb-body-pad-end [&>*]:px-4'}
-      >
-        <CommonOutlet />
-      </div>
-      <NavigationMobile />
-      <Toaster />
-    </>
-  );
-
-  // @todo - make more configuration and apply DRY principle and utility first approach (classes)
-
-  const DesktopOverlay = () => (
+  return (
     <div className={'mx-auto h-[100svh] max-w-7xl'}>
       <div className={'grid h-full grid-cols-[15rem_1fr] gap-6 p-page-desktop'}>
         <SidebarDesktop />
@@ -48,7 +44,7 @@ const PageOverlay = () => {
               className={'-mr-3 h-full pr-3'}
             >
               <div className={'p-2'}>
-                <CommonOutlet />
+                <Outlet />
               </div>
             </ScrollArea>
           </Card>
@@ -61,7 +57,7 @@ const PageOverlay = () => {
             >
               <Link to={RoutePath.ABOUT}>{t('common:title.about')}</Link>
               {/* <Link to={RoutePath.CHANGELOG}>{t('common:title.changelog')}</Link>
-              <Link to={RoutePath.PRIVACY_POLICY}>{t('common:title.privacyPolicy')}</Link> */}
+            <Link to={RoutePath.PRIVACY_POLICY}>{t('common:title.privacyPolicy')}</Link> */}
               <Link to={RoutePath.TERMS_OF_SERVICE}>{t('common:title.termsAndConditions')}</Link>
               <a
                 href={ExternalUrl.PORTFOLIO}
@@ -79,6 +75,10 @@ const PageOverlay = () => {
       <Toaster />
     </div>
   );
+};
+
+const PageOverlay = () => {
+  const isMobile = useIsMobile();
 
   return isMobile ? <MobileOverlay /> : <DesktopOverlay />;
 };

@@ -9,6 +9,7 @@ import './i18n/i18n';
 
 import AppRouter from './app/AppRouter';
 import { ThemeProvider } from './components/ui/ThemeProvider';
+import { LocalStorageKey } from './constants/enums';
 import { store } from './store';
 
 import './index.css';
@@ -20,7 +21,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <HelmetProvider>
           <ThemeProvider
             defaultTheme='light'
-            storageKey='vite-ui-theme'
+            storageKey={LocalStorageKey.THEME}
           >
             <AppRouter />
           </ThemeProvider>

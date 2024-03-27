@@ -43,27 +43,22 @@ const LanguageSwitcher = (props: LanguageSwitcherProps) => {
 
   const currentLanguageName = availableLanguages.find((obj) => obj.id === i18n.language)?.label;
 
-  const MobileButton = (
-    <Button
-      variant='outline'
-      className={'w-min'}
-    >
-      {currentLanguageName}
-    </Button>
-  );
-
-  const DesktopButton = (
-    <Button
-      variant='ghost'
-      className={'w-28 text-sm'}
-    >
-      {currentLanguageName}
-    </Button>
-  );
+  const buttonProps =
+    variant === 'mobile'
+      ? {
+          variant: 'outline' as const,
+          className: 'w-min'
+        }
+      : {
+          variant: 'ghost' as const,
+          className: 'w-28 text-sm'
+        };
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>{variant === 'mobile' ? MobileButton : DesktopButton}</DropdownMenuTrigger>
+      <DropdownMenuTrigger asChild>
+        <Button {...buttonProps}>{currentLanguageName}</Button>
+      </DropdownMenuTrigger>
       <DropdownMenuContent align='center'>
         {availableLanguages
           .filter((lang) => lang.id !== i18n.language)
