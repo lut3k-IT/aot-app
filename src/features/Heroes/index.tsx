@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { createSearchParams, Navigate, Outlet, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 
+import useIsLandscape from '@/components/hooks/useIsLandscape';
 import useIsMobileLandscape from '@/components/hooks/useIsMobileLandscape';
 import PageHeading from '@/components/ui/PageHeading';
 import { RoutePath } from '@/constants/enums';
@@ -22,6 +23,7 @@ const tabsTriggerClassName = 'flex-1';
 const Heroes = () => {
   const { t } = useTranslation();
   const isMobileLandscape = useIsMobileLandscape();
+  const isLandscape = useIsLandscape();
 
   const [searchParams] = useSearchParams();
   const searchParamsString = createSearchParams(searchParams);
@@ -49,11 +51,16 @@ const Heroes = () => {
 
   return (
     <>
-      <MovingPanel translateClassName={'-translate-y-[3.5rem]'}>
+      <MovingPanel
+        translateClassName={classNames('-translate-y-[3.5rem]', {
+          '!-translate-y-[3rem]': isLandscape
+        })}
+      >
         <Tabs
           defaultValue={defaultValueBasedOnTheRoute()}
           className={classNames('w-full pt-4', {
-            'md:pt-0': !isMobileLandscape
+            'md:pt-0': !isMobileLandscape,
+            '!pt-2': isLandscape
           })}
         >
           <TabsList

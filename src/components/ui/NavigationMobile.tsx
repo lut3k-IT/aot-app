@@ -4,13 +4,15 @@ import classNames from 'classnames';
 
 import { navigationData, NavigationElementProps } from '@/constants/navigationData';
 
+import useIsLandscape from '../hooks/useIsLandscape';
 import useIsMatchingRouteSegment from '../hooks/useIsMatchingRouteSegment';
+import useIsMobile from '../hooks/useIsMobile';
+import useIsMobileLandscape from '../hooks/useIsMobileLandscape';
 import Icon from './Icon';
 
 const NavigationElement = (props: NavigationElementProps) => {
   const { data } = props;
   const { t } = useTranslation();
-
   const isActive = useIsMatchingRouteSegment(data.route);
 
   return (
@@ -44,8 +46,16 @@ const NavigationElement = (props: NavigationElementProps) => {
 };
 
 const NavigationMobile = () => {
+  const isMobile = useIsMobile();
+  const isLandscape = useIsLandscape();
+  const isMobileLandscape = useIsMobileLandscape();
+
   return (
-    <div className='fixed bottom-0 z-20 flex w-full justify-evenly border-t bg-background'>
+    <div
+      className={classNames('fixed bottom-0 z-40 flex w-full justify-evenly border-t bg-background', {
+        'left-0 top-0 h-[100vh] !w-20 flex-col items-center border-r border-t-0': isLandscape
+      })}
+    >
       {navigationData.map((element) => {
         return (
           <NavigationElement

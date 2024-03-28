@@ -1,9 +1,11 @@
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DialogClose } from '@radix-ui/react-dialog';
+import classNames from 'classnames';
 
 import { ExternalUrl, RoutePath } from '@/constants/enums';
 
+import useIsLandscape from '../hooks/useIsLandscape';
 import AppVersionBadge from './AppVersionBadge';
 import { Button } from './Button';
 import BuyMeACoffee from './BuyMeACoffee';
@@ -13,6 +15,7 @@ import SwitchSpoilerMode from './SwitchSpoilerMode';
 const SidebarMobile = () => {
   const { t } = useTranslation();
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const isLandscape = useIsLandscape();
 
   const handleClick = () => {
     buttonRef.current && buttonRef.current.click();
@@ -29,20 +32,6 @@ const SidebarMobile = () => {
         >
           {t('common:title.about')}
         </Button>
-        {/* <Button
-          variant={'link'}
-          linkTo={RoutePath.CHANGELOG}
-          onClick={handleClick}
-        >
-          {t('common:title.changelog')}
-        </Button> */}
-        {/* <Button
-          variant={'link'}
-          linkTo={RoutePath.PRIVACY_POLICY}
-          onClick={handleClick}
-        >
-          {t('common:title.privacyPolicy')}
-        </Button> */}
         <Button
           variant={'link'}
           linkTo={RoutePath.TERMS_OF_SERVICE}
@@ -58,10 +47,14 @@ const SidebarMobile = () => {
           {t('common:title.portfolio')}
         </Button>
       </div>
-      <div className={'flex flex-col items-center gap-14'}>
+      <div
+        className={classNames('flex flex-col items-center gap-14', {
+          'flex-1 !flex-row flex-wrap gap-6': isLandscape
+        })}
+      >
         <LanguageSwitcher />
         <SwitchSpoilerMode />
-        <BuyMeACoffee className={'mx-auto'} />
+        {!isLandscape && <BuyMeACoffee className={'mx-auto'} />}
         {/* @todo find better solution to add space */}
         <div className={'h-1'}></div>
       </div>

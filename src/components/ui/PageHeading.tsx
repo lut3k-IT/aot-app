@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { YEAR } from '@/constants/constants';
 import { ElementsIds } from '@/constants/enums';
 
+import useIsLandscape from '../hooks/useIsLandscape';
 import useIsMobileLandscape from '../hooks/useIsMobileLandscape';
 
 interface PageHeadingProps {
@@ -15,13 +16,15 @@ const PageHeading = (props: PageHeadingProps) => {
   const { year = YEAR, className } = props;
   const { t } = useTranslation();
   const isMobileLandscape = useIsMobileLandscape();
+  const isLandscape = useIsLandscape();
 
   return (
     <div
       className={classNames(
         'sticky mb-2 flex items-center justify-between bg-background py-4',
         {
-          'md:dark:bg-card': !isMobileLandscape
+          'md:dark:bg-card': !isMobileLandscape,
+          '!py-2': isLandscape
         },
         className
       )}

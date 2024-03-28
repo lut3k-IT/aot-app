@@ -1,5 +1,9 @@
+import classNames from 'classnames';
+
 import HowToUse from '@/features/Aside/HowToUse';
 
+import useIsLandscape from '../hooks/useIsLandscape';
+import useIsMobileLandscape from '../hooks/useIsMobileLandscape';
 import AotLogo from './AotLogo';
 import { Button } from './Button';
 import { Dialog, DialogContentSidebar, DialogTrigger } from './Dialog';
@@ -28,8 +32,14 @@ const SidebarAndButton = () => (
 );
 
 const TopBarMobile = () => {
+  const isLandscape = useIsLandscape();
+
   return (
-    <div className='fixed z-30 flex h-12 w-full items-center gap-2 border-b bg-background px-page-mobile'>
+    <div
+      className={classNames('fixed z-30 flex h-12 w-full items-center gap-2 border-b bg-background px-page-mobile', {
+        'w-[calc(100vw-5rem)]': isLandscape
+      })}
+    >
       <AotLogo />
       <div className='flex flex-1 flex-row-reverse gap-0'>
         <SidebarAndButton />

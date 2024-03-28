@@ -1,3 +1,5 @@
+import { useCallback, useEffect, useState } from 'react';
+
 import { LANDSCAPE_HEIGHT_BREAKPOINT, MOBILE_WIDTH_BREAKPOINT } from '@/constants/constants';
 
 import useIsLandscape from './useIsLandscape';
@@ -7,10 +9,10 @@ const useIsMobileLandscape = (
   mobileBreakpoint = MOBILE_WIDTH_BREAKPOINT,
   landscapeBreakpoint = LANDSCAPE_HEIGHT_BREAKPOINT
 ) => {
-  const isMobile = useIsMobile(mobileBreakpoint);
-  const isLandscape = useIsLandscape(landscapeBreakpoint);
+  const isMobileFromHook = useIsMobile(mobileBreakpoint);
+  const isLandscapeFromHook = useIsLandscape(landscapeBreakpoint);
 
-  return isMobile || isLandscape;
+  return isMobileFromHook || isLandscapeFromHook;
 };
 
 export default useIsMobileLandscape;

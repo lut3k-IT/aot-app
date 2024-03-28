@@ -1,8 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { Link, Outlet } from 'react-router-dom';
+import classNames from 'classnames';
 
 import { ExternalUrl, RoutePath } from '@/constants/enums';
 
+import useIsLandscape from '../hooks/useIsLandscape';
+import useIsMobile from '../hooks/useIsMobile';
 import useIsMobileLandscape from '../hooks/useIsMobileLandscape';
 import { Card } from './Card';
 import NavigationMobile from './NavigationMobile';
@@ -12,21 +15,30 @@ import SidebarDesktop from './SidebarDesktop';
 import { Toaster } from './Toaster';
 import TopBarMobile from './TopBarMobile';
 
-const MobileOverlay = () => (
-  <>
-    <TopBarMobile />
-    <QuotationBar />
-    <div
-      id='inner'
-      className={'pb-body-pad-end [&>*]:px-4'}
-    >
-      {/* @audit - it shouldn't rerender the entire component, but only the part that changes */}
-      <Outlet />
+const MobileOverlay = () => {
+  const isMobile = useIsMobile();
+  const isLandscape = useIsLandscape();
+  const isMobileLandscape = useIsMobileLandscape();
+
+  return (
+    <div className={isLandscape ? 'ml-20' : 'ml-0'}>
+      <TopBarMobile />
+      <QuotationBar />
+      <div
+        id='inner'
+        className={classNames('[&>*]:px-4', {
+          'pb-body-pad-end': isMobile && !isLandscape,
+          'pb-4': isMobileLandscape
+        })}
+      >
+        {/* @audit - it shouldn't rerender the entire component, but only the part that changes */}
+        <Outlet />
+      </div>
+      <NavigationMobile />
+      <Toaster />
     </div>
-    <NavigationMobile />
-    <Toaster />
-  </>
-);
+  );
+};
 
 // @todo - make more configuration and apply DRY principle and utility first approach (classes)
 const DesktopOverlay = () => {

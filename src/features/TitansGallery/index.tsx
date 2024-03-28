@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 
 import useAppSelector from '@/components/hooks/useAppSelector';
+import useIsLandscape from '@/components/hooks/useIsLandscape';
 import { useToast } from '@/components/hooks/useToast';
 import AppHelmet from '@/components/ui/AppHelmet';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
@@ -16,6 +17,7 @@ import RenderTitans from './components/RenderTitans';
 const TitansGallery = () => {
   const { t } = useTranslation();
   const { toast } = useToast();
+  const isLandscape = useIsLandscape();
 
   const originalTitans = useAppSelector((state) => state.titans.data);
   const originalHeroes = useAppSelector((state) => state.heroes.data);
@@ -57,8 +59,8 @@ const TitansGallery = () => {
   return (
     <>
       <AppHelmet title={`${t('common:title.titans')} ${t('common:tab.gallery')}`} />
-      <MovingPanel className={'md:pt-0'}>
-        <PageHeading className={'md:pt-0'} />
+      <MovingPanel className={isLandscape ? '' : 'md:pt-0'}>
+        <PageHeading className={isLandscape ? '' : 'md:pt-0'} />
         {pageHeadingDestination &&
           createPortal(
             <SwitchFavorites

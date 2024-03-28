@@ -3,6 +3,7 @@ import classNames from 'classnames';
 
 import { cn } from '@/lib/utils';
 
+import useIsLandscape from '../hooks/useIsLandscape';
 import useIsMobileLandscape from '../hooks/useIsMobileLandscape';
 import { ScrollDirectionName, useScrollDirection } from '../hooks/useScrollDirection';
 
@@ -16,6 +17,7 @@ interface MovingPanelProps extends React.HTMLAttributes<HTMLDivElement> {
 const MovingPanel = (props: MovingPanelProps) => {
   const { children, translateClassName, className, classNameSpacer, ...rest } = props;
   const isMobileLandscape = useIsMobileLandscape();
+  const isLandscape = useIsLandscape();
 
   const scrollDirection = useScrollDirection();
   const computedClass = scrollDirection === ScrollDirectionName.DOWN ? translateClassName : 'translate-y-0';
@@ -32,7 +34,17 @@ const MovingPanel = (props: MovingPanelProps) => {
       )}
       {...rest}
     >
-      {isMobileLandscape && <div className={cn('h-body-start w-full bg-background', classNameSpacer)} />}
+      {isMobileLandscape && (
+        <div
+          className={classNames(
+            'h-body-start w-full bg-background',
+            {
+              '!h-12': isLandscape
+            },
+            classNameSpacer
+          )}
+        />
+      )}
       {children}
     </div>
   );

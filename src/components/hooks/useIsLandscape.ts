@@ -1,27 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { LANDSCAPE_HEIGHT_BREAKPOINT } from '@/constants/constants';
 
 const useIsLandscape = (maxHeightBreakpoint = LANDSCAPE_HEIGHT_BREAKPOINT) => {
-  const [isMobileLandscape, setIsMobileLandscape] = useState<boolean>(window.innerHeight <= maxHeightBreakpoint);
+  const [isLandscape, setIsLandscape] = useState<boolean>(window.innerHeight <= maxHeightBreakpoint);
 
-  const handleCheckSize = () => {
+  const handleCheckSize = useCallback(() => {
     if (window.innerHeight <= maxHeightBreakpoint) {
-      setIsMobileLandscape(true);
+      setIsLandscape(true);
     } else {
-      setIsMobileLandscape(false);
+      setIsLandscape(false);
     }
-  };
+  }, [maxHeightBreakpoint]);
 
   useEffect(() => {
     window.addEventListener('resize', handleCheckSize);
+    window.addEventListener('orientationchange', handleCheckSize);
 
     return () => {
       window.removeEventListener('resize', handleCheckSize);
+      window.removeEventListener('orientationchange', handleCheckSize);
     };
   }, [handleCheckSize]);
 
-  return isMobileLandscape;
+  return isLandscape;
 };
 
 export default useIsLandscape;
