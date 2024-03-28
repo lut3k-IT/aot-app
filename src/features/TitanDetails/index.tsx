@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 import useAppDispatch from '@/components/hooks/useAppDispatch';
 import useAppSelector from '@/components/hooks/useAppSelector';
-import useIsMobile from '@/components/hooks/useIsMobile';
+import useIsMobileLandscape from '@/components/hooks/useIsMobileLandscape';
 import { useToast } from '@/components/hooks/useToast';
 import useValidateIdFromParam from '@/components/hooks/useValidateIdFromParam';
 import AppHelmet from '@/components/ui/AppHelmet';
@@ -24,7 +24,7 @@ import MobileTiles from './components/MobileTiles';
 
 const TitanDetails = () => {
   const { id } = useParams();
-  const isMobile = useIsMobile();
+  const isMobileLandscape = useIsMobileLandscape();
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
   const { toast } = useToast();
@@ -62,7 +62,7 @@ const TitanDetails = () => {
   return (
     <div
       className={classNames({
-        'pt-body-pad-start': isMobile
+        'pt-body-pad-start': isMobileLandscape
       })}
     >
       <AppHelmet title={titan.name} />
@@ -85,7 +85,7 @@ const TitanDetails = () => {
         />
       </div>
       <div className={'mt-2 w-full text-center text-2xl font-medium'}>{titan.name}</div>
-      {isMobile ? (
+      {isMobileLandscape ? (
         <MobileTiles
           titan={titan}
           currentInheritor={currentInheritor}

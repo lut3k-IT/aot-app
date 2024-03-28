@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 import useAppDispatch from '@/components/hooks/useAppDispatch';
 import useAppSelector from '@/components/hooks/useAppSelector';
-import useIsMobile from '@/components/hooks/useIsMobile';
+import useIsMobileLandscape from '@/components/hooks/useIsMobileLandscape';
 import { useToast } from '@/components/hooks/useToast';
 import useValidateIdFromParam from '@/components/hooks/useValidateIdFromParam';
 import AppHelmet from '@/components/ui/AppHelmet';
@@ -18,7 +18,7 @@ import { isInFavorites } from '@/utils/dataHelpers';
 
 const QuotationDetails = () => {
   const { id } = useParams();
-  const isMobile = useIsMobile();
+  const isMobileLandscape = useIsMobileLandscape();
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
   const { toast } = useToast();
@@ -48,7 +48,7 @@ const QuotationDetails = () => {
   return (
     <div
       className={classNames({
-        'pt-body-pad-start': isMobile
+        'pt-body-pad-start': isMobileLandscape
       })}
     >
       <ButtonGoBack fallbackRoute={RoutePath.QUOTATIONS} />

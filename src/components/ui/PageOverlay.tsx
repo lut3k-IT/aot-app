@@ -3,7 +3,7 @@ import { Link, Outlet } from 'react-router-dom';
 
 import { ExternalUrl, RoutePath } from '@/constants/enums';
 
-import useIsMobile from '../hooks/useIsMobile';
+import useIsMobileLandscape from '../hooks/useIsMobileLandscape';
 import { Card } from './Card';
 import NavigationMobile from './NavigationMobile';
 import QuotationBar from './QuotationBar';
@@ -78,9 +78,8 @@ const DesktopOverlay = () => {
 };
 
 const PageOverlay = () => {
-  const isMobile = useIsMobile();
-
-  return isMobile ? <MobileOverlay /> : <DesktopOverlay />;
+  const isMobileLandscape = useIsMobileLandscape();
+  return isMobileLandscape ? <MobileOverlay /> : <DesktopOverlay />;
 };
 
 export default PageOverlay;

@@ -1,12 +1,12 @@
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import useIsMobileLandscape from '@/components/hooks/useIsMobileLandscape';
 import { addFavorite, removeFavorite } from '@/store/quotationsSlice';
 import { isInFavorites } from '@/utils/dataHelpers';
 
 import useAppDispatch from '../../hooks/useAppDispatch';
 import useAppSelector from '../../hooks/useAppSelector';
-import useIsMobile from '../../hooks/useIsMobile';
 import { useQuotationsSlideshow } from '../../hooks/useQuotationsSlideshow';
 import { useToast } from '../../hooks/useToast';
 import BarContent from './components/BarContent';
@@ -15,7 +15,7 @@ import MobileBarWrapper from './components/MobileBarWrapper';
 
 const QuotationBar = () => {
   const dispatch = useAppDispatch();
-  const isMobile = useIsMobile();
+  const isMobileLandscape = useIsMobileLandscape();
   const { t } = useTranslation();
   const { toast } = useToast();
 
@@ -45,7 +45,7 @@ const QuotationBar = () => {
     handleToggleFavorite
   };
 
-  return isMobile ? (
+  return isMobileLandscape ? (
     <MobileBarWrapper>
       <BarContent {...barContentProps} />
     </MobileBarWrapper>

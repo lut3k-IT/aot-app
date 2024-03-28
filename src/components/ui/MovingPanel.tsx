@@ -1,8 +1,9 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import { cn } from '@/lib/utils';
 
-import useIsMobile from '../hooks/useIsMobile';
+import useIsMobileLandscape from '../hooks/useIsMobileLandscape';
 import { ScrollDirectionName, useScrollDirection } from '../hooks/useScrollDirection';
 
 interface MovingPanelProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -14,21 +15,24 @@ interface MovingPanelProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const MovingPanel = (props: MovingPanelProps) => {
   const { children, translateClassName, className, classNameSpacer, ...rest } = props;
-  const isMobile = useIsMobile();
+  const isMobileLandscape = useIsMobileLandscape();
 
   const scrollDirection = useScrollDirection();
   const computedClass = scrollDirection === ScrollDirectionName.DOWN ? translateClassName : 'translate-y-0';
 
   return (
     <div
-      className={cn(
-        'sticky top-0 z-20 w-full bg-background shadow-panel-bottom-bg transition-transform md:-mt-2 md:pt-2 md:shadow-panel-bottom-card md:dark:bg-card',
+      className={classNames(
+        'sticky top-0 z-20 w-full bg-background shadow-panel-bottom-bg transition-transform ',
+        {
+          'md:-mt-2 md:pt-2 md:shadow-panel-bottom-card md:dark:bg-card': !isMobileLandscape
+        },
         computedClass,
         className
       )}
       {...rest}
     >
-      {isMobile && <div className={cn('h-body-start w-full bg-background', classNameSpacer)} />}
+      {isMobileLandscape && <div className={cn('h-body-start w-full bg-background', classNameSpacer)} />}
       {children}
     </div>
   );

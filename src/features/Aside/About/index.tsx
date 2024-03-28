@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import useIsMobile from '@/components/hooks/useIsMobile';
+import useIsMobileLandscape from '@/components/hooks/useIsMobileLandscape';
 import AppHelmet from '@/components/ui/AppHelmet';
 import { LanguageShortName } from '@/constants/enums';
 
@@ -10,10 +10,10 @@ import AboutPL from './components/AboutPL';
 const About = () => {
   const { t } = useTranslation();
   const { i18n } = useTranslation();
-  const isMobile = useIsMobile();
+  const isMobileLandscape = useIsMobileLandscape();
 
   return (
-    <div className={isMobile ? 'pt-body-start' : ''}>
+    <div className={isMobileLandscape ? 'pt-body-start' : ''}>
       <AppHelmet title={t('common:title.about')} />
       {i18n.language === LanguageShortName.ENGLISH ? <AboutEN /> : <AboutPL />}
     </div>
