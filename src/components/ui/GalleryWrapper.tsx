@@ -24,5 +24,5 @@ const GalleryWrapper = (props: GalleryWrapperProps) => {
     </div>
   );
 };
-//
+
 export default GalleryWrapper;
