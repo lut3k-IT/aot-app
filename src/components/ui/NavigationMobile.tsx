@@ -6,8 +6,6 @@ import { navigationData, NavigationElementProps } from '@/constants/navigationDa
 
 import useIsLandscape from '../hooks/useIsLandscape';
 import useIsMatchingRouteSegment from '../hooks/useIsMatchingRouteSegment';
-import useIsMobile from '../hooks/useIsMobile';
-import useIsMobileLandscape from '../hooks/useIsMobileLandscape';
 import Icon from './Icon';
 
 const NavigationElement = (props: NavigationElementProps) => {
@@ -46,9 +44,7 @@ const NavigationElement = (props: NavigationElementProps) => {
 };
 
 const NavigationMobile = () => {
-  const isMobile = useIsMobile();
   const isLandscape = useIsLandscape();
-  const isMobileLandscape = useIsMobileLandscape();
 
   return (
     <div

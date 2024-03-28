@@ -48,15 +48,13 @@ const SidebarMobile = () => {
         </Button>
       </div>
       <div
-        className={classNames('flex flex-col items-center gap-14', {
-          'flex-1 !flex-row flex-wrap gap-6': isLandscape
+        className={classNames('flex flex-col items-center gap-14 pb-14', {
+          '!flex-row flex-wrap justify-center gap-6 !pb-4': isLandscape
         })}
       >
         <LanguageSwitcher />
         <SwitchSpoilerMode />
         {!isLandscape && <BuyMeACoffee className={'mx-auto'} />}
-        {/* @todo find better solution to add space */}
-        <div className={'h-1'}></div>
       </div>
       <AppVersionBadge className={'absolute bottom-3'} />
     </div>

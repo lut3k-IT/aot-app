@@ -3,7 +3,7 @@ import { createSearchParams, Navigate, Outlet, useSearchParams } from 'react-rou
 import classNames from 'classnames';
 
 import useIsLandscape from '@/components/hooks/useIsLandscape';
-import useIsMobileLandscape from '@/components/hooks/useIsMobileLandscape';
+import useIsMobileOrLandscape from '@/components/hooks/useIsMobileOrLandscape';
 import PageHeading from '@/components/ui/PageHeading';
 import { RoutePath } from '@/constants/enums';
 import { getCurrentRoute } from '@/utils/helpers';
@@ -22,7 +22,7 @@ const tabsTriggerClassName = 'flex-1';
 
 const Heroes = () => {
   const { t } = useTranslation();
-  const isMobileLandscape = useIsMobileLandscape();
+  const isMobileLandscape = useIsMobileOrLandscape();
   const isLandscape = useIsLandscape();
 
   const [searchParams] = useSearchParams();

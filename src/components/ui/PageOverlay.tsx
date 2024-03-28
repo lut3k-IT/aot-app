@@ -6,7 +6,7 @@ import { ExternalUrl, RoutePath } from '@/constants/enums';
 
 import useIsLandscape from '../hooks/useIsLandscape';
 import useIsMobile from '../hooks/useIsMobile';
-import useIsMobileLandscape from '../hooks/useIsMobileLandscape';
+import useIsMobileOrLandscape from '../hooks/useIsMobileOrLandscape';
 import { Card } from './Card';
 import NavigationMobile from './NavigationMobile';
 import QuotationBar from './QuotationBar';
@@ -18,7 +18,7 @@ import TopBarMobile from './TopBarMobile';
 const MobileOverlay = () => {
   const isMobile = useIsMobile();
   const isLandscape = useIsLandscape();
-  const isMobileLandscape = useIsMobileLandscape();
+  const isMobileLandscape = useIsMobileOrLandscape();
 
   return (
     <div className={isLandscape ? 'ml-20' : 'ml-0'}>
@@ -90,7 +90,7 @@ const DesktopOverlay = () => {
 };
 
 const PageOverlay = () => {
-  const isMobileLandscape = useIsMobileLandscape();
+  const isMobileLandscape = useIsMobileOrLandscape();
   return isMobileLandscape ? <MobileOverlay /> : <DesktopOverlay />;
 };
 

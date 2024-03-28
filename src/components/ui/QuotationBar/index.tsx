@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import useIsLandscape from '@/components/hooks/useIsLandscape';
-import useIsMobileLandscape from '@/components/hooks/useIsMobileLandscape';
+import useIsMobileOrLandscape from '@/components/hooks/useIsMobileOrLandscape';
 import { addFavorite, removeFavorite } from '@/store/quotationsSlice';
 import { isInFavorites } from '@/utils/dataHelpers';
 
@@ -16,7 +16,7 @@ import MobileBarWrapper from './components/MobileBarWrapper';
 
 const QuotationBar = () => {
   const dispatch = useAppDispatch();
-  const isMobileLandscape = useIsMobileLandscape();
+  const isMobileLandscape = useIsMobileOrLandscape();
   const isLandscape = useIsLandscape();
   const { t } = useTranslation();
   const { toast } = useToast();

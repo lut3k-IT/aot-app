@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import useIsMobileLandscape from '@/components/hooks/useIsMobileLandscape';
+import useIsMobileOrLandscape from '@/components/hooks/useIsMobileOrLandscape';
 import AppHelmet from '@/components/ui/AppHelmet';
 import { LanguageShortName } from '@/constants/enums';
 
@@ -10,7 +10,7 @@ import AboutPL from './components/AboutPL';
 const About = () => {
   const { t } = useTranslation();
   const { i18n } = useTranslation();
-  const isMobileLandscape = useIsMobileLandscape();
+  const isMobileLandscape = useIsMobileOrLandscape();
 
   return (
     <div className={isMobileLandscape ? 'pt-body-start' : ''}>

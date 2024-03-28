@@ -1,10 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { cn } from '@/lib/utils';
-
 import useIsLandscape from '../hooks/useIsLandscape';
-import useIsMobileLandscape from '../hooks/useIsMobileLandscape';
+import useIsMobileOrLandscape from '../hooks/useIsMobileOrLandscape';
 import { ScrollDirectionName, useScrollDirection } from '../hooks/useScrollDirection';
 
 interface MovingPanelProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -16,7 +14,7 @@ interface MovingPanelProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const MovingPanel = (props: MovingPanelProps) => {
   const { children, translateClassName, className, classNameSpacer, ...rest } = props;
-  const isMobileLandscape = useIsMobileLandscape();
+  const isMobileLandscape = useIsMobileOrLandscape();
   const isLandscape = useIsLandscape();
 
   const scrollDirection = useScrollDirection();

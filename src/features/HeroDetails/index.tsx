@@ -5,7 +5,9 @@ import classNames from 'classnames';
 
 import useAppDispatch from '@/components/hooks/useAppDispatch';
 import useAppSelector from '@/components/hooks/useAppSelector';
-import useIsMobileLandscape from '@/components/hooks/useIsMobileLandscape';
+import useIsLandscape from '@/components/hooks/useIsLandscape';
+import useIsMobile from '@/components/hooks/useIsMobile';
+import useIsMobileOrLandscape from '@/components/hooks/useIsMobileOrLandscape';
 import { useToast } from '@/components/hooks/useToast';
 import useValidateIdFromParam from '@/components/hooks/useValidateIdFromParam';
 import AppHelmet from '@/components/ui/AppHelmet';
@@ -24,10 +26,13 @@ import MobileTiles from './components/MobileTiles';
 
 const HeroDetails = () => {
   const { id } = useParams();
-  const isMobileLandscape = useIsMobileLandscape();
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
   const { toast } = useToast();
+
+  const isMobile = useIsMobile();
+  const isMobileOrLandscape = useIsMobileOrLandscape();
+  const isLandscape = useIsLandscape();
 
   const paramHeroId = useValidateIdFromParam(id);
 
@@ -56,7 +61,8 @@ const HeroDetails = () => {
   return (
     <div
       className={classNames({
-        'pt-body-pad-start': isMobileLandscape
+        'pt-body-pad-start': isMobile,
+        'pt-16': isLandscape
       })}
     >
       <AppHelmet title={`${hero.firstName} ${hero.lastName || ''}`} />
@@ -81,7 +87,7 @@ const HeroDetails = () => {
       <div className={'mt-2 w-full text-center text-2xl font-medium'}>{`${hero.firstName} ${
         hero?.lastName || ''
       }`}</div>
-      {isMobileLandscape ? <MobileTiles hero={hero} /> : <DesktopTiles hero={hero} />}
+      {isMobileOrLandscape ? <MobileTiles hero={hero} /> : <DesktopTiles hero={hero} />}
       <FavoriteButton
         isFavorite={isFavorite}
         handleToggleFavorite={handleToggleFavorite}

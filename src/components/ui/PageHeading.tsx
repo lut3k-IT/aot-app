@@ -5,7 +5,7 @@ import { YEAR } from '@/constants/constants';
 import { ElementsIds } from '@/constants/enums';
 
 import useIsLandscape from '../hooks/useIsLandscape';
-import useIsMobileLandscape from '../hooks/useIsMobileLandscape';
+import useIsMobileOrLandscape from '../hooks/useIsMobileOrLandscape';
 
 interface PageHeadingProps {
   year?: number;
@@ -15,7 +15,7 @@ interface PageHeadingProps {
 const PageHeading = (props: PageHeadingProps) => {
   const { year = YEAR, className } = props;
   const { t } = useTranslation();
-  const isMobileLandscape = useIsMobileLandscape();
+  const isMobileLandscape = useIsMobileOrLandscape();
   const isLandscape = useIsLandscape();
 
   return (
