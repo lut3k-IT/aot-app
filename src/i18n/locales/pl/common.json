@@ -37,7 +37,9 @@
     "hasInfoAbout": "Ma informacje o",
     "heroesDesc": "Ustaw filtry i zapisz zmiany.",
     "sortBy": "Sortuj według",
-    "showOnlyFavorites": "Pokaż tylko ulubione"
+    "showOnlyFavorites": "Pokaż tylko ulubione",
+    "search": "Szukaj",
+    "searchPlaceholder": "Wpisz nazwę postaci"
   },
   "sort": {
     "title": "Sortuj",

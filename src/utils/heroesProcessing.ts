@@ -24,6 +24,11 @@ export const filterHeroes = (data: HeroType[], filters: HeroFilters, favoriteHer
   const filteredData = data.filter((hero) => {
     const matchFavorite = filters.filters.hasOnlyFavorites ? (favoriteHeroesIds ?? []).includes(hero.id) : true;
 
+    const fullHeroName = `${hero.firstName} ${hero.lastName ?? ''}`;
+    const matchSearch = filters.search
+      ? fullHeroName.toLowerCase().includes(filters.search?.toLowerCase() ?? '')
+      : true;
+
     const isAgeFilterSameAsDefault =
       filters.filters.age[0] === DEFAULT_AGE[0] && filters.filters.age[1] === DEFAULT_AGE[1];
     const isHeightFilterSameAsDefault =
@@ -67,6 +72,7 @@ export const filterHeroes = (data: HeroType[], filters: HeroFilters, favoriteHer
 
     return (
       matchFavorite &&
+      matchSearch &&
       matchAge &&
       matchHeight &&
       matchWeight &&

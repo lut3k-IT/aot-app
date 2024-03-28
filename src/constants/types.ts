@@ -78,7 +78,7 @@ export interface HeroFilterCriteria {
 export type HeroSortOption = keyof HeroType;
 
 export interface HeroFilters {
-  search?: string;
+  search?: string | null;
   sort: HeroSortOption;
   sortDirection: SortDirection;
   filters: HeroFilterCriteria;

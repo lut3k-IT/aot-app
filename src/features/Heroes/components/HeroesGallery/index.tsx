@@ -80,9 +80,10 @@ const HeroesGallery = () => {
     const sortBy = (searchParams.get(Param.SORT) as HeroSortOption) || DEFAULT_SORT;
     const sortDirection = (searchParams.get(Param.SORT_DIRECTION) as SortDirection) || DEFAULT_SORT_DIRECTION;
     const hasOnlyFavorites = !!searchParams.get(Param.FAVORITES);
+    const search = searchParams.get(Param.SEARCH);
 
     const filters: HeroFilters = {
-      search: undefined,
+      search: search,
       sort: sortBy,
       sortDirection: sortDirection,
       filters: {

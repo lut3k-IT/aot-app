@@ -75,8 +75,12 @@ const Filter = () => {
   const [sortBy, setSortBy] = useState(DEFAULT_SORT);
   const [sortDirection, setSortDirection] = useState(DEFAULT_SORT_DIRECTION);
 
+  const [search, setSearch] = useState('');
+  // const handleSetSearch = (string: string) => setSearch(string.trim());
+
   const [isFilterActive, setIsFilterActive] = useState(false);
 
+  // checks if filter is active to display indicator
   useEffect(() => {
     setIsFilterActive(
       selectedStatuses.length > 0 ||
@@ -94,7 +98,8 @@ const Filter = () => {
         hasWeight ||
         sortBy !== DEFAULT_SORT ||
         sortDirection !== DEFAULT_SORT_DIRECTION ||
-        hasOnlyFavorites
+        hasOnlyFavorites ||
+        search !== ''
     );
   }, [
     selectedStatuses,
@@ -109,7 +114,8 @@ const Filter = () => {
     hasWeight,
     sortBy,
     sortDirection,
-    hasOnlyFavorites
+    hasOnlyFavorites,
+    search
   ]);
 
   /* -------------------------------- handlers -------------------------------- */
@@ -128,6 +134,7 @@ const Filter = () => {
     setSortBy(DEFAULT_SORT);
     setSortDirection(DEFAULT_SORT_DIRECTION);
     setHasOnlyFavorites(false);
+    setSearch('');
   };
 
   const handleResetSorting = () => {
@@ -175,8 +182,11 @@ const Filter = () => {
       [Param.HAS_WEIGHT, hasWeight ? hasWeight.toString() : null],
       [Param.SORT, sortBy !== DEFAULT_SORT ? sortBy.toString() : null],
       [Param.SORT_DIRECTION, sortDirection !== DEFAULT_SORT_DIRECTION ? sortDirection.toString() : null],
-      [Param.FAVORITES, hasOnlyFavorites ? hasOnlyFavorites.toString() : null]
+      [Param.FAVORITES, hasOnlyFavorites ? hasOnlyFavorites.toString() : null],
+      [Param.SEARCH, search.trim() || null]
     ];
+
+    setSearch(search.trim());
 
     setSearchParams((searchParams) => {
       updateSearchParams(searchParams, parameters);
@@ -208,6 +218,7 @@ const Filter = () => {
     const sortBy = findHeroSortBy(searchParams.get(Param.SORT)) || DEFAULT_SORT;
     const sortDirection = findSortDirection(searchParams.get(Param.SORT_DIRECTION)) || DEFAULT_SORT_DIRECTION;
     const hasOnlyFavorites = getBooleanParam(searchParams, Param.FAVORITES);
+    const search = searchParams.get(Param.SEARCH) || '';
 
     setSelectedStatuses(filterArrayFromNullish(statuses));
     setSelectedAge([ageMin, ageMax]);
@@ -222,6 +233,7 @@ const Filter = () => {
     setSortBy(sortBy);
     setSortDirection(sortDirection);
     setHasOnlyFavorites(hasOnlyFavorites);
+    setSearch(search);
   }, []);
 
   // @todo prompt: try to move as much to separate components for better readability
@@ -290,6 +302,15 @@ const Filter = () => {
                   {t(`common:sort.direction.${sortDirection}.short`)}
                 </Button>
               </div>
+            </FilterSegment>
+            {/* search bar */}
+            <FilterSegment title={t('common:filter.search')}>
+              <Input
+                placeholder={t('common:filter.searchPlaceholder')}
+                className={'w-full'}
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
             </FilterSegment>
             <FilterSegment
               title={t('data:status.title')}

@@ -37,7 +37,9 @@
     "hasInfoAbout": "Has info about",
     "heroesDesc": "Set filters and save the changes.",
     "sortBy": "Sort by",
-    "showOnlyFavorites": "Show only favorites"
+    "showOnlyFavorites": "Show only favorites",
+    "search": "Search",
+    "searchPlaceholder": "Type hero name"
   },
   "sort": {
     "title": "Sort",
