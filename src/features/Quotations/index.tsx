@@ -29,7 +29,11 @@ const Quotations = () => {
   const hasData = quotations.length > 0;
 
   // @todo move it to constants
-  const pageHeadingDestination = document.getElementById(ElementsIds.PAGE_HEADING_OPTIONS);
+  const [pageHeadingDestination, setPageHeadingDestination] = useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    setPageHeadingDestination(document.getElementById(ElementsIds.PAGE_HEADING_OPTIONS));
+  }, []);
 
   /* ------------------------------- error toast ------------------------------- */
 

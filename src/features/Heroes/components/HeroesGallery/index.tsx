@@ -42,7 +42,6 @@ const HeroesGallery = () => {
   const { t } = useTranslation();
   const { toast } = useToast();
   const [searchParams, setSearchParams] = useSearchParams();
-  const filterDestination = document.getElementById(ElementsIds.PAGE_HEADING_OPTIONS);
 
   const [totalPages, setTotalPages] = useState(DEFAULT_PAGE);
 
@@ -59,6 +58,13 @@ const HeroesGallery = () => {
 
   const hasData = originalHeroes.length > 0;
   const hasDataToShow = filteredHeroes.length > 0;
+
+  // const filterDestination = document.getElementById(ElementsIds.PAGE_HEADING_OPTIONS);
+  const [pageHeadingDestination, setPageHeadingDestination] = useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    setPageHeadingDestination(document.getElementById(ElementsIds.PAGE_HEADING_OPTIONS));
+  }, []);
 
   /* --------------------------------- filters -------------------------------- */
 
@@ -144,7 +150,7 @@ const HeroesGallery = () => {
   return (
     <GalleryWrapper>
       <AppHelmet title={`${t('common:title.heroes')} ${t('common:tab.gallery')}`} />
-      {filterDestination && createPortal(<Filter />, filterDestination)}
+      {pageHeadingDestination && createPortal(<Filter />, pageHeadingDestination)}
       {hasData && !isLoading ? (
         hasDataToShow ? (
           paginatedHeroes.map((hero) => (

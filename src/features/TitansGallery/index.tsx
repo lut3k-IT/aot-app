@@ -36,7 +36,11 @@ const TitansGallery = () => {
   const hasDataToShow = paginatedTitans.length > 0;
 
   // @todo move it to constants
-  const pageHeadingDestination = document.getElementById(ElementsIds.PAGE_HEADING_OPTIONS);
+  const [pageHeadingDestination, setPageHeadingDestination] = useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    setPageHeadingDestination(document.getElementById(ElementsIds.PAGE_HEADING_OPTIONS));
+  }, []);
 
   useEffect(() => {
     setFilteredTitans(originalTitans);
