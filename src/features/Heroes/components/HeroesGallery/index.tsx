@@ -59,7 +59,6 @@ const HeroesGallery = () => {
   const hasData = originalHeroes.length > 0;
   const hasDataToShow = filteredHeroes.length > 0;
 
-  // const filterDestination = document.getElementById(ElementsIds.PAGE_HEADING_OPTIONS);
   const [pageHeadingDestination, setPageHeadingDestination] = useState<HTMLElement | null>(null);
 
   useEffect(() => {

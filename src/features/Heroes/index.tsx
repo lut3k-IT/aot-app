@@ -1,5 +1,6 @@
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { createSearchParams, Navigate, Outlet, useSearchParams } from 'react-router-dom';
+import { createSearchParams, Navigate, Outlet, useLocation, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 
 import useIsLandscape from '@/components/hooks/useIsLandscape';
@@ -22,11 +23,20 @@ const tabsTriggerClassName = 'flex-1';
 
 const Heroes = () => {
   const { t } = useTranslation();
+  const location = useLocation();
+
   const isMobileLandscape = useIsMobileOrLandscape();
   const isLandscape = useIsLandscape();
 
+  const [currentTab, setCurrentTab] = useState(TabValue.GALLERY);
   const [searchParams] = useSearchParams();
   const searchParamsString = createSearchParams(searchParams);
+
+  const handleClearParams = () => {
+    searchParams.forEach((_, key) => {
+      searchParams.delete(key);
+    });
+  };
 
   const defaultValueBasedOnTheRoute = () => {
     const route = getCurrentRoute();
@@ -43,11 +53,24 @@ const Heroes = () => {
     }
   };
 
-  const handleClearParams = () => {
-    searchParams.forEach((_, key) => {
-      searchParams.delete(key);
-    });
-  };
+  useEffect(() => {
+    const route = getCurrentRoute();
+
+    switch (route) {
+      case RoutePath.HEROES_GALLERY:
+        setCurrentTab(TabValue.GALLERY);
+        break;
+      case RoutePath.HEROES_CHARTS:
+        setCurrentTab(TabValue.CHARTS);
+        break;
+      case RoutePath.HEROES_COMPARISON:
+        setCurrentTab(TabValue.COMPARISON);
+        break;
+      default:
+        setCurrentTab(TabValue.GALLERY);
+        break;
+    }
+  }, [location]);
 
   return (
     <>
@@ -57,6 +80,8 @@ const Heroes = () => {
         })}
       >
         <Tabs
+          value={currentTab}
+          onValueChange={(value) => setCurrentTab(value as TabValue)}
           defaultValue={defaultValueBasedOnTheRoute()}
           className={classNames('w-full pt-4', {
             'md:pt-0': !isMobileLandscape,
