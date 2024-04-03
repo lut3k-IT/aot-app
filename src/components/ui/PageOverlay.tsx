@@ -1,5 +1,6 @@
+import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { ExternalUrl, RoutePath } from '@/constants/enums';
@@ -41,8 +42,17 @@ const MobileOverlay = () => {
 };
 
 // @todo - make more configuration and apply DRY principle and utility first approach (classes)
+// @todo - move scrolling to separate component or hook, DRY it
 const DesktopOverlay = () => {
   const { t } = useTranslation();
+  const location = useLocation();
+  const scrollAreaRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (scrollAreaRef.current) {
+      scrollAreaRef.current.scrollTo(0, 0);
+    }
+  }, [location]);
 
   return (
     <div className={'mx-auto h-[100svh] max-w-7xl'}>
@@ -52,10 +62,15 @@ const DesktopOverlay = () => {
           <QuotationBar />
           <Card className={'h-full overflow-hidden p-4'}>
             <ScrollArea
+              viewportRef={scrollAreaRef}
               id='inner'
+              type={'always'}
               className={'-mr-3 h-full pr-3'}
             >
-              <div className={'p-2'}>
+              <div
+                id='outlet-wrapper'
+                className={'p-2'}
+              >
                 <Outlet />
               </div>
             </ScrollArea>
