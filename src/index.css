@@ -80,6 +80,10 @@
   button {
     @apply focus-visible-styles;
   }
+
+  a:hover {
+    @apply cursor-pointer;
+  }
 }
 
 @layer components {

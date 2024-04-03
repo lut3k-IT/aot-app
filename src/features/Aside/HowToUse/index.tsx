@@ -26,19 +26,26 @@ const ExampleSection = ({ children }: ExampleSectionProps) => {
   return <div className={'my-4 w-full rounded-md border-2 border-dashed p-6'}>{children}</div>;
 };
 
-const HowToUse = () => {
-  const { i18n } = useTranslation();
+interface HowToUseProps {
+  variant?: 'icon' | 'text';
+}
+
+const HowToUse = ({ variant = 'icon' }: HowToUseProps) => {
   const { t } = useTranslation();
 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button
-          iconName={'helpCircle'}
-          size={'icon'}
-          variant={'ghost'}
-          iconProps={{ variant: 'gray' }}
-        />
+        {variant === 'icon' ? (
+          <Button
+            iconName={'helpCircle'}
+            size={'icon'}
+            variant={'ghost'}
+            iconProps={{ variant: 'gray' }}
+          />
+        ) : (
+          <a>{t('common:howToUse')}</a>
+        )}
       </DialogTrigger>
       <DialogContent className={'h-[37.5rem] max-h-[100svh]'}>
         <DialogHeader>

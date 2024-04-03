@@ -4,6 +4,7 @@ import { Link, Outlet, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { ExternalUrl, RoutePath } from '@/constants/enums';
+import HowToUse from '@/features/Aside/HowToUse';
 
 import useIsLandscape from '../hooks/useIsLandscape';
 import useIsMobile from '../hooks/useIsMobile';
@@ -82,9 +83,8 @@ const DesktopOverlay = () => {
                 'mx-auto flex w-full items-center justify-center gap-8 [&>*:hover]:underline [&>*]:text-sm [&>*]:text-muted-foreground'
               }
             >
+              <HowToUse variant={'text'} />
               <Link to={RoutePath.ABOUT}>{t('common:title.about')}</Link>
-              {/* <Link to={RoutePath.CHANGELOG}>{t('common:title.changelog')}</Link>
-            <Link to={RoutePath.PRIVACY_POLICY}>{t('common:title.privacyPolicy')}</Link> */}
               <Link to={RoutePath.TERMS_OF_SERVICE}>{t('common:title.termsAndConditions')}</Link>
               <a
                 href={ExternalUrl.PORTFOLIO}
