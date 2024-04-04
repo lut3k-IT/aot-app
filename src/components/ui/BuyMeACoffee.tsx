@@ -21,7 +21,7 @@ const BuyMeACoffee = (props: BuyMeACoffeeProps) => {
     >
       <img
         src='https://cdn.buymeacoffee.com/buttons/v2/default-red.png'
-        alt='Buy Me A Coffee'
+        alt='Buy Me A Coffee image'
         style={buttonStyle}
       />
     </a>

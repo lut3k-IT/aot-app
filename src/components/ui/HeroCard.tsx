@@ -105,6 +105,7 @@ const HeroCard = (props: HeroCardProps) => {
         <MbtiFrame mbtiId={mbti}>
           <CharacterPicture
             imgSource={`/assets/img/heroes/${id}.jpg`}
+            alt={`${firstName} ${lastName} - ${t('common:brand')}`}
             variant={'roundedBtm'}
           />
         </MbtiFrame>

@@ -73,7 +73,7 @@ const TitanDetails = () => {
     >
       <AppHelmet
         title={titan.name}
-        description={`Attack on Titan - ${titan.name}`}
+        description={`${titan.name} - ${t('common:brand')}`}
       />
       <ButtonGoBack fallbackRoute={RoutePath.HEROES_GALLERY} />
       <div className={'relative mt-6 flex flex-col items-center'}>
@@ -88,6 +88,7 @@ const TitanDetails = () => {
         />
         <CharacterPicture
           imgSource={`/assets/img/titans/${paramTitanId}.jpg`}
+          alt={`${titan.name} - ${t('common:brand')}`}
           size={'xl'}
           variant={'circle'}
           className={'mt-5 border-4 border-background'}

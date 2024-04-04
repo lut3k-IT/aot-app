@@ -24,6 +24,7 @@ const PictureWithSelect = (props: PictureWithSelectProps) => {
     <button className={cn('focus-visible-styles max-h-[8rem] w-full max-w-[8rem] rounded-full', className)}>
       <CharacterPicture
         imgSource={selectedHero ? `/assets/img/heroes/${selectedHero.id}.jpg` : undefined}
+        alt={selectedHero?.firstName || 'Hero'}
         size={'full'}
         variant={'circle'}
         className={'max-h-[8rem] max-w-[8rem] outline-dashed outline-2 outline-offset-4 outline-muted2'}

@@ -29,15 +29,19 @@ const characterPictureVariants = cva('', {
 
 interface CharacterPictureProps extends VariantProps<typeof characterPictureVariants> {
   imgSource: ImageSourceType;
+  alt?: string;
   className?: string;
 }
 
 const CharacterPicture = (props: CharacterPictureProps) => {
-  const { imgSource, className, variant, size } = props;
+  const { imgSource, className, variant, size, alt } = props;
 
   return (
     <Avatar className={cn(characterPictureVariants({ variant, size }), className)}>
-      <AvatarImage src={imgSource} />
+      <AvatarImage
+        src={imgSource}
+        alt={alt}
+      />
       <AvatarFallback className={cn(characterPictureVariants({ variant, size }))}>
         <Image className={'h-1/2 w-1/2 text-muted2-foreground'} />
       </AvatarFallback>

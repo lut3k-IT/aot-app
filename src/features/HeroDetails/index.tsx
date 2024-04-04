@@ -67,7 +67,7 @@ const HeroDetails = () => {
     >
       <AppHelmet
         title={`${hero.firstName} ${hero.lastName || ''}`}
-        description={`Attack on Titan - ${hero.firstName} ${hero.lastName || ''}`}
+        description={`${hero.firstName} ${hero.lastName || ''} - ${t('common:brand')}`}
       />
       <ButtonGoBack fallbackRoute={RoutePath.HEROES_GALLERY} />
       <div className={'relative mt-6 flex flex-col items-center'}>
@@ -82,6 +82,7 @@ const HeroDetails = () => {
         />
         <CharacterPicture
           imgSource={`/assets/img/heroes/${paramHeroId}.jpg`}
+          alt={`${hero.firstName} - ${t('common:brand')}`}
           size={'xl'}
           variant={'circle'}
           className={'mt-5 border-4 border-background'}
