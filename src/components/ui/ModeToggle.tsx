@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Button } from '@/components/ui/Button';
@@ -21,6 +21,10 @@ const ModeToggle = (props: ModeToggleProps) => {
   const { theme, setTheme } = useTheme();
   // @audit make a types for this || make a helper function to get the theme name || Enum
   const [themeName, setThemeName] = useState(t(`common:ui.modeToggle.${theme}`));
+
+  useEffect(() => {
+    setThemeName(t(`common:ui.modeToggle.${theme}`));
+  }, [theme, t]);
 
   const MobileButton = (
     <Button

@@ -28,7 +28,6 @@ const RouterComponents = () => (
   </>
 );
 
-// FIXME:
 export const router = createBrowserRouter([
   {
     path: RoutePath.LANDING,
@@ -93,14 +92,6 @@ export const router = createBrowserRouter([
             path: RoutePath.ABOUT,
             element: <About />
           },
-          // {
-          //   path: RoutePath.CHANGELOG,
-          //   element: <Changelog />
-          // },
-          // {
-          //   path: RoutePath.PRIVACY_POLICY,
-          //   element: <PrivacyPolicy />
-          // },
           {
             path: RoutePath.TERMS_OF_SERVICE,
             element: <TermsAndConditions />
