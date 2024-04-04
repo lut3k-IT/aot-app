@@ -69,7 +69,10 @@ const HeroDetails = () => {
         title={`${hero.firstName} ${hero.lastName || ''}`}
         description={`${hero.firstName} ${hero.lastName || ''} - ${t('common:brand')}`}
       />
-      <ButtonGoBack fallbackRoute={RoutePath.HEROES_GALLERY} />
+      <ButtonGoBack
+        fallbackRoute={RoutePath.HEROES_GALLERY}
+        aria-label={t('common:navigation.goBack')}
+      />
       <div className={'relative mt-6 flex flex-col items-center'}>
         <div
           className={classNames('absolute h-[7.5rem] w-full rounded-lg', {

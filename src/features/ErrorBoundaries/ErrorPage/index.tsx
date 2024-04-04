@@ -21,6 +21,7 @@ const ErrorPage = () => {
       <Button
         linkTo={RoutePath.HEROES_GALLERY}
         iconName={'chevronLeft'}
+        aria-label={t('common:error.backToHomepage')}
       >
         {t('common:error.backToHomepage')}
       </Button>

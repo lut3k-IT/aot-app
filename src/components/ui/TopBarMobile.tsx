@@ -17,6 +17,7 @@ const SidebarAndButton = () => (
         size={'icon'}
         variant={'ghost'}
         iconSize={'lg'}
+        aria-label={'Menu'}
       />
     </DialogTrigger>
     <DialogContentSidebar

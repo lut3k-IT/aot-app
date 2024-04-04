@@ -31,6 +31,7 @@ const ButtonGoBack = (props: ButtonGoBackProps) => {
       className={cn('pl-2', className)}
       variant={'outline'}
       iconName={'chevronLeft'}
+      aria-label={text}
     >
       {text}
     </Button>

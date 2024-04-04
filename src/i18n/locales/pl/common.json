@@ -30,7 +30,12 @@
     "save": "Zapisz",
     "saveChanges": "Zapisz zmiany",
     "reset": "Resetuj",
-    "resetAll": "Resetuj wszystko"
+    "resetAll": "Resetuj wszystko",
+    "select": {
+      "title": "Wybierz",
+      "hero": "Wybierz postać",
+      "titan": "Wybierz tytana"
+    }
   },
   "filter": {
     "title": "Filtr",
@@ -93,6 +98,17 @@
       "dark": "Ciemny",
       "light": "Jasny",
       "system": "Systemowy"
+    },
+    "pagination": {
+      "firstPage": "Pierwsza strona",
+      "previousPage": "Poprzednia strona",
+      "nextPage": "Następna strona",
+      "lastPage": "Ostatnia strona"
+    },
+    "sidebar": {
+      "title": "Menu",
+      "open": "Otwórz menu",
+      "close": "Zamknij menu"
     }
   },
   "soon": "Wkrótce",

@@ -252,6 +252,7 @@ const Filter = () => {
           className={'relative text-muted-foreground hover:text-muted-foreground'}
           size={'sm'}
           iconProps={{ className: 'text-muted-foreground' }}
+          aria-label={t('common:filter.title')}
         >
           {t('common:filter.title')}
           {isFilterActive && <Indicator />}
@@ -298,6 +299,7 @@ const Filter = () => {
                   iconPosition={'right'}
                   className={'w-32 hover:bg-background'}
                   onClick={handleToggleSortDirection}
+                  aria-label={t('common:sort.direction.toggle')}
                 >
                   {t(`common:sort.direction.${sortDirection}.short`)}
                 </Button>
@@ -323,6 +325,7 @@ const Filter = () => {
                       key={data.id}
                       isActive={selectedStatuses.some((selected) => selected.id === data.id)}
                       onClick={() => handleSetStatuses(data)}
+                      aria-label={t(`data:status.${data.keyName}.long`)}
                     >
                       {t(`data:status.${data.keyName}.long`)}
                     </FilterButton>
@@ -440,6 +443,7 @@ const Filter = () => {
                       key={data.id}
                       isActive={selectedMbti.some((selected) => selected.id === data.id)}
                       onClick={() => handleSetMbti(data)}
+                      aria-label={data.shortName}
                     >
                       {data.shortName}
                     </FilterButton>
@@ -458,6 +462,7 @@ const Filter = () => {
                       key={data.id}
                       isActive={selectedSpecies.some((selected) => selected.id === data.id)}
                       onClick={() => handleSetSpecies(data)}
+                      aria-label={t(`data:species.${data.keyName}`)}
                     >
                       {t(`data:species.${data.keyName}`)}
                     </FilterButton>
@@ -476,6 +481,7 @@ const Filter = () => {
                       key={data.id}
                       isActive={selectedResidence.some((selected) => selected.id === data.id)}
                       onClick={() => handleSetResidences(data)}
+                      aria-label={t(`data:residence.${data.keyName}`)}
                     >
                       {t(`data:residence.${data.keyName}`)}
                     </FilterButton>
@@ -495,18 +501,21 @@ const Filter = () => {
                 <FilterButton
                   isActive={hasAge}
                   onClick={() => setHasAge((prev) => !prev)}
+                  aria-label={t('data:age.title')}
                 >
                   {t('data:age.title')}
                 </FilterButton>
                 <FilterButton
                   isActive={hasHeight}
                   onClick={() => setHasHeight((prev) => !prev)}
+                  aria-label={t('data:height.title')}
                 >
                   {t('data:height.title')}
                 </FilterButton>
                 <FilterButton
                   isActive={hasWeight}
                   onClick={() => setHasWeight((prev) => !prev)}
+                  aria-label={t('data:weight.title')}
                 >
                   {t('data:weight.title')}
                 </FilterButton>
@@ -526,6 +535,7 @@ const Filter = () => {
             className={'w-fit'}
             variant={'destructiveInvert'}
             onClick={handleResetAll}
+            aria-label={t('common:action.resetAll')}
           >
             {t('common:action.resetAll')}
           </Button>
@@ -533,6 +543,7 @@ const Filter = () => {
             type='submit'
             className={'w-full'}
             onClick={handleApplyFilters}
+            aria-label={t('common:action.saveChanges')}
           >
             {t('common:action.saveChanges')}
           </Button>

@@ -19,6 +19,7 @@ const FilterSegment = (props: FilterSegmentProps) => {
             variant={'link'}
             className={'h-full p-0 px-3 text-destructive'}
             onClick={() => onReset()}
+            aria-label={`Reset ${title}`}
           >
             Reset
           </Button>

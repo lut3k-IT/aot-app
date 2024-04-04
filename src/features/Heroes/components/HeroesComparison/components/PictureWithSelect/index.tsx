@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Check, MousePointerSquare } from 'lucide-react';
 
 import CharacterPicture from '@/components/ui/CharacterPicture';
@@ -19,9 +20,13 @@ interface PictureWithSelectProps {
 const PictureWithSelect = (props: PictureWithSelectProps) => {
   const { componentId, heroesForSelect, selectedHero, onSelectHero, className } = props;
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+  const { t } = useTranslation();
 
   const characterPicture = (
-    <button className={cn('focus-visible-styles max-h-[8rem] w-full max-w-[8rem] rounded-full', className)}>
+    <button
+      aria-label={t('common:action.select.hero')}
+      className={cn('focus-visible-styles max-h-[8rem] w-full max-w-[8rem] rounded-full', className)}
+    >
       <CharacterPicture
         imgSource={selectedHero ? `/assets/img/heroes/${selectedHero.id}.jpg` : undefined}
         alt={selectedHero?.firstName || 'Hero'}
@@ -33,7 +38,10 @@ const PictureWithSelect = (props: PictureWithSelectProps) => {
   );
 
   const emptyPicture = (
-    <button className={cn('focus-visible-styles max-h-[8rem] w-full max-w-[8rem] rounded-full', className)}>
+    <button
+      aria-label={t('common:action.select.hero')}
+      className={cn('focus-visible-styles max-h-[8rem] w-full max-w-[8rem] rounded-full', className)}
+    >
       <div
         className={
           'flex-center aspect-square h-auto w-full flex-col gap-1 rounded-full bg-accent text-muted-foreground outline-dashed outline-2 outline-offset-4 outline-muted2'

@@ -42,6 +42,7 @@ const HowToUse = ({ variant = 'icon' }: HowToUseProps) => {
             size={'icon'}
             variant={'ghost'}
             iconProps={{ variant: 'gray' }}
+            aria-label={t('common:howToUse')}
           />
         ) : (
           <a>{t('common:howToUse')}</a>

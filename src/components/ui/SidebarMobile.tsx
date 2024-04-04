@@ -29,6 +29,7 @@ const SidebarMobile = () => {
           variant={'link'}
           linkTo={RoutePath.ABOUT}
           onClick={handleClick}
+          aria-label={t('common:title.about')}
         >
           {t('common:title.about')}
         </Button>
@@ -36,6 +37,7 @@ const SidebarMobile = () => {
           variant={'link'}
           linkTo={RoutePath.TERMS_OF_SERVICE}
           onClick={handleClick}
+          aria-label={t('common:title.termsAndConditions')}
         >
           {t('common:title.termsAndConditions')}
         </Button>
@@ -43,6 +45,7 @@ const SidebarMobile = () => {
           variant={'link'}
           linkTo={ExternalUrl.PORTFOLIO}
           onClick={handleClick}
+          aria-label={t('common:title.portfolio')}
         >
           {t('common:title.portfolio')}
         </Button>

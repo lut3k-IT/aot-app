@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { cn } from '@/lib/utils';
 
@@ -14,6 +15,7 @@ interface HeartButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>
 
 const HeartButton = (props: HeartButtonProps) => {
   const { onToggleFavorite, iconSize, className, isFilled } = props;
+  const { t } = useTranslation();
 
   return (
     <Button
@@ -21,6 +23,7 @@ const HeartButton = (props: HeartButtonProps) => {
       size={'proxy'}
       className={cn('p-1', className)}
       onClick={onToggleFavorite}
+      aria-label={isFilled ? t('common:action.removeFromFavorites') : t('common:action.addToFavorites')}
     >
       <Icon
         size={iconSize}

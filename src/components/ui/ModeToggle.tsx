@@ -26,6 +26,7 @@ const ModeToggle = (props: ModeToggleProps) => {
     <Button
       variant='ghost'
       size='icon'
+      aria-label={t('common:ui.modeToggle.title')}
     >
       <Icon
         name={'sun'}
@@ -45,6 +46,7 @@ const ModeToggle = (props: ModeToggleProps) => {
         variant='ghost'
         id={'modeToggle'}
         className={'w-full'}
+        aria-label={t('common:ui.modeToggle.title')}
       >
         <div className={'relative'}>
           <Icon

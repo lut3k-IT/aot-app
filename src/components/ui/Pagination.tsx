@@ -97,6 +97,7 @@ const Pagination = (props: PaginationProps) => {
             page !== 1 && scrollToTop();
             handleChangePage(1);
           }}
+          aria-label={t('common:ui.pagination.firstPage')}
         />
         <Button
           variant={'outline'}
@@ -104,6 +105,7 @@ const Pagination = (props: PaginationProps) => {
           className={'h-9 w-9'}
           iconName={'chevronLeft'}
           onClick={() => handleChangePage(page - 1)}
+          aria-label={t('common:ui.pagination.previousPage')}
         />
         <Button
           variant={'outline'}
@@ -111,6 +113,7 @@ const Pagination = (props: PaginationProps) => {
           className={'h-9 w-9'}
           iconName={'chevronRight'}
           onClick={() => handleChangePage(page + 1 < totalPages ? page + 1 : totalPages)}
+          aria-label={t('common:ui.pagination.nextPage')}
         />
         <Button
           variant={'outline'}
@@ -121,6 +124,7 @@ const Pagination = (props: PaginationProps) => {
             page !== totalPages && scrollToTop();
             handleChangePage(totalPages);
           }}
+          aria-label={t('common:ui.pagination.lastPage')}
         />
       </div>
     </div>

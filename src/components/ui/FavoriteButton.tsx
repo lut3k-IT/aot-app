@@ -24,6 +24,7 @@ const FavoriteButton = (props: FavoriteButtonProps) => {
         className: isFavorite ? 'text-red-500 fill-red-500' : 'text-muted-foreground'
       }}
       onClick={handleToggleFavorite}
+      aria-label={isFavorite ? t('common:action.removeFromFavorites') : t('common:action.addToFavorites')}
     >
       {isFavorite ? t('common:action.removeFromFavorites') : t('common:action.addToFavorites')}
     </Button>

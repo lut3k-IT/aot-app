@@ -30,7 +30,12 @@
     "save": "Save",
     "saveChanges": "Save changes",
     "reset": "Reset",
-    "resetAll": "Reset all"
+    "resetAll": "Reset all",
+    "select": {
+      "title": "Select",
+      "hero": "Select hero",
+      "titan": "Select titan"
+    }
   },
   "filter": {
     "title": "Filter",
@@ -93,6 +98,17 @@
       "dark": "Dark",
       "light": "Light",
       "system": "System"
+    },
+    "pagination": {
+      "firstPage": "First page",
+      "previousPage": "Previous page",
+      "nextPage": "Next page",
+      "lastPage": "Last page"
+    },
+    "sidebar": {
+      "title": "Sidebar",
+      "open": "Open sidebar",
+      "close": "Close sidebar"
     }
   },
   "soon": "Soon",

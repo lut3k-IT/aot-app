@@ -57,7 +57,12 @@ const LanguageSwitcher = (props: LanguageSwitcherProps) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button {...buttonProps}>{currentLanguageName}</Button>
+        <Button
+          aria-label={currentLanguageName}
+          {...buttonProps}
+        >
+          {currentLanguageName}
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align='center'>
         {availableLanguages
