@@ -47,7 +47,7 @@ const NavigationMobile = () => {
   const isLandscape = useIsLandscape();
 
   return (
-    <div
+    <nav
       className={classNames('fixed bottom-0 z-40 flex w-full justify-evenly border-t bg-background', {
         'left-0 top-0 h-[100vh] !w-20 flex-col items-center border-r border-t-0': isLandscape
       })}
@@ -60,7 +60,7 @@ const NavigationMobile = () => {
           />
         );
       })}
-    </div>
+    </nav>
   );
 };
 

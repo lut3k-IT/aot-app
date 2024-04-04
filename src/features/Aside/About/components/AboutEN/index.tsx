@@ -64,11 +64,14 @@ const AboutEN = () => {
         The application is still under development, and its creators are constantly working on new features and
         improvements.
       </p>
-
-      <h2>Support us!</h2>
       <p>
-        AOT APP is completely free and created with passion by fans for fans. If you want to appreciate our work and
-        help in the further development of AOT APP, you can buy us a virtual coffee on the Buy Me a Coffee platform:
+        The data are from various sources and have not been verified. It is possible that some data may not be correct.
+      </p>
+
+      <h2>Support me!</h2>
+      <p>
+        AOT APP is completely free and created with passion by fans for fans. If you want to appreciate my work and help
+        in the further development of AOT APP, you can buy me a virtual tea on the Buy Me a Coffee platform:
       </p>
       <BuyMeACoffee />
     </div>

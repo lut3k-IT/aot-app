@@ -63,11 +63,15 @@ const AboutPL = () => {
         AOT APP jest projektem fanowskim i nie jest powiązana z oficjalnymi twórcami lub wydawcami „Attack on Titan”.
         Aplikacja jest wciąż w fazie rozwoju, a jej twórcy stale pracują nad nowymi funkcjami i udoskonaleniami.
       </p>
-
-      <h2>Wesprzyj nas!</h2>
       <p>
-        Aplikacja AOT APP jest całkowicie darmowa i tworzona z pasją przez fanów dla fanów. Jeśli chcesz docenić naszą
-        pracę i pomóc w dalszym rozwoju AOT APP, możesz postawić nam wirtualną kawę na platformie Buy Me a Coffee:
+        Dane pochodzą z różnych źródeł i nie zostały zweryfikowane. Istnieje prawdopodobieństwo, że niektóre dane mogą
+        nie być prawdziwe.
+      </p>
+
+      <h2>Wesprzyj mnie!</h2>
+      <p>
+        Aplikacja AOT APP jest całkowicie darmowa i tworzona z pasją przez fanów dla fanów. Jeśli chcesz docenić moją
+        pracę i pomóc w dalszym rozwoju AOT APP, możesz postawić mi wirtualną herbatę na platformie Buy Me a Coffee:
       </p>
       <BuyMeACoffee />
     </div>

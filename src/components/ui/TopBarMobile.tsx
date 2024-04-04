@@ -34,7 +34,7 @@ const TopBarMobile = () => {
   const isLandscape = useIsLandscape();
 
   return (
-    <div
+    <header
       className={classNames('fixed z-30 flex h-12 w-full items-center gap-2 border-b bg-background px-page-mobile', {
         '!w-[calc(100vw-5rem)]': isLandscape
       })}
@@ -45,7 +45,7 @@ const TopBarMobile = () => {
         <ModeToggle />
         <HowToUse />
       </div>
-    </div>
+    </header>
   );
 };
 

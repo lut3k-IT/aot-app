@@ -42,7 +42,7 @@ const NavigationElement = (props: NavigationElementProps) => {
 
 const NavigationDesktop = () => {
   return (
-    <div className='flex w-full flex-col gap-2 bg-background'>
+    <nav className='flex w-full flex-col gap-2 bg-background'>
       {navigationData.map((element) => {
         return (
           <NavigationElement
@@ -51,7 +51,7 @@ const NavigationDesktop = () => {
           />
         );
       })}
-    </div>
+    </nav>
   );
 };
 

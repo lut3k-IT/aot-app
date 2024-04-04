@@ -26,7 +26,7 @@ const MobileOverlay = () => {
     <div className={isLandscape ? 'ml-20' : 'ml-0'}>
       <TopBarMobile />
       <QuotationBar />
-      <div
+      <main
         id='inner'
         className={classNames('[&>*]:px-4', {
           'pb-body-pad-end': isMobile && !isLandscape,
@@ -35,7 +35,7 @@ const MobileOverlay = () => {
       >
         {/* @audit - it shouldn't rerender the entire component, but only the part that changes */}
         <Outlet />
-      </div>
+      </main>
       <NavigationMobile />
       <Toaster />
     </div>
@@ -68,17 +68,17 @@ const DesktopOverlay = () => {
               type={'always'}
               className={'-mr-3 h-full pr-3'}
             >
-              <div
+              <main
                 id='outlet-wrapper'
                 className={'p-2'}
               >
                 <Outlet />
-              </div>
+              </main>
             </ScrollArea>
           </Card>
           {/* @todo move to separate component - maybe make it common for mobile too */}
           <ScrollArea className={'h-5 w-full whitespace-nowrap px-4'}>
-            <div
+            <footer
               className={
                 'mx-auto flex w-full items-center justify-center gap-8 [&>*:hover]:underline [&>*]:text-sm [&>*]:text-muted-foreground'
               }
@@ -94,7 +94,7 @@ const DesktopOverlay = () => {
               >
                 {t('common:title.portfolio')}
               </a>
-            </div>
+            </footer>
             <ScrollBar orientation='horizontal' />
           </ScrollArea>
         </div>

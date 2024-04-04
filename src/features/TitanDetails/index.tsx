@@ -71,7 +71,10 @@ const TitanDetails = () => {
         'pt-16': isLandscape
       })}
     >
-      <AppHelmet title={titan.name} />
+      <AppHelmet
+        title={titan.name}
+        description={`Attack on Titan - ${titan.name}`}
+      />
       <ButtonGoBack fallbackRoute={RoutePath.HEROES_GALLERY} />
       <div className={'relative mt-6 flex flex-col items-center'}>
         <div

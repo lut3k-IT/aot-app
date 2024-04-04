@@ -65,7 +65,10 @@ const HeroDetails = () => {
         'pt-16': isLandscape
       })}
     >
-      <AppHelmet title={`${hero.firstName} ${hero.lastName || ''}`} />
+      <AppHelmet
+        title={`${hero.firstName} ${hero.lastName || ''}`}
+        description={`Attack on Titan - ${hero.firstName} ${hero.lastName || ''}`}
+      />
       <ButtonGoBack fallbackRoute={RoutePath.HEROES_GALLERY} />
       <div className={'relative mt-6 flex flex-col items-center'}>
         <div
