@@ -19,8 +19,6 @@ export type HeroForSelect = {
   value: string;
 };
 
-// @todo save heroes in params
-
 const DEFAULT_COMPARISON_STATE = Array(3).fill(null);
 
 const HeroesComparison = () => {

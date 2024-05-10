@@ -44,7 +44,7 @@ const TitanCard = (props: TitanCardProps) => {
         <MbtiFrame mbtiId={mbti}>
           <CharacterPicture
             imgSource={`/assets/img/titans/${id}.jpg`}
-            alt={`${name} - ${t('common:brand')}`}
+            alt={`${name} - Attack on Titan ${t('common:brand')}`}
             variant={'roundedBtm'}
           />
         </MbtiFrame>

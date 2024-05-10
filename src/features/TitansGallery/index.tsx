@@ -27,25 +27,14 @@ const TitansGallery = () => {
   const isLoading = fetchingStatus === 'loading';
   useApiErrorToast(fetchingError);
 
-  // @todo remove this states and use the ones from the store because there won't be any filtering or pagination
-  const [filteredTitans, setFilteredTitans] = useState(originalTitans);
-  const [paginatedTitans, setPaginatedTitans] = useState(originalTitans);
-
   const [shouldShowFavorites, setShouldShowFavorites] = useState(false);
   const hasData = originalTitans.length > 0;
-  const hasDataToShow = paginatedTitans.length > 0;
 
-  // @todo move it to constants
   const [pageHeadingDestination, setPageHeadingDestination] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
     setPageHeadingDestination(document.getElementById(ElementsIds.PAGE_HEADING_OPTIONS));
   }, []);
-
-  useEffect(() => {
-    setFilteredTitans(originalTitans);
-    setPaginatedTitans(originalTitans);
-  }, [originalTitans]);
 
   return (
     <>
@@ -63,7 +52,7 @@ const TitansGallery = () => {
       </MovingPanel>
       <GalleryWrapper>
         <Content
-          paginatedTitans={paginatedTitans}
+          paginatedTitans={originalTitans}
           shouldShowFavorites={shouldShowFavorites}
           favoriteTitansIds={favoriteTitansIds}
           originalHeroes={originalHeroes}

@@ -5,7 +5,6 @@ import { useSearchParams } from 'react-router-dom';
 
 import { useApiErrorToast } from '@/components/hooks/useApiErrorToast';
 import useAppSelector from '@/components/hooks/useAppSelector';
-import { useToast } from '@/components/hooks/useToast';
 import AppHelmet from '@/components/ui/AppHelmet';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import Pagination, { DEFAULT_PAGE, DEFAULT_PAGE_SIZES } from '@/components/ui/Pagination';
@@ -31,9 +30,6 @@ import {
   DEFAULT_WEIGHT
 } from './components/Filter/helpers';
 
-// @todo save pagesize in local storage
-// @fixme when on page 2 and in hero details, when go back the page 1 is shown but page 2 in params
-
 const HeroesGallery = () => {
   const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -49,8 +45,6 @@ const HeroesGallery = () => {
 
   const [filteredHeroes, setFilteredHeroes] = useState(originalHeroes);
   const [paginatedHeroes, setPaginatedHeroes] = useState(originalHeroes);
-
-  // todo: if there is no data and there is no error and fetching, show an announcement to try other filters
 
   const hasData = originalHeroes.length > 0;
   const hasDataToShow = filteredHeroes.length > 0;
@@ -110,8 +104,6 @@ const HeroesGallery = () => {
   useEffect(() => {
     const page = getSafePageNumberFromSearchParam(searchParams);
     const pageSize = Number(searchParams.get(Param.PAGE_SIZE)) || DEFAULT_PAGE_SIZES[0];
-
-    // todo: create a pagesize util that will only apply available page size
 
     const { paginatedHeroes, totalPages } = paginateHeroes(filteredHeroes, page, pageSize);
     setPaginatedHeroes(paginatedHeroes);

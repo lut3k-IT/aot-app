@@ -236,8 +236,6 @@ const Filter = () => {
     setSearch(search);
   }, []);
 
-  // @todo prompt: try to move as much to separate components for better readability
-
   return (
     <Dialog
       open={isModalOpen}
@@ -265,8 +263,7 @@ const Filter = () => {
           </DialogTitle>
           <DialogDescription>{t('common:filter.heroesDesc')}</DialogDescription>
         </DialogHeader>
-        {/* @todo DRY scroll */}
-        <ScrollArea className={'-mx-2 -mr-4 h-full pr-2'}>
+        <ScrollArea className={'scroll-area'}>
           <div className='mx-2 grid gap-6 py-4'>
             <FilterSegment
               title={t('common:filter.sortBy')}

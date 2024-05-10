@@ -9,7 +9,7 @@ import './i18n/i18n';
 
 import AppRouter from './app/AppRouter';
 import { ThemeProvider } from './components/ui/ThemeProvider';
-import { LocalStorageKey } from './constants/enums';
+import { LocalStorageKey, Theme } from './constants/enums';
 import { store } from './store';
 
 import './index.css';
@@ -20,7 +20,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <Provider store={store}>
         <I18nextProvider i18n={i18next}>
           <ThemeProvider
-            defaultTheme='light'
+            defaultTheme={Theme.LIGHT}
             storageKey={LocalStorageKey.THEME}
           >
             <AppRouter />

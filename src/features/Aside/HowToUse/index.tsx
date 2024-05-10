@@ -53,7 +53,7 @@ const HowToUse = ({ variant = 'icon' }: HowToUseProps) => {
           <DialogTitle>{t('howToUse:dialog.title')}</DialogTitle>
           <DialogDescription>{t('howToUse:dialog.description')}</DialogDescription>
         </DialogHeader>
-        <ScrollArea className={'-mx-2 -mr-4 h-full pr-2'}>
+        <ScrollArea className={'scroll-area'}>
           <div className='article'>
             <h2>{t('howToUse:spoilerMode.title')}</h2>
             <p>{t('howToUse:spoilerMode.description')}</p>

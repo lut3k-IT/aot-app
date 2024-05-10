@@ -8,6 +8,17 @@ export enum ElementsIds {
   PAGE_HEADING_OPTIONS = 'page-heading-options'
 }
 
+export enum Theme {
+  LIGHT = 'light',
+  DARK = 'dark',
+  SYSTEM = 'system'
+}
+
+export enum Device {
+  MOBILE = 'mobile',
+  DESKTOP = 'desktop'
+}
+
 /* ------------------------------- URL related ------------------------------ */
 
 export enum Param {

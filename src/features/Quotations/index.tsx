@@ -28,7 +28,6 @@ const Quotations = () => {
   const [shouldShowFavorites, setShouldShowFavorites] = useState(false);
   const hasData = quotations.length > 0;
 
-  // @todo move it to constants
   const [pageHeadingDestination, setPageHeadingDestination] = useState<HTMLElement | null>(null);
 
   useEffect(() => {

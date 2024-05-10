@@ -1,8 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-import { LocalStorageKey } from '@/constants/enums';
-
-type Theme = 'dark' | 'light' | 'system';
+import { LocalStorageKey, Theme } from '@/constants/enums';
 
 type ThemeProviderProps = {
   children: React.ReactNode;
@@ -16,7 +14,7 @@ type ThemeProviderState = {
 };
 
 const initialState: ThemeProviderState = {
-  theme: 'light',
+  theme: Theme.LIGHT,
   setTheme: () => null
 };
 
@@ -24,7 +22,7 @@ const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
 export function ThemeProvider({
   children,
-  defaultTheme = 'light',
+  defaultTheme = Theme.LIGHT,
   storageKey = LocalStorageKey.THEME,
   ...props
 }: ThemeProviderProps) {
@@ -33,10 +31,10 @@ export function ThemeProvider({
   useEffect(() => {
     const root = window.document.documentElement;
 
-    root.classList.remove('light', 'dark');
+    root.classList.remove(Theme.LIGHT, Theme.DARK);
 
-    if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    if (theme === Theme.SYSTEM) {
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? Theme.DARK : Theme.LIGHT;
 
       root.classList.add(systemTheme);
       return;

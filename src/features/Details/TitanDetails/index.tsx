@@ -53,7 +53,7 @@ const TitanDetails = () => {
     <DetailsContainer>
       <AppHelmet
         title={titan.name}
-        description={`${titan.name} - ${t('common:brand')}`}
+        description={`${titan.name} - Attack on Titan ${t('common:brand')}`}
       />
       <ButtonGoBack
         fallbackRoute={RoutePath.TITANS}
@@ -63,7 +63,7 @@ const TitanDetails = () => {
         <MBTIBar mbtiGroupName={mbtiGroupName} />
         <CharacterPicture
           imgSource={`/assets/img/titans/${paramTitanId}.jpg`}
-          alt={`${titan.name} - ${t('common:brand')}`}
+          alt={`${titan.name} - Attack on Titan ${t('common:brand')}`}
           size={'xl'}
           variant={'circle'}
           className={'mt-5 border-4 border-background'}

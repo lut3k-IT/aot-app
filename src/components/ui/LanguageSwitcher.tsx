@@ -1,8 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import dayjs from 'dayjs';
 
-import { LanguageName, LanguageShortName, LocalStorageKey } from '@/constants/enums';
-import { DeviceType } from '@/constants/types';
+import { Device, LanguageName, LanguageShortName, LocalStorageKey } from '@/constants/enums';
 import { setLocalStorageItem } from '@/utils/storageHelpers';
 
 import 'dayjs/locale/en';
@@ -28,11 +27,11 @@ const availableLanguages: Language[] = [
 ];
 
 interface LanguageSwitcherProps {
-  variant?: DeviceType;
+  variant?: Device;
 }
 
 const LanguageSwitcher = (props: LanguageSwitcherProps) => {
-  const { variant = 'mobile' } = props;
+  const { variant = Device.MOBILE } = props;
   const { i18n } = useTranslation();
 
   const handleChangeLanguage = (lang: LanguageShortName) => {
@@ -44,7 +43,7 @@ const LanguageSwitcher = (props: LanguageSwitcherProps) => {
   const currentLanguageName = availableLanguages.find((obj) => obj.id === i18n.language)?.label;
 
   const buttonProps =
-    variant === 'mobile'
+    variant === Device.MOBILE
       ? {
           variant: 'outline' as const,
           className: 'w-min'

@@ -42,7 +42,7 @@ const HeroCard = (props: HeroCardProps) => {
         <MbtiFrame mbtiId={mbti}>
           <CharacterPicture
             imgSource={`/assets/img/heroes/${id}.jpg`}
-            alt={`${firstName} ${lastName} - ${t('common:brand')}`}
+            alt={`${firstName} ${lastName} - Attack on Titan ${t('common:brand')}`}
             variant={'roundedBtm'}
           />
         </MbtiFrame>
@@ -60,8 +60,6 @@ const HeroCard = (props: HeroCardProps) => {
           />
         </div>
         <div className={'flex h-13 justify-center rounded-md bg-muted px-2'}>
-          {/* @todo make a container query for the card (more info in gray bar - when card is larger) */}
-          {/* @todo zamiast max width zrob tak, ze kazdy box ma swoj max i standardowo sie on rozpycha */}
           <div className={'flex w-full max-w-[260px] items-center justify-evenly'}>
             <DetailsBoxes
               isShowingSpoilers={isShowingSpoilers}

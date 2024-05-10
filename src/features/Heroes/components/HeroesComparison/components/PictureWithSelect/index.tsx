@@ -29,7 +29,7 @@ const PictureWithSelect = (props: PictureWithSelectProps) => {
     >
       <CharacterPicture
         imgSource={selectedHero ? `/assets/img/heroes/${selectedHero.id}.jpg` : undefined}
-        alt={selectedHero?.firstName || 'Hero'}
+        alt={selectedHero?.firstName || 'Hero to compare'}
         size={'full'}
         variant={'circle'}
         className={'max-h-[8rem] max-w-[8rem] outline-dashed outline-2 outline-offset-4 outline-muted2'}

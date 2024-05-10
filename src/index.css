@@ -97,6 +97,10 @@
     min-height: 2rem;
   }
 
+  .scroll-area {
+    @apply -mx-2 -mr-4 h-full pr-2;
+  }
+
   .details-tiles-wrapper {
     @apply mt-8 grid grid-cols-[repeat(auto-fill,_minmax(10rem,_1fr))] gap-4;
   }

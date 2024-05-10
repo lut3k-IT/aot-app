@@ -58,7 +58,7 @@ const HeroDetails = () => {
         <MBTIBar mbtiGroupName={mbtiGroupName} />
         <CharacterPicture
           imgSource={`/assets/img/heroes/${paramHeroId}.jpg`}
-          alt={`${hero.firstName} - ${t('common:brand')}`}
+          alt={`${hero.firstName} ${hero.lastName} - Attack on Titan ${t('common:brand')}`}
           size={'xl'}
           variant={'circle'}
           className={'mt-5 border-4 border-background'}

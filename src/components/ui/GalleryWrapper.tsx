@@ -12,11 +12,6 @@ const GalleryWrapper = (props: GalleryWrapperProps) => {
 
   return (
     <div
-      // className={cn('flex flex-col gap-4', className)}
-
-      // @todo - make more configuration and apply DRY principle and utility first approach (classes)
-      // i mean a min width for a card
-
       className={cn('grid gap-4 [grid-template-columns:_repeat(auto-fit,_minmax(20rem,_1fr))]', className)}
       {...rest}
     >

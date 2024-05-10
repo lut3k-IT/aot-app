@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 
 import CharacterCardSkeleton from '@/components/ui/CharacterCardSkeleton';
+import MultipleSkeletons from '@/components/ui/MultipleSkeletons';
 import NoResults from '@/components/ui/NoResults';
 import TitanCard from '@/components/ui/TitanCard';
-import { CARD_SKELETONS } from '@/constants/constants';
 import { FavoriteType, HeroType, TitanType } from '@/constants/types';
 
 interface ContentProps {
@@ -15,13 +15,11 @@ interface ContentProps {
   hasData: boolean;
 }
 
-const SkeletonCards = () => Array.from({ length: CARD_SKELETONS }, (_, index) => <CharacterCardSkeleton key={index} />);
-
 const Content = (props: ContentProps) => {
   const { paginatedTitans, shouldShowFavorites, favoriteTitansIds, originalHeroes, isLoading, hasData } = props;
 
   if (isLoading) {
-    return <SkeletonCards />;
+    return <MultipleSkeletons skeletonComponent={CharacterCardSkeleton} />;
   }
 
   const filteredAndFavoriteTitans = useMemo(
