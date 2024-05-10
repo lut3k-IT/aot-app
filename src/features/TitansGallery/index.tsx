@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 import { useApiErrorToast } from '@/components/hooks/useApiErrorToast';
 import useAppSelector from '@/components/hooks/useAppSelector';
 import useIsLandscape from '@/components/hooks/useIsLandscape';
-import { useToast } from '@/components/hooks/useToast';
 import AppHelmet from '@/components/ui/AppHelmet';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import MovingPanel from '@/components/ui/MovingPanel';
@@ -25,8 +24,8 @@ const TitansGallery = () => {
   const favoriteTitansIds = useAppSelector((state) => state.titans.favoriteIds);
   const fetchingStatus = useAppSelector((state) => state.titans.status);
   const fetchingError = useAppSelector((state) => state.titans.error);
-  useApiErrorToast(fetchingError);
   const isLoading = fetchingStatus === 'loading';
+  useApiErrorToast(fetchingError);
 
   // @todo remove this states and use the ones from the store because there won't be any filtering or pagination
   const [filteredTitans, setFilteredTitans] = useState(originalTitans);
@@ -47,9 +46,6 @@ const TitansGallery = () => {
     setFilteredTitans(originalTitans);
     setPaginatedTitans(originalTitans);
   }, [originalTitans]);
-
-  // @todo DRY this up
-  /* ------------------------------- error toast ------------------------------- */
 
   return (
     <>

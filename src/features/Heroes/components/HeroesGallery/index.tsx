@@ -31,8 +31,8 @@ import {
   DEFAULT_WEIGHT
 } from './components/Filter/helpers';
 
-// todo: save pagesize in local storage
-// fixme: when on page 2 and in hero details, when go back the page 1 is shown but page 2 in params
+// @todo save pagesize in local storage
+// @fixme when on page 2 and in hero details, when go back the page 1 is shown but page 2 in params
 
 const HeroesGallery = () => {
   const { t } = useTranslation();
@@ -44,8 +44,8 @@ const HeroesGallery = () => {
   const favoriteHeroesIds = useAppSelector((state) => state.heroes.favoriteIds);
   const fetchingStatus = useAppSelector((state) => state.heroes.status);
   const fetchingError = useAppSelector((state) => state.heroes.error);
-  useApiErrorToast(fetchingError);
   const isLoading = fetchingStatus === 'loading';
+  useApiErrorToast(fetchingError);
 
   const [filteredHeroes, setFilteredHeroes] = useState(originalHeroes);
   const [paginatedHeroes, setPaginatedHeroes] = useState(originalHeroes);

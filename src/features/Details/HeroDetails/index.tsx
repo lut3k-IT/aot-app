@@ -30,6 +30,7 @@ const HeroDetails = () => {
   const favoriteHeroesIds = useAppSelector((state) => state.heroes.favoriteIds);
   const fetchingStatus = useAppSelector((state) => state.heroes.status);
   const fetchingError = useAppSelector((state) => state.heroes.error);
+  const isLoading = fetchingStatus === 'loading';
   useApiErrorToast(fetchingError);
 
   const hero = originalHeroes.find((hero) => hero.id === paramHeroId);

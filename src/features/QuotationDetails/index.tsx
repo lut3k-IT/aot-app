@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import classNames from 'classnames';
 
+import { useApiErrorToast } from '@/components/hooks/useApiErrorToast';
 import useAppSelector from '@/components/hooks/useAppSelector';
 import useIsLandscape from '@/components/hooks/useIsLandscape';
 import useIsMobile from '@/components/hooks/useIsMobile';
@@ -26,13 +27,14 @@ const QuotationDetails = () => {
   const favoriteQuotationsId = useAppSelector((state) => state.quotations.favoriteIds);
   const fetchingStatus = useAppSelector((state) => state.quotations.status);
   const fetchingError = useAppSelector((state) => state.quotations.error);
+  const isLoading = fetchingStatus === 'loading';
+  useApiErrorToast(fetchingError);
 
   const quotation = quotations.find((quotation) => quotation.id === paramQuotationId);
   const isFavorite = isInFavorites(paramQuotationId, favoriteQuotationsId);
 
   const toggleFavorite = useToggleFavorite(isFavorite, paramQuotationId, addFavorite, removeFavorite);
 
-  // @audit this should be handled by the custom hook
   if (!quotation && quotations.length > 0) throw new Error('Quotation with this ID does not exist.');
   if (!quotation) return;
 

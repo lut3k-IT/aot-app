@@ -5,7 +5,7 @@ import { Button } from './Button';
 
 interface FavoriteButtonProps {
   isFavorite: boolean;
-  onToggleFavorite: () => void; //onFavoriteToggle
+  onToggleFavorite: () => void;
 }
 
 const FavoriteButton = (props: FavoriteButtonProps) => {

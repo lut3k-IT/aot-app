@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 
+import { useApiErrorToast } from '@/components/hooks/useApiErrorToast';
 import useAppSelector from '@/components/hooks/useAppSelector';
 import useIsLandscape from '@/components/hooks/useIsLandscape';
-import { useToast } from '@/components/hooks/useToast';
 import AppHelmet from '@/components/ui/AppHelmet';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import MovingPanel from '@/components/ui/MovingPanel';
@@ -16,7 +16,6 @@ import RenderQuotations from './components/RenderQuotations';
 
 const Quotations = () => {
   const { t } = useTranslation();
-  const { toast } = useToast();
   const isLandscape = useIsLandscape();
 
   const quotations = useAppSelector((state) => state.quotations.data);
@@ -24,6 +23,7 @@ const Quotations = () => {
   const fetchingStatus = useAppSelector((state) => state.quotations.status);
   const fetchingError = useAppSelector((state) => state.quotations.error);
   const isLoading = fetchingStatus === 'loading';
+  useApiErrorToast(fetchingError);
 
   const [shouldShowFavorites, setShouldShowFavorites] = useState(false);
   const hasData = quotations.length > 0;
@@ -34,20 +34,6 @@ const Quotations = () => {
   useEffect(() => {
     setPageHeadingDestination(document.getElementById(ElementsIds.PAGE_HEADING_OPTIONS));
   }, []);
-
-  /* ------------------------------- error toast ------------------------------- */
-
-  useEffect(() => {
-    if (fetchingError) {
-      toast({
-        variant: 'destructive',
-        title: t('notifications:error.somethingWentWrong'),
-        description: t('notifications:error.tryAgainLater')
-      });
-    }
-  }, [fetchingError]);
-
-  /* ---------------------------- render quotations --------------------------- */
 
   return (
     <>

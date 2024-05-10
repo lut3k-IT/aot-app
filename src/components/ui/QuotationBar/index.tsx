@@ -1,3 +1,4 @@
+import { useApiErrorToast } from '@/components/hooks/useApiErrorToast';
 import useIsLandscape from '@/components/hooks/useIsLandscape';
 import useIsMobileOrLandscape from '@/components/hooks/useIsMobileOrLandscape';
 import { useToggleFavorite } from '@/components/hooks/useToggleFavorite';
@@ -17,12 +18,14 @@ const QuotationBar = () => {
   const favoriteQuotationsIds = useAppSelector((state) => state.quotations.favoriteIds);
   const fetchingStatus = useAppSelector((state) => state.quotations.status);
   const fetchingError = useAppSelector((state) => state.quotations.error);
+  const isLoading = fetchingStatus === 'loading';
+  useApiErrorToast(fetchingError);
 
   const { currentQuotation, animationDuration, textRef } = useQuotationsSlideshow();
 
   const isCurrentFavorite = !!currentQuotation && isInFavorites(currentQuotation.id, favoriteQuotationsIds);
 
-  const toggleFavorite = useToggleFavorite(isCurrentFavorite, currentQuotation.id, addFavorite, removeFavorite);
+  const toggleFavorite = useToggleFavorite(isCurrentFavorite, currentQuotation?.id, addFavorite, removeFavorite);
 
   const barContentProps = {
     currentQuotation,
