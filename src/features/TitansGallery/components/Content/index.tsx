@@ -6,7 +6,7 @@ import TitanCard from '@/components/ui/TitanCard';
 import { CARD_SKELETONS } from '@/constants/constants';
 import { FavoriteType, HeroType, TitanType } from '@/constants/types';
 
-interface RenderTitansProps {
+interface ContentProps {
   paginatedTitans: TitanType[];
   shouldShowFavorites: boolean;
   favoriteTitansIds: FavoriteType[];
@@ -15,26 +15,25 @@ interface RenderTitansProps {
   hasData: boolean;
 }
 
-// @todo DRY this up
 const SkeletonCards = () => Array.from({ length: CARD_SKELETONS }, (_, index) => <CharacterCardSkeleton key={index} />);
 
-const RenderTitans = (props: RenderTitansProps) => {
+const Content = (props: ContentProps) => {
   const { paginatedTitans, shouldShowFavorites, favoriteTitansIds, originalHeroes, isLoading, hasData } = props;
 
   if (isLoading) {
     return <SkeletonCards />;
   }
 
-  const filteredTitansInFunction = useMemo(
-    () => paginatedTitans.filter((quotation) => !shouldShowFavorites || favoriteTitansIds.includes(quotation.id)),
+  const filteredAndFavoriteTitans = useMemo(
+    () => paginatedTitans.filter((titan) => !shouldShowFavorites || favoriteTitansIds.includes(titan.id)),
     [paginatedTitans, shouldShowFavorites, favoriteTitansIds]
   );
 
-  if (!hasData || filteredTitansInFunction.length === 0) {
+  if (!hasData || filteredAndFavoriteTitans.length === 0) {
     return <NoResults />;
   }
 
-  return filteredTitansInFunction.map((titan) => (
+  return filteredAndFavoriteTitans.map((titan) => (
     <TitanCard
       data={titan}
       favorites={favoriteTitansIds}
@@ -44,4 +43,4 @@ const RenderTitans = (props: RenderTitansProps) => {
   ));
 };
 
-export default RenderTitans;
+export default Content;

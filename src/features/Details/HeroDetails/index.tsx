@@ -1,10 +1,9 @@
-import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
-import useAppDispatch from '@/components/hooks/useAppDispatch';
+import { useApiErrorToast } from '@/components/hooks/useApiErrorToast';
 import useAppSelector from '@/components/hooks/useAppSelector';
-import { useToast } from '@/components/hooks/useToast';
+import { useToggleFavorite } from '@/components/hooks/useToggleFavorite';
 import useValidateIdFromParam from '@/components/hooks/useValidateIdFromParam';
 import AppHelmet from '@/components/ui/AppHelmet';
 import ButtonGoBack from '@/components/ui/ButtonGoBack';
@@ -23,9 +22,7 @@ import Tiles from './components/Tiles';
 
 const HeroDetails = () => {
   const { id } = useParams();
-  const dispatch = useAppDispatch();
   const { t } = useTranslation();
-  const { toast } = useToast();
 
   const paramHeroId = useValidateIdFromParam(id);
 
@@ -33,6 +30,7 @@ const HeroDetails = () => {
   const favoriteHeroesIds = useAppSelector((state) => state.heroes.favoriteIds);
   const fetchingStatus = useAppSelector((state) => state.heroes.status);
   const fetchingError = useAppSelector((state) => state.heroes.error);
+  useApiErrorToast(fetchingError);
 
   const hero = originalHeroes.find((hero) => hero.id === paramHeroId);
   const isFavorite = isInFavorites(paramHeroId, favoriteHeroesIds);
@@ -40,13 +38,7 @@ const HeroDetails = () => {
   const mbtiObj = mbti.find((data) => data.id === hero?.mbti);
   const mbtiGroupName: MbtiGroups = mbtiObj ? MBTI_GROUPS_NAMES[mbtiObj.mbtiGroup - 1] : 'default';
 
-  const handleToggleFavorite = useCallback(() => {
-    const action = isFavorite ? removeFavorite : addFavorite;
-    dispatch(action(paramHeroId));
-    toast({
-      title: isFavorite ? t('notifications:common.removedFromFavorites') : t('notifications:common.addedToFavorites')
-    });
-  }, [isFavorite, dispatch]);
+  const toggleFavorite = useToggleFavorite(isFavorite, hero?.id, addFavorite, removeFavorite);
 
   if (!hero && originalHeroes.length > 0) throw new Error('Hero with this ID does not exist.');
   if (!hero) return;
@@ -75,7 +67,7 @@ const HeroDetails = () => {
       <Tiles hero={hero} />
       <FavoriteButton
         isFavorite={isFavorite}
-        handleToggleFavorite={handleToggleFavorite}
+        handleToggleFavorite={toggleFavorite}
       />
     </DetailsContainer>
   );

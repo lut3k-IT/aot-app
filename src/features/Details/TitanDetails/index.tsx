@@ -1,10 +1,9 @@
-import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
-import useAppDispatch from '@/components/hooks/useAppDispatch';
+import { useApiErrorToast } from '@/components/hooks/useApiErrorToast';
 import useAppSelector from '@/components/hooks/useAppSelector';
-import { useToast } from '@/components/hooks/useToast';
+import { useToggleFavorite } from '@/components/hooks/useToggleFavorite';
 import useValidateIdFromParam from '@/components/hooks/useValidateIdFromParam';
 import AppHelmet from '@/components/ui/AppHelmet';
 import ButtonGoBack from '@/components/ui/ButtonGoBack';
@@ -23,9 +22,7 @@ import Tiles from './components/Tiles';
 
 const TitanDetails = () => {
   const { id } = useParams();
-  const dispatch = useAppDispatch();
   const { t } = useTranslation();
-  const { toast } = useToast();
 
   const paramTitanId = useValidateIdFromParam(id);
 
@@ -34,6 +31,7 @@ const TitanDetails = () => {
   const favoriteTitansIds = useAppSelector((state) => state.titans.favoriteIds);
   const fetchingStatus = useAppSelector((state) => state.titans.status);
   const fetchingError = useAppSelector((state) => state.titans.error);
+  useApiErrorToast(fetchingError);
 
   const titan = originalTitans.find((titan) => titan.id === paramTitanId);
   const isFavorite = isInFavorites(paramTitanId, favoriteTitansIds);
@@ -46,13 +44,7 @@ const TitanDetails = () => {
   const mbtiObj = mbti.find((data) => data.id === titan?.mbti);
   const mbtiGroupName: MbtiGroups = mbtiObj ? MBTI_GROUPS_NAMES[mbtiObj.mbtiGroup - 1] : 'default';
 
-  const handleToggleFavorite = useCallback(() => {
-    const action = isFavorite ? removeFavorite : addFavorite;
-    dispatch(action(paramTitanId));
-    toast({
-      title: isFavorite ? t('notifications:common.removedFromFavorites') : t('notifications:common.addedToFavorites')
-    });
-  }, [isFavorite, dispatch]);
+  const toggleFavorite = useToggleFavorite(isFavorite, titan?.id, addFavorite, removeFavorite);
 
   if (!titan && originalTitans.length > 0) throw new Error('Titan with this ID does not exist.');
   if (!titan) return;
@@ -85,7 +77,7 @@ const TitanDetails = () => {
       />
       <FavoriteButton
         isFavorite={isFavorite}
-        handleToggleFavorite={handleToggleFavorite}
+        handleToggleFavorite={toggleFavorite}
       />
     </DetailsContainer>
   );

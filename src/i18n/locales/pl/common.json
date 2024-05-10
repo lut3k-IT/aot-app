@@ -49,6 +49,7 @@
   "sort": {
     "title": "Sortuj",
     "direction": {
+      "toggle": "Zmień kierunek sortowania",
       "asc": {
         "short": "Ros.",
         "long": "Rosnąco"

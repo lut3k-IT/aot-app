@@ -49,6 +49,7 @@
   "sort": {
     "title": "Sort",
     "direction": {
+      "toggle": "Toggle direction",
       "asc": {
         "short": "Asc",
         "long": "Ascending"

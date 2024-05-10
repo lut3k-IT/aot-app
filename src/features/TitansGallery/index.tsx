@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 
+import { useApiErrorToast } from '@/components/hooks/useApiErrorToast';
 import useAppSelector from '@/components/hooks/useAppSelector';
 import useIsLandscape from '@/components/hooks/useIsLandscape';
 import { useToast } from '@/components/hooks/useToast';
@@ -12,11 +13,10 @@ import PageHeading from '@/components/ui/PageHeading';
 import { ElementsIds } from '@/constants/enums';
 
 import SwitchFavorites from '../../components/ui/SwitchFavorites';
-import RenderTitans from './components/RenderTitans';
+import Content from './components/Content';
 
 const TitansGallery = () => {
   const { t } = useTranslation();
-  const { toast } = useToast();
   const isLandscape = useIsLandscape();
 
   const originalTitans = useAppSelector((state) => state.titans.data);
@@ -25,6 +25,7 @@ const TitansGallery = () => {
   const favoriteTitansIds = useAppSelector((state) => state.titans.favoriteIds);
   const fetchingStatus = useAppSelector((state) => state.titans.status);
   const fetchingError = useAppSelector((state) => state.titans.error);
+  useApiErrorToast(fetchingError);
   const isLoading = fetchingStatus === 'loading';
 
   // @todo remove this states and use the ones from the store because there won't be any filtering or pagination
@@ -50,16 +51,6 @@ const TitansGallery = () => {
   // @todo DRY this up
   /* ------------------------------- error toast ------------------------------- */
 
-  useEffect(() => {
-    if (fetchingError) {
-      toast({
-        variant: 'destructive',
-        title: t('notifications:error.somethingWentWrong'),
-        description: t('notifications:error.tryAgainLater')
-      });
-    }
-  }, [fetchingError]);
-
   return (
     <>
       <AppHelmet title={`${t('common:title.titans')} ${t('common:tab.gallery')}`} />
@@ -75,7 +66,7 @@ const TitansGallery = () => {
           )}
       </MovingPanel>
       <GalleryWrapper>
-        <RenderTitans
+        <Content
           paginatedTitans={paginatedTitans}
           shouldShowFavorites={shouldShowFavorites}
           favoriteTitansIds={favoriteTitansIds}
