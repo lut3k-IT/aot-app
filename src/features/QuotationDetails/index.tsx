@@ -1,13 +1,11 @@
-import { useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import classNames from 'classnames';
 
-import useAppDispatch from '@/components/hooks/useAppDispatch';
+import { useApiErrorToast } from '@/components/hooks/useApiErrorToast';
 import useAppSelector from '@/components/hooks/useAppSelector';
 import useIsLandscape from '@/components/hooks/useIsLandscape';
 import useIsMobile from '@/components/hooks/useIsMobile';
-import { useToast } from '@/components/hooks/useToast';
+import { useToggleFavorite } from '@/components/hooks/useToggleFavorite';
 import useValidateIdFromParam from '@/components/hooks/useValidateIdFromParam';
 import AppHelmet from '@/components/ui/AppHelmet';
 import ButtonGoBack from '@/components/ui/ButtonGoBack';
@@ -19,9 +17,6 @@ import { isInFavorites } from '@/utils/dataHelpers';
 
 const QuotationDetails = () => {
   const { id } = useParams();
-  const dispatch = useAppDispatch();
-  const { t } = useTranslation();
-  const { toast } = useToast();
 
   const isMobile = useIsMobile();
   const isLandscape = useIsLandscape();
@@ -30,21 +25,16 @@ const QuotationDetails = () => {
 
   const quotations = useAppSelector((state) => state.quotations.data);
   const favoriteQuotationsId = useAppSelector((state) => state.quotations.favoriteIds);
-  const fetchingStatus = useAppSelector((state) => state.quotations.status);
+  // const fetchingStatus = useAppSelector((state) => state.quotations.status);
   const fetchingError = useAppSelector((state) => state.quotations.error);
+  // const isLoading = fetchingStatus === 'loading';
+  useApiErrorToast(fetchingError);
 
   const quotation = quotations.find((quotation) => quotation.id === paramQuotationId);
   const isFavorite = isInFavorites(paramQuotationId, favoriteQuotationsId);
 
-  const handleToggleFavorite = useCallback(() => {
-    const action = isFavorite ? removeFavorite : addFavorite;
-    dispatch(action(paramQuotationId));
-    toast({
-      title: isFavorite ? t('notifications:common.removedFromFavorites') : t('notifications:common.addedToFavorites')
-    });
-  }, [isFavorite, dispatch]);
+  const toggleFavorite = useToggleFavorite(isFavorite, paramQuotationId, addFavorite, removeFavorite);
 
-  // @audit this should be handled by the custom hook
   if (!quotation && quotations.length > 0) throw new Error('Quotation with this ID does not exist.');
   if (!quotation) return;
 
@@ -62,7 +52,7 @@ const QuotationDetails = () => {
       </Card>
       <FavoriteButton
         isFavorite={isFavorite}
-        handleToggleFavorite={handleToggleFavorite}
+        onToggleFavorite={toggleFavorite}
       />
     </div>
   );

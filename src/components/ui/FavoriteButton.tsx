@@ -5,11 +5,11 @@ import { Button } from './Button';
 
 interface FavoriteButtonProps {
   isFavorite: boolean;
-  handleToggleFavorite: () => void;
+  onToggleFavorite: () => void;
 }
 
 const FavoriteButton = (props: FavoriteButtonProps) => {
-  const { isFavorite, handleToggleFavorite } = props;
+  const { isFavorite, onToggleFavorite } = props;
   const { t } = useTranslation();
 
   return (
@@ -23,7 +23,7 @@ const FavoriteButton = (props: FavoriteButtonProps) => {
         isFilled: isFavorite,
         className: isFavorite ? 'text-red-500 fill-red-500' : 'text-muted-foreground'
       }}
-      onClick={handleToggleFavorite}
+      onClick={onToggleFavorite}
       aria-label={isFavorite ? t('common:action.removeFromFavorites') : t('common:action.addToFavorites')}
     >
       {isFavorite ? t('common:action.removeFromFavorites') : t('common:action.addToFavorites')}

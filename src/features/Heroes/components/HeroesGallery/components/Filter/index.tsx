@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 
@@ -236,8 +236,6 @@ const Filter = () => {
     setSearch(search);
   }, []);
 
-  // @todo prompt: try to move as much to separate components for better readability
-
   return (
     <Dialog
       open={isModalOpen}
@@ -265,8 +263,7 @@ const Filter = () => {
           </DialogTitle>
           <DialogDescription>{t('common:filter.heroesDesc')}</DialogDescription>
         </DialogHeader>
-        {/* @todo DRY scroll */}
-        <ScrollArea className={'-mx-2 -mr-4 h-full pr-2'}>
+        <ScrollArea className={'scroll-area'}>
           <div className='mx-2 grid gap-6 py-4'>
             <FilterSegment
               title={t('common:filter.sortBy')}
@@ -305,7 +302,6 @@ const Filter = () => {
                 </Button>
               </div>
             </FilterSegment>
-            {/* search bar */}
             <FilterSegment title={t('common:filter.search')}>
               <Input
                 placeholder={t('common:filter.searchPlaceholder')}

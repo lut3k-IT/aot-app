@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  /* todo: match others with "muted" */
+  /* todo match others with "muted" */
   :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
@@ -95,6 +95,22 @@
     @apply flex-center;
     min-width: 2rem;
     min-height: 2rem;
+  }
+
+  .scroll-area {
+    @apply -mx-2 -mr-4 h-full pr-2;
+  }
+
+  .details-tiles-wrapper {
+    @apply mt-8 grid grid-cols-[repeat(auto-fill,_minmax(10rem,_1fr))] gap-4;
+  }
+
+  .details-profile-wrapper {
+    @apply relative mt-6 flex flex-col items-center;
+  }
+
+  .details-character-name {
+    @apply mt-2 w-full text-center text-2xl font-medium;
   }
 
   .article {

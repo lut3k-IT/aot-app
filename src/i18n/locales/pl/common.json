@@ -49,6 +49,7 @@
   "sort": {
     "title": "Sortuj",
     "direction": {
+      "toggle": "Zmień kierunek sortowania",
       "asc": {
         "short": "Ros.",
         "long": "Rosnąco"
@@ -80,7 +81,8 @@
     "oops": "Ups",
     "unexpectedError": "Nieoczekiwany błąd",
     "routeNotFound": "Nie znaleziono ścieżki",
-    "backToHomepage": "Powrót do strony głównej"
+    "backToHomepage": "Powrót do strony głównej",
+    "notFound": "Nie znaleziono"
   },
   "navigation": {
     "goBack": "Wróć"

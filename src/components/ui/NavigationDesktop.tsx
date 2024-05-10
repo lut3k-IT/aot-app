@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { navigationData, NavigationElementProps } from '@/constants/navigationData';
+import { navigationData, NavigationElementProps } from '@/data/navigation';
 
 import useIsMatchingRouteSegment from '../hooks/useIsMatchingRouteSegment';
 import Icon from './Icon';

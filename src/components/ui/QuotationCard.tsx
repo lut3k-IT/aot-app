@@ -1,5 +1,4 @@
-import React, { useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { RoutePath } from '@/constants/enums';
@@ -7,8 +6,7 @@ import { cn } from '@/lib/utils';
 import { addFavorite, removeFavorite } from '@/store/quotationsSlice';
 import { isInFavorites } from '@/utils/dataHelpers';
 
-import useAppDispatch from '../hooks/useAppDispatch';
-import { useToast } from '../hooks/useToast';
+import { useToggleFavorite } from '../hooks/useToggleFavorite';
 import { Card } from './Card';
 import HeartButton from './HeartButton';
 
@@ -21,23 +19,8 @@ interface QuotationCardProps {
 
 const QuotationCard = (props: QuotationCardProps) => {
   const { id, text, favoritesList, className } = props;
-  const dispatch = useAppDispatch();
-  const { t } = useTranslation();
-  const { toast } = useToast();
-
   const isFavorite = isInFavorites(id, favoritesList);
-
-  const handleToggleFavorite = useCallback(
-    (event: React.MouseEvent) => {
-      event.preventDefault();
-      const action = isFavorite ? removeFavorite : addFavorite;
-      dispatch(action(id));
-      toast({
-        title: isFavorite ? t('notifications:common.removedFromFavorites') : t('notifications:common.addedToFavorites')
-      });
-    },
-    [isFavorite, dispatch]
-  );
+  const toggleFavorite = useToggleFavorite(isFavorite, id, addFavorite, removeFavorite);
 
   return (
     <Link to={`${RoutePath.QUOTATION_DETAILS}/${id}`}>
@@ -46,7 +29,7 @@ const QuotationCard = (props: QuotationCardProps) => {
         <HeartButton
           className={'absolute right-3 top-3'}
           isFilled={isFavorite}
-          onToggleFavorite={(event: React.MouseEvent) => handleToggleFavorite(event)}
+          onToggleFavorite={(event: React.MouseEvent) => toggleFavorite(event)}
         />
       </Card>
     </Link>

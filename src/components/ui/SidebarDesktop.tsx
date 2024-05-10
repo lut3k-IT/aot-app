@@ -1,3 +1,5 @@
+import { Device } from '@/constants/enums';
+
 import AotLogo from './AotLogo';
 import AppVersionBadge from './AppVersionBadge';
 import BuyMeACoffee from './BuyMeACoffee';
@@ -15,8 +17,8 @@ const SidebarDesktop = () => {
       <BuyMeACoffee className={'mx-auto'} />
       <SwitchSpoilerMode className={'my-4 self-center'} />
       <div className={'flex justify-center gap-3'}>
-        <ModeToggle variant={'desktop'} />
-        <LanguageSwitcher variant={'desktop'} />
+        <ModeToggle variant={Device.DESKTOP} />
+        <LanguageSwitcher variant={Device.DESKTOP} />
       </div>
       <AppVersionBadge className={'self-center'} />
     </div>

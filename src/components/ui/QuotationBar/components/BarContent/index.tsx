@@ -10,11 +10,11 @@ interface BarContentProps {
   animationDuration: string;
   textRef: React.RefObject<HTMLDivElement>;
   isCurrentFavorite: boolean;
-  handleToggleFavorite: () => void;
+  onToggleFavorite: () => void;
 }
 
 const BarContent = (props: BarContentProps) => {
-  const { currentQuotation, animationDuration, textRef, isCurrentFavorite, handleToggleFavorite } = props;
+  const { currentQuotation, animationDuration, textRef, isCurrentFavorite, onToggleFavorite } = props;
 
   if (!currentQuotation) return null;
 
@@ -38,7 +38,7 @@ const BarContent = (props: BarContentProps) => {
       <HeartButton
         iconSize={'sm'}
         isFilled={isCurrentFavorite}
-        onToggleFavorite={handleToggleFavorite}
+        onToggleFavorite={onToggleFavorite}
       />
     </>
   );

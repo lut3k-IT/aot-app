@@ -6,9 +6,9 @@ import useAppSelector from '@/components/hooks/useAppSelector';
 import useIsMobile from '@/components/hooks/useIsMobile';
 import AppHelmet from '@/components/ui/AppHelmet';
 import HeroStatus from '@/components/ui/HeroStatus';
+import SpoilerContent from '@/components/ui/SpoilerContent';
 import { HeroType } from '@/constants/types';
 import { getMbtiShortName, getResidenceName, getSpeciesName } from '@/utils/dataHelpers';
-import { SpoilerContent } from '@/utils/layoutHelpers';
 
 import DetailItem from './components/DetailItem';
 import PictureWithSelect from './components/PictureWithSelect';
@@ -18,8 +18,6 @@ export type HeroForSelect = {
   id: number;
   value: string;
 };
-
-// @todo save heroes in params
 
 const DEFAULT_COMPARISON_STATE = Array(3).fill(null);
 
@@ -31,9 +29,6 @@ const HeroesComparison = () => {
   const [heroesForSelect, setHeroesForSelect] = useState<HeroForSelect[]>([]);
 
   const heroes = useAppSelector((state) => state.heroes.data);
-  const favoriteHeroesIds = useAppSelector((state) => state.heroes.favoriteIds);
-  const fetchingStatus = useAppSelector((state) => state.heroes.status);
-  const fetchingError = useAppSelector((state) => state.heroes.error);
 
   useEffect(() => {
     setHeroesForSelect(

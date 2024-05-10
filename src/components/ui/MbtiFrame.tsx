@@ -6,7 +6,7 @@ import { MBTI_GROUPS_NAMES } from '@/constants/constants';
 import { MbtiGroups } from '@/constants/types';
 import mbti from '@/data/mbti';
 import { cn } from '@/lib/utils';
-import { getMbtiGroupName, getMbtiShortName } from '@/utils/dataHelpers';
+import { getMbtiShortName } from '@/utils/dataHelpers';
 
 const mbtiFrameVariants = cva('flex flex-col w-min rounded-md border-2 overflow-hidden', {
   variants: {

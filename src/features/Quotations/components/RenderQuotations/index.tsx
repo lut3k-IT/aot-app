@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 
+import MultipleSkeletons from '@/components/ui/MultipleSkeletons';
 import NoResults from '@/components/ui/NoResults';
 import QuotationCard from '@/components/ui/QuotationCard';
 import QuotationCardSkeleton from '@/components/ui/QuotationCardSkeleton';
-import { CARD_SKELETONS } from '@/constants/constants';
 import { FavoriteType, QuotationType } from '@/constants/types';
 
 interface RenderQuotationsProps {
@@ -14,15 +14,11 @@ interface RenderQuotationsProps {
   hasData: boolean;
 }
 
-// @todo DRY this up
-const SkeletonCards = () => Array.from({ length: CARD_SKELETONS }, (_, index) => <QuotationCardSkeleton key={index} />);
-
-// @todo DRY this up
 const RenderQuotations = (props: RenderQuotationsProps) => {
   const { quotations, shouldShowFavorites, favoriteIds, isLoading, hasData } = props;
 
   if (isLoading) {
-    return <SkeletonCards />;
+    return <MultipleSkeletons skeletonComponent={QuotationCardSkeleton} />;
   }
 
   const filteredQuotations = useMemo(

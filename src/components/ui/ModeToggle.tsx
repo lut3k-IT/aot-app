@@ -4,22 +4,19 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/Button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/DropdownMenu';
 import { useTheme } from '@/components/ui/ThemeProvider';
-import { DeviceType } from '@/constants/types';
+import { Device, Theme } from '@/constants/enums';
 
 import Icon from './Icon';
 
 interface ModeToggleProps {
-  variant?: DeviceType;
+  variant?: Device;
 }
 
-// @todo - system theme application issue
-
 const ModeToggle = (props: ModeToggleProps) => {
-  const { variant = 'mobile' } = props;
+  const { variant = Device.MOBILE } = props;
   const { t } = useTranslation();
 
   const { theme, setTheme } = useTheme();
-  // @audit make a types for this || make a helper function to get the theme name || Enum
   const [themeName, setThemeName] = useState(t(`common:ui.modeToggle.${theme}`));
 
   useEffect(() => {
@@ -70,11 +67,11 @@ const ModeToggle = (props: ModeToggleProps) => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>{variant === 'mobile' ? MobileButton : DesktopButton}</DropdownMenuTrigger>
+      <DropdownMenuTrigger asChild>{variant === Device.MOBILE ? MobileButton : DesktopButton}</DropdownMenuTrigger>
       <DropdownMenuContent align='end'>
         <DropdownMenuItem
           onClick={() => {
-            setTheme('light');
+            setTheme(Theme.LIGHT);
             setThemeName(t('common:ui.modeToggle.light'));
           }}
         >
@@ -82,7 +79,7 @@ const ModeToggle = (props: ModeToggleProps) => {
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => {
-            setTheme('dark');
+            setTheme(Theme.DARK);
             setThemeName(t('common:ui.modeToggle.dark'));
           }}
         >
@@ -90,7 +87,7 @@ const ModeToggle = (props: ModeToggleProps) => {
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => {
-            setTheme('system');
+            setTheme(Theme.SYSTEM);
             setThemeName(t('common:ui.modeToggle.system'));
           }}
         >

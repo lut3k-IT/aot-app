@@ -21,14 +21,10 @@
 
     /* Linting */
     "strict": true,
-    // "noUnusedLocals": true,
-    // "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "forceConsistentCasingInFileNames": true,
-
-    /* TODO: Remove at the end */
-    "noUnusedLocals": false,
-    "noUnusedParameters": false
+    "forceConsistentCasingInFileNames": true
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
