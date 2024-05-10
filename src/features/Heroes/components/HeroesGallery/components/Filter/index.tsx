@@ -21,7 +21,7 @@ import { Switch } from '@/components/ui/Switch';
 import { Param, SortDirection } from '@/constants/enums';
 import { HeroSortOption } from '@/constants/types';
 import mbti, { MbtiType } from '@/data/mbti';
-import residences, { ResidenceType } from '@/data/residences';
+import residences from '@/data/residences';
 import species, { SpeciesType } from '@/data/species';
 import statuses, { StatusType } from '@/data/statuses';
 import {
@@ -31,7 +31,7 @@ import {
   getResidenceByKeyName,
   getSpeciesByKeyName,
   getStatusByKeyName,
-  toggleStateDataById
+  toggleDataById
 } from '@/utils/dataHelpers';
 import { filterArrayFromNullish } from '@/utils/helpers';
 import {
@@ -44,6 +44,7 @@ import {
 import FilterButton from './components/FilterButton';
 import FilterSegment from './components/FilterSegment';
 import Indicator from './components/Indicator';
+import { useFilterReducer } from './hooks/useFilterReducer';
 import {
   DEFAULT_AGE,
   DEFAULT_HEIGHT,
@@ -51,115 +52,86 @@ import {
   DEFAULT_SORT_DIRECTION,
   DEFAULT_WEIGHT,
   sortOptions
-} from './helpers';
+} from './utils';
 
 const Filter = () => {
   const { t } = useTranslation();
   const { toast } = useToast();
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const { state, dispatch } = useFilterReducer();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const [selectedStatuses, setSelectedStatuses] = useState<StatusType[]>([]);
-  const [selectedAge, setSelectedAge] = useState(DEFAULT_AGE);
-  const [selectedHeight, setSelectedHeight] = useState(DEFAULT_HEIGHT);
-  const [selectedWeight, setSelectedWeight] = useState(DEFAULT_WEIGHT);
-  const [selectedMbti, setSelectedMbti] = useState<MbtiType[]>([]);
-  const [selectedSpecies, setSelectedSpecies] = useState<SpeciesType[]>([]);
-  const [selectedResidence, setSelectedResidence] = useState<ResidenceType[]>([]);
-  const [hasAge, setHasAge] = useState(false);
-  const [hasHeight, setHasHeight] = useState(false);
-  const [hasWeight, setHasWeight] = useState(false);
-  const [hasOnlyFavorites, setHasOnlyFavorites] = useState(false);
-
-  const [sortBy, setSortBy] = useState(DEFAULT_SORT);
-  const [sortDirection, setSortDirection] = useState(DEFAULT_SORT_DIRECTION);
-
-  const [search, setSearch] = useState('');
-  // const handleSetSearch = (string: string) => setSearch(string.trim());
-
-  const [isFilterActive, setIsFilterActive] = useState(false);
-
-  // checks if filter is active to display indicator
-  useEffect(() => {
-    setIsFilterActive(
-      selectedStatuses.length > 0 ||
-        selectedAge[0] !== DEFAULT_AGE[0] ||
-        selectedAge[1] !== DEFAULT_AGE[1] ||
-        selectedHeight[0] !== DEFAULT_HEIGHT[0] ||
-        selectedHeight[1] !== DEFAULT_HEIGHT[1] ||
-        selectedWeight[0] !== DEFAULT_WEIGHT[0] ||
-        selectedWeight[1] !== DEFAULT_WEIGHT[1] ||
-        selectedMbti.length > 0 ||
-        selectedSpecies.length > 0 ||
-        selectedResidence.length > 0 ||
-        hasAge ||
-        hasHeight ||
-        hasWeight ||
-        sortBy !== DEFAULT_SORT ||
-        sortDirection !== DEFAULT_SORT_DIRECTION ||
-        hasOnlyFavorites ||
-        search !== ''
-    );
-  }, [
-    selectedStatuses,
-    selectedAge,
-    selectedHeight,
-    selectedWeight,
-    selectedMbti,
-    selectedSpecies,
-    selectedResidence,
-    hasAge,
-    hasWeight,
-    hasWeight,
-    sortBy,
-    sortDirection,
-    hasOnlyFavorites,
-    search
-  ]);
+  // to display a dot indicator if any filter is active
+  const isFilterActive =
+    state.selectedStatuses.length > 0 ||
+    state.selectedAge[0] !== DEFAULT_AGE[0] ||
+    state.selectedAge[1] !== DEFAULT_AGE[1] ||
+    state.selectedHeight[0] !== DEFAULT_HEIGHT[0] ||
+    state.selectedHeight[1] !== DEFAULT_HEIGHT[1] ||
+    state.selectedWeight[0] !== DEFAULT_WEIGHT[0] ||
+    state.selectedWeight[1] !== DEFAULT_WEIGHT[1] ||
+    state.selectedMbti.length > 0 ||
+    state.selectedSpecies.length > 0 ||
+    state.selectedResidence.length > 0 ||
+    state.hasAge ||
+    state.hasHeight ||
+    state.hasWeight ||
+    state.sortBy !== DEFAULT_SORT ||
+    state.sortDirection !== DEFAULT_SORT_DIRECTION ||
+    state.hasOnlyFavorites ||
+    state.search !== '';
 
   /* -------------------------------- handlers -------------------------------- */
 
   const handleResetAll = () => {
-    setSelectedStatuses([]);
-    setSelectedAge(DEFAULT_AGE);
-    setSelectedHeight(DEFAULT_HEIGHT);
-    setSelectedWeight(DEFAULT_WEIGHT);
-    setSelectedMbti([]);
-    setSelectedSpecies([]);
-    setSelectedResidence([]);
-    setHasAge(false);
-    setHasHeight(false);
-    setHasWeight(false);
-    setSortBy(DEFAULT_SORT);
-    setSortDirection(DEFAULT_SORT_DIRECTION);
-    setHasOnlyFavorites(false);
-    setSearch('');
+    dispatch({ type: 'SET_SELECTED_STATUSES', payload: [] });
+    dispatch({ type: 'SET_SELECTED_AGE', payload: DEFAULT_AGE });
+    dispatch({ type: 'SET_SELECTED_HEIGHT', payload: DEFAULT_HEIGHT });
+    dispatch({ type: 'SET_SELECTED_WEIGHT', payload: DEFAULT_WEIGHT });
+    dispatch({ type: 'SET_SELECTED_MBTI', payload: [] });
+    dispatch({ type: 'SET_SELECTED_SPECIES', payload: [] });
+    dispatch({ type: 'SET_SELECTED_RESIDENCE', payload: [] });
+    dispatch({ type: 'SET_HAS_AGE', payload: false });
+    dispatch({ type: 'SET_HAS_HEIGHT', payload: false });
+    dispatch({ type: 'SET_HAS_WEIGHT', payload: false });
+    dispatch({ type: 'SET_SORT_BY', payload: DEFAULT_SORT });
+    dispatch({ type: 'SET_SORT_DIRECTION', payload: DEFAULT_SORT_DIRECTION });
+    dispatch({ type: 'SET_HAS_ONLY_FAVORITES', payload: false });
+    dispatch({ type: 'SET_SEARCH', payload: '' });
   };
 
   const handleResetSorting = () => {
-    setSortBy(DEFAULT_SORT);
-    setSortDirection(DEFAULT_SORT_DIRECTION);
+    dispatch({ type: 'SET_SORT_BY', payload: DEFAULT_SORT });
+    dispatch({ type: 'SET_SORT_DIRECTION', payload: DEFAULT_SORT_DIRECTION });
   };
 
   const handleSetStatuses = (status: StatusType) => {
-    toggleStateDataById(status, setSelectedStatuses);
+    const selectedStatuses = toggleDataById(status, state.selectedStatuses);
+    dispatch({ type: 'SET_SELECTED_STATUSES', payload: selectedStatuses });
   };
 
   const handleSetMbti = (mbti: MbtiType) => {
-    toggleStateDataById(mbti, setSelectedMbti);
+    const selectedMbti = toggleDataById(mbti, state.selectedMbti);
+    dispatch({ type: 'SET_SELECTED_MBTI', payload: selectedMbti });
   };
 
   const handleSetSpecies = (species: SpeciesType) => {
-    toggleStateDataById(species, setSelectedSpecies);
+    const selectedSpecies = toggleDataById(species, state.selectedSpecies);
+    dispatch({ type: 'SET_SELECTED_SPECIES', payload: selectedSpecies });
   };
 
   const handleSetResidences = (residences: SpeciesType) => {
-    toggleStateDataById(residences, setSelectedResidence);
+    const selectedResidence = toggleDataById(residences, state.selectedResidence);
+    dispatch({ type: 'SET_SELECTED_RESIDENCE', payload: selectedResidence });
   };
 
   const handleToggleSortDirection = () => {
-    setSortDirection((prev) => (prev === SortDirection.ASC ? SortDirection.DESC : SortDirection.ASC));
+    dispatch({
+      type: 'SET_SORT_DIRECTION',
+      payload: state.sortDirection === SortDirection.ASC ? SortDirection.DESC : SortDirection.ASC
+    });
   };
 
   /* --------------------------------- params --------------------------------- */
@@ -167,26 +139,26 @@ const Filter = () => {
   // set params from state
   const handleApplyFilters = () => {
     const parameters: UpdateSearchParamsParameters = [
-      [Param.STATUS, selectedStatuses.map((x) => x.keyName)],
-      [Param.AGE_MIN, selectedAge[0] !== DEFAULT_AGE[0] ? selectedAge[0].toString() : null],
-      [Param.AGE_MAX, selectedAge[1] !== DEFAULT_AGE[1] ? selectedAge[1].toString() : null],
-      [Param.HEIGHT_MIN, selectedHeight[0] !== DEFAULT_HEIGHT[0] ? selectedHeight[0].toString() : null],
-      [Param.HEIGHT_MAX, selectedHeight[1] !== DEFAULT_HEIGHT[1] ? selectedHeight[1].toString() : null],
-      [Param.WEIGHT_MIN, selectedWeight[0] !== DEFAULT_WEIGHT[0] ? selectedWeight[0].toString() : null],
-      [Param.WEIGHT_MAX, selectedWeight[1] !== DEFAULT_WEIGHT[1] ? selectedWeight[1].toString() : null],
-      [Param.MBTI, selectedMbti.map((x) => x.shortName)],
-      [Param.SPECIES, selectedSpecies.map((x) => x.keyName)],
-      [Param.RESIDENCE, selectedResidence.map((x) => x.keyName)],
-      [Param.HAS_AGE, hasAge ? hasAge.toString() : null],
-      [Param.HAS_HEIGHT, hasHeight ? hasHeight.toString() : null],
-      [Param.HAS_WEIGHT, hasWeight ? hasWeight.toString() : null],
-      [Param.SORT, sortBy !== DEFAULT_SORT ? sortBy.toString() : null],
-      [Param.SORT_DIRECTION, sortDirection !== DEFAULT_SORT_DIRECTION ? sortDirection.toString() : null],
-      [Param.FAVORITES, hasOnlyFavorites ? hasOnlyFavorites.toString() : null],
-      [Param.SEARCH, search.trim() || null]
+      [Param.STATUS, state.selectedStatuses.map((x) => x.keyName)],
+      [Param.AGE_MIN, state.selectedAge[0] !== DEFAULT_AGE[0] ? state.selectedAge[0].toString() : null],
+      [Param.AGE_MAX, state.selectedAge[1] !== DEFAULT_AGE[1] ? state.selectedAge[1].toString() : null],
+      [Param.HEIGHT_MIN, state.selectedHeight[0] !== DEFAULT_HEIGHT[0] ? state.selectedHeight[0].toString() : null],
+      [Param.HEIGHT_MAX, state.selectedHeight[1] !== DEFAULT_HEIGHT[1] ? state.selectedHeight[1].toString() : null],
+      [Param.WEIGHT_MIN, state.selectedWeight[0] !== DEFAULT_WEIGHT[0] ? state.selectedWeight[0].toString() : null],
+      [Param.WEIGHT_MAX, state.selectedWeight[1] !== DEFAULT_WEIGHT[1] ? state.selectedWeight[1].toString() : null],
+      [Param.MBTI, state.selectedMbti.map((x) => x.shortName)],
+      [Param.SPECIES, state.selectedSpecies.map((x) => x.keyName)],
+      [Param.RESIDENCE, state.selectedResidence.map((x) => x.keyName)],
+      [Param.HAS_AGE, state.hasAge ? state.hasAge.toString() : null],
+      [Param.HAS_HEIGHT, state.hasHeight ? state.hasHeight.toString() : null],
+      [Param.HAS_WEIGHT, state.hasWeight ? state.hasWeight.toString() : null],
+      [Param.SORT, state.sortBy !== DEFAULT_SORT ? state.sortBy.toString() : null],
+      [Param.SORT_DIRECTION, state.sortDirection !== DEFAULT_SORT_DIRECTION ? state.sortDirection.toString() : null],
+      [Param.FAVORITES, state.hasOnlyFavorites ? state.hasOnlyFavorites.toString() : null],
+      [Param.SEARCH, state.search.trim() || null]
     ];
 
-    setSearch(search.trim());
+    dispatch({ type: 'SET_SEARCH', payload: state.search.trim() });
 
     setSearchParams((searchParams) => {
       updateSearchParams(searchParams, parameters);
@@ -220,20 +192,20 @@ const Filter = () => {
     const hasOnlyFavorites = getBooleanParam(searchParams, Param.FAVORITES);
     const search = searchParams.get(Param.SEARCH) || '';
 
-    setSelectedStatuses(filterArrayFromNullish(statuses));
-    setSelectedAge([ageMin, ageMax]);
-    setSelectedHeight([heightMin, heightMax]);
-    setSelectedWeight([weightMin, weightMax]);
-    setSelectedMbti(filterArrayFromNullish(mbti));
-    setSelectedSpecies(filterArrayFromNullish(species));
-    setSelectedResidence(filterArrayFromNullish(residences));
-    setHasAge(hasAge);
-    setHasHeight(hasHeight);
-    setHasWeight(hasWeight);
-    setSortBy(sortBy);
-    setSortDirection(sortDirection);
-    setHasOnlyFavorites(hasOnlyFavorites);
-    setSearch(search);
+    dispatch({ type: 'SET_SELECTED_STATUSES', payload: filterArrayFromNullish(statuses) });
+    dispatch({ type: 'SET_SELECTED_AGE', payload: [ageMin, ageMax] });
+    dispatch({ type: 'SET_SELECTED_HEIGHT', payload: [heightMin, heightMax] });
+    dispatch({ type: 'SET_SELECTED_WEIGHT', payload: [weightMin, weightMax] });
+    dispatch({ type: 'SET_SELECTED_MBTI', payload: filterArrayFromNullish(mbti) });
+    dispatch({ type: 'SET_SELECTED_SPECIES', payload: filterArrayFromNullish(species) });
+    dispatch({ type: 'SET_SELECTED_RESIDENCE', payload: filterArrayFromNullish(residences) });
+    dispatch({ type: 'SET_HAS_AGE', payload: hasAge });
+    dispatch({ type: 'SET_HAS_HEIGHT', payload: hasHeight });
+    dispatch({ type: 'SET_HAS_WEIGHT', payload: hasWeight });
+    dispatch({ type: 'SET_SORT_BY', payload: sortBy });
+    dispatch({ type: 'SET_SORT_DIRECTION', payload: sortDirection });
+    dispatch({ type: 'SET_HAS_ONLY_FAVORITES', payload: hasOnlyFavorites });
+    dispatch({ type: 'SET_SEARCH', payload: search });
   }, []);
 
   return (
@@ -271,8 +243,8 @@ const Filter = () => {
             >
               <div className={'flex gap-2'}>
                 <Select
-                  value={sortBy}
-                  onValueChange={(v: HeroSortOption) => setSortBy(v)}
+                  value={state.sortBy}
+                  onValueChange={(v: HeroSortOption) => dispatch({ type: 'SET_SORT_BY', payload: v })}
                 >
                   <SelectTrigger>
                     <SelectValue placeholder={t('common:filter.sortBy')} />
@@ -292,13 +264,13 @@ const Filter = () => {
                 </Select>
                 <Button
                   variant={'outline'}
-                  iconName={sortDirection === SortDirection.ASC ? 'arrowDownNarrowWide' : 'arrowDownWideNarrow'}
+                  iconName={state.sortDirection === SortDirection.ASC ? 'arrowDownNarrowWide' : 'arrowDownWideNarrow'}
                   iconPosition={'right'}
                   className={'w-32 hover:bg-background'}
                   onClick={handleToggleSortDirection}
                   aria-label={t('common:sort.direction.toggle')}
                 >
-                  {t(`common:sort.direction.${sortDirection}.short`)}
+                  {t(`common:sort.direction.${state.sortDirection}.short`)}
                 </Button>
               </div>
             </FilterSegment>
@@ -306,20 +278,20 @@ const Filter = () => {
               <Input
                 placeholder={t('common:filter.searchPlaceholder')}
                 className={'w-full'}
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                value={state.search}
+                onChange={(e) => dispatch({ type: 'SET_SEARCH', payload: e.target.value })}
               />
             </FilterSegment>
             <FilterSegment
               title={t('data:status.title')}
-              onReset={() => setSelectedStatuses([])}
+              onReset={() => dispatch({ type: 'SET_SELECTED_STATUSES', payload: [] })}
             >
               <div className={'flex flex-1 gap-2'}>
                 {statuses.map((data) => {
                   return (
                     <FilterButton
                       key={data.id}
-                      isActive={selectedStatuses.some((selected) => selected.id === data.id)}
+                      isActive={state.selectedStatuses.some((selected) => selected.id === data.id)}
                       onClick={() => handleSetStatuses(data)}
                       aria-label={t(`data:status.${data.keyName}.long`)}
                     >
@@ -331,7 +303,7 @@ const Filter = () => {
             </FilterSegment>
             <FilterSegment
               title={t('data:age.title')}
-              onReset={() => setSelectedAge(DEFAULT_AGE)}
+              onReset={() => dispatch({ type: 'SET_SELECTED_AGE', payload: DEFAULT_AGE })}
             >
               <div className={'flex justify-between gap-2'}>
                 <Input
@@ -339,22 +311,26 @@ const Filter = () => {
                   className={'max-w-[6.25rem]'}
                   min={DEFAULT_AGE[0]}
                   max={DEFAULT_AGE[1]}
-                  value={selectedAge[0]}
-                  onChange={(e) => setSelectedAge((prev) => [+e.target.value, prev[1]])}
+                  value={state.selectedAge[0]}
+                  onChange={(e) =>
+                    dispatch({ type: 'SET_SELECTED_AGE', payload: [+e.target.value, state.selectedAge[1]] })
+                  }
                 />
                 <Input
                   type={'number'}
                   className={'max-w-[6.25rem]'}
                   min={DEFAULT_AGE[0]}
                   max={DEFAULT_AGE[1]}
-                  value={selectedAge[1]}
-                  onChange={(e) => setSelectedAge((prev) => [prev[0], +e.target.value])}
+                  value={state.selectedAge[1]}
+                  onChange={(e) =>
+                    dispatch({ type: 'SET_SELECTED_AGE', payload: [state.selectedAge[0], +e.target.value] })
+                  }
                 />
               </div>
               <Slider
                 defaultValue={DEFAULT_AGE}
-                value={selectedAge}
-                onValueChange={(v: number[]) => setSelectedAge(v)}
+                value={state.selectedAge}
+                onValueChange={(v: number[]) => dispatch({ type: 'SET_SELECTED_AGE', payload: v })}
                 min={DEFAULT_AGE[0]}
                 max={DEFAULT_AGE[1]}
                 step={1}
@@ -364,7 +340,7 @@ const Filter = () => {
             </FilterSegment>
             <FilterSegment
               title={`${t('data:height.title')} (cm)`}
-              onReset={() => setSelectedHeight(DEFAULT_HEIGHT)}
+              onReset={() => dispatch({ type: 'SET_SELECTED_HEIGHT', payload: DEFAULT_HEIGHT })}
             >
               <div className={'flex justify-between gap-2'}>
                 <Input
@@ -372,22 +348,26 @@ const Filter = () => {
                   className={'max-w-[6.25rem]'}
                   min={DEFAULT_HEIGHT[0]}
                   max={DEFAULT_HEIGHT[1]}
-                  value={selectedHeight[0]}
-                  onChange={(e) => setSelectedHeight((prev) => [+e.target.value, prev[1]])}
+                  value={state.selectedHeight[0]}
+                  onChange={(e) =>
+                    dispatch({ type: 'SET_SELECTED_HEIGHT', payload: [+e.target.value, state.selectedHeight[1]] })
+                  }
                 />
                 <Input
                   type={'number'}
                   className={'max-w-[6.25rem]'}
                   min={DEFAULT_HEIGHT[0]}
                   max={DEFAULT_HEIGHT[1]}
-                  value={selectedHeight[1]}
-                  onChange={(e) => setSelectedHeight((prev) => [prev[0], +e.target.value])}
+                  value={state.selectedHeight[1]}
+                  onChange={(e) =>
+                    dispatch({ type: 'SET_SELECTED_HEIGHT', payload: [state.selectedHeight[0], +e.target.value] })
+                  }
                 />
               </div>
               <Slider
                 defaultValue={DEFAULT_HEIGHT}
-                value={selectedHeight}
-                onValueChange={(v: number[]) => setSelectedHeight(v)}
+                value={state.selectedHeight}
+                onValueChange={(v: number[]) => dispatch({ type: 'SET_SELECTED_HEIGHT', payload: v })}
                 min={DEFAULT_HEIGHT[0]}
                 max={DEFAULT_HEIGHT[1]}
                 step={1}
@@ -397,7 +377,7 @@ const Filter = () => {
             </FilterSegment>
             <FilterSegment
               title={`${t('data:weight.title')} (kg)`}
-              onReset={() => setSelectedWeight(DEFAULT_WEIGHT)}
+              onReset={() => dispatch({ type: 'SET_SELECTED_WEIGHT', payload: DEFAULT_WEIGHT })}
             >
               <div className={'flex justify-between gap-2'}>
                 <Input
@@ -405,22 +385,26 @@ const Filter = () => {
                   className={'max-w-[6.25rem]'}
                   min={DEFAULT_WEIGHT[0]}
                   max={DEFAULT_WEIGHT[1]}
-                  value={selectedWeight[0]}
-                  onChange={(e) => setSelectedWeight((prev) => [+e.target.value, prev[1]])}
+                  value={state.selectedWeight[0]}
+                  onChange={(e) =>
+                    dispatch({ type: 'SET_SELECTED_WEIGHT', payload: [+e.target.value, state.selectedWeight[1]] })
+                  }
                 />
                 <Input
                   type={'number'}
                   className={'max-w-[6.25rem]'}
                   min={DEFAULT_WEIGHT[0]}
                   max={DEFAULT_WEIGHT[1]}
-                  value={selectedWeight[1]}
-                  onChange={(e) => setSelectedWeight((prev) => [prev[0], +e.target.value])}
+                  value={state.selectedWeight[1]}
+                  onChange={(e) =>
+                    dispatch({ type: 'SET_SELECTED_WEIGHT', payload: [state.selectedWeight[0], +e.target.value] })
+                  }
                 />
               </div>
               <Slider
                 defaultValue={DEFAULT_WEIGHT}
-                value={selectedWeight}
-                onValueChange={(v: number[]) => setSelectedWeight(v)}
+                value={state.selectedWeight}
+                onValueChange={(v: number[]) => dispatch({ type: 'SET_SELECTED_WEIGHT', payload: v })}
                 min={DEFAULT_WEIGHT[0]}
                 max={DEFAULT_WEIGHT[1]}
                 step={1}
@@ -430,14 +414,14 @@ const Filter = () => {
             </FilterSegment>
             <FilterSegment
               title={t('data:mbti.title')}
-              onReset={() => setSelectedMbti([])}
+              onReset={() => dispatch({ type: 'SET_SELECTED_MBTI', payload: [] })}
             >
               <div className={'grid grid-cols-4 gap-2'}>
                 {mbti.map((data) => {
                   return (
                     <FilterButton
                       key={data.id}
-                      isActive={selectedMbti.some((selected) => selected.id === data.id)}
+                      isActive={state.selectedMbti.some((selected) => selected.id === data.id)}
                       onClick={() => handleSetMbti(data)}
                       aria-label={data.shortName}
                     >
@@ -449,14 +433,14 @@ const Filter = () => {
             </FilterSegment>
             <FilterSegment
               title={t('data:species.title')}
-              onReset={() => setSelectedSpecies([])}
+              onReset={() => dispatch({ type: 'SET_SELECTED_SPECIES', payload: [] })}
             >
               <div className={'grid grid-cols-2 gap-2'}>
                 {species.map((data) => {
                   return (
                     <FilterButton
                       key={data.id}
-                      isActive={selectedSpecies.some((selected) => selected.id === data.id)}
+                      isActive={state.selectedSpecies.some((selected) => selected.id === data.id)}
                       onClick={() => handleSetSpecies(data)}
                       aria-label={t(`data:species.${data.keyName}`)}
                     >
@@ -468,14 +452,14 @@ const Filter = () => {
             </FilterSegment>
             <FilterSegment
               title={t('data:residence.title')}
-              onReset={() => setSelectedResidence([])}
+              onReset={() => dispatch({ type: 'SET_SELECTED_RESIDENCE', payload: [] })}
             >
               <div className={'grid grid-cols-2 gap-2 sm:grid-cols-3'}>
                 {residences.map((data) => {
                   return (
                     <FilterButton
                       key={data.id}
-                      isActive={selectedResidence.some((selected) => selected.id === data.id)}
+                      isActive={state.selectedResidence.some((selected) => selected.id === data.id)}
                       onClick={() => handleSetResidences(data)}
                       aria-label={t(`data:residence.${data.keyName}`)}
                     >
@@ -488,29 +472,29 @@ const Filter = () => {
             <FilterSegment
               title={t('common:filter.hasInfoAbout')}
               onReset={() => {
-                setHasAge(false);
-                setHasHeight(false);
-                setHasWeight(false);
+                dispatch({ type: 'SET_HAS_AGE', payload: false });
+                dispatch({ type: 'SET_HAS_HEIGHT', payload: false });
+                dispatch({ type: 'SET_HAS_WEIGHT', payload: false });
               }}
             >
               <div className={'grid grid-cols-3 gap-2'}>
                 <FilterButton
-                  isActive={hasAge}
-                  onClick={() => setHasAge((prev) => !prev)}
+                  isActive={state.hasAge}
+                  onClick={() => dispatch({ type: 'SET_HAS_AGE', payload: !state.hasAge })}
                   aria-label={t('data:age.title')}
                 >
                   {t('data:age.title')}
                 </FilterButton>
                 <FilterButton
-                  isActive={hasHeight}
-                  onClick={() => setHasHeight((prev) => !prev)}
+                  isActive={state.hasHeight}
+                  onClick={() => dispatch({ type: 'SET_HAS_HEIGHT', payload: !state.hasHeight })}
                   aria-label={t('data:height.title')}
                 >
                   {t('data:height.title')}
                 </FilterButton>
                 <FilterButton
-                  isActive={hasWeight}
-                  onClick={() => setHasWeight((prev) => !prev)}
+                  isActive={state.hasWeight}
+                  onClick={() => dispatch({ type: 'SET_HAS_WEIGHT', payload: !state.hasWeight })}
                   aria-label={t('data:weight.title')}
                 >
                   {t('data:weight.title')}
@@ -520,8 +504,8 @@ const Filter = () => {
             <FilterSegment title={t('common:filter.showOnlyFavorites')}>
               <Switch
                 id='show-only-favorites'
-                checked={hasOnlyFavorites}
-                onCheckedChange={setHasOnlyFavorites}
+                checked={state.hasOnlyFavorites}
+                onCheckedChange={(v) => dispatch({ type: 'SET_HAS_ONLY_FAVORITES', payload: v })}
               />
             </FilterSegment>
           </div>
