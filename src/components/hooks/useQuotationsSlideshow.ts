@@ -4,11 +4,13 @@ import { useEffect, useRef, useState } from 'react';
 import { getRandomQuotation } from '@/utils/quotationHelpers';
 
 import useAppSelector from './useAppSelector';
+import useIsMobile from './useIsMobile';
 
 const MAX_LOOP = 2;
 
 export const useQuotationsSlideshow = () => {
   const textRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   const originalQuotations = useAppSelector((state) => state.quotations.data);
   const [remainingQuotations, setRemainingQuotations] = useState([...originalQuotations]);
@@ -16,6 +18,8 @@ export const useQuotationsSlideshow = () => {
 
   const [loopCount, setLoopCount] = useState(0);
   const [animationDuration, setAnimationDuration] = useState('20s');
+
+  const speed = isMobile ? 15000 : 30000;
 
   useEffect(() => {
     setRemainingQuotations([...originalQuotations]);
@@ -26,10 +30,10 @@ export const useQuotationsSlideshow = () => {
     if (textRef.current && textRef.current.parentElement) {
       const textWidth = textRef.current.offsetWidth;
       const scrollContainerWidth = textRef.current.parentElement.offsetWidth;
-      const newAnimationDuration = scrollContainerWidth * (textWidth / 10000);
+      const newAnimationDuration = scrollContainerWidth * (textWidth / speed);
       setAnimationDuration(`${newAnimationDuration}s`);
     }
-  }, [currentQuotation]);
+  }, [currentQuotation, isMobile]);
 
   useEffect(() => {
     const textElement = textRef.current;
