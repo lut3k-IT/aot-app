@@ -6,17 +6,11 @@ import { loadHeroes } from '@/store/heroesSlice';
 import { loadQuotations } from '@/store/quotationsSlice';
 import { loadTitans } from '@/store/titansSlice';
 
-import LaunchDialog from './LaunchDialog';
+let didInit = false;
 
 const Init = () => {
   const dispatch = useAppDispatch();
   // const heroes = useAppSelector((state) => state.heroes.data);
-
-  useEffect(() => {
-    dispatch(loadQuotations());
-    dispatch(loadHeroes());
-    dispatch(loadTitans());
-  }, []);
 
   // useEffect(() => {
   //   heroes.forEach((hero) => {
@@ -25,12 +19,15 @@ const Init = () => {
   //   });
   // }, [heroes]);
 
-  return (
-    <>
-      <AppHelmet />
-      {/* <LaunchDialog /> */}
-    </>
-  );
+  useEffect(() => {
+    if (didInit) return;
+    didInit = true;
+    dispatch(loadQuotations());
+    dispatch(loadHeroes());
+    dispatch(loadTitans());
+  }, []);
+
+  return <AppHelmet />;
 };
 
 export default Init;

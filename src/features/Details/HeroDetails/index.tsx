@@ -67,7 +67,7 @@ const HeroDetails = () => {
       <Tiles hero={hero} />
       <FavoriteButton
         isFavorite={isFavorite}
-        handleToggleFavorite={toggleFavorite}
+        onToggleFavorite={toggleFavorite}
       />
     </DetailsContainer>
   );

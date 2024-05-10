@@ -77,7 +77,7 @@ const TitanDetails = () => {
       />
       <FavoriteButton
         isFavorite={isFavorite}
-        handleToggleFavorite={toggleFavorite}
+        onToggleFavorite={toggleFavorite}
       />
     </DetailsContainer>
   );

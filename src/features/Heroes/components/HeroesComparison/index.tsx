@@ -31,9 +31,6 @@ const HeroesComparison = () => {
   const [heroesForSelect, setHeroesForSelect] = useState<HeroForSelect[]>([]);
 
   const heroes = useAppSelector((state) => state.heroes.data);
-  const favoriteHeroesIds = useAppSelector((state) => state.heroes.favoriteIds);
-  const fetchingStatus = useAppSelector((state) => state.heroes.status);
-  const fetchingError = useAppSelector((state) => state.heroes.error);
 
   useEffect(() => {
     setHeroesForSelect(

@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AnyAction } from '@reduxjs/toolkit';
 
@@ -16,17 +16,20 @@ export const useToggleFavorite = (
   const { toast } = useToast();
   const { t } = useTranslation();
 
-  if (!id) {
-    throw new Error('This ID does not exist');
-  }
+  return useCallback(
+    (event?: React.MouseEvent) => {
+      event?.preventDefault();
 
-  return useCallback(() => {
-    const action = isCurrentlyFavorite ? removeFavoriteAction : addFavoriteAction;
-    dispatch(action(id));
-    toast({
-      title: isCurrentlyFavorite
-        ? t('notifications:common.removedFromFavorites')
-        : t('notifications:common.addedToFavorites')
-    });
-  }, [isCurrentlyFavorite, dispatch, id, toast, t]);
+      if (!id) return () => {};
+
+      const action = isCurrentlyFavorite ? removeFavoriteAction : addFavoriteAction;
+      dispatch(action(id));
+      toast({
+        title: isCurrentlyFavorite
+          ? t('notifications:common.removedFromFavorites')
+          : t('notifications:common.addedToFavorites')
+      });
+    },
+    [isCurrentlyFavorite, dispatch, id, toast, t]
+  );
 };
