@@ -1,34 +1,34 @@
 import { useTranslation } from 'react-i18next';
 
-import { DetailsGridRow } from '@/components/ui/DetailsGridRow';
 import HeroStatus from '@/components/ui/HeroStatus';
 import { HeroType } from '@/constants/types';
+import DetailsTile from '@/features/Details/components/DetailsTile';
 import { getMbtiShortName, getResidenceName, getSpeciesName } from '@/utils/dataHelpers';
 import { SpoilerContent } from '@/utils/layoutHelpers';
 
-interface MobileTIlesProps {
+interface DesktopTilesProps {
   hero: HeroType;
 }
 
-const MobileTiles = (props: MobileTIlesProps) => {
+const DesktopTiles = (props: DesktopTilesProps) => {
   const { hero } = props;
   const { t } = useTranslation();
 
   return (
-    <div className={'mt-8 grid grid-cols-[repeat(auto-fill,_minmax(10rem,_1fr))] gap-4'}>
-      <DetailsGridRow
+    <div className={'details-tiles-wrapper'}>
+      <DetailsTile
         title={t('data:mbti.title')}
         value={getMbtiShortName(hero.mbti) || '-'}
       />
-      <DetailsGridRow
+      <DetailsTile
         title={t('data:species.title')}
         value={SpoilerContent(getSpeciesName(hero.species, t))}
       />
-      <DetailsGridRow
+      <DetailsTile
         title={t('data:residence.title')}
         value={getResidenceName(hero.residence, t) || '-'}
       />
-      <DetailsGridRow
+      <DetailsTile
         title={t('data:status.title')}
         value={SpoilerContent(
           <HeroStatus
@@ -38,15 +38,15 @@ const MobileTiles = (props: MobileTIlesProps) => {
           />
         )}
       />
-      <DetailsGridRow
+      <DetailsTile
         title={t('data:age.title')}
         value={hero.age || '-'}
       />
-      <DetailsGridRow
+      <DetailsTile
         title={t('data:height.title')}
         value={hero.height ? `${hero.height} cm` : '-'}
       />
-      <DetailsGridRow
+      <DetailsTile
         title={t('data:weight.title')}
         value={hero.height ? `${hero.weight} kg` : '-'}
       />
@@ -54,4 +54,4 @@ const MobileTiles = (props: MobileTIlesProps) => {
   );
 };
 
-export default MobileTiles;
+export default DesktopTiles;

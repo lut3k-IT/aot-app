@@ -2,18 +2,18 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { getLocalStorageItem, setLocalStorageItem } from '@/utils/storageHelpers';
 
-import { Bool } from './../constants/enums';
+import { Bool, LocalStorageKey } from './../constants/enums';
 
 const spoilerModeSlice = createSlice({
-  name: 'spoilerMode',
-  initialState: getLocalStorageItem('spoilerMode') === Bool.TRUE ? true : false,
+  name: LocalStorageKey.SPOILER_MODE,
+  initialState: getLocalStorageItem(LocalStorageKey.SPOILER_MODE) === Bool.TRUE ? true : false,
   reducers: {
     enableSpoilerMode: (state) => {
-      setLocalStorageItem('spoilerMode', Bool.TRUE);
+      setLocalStorageItem(LocalStorageKey.SPOILER_MODE, Bool.TRUE);
       return true;
     },
     disableSpoilerMode: (state) => {
-      setLocalStorageItem('spoilerMode', Bool.FALSE);
+      setLocalStorageItem(LocalStorageKey.SPOILER_MODE, Bool.FALSE);
       return false;
     }
   }

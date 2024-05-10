@@ -97,6 +97,18 @@
     min-height: 2rem;
   }
 
+  .details-tiles-wrapper {
+    @apply mt-8 grid grid-cols-[repeat(auto-fill,_minmax(10rem,_1fr))] gap-4;
+  }
+
+  .details-profile-wrapper {
+    @apply relative mt-6 flex flex-col items-center;
+  }
+
+  .details-character-name {
+    @apply mt-2 w-full text-center text-2xl font-medium;
+  }
+
   .article {
     @apply px-page-mobile pt-page-mobile md:pt-0;
 

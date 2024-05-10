@@ -6,7 +6,7 @@
     "node": true
   },
   "extends": ["plugin:@typescript-eslint/recommended", "eslint:recommended", "plugin:react/recommended"],
-  "plugins": ["react", "testing-library", "simple-import-sort"],
+  "plugins": ["react", "simple-import-sort"],
   "parserOptions": {
     "ecmaVersion": 12,
     "sourceType": "module",

@@ -1,52 +1,54 @@
 import { useTranslation } from 'react-i18next';
 
-import { DetailsGridRow } from '@/components/ui/DetailsGridRow';
 import { TitanType } from '@/constants/types';
+import DetailsTile from '@/features/Details/components/DetailsTile';
 import { getAllegianceNames, getMbtiShortName } from '@/utils/dataHelpers';
 import { SpoilerContent } from '@/utils/layoutHelpers';
 
-interface MobileTIlesProps {
+interface DesktopTilesProps {
   titan: TitanType;
   currentInheritor: string;
   formerInheritors: string;
 }
 
-const MobileTiles = (props: MobileTIlesProps) => {
+const DesktopTiles = (props: DesktopTilesProps) => {
   const { titan, currentInheritor, formerInheritors } = props;
   const { t } = useTranslation();
 
   return (
-    <div className={'mt-8 grid grid-cols-[repeat(auto-fill,_minmax(10rem,_1fr))] gap-4'}>
-      <DetailsGridRow
+    <div className={'details-tiles-wrapper'}>
+      <DetailsTile
         title={t('data:mbti.title')}
         value={getMbtiShortName(titan.mbti) || '-'}
       />
-      <DetailsGridRow
+      <DetailsTile
         title={t('data:height.title')}
         value={`${titan.height} cm`}
       />
-      <DetailsGridRow
+      <DetailsTile
         title={t('data:allegiance.title')}
         value={getAllegianceNames(titan.allegiance, t).join(', ')}
       />
-      <DetailsGridRow
+      <DetailsTile
         title={t('data:currentInheritor')}
         value={SpoilerContent(currentInheritor)}
       />
-      <DetailsGridRow
-        title={t('data:formerInheritors')}
-        value={SpoilerContent(formerInheritors)}
-      />
-      <DetailsGridRow
+      <DetailsTile
         title={t('data:otherNames')}
         value={titan.otherNames.length > 0 ? titan.otherNames.join(', ') : '-'}
+        span={2}
       />
-      <DetailsGridRow
+      <DetailsTile
         title={t('data:abilities')}
         value={titan.abilities.length > 0 ? titan.abilities.join(', ') : '-'}
+        span={2}
+      />
+      <DetailsTile
+        title={t('data:formerInheritors')}
+        value={SpoilerContent(formerInheritors)}
       />
     </div>
   );
 };
 
-export default MobileTiles;
+export default DesktopTiles;

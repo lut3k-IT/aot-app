@@ -19,6 +19,8 @@ export type DeviceType = 'mobile' | 'desktop';
 
 /* ---------------------------------- Data ---------------------------------- */
 
+export type CharacterType = 'heroes' | 'titans';
+
 export interface HeroType {
   readonly id: number;
   readonly firstName: string;
