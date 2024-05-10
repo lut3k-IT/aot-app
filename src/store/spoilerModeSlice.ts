@@ -8,11 +8,11 @@ const spoilerModeSlice = createSlice({
   name: LocalStorageKey.SPOILER_MODE,
   initialState: getLocalStorageItem(LocalStorageKey.SPOILER_MODE) === Bool.TRUE ? true : false,
   reducers: {
-    enableSpoilerMode: (state) => {
+    enableSpoilerMode: () => {
       setLocalStorageItem(LocalStorageKey.SPOILER_MODE, Bool.TRUE);
       return true;
     },
-    disableSpoilerMode: (state) => {
+    disableSpoilerMode: () => {
       setLocalStorageItem(LocalStorageKey.SPOILER_MODE, Bool.FALSE);
       return false;
     }

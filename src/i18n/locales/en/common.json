@@ -81,7 +81,8 @@
     "oops": "Oops",
     "unexpectedError": "Unexpected error",
     "routeNotFound": "Route not found",
-    "backToHomepage": "Back to homepage"
+    "backToHomepage": "Back to homepage",
+    "notFound": "Not found"
   },
   "navigation": {
     "goBack": "Go back"

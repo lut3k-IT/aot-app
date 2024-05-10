@@ -16,9 +16,9 @@ const QuotationBar = () => {
   const isLandscape = useIsLandscape();
 
   const favoriteQuotationsIds = useAppSelector((state) => state.quotations.favoriteIds);
-  const fetchingStatus = useAppSelector((state) => state.quotations.status);
+  // const fetchingStatus = useAppSelector((state) => state.quotations.status);
   const fetchingError = useAppSelector((state) => state.quotations.error);
-  const isLoading = fetchingStatus === 'loading';
+  // const isLoading = fetchingStatus === 'loading';
   useApiErrorToast(fetchingError);
 
   const { currentQuotation, animationDuration, textRef } = useQuotationsSlideshow();

@@ -24,7 +24,7 @@ const cnContainer = 'flex gap-4 h-27';
 
 const TitanCard = (props: TitanCardProps) => {
   const { data, favorites, heroesData } = props;
-  const { id, mbti, name = '', height, allegiance, currentInheritor } = data;
+  const { id, mbti, name = '', allegiance, currentInheritor } = data;
 
   const { t } = useTranslation();
   const isShowingSpoilers = useAppSelector((state) => state.spoilerMode);

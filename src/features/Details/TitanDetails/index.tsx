@@ -29,7 +29,7 @@ const TitanDetails = () => {
   const originalTitans = useAppSelector((state) => state.titans.data);
   const originalHeroes = useAppSelector((state) => state.heroes.data);
   const favoriteTitansIds = useAppSelector((state) => state.titans.favoriteIds);
-  const fetchingStatus = useAppSelector((state) => state.titans.status);
+  // const fetchingStatus = useAppSelector((state) => state.titans.status);
   const fetchingError = useAppSelector((state) => state.titans.error);
   useApiErrorToast(fetchingError);
 

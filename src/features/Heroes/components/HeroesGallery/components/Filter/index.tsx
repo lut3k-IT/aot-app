@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 
@@ -302,7 +302,6 @@ const Filter = () => {
                 </Button>
               </div>
             </FilterSegment>
-            {/* search bar */}
             <FilterSegment title={t('common:filter.search')}>
               <Input
                 placeholder={t('common:filter.searchPlaceholder')}

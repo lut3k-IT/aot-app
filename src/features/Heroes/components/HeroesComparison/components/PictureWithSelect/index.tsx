@@ -48,8 +48,7 @@ const PictureWithSelect = (props: PictureWithSelectProps) => {
         }
       >
         <MousePointerSquare size={'2.5rem'} />
-        {/* todo: t() */}
-        <div className={'leading-none'}>Select</div>
+        <div className={'leading-none'}>{t('common:action.select.title')}</div>
       </div>
     </button>
   );
@@ -65,9 +64,8 @@ const PictureWithSelect = (props: PictureWithSelectProps) => {
         sideOffset={16}
       >
         <Command>
-          <CommandInput placeholder='Search hero...' />
-          {/* todo: t() */}
-          <CommandEmpty>No hero found.</CommandEmpty>
+          <CommandInput placeholder={t('common:filter.searchPlaceholder')} />
+          <CommandEmpty>{t('common:error.notFound')}</CommandEmpty>
           <CommandGroup className={'max-h-56 overflow-y-auto'}>
             {heroesForSelect.map((hero) => (
               <CommandItem

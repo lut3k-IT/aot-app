@@ -105,7 +105,6 @@ export const filterHeroes = (data: HeroType[], filters: HeroFilters, favoriteHer
 
 export const paginateHeroes = (data: HeroType[], page: number, pageSize: number) => {
   if (typeof page !== 'number' || page < 1) {
-    // TODO: return string 'keyName' and in error boundary assign this to translation
     throw new Error('Invalid page number');
   }
   if (typeof pageSize !== 'number' || pageSize < 1) {

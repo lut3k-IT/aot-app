@@ -1,6 +1,5 @@
 import { t } from 'i18next';
 
-import { Bool } from '@/constants/enums';
 import { cn } from '@/lib/utils';
 import { disableSpoilerMode, enableSpoilerMode } from '@/store/spoilerModeSlice';
 

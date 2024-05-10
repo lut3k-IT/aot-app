@@ -19,7 +19,6 @@ export const getBooleanParam = (searchParams: URLSearchParams, paramName: Param)
 export const getSafePageNumberFromSearchParam = (searchParams: URLSearchParams) =>
   Number(searchParams.get(Param.PAGE)) > 0 ? Number(searchParams.get(Param.PAGE)) : DEFAULT_PAGE;
 
-// todo: those can be replaced with updateSearchParams
 export const deleteSomeSearchParams = (setSearchParams: SetURLSearchParams, paramNames: Param[]) => {
   setSearchParams((searchParams) => {
     paramNames.forEach((paramName) => {
@@ -37,25 +36,6 @@ export const setSomeSearchParams = (setSearchParams: SetURLSearchParams, paramNa
     return searchParams;
   });
 };
-
-// export type UpdateSearchParamsParameters = [Param, string | string[] | null][];
-// export const updateSearchParams = (searchParams: URLSearchParams, parameters: UpdateSearchParamsParameters) => {
-//   parameters.forEach(([param, value]) => {
-//     if (value !== null) {
-//       if (Array.isArray(value)) {
-//         searchParams.delete(param);
-//         value.forEach((val) => {
-//           searchParams.append(param, val);
-//         });
-//       } else {
-//         searchParams.set(param, value);
-//       }
-//     }
-//     if (value === null) {
-//       searchParams.delete(param);
-//     }
-//   });
-// };
 
 const handleNullValue = (searchParams: URLSearchParams, param: Param) => {
   searchParams.delete(param);

@@ -25,9 +25,9 @@ const QuotationDetails = () => {
 
   const quotations = useAppSelector((state) => state.quotations.data);
   const favoriteQuotationsId = useAppSelector((state) => state.quotations.favoriteIds);
-  const fetchingStatus = useAppSelector((state) => state.quotations.status);
+  // const fetchingStatus = useAppSelector((state) => state.quotations.status);
   const fetchingError = useAppSelector((state) => state.quotations.error);
-  const isLoading = fetchingStatus === 'loading';
+  // const isLoading = fetchingStatus === 'loading';
   useApiErrorToast(fetchingError);
 
   const quotation = quotations.find((quotation) => quotation.id === paramQuotationId);
