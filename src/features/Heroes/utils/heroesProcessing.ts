@@ -4,7 +4,7 @@ import {
   DEFAULT_AGE,
   DEFAULT_HEIGHT,
   DEFAULT_WEIGHT
-} from '@/features/Heroes/components/HeroesGallery/components/Filter/helpers';
+} from '@/features/Heroes/components/HeroesGallery/components/Filter/utils';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const sortWithNullsLast = (a: any, b: any) => {

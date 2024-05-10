@@ -8,13 +8,17 @@ import mbtiGroup from '@/data/mbtiGroup';
 import residences from '@/data/residences';
 import species from '@/data/species';
 import statuses from '@/data/statuses';
-import { sortOptions } from '@/features/Heroes/components/HeroesGallery/components/Filter/helpers';
+import { sortOptions } from '@/features/Heroes/components/HeroesGallery/components/Filter/utils';
 
 export const toggleStateDataById = <T extends { id: number }>(
   data: T,
   setState: React.Dispatch<React.SetStateAction<T[]>>
 ) => {
   setState((prev) => (prev.some((x) => x.id === data.id) ? prev.filter((x) => x.id !== data.id) : [...prev, data]));
+};
+
+export const toggleDataById = <T extends { id: number }>(data: T, prev: T[]): T[] => {
+  return prev.some((x) => x.id === data.id) ? prev.filter((x) => x.id !== data.id) : [...prev, data];
 };
 
 export const toggleStatePropertyArrayById = <T extends { id: number }>(data: T, prev: T[]) => {

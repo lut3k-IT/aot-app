@@ -28,7 +28,7 @@ import {
   DEFAULT_SORT,
   DEFAULT_SORT_DIRECTION,
   DEFAULT_WEIGHT
-} from './components/Filter/helpers';
+} from './components/Filter/utils';
 
 const HeroesGallery = () => {
   const { t } = useTranslation();
