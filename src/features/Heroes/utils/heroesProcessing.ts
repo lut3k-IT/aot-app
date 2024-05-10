@@ -6,19 +6,25 @@ import {
   DEFAULT_WEIGHT
 } from '@/features/Heroes/components/HeroesGallery/components/Filter/utils';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const sortWithNullsLast = (a: any, b: any) => {
+type SortType = number | string | string[] | null;
+
+const sortWithNullsLast = (a: SortType, b: SortType) => {
   if (a === null) return 1;
   if (b === null) return -1;
   return a < b ? -1 : a > b ? 1 : 0;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const sortWithNullsLastDesc = (a: any, b: any) => {
+const sortWithNullsLastDesc = (a: SortType, b: SortType) => {
   if (a === null) return 1;
   if (b === null) return -1;
   return a < b ? 1 : a > b ? -1 : 0;
 };
+
+function matchesRangeFilter(heroValue: number | null, filterRange: number[]): boolean {
+  if (heroValue === null) return false;
+  const [min, max] = filterRange;
+  return heroValue >= min && heroValue <= max;
+}
 
 export const filterHeroes = (data: HeroType[], filters: HeroFilters, favoriteHeroesIds?: FavoriteType[]) => {
   const filteredData = data.filter((hero) => {
@@ -36,22 +42,10 @@ export const filterHeroes = (data: HeroType[], filters: HeroFilters, favoriteHer
     const isWeightFilterSameAsDefault =
       filters.filters.weight[0] === DEFAULT_WEIGHT[0] && filters.filters.weight[1] === DEFAULT_WEIGHT[1];
 
-    // for not changing the slider, values with null will also appear
-    const matchAge = !isAgeFilterSameAsDefault
-      ? hero.age
-        ? hero.age >= filters.filters.age[0] && hero.age <= filters.filters.age[1]
-        : false
-      : true;
-    const matchHeight = !isHeightFilterSameAsDefault
-      ? hero.height
-        ? hero.height >= filters.filters.height[0] && hero.height <= filters.filters.height[1]
-        : false
-      : true;
-    const matchWeight = !isWeightFilterSameAsDefault
-      ? hero.weight
-        ? hero.weight >= filters.filters.weight[0] && hero.weight <= filters.filters.weight[1]
-        : false
-      : true;
+    // important: if the filter is set to default, it will match all values
+    const matchAge = !isAgeFilterSameAsDefault ? matchesRangeFilter(hero.age, filters.filters.age) : true;
+    const matchHeight = !isHeightFilterSameAsDefault ? matchesRangeFilter(hero.height, filters.filters.height) : true;
+    const matchWeight = !isWeightFilterSameAsDefault ? matchesRangeFilter(hero.weight, filters.filters.weight) : true;
 
     const matchStatus =
       filters.filters.status.length > 0 ? !!filters.filters.status.find((status) => status.id === hero.status) : true;
