@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
 
+import SpoilerContent from '@/components/ui/SpoilerContent';
 import { TitanType } from '@/constants/types';
 import DetailsTile from '@/features/Details/components/DetailsTile';
 import { getAllegianceNames, getMbtiShortName } from '@/utils/dataHelpers';
-import { SpoilerContent } from '@/utils/layoutHelpers';
 
 interface MobileTIlesProps {
   titan: TitanType;

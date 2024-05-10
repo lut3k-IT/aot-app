@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
 
 import HeroStatus from '@/components/ui/HeroStatus';
+import SpoilerContent from '@/components/ui/SpoilerContent';
 import { HeroType } from '@/constants/types';
 import DetailsTile from '@/features/Details/components/DetailsTile';
 import { getMbtiShortName, getResidenceName, getSpeciesName } from '@/utils/dataHelpers';
-import { SpoilerContent } from '@/utils/layoutHelpers';
 
 interface MobileTIlesProps {
   hero: HeroType;

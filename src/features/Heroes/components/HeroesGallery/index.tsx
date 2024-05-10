@@ -10,6 +10,7 @@ import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import Pagination, { DEFAULT_PAGE, DEFAULT_PAGE_SIZES } from '@/components/ui/Pagination';
 import { ElementsIds, Param, SortDirection } from '@/constants/enums';
 import { HeroFilters, HeroSortOption } from '@/constants/types';
+import { filterHeroes, paginateHeroes } from '@/features/Heroes/utils/heroesProcessing';
 import {
   getMbtiByShortName,
   getResidenceByKeyName,
@@ -17,7 +18,6 @@ import {
   getStatusByKeyName
 } from '@/utils/dataHelpers';
 import { filterArrayFromNullish } from '@/utils/helpers';
-import { filterHeroes, paginateHeroes } from '@/utils/heroesProcessing';
 import { deleteSomeSearchParams, getSafePageNumberFromSearchParam } from '@/utils/paramsHelpers';
 
 import Content from './components/Content';

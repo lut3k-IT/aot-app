@@ -6,9 +6,9 @@ import useAppSelector from '@/components/hooks/useAppSelector';
 import useIsMobile from '@/components/hooks/useIsMobile';
 import AppHelmet from '@/components/ui/AppHelmet';
 import HeroStatus from '@/components/ui/HeroStatus';
+import SpoilerContent from '@/components/ui/SpoilerContent';
 import { HeroType } from '@/constants/types';
 import { getMbtiShortName, getResidenceName, getSpeciesName } from '@/utils/dataHelpers';
-import { SpoilerContent } from '@/utils/layoutHelpers';
 
 import DetailItem from './components/DetailItem';
 import PictureWithSelect from './components/PictureWithSelect';

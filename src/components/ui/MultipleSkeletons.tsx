@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { CARD_SKELETONS } from '@/constants/constants';
+import { CARD_SKELETONS_COUNT } from '@/constants/constants';
 
 interface MultipleSkeletonsProps {
   skeletonComponent: React.ComponentType;
@@ -8,7 +8,7 @@ interface MultipleSkeletonsProps {
 }
 
 const MultipleSkeletons = (props: MultipleSkeletonsProps) => {
-  const { skeletonComponent: SkeletonComponent, numberOfCards = CARD_SKELETONS } = props;
+  const { skeletonComponent: SkeletonComponent, numberOfCards = CARD_SKELETONS_COUNT } = props;
   return Array.from({ length: numberOfCards }, (_, index) => <SkeletonComponent key={index} />);
 };
 

@@ -1,6 +1,6 @@
 import { IconNames } from '@/components/ui/Icon';
 
-import { RoutePath } from './enums';
+import { RoutePath } from '../constants/enums';
 
 export interface INavigationElement {
   id: number;
