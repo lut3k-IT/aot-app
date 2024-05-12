@@ -63,7 +63,7 @@ const TitanCard = (props: TitanCardProps) => {
             onToggleFavorite={toggleFavorite}
           />
         </div>
-        <div className={'flex h-13 w-full items-center justify-center gap-8 rounded-md bg-accent px-4'}>
+        <div className={'flex h-13 w-full items-center justify-center gap-8 rounded-md bg-muted px-4'}>
           <DetailsBoxes
             data={data}
             allegianceNames={allegianceNames}

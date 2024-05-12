@@ -11,11 +11,11 @@ import { getMbtiShortName } from '@/utils/dataHelpers';
 const mbtiFrameVariants = cva('flex flex-col w-min rounded-md border-2 overflow-hidden', {
   variants: {
     variant: {
-      default: 'border-neutral-300 bg-neutral-500 dark:border-neutral-800 dark:bg-neutral-600',
-      analysts: 'border-violet-400 bg-violet-500 dark:border-violet-900 dark:bg-violet-800',
+      default: 'border-neutral-300 bg-neutral-500 dark:border-neutral-500/30 dark:bg-neutral-500/50',
+      analysts: 'border-violet-400 bg-violet-500 dark:border-violet-400/20 dark:bg-violet-500/50',
       diplomats: 'border-emerald-400 bg-emerald-600 dark:border-emerald-900 dark:bg-emerald-700',
       sentinels: 'border-cyan-400 bg-cyan-600 dark:border-cyan-900 dark:bg-cyan-700',
-      explorers: 'border-yellow-300 bg-yellow-500 dark:border-yellow-800 dark:bg-yellow-700'
+      explorers: 'border-yellow-300 bg-yellow-500 dark:border-yellow-500/20 dark:bg-yellow-600/70'
     }
   },
   defaultVariants: {

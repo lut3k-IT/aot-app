@@ -29,7 +29,7 @@ const HeartButton = (props: HeartButtonProps) => {
         size={iconSize}
         name={'heart'}
         variant={'gray'}
-        className={isFilled ? 'fill-red-500 text-red-500 dark:text-red-500' : ''}
+        className={isFilled ? 'fill-primary text-primary dark:text-primary' : ''}
       />
     </Button>
   );
