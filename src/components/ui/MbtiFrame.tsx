@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { cva, VariantProps } from 'class-variance-authority';
 
 import { MBTI_GROUPS_NAMES } from '@/constants/constants';
@@ -30,9 +29,8 @@ interface MbtiFrameProps extends VariantProps<typeof mbtiFrameVariants>, React.H
 
 const MbtiFrame = (props: MbtiFrameProps) => {
   const { mbtiId, children, variant, ...rest } = props;
-  const { t } = useTranslation();
 
-  const mbtiName = mbtiId ? getMbtiShortName(mbtiId) : t('data:mbti.unknown');
+  const mbtiName = mbtiId ? getMbtiShortName(mbtiId) : '—';
   const mbtiObj = mbti.find((data) => data.id === mbtiId);
 
   const autonomousVariant = variant

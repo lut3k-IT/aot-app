@@ -104,19 +104,6 @@
     "mbti": 13
   },
   {
-    "id": 9,
-    "firstName": "Lima",
-    "lastName": null,
-    "species": 2,
-    "age": null,
-    "height": null,
-    "weight": null,
-    "residence": null,
-    "status": 3,
-    "alias": [],
-    "mbti": null
-  },
-  {
     "id": 10,
     "firstName": "Charrette",
     "lastName": null,
