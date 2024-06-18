@@ -9,8 +9,8 @@
     { "type": "docs", "hidden": true },
     { "type": "test", "hidden": true }
   ],
-  "commitUrlFormat": "https://github.com/lut3k-IT/attack-on-titan/commit/{{hash}}",
-  "compareUrlFormat": "https://github.com/lut3k-IT/attack-on-titan/compare/{{previousTag}}...{{currentTag}}",
+  "commitUrlFormat": "https://github.com/lut3k-IT/aot-app/commit/{{hash}}",
+  "compareUrlFormat": "https://github.com/lut3k-IT/aot-app/compare/{{previousTag}}...{{currentTag}}",
   "header": "",
   "issuePrefixes": ["#"],
   "scripts": {
