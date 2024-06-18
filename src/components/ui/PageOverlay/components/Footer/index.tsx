@@ -17,6 +17,7 @@ const Footer = () => {
       >
         <HowToUse variant={'text'} />
         <Link to={RoutePath.ABOUT}>{t('common:title.about')}</Link>
+        <Link to={RoutePath.CHANGELOG}>{t('common:title.changelog')}</Link>
         <Link to={RoutePath.TERMS_OF_SERVICE}>{t('common:title.termsAndConditions')}</Link>
         <a
           href={ExternalUrl.PORTFOLIO}

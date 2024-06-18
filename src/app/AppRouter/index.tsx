@@ -4,6 +4,7 @@ import PageOverlay from '@/components/ui/PageOverlay';
 import ScrollToTop from '@/components/ui/ScrollToTop';
 import { RoutePath } from '@/constants/enums';
 import About from '@/features/Aside/About';
+import Changelog from '@/features/Aside/Changelog';
 import TermsAndConditions from '@/features/Aside/TermsAndConditions';
 import HeroDetails from '@/features/Details/HeroDetails';
 import TitanDetails from '@/features/Details/TitanDetails';
@@ -91,6 +92,10 @@ export const router = createBrowserRouter([
           {
             path: RoutePath.ABOUT,
             element: <About />
+          },
+          {
+            path: RoutePath.CHANGELOG,
+            element: <Changelog />
           },
           {
             path: RoutePath.TERMS_OF_SERVICE,

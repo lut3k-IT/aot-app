@@ -35,6 +35,14 @@ const SidebarMobile = () => {
         </Button>
         <Button
           variant={'link'}
+          linkTo={RoutePath.CHANGELOG}
+          onClick={handleClick}
+          aria-label={t('common:title.changelog')}
+        >
+          {t('common:title.changelog')}
+        </Button>
+        <Button
+          variant={'link'}
           linkTo={RoutePath.TERMS_OF_SERVICE}
           onClick={handleClick}
           aria-label={t('common:title.termsAndConditions')}
