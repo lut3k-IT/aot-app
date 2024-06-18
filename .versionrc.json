@@ -1,0 +1,19 @@
+{
+  "types": [
+    { "type": "feat", "section": "Features", "bump": "minor" },
+    { "type": "fix", "section": "Fixes", "bump": "patch" },
+    { "type": "style", "section": "Stylistic changes", "bump": "patch" },
+    { "type": "chore", "hidden": true },
+    { "type": "refactor", "hidden": true },
+    { "type": "perf", "hidden": true },
+    { "type": "docs", "hidden": true },
+    { "type": "test", "hidden": true }
+  ],
+  "commitUrlFormat": "https://github.com/lut3k-IT/attack-on-titan/commit/{{hash}}",
+  "compareUrlFormat": "https://github.com/lut3k-IT/attack-on-titan/compare/{{previousTag}}...{{currentTag}}",
+  "header": "",
+  "issuePrefixes": ["#"],
+  "scripts": {
+    "postcommit": "git push --follow-tags remote main"
+  }
+}
