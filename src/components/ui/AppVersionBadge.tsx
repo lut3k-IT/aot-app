@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { cn } from '@/lib/utils';
 
 import { Badge } from './Badge';
@@ -12,9 +13,9 @@ const AppVersionBadge = (props: AppVersionBadgeProps) => {
   return (
     <Badge
       variant={'outline'}
-      className={cn('flex-center w-max text-xs', className)}
+      className={cn('flex-center w-max text-xs text-muted-foreground', className)}
     >
-      Beta
+      v{APP_VERSION}
     </Badge>
   );
 };

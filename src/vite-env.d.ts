@@ -9,5 +9,7 @@ declare module '*.jpg';
 declare module '*.png';
 declare module '*.jpeg';
 
+declare const APP_VERSION: string;
+
 /// <reference types="vite/client" />
 /// <reference types="vite-plugin-svgr/client" />
