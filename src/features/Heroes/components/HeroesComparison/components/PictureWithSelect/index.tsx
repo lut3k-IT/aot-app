@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Check, MousePointerSquare } from 'lucide-react';
+import { Check, SquareMousePointer } from 'lucide-react';
 
 import CharacterPicture from '@/components/ui/CharacterPicture';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '@/components/ui/Command';
@@ -47,7 +47,7 @@ const PictureWithSelect = (props: PictureWithSelectProps) => {
           'flex-center aspect-square h-auto w-full flex-col gap-1 rounded-full bg-accent text-muted-foreground outline-dashed outline-2 outline-offset-4 outline-muted2'
         }
       >
-        <MousePointerSquare size={'2.5rem'} />
+        <SquareMousePointer size={'2.5rem'} />
         <div className={'leading-none'}>{t('common:action.select.title')}</div>
       </div>
     </button>
