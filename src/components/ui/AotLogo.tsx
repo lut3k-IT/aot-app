@@ -22,7 +22,7 @@ const AotLogo = (props: AotLogoProps) => {
       )}
     >
       <Icon
-        name={'aotLg'}
+        name={'aot'}
         size={'lg'}
       />
       <div className='mt-0.5 h-5 font-vector text-3xl leading-none'>{t('common:brand')}</div>
