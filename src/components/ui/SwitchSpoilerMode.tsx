@@ -1,5 +1,3 @@
-import { t } from 'i18next';
-
 import { cn } from '@/lib/utils';
 import { disableSpoilerMode, enableSpoilerMode } from '@/store/spoilerModeSlice';
 
@@ -7,6 +5,7 @@ import useAppDispatch from '../hooks/useAppDispatch';
 import useAppSelector from '../hooks/useAppSelector';
 import { Label } from './Label';
 import { Switch } from './Switch';
+import { useTranslation } from 'react-i18next';
 
 interface SwitchSpoilerModeProps {
   className?: string;
@@ -14,6 +13,8 @@ interface SwitchSpoilerModeProps {
 
 const SwitchSpoilerMode = (props: SwitchSpoilerModeProps) => {
   const { className } = props;
+  const { t } = useTranslation();
+
   const dispatch = useAppDispatch();
   const isShowingSpoilers = useAppSelector((state) => state.spoilerMode);
 
