@@ -9,7 +9,9 @@ fans who want to improve their viewing experience and deepen their knowledge of 
 
 Explore the app: <a href="https://aot.lut3k.com" target="_blank">aot.lut3k.com</a>
 
-![AOT APP iPhone mockup](public/assets/img/AOT-APP-iPhone-13-mockup.png)
+<div align="center">
+  <img src="public/assets/img/AOT-APP-iPhone-13-mockup.png" alt="AOT APP iPhone mockup" style="width: 300px;">
+</div>
 
 ## Features
 
