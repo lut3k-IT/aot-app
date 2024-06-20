@@ -1,8 +1,8 @@
 {
   "types": [
-    { "type": "feat", "section": "Features", "bump": "minor" },
-    { "type": "fix", "section": "Fixes", "bump": "patch" },
-    { "type": "style", "section": "Stylistic changes", "bump": "patch" },
+    { "type": "feat", "section": "Features" },
+    { "type": "fix", "section": "Fixes" },
+    { "type": "style", "section": "Stylistic changes" },
     { "type": "chore", "hidden": true },
     { "type": "refactor", "hidden": true },
     { "type": "perf", "hidden": true },
