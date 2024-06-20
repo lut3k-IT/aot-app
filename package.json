@@ -1,7 +1,7 @@
 {
   "name": "aot-app",
   "private": true,
-  "version": "0.0.2",
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host",
@@ -99,6 +99,6 @@
     "sass": "^1.69.3",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.2.2",
-    "vite": "^4.4.11"
+    "vite": "^4.5.2"
   }
 }
