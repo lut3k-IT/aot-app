@@ -6,9 +6,9 @@
 
 * Add automated app versioning f0e4761
 * Add changelog page 225dbc0
-* application versioning 6573e9c
+* Application versioning 6573e9c
 
 
 ### Fixes
 
-* wrong icon name 5ea7e08
+* Wrong icon name 5ea7e08
