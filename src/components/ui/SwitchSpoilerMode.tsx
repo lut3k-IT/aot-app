@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { cn } from '@/lib/utils';
 import { disableSpoilerMode, enableSpoilerMode } from '@/store/spoilerModeSlice';
 
@@ -5,7 +7,6 @@ import useAppDispatch from '../hooks/useAppDispatch';
 import useAppSelector from '../hooks/useAppSelector';
 import { Label } from './Label';
 import { Switch } from './Switch';
-import { useTranslation } from 'react-i18next';
 
 interface SwitchSpoilerModeProps {
   className?: string;
