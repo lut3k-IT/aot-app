@@ -81,6 +81,10 @@
     "@typescript-eslint/naming-convention": [
       "error",
       {
+        "selector": "import",
+        "format": ["camelCase", "PascalCase"]
+      },
+      {
         "selector": "default",
         "format": ["camelCase"]
       },
