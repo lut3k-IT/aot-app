@@ -23,9 +23,7 @@ import {
   X
 } from 'lucide-react';
 
-import { ReactComponent as AotLg } from '@/assets/icons/aot-icon-lg.svg';
-import { ReactComponent as AotMd } from '@/assets/icons/aot-icon-md.svg';
-import { ReactComponent as AotSm } from '@/assets/icons/aot-icon-sm.svg';
+import { ReactComponent as Aot } from '@/assets/icons/aot-icon.svg';
 import { cn } from '@/lib/utils';
 
 const iconVariants = cva('text-current', {
@@ -53,9 +51,7 @@ export type IconSizes = 'default' | 'xs' | 'sm' | 'lg';
 export type IconNames =
   | 'arrowDownWideNarrow'
   | 'arrowDownNarrowWide'
-  | 'aotSm'
-  | 'aotMd'
-  | 'aotLg'
+  | 'aot'
   | 'heart'
   | 'dna'
   | 'filter'
@@ -87,9 +83,7 @@ const Icon = ({ name, size, variant, color, isFilled = false, className, ...prop
   const iconsSet: Icons = {
     arrowDownWideNarrow: ArrowDownWideNarrow,
     arrowDownNarrowWide: ArrowDownNarrowWide,
-    aotSm: AotSm,
-    aotMd: AotMd,
-    aotLg: AotLg,
+    aot: Aot,
     heart: Heart,
     dna: Dna,
     filter: Filter,
