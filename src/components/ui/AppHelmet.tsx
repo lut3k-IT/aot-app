@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 
 type AppHelmetProps = {
@@ -17,7 +16,7 @@ const AppHelmet = (props: AppHelmetProps) => {
   const descriptionFallback = description || t('common:description');
 
   return (
-    <Helmet>
+    <>
       <title>
         {!title || title?.trim()?.length === 0
           ? t('common:brand')
@@ -30,7 +29,7 @@ const AppHelmet = (props: AppHelmetProps) => {
         content={descriptionFallback}
       />
       {children}
-    </Helmet>
+      </>
   );
 };
 
