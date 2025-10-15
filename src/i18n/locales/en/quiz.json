@@ -2,21 +2,54 @@
   "questions": [
     {
       "id": 1,
-      "question": "This is a sample question 1?",
-      "options": ["Option 1", "Option 2", "Option 3", "Option 4"],
+      "question": "The songs from the \"Attack on Titan\" openings are performed by the band:",
+      "options": ["Linked Horizon", "SID", "The GazettE", "14:00"],
       "correctAnswer": 0
     },
     {
       "id": 2,
-      "question": "This is a sample question 2?",
-      "options": ["Option 1", "Option 2", "Option 3", "Option 4"],
-      "correctAnswer": 1
+      "question": "What did Hannes do when he first met the Smiling Titan? (Attack on Titan)",
+      "options": [
+        "He fled, saving Eren and Mikasa",
+        "He was eaten, paralyzed with fear and unable to move",
+        "He fought it and died",
+        "He fought it and won"
+      ],
+      "correctAnswer": 0
     },
     {
       "id": 3,
-      "question": "This is a sample question 3?",
-      "options": ["Option 1", "Option 2", "Option 3", "Option 4"],
+      "question": "Who saved Mikasa Ackerman from the bandits in \"Shingeki no Kyojin\"?",
+      "options": ["The Garrison Regiment", "Dot Pixis", "Eren Jaeger", "Grisha Jaeger"],
       "correctAnswer": 2
+    },
+    {
+      "id": 4,
+      "question": "The ending of the second season of \"Attack on Titan\" depicts:",
+      "options": [
+        "Events long before the main plot",
+        "Events unrelated to the plot",
+        "Events parallel to the main plot",
+        "Events likely taking place after the series finale"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 5,
+      "question": "Who did Bertholdt have a soft spot for? (Attack on Titan)",
+      "options": ["For Historia", "For Annie", "For Ymir", "For Mikasa"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 6,
+      "question": "Annie Leonhart from \"Attack on Titan\" is exceptionally good at:",
+      "options": [
+        "Analysis and deduction",
+        "Effectively killing titans",
+        "Using the three-dimensional maneuver gear",
+        "Hand-to-hand combat"
+      ],
+      "correctAnswer": 3
     }
   ]
 }
