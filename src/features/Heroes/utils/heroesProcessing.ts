@@ -27,57 +27,43 @@ function matchesRangeFilter(heroValue: number | null, filterRange: number[]): bo
 }
 
 export const filterHeroes = (data: HeroType[], filters: HeroFilters, favoriteHeroesIds?: FavoriteType[]) => {
-  const filteredData = data.filter((hero) => {
-    const matchFavorite = filters.filters.hasOnlyFavorites ? (favoriteHeroesIds ?? []).includes(hero.id) : true;
+  const lowerCaseSearch = filters.search?.toLowerCase() ?? '';
+  const favoriteIdsSet = new Set(favoriteHeroesIds);
+  const statusIds = new Set(filters.filters.status.map((s) => s.id));
+  const mbtiIds = new Set(filters.filters.mbti.map((m) => m.id));
+  const speciesIds = new Set(filters.filters.species.map((s) => s.id));
+  const residenceIds = new Set(filters.filters.residences.map((r) => r.id));
 
-    const fullHeroName = `${hero.firstName} ${hero.lastName ?? ''}`;
-    const matchSearch = filters.search
-      ? fullHeroName.toLowerCase().includes(filters.search?.toLowerCase() ?? '')
-      : true;
+  const filteredData = data.filter((hero) => {
+    if (filters.filters.hasOnlyFavorites && !favoriteIdsSet.has(hero.id)) return false;
+
+    if (lowerCaseSearch) {
+      const fullHeroName = `${hero.firstName} ${hero.lastName ?? ''}`.toLowerCase();
+      if (!fullHeroName.includes(lowerCaseSearch)) return false;
+    }
 
     const isAgeFilterSameAsDefault =
       filters.filters.age[0] === DEFAULT_AGE[0] && filters.filters.age[1] === DEFAULT_AGE[1];
+    if (!isAgeFilterSameAsDefault && !matchesRangeFilter(hero.age, filters.filters.age)) return false;
+
     const isHeightFilterSameAsDefault =
       filters.filters.height[0] === DEFAULT_HEIGHT[0] && filters.filters.height[1] === DEFAULT_HEIGHT[1];
+    if (!isHeightFilterSameAsDefault && !matchesRangeFilter(hero.height, filters.filters.height)) return false;
+
     const isWeightFilterSameAsDefault =
       filters.filters.weight[0] === DEFAULT_WEIGHT[0] && filters.filters.weight[1] === DEFAULT_WEIGHT[1];
+    if (!isWeightFilterSameAsDefault && !matchesRangeFilter(hero.weight, filters.filters.weight)) return false;
 
-    // important: if the filter is set to default, it will match all values
-    const matchAge = !isAgeFilterSameAsDefault ? matchesRangeFilter(hero.age, filters.filters.age) : true;
-    const matchHeight = !isHeightFilterSameAsDefault ? matchesRangeFilter(hero.height, filters.filters.height) : true;
-    const matchWeight = !isWeightFilterSameAsDefault ? matchesRangeFilter(hero.weight, filters.filters.weight) : true;
+    if (statusIds.size > 0 && (hero.status === null || !statusIds.has(hero.status))) return false;
+    if (mbtiIds.size > 0 && (hero.mbti === null || !mbtiIds.has(hero.mbti))) return false;
+    if (speciesIds.size > 0 && (hero.species === null || !speciesIds.has(hero.species))) return false;
+    if (residenceIds.size > 0 && (hero.residence === null || !residenceIds.has(hero.residence))) return false;
 
-    const matchStatus =
-      filters.filters.status.length > 0 ? !!filters.filters.status.find((status) => status.id === hero.status) : true;
-    const matchMbti =
-      filters.filters.mbti.length > 0 ? !!filters.filters.mbti.find((mbti) => mbti.id === hero.mbti) : true;
-    const matchSpecies =
-      filters.filters.species.length > 0
-        ? !!filters.filters.species.find((species) => species.id === hero.species)
-        : true;
-    const matchResidences =
-      filters.filters.residences.length > 0
-        ? !!filters.filters.residences.find((residences) => residences.id === hero.residence)
-        : true;
+    if (filters.filters.hasAge && hero.age === null) return false;
+    if (filters.filters.hasHeight && hero.height === null) return false;
+    if (filters.filters.hasWeight && hero.weight === null) return false;
 
-    const matchHasAge = !(filters.filters.hasAge && !hero.age);
-    const matchHasHeight = !(filters.filters.hasHeight && !hero.height);
-    const matchHasWeight = !(filters.filters.hasWeight && !hero.weight);
-
-    return (
-      matchFavorite &&
-      matchSearch &&
-      matchAge &&
-      matchHeight &&
-      matchWeight &&
-      matchStatus &&
-      matchMbti &&
-      matchSpecies &&
-      matchResidences &&
-      matchHasAge &&
-      matchHasHeight &&
-      matchHasWeight
-    );
+    return true;
   });
 
   /* ---------------------------------- Sort ---------------------------------- */
