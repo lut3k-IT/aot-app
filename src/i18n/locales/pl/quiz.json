@@ -51,5 +51,7 @@
       ],
       "correctAnswer": 3
     }
-  ]
+  ],
+  "nextQuestion": "Następne pytanie",
+  "bestScore": "Najlepszy wynik"
 }

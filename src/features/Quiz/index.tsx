@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import AppHelmet from '@/components/ui/AppHelmet';
+import { useBestScore } from '@/hooks/useBestScore';
 
 import Answers from './components/Answers';
 import Question from './components/Question';
@@ -13,14 +14,23 @@ const Quiz = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
+  const { bestScore, updateBestScore } = useBestScore();
 
   const translatedQuestions: any = t('questions', { ns: 'quiz', returnObjects: true });
+
+  useEffect(() => {
+    if (showResult) {
+      updateBestScore(score);
+    }
+  }, [showResult, score, updateBestScore]);
 
   const handleAnswer = (answer: number) => {
     if (answer === translatedQuestions[currentQuestionIndex].correctAnswer) {
       setScore(score + 1);
     }
+  };
 
+  const handleNextQuestion = () => {
     const nextQuestion = currentQuestionIndex + 1;
     if (nextQuestion < translatedQuestions.length) {
       setCurrentQuestionIndex(nextQuestion);
@@ -44,6 +54,7 @@ const Quiz = () => {
             <Result
               score={score}
               total={translatedQuestions.length}
+              bestScore={bestScore}
               onRestart={handleRestart}
             />
           ) : (
@@ -51,7 +62,9 @@ const Quiz = () => {
               <Question question={translatedQuestions[currentQuestionIndex].question} />
               <Answers
                 options={translatedQuestions[currentQuestionIndex].options}
+                correctAnswer={translatedQuestions[currentQuestionIndex].correctAnswer}
                 onAnswer={handleAnswer}
+                onNext={handleNextQuestion}
               />
             </>
           )}
