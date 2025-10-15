@@ -3,6 +3,7 @@ import path from 'path';
 
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 import svgr from 'vite-plugin-svgr';
 
 export default defineConfig({
@@ -11,6 +12,14 @@ export default defineConfig({
     svgr({
       svgrOptions: { exportType: 'named', ref: true, svgo: false, titleProp: true },
       include: '**/*.svg'
+    }),
+    ViteImageOptimizer({
+      jpg: {
+        quality: 80
+      },
+      png: {
+        quality: 80
+      }
     })
   ],
   define: {
