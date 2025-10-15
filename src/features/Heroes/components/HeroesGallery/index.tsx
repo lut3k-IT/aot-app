@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
@@ -43,7 +43,6 @@ const HeroesGallery = () => {
   const isLoading = fetchingStatus === 'loading';
   useApiErrorToast(fetchingError);
 
-  const [filteredHeroes, setFilteredHeroes] = useState(originalHeroes);
   const [paginatedHeroes, setPaginatedHeroes] = useState(originalHeroes);
 
   const hasData = originalHeroes.length > 0;
@@ -57,8 +56,7 @@ const HeroesGallery = () => {
 
   /* --------------------------------- filters -------------------------------- */
 
-  // filter heroes on redux or param change
-  useEffect(() => {
+  const filteredHeroes = useMemo(() => {
     const statuses = searchParams.getAll(Param.STATUS).map((param) => getStatusByKeyName(param));
     const ageMin = Number(searchParams.get(Param.AGE_MIN)) || DEFAULT_AGE[0];
     const ageMax = Number(searchParams.get(Param.AGE_MAX)) || DEFAULT_AGE[1];
@@ -96,8 +94,8 @@ const HeroesGallery = () => {
       }
     };
 
-    setFilteredHeroes(filterHeroes(originalHeroes, filters, favoriteHeroesIds));
-  }, [originalHeroes, searchParams]);
+    return filterHeroes(originalHeroes, filters, favoriteHeroesIds);
+  }, [originalHeroes, searchParams, favoriteHeroesIds]);
 
   /* ------------------------------- pagination ------------------------------- */
 
