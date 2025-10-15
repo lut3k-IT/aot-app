@@ -37,3 +37,12 @@ export const loadDynamicImage = async (path: string, imageName: string, extensio
   const imageModule = await import(`./${path}/${imageName}.${extension}`);
   return imageModule.default;
 };
+
+export const shuffle = <T>(array: T[]): T[] => {
+  const newArray = [...array];
+  for (let i = newArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+  }
+  return newArray;
+};

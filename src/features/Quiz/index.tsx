@@ -1,8 +1,9 @@
-import { useEffect,useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import AppHelmet from '@/components/ui/AppHelmet';
 import { useBestScore } from '@/hooks/useBestScore';
+import { shuffle } from '@/utils/helpers';
 
 import Answers from './components/Answers';
 import Question from './components/Question';
@@ -18,6 +19,10 @@ const Quiz = () => {
 
   const translatedQuestions: any = t('questions', { ns: 'quiz', returnObjects: true });
 
+  const questions = useMemo(() => {
+    return shuffle(translatedQuestions).slice(0, 10);
+  }, [translatedQuestions]);
+
   useEffect(() => {
     if (isShowResult) {
       updateBestScore(score);
@@ -25,14 +30,14 @@ const Quiz = () => {
   }, [isShowResult, score, updateBestScore]);
 
   const handleAnswer = (answer: number) => {
-    if (answer === translatedQuestions[currentQuestionIndex].correctAnswer) {
+    if (answer === questions[currentQuestionIndex].correctAnswer) {
       setScore(score + 1);
     }
   };
 
   const handleNextQuestion = () => {
     const nextQuestion = currentQuestionIndex + 1;
-    if (nextQuestion < translatedQuestions.length) {
+    if (nextQuestion < questions.length) {
       setCurrentQuestionIndex(nextQuestion);
     } else {
       setIsShowResult(true);
@@ -53,16 +58,20 @@ const Quiz = () => {
           {isShowResult ? (
             <Result
               score={score}
-              total={translatedQuestions.length}
+              total={questions.length}
               bestScore={bestScore}
               onRestart={handleRestart}
             />
           ) : (
             <>
-              <Question question={translatedQuestions[currentQuestionIndex].question} />
+              <Question
+                question={questions[currentQuestionIndex].question}
+                currentQuestion={currentQuestionIndex + 1}
+                totalQuestions={questions.length}
+              />
               <Answers
-                options={translatedQuestions[currentQuestionIndex].options}
-                correctAnswer={translatedQuestions[currentQuestionIndex].correctAnswer}
+                options={questions[currentQuestionIndex].options}
+                correctAnswer={questions[currentQuestionIndex].correctAnswer}
                 onAnswer={handleAnswer}
                 onNext={handleNextQuestion}
               />
