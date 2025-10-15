@@ -6,7 +6,7 @@ interface QuizCardProps {
 
 const QuizCard: React.FC<QuizCardProps> = ({ children }) => {
   return (
-    <div className="w-full max-w-2xl rounded-lg bg-card p-8 shadow-lg">
+    <div className="w-full max-w-2xl rounded-lg bg-card p-8 m-auto">
       {children}
     </div>
   );

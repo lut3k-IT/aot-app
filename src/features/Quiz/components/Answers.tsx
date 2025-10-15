@@ -49,7 +49,7 @@ const Answers: React.FC<AnswersProps> = ({ options, correctAnswer, onAnswer, onN
             <Button
               key={option}
               onClick={() => handleAnswer(index)}
-              className="w-full justify-center"
+              className="w-full justify-center h-auto"
               variant={buttonVariant as any}
               disabled={isAnswered}
             >
