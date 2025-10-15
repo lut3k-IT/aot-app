@@ -1,0 +1,22 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "To jest przykładowe pytanie 1?",
+      "options": ["Opcja 1", "Opcja 2", "Opcja 3", "Opcja 4"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 2,
+      "question": "To jest przykładowe pytanie 2?",
+      "options": ["Opcja 1", "Opcja 2", "Opcja 3", "Opcja 4"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 3,
+      "question": "To jest przykładowe pytanie 3?",
+      "options": ["Opcja 1", "Opcja 2", "Opcja 3", "Opcja 4"],
+      "correctAnswer": 2
+    }
+  ]
+}

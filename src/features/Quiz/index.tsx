@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import AppHelmet from '@/components/ui/AppHelmet';
-import { quizQuestions } from '@/data/quiz';
 
 import Answers from './components/Answers';
 import Question from './components/Question';
@@ -10,18 +9,20 @@ import QuizCard from './components/QuizCard';
 import Result from './components/Result';
 
 const Quiz = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(['quiz', 'common']);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
 
+  const translatedQuestions: any = t('questions', { ns: 'quiz', returnObjects: true });
+
   const handleAnswer = (answer: number) => {
-    if (answer === quizQuestions[currentQuestionIndex].correctAnswer) {
+    if (answer === translatedQuestions[currentQuestionIndex].correctAnswer) {
       setScore(score + 1);
     }
 
     const nextQuestion = currentQuestionIndex + 1;
-    if (nextQuestion < quizQuestions.length) {
+    if (nextQuestion < translatedQuestions.length) {
       setCurrentQuestionIndex(nextQuestion);
     } else {
       setShowResult(true);
@@ -42,14 +43,14 @@ const Quiz = () => {
           {showResult ? (
             <Result
               score={score}
-              total={quizQuestions.length}
+              total={translatedQuestions.length}
               onRestart={handleRestart}
             />
           ) : (
             <>
-              <Question question={quizQuestions[currentQuestionIndex].question} />
+              <Question question={translatedQuestions[currentQuestionIndex].question} />
               <Answers
-                options={quizQuestions[currentQuestionIndex].options}
+                options={translatedQuestions[currentQuestionIndex].options}
                 onAnswer={handleAnswer}
               />
             </>

@@ -31,7 +31,7 @@ Explore the app: <a href="https://aot.lut3k.com" target="_blank">aot.lut3k.com</
 
 ### Test
 
-- **Quizzes (coming soon):** Test your knowledge of the characters, titans, and anime story.
+- **Quizzes:** Test your knowledge of the characters, titans, and anime story.
 
 ## Tech stack
 
