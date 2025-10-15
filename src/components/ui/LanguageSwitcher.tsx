@@ -1,17 +1,17 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import dayjs from 'dayjs';
 
 import { Device, LanguageName, LanguageShortName, LocalStorageKey } from '@/constants/enums';
+import { loadQuotations } from '@/store/quotationsSlice';
 import { setLocalStorageItem } from '@/utils/storageHelpers';
 
 import 'dayjs/locale/en';
 import 'dayjs/locale/pl';
 
+import useAppDispatch from '../hooks/useAppDispatch';
 import { Button } from './Button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './DropdownMenu';
-import useAppDispatch from '../hooks/useAppDispatch';
-import { loadQuotations } from '@/store/quotationsSlice';
-import { useEffect } from 'react';
 
 interface Language {
   id: LanguageShortName;

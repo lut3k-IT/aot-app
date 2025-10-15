@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { useBestScore } from '@/components/hooks/useBestScore';
 import AppHelmet from '@/components/ui/AppHelmet';
-import { useBestScore } from '@/hooks/useBestScore';
 import { shuffle } from '@/utils/helpers';
 
 import Answers from './components/Answers';
