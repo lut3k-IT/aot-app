@@ -41,7 +41,7 @@ const CharacterPicture = (props: CharacterPictureProps) => {
       <AvatarImage
         src={imgSource}
         alt={alt}
-        loading="lazy"
+        loading='lazy'
       />
       <AvatarFallback className={cn(characterPictureVariants({ variant, size }))}>
         <Image className={'h-1/2 w-1/2 text-muted2-foreground'} />

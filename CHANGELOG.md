@@ -1,3 +1,10 @@
+## [0.2.1](https://github.com/lut3k-IT/aot-app/compare/v0.2.0...v0.2.1) (2025-10-15)
+
+### Fixes
+
+* App is faster: optimized filtering, image optimization and lazy loading
+
+
 ## [0.2.0](https://github.com/lut3k-IT/aot-app/compare/v0.1.0...v0.2.0) (2025-10-15)
 
 ### Features
