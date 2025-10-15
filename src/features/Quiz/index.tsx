@@ -17,11 +17,26 @@ const Quiz = () => {
   const [isShowResult, setIsShowResult] = useState(false);
   const { bestScore, updateBestScore } = useBestScore();
 
-  const translatedQuestions: any = t('questions', { ns: 'quiz', returnObjects: true });
+  const [shuffledIndices, setShuffledIndices] = useState<number[] | null>(null);
+
+  const translatedQuestions: any[] = useMemo(
+    () => (t('questions', { ns: 'quiz', returnObjects: true }) as any[]) || [],
+    [t]
+  );
+
+  useEffect(() => {
+    if (translatedQuestions.length > 0 && shuffledIndices === null) {
+      const indices = Array.from({ length: translatedQuestions.length }, (_, i) => i);
+      setShuffledIndices(shuffle(indices).slice(0, 10));
+    }
+  }, [translatedQuestions, shuffledIndices]);
 
   const questions = useMemo(() => {
-    return shuffle(translatedQuestions).slice(0, 10);
-  }, [translatedQuestions]);
+    if (!shuffledIndices) {
+      return [];
+    }
+    return shuffledIndices.map((index) => translatedQuestions[index]);
+  }, [translatedQuestions, shuffledIndices]);
 
   useEffect(() => {
     if (isShowResult) {
@@ -30,7 +45,7 @@ const Quiz = () => {
   }, [isShowResult, score, updateBestScore]);
 
   const handleAnswer = (answer: number) => {
-    if (answer === questions[currentQuestionIndex].correctAnswer) {
+    if (questions[currentQuestionIndex] && answer === questions[currentQuestionIndex].correctAnswer) {
       setScore(score + 1);
     }
   };
@@ -49,6 +64,10 @@ const Quiz = () => {
     setScore(0);
     setIsShowResult(false);
   };
+
+  if (questions.length === 0) {
+    return null;
+  }
 
   return (
     <div className={'flex w-full items-center justify-center'}>

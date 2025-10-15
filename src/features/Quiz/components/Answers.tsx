@@ -1,5 +1,4 @@
-import React, { useMemo } from 'react';
-import { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Button } from '@/components/ui/Button';
@@ -17,14 +16,20 @@ const Answers: React.FC<AnswersProps> = ({ options, correctAnswer, onAnswer, onN
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
 
-  const shuffledOptions = useMemo(() => {
+  const [shuffledIndices, setShuffledIndices] = useState<number[]>([]);
+
+  useEffect(() => {
     const originalIndices = options.map((_, index) => index);
-    const shuffledIndices = shuffle(originalIndices);
+    setShuffledIndices(shuffle(originalIndices));
+  }, [correctAnswer]);
+
+  const shuffledOptions = useMemo(() => {
     return shuffledIndices.map((shuffledIndex) => ({
       text: options[shuffledIndex],
-      originalIndex: shuffledIndex
+      originalIndex: shuffledIndex,
     }));
-  }, [options]);
+  }, [options, shuffledIndices]);
+
 
   const handleAnswer = (answer: number) => {
     if (isAnswered) return;
@@ -42,11 +47,11 @@ const Answers: React.FC<AnswersProps> = ({ options, correctAnswer, onAnswer, onN
 
   return (
     <div>
-      <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
+      <div className={'grid grid-cols-1 gap-4 md:grid-cols-2'}>
         {shuffledOptions.map(({ text, originalIndex }) => {
           const isCorrect = originalIndex === correctAnswer;
           const isSelected = selectedAnswer === originalIndex;
-          let buttonVariant = 'outline';
+          let buttonVariant: 'outline' | 'success-outline' | 'destructive-outline' = 'outline';
           if (isAnswered) {
             if (isCorrect) {
               buttonVariant = 'success-outline';
@@ -59,7 +64,7 @@ const Answers: React.FC<AnswersProps> = ({ options, correctAnswer, onAnswer, onN
             <Button
               key={text}
               onClick={() => handleAnswer(originalIndex)}
-              className='w-full justify-center h-auto'
+              className={'w-full justify-center h-auto'}
               variant={buttonVariant as 'default'}
               disabled={isAnswered}
             >
@@ -69,7 +74,7 @@ const Answers: React.FC<AnswersProps> = ({ options, correctAnswer, onAnswer, onN
         })}
       </div>
       {isAnswered && (
-        <div className='mt-4 text-center'>
+        <div className={'mt-4 text-center'}>
           <Button onClick={handleNext}>{t('nextQuestion')}</Button>
         </div>
       )}
