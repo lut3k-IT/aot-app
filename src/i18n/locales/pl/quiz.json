@@ -50,11 +50,71 @@
         "W walce wręcz"
       ],
       "correctAnswer": 3
+    },
+    {
+      "id": 7,
+      "question": "Drugim - zaraz po Levi'u Ackermanie z \"Attack on Titan\"- najsilniejszym żołnierzem ludzkości jest:",
+      "options": ["Mikasa", "Erwin", "Eren", "Mike"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 8,
+      "question": "Kto ocalił Reinera przed pożarciem przez Ymir w \"Attack on Titan\"?",
+      "options": ["Marcel", "Christa", "Bertholdt", "Annie"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 9,
+      "question": "Czym zajmował się ojciec Sashy? (Atak Tytanów)",
+      "options": ["Hodowlą zwierząt", "Rolnictwem", "Górnictwem", "Myślistwem"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 10,
+      "question": "Jak brzmiało prawdziwe imię Ymir? (Atak Tytanów)",
+      "options": ["Christa", "Nie wiadomo", "Marta", "Sasha"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 11,
+      "question": "Kto był tytanem kolosalnym? (Atak Tytanów)",
+      "options": ["Bertholdt Hoover", "Reiner Braun", "Annie Leonhart", "Eren Jaeger"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 12,
+      "question": "Jaki kolor włosów (w anime \"Atak tytanów\") miała Petra Ral?",
+      "options": ["Rude", "Białe", "Blond", "Czarne"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 13,
+      "question": "Kto będąc w formie ludzkiej zabił najwięcej tytanów? (Atak tytanów)",
+      "options": ["Levi", "Mikasa", "Petra", "Eren"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 14,
+      "question": "Kto - oprócz Lynne, Henninga i Nanaby - zginął podczas obrony zamku Utgard w \"Attack on Titan\"?",
+      "options": ["Galliard", "Mike", "Marco", "Gelgar"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 15,
+      "question": "Co ukradła Sasha w dzień drugiego ataku tytanów na mury? (Atak Tytanów)",
+      "options": ["Chleb", "Szynkę", "Zakazaną książkę", "Ziemniaki"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 16,
+      "question": "Podczas odbijania Shiganshiny, gdzie ukrył się Reiner? (Atak Tytanów)",
+      "options": ["W środku murów", "W jednym z budynków", "Czekał na murze", "W beczce"],
+      "correctAnswer": 0
     }
   ],
-  "nextQuestion": "Następne pytanie",
-  "bestScore": "Najlepszy wynik",
-  "quizCompleted": "Quiz ukończony!",
-  "yourScore": "Twój wynik",
-  "restartQuiz": "Uruchom ponownie quiz"
+  "nextQuestion": "Next question",
+  "bestScore": "Best score",
+  "quizCompleted": "Quiz completed!",
+  "yourScore": "Your score",
+  "restartQuiz": "Restart quiz"
 }
