@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import AppHelmet from '@/components/ui/AppHelmet';
@@ -13,16 +13,16 @@ const Quiz = () => {
   const { t } = useTranslation(['quiz', 'common']);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
-  const [showResult, setShowResult] = useState(false);
+  const [isShowResult, setIsShowResult] = useState(false);
   const { bestScore, updateBestScore } = useBestScore();
 
   const translatedQuestions: any = t('questions', { ns: 'quiz', returnObjects: true });
 
   useEffect(() => {
-    if (showResult) {
+    if (isShowResult) {
       updateBestScore(score);
     }
-  }, [showResult, score, updateBestScore]);
+  }, [isShowResult, score, updateBestScore]);
 
   const handleAnswer = (answer: number) => {
     if (answer === translatedQuestions[currentQuestionIndex].correctAnswer) {
@@ -35,14 +35,14 @@ const Quiz = () => {
     if (nextQuestion < translatedQuestions.length) {
       setCurrentQuestionIndex(nextQuestion);
     } else {
-      setShowResult(true);
+      setIsShowResult(true);
     }
   };
 
   const handleRestart = () => {
     setCurrentQuestionIndex(0);
     setScore(0);
-    setShowResult(false);
+    setIsShowResult(false);
   };
 
   return (
@@ -50,7 +50,7 @@ const Quiz = () => {
       <AppHelmet title={t('common:title.quiz')} />
       <div className={'w-full'}>
         <QuizCard>
-          {showResult ? (
+          {isShowResult ? (
             <Result
               score={score}
               total={translatedQuestions.length}

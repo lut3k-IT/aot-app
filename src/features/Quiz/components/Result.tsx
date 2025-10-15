@@ -14,14 +14,14 @@ const Result: React.FC<ResultProps> = ({ score, total, bestScore, onRestart }) =
   const { t } = useTranslation('quiz');
 
   return (
-    <div className="text-center">
-      <h2 className="mb-4 text-2xl font-bold text-card-foreground">
+    <div className='text-center'>
+      <h2 className='mb-4 text-2xl font-bold text-card-foreground'>
         {t('quizCompleted')}
       </h2>
-      <p className="mb-6 text-lg text-muted-foreground">
+      <p className='mb-6 text-lg text-muted-foreground'>
         {t('yourScore')}: {score} / {total}
       </p>
-      <p className="mb-6 text-lg text-muted-foreground">
+      <p className='mb-6 text-lg text-muted-foreground'>
         {t('bestScore')}: {bestScore} / {total}
       </p>
       <Button onClick={onRestart}>{t('restartQuiz')}</Button>

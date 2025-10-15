@@ -32,7 +32,7 @@ const Answers: React.FC<AnswersProps> = ({ options, correctAnswer, onAnswer, onN
 
   return (
     <div>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
         {options.map((option, index) => {
           const isCorrect = index === correctAnswer;
           const isSelected = selectedAnswer === index;
@@ -49,8 +49,8 @@ const Answers: React.FC<AnswersProps> = ({ options, correctAnswer, onAnswer, onN
             <Button
               key={option}
               onClick={() => handleAnswer(index)}
-              className="w-full justify-center h-auto"
-              variant={buttonVariant as any}
+              className='w-full justify-center h-auto'
+              variant={buttonVariant as 'default'}
               disabled={isAnswered}
             >
               {option}
@@ -59,7 +59,7 @@ const Answers: React.FC<AnswersProps> = ({ options, correctAnswer, onAnswer, onN
         })}
       </div>
       {isAnswered && (
-        <div className="mt-4 text-center">
+        <div className='mt-4 text-center'>
           <Button onClick={handleNext}>{t('nextQuestion')}</Button>
         </div>
       )}
