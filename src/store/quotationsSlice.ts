@@ -2,11 +2,14 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import { LocalStorageKey, PromiseStatus } from '@/constants/enums';
 import { ErrorType, FavoriteType, QuotationType } from '@/constants/types';
+import i18n from '@/i18n/i18n';
 import { getLocalStorageItem, setLocalStorageItem } from '@/utils/storageHelpers';
 
 export const loadQuotations = createAsyncThunk('quotations/load', async () => {
-  const response = await fetch('/data/quotations.json');
-  const data = await response.json();
+  const quotations = i18n.getResourceBundle(i18n.language, 'quotations');
+  const data = Object.entries(quotations).map(
+    ([id, text]) => ({ id: Number(id), text } as QuotationType)
+  );
   return data;
 });
 
