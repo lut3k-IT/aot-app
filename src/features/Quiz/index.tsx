@@ -15,7 +15,7 @@ const Quiz = () => {
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
 
-  const handleAnswer = (answer: string) => {
+  const handleAnswer = (answer: number) => {
     if (answer === quizQuestions[currentQuestionIndex].correctAnswer) {
       setScore(score + 1);
     }
