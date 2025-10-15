@@ -1,0 +1,121 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "The songs from the \"Attack on Titan\" openings are performed by the band:",
+      "options": ["Linked Horizon", "SID", "Die Gazette", "14:00"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 2,
+      "question": "What did Hannes do when he first met the Smiling Titan? (Attack on Titan)",
+      "options": [
+        "He fled, saving Eren and Mikasa",
+        "He was eaten, paralyzed with fear and unable to move",
+        "He fought it and died",
+        "He fought it and won"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 3,
+      "question": "Who saved Mikasa Ackerman from the bandits in \"Shingeki no Kyojin\"?",
+      "options": ["The Garrison Regiment", "Dot Pixis", "Eren Jaeger", "Grisha Jaeger"],
+      "correctAnswer": 2
+    },
+    {
+      "id": 4,
+      "question": "The ending of the second season of \"Attack on Titan\" depicts:",
+      "options": [
+        "Events long before the main plot",
+        "Events unrelated to the plot",
+        "Events parallel to the main plot",
+        "Events likely taking place after the series finale"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 5,
+      "question": "Who did Bertholdt have a soft spot for? (Attack on Titan)",
+      "options": ["For Historia", "For Annie", "For Ymir", "For Mikasa"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 6,
+      "question": "Annie Leonhart from \"Attack on Titan\" is exceptionally good at:",
+      "options": [
+        "Analysis and deduction",
+        "Effectively killing titans",
+        "Using the three-dimensional maneuver gear",
+        "Hand-to-hand combat"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 7,
+      "question": "The second strongest soldier of humanity, right after Levi Ackerman from \"Attack on Titan\", is:",
+      "options": ["Mikasa", "Erwin", "Eren", "Mike"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 8,
+      "question": "Who saved Reiner from being eaten by Ymir in \"Attack on Titan\"?",
+      "options": ["Marcel", "Christa", "Bertholdt", "Annie"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 9,
+      "question": "What was Sasha's father's occupation? (Attack on Titan)",
+      "options": ["Animal husbandry", "Farming", "Mining", "Hunting"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 10,
+      "question": "What was Ymir's real name? (Attack on Titan)",
+      "options": ["Christa", "Unknown", "Marta", "Sasha"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 11,
+      "question": "Who was the Colossal Titan? (Attack on Titan)",
+      "options": ["Bertholdt Hoover", "Reiner Braun", "Annie Leonhart", "Eren Jaeger"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 12,
+      "question": "What hair color (in the \"Attack on Titan\" anime) did Petra Ral have?",
+      "options": ["Ginger", "White", "Blonde", "Black"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 13,
+      "question": "Who, in human form, has killed the most titans? (Attack on Titan)",
+      "options": ["Levi", "Mikasa", "Petra", "Eren"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 14,
+      "question": "Who - besides Lynne, Henning, and Nanaba - died during the defense of Castle Utgard in \"Attack on Titan\"?",
+      "options": ["Galliard", "Mike", "Marco", "Gelgar"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 15,
+      "question": "What did Sasha steal on the day of the second titan attack on the walls? (Attack on Titan)",
+      "options": ["Bread", "Ham", "A forbidden book", "Potatoes"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 16,
+      "question": "During the mission to retake Shiganshina, where did Reiner hide? (Attack on Titan)",
+      "options": ["Inside the walls", "In one of the buildings", "He waited on the wall", "In a barrel"],
+      "correctAnswer": 0
+    }
+  ],
+  "nextQuestion": "Next question",
+  "bestScore": "Best score",
+  "quizCompleted": "Quiz completed!",
+  "yourScore": "Your score",
+  "restartQuiz": "Restart quiz",
+  "questionCounter": "Question {{current}} of {{total}}"
+}

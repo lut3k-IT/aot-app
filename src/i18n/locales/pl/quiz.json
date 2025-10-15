@@ -1,0 +1,121 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "Piosenki z openingów \"Attack on Titan\" wykonuje zespół:",
+      "options": ["Linked Horizon", "SID", "Die Gazette", "14:00"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 2,
+      "question": "Co zrobił Hannes, gdy po raz pierwszy spotkał Tytana Uśmiechniętego? (Atak Tytanów)",
+      "options": [
+        "Uciekł ratując Erena i Mikasę",
+        "Został zjedzony, gdy sparaliżowany strachem nie mógł się ruszyć",
+        "Walczył z nim i zginął",
+        "Walczył z nim i wygrał"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 3,
+      "question": "Kto ocalił Mikasę Ackerman przed bandytami w \"Shingeki no Kyojin\"?",
+      "options": ["Korpus Stacjonarny", "Dot Pixis", "Eren Jaeger", "Grisha Jaeger"],
+      "correctAnswer": 2
+    },
+    {
+      "id": 4,
+      "question": "Ending drugiej serii \"Attack on Titan\" przedstawia:",
+      "options": [
+        "Wydarzenia na długo przed fabułą właściwą",
+        "Wydarzenia niezwiązane z fabułą",
+        "Wydarzenia równoległe do fabuły właściwej",
+        "Wydarzenia dziejące się prawdopodobnie po zakończeniu serii"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 5,
+      "question": "Przy kim Berthold wymiękał? (Atak Tytanów)",
+      "options": ["Przy Historii", "Przy Annie", "Przy Ymir", "Przy Mikasie"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 6,
+      "question": "Annie Leonhart z \"Attack on Titan\" jest wyjątkowo dobra w:",
+      "options": [
+        "Analizie i dedukcji",
+        "Skutecznym zabijaniu tytanów",
+        "W korzystaniu ze sprzętu do trójwymiarowego manewru",
+        "W walce wręcz"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 7,
+      "question": "Drugim - zaraz po Levi'u Ackermanie z \"Attack on Titan\"- najsilniejszym żołnierzem ludzkości jest:",
+      "options": ["Mikasa", "Erwin", "Eren", "Mike"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 8,
+      "question": "Kto ocalił Reinera przed pożarciem przez Ymir w \"Attack on Titan\"?",
+      "options": ["Marcel", "Christa", "Bertholdt", "Annie"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 9,
+      "question": "Czym zajmował się ojciec Sashy? (Atak Tytanów)",
+      "options": ["Hodowlą zwierząt", "Rolnictwem", "Górnictwem", "Myślistwem"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 10,
+      "question": "Jak brzmiało prawdziwe imię Ymir? (Atak Tytanów)",
+      "options": ["Christa", "Nie wiadomo", "Marta", "Sasha"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 11,
+      "question": "Kto był tytanem kolosalnym? (Atak Tytanów)",
+      "options": ["Bertholdt Hoover", "Reiner Braun", "Annie Leonhart", "Eren Jaeger"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 12,
+      "question": "Jaki kolor włosów (w anime \"Atak tytanów\") miała Petra Ral?",
+      "options": ["Rude", "Białe", "Blond", "Czarne"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 13,
+      "question": "Kto będąc w formie ludzkiej zabił najwięcej tytanów? (Atak tytanów)",
+      "options": ["Levi", "Mikasa", "Petra", "Eren"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 14,
+      "question": "Kto - oprócz Lynne, Henninga i Nanaby - zginął podczas obrony zamku Utgard w \"Attack on Titan\"?",
+      "options": ["Galliard", "Mike", "Marco", "Gelgar"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 15,
+      "question": "Co ukradła Sasha w dzień drugiego ataku tytanów na mury? (Atak Tytanów)",
+      "options": ["Chleb", "Szynkę", "Zakazaną książkę", "Ziemniaki"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 16,
+      "question": "Podczas odbijania Shiganshiny, gdzie ukrył się Reiner? (Atak Tytanów)",
+      "options": ["W środku murów", "W jednym z budynków", "Czekał na murze", "W beczce"],
+      "correctAnswer": 0
+    }
+  ],
+  "nextQuestion": "Następne pytanie",
+  "bestScore": "Najlepszy wynik",
+  "quizCompleted": "Quiz ukończony!",
+  "yourScore": "Twój wynik",
+  "restartQuiz": "Restartuj quiz",
+  "questionCounter": "Pytanie {{current}} z {{total}}"
+}
