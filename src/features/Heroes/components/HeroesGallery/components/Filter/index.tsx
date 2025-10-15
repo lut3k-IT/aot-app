@@ -206,7 +206,7 @@ const Filter = () => {
     dispatch({ type: 'SET_SORT_DIRECTION', payload: sortDirection });
     dispatch({ type: 'SET_HAS_ONLY_FAVORITES', payload: hasOnlyFavorites });
     dispatch({ type: 'SET_SEARCH', payload: search });
-  }, []);
+  }, [searchParams]);
 
   return (
     <Dialog
