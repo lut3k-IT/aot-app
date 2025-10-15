@@ -46,7 +46,6 @@ const HeroesGallery = () => {
   const [paginatedHeroes, setPaginatedHeroes] = useState(originalHeroes);
 
   const hasData = originalHeroes.length > 0;
-  const hasDataToShow = filteredHeroes.length > 0;
 
   const [pageHeadingDestination, setPageHeadingDestination] = useState<HTMLElement | null>(null);
 
@@ -96,6 +95,8 @@ const HeroesGallery = () => {
 
     return filterHeroes(originalHeroes, filters, favoriteHeroesIds);
   }, [originalHeroes, searchParams, favoriteHeroesIds]);
+
+  const hasDataToShow = filteredHeroes.length > 0;
 
   /* ------------------------------- pagination ------------------------------- */
 
