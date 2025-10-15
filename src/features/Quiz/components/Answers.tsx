@@ -39,9 +39,9 @@ const Answers: React.FC<AnswersProps> = ({ options, correctAnswer, onAnswer, onN
           let buttonVariant = 'outline';
           if (isAnswered) {
             if (isCorrect) {
-              buttonVariant = 'success';
+              buttonVariant = 'success-outline';
             } else if (isSelected) {
-              buttonVariant = 'destructive';
+              buttonVariant = 'destructive-outline';
             }
           }
 

@@ -16,15 +16,15 @@ const Result: React.FC<ResultProps> = ({ score, total, bestScore, onRestart }) =
   return (
     <div className="text-center">
       <h2 className="mb-4 text-2xl font-bold text-card-foreground">
-        Quiz Completed!
+        {t('quizCompleted')}
       </h2>
       <p className="mb-6 text-lg text-muted-foreground">
-        Your score: {score} / {total}
+        {t('yourScore')}: {score} / {total}
       </p>
       <p className="mb-6 text-lg text-muted-foreground">
         {t('bestScore')}: {bestScore} / {total}
       </p>
-      <Button onClick={onRestart}>Restart Quiz</Button>
+      <Button onClick={onRestart}>{t('restartQuiz')}</Button>
     </div>
   );
 };

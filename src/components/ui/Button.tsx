@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 import Icon, { IconNames, IconProps, IconSizes } from './Icon';
 
 const buttonVariants = cva(
-  'inline-flex gap-2 items-center justify-center rounded-md text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex gap-2 items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {
@@ -17,6 +17,10 @@ const buttonVariants = cva(
         defaultInvert:
           'bg-primary-foreground text-primary hover:bg-primary-foreground/70 dark:bg-primary/10 dark:hover:bg-primary/5',
         destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
+        'destructive-outline':
+          'border border-destructive text-destructive hover:bg-destructive/10 ring-2 ring-destructive/20',
+        success: 'bg-success text-success-foreground hover:bg-success/90',
+        'success-outline': 'border border-success text-success hover:bg-success/10 ring-2 ring-success/20',
         destructiveInvert:
           'bg-destructive-foreground text-destructive hover:bg-purple-50 dark:bg-purple-900/20 dark:hover:bg-purple-900/10',
         secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',

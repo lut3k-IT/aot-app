@@ -53,5 +53,8 @@
     }
   ],
   "nextQuestion": "Następne pytanie",
-  "bestScore": "Najlepszy wynik"
+  "bestScore": "Najlepszy wynik",
+  "quizCompleted": "Quiz ukończony!",
+  "yourScore": "Twój wynik",
+  "restartQuiz": "Uruchom ponownie quiz"
 }
