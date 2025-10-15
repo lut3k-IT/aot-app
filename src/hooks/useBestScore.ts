@@ -9,14 +9,14 @@ export const useBestScore = () => {
   useEffect(() => {
     const storedBestScore = getLocalStorageItem(LocalStorageKey.BEST_SCORE);
     if (storedBestScore) {
-      setBestScore(storedBestScore);
+      setBestScore(parseInt(storedBestScore, 10));
     }
   }, []);
 
   const updateBestScore = (score: number) => {
     if (score > bestScore) {
       setBestScore(score);
-      setLocalStorageItem(LocalStorageKey.BEST_SCORE, score);
+      setLocalStorageItem(LocalStorageKey.BEST_SCORE, score.toString());
     }
   };
 

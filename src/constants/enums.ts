@@ -86,7 +86,9 @@ export enum LocalStorageKey {
   FAV_HEROES = 'favHeroes',
   FAV_TITANS = 'favTitans',
   FAV_QUOTATIONS = 'favQuotations',
-  THEME = 'vite-ui-theme'
+  THEME = 'vite-ui-theme',
+  BEST_SCORE = 'bestScore'
+
 }
 
 /* ------------------------------ Data related ------------------------------ */

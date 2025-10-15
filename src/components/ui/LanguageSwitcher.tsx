@@ -9,6 +9,9 @@ import 'dayjs/locale/pl';
 
 import { Button } from './Button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './DropdownMenu';
+import useAppDispatch from '../hooks/useAppDispatch';
+import { loadQuotations } from '@/store/quotationsSlice';
+import { useEffect } from 'react';
 
 interface Language {
   id: LanguageShortName;
@@ -33,6 +36,11 @@ interface LanguageSwitcherProps {
 const LanguageSwitcher = (props: LanguageSwitcherProps) => {
   const { variant = Device.MOBILE } = props;
   const { i18n } = useTranslation();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(loadQuotations());
+  }, [i18n.language, dispatch]);
 
   const handleChangeLanguage = (lang: LanguageShortName) => {
     i18n.changeLanguage(lang);

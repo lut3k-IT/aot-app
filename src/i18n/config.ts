@@ -13,7 +13,9 @@ import {
   notificationsEN,
   notificationsPL,
   quizEN,
-  quizPL
+  quizPL,
+  quotationsEN,
+  quotationsPL
 } from './locales';
 
 const resources = {
@@ -22,18 +24,20 @@ const resources = {
     notifications: notificationsEN,
     data: dataEN,
     howToUse: howToUseEN,
-    quiz: quizEN
+    quiz: quizEN,
+    quotations: quotationsEN
   },
   pl: {
     common: commonPL,
     notifications: notificationsPL,
     data: dataPL,
     howToUse: howToUsePL,
-    quiz: quizPL
+    quiz: quizPL,
+    quotations: quotationsPL
   }
 };
 
-export const ns = ['common', 'quiz'];
+export const ns = ['common', 'quiz', 'quotations'];
 
 export const initOptions: InitOptions = {
   resources,
