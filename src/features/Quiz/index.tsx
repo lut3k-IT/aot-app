@@ -70,7 +70,9 @@ const Quiz = () => {
   }
 
   return (
-    <div className={'flex w-full items-center justify-center'}>
+    <div
+      className={'flex w-full items-center justify-center pt-body-start md:pt-0'}
+    >
       <AppHelmet title={t('common:title.quiz')} />
       <div className={'w-full'}>
         <QuizCard>
