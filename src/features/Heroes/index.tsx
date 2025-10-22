@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { createSearchParams, Navigate, Outlet, useLocation, useSearchParams } from 'react-router-dom';
+import { matchPath } from 'react-router-dom';
 import classNames from 'classnames';
 
 import useIsLandscape from '@/components/hooks/useIsLandscape';
 import useIsMobileOrLandscape from '@/components/hooks/useIsMobileOrLandscape';
 import PageHeading from '@/components/ui/PageHeading';
 import { RoutePath } from '@/constants/enums';
-import { matchPath } from 'react-router-dom';
 
 import MovingPanel from '../../components/ui/MovingPanel';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/Tabs';

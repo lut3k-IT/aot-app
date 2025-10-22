@@ -1,13 +1,15 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import { HelmetProvider } from 'react-helmet-async';
-import Quiz from './index';
+import { cleanup,fireEvent, render, screen } from '@testing-library/react';
+import { beforeEach,describe, expect, it, vi } from 'vitest';
+
 import * as helpers from '@/utils/helpers';
+
+import Quiz from './index';
 
 // Mock i18next to handle returnObjects and namespaces
 vi.mock('react-i18next', () => ({
   useTranslation: () => ({
-    t: (key, options) => {
+    t: (key: string, options: any) => {
       if (key === 'questions' && options?.returnObjects) {
         return [
           {
@@ -23,7 +25,7 @@ vi.mock('react-i18next', () => ({
         ];
       }
 
-      const translations = {
+      const translations: Record<string, string> = {
         nextQuestion: 'Next',
         restartQuiz: 'Restart Quiz',
         yourScore: 'Your Score',
@@ -31,7 +33,7 @@ vi.mock('react-i18next', () => ({
         bestScore: 'Best Score',
       };
 
-      let translation = translations[key] || key;
+      const translation = translations[key] || key;
 
       if (key === 'questionCounter') {
         return `Question ${options?.current} of ${options?.total}`;
@@ -51,7 +53,7 @@ vi.mock('@/components/hooks/useBestScore', () => ({
 }));
 
 // Mock shuffle function to return the array in the same order
-vi.spyOn(helpers, 'shuffle').mockImplementation((array) => array);
+vi.spyOn(helpers, 'shuffle').mockImplementation((array: any[]) => array);
 
 const renderQuiz = () => {
   return render(

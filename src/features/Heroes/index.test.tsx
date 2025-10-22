@@ -1,8 +1,8 @@
+import React, { useLayoutEffect, useState } from 'react';
+import { Route, Router, Routes } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createMemoryHistory, MemoryHistory } from 'history';
-import React, { useLayoutEffect, useState } from 'react';
-import { Route, Router, Routes } from 'react-router-dom';
 
 import Heroes from '.';
 
@@ -43,19 +43,19 @@ describe('Heroes component', () => {
       <HistoryRouter history={history}>
         <Routes>
           <Route
-            path="/heroes"
+            path='/heroes'
             element={<Heroes />}
           >
             <Route
-              path="gallery"
+              path='gallery'
               element={<div>Gallery Content</div>}
             />
             <Route
-              path="comparison"
+              path='comparison'
               element={<div>Comparison Content</div>}
             />
             <Route
-              path="charts"
+              path='charts'
               element={<div>Charts Content</div>}
             />
           </Route>
