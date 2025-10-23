@@ -1,17 +1,20 @@
+import { useTranslation } from 'react-i18next';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import heroes from '@/data/heroes';
 import mbtiData from '@/data/mbti';
 
-const chartConfig = {
-  count: {
-    label: 'Count',
-    color: 'hsl(var(--chart-1))'
-  }
-} satisfies ChartConfig;
-
 const MbtiChart = () => {
+  const { t } = useTranslation();
+
+  const chartConfig = {
+    count: {
+      label: t('charts:mbtiChart.count'),
+      color: 'hsl(var(--chart-1))'
+    }
+  } satisfies ChartConfig;
+
   const mbtiCounts = heroes.reduce(
     (acc, hero) => {
       if (hero.mbti) {
@@ -29,9 +32,9 @@ const MbtiChart = () => {
   }));
 
   return (
-    <div>
-      <h2 className={'text-xl font-bold'}>MBTI Personality Types Distribution</h2>
-      <p>A chart showing the distribution of MBTI personality types among the characters.</p>
+    <>
+      <h2>{t('charts:mbtiChart.title')}</h2>
+      <p>{t('charts:mbtiChart.description')}</p>
       <ChartContainer
         config={chartConfig}
         className={'mt-8 h-96 w-full'}
@@ -63,7 +66,7 @@ const MbtiChart = () => {
           />
         </BarChart>
       </ChartContainer>
-    </div>
+    </>
   );
 };
 

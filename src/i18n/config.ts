@@ -4,6 +4,8 @@ import { LanguageShortName, LocalStorageKey } from '@/constants/enums';
 import { getLocalStorageItem } from '@/utils/storageHelpers';
 
 import {
+  chartsEN,
+  chartsPL,
   commonEN,
   commonPL,
   dataEN,
@@ -25,7 +27,8 @@ const resources = {
     data: dataEN,
     howToUse: howToUseEN,
     quiz: quizEN,
-    quotations: quotationsEN
+    quotations: quotationsEN,
+    charts: chartsEN
   },
   pl: {
     common: commonPL,
@@ -33,11 +36,12 @@ const resources = {
     data: dataPL,
     howToUse: howToUsePL,
     quiz: quizPL,
-    quotations: quotationsPL
+    quotations: quotationsPL,
+    charts: chartsPL
   }
 };
 
-export const ns = ['common', 'quiz', 'quotations'];
+export const ns = ['common', 'quiz', 'quotations', 'charts'];
 
 export const initOptions: InitOptions = {
   resources,
