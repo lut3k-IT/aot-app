@@ -11,7 +11,7 @@ const MbtiChart = () => {
   const chartConfig = {
     count: {
       label: t('charts:mbtiChart.count'),
-      color: 'hsl(var(--chart-1))'
+      color: 'hsl(var(--primary))'
     }
   } satisfies ChartConfig;
 
@@ -22,13 +22,12 @@ const MbtiChart = () => {
       }
       return acc;
     },
-    {} as Record<number, number>
+    {} as Record<string, number>
   );
 
   const chartData = mbtiData.map((mbti) => ({
     name: mbti.shortName,
-    count: mbtiCounts[mbti.id] || 0,
-    fill: 'var(--color-count)'
+    count: mbtiCounts[mbti.id] || 0
   }));
 
   return (
@@ -43,8 +42,8 @@ const MbtiChart = () => {
           data={chartData}
           margin={{
             top: 5,
-            right: 30,
-            left: 20,
+            right: 0,
+            left: -30,
             bottom: 5
           }}
         >
@@ -63,6 +62,7 @@ const MbtiChart = () => {
           <Bar
             dataKey='count'
             radius={4}
+            fill='var(--color-count)'
           />
         </BarChart>
       </ChartContainer>
