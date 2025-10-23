@@ -36,7 +36,7 @@ const AboutEN = () => {
               <strong>Comparison Tool:</strong> Compare different characters and discover the differences between them.
             </li>
             <li>
-              <strong>Statistics (coming soon):</strong> Discover hidden relationships and patterns.
+              <strong>Statistics:</strong> Discover hidden relationships and patterns.
             </li>
           </ul>
         </li>
@@ -52,7 +52,7 @@ const AboutEN = () => {
           <h3>Test</h3>
           <ul>
             <li>
-              <strong>Quizzes (coming soon):</strong> Test your knowledge of the characters, titans, and anime story.
+              <strong>Quiz:</strong> Test your knowledge of the characters, titans, and anime story.
             </li>
           </ul>
         </li>

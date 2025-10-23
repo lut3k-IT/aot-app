@@ -229,11 +229,6 @@ const TermsAndConditionsPL = () => {
         revised terms. If You do not agree to the new terms, in whole or in part, please stop using the website and the
         Service.
       </p>
-      <h2>Contact Us</h2>
-      <p>If you have any questions about these Terms and Conditions, You can contact us:</p>
-      <ul>
-        <li>By email: aot@lut3k.com</li>
-      </ul>
     </div>
   );
 };

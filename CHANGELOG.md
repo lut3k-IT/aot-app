@@ -1,3 +1,9 @@
+## [0.3.0](https://github.com/lut3k-IT/aot-app/compare/v0.2.0...v0.3.0) (2025-10-23)
+
+### Features
+
+* Add MBTI chart
+
 ## [0.2.1](https://github.com/lut3k-IT/aot-app/compare/v0.2.0...v0.2.1) (2025-10-16)
 
 ### Fixes

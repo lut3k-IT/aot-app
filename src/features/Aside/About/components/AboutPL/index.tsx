@@ -36,7 +36,7 @@ const AboutPL = () => {
               <strong>Porównywarka:</strong> Zestaw ze sobą różne postacie i odkryj różnice między nimi.
             </li>
             <li>
-              <strong>Statystyki (dostępne wkrótce):</strong> Poznaj ukryte zależności i wzorce.
+              <strong>Statystyki:</strong> Poznaj ukryte zależności i wzorce.
             </li>
           </ul>
         </li>
@@ -52,7 +52,7 @@ const AboutPL = () => {
           <h3>Testuj</h3>
           <ul>
             <li>
-              <strong>Quizy (dostępne wkrótce):</strong> Sprawdź, jak dobrze znasz bohaterów, tytanów i historię anime.
+              <strong>Quiz:</strong> Sprawdź, jak dobrze znasz bohaterów, tytanów i historię anime.
             </li>
           </ul>
         </li>

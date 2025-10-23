@@ -23,7 +23,7 @@ Explore the app: <a href="https://aot.lut3k.com" target="_blank">aot.lut3k.com</
 ### Analyze
 
 - **Comparison Tool:** Compare different characters and discover the differences between them.
-- **Statistics (coming soon):** Discover hidden relationships and patterns.
+- **Statistics** Discover hidden relationships and patterns.
 
 ### Personalize
 

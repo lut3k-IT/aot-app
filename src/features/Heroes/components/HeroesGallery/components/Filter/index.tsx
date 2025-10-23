@@ -512,7 +512,7 @@ const Filter = () => {
         </ScrollArea>
         <DialogFooter className={'flex flex-auto flex-row gap-3'}>
           <Button
-            className={'w-fit'}
+            className={'w-full'}
             variant={'destructiveInvert'}
             onClick={handleResetAll}
             aria-label={t('common:action.resetAll')}
