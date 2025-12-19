@@ -1,7 +1,9 @@
+import { useEffect, useState } from 'react';
 import { createBrowserRouter, Navigate, Outlet, RouterProvider } from 'react-router-dom';
 
 import PageOverlay from '@/components/ui/PageOverlay';
 import ScrollToTop from '@/components/ui/ScrollToTop';
+import SplashScreen from '@/components/ui/SplashScreen';
 import { RoutePath } from '@/constants/enums';
 import About from '@/features/Aside/About';
 import Changelog from '@/features/Aside/Changelog';
@@ -112,7 +114,28 @@ export const router = createBrowserRouter([
 ]);
 
 const AppRouter = () => {
-  return <RouterProvider router={router} />;
+  const [shouldShowSplash, setShouldShowSplash] = useState(true);
+  const [splashClass, setSplashClass] = useState('');
+
+  useEffect(() => {
+    const minTimePromise = new Promise((resolve) => setTimeout(resolve, 1000));
+    const windowLoadPromise =
+      document.readyState === 'complete'
+        ? Promise.resolve()
+        : new Promise((resolve) => window.addEventListener('load', resolve));
+
+    Promise.all([minTimePromise, windowLoadPromise]).then(() => {
+      setSplashClass('opacity-0');
+      setTimeout(() => setShouldShowSplash(false), 500);
+    });
+  }, []);
+
+  return (
+    <>
+      {shouldShowSplash && <SplashScreen className={splashClass} />}
+      <RouterProvider router={router} />
+    </>
+  );
 };
 
 export default AppRouter;
