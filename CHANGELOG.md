@@ -13,6 +13,14 @@
 
 * **heroes:** Clear search params on tab change ([a3cd472](https://github.com/lut3k-IT/aot-app/commit/a3cd4720eca68b5fd38ee6a3ad6d39a953dc429e))
 
+## [0.5.0](https://github.com/lut3k-IT/aot-app/compare/v0.4.0...v0.5.0) (2025-12-23)
+
+
+### Features
+
+* implement PWA ([350857a](https://github.com/lut3k-IT/aot-app/commit/350857a250e344aa660b0ee7b26d37510378f4d0))
+* PWA update prompt with image caching ([8efe2b5](https://github.com/lut3k-IT/aot-app/commit/8efe2b59b3b45ae72ed03982bd1f5a2c38cc84a4))
+
 ## [0.4.0](https://github.com/lut3k-IT/aot-app/compare/v0.3.0...v0.4.0) (2025-12-19)
 
 
