@@ -114,5 +114,10 @@
     }
   },
   "soon": "Wkrótce",
-  "howToUse": "Jak korzystać"
+  "howToUse": "Jak korzystać",
+  "pwa": {
+    "updateAvailable": "Dostępna nowa treść, kliknij przycisk, aby odświeżyć.",
+    "reload": "Odśwież",
+    "close": "Zamknij"
+  }
 }

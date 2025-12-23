@@ -114,5 +114,10 @@
     }
   },
   "soon": "Soon",
-  "howToUse": "How to use"
+  "howToUse": "How to use",
+  "pwa": {
+    "updateAvailable": "New content available, click on reload button to update.",
+    "reload": "Reload",
+    "close": "Close"
+  }
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { createBrowserRouter, Navigate, Outlet, RouterProvider } from 'react-router-dom';
 
 import PageOverlay from '@/components/ui/PageOverlay';
+import ReloadPrompt from '@/components/ui/ReloadPrompt';
 import ScrollToTop from '@/components/ui/ScrollToTop';
 import SplashScreen from '@/components/ui/SplashScreen';
 import { RoutePath } from '@/constants/enums';
@@ -132,6 +133,7 @@ const AppRouter = () => {
 
   return (
     <>
+      <ReloadPrompt />
       {shouldShowSplash && <SplashScreen className={splashClass} />}
       <RouterProvider router={router} />
     </>
