@@ -138,7 +138,7 @@
   }
 
   .article {
-    @apply px-page-mobile pt-page-mobile md:pt-0;
+    @apply mx-auto max-w-3xl p-6;
 
     & h1,
     & h2,
@@ -146,35 +146,47 @@
     & h4,
     & h5,
     & h6 {
-      @apply mb-4 font-bold;
+      @apply mb-4 scroll-m-20 tracking-tight text-foreground;
     }
 
     & h1 {
-      @apply text-3xl;
+      @apply mb-8 text-4xl font-extrabold lg:text-5xl;
     }
 
     & h2 {
-      @apply text-2xl;
+      @apply mb-4 mt-10 border-b pb-2 text-3xl font-semibold first:mt-0;
     }
 
     & h3 {
-      @apply text-xl;
+      @apply mb-4 mt-8 text-2xl font-semibold;
+    }
+
+    & h4 {
+      @apply mb-4 mt-6 text-xl font-semibold;
     }
 
     & p {
-      @apply mb-4;
+      @apply mb-6 leading-7 [&:not(:first-child)]:mt-6;
     }
 
     & ul {
-      @apply mb-4 ml-6 list-disc;
+      @apply my-6 ml-6 list-disc [&>li]:mt-2;
     }
 
     & ol {
-      @apply mb-4 ml-6 list-decimal;
+      @apply my-6 ml-6 list-decimal [&>li]:mt-2;
     }
 
-    & li {
-      @apply mb-1;
+    & blockquote {
+      @apply mt-6 border-l-2 border-primary pl-6 italic;
+    }
+
+    & a {
+      @apply font-medium underline underline-offset-4 transition-colors hover:text-primary;
+    }
+
+    & code {
+      @apply font-mono relative rounded bg-muted px-[0.3rem] py-[0.2rem] text-sm font-semibold;
     }
   }
 }

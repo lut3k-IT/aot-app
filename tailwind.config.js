@@ -17,14 +17,14 @@ module.exports = {
       xl: '1440px',
       '2xl': '2560px'
     },
-    fontFamily: {
-      vector: ['Vector', 'sans-serif']
-    },
     container: {
       center: true,
       padding: '2rem'
     },
     extend: {
+      fontFamily: {
+        vector: ['Vector', 'sans-serif']
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
