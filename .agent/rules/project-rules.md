@@ -3,46 +3,62 @@ title: Project Rules & Tech Stack
 ---
 
 ## Project Overview
+
 This is a React application built with Vite, TypeScript, and Tailwind CSS. It focuses on the Attack on Titan (AOT) theme.
 
 ## Technology Stack
+
 - **Core**: React 18, Vite.
-- **Language**: TypeScript.
+- **Language**: TypeScript (`strict` mode).
 - **Styling**: Tailwind CSS, PostCSS.
-- **UI Library**: Radix UI primitives, `class-variance-authority` (cva), `tailwind-merge`, `clsx` (Shadcn-like architecture).
-- **State Management**: Redux Toolkit.
+- **UI Architecture**: "Shadcn-like"
+  - **Primitives**: Radix UI.
+  - **Utilities**: `class-variance-authority` (cva), `tailwind-merge`, `clsx`.
+  - **Icons**: `lucide-react`.
+- **State Management**: Redux Toolkit (slices in `src/store`).
 - **Routing**: React Router DOM v6.
-- **Forms**: React Hook Form, `@hookform/resolvers`.
+- **Forms**: React Hook Form with `@hookform/resolvers`.
 - **Internationalization**: `i18next`, `react-i18next`.
-- **Icons**: `lucide-react`.
-- **Testing**: `vitest`, `@testing-library/react`.
 
 ## Architectural Patterns
+
 - **Directory Structure**:
-  - `src/components/ui`: Shared, generic UI components (Buttons, Inputs, Modals).
-  - `src/features`: Feature-specific logic and components.
-  - `src/store`: Redux store configuration and slices.
-  - `src/lib`: Utilities (including `cn.ts` or `utils.ts` for styling).
-  - `src/constants`: Enums and constant values.
-  - `src/i18n`: Locale definitions and setup.
+  - `src/components/ui`: Shared, generic atomic components (e.g., Button, Input).
+  - `src/features`: Domain-specific features (e.g., `Heroes`, `Quiz`). Feature folders are Capitalized.
+  - `src/store`: Redux setup.
+  - `src/lib`: Core utilities (specifically `utils.ts` for strictly formatting classes).
+  - `src/constants`: Application constants and enums.
+  - `src/i18n`: Internationalization configuration.
 
 ## Coding Conventions
-1.  **Strict TypeScript**: Avoid `any`. Define interfaces/types for all props and state.
-2.  **Functional Components**: Use `const Component = () => {}` syntax.
-3.  **Styling**:
-    - Use the `cn()` helper (from `@/lib/utils`) to merge Tailwind classes.
-    - Define component variants using `cva`.
-    - Use standard Tailwind utility classes.
-4.  **Imports**:
-    - Use absolute imports with `@/`.
-    - Group imports: React/Third-party -> Local Absolute (`@/...`) -> Relative (`./...`).
-5.  **Component Props**:
-    - Extend HTML attributes where appropriate.
-    - Use `forwardRef` for atomic UI components.
-6.  **Routing**:
-    - Use `Link` from `react-router-dom` for internal links.
-    - Check `src/constants/enums` for route path constants (`RoutePath`).
 
-## Specific Component References
-- **Button**: Located in `src/components/ui/Button.tsx`. Supports `linkTo` prop.
-- **Icon**: Wrapper around Lucide icons.
+1.  **Strict TypeScript**:
+    - Avoid `any`.
+    - Define interfaces/types for all props and state.
+    - Export interfaces from their respective component files or dedicated types files.
+2.  **Component Definitions**:
+    - Use Functional Components: `const ComponentName = () => { ... }`.
+    - Place generic UI components in `src/components/ui`.
+    - Place feature-specific components in `src/features/[FeatureName]`.
+    - Use PascalCase for component filenames and directories.
+3.  **Styling**:
+    - **ALWAYS** use the `cn()` helper from `@/lib/utils` to merge Tailwind classes: `className={cn("base-class", className)}`.
+    - Define variants using `cva` for reusable components.
+    - Follow Mobile-First approach for responsive design.
+4.  **Imports**:
+    - Use absolute imports with `@/` matching `src/` (e.g., `@/components/ui/button`).
+    - Order: React/External Libs -> Internal Absolute (`@/...`) -> Internal Relative (`./`).
+5.  **State & Logic**:
+    - Prefer local state (`useState`) for UI-only logic.
+    - Use Redux for global application state.
+    - Extract complex logic into custom hooks in `src/features/[Feature]/hooks` or `src/hooks`.
+6.  **Internationalization**:
+    - **Never** hardcode text. Use `useTranslation` hook.
+    - Keys should be organized in `src/i18n`.
+7.  **No Testing**:
+    - **Do not write tests.** This project deliberately excludes testing.
+
+## Common Tasks Reference
+
+- **Adding a generic component**: Check `src/components/ui` first. If creating new, follow the shadcn pattern (`cva` + `forwardRef`).
+- **Adding a feature**: Create a new folder in `src/features` (e.g., `src/features/NewFeature`).
