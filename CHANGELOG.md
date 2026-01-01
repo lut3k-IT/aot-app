@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/lut3k-IT/aot-app/compare/v0.5.1...v0.6.0) (2026-01-01)
+
+
+### Features
+
+* **agent-rules:** add project rules definition file ([c4f4cd7](https://github.com/lut3k-IT/aot-app/commit/c4f4cd739d0b1b2ffcc9d40028719e2a01f2c40b))
+
 ## [0.5.1](https://github.com/lut3k-IT/aot-app/compare/v0.5.0...v0.5.1) (2025-12-23)
 
 
