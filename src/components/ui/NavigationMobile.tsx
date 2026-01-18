@@ -1,6 +1,8 @@
+'use client';
+
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+import Link from 'next/link';
 
 import { navigationData, NavigationElementProps } from '@/data/navigation';
 
@@ -11,11 +13,11 @@ import Icon from './Icon';
 const NavigationElement = (props: NavigationElementProps) => {
   const { data } = props;
   const { t } = useTranslation();
-  const isActive = useIsMatchingRouteSegment(data.route);
+  const isActive = useIsMatchingRouteSegment(data.route, 2);
 
   return (
     <Link
-      to={data.route}
+      href={data.route}
       className={'flex w-16 flex-col gap-1 pb-3 pt-4 align-middle'}
     >
       <div className={'relative flex justify-center'}>

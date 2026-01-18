@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
 
 import { useApiErrorToast } from '@/components/hooks/useApiErrorToast';
 import useAppSelector from '@/components/hooks/useAppSelector';
@@ -20,16 +19,18 @@ import DetailsContainer from '../components/DetailsContainer';
 import MBTIBar from '../components/MBTIBar';
 import Tiles from './components/Tiles';
 
-const TitanDetails = () => {
-  const { id } = useParams();
+interface TitanDetailsProps {
+  routeId?: string;
+}
+
+const TitanDetails = ({ routeId }: TitanDetailsProps) => {
   const { t } = useTranslation();
 
-  const paramTitanId = useValidateIdFromParam(id);
+  const paramTitanId = useValidateIdFromParam(routeId);
 
   const originalTitans = useAppSelector((state) => state.titans.data);
   const originalHeroes = useAppSelector((state) => state.heroes.data);
   const favoriteTitansIds = useAppSelector((state) => state.titans.favoriteIds);
-  // const fetchingStatus = useAppSelector((state) => state.titans.status);
   const fetchingError = useAppSelector((state) => state.titans.error);
   useApiErrorToast(fetchingError);
 

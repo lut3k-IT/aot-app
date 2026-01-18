@@ -23,7 +23,7 @@ import {
   X
 } from 'lucide-react';
 
-import { ReactComponent as Aot } from '@/assets/icons/aot-icon.svg';
+import AotIcon from '@/assets/icons/aot-icon.svg';
 import { cn } from '@/lib/utils';
 
 const iconVariants = cva('text-current', {
@@ -70,7 +70,8 @@ export type IconNames =
   | 'chevronFirst'
   | 'chevronLast';
 
-type Icons = Record<IconNames, React.ElementType>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Icons = Record<IconNames, React.ComponentType<any>>;
 
 export interface IconProps extends Partial<LucideIcon>, VariantProps<typeof iconVariants> {
   name: IconNames;
@@ -83,7 +84,7 @@ const Icon = ({ name, size, variant, color, isFilled = false, className, ...prop
   const iconsSet: Icons = {
     arrowDownWideNarrow: ArrowDownWideNarrow,
     arrowDownNarrowWide: ArrowDownNarrowWide,
-    aot: Aot,
+    aot: AotIcon,
     heart: Heart,
     dna: Dna,
     filter: Filter,

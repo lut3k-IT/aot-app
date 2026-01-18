@@ -1,7 +1,9 @@
-import { useEffect, useMemo, useState } from 'react';
+'use client';
+
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
-import { useSearchParams } from 'react-router-dom';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import { useApiErrorToast } from '@/components/hooks/useApiErrorToast';
 import useAppSelector from '@/components/hooks/useAppSelector';
@@ -18,7 +20,7 @@ import {
   getStatusByKeyName
 } from '@/utils/dataHelpers';
 import { filterArrayFromNullish } from '@/utils/helpers';
-import { deleteSomeSearchParams, getSafePageNumberFromSearchParam } from '@/utils/paramsHelpers';
+import { getSafePageNumberFromSearchParam } from '@/utils/paramsHelpers';
 
 import Content from './components/Content';
 import Filter from './components/Filter';
@@ -32,7 +34,9 @@ import {
 
 const HeroesGallery = () => {
   const { t } = useTranslation();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const [totalPages, setTotalPages] = useState(DEFAULT_PAGE);
 
@@ -107,9 +111,24 @@ const HeroesGallery = () => {
     const { paginatedHeroes, totalPages } = paginateHeroes(filteredHeroes, page, pageSize);
     setPaginatedHeroes(paginatedHeroes);
     setTotalPages(totalPages);
-  }, [filteredHeroes]);
+  }, [filteredHeroes, searchParams]);
 
   /* --------------------------------- params --------------------------------- */
+
+  const createQueryString = useCallback(
+    (params: { name: string; value: string | null }[]) => {
+      const newParams = new URLSearchParams(searchParams.toString());
+      params.forEach(({ name, value }) => {
+        if (value === null) {
+          newParams.delete(name);
+        } else {
+          newParams.set(name, value);
+        }
+      });
+      return newParams.toString();
+    },
+    [searchParams]
+  );
 
   // goes back to page 1 if page param is higher than the total page count
   useEffect(() => {
@@ -117,9 +136,9 @@ const HeroesGallery = () => {
     const isPageParamOutOfRange = page > totalPages && totalPages !== 0 && filteredHeroes.length > 0;
 
     if (isPageParamOutOfRange) {
-      deleteSomeSearchParams(setSearchParams, [Param.PAGE]);
+      router.push(pathname + '?' + createQueryString([{ name: Param.PAGE, value: null }]));
     }
-  }, [searchParams, filteredHeroes, totalPages]);
+  }, [searchParams, filteredHeroes, totalPages, router, pathname, createQueryString]);
 
   /* ------------------------------- error toast ------------------------------- */
 

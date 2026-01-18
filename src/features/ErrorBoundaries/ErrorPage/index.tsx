@@ -1,15 +1,17 @@
-import { useRouteError } from 'react-router-dom';
+'use client';
 
 import ErrorComponent from '../../../components/ui/ErrorComponent';
 
-const ErrorPage = () => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const error: any = useRouteError();
+interface ErrorPageProps {
+  error?: Error;
+  reset?: () => void;
+}
 
+const ErrorPage = ({ error }: ErrorPageProps) => {
   return (
     <ErrorComponent
-      statusText={error.statusText}
-      message={error.message}
+      statusText={error?.name || 'Error'}
+      message={error?.message || 'An unexpected error occurred'}
     />
   );
 };

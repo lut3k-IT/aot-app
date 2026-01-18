@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import HeartButton from '@/components/ui/HeartButton';
 import { RoutePath } from '@/constants/enums';
@@ -21,7 +21,7 @@ const BarContent = (props: BarContentProps) => {
   return (
     <>
       <Link
-        to={`${RoutePath.QUOTATION_DETAILS}/${currentQuotation.id}`}
+        href={`${RoutePath.QUOTATION_DETAILS}/${currentQuotation.id}`}
         className={'focus-visible-styles relative line-clamp-1 w-full overflow-hidden'}
       >
         <div className={'absolute left-0 top-0 z-10 h-full w-2 bg-gradient-to-r from-card'} />

@@ -1,15 +1,16 @@
-import { useRouteError } from 'react-router-dom';
+'use client';
 
 import ErrorComponent from '../../../components/ui/ErrorComponent';
 
-const NotFoundRoute = () => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const error: any = useRouteError();
+interface NotFoundRouteProps {
+  error?: Error;
+}
 
+const NotFoundRoute = ({ error }: NotFoundRouteProps) => {
   return (
     <ErrorComponent
       statusText='404'
-      message={error.message}
+      message={error?.message || 'Page not found'}
     />
   );
 };

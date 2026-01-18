@@ -1,5 +1,7 @@
+'use client';
+
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 
 import { RoutePath } from '@/constants/enums';
 import { cn } from '@/lib/utils';
@@ -15,13 +17,13 @@ interface ButtonGoBackProps {
 const ButtonGoBack = (props: ButtonGoBackProps) => {
   const { t } = useTranslation();
   const { text = t('common:navigation.goBack'), className, fallbackRoute = RoutePath.HEROES_GALLERY } = props;
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleGoBack = () => {
-    if (window.history.state && window.history.state.idx > 0) {
-      navigate(-1);
+    if (typeof window !== 'undefined' && window.history.state && window.history.state.idx > 0) {
+      router.back();
     } else {
-      navigate(fallbackRoute);
+      router.push(fallbackRoute);
     }
   };
 

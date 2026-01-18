@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import { Button } from '@/components/ui/Button';
 import CharacterPicture from '@/components/ui/CharacterPicture';
@@ -73,7 +73,7 @@ const HowToUse = ({ variant = 'icon' }: HowToUseProps) => {
             <p>{t('howToUse:details.description')}</p>
             <ExampleSection>
               <Link
-                to={`${RoutePath.HERO_DETAILS}/1`}
+                href={`${RoutePath.HERO_DETAILS}/1`}
                 className={'rounded-md'}
               >
                 <MbtiFrame mbtiId={5}>

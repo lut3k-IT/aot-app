@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import { useToggleFavorite } from '@/components/hooks/useToggleFavorite';
 import { RoutePath } from '@/constants/enums';
@@ -38,7 +38,7 @@ const TitanCard = (props: TitanCardProps) => {
   return (
     <div className={cnContainer}>
       <Link
-        to={`${RoutePath.TITAN_DETAILS}/${id}`}
+        href={`${RoutePath.TITAN_DETAILS}/${id}`}
         className={'rounded-md'}
       >
         <MbtiFrame mbtiId={mbti}>

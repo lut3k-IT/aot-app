@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import { RoutePath } from '@/constants/enums';
 import { FavoriteType, HeroType } from '@/constants/types';
@@ -36,7 +36,7 @@ const HeroCard = (props: HeroCardProps) => {
   return (
     <div className={cnContainer}>
       <Link
-        to={`${RoutePath.HERO_DETAILS}/${id}`}
+        href={`${RoutePath.HERO_DETAILS}/${id}`}
         className={'rounded-md'}
       >
         <MbtiFrame mbtiId={mbti}>

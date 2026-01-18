@@ -1,6 +1,8 @@
+'use client';
+
 import { useEffect, useRef } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
+import { usePathname } from 'next/navigation';
 
 import useIsLandscape from '../../hooks/useIsLandscape';
 import useIsMobile from '../../hooks/useIsMobile';
@@ -14,7 +16,11 @@ import { Toaster } from '../Toaster';
 import TopBarMobile from '../TopBarMobile';
 import Footer from './components/Footer';
 
-const MobileOverlay = () => {
+interface PageOverlayProps {
+  children: React.ReactNode;
+}
+
+const MobileOverlay = ({ children }: PageOverlayProps) => {
   const isMobile = useIsMobile();
   const isLandscape = useIsLandscape();
   const isMobileLandscape = useIsMobileOrLandscape();
@@ -30,7 +36,7 @@ const MobileOverlay = () => {
           'pb-4': isMobileLandscape
         })}
       >
-        <Outlet />
+        {children}
       </main>
       <NavigationMobile />
       <Toaster />
@@ -38,15 +44,15 @@ const MobileOverlay = () => {
   );
 };
 
-const DesktopOverlay = () => {
-  const location = useLocation();
+const DesktopOverlay = ({ children }: PageOverlayProps) => {
+  const pathname = usePathname();
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (scrollAreaRef.current) {
       scrollAreaRef.current.scrollTo(0, 0);
     }
-  }, [location]);
+  }, [pathname]);
 
   return (
     <div className={'mx-auto h-[100svh] max-w-7xl'}>
@@ -65,7 +71,7 @@ const DesktopOverlay = () => {
                 id='outlet-wrapper'
                 className={'p-2'}
               >
-                <Outlet />
+                {children}
               </main>
             </ScrollArea>
           </Card>
@@ -77,9 +83,9 @@ const DesktopOverlay = () => {
   );
 };
 
-const PageOverlay = () => {
+const PageOverlay = ({ children }: PageOverlayProps) => {
   const isMobileLandscape = useIsMobileOrLandscape();
-  return isMobileLandscape ? <MobileOverlay /> : <DesktopOverlay />;
+  return isMobileLandscape ? <MobileOverlay>{children}</MobileOverlay> : <DesktopOverlay>{children}</DesktopOverlay>;
 };
 
 export default PageOverlay;

@@ -1,50 +1,11 @@
-import { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useRegisterSW } from 'virtual:pwa-register/react';
+'use client';
 
-import { useToast } from '../hooks/useToast';
-import { ToastAction } from './Toast';
+// Placeholder for Next.js PWA - next-pwa handles service worker registration automatically
+// This component is kept for compatibility but doesn't do anything in Next.js
 
 const ReloadPrompt = () => {
-  const { t } = useTranslation();
-  const { toast } = useToast();
-
-  const {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    needRefresh: [shouldReload, setShouldReload],
-    updateServiceWorker
-  } = useRegisterSW({
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    onRegistered(r: any) {
-      console.log('SW Registered: ' + r);
-    },
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    onRegisterError(error: any) {
-      console.log('SW registration error', error);
-    }
-  });
-
-  useEffect(() => {
-    if (shouldReload) {
-      toast({
-        title: t('common:brand'),
-        description: t('common:pwa.updateAvailable'),
-        action: (
-          <ToastAction
-            altText={t('common:pwa.reload')}
-            onClick={() => {
-              updateServiceWorker(true);
-              setShouldReload(false);
-            }}
-          >
-            {t('common:pwa.reload')}
-          </ToastAction>
-        ),
-        duration: Infinity
-      });
-    }
-  }, [shouldReload, setShouldReload, t, toast, updateServiceWorker]);
-
+  // next-pwa handles service worker updates automatically
+  // You can add custom PWA update notification logic here if needed
   return null;
 };
 

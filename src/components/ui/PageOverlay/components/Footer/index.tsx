@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import { ScrollArea, ScrollBar } from '@/components/ui/ScrollArea';
 import { ExternalUrl, RoutePath } from '@/constants/enums';
@@ -16,9 +16,9 @@ const Footer = () => {
         }
       >
         <HowToUse variant={'text'} />
-        <Link to={RoutePath.ABOUT}>{t('common:title.about')}</Link>
-        <Link to={RoutePath.CHANGELOG}>{t('common:title.changelog')}</Link>
-        <Link to={RoutePath.TERMS_OF_SERVICE}>{t('common:title.termsAndConditions')}</Link>
+        <Link href={RoutePath.ABOUT}>{t('common:title.about')}</Link>
+        <Link href={RoutePath.CHANGELOG}>{t('common:title.changelog')}</Link>
+        <Link href={RoutePath.TERMS_OF_SERVICE}>{t('common:title.termsAndConditions')}</Link>
         <a
           href={ExternalUrl.PORTFOLIO}
           target='_blank'

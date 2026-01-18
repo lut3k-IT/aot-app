@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import { t } from 'i18next';
+import Link from 'next/link';
 
 import { RoutePath } from '@/constants/enums';
 import { cn } from '@/lib/utils';
@@ -15,7 +15,7 @@ const AotLogo = (props: AotLogoProps) => {
 
   return (
     <Link
-      to={RoutePath.LANDING}
+      href={RoutePath.HEROES}
       className={cn(
         'flex items-center gap-2 rounded-md ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
         className

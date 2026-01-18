@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
 
 import { useApiErrorToast } from '@/components/hooks/useApiErrorToast';
 import useAppSelector from '@/components/hooks/useAppSelector';
@@ -20,17 +19,18 @@ import DetailsContainer from '../components/DetailsContainer';
 import MBTIBar from '../components/MBTIBar';
 import Tiles from './components/Tiles';
 
-const HeroDetails = () => {
-  const { id } = useParams();
+interface HeroDetailsProps {
+  routeId?: string;
+}
+
+const HeroDetails = ({ routeId }: HeroDetailsProps) => {
   const { t } = useTranslation();
 
-  const paramHeroId = useValidateIdFromParam(id);
+  const paramHeroId = useValidateIdFromParam(routeId);
 
   const originalHeroes = useAppSelector((state) => state.heroes.data);
   const favoriteHeroesIds = useAppSelector((state) => state.heroes.favoriteIds);
-  // const fetchingStatus = useAppSelector((state) => state.heroes.status);
   const fetchingError = useAppSelector((state) => state.heroes.error);
-  // const isLoading = fetchingStatus === 'loading';
   useApiErrorToast(fetchingError);
 
   const hero = originalHeroes.find((hero) => hero.id === paramHeroId);

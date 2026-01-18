@@ -45,20 +45,20 @@ export enum Param {
 
 export enum RoutePath {
   LANDING = '/',
-  HEROES = '/heroes',
-  HERO_DETAILS = '/hero',
-  HEROES_GALLERY = '/heroes/gallery',
-  HEROES_CHARTS = '/heroes/charts',
-  HEROES_COMPARISON = '/heroes/comparison',
-  TITANS = '/titans',
-  TITAN_DETAILS = '/titan',
-  QUOTATIONS = '/quotations',
-  QUOTATION_DETAILS = '/quotation',
-  QUIZ = '/quiz',
-  ABOUT = '/about',
-  CHANGELOG = '/changelog',
-  PRIVACY_POLICY = '/privacy-policy',
-  TERMS_OF_SERVICE = '/terms-and-conditions'
+  HEROES = '/app/heroes',
+  HERO_DETAILS = '/app/hero',
+  HEROES_GALLERY = '/app/heroes/gallery',
+  HEROES_CHARTS = '/app/heroes/charts',
+  HEROES_COMPARISON = '/app/heroes/comparison',
+  TITANS = '/app/titans',
+  TITAN_DETAILS = '/app/titan',
+  QUOTATIONS = '/app/quotations',
+  QUOTATION_DETAILS = '/app/quotation',
+  QUIZ = '/app/quiz',
+  ABOUT = '/app/about',
+  CHANGELOG = '/app/changelog',
+  PRIVACY_POLICY = '/app/privacy-policy',
+  TERMS_OF_SERVICE = '/app/terms-and-conditions'
 }
 
 export enum ExternalUrl {
@@ -88,7 +88,6 @@ export enum LocalStorageKey {
   FAV_QUOTATIONS = 'favQuotations',
   THEME = 'vite-ui-theme',
   BEST_SCORE = 'bestScore'
-
 }
 
 /* ------------------------------ Data related ------------------------------ */

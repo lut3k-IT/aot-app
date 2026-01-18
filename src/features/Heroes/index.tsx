@@ -1,8 +1,9 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { createSearchParams, Navigate, Outlet, useLocation, useSearchParams } from 'react-router-dom';
-import { matchPath } from 'react-router-dom';
 import classNames from 'classnames';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import useIsLandscape from '@/components/hooks/useIsLandscape';
 import useIsMobileOrLandscape from '@/components/hooks/useIsMobileOrLandscape';
@@ -11,6 +12,9 @@ import { RoutePath } from '@/constants/enums';
 
 import MovingPanel from '../../components/ui/MovingPanel';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/Tabs';
+import HeroesCharts from './components/HeroesCharts';
+import HeroesComparison from './components/HeroesComparison';
+import HeroesGallery from './components/HeroesGallery';
 
 enum TabValue {
   GALLERY = 'gallery',
@@ -22,10 +26,10 @@ const tabsContentClassName = 'mt-0';
 const tabsTriggerClassName = 'flex-1';
 
 const getTabValueFromPathname = (pathname: string) => {
-  if (matchPath(RoutePath.HEROES_CHARTS, pathname)) {
+  if (pathname.includes('/charts')) {
     return TabValue.CHARTS;
   }
-  if (matchPath(RoutePath.HEROES_COMPARISON, pathname)) {
+  if (pathname.includes('/comparison')) {
     return TabValue.COMPARISON;
   }
   return TabValue.GALLERY;
@@ -33,22 +37,50 @@ const getTabValueFromPathname = (pathname: string) => {
 
 const Heroes = () => {
   const { t } = useTranslation();
-  const location = useLocation();
+  const pathname = usePathname();
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
   const isMobileLandscape = useIsMobileOrLandscape();
   const isLandscape = useIsLandscape();
 
-  const [currentTab, setCurrentTab] = useState(() => getTabValueFromPathname(location.pathname));
-  const [searchParams, setSearchParams] = useSearchParams();
-  const searchParamsString = createSearchParams(searchParams);
+  const [currentTab, setCurrentTab] = useState(() => getTabValueFromPathname(pathname));
+
+  const handleTabChange = (value: string) => {
+    setCurrentTab(value as TabValue);
+    let targetPath = RoutePath.HEROES_GALLERY;
+    if (value === TabValue.CHARTS) {
+      targetPath = RoutePath.HEROES_CHARTS;
+    } else if (value === TabValue.COMPARISON) {
+      targetPath = RoutePath.HEROES_COMPARISON;
+    }
+    router.push(targetPath);
+  };
 
   const handleClearParams = () => {
-    setSearchParams(new URLSearchParams());
+    const targetPath =
+      currentTab === TabValue.GALLERY
+        ? RoutePath.HEROES_GALLERY
+        : currentTab === TabValue.CHARTS
+          ? RoutePath.HEROES_CHARTS
+          : RoutePath.HEROES_COMPARISON;
+    router.push(targetPath);
   };
 
   useEffect(() => {
-    setCurrentTab(getTabValueFromPathname(location.pathname));
-  }, [location.pathname]);
+    setCurrentTab(getTabValueFromPathname(pathname));
+  }, [pathname]);
+
+  const renderContent = () => {
+    switch (currentTab) {
+      case TabValue.CHARTS:
+        return <HeroesCharts />;
+      case TabValue.COMPARISON:
+        return <HeroesComparison />;
+      default:
+        return <HeroesGallery />;
+    }
+  };
 
   return (
     <>
@@ -59,7 +91,7 @@ const Heroes = () => {
       >
         <Tabs
           value={currentTab}
-          onValueChange={(value) => setCurrentTab(value as TabValue)}
+          onValueChange={handleTabChange}
           className={classNames('w-full pt-4', {
             'md:pt-0': !isMobileLandscape,
             '!pt-2': isLandscape
@@ -91,25 +123,19 @@ const Heroes = () => {
           <TabsContent
             value={TabValue.GALLERY}
             className={tabsContentClassName}
-          >
-            <Navigate to={`${RoutePath.HEROES_GALLERY}?${searchParamsString}`} />
-          </TabsContent>
+          />
           <TabsContent
             value={TabValue.CHARTS}
             className={tabsContentClassName}
-          >
-            <Navigate to={`${RoutePath.HEROES_CHARTS}?${searchParamsString}`} />
-          </TabsContent>
+          />
           <TabsContent
             value={TabValue.COMPARISON}
             className={tabsContentClassName}
-          >
-            <Navigate to={`${RoutePath.HEROES_COMPARISON}?${searchParamsString}`} />
-          </TabsContent>
+          />
         </Tabs>
         <PageHeading />
       </MovingPanel>
-      <Outlet />
+      {renderContent()}
     </>
   );
 };
