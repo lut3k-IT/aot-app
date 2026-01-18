@@ -28,11 +28,10 @@ const LandingPage = () => {
           className={`transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
         >
           <h1 className='mb-2 font-vector text-7xl font-bold tracking-tight text-white md:text-9xl'>
-            <span className='bg-gradient-to-r from-red-500 via-orange-400 to-red-600 bg-clip-text text-transparent'>
-              AOT
+            <span className='bg-gradient-to-r from-red-500 via-orange-400 to-red-600 bg-clip-text px-1 text-transparent'>
+              AOT APP
             </span>
           </h1>
-          <p className='text-xl font-medium uppercase tracking-[0.3em] text-zinc-400 md:text-2xl'>Application</p>
         </div>
 
         {/* Description */}
@@ -60,7 +59,7 @@ const LandingPage = () => {
             <Button
               variant='outline'
               size='lg'
-              className='border-zinc-700 px-8 py-6 text-lg text-zinc-300 transition-all hover:border-zinc-600 hover:bg-zinc-800/50 hover:text-white'
+              className='border-zinc-600 bg-zinc-900/50 px-8 py-6 text-lg text-white backdrop-blur-sm transition-all hover:border-zinc-500 hover:bg-zinc-800 hover:text-white'
             >
               Dowiedz się więcej
             </Button>

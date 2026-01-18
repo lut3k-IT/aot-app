@@ -1,7 +1,7 @@
 'use client';
 
-import Heroes from '@/features/Heroes';
+import HeroesGallery from '@/features/Heroes/components/HeroesGallery';
 
 export default function HeroesPage() {
-  return <Heroes />;
+  return <HeroesGallery />;
 }

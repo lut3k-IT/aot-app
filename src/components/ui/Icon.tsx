@@ -70,6 +70,9 @@ export type IconNames =
   | 'chevronFirst'
   | 'chevronLast';
 
+// Icons that have their own colors and shouldn't have fill overridden
+const customColorIcons: IconNames[] = ['aot'];
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Icons = Record<IconNames, React.ComponentType<any>>;
 
@@ -114,6 +117,20 @@ const Icon = ({ name, size, variant, color, isFilled = false, className, ...prop
   );
 
   const iconColor = color ? color : 'currentColor';
+
+  // Don't override colors for custom SVGs that have their own fill
+  const isCustomColorIcon = customColorIcons.includes(name);
+
+  if (isCustomColorIcon) {
+    // For custom SVGs, ensure viewBox is preserved for proper scaling
+    return (
+      <IconComponent
+        className={iconClass}
+        viewBox='0 0 112 112'
+        {...props}
+      />
+    );
+  }
 
   return (
     <IconComponent
