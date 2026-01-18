@@ -18,6 +18,8 @@ const initialState: ThemeProviderState = {
   setTheme: () => null
 };
 
+import { getLocalStorageItem, setLocalStorageItem } from '@/utils/storageHelpers';
+
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
 export function ThemeProvider({
@@ -26,7 +28,7 @@ export function ThemeProvider({
   storageKey = LocalStorageKey.THEME,
   ...props
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(() => (localStorage.getItem(storageKey) as Theme) || defaultTheme);
+  const [theme, setTheme] = useState<Theme>(() => (getLocalStorageItem(storageKey) as Theme) || defaultTheme);
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -46,7 +48,7 @@ export function ThemeProvider({
   const value = {
     theme,
     setTheme: (theme: Theme) => {
-      localStorage.setItem(storageKey, theme);
+      setLocalStorageItem(storageKey, theme);
       setTheme(theme);
     }
   };

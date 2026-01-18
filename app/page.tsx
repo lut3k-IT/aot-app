@@ -1,8 +1,13 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { ArrowDown } from 'lucide-react';
 import Link from 'next/link';
 
+import { AboutSection } from '@/components/landing/AboutSection';
+import { FaqSection } from '@/components/landing/FaqSection';
+import { FeaturesSection } from '@/components/landing/FeaturesSection';
+import { LandingFooter } from '@/components/landing/LandingFooter';
 import { Button } from '@/components/ui/Button';
 
 const LandingPage = () => {
@@ -13,28 +18,26 @@ const LandingPage = () => {
   }, []);
 
   return (
-    <div className='relative min-h-screen overflow-hidden bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950'>
-      {/* Animated background grid */}
-      <div className='absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]' />
+    <main className='relative min-h-screen bg-zinc-950 text-zinc-100'>
+      {/* Animated background grid - Fixed to stay in background while scrolling */}
+      <div className='fixed inset-0 z-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]' />
 
-      {/* Gradient orbs */}
-      <div className='absolute left-1/4 top-1/4 h-96 w-96 animate-pulse rounded-full bg-red-600/20 blur-3xl' />
-      <div className='absolute bottom-1/4 right-1/4 h-96 w-96 animate-pulse rounded-full bg-orange-600/10 blur-3xl' />
+      {/* Gradient orbs - Fixed */}
+      <div className='fixed left-1/4 top-1/4 -z-10 h-96 w-96 animate-pulse rounded-full bg-red-600/20 blur-3xl' />
+      <div className='fixed bottom-1/4 right-1/4 -z-10 h-96 w-96 animate-pulse rounded-full bg-orange-600/10 blur-3xl' />
 
-      {/* Content */}
-      <div className='relative z-10 flex min-h-screen flex-col items-center justify-center px-4 text-center'>
-        {/* Logo/Title */}
+      {/* Hero Section */}
+      <section className='relative z-10 flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 text-center'>
         <div
           className={`transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
         >
           <h1 className='mb-2 font-vector text-7xl font-bold tracking-tight text-white md:text-9xl'>
             <span className='bg-gradient-to-r from-red-500 via-orange-400 to-red-600 bg-clip-text px-1 text-transparent'>
-              AOT APP
+              AOT app
             </span>
           </h1>
         </div>
 
-        {/* Description */}
         <p
           className={`mt-8 max-w-xl text-lg text-zinc-400 transition-all delay-300 duration-1000 md:text-xl ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
         >
@@ -42,7 +45,6 @@ const LandingPage = () => {
           postacie, cytaty i sprawdź się w quizie.
         </p>
 
-        {/* CTA Buttons */}
         <div
           className={`mt-12 flex flex-col gap-4 transition-all delay-500 duration-1000 sm:flex-row ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
         >
@@ -66,40 +68,24 @@ const LandingPage = () => {
           </Link>
         </div>
 
-        {/* Features preview */}
+        {/* Scroll Indicator */}
         <div
-          className={`mt-20 grid max-w-4xl grid-cols-1 gap-6 px-4 transition-all delay-700 duration-1000 sm:grid-cols-3 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+          className={`absolute bottom-8 animate-bounce text-zinc-500 transition-all delay-1000 duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
         >
-          <FeatureCard
-            icon='👥'
-            title='Postacie'
-            description='Szczegółowe profile wszystkich bohaterów i ich statystyki'
-          />
-          <FeatureCard
-            icon='💬'
-            title='Cytaty'
-            description='Najbardziej pamiętne cytaty z całej serii'
-          />
-          <FeatureCard
-            icon='🧠'
-            title='Quiz'
-            description='Sprawdź swoją wiedzę o świecie Attack on Titan'
-          />
+          <ArrowDown className='h-6 w-6' />
         </div>
+      </section>
+
+      {/* New Sections */}
+      <div className='relative z-10 bg-zinc-950/80 backdrop-blur-sm'>
+        <AboutSection />
+        <FeaturesSection />
+        <FaqSection />
       </div>
 
-      {/* Bottom gradient */}
-      <div className='absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-zinc-950 to-transparent' />
-    </div>
+      <LandingFooter />
+    </main>
   );
 };
-
-const FeatureCard = ({ icon, title, description }: { icon: string; title: string; description: string }) => (
-  <div className='group rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 backdrop-blur-sm transition-all hover:border-zinc-700 hover:bg-zinc-800/50'>
-    <div className='mb-3 text-3xl'>{icon}</div>
-    <h3 className='mb-2 text-lg font-semibold text-white'>{title}</h3>
-    <p className='text-sm text-zinc-400'>{description}</p>
-  </div>
-);
 
 export default LandingPage;
