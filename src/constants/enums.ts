@@ -62,7 +62,7 @@ export enum RoutePath {
 }
 
 export enum ExternalUrl {
-  PORTFOLIO = 'https://lut3k.com/',
+  PORTFOLIO = 'https://kacperlutynski.pl/',
   PERSONALITY_DATABASE = 'https://www.personality-database.com'
 }
 

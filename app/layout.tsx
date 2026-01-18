@@ -12,11 +12,11 @@ export const metadata: Metadata = {
     title: 'AOT APP',
     description:
       "Explore the world of 'Attack on Titan' better with the AOT APP! Created by fans, this app will make watching anime easier for you.",
-    url: 'https://aot.lut3k.com',
+    url: 'https://aot.kacperlutynski.pl',
     siteName: 'AOT APP',
     images: [
       {
-        url: 'https://aot.lut3k.com/assets/img/AoT-app-banner-16_9-sharp-en.png',
+        url: 'https://aot.kacperlutynski.pl/assets/img/AoT-app-banner-16_9-sharp-en.png',
         width: 1200,
         height: 630
       }
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AOT APP',
     description: "Explore the world of 'Attack on Titan' better with the AOT APP!",
-    images: ['https://aot.lut3k.com/assets/img/AoT-app-banner-16_9-sharp-en.png']
+    images: ['https://aot.kacperlutynski.pl/assets/img/AoT-app-banner-16_9-sharp-en.png']
   },
   manifest: '/manifest.json',
   icons: {
