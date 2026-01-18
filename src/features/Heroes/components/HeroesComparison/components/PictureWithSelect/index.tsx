@@ -28,7 +28,7 @@ const PictureWithSelect = (props: PictureWithSelectProps) => {
       className={cn('focus-visible-styles max-h-[8rem] w-full max-w-[8rem] rounded-full', className)}
     >
       <CharacterPicture
-        imgSource={selectedHero ? `/assets/img/heroes/${selectedHero.id}.jpg` : undefined}
+        imgSource={selectedHero ? `/assets/img/heroes/${selectedHero.slug}.jpg` : undefined}
         alt={selectedHero?.firstName || 'Hero to compare'}
         size={'full'}
         variant={'circle'}

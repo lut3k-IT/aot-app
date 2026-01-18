@@ -6,7 +6,7 @@ import TitanDetails from '@/features/Details/TitanDetails';
 
 export default function TitanDetailsPage() {
   const params = useParams();
-  const id = params.id as string;
+  const slug = params.slug as string;
 
-  return <TitanDetails routeId={id} />;
+  return <TitanDetails routeSlug={slug} />;
 }

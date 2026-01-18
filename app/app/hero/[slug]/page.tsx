@@ -6,7 +6,7 @@ import HeroDetails from '@/features/Details/HeroDetails';
 
 export default function HeroDetailsPage() {
   const params = useParams();
-  const id = params.id as string;
+  const slug = params.slug as string;
 
-  return <HeroDetails routeId={id} />;
+  return <HeroDetails routeSlug={slug} />;
 }

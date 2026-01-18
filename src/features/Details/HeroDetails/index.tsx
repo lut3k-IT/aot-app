@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { useApiErrorToast } from '@/components/hooks/useApiErrorToast';
 import useAppSelector from '@/components/hooks/useAppSelector';
 import { useToggleFavorite } from '@/components/hooks/useToggleFavorite';
-import useValidateIdFromParam from '@/components/hooks/useValidateIdFromParam';
 import AppHelmet from '@/components/ui/AppHelmet';
 import ButtonGoBack from '@/components/ui/ButtonGoBack';
 import CharacterPicture from '@/components/ui/CharacterPicture';
@@ -20,21 +19,21 @@ import MBTIBar from '../components/MBTIBar';
 import Tiles from './components/Tiles';
 
 interface HeroDetailsProps {
-  routeId?: string;
+  routeSlug?: string;
 }
 
-const HeroDetails = ({ routeId }: HeroDetailsProps) => {
+const HeroDetails = ({ routeSlug }: HeroDetailsProps) => {
   const { t } = useTranslation();
 
-  const paramHeroId = useValidateIdFromParam(routeId);
+  if (!routeSlug) throw new Error('URL is incompatible.');
 
   const originalHeroes = useAppSelector((state) => state.heroes.data);
   const favoriteHeroesIds = useAppSelector((state) => state.heroes.favoriteIds);
   const fetchingError = useAppSelector((state) => state.heroes.error);
   useApiErrorToast(fetchingError);
 
-  const hero = originalHeroes.find((hero) => hero.id === paramHeroId);
-  const isFavorite = isInFavorites(paramHeroId, favoriteHeroesIds);
+  const hero = originalHeroes.find((hero) => hero.slug === routeSlug);
+  const isFavorite = hero ? isInFavorites(hero.id, favoriteHeroesIds) : false;
 
   const mbtiObj = mbti.find((data) => data.id === hero?.mbti);
   const mbtiGroupName: MbtiGroups = mbtiObj ? MBTI_GROUPS_NAMES[mbtiObj.mbtiGroup - 1] : 'default';
@@ -57,7 +56,7 @@ const HeroDetails = ({ routeId }: HeroDetailsProps) => {
       <div className={'details-profile-wrapper'}>
         <MBTIBar mbtiGroupName={mbtiGroupName} />
         <CharacterPicture
-          imgSource={`/assets/img/heroes/${paramHeroId}.jpg`}
+          imgSource={`/assets/img/heroes/${hero.slug}.jpg`}
           alt={`${hero.firstName} ${hero.lastName} - Attack on Titan ${t('common:brand')}`}
           size={'xl'}
           variant={'circle'}

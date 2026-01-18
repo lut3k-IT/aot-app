@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { useApiErrorToast } from '@/components/hooks/useApiErrorToast';
 import useAppSelector from '@/components/hooks/useAppSelector';
 import { useToggleFavorite } from '@/components/hooks/useToggleFavorite';
-import useValidateIdFromParam from '@/components/hooks/useValidateIdFromParam';
 import AppHelmet from '@/components/ui/AppHelmet';
 import ButtonGoBack from '@/components/ui/ButtonGoBack';
 import CharacterPicture from '@/components/ui/CharacterPicture';
@@ -20,13 +19,13 @@ import MBTIBar from '../components/MBTIBar';
 import Tiles from './components/Tiles';
 
 interface TitanDetailsProps {
-  routeId?: string;
+  routeSlug?: string;
 }
 
-const TitanDetails = ({ routeId }: TitanDetailsProps) => {
+const TitanDetails = ({ routeSlug }: TitanDetailsProps) => {
   const { t } = useTranslation();
 
-  const paramTitanId = useValidateIdFromParam(routeId);
+  if (!routeSlug) throw new Error('URL is incompatible.');
 
   const originalTitans = useAppSelector((state) => state.titans.data);
   const originalHeroes = useAppSelector((state) => state.heroes.data);
@@ -34,8 +33,8 @@ const TitanDetails = ({ routeId }: TitanDetailsProps) => {
   const fetchingError = useAppSelector((state) => state.titans.error);
   useApiErrorToast(fetchingError);
 
-  const titan = originalTitans.find((titan) => titan.id === paramTitanId);
-  const isFavorite = isInFavorites(paramTitanId, favoriteTitansIds);
+  const titan = originalTitans.find((titan) => titan.slug === routeSlug);
+  const isFavorite = titan ? isInFavorites(titan.id, favoriteTitansIds) : false;
   const currentInheritor = titan?.currentInheritor ? getHeroName(titan.currentInheritor, originalHeroes) : '-';
   const formerInheritors =
     titan && titan.formerInheritors.length > 0
@@ -63,7 +62,7 @@ const TitanDetails = ({ routeId }: TitanDetailsProps) => {
       <div className={'details-profile-wrapper'}>
         <MBTIBar mbtiGroupName={mbtiGroupName} />
         <CharacterPicture
-          imgSource={`/assets/img/titans/${paramTitanId}.jpg`}
+          imgSource={`/assets/img/titans/${titan.slug}.jpg`}
           alt={`${titan.name} - Attack on Titan ${t('common:brand')}`}
           size={'xl'}
           variant={'circle'}

@@ -2,20 +2,50 @@ import { HeroType } from '@/constants/types';
 
 const heroes: HeroType[] = [
   {
-    'id': 1,
-    'firstName': 'Armin',
-    'lastName': 'Arlelt',
-    'species': 3,
-    'age': 19,
-    'height': 169,
-    'weight': 56,
+    'id': 8,
+    'slug': 'levi-ackermann',
+    'firstName': 'Levi',
+    'lastName': 'Ackermann',
+    'species': 2,
+    'age': null,
+    'height': 160,
+    'weight': 65,
     'residence': 6,
     'status': 1,
-    'alias': ['Colossal Titan'],
-    'mbti': 5
+    'alias': ['Humanity\'s Strongest Soldier'],
+    'mbti': 13
+  },
+  {
+    'id': 14,
+    'slug': 'erwin-smith',
+    'firstName': 'Erwin',
+    'lastName': 'Smith',
+    'species': 2,
+    'age': null,
+    'height': 188,
+    'weight': 92,
+    'residence': 6,
+    'status': 2,
+    'alias': ['Eyebrow'],
+    'mbti': 3
+  },
+  {
+    'id': 175,
+    'slug': 'eren-jaeger',
+    'firstName': 'Eren',
+    'lastName': 'Jaeger',
+    'species': 3,
+    'age': 19,
+    'height': 183,
+    'weight': 82,
+    'residence': 6,
+    'status': 1,
+    'alias': ['Suicidal Maniac', 'Titan boy', 'Attack Titan', 'Mysterious Titan', 'Berserk Titan', 'Titan being rampant,Founding Titan', 'Founder', 'Mister Kruger', 'Usurper', 'War Hammer Titan'],
+    'mbti': 14
   },
   {
     'id': 2,
+    'slug': 'mikasa-ackermann',
     'firstName': 'Mikasa',
     'lastName': 'Ackermann',
     'species': 2,
@@ -29,6 +59,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 3,
+    'slug': 'hange-zoe',
     'firstName': 'Hange',
     'lastName': 'Zoë',
     'species': 2,
@@ -41,98 +72,36 @@ const heroes: HeroType[] = [
     'mbti': 4
   },
   {
-    'id': 4,
-    'firstName': 'Jean',
-    'lastName': 'Kirschtein',
-    'species': 2,
+    'id': 1,
+    'slug': 'armin-arlelt',
+    'firstName': 'Armin',
+    'lastName': 'Arlelt',
+    'species': 3,
     'age': 19,
-    'height': 190,
-    'weight': 89,
+    'height': 169,
+    'weight': 56,
     'residence': 6,
     'status': 1,
-    'alias': ['Horse face', 'Jean-boy'],
-    'mbti': 11
+    'alias': ['Colossal Titan'],
+    'mbti': 5
   },
   {
-    'id': 5,
-    'firstName': 'Conny',
-    'lastName': 'Springer',
-    'species': 2,
-    'age': 19,
-    'height': null,
-    'weight': null,
-    'residence': 6,
+    'id': 85,
+    'slug': 'reiner-braun',
+    'firstName': 'Reiner',
+    'lastName': 'Braun',
+    'species': 3,
+    'age': 21,
+    'height': 188,
+    'weight': 83,
+    'residence': 2,
     'status': 1,
-    'alias': [],
-    'mbti': 16
-  },
-  {
-    'id': 6,
-    'firstName': 'Daz',
-    'lastName': null,
-    'species': 2,
-    'age': null,
-    'height': 175,
-    'weight': 64,
-    'residence': 6,
-    'status': 1,
-    'alias': [],
-    'mbti': 14
-  },
-  {
-    'id': 7,
-    'firstName': 'Buchwald',
-    'lastName': null,
-    'species': 1,
-    'age': null,
-    'height': 160,
-    'weight': 450,
-    'residence': 6,
-    'status': 1,
-    'alias': [],
-    'mbti': null
-  },
-  {
-    'id': 8,
-    'firstName': 'Levi',
-    'lastName': 'Ackermann',
-    'species': 2,
-    'age': null,
-    'height': 160,
-    'weight': 65,
-    'residence': 6,
-    'status': 1,
-    'alias': ['Humanity\'s Strongest Soldier'],
-    'mbti': 13
-  },
-  {
-    'id': 10,
-    'firstName': 'Charrette',
-    'lastName': null,
-    'species': 1,
-    'age': null,
-    'height': 160,
-    'weight': 450,
-    'residence': 6,
-    'status': 2,
-    'alias': [],
-    'mbti': null
-  },
-  {
-    'id': 11,
-    'firstName': 'Varis',
-    'lastName': null,
-    'species': 4,
-    'age': null,
-    'height': null,
-    'weight': null,
-    'residence': null,
-    'status': 2,
-    'alias': [],
-    'mbti': null
+    'alias': ['Armored Titan', 'Armor'],
+    'mbti': 12
   },
   {
     'id': 12,
+    'slug': 'sasha-braus',
     'firstName': 'Sasha',
     'lastName': 'Braus',
     'species': 2,
@@ -145,7 +114,344 @@ const heroes: HeroType[] = [
     'mbti': 16
   },
   {
+    'id': 4,
+    'slug': 'jean-kirschtein',
+    'firstName': 'Jean',
+    'lastName': 'Kirschtein',
+    'species': 2,
+    'age': 19,
+    'height': 190,
+    'weight': 89,
+    'residence': 6,
+    'status': 1,
+    'alias': ['Horse face', 'Jean-boy'],
+    'mbti': 11
+  },
+  {
+    'id': 91,
+    'slug': 'annie-leonhart',
+    'firstName': 'Annie',
+    'lastName': 'Leonhart',
+    'species': 3,
+    'age': 20,
+    'height': 153,
+    'weight': 54,
+    'residence': 7,
+    'status': 3,
+    'alias': ['Female Titan', 'Female'],
+    'mbti': 13
+  },
+  {
+    'id': 94,
+    'slug': 'bertholdt-hoover',
+    'firstName': 'Bertholdt',
+    'lastName': 'Hoover',
+    'species': 3,
+    'age': 16,
+    'height': 192,
+    'weight': 81,
+    'residence': 6,
+    'status': 2,
+    'alias': ['Colossal Titan', 'Bertl'],
+    'mbti': 10
+  },
+  {
+    'id': 171,
+    'slug': 'zeke-jaeger',
+    'firstName': 'Zeke',
+    'lastName': 'Jaeger',
+    'species': 3,
+    'age': 29,
+    'height': 183,
+    'weight': 92,
+    'residence': 2,
+    'status': 3,
+    'alias': ['Beast Titan', 'Monkey', 'Wonderboy', 'Beardo'],
+    'mbti': 2
+  },
+  {
+    'id': 99,
+    'slug': 'historia-reiss',
+    'firstName': 'Historia',
+    'lastName': 'Reiss',
+    'species': 2,
+    'age': 19,
+    'height': 145,
+    'weight': 42,
+    'residence': 6,
+    'status': 1,
+    'alias': ['Christa Lenz', 'Goddess', 'True Queen of the Walls', 'Queen Historia'],
+    'mbti': 12
+  },
+  {
+    'id': 86,
+    'slug': 'pieck-finger',
+    'firstName': 'Pieck',
+    'lastName': 'Finger',
+    'species': 3,
+    'age': null,
+    'height': 155,
+    'weight': 42,
+    'residence': 2,
+    'status': 1,
+    'alias': ['Cart Titan', 'Cart', 'Quadruped-type'],
+    'mbti': 2
+  },
+  {
+    'id': 90,
+    'slug': 'gabi-braun',
+    'firstName': 'Gabi',
+    'lastName': 'Braun',
+    'species': 2,
+    'age': 12,
+    'height': 138,
+    'weight': 30,
+    'residence': 2,
+    'status': 1,
+    'alias': ['Mia'],
+    'mbti': 16
+  },
+  {
+    'id': 88,
+    'slug': 'falco-grice',
+    'firstName': 'Falco',
+    'lastName': 'Grice',
+    'species': 2,
+    'age': null,
+    'height': 140,
+    'weight': 34,
+    'residence': 2,
+    'status': 1,
+    'alias': ['Ben'],
+    'mbti': 7
+  },
+  {
+    'id': 163,
+    'slug': 'ymir',
+    'firstName': 'Ymir',
+    'lastName': null,
+    'species': 3,
+    'age': 75,
+    'height': 172,
+    'weight': 63,
+    'residence': null,
+    'status': 2,
+    'alias': ['Freckles', 'Lady Ymir', 'Jaw Titan'],
+    'mbti': 13
+  },
+  {
+    'id': 5,
+    'slug': 'conny-springer',
+    'firstName': 'Conny',
+    'lastName': 'Springer',
+    'species': 2,
+    'age': 19,
+    'height': null,
+    'weight': null,
+    'residence': 6,
+    'status': 1,
+    'alias': [],
+    'mbti': 16
+  },
+  {
+    'id': 87,
+    'slug': 'porco-galliard',
+    'firstName': 'Porco',
+    'lastName': 'Galliard',
+    'species': 3,
+    'age': null,
+    'height': 175,
+    'weight': 75,
+    'residence': 2,
+    'status': 1,
+    'alias': ['Jaw Titan', 'Jaw', 'Pock'],
+    'mbti': 15
+  },
+  {
+    'id': 74,
+    'slug': 'marco-bodt',
+    'firstName': 'Marco',
+    'lastName': 'Bodt',
+    'species': 2,
+    'age': 16,
+    'height': 178,
+    'weight': 70,
+    'residence': 6,
+    'status': 2,
+    'alias': [],
+    'mbti': 7
+  },
+  {
+    'id': 178,
+    'slug': 'floch-forster',
+    'firstName': 'Floch',
+    'lastName': 'Forster',
+    'species': 2,
+    'age': null,
+    'height': 180,
+    'weight': 71,
+    'residence': 6,
+    'status': 1,
+    'alias': [],
+    'mbti': 3
+  },
+  {
+    'id': 39,
+    'slug': 'petra-rall',
+    'firstName': 'Petra',
+    'lastName': 'Rall',
+    'species': 2,
+    'age': null,
+    'height': 158,
+    'weight': 55,
+    'residence': 6,
+    'status': 2,
+    'alias': [],
+    'mbti': 12
+  },
+  {
+    'id': 57,
+    'slug': 'kenny-ackermann',
+    'firstName': 'Kenny',
+    'lastName': 'Ackermann',
+    'species': 2,
+    'age': null,
+    'height': 190,
+    'weight': 120,
+    'residence': 7,
+    'status': 2,
+    'alias': ['Kenny the Ripper'],
+    'mbti': 15
+  },
+  {
+    'id': 68,
+    'slug': 'hannes',
+    'firstName': 'Hannes',
+    'lastName': null,
+    'species': 2,
+    'age': null,
+    'height': 190,
+    'weight': 88,
+    'residence': 6,
+    'status': 2,
+    'alias': [],
+    'mbti': 16
+  },
+  {
+    'id': 60,
+    'slug': 'dot-pyxis',
+    'firstName': 'Dot',
+    'lastName': 'Pyxis',
+    'species': 2,
+    'age': null,
+    'height': 180,
+    'weight': 73,
+    'residence': 6,
+    'status': 1,
+    'alias': [],
+    'mbti': 2
+  },
+  {
+    'id': 26,
+    'slug': 'moblit-berner',
+    'firstName': 'Moblit',
+    'lastName': 'Berner',
+    'species': 2,
+    'age': null,
+    'height': 176,
+    'weight': 65,
+    'residence': 6,
+    'status': 2,
+    'alias': [],
+    'mbti': 10
+  },
+  {
+    'id': 35,
+    'slug': 'miche-zacharius',
+    'firstName': 'Miche',
+    'lastName': 'Zacharius',
+    'species': 2,
+    'age': null,
+    'height': 170,
+    'weight': 57,
+    'residence': 6,
+    'status': 2,
+    'alias': [],
+    'mbti': 13
+  },
+  {
+    'id': 169,
+    'slug': 'yelena',
+    'firstName': 'Yelena',
+    'lastName': null,
+    'species': 2,
+    'age': null,
+    'height': 190,
+    'weight': 63,
+    'residence': null,
+    'status': 1,
+    'alias': [],
+    'mbti': 1
+  },
+  {
+    'id': 31,
+    'slug': 'nanaba',
+    'firstName': 'Nanaba',
+    'lastName': null,
+    'species': 2,
+    'age': null,
+    'height': 172,
+    'weight': 59,
+    'residence': 6,
+    'status': 2,
+    'alias': [],
+    'mbti': 11
+  },
+  {
+    'id': 38,
+    'slug': 'oruo-bozad',
+    'firstName': 'Oruo',
+    'lastName': 'Bozad',
+    'species': 2,
+    'age': null,
+    'height': null,
+    'weight': null,
+    'residence': 6,
+    'status': 2,
+    'alias': [],
+    'mbti': 15
+  },
+  {
+    'id': 97,
+    'slug': 'eren-kruger',
+    'firstName': 'Eren',
+    'lastName': 'Kruger',
+    'species': 3,
+    'age': null,
+    'height': 188,
+    'weight': 78,
+    'residence': 2,
+    'status': 2,
+    'alias': ['Attack Titan', 'The Owl'],
+    'mbti': 1
+  },
+  {
+    'id': 6,
+    'slug': 'daz',
+    'firstName': 'Daz',
+    'lastName': null,
+    'species': 2,
+    'age': null,
+    'height': 175,
+    'weight': 64,
+    'residence': 6,
+    'status': 1,
+    'alias': [],
+    'mbti': 14
+  },
+  {
     'id': 13,
+    'slug': 'lobov',
     'firstName': 'Lobov',
     'lastName': null,
     'species': 2,
@@ -158,20 +464,8 @@ const heroes: HeroType[] = [
     'mbti': 11
   },
   {
-    'id': 14,
-    'firstName': 'Erwin',
-    'lastName': 'Smith',
-    'species': 2,
-    'age': null,
-    'height': 188,
-    'weight': 92,
-    'residence': 6,
-    'status': 2,
-    'alias': ['Eyebrow'],
-    'mbti': 3
-  },
-  {
     'id': 15,
+    'slug': 'sandra',
     'firstName': 'Sandra',
     'lastName': null,
     'species': 2,
@@ -185,6 +479,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 16,
+    'slug': 'gordon',
     'firstName': 'Gordon',
     'lastName': null,
     'species': 2,
@@ -198,6 +493,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 17,
+    'slug': 'marlo-freudenberg',
     'firstName': 'Marlo',
     'lastName': 'Freudenberg',
     'species': 2,
@@ -211,6 +507,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 18,
+    'slug': 'tomas',
     'firstName': 'Tomas',
     'lastName': null,
     'species': 2,
@@ -224,6 +521,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 19,
+    'slug': 'dieter',
     'firstName': 'Dieter',
     'lastName': null,
     'species': 2,
@@ -237,6 +535,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 20,
+    'slug': 'dirk',
     'firstName': 'Dirk',
     'lastName': null,
     'species': 2,
@@ -250,6 +549,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 21,
+    'slug': 'marlene',
     'firstName': 'Marlene',
     'lastName': null,
     'species': 2,
@@ -263,6 +563,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 22,
+    'slug': 'klaus',
     'firstName': 'Klaus',
     'lastName': null,
     'species': 2,
@@ -276,6 +577,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 23,
+    'slug': 'harold',
     'firstName': 'Harold',
     'lastName': null,
     'species': 2,
@@ -289,6 +591,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 24,
+    'slug': 'rashad',
     'firstName': 'Rashad',
     'lastName': null,
     'species': 2,
@@ -302,6 +605,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 25,
+    'slug': 'lauda',
     'firstName': 'Lauda',
     'lastName': null,
     'species': 2,
@@ -314,20 +618,8 @@ const heroes: HeroType[] = [
     'mbti': null
   },
   {
-    'id': 26,
-    'firstName': 'Moblit',
-    'lastName': 'Berner',
-    'species': 2,
-    'age': null,
-    'height': 176,
-    'weight': 65,
-    'residence': 6,
-    'status': 2,
-    'alias': [],
-    'mbti': 10
-  },
-  {
     'id': 27,
+    'slug': 'keiji',
     'firstName': 'Keiji',
     'lastName': null,
     'species': 2,
@@ -341,6 +633,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 28,
+    'slug': 'abel',
     'firstName': 'Abel',
     'lastName': null,
     'species': 2,
@@ -354,6 +647,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 29,
+    'slug': 'nifa',
     'firstName': 'Nifa',
     'lastName': null,
     'species': 2,
@@ -367,6 +661,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 30,
+    'slug': 'peer',
     'firstName': 'Peer',
     'lastName': null,
     'species': 2,
@@ -379,20 +674,8 @@ const heroes: HeroType[] = [
     'mbti': null
   },
   {
-    'id': 31,
-    'firstName': 'Nanaba',
-    'lastName': null,
-    'species': 2,
-    'age': null,
-    'height': 172,
-    'weight': 59,
-    'residence': 6,
-    'status': 2,
-    'alias': [],
-    'mbti': 11
-  },
-  {
     'id': 32,
+    'slug': 'gelgar',
     'firstName': 'Gelgar',
     'lastName': null,
     'species': 2,
@@ -406,6 +689,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 33,
+    'slug': 'henning',
     'firstName': 'Henning',
     'lastName': null,
     'species': 2,
@@ -419,6 +703,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 34,
+    'slug': 'lynne',
     'firstName': 'Lynne',
     'lastName': null,
     'species': 2,
@@ -431,20 +716,8 @@ const heroes: HeroType[] = [
     'mbti': 12
   },
   {
-    'id': 35,
-    'firstName': 'Miche',
-    'lastName': 'Zacharius',
-    'species': 2,
-    'age': null,
-    'height': 170,
-    'weight': 57,
-    'residence': 6,
-    'status': 2,
-    'alias': [],
-    'mbti': 13
-  },
-  {
     'id': 36,
+    'slug': 'jurgen',
     'firstName': 'Jurgen',
     'lastName': null,
     'species': 2,
@@ -458,6 +731,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 37,
+    'slug': 'ivan',
     'firstName': 'Ivan',
     'lastName': null,
     'species': 2,
@@ -470,33 +744,8 @@ const heroes: HeroType[] = [
     'mbti': null
   },
   {
-    'id': 38,
-    'firstName': 'Oruo',
-    'lastName': 'Bozad',
-    'species': 2,
-    'age': null,
-    'height': null,
-    'weight': null,
-    'residence': 6,
-    'status': 2,
-    'alias': [],
-    'mbti': 15
-  },
-  {
-    'id': 39,
-    'firstName': 'Petra',
-    'lastName': 'Rall',
-    'species': 2,
-    'age': null,
-    'height': 158,
-    'weight': 55,
-    'residence': 6,
-    'status': 2,
-    'alias': [],
-    'mbti': 12
-  },
-  {
     'id': 40,
+    'slug': 'eld-gin',
     'firstName': 'Eld',
     'lastName': 'Gin',
     'species': 2,
@@ -510,6 +759,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 41,
+    'slug': 'gunther-schultz',
     'firstName': 'Gunther',
     'lastName': 'Schultz',
     'species': 2,
@@ -523,6 +773,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 42,
+    'slug': 'darius-walbrunn',
     'firstName': 'Darius',
     'lastName': 'Walbrunn',
     'species': 2,
@@ -536,6 +787,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 43,
+    'slug': 'dieter-ness',
     'firstName': 'Dieter',
     'lastName': 'Ness',
     'species': 2,
@@ -549,6 +801,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 44,
+    'slug': 'luke-cis',
     'firstName': 'Luke',
     'lastName': 'Cis',
     'species': 2,
@@ -562,6 +815,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 45,
+    'slug': 'ilse-langnar',
     'firstName': 'Ilse',
     'lastName': 'Langnar',
     'species': 2,
@@ -575,6 +829,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 46,
+    'slug': 'moses',
     'firstName': 'Moses',
     'lastName': null,
     'species': 2,
@@ -588,6 +843,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 47,
+    'slug': 'furlan-church',
     'firstName': 'Furlan',
     'lastName': 'Church',
     'species': 2,
@@ -601,6 +857,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 48,
+    'slug': 'flagon',
     'firstName': 'Flagon',
     'lastName': null,
     'species': 2,
@@ -614,6 +871,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 49,
+    'slug': 'isabel-magnolia',
     'firstName': 'Isabel',
     'lastName': 'Magnolia',
     'species': 2,
@@ -627,6 +885,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 50,
+    'slug': 'waltz',
     'firstName': 'Waltz',
     'lastName': null,
     'species': 2,
@@ -640,6 +899,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 51,
+    'slug': 'nile-dawk',
     'firstName': 'Nile',
     'lastName': 'Dawk',
     'species': 2,
@@ -653,6 +913,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 52,
+    'slug': 'hitch-dreyse',
     'firstName': 'Hitch',
     'lastName': 'Dreyse',
     'species': 2,
@@ -666,6 +927,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 53,
+    'slug': 'boris-feulner',
     'firstName': 'Boris',
     'lastName': 'Feulner',
     'species': 2,
@@ -679,6 +941,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 54,
+    'slug': 'dennis-aiblinger',
     'firstName': 'Dennis',
     'lastName': 'Aiblinger',
     'species': 2,
@@ -692,6 +955,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 55,
+    'slug': 'roger',
     'firstName': 'Roger',
     'lastName': null,
     'species': 2,
@@ -705,6 +969,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 56,
+    'slug': 'roeg',
     'firstName': 'Roeg',
     'lastName': null,
     'species': 2,
@@ -717,20 +982,8 @@ const heroes: HeroType[] = [
     'mbti': 15
   },
   {
-    'id': 57,
-    'firstName': 'Kenny',
-    'lastName': 'Ackermann',
-    'species': 2,
-    'age': null,
-    'height': 190,
-    'weight': 120,
-    'residence': 7,
-    'status': 2,
-    'alias': ['Kenny the Ripper'],
-    'mbti': 15
-  },
-  {
     'id': 58,
+    'slug': 'traute-caven',
     'firstName': 'Traute',
     'lastName': 'Caven',
     'species': 2,
@@ -744,6 +997,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 59,
+    'slug': 'duran',
     'firstName': 'Duran',
     'lastName': null,
     'species': 2,
@@ -756,20 +1010,8 @@ const heroes: HeroType[] = [
     'mbti': null
   },
   {
-    'id': 60,
-    'firstName': 'Dot',
-    'lastName': 'Pyxis',
-    'species': 2,
-    'age': null,
-    'height': 180,
-    'weight': 73,
-    'residence': 6,
-    'status': 1,
-    'alias': [],
-    'mbti': 2
-  },
-  {
     'id': 61,
+    'slug': 'gustav',
     'firstName': 'Gustav',
     'lastName': null,
     'species': 2,
@@ -783,6 +1025,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 62,
+    'slug': 'anka-rheinberger',
     'firstName': 'Anka',
     'lastName': 'Rheinberger',
     'species': 2,
@@ -796,6 +1039,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 63,
+    'slug': 'kitz-woermann',
     'firstName': 'Kitz',
     'lastName': 'Woermann',
     'species': 2,
@@ -809,6 +1053,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 64,
+    'slug': 'rico-brzenska',
     'firstName': 'Rico',
     'lastName': 'Brzenska',
     'species': 2,
@@ -822,6 +1067,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 65,
+    'slug': 'carsten',
     'firstName': 'Carsten',
     'lastName': null,
     'species': 2,
@@ -835,6 +1081,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 66,
+    'slug': 'phil',
     'firstName': 'Phil',
     'lastName': null,
     'species': 2,
@@ -848,6 +1095,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 67,
+    'slug': 'hugo',
     'firstName': 'Hugo',
     'lastName': null,
     'species': 2,
@@ -860,20 +1108,8 @@ const heroes: HeroType[] = [
     'mbti': 16
   },
   {
-    'id': 68,
-    'firstName': 'Hannes',
-    'lastName': null,
-    'species': 2,
-    'age': null,
-    'height': 190,
-    'weight': 88,
-    'residence': 6,
-    'status': 2,
-    'alias': [],
-    'mbti': 16
-  },
-  {
     'id': 69,
+    'slug': 'ian-dietrich',
     'firstName': 'Ian',
     'lastName': 'Dietrich',
     'species': 2,
@@ -887,6 +1123,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 70,
+    'slug': 'mitabi-jarnach',
     'firstName': 'Mitabi',
     'lastName': 'Jarnach',
     'species': 2,
@@ -900,6 +1137,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 71,
+    'slug': 'keith-sadies',
     'firstName': 'Keith',
     'lastName': 'Sadies',
     'species': 2,
@@ -913,6 +1151,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 72,
+    'slug': 'hanna-diament',
     'firstName': 'Hanna',
     'lastName': 'Diament',
     'species': 2,
@@ -926,6 +1165,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 73,
+    'slug': 'ruth-kline',
     'firstName': 'Ruth',
     'lastName': 'Kline',
     'species': 2,
@@ -938,20 +1178,8 @@ const heroes: HeroType[] = [
     'mbti': null
   },
   {
-    'id': 74,
-    'firstName': 'Marco',
-    'lastName': 'Bodt',
-    'species': 2,
-    'age': 16,
-    'height': 178,
-    'weight': 70,
-    'residence': 6,
-    'status': 2,
-    'alias': [],
-    'mbti': 7
-  },
-  {
     'id': 75,
+    'slug': 'tom',
     'firstName': 'Tom',
     'lastName': null,
     'species': 2,
@@ -965,6 +1193,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 76,
+    'slug': 'franz-kefka',
     'firstName': 'Franz',
     'lastName': 'Kefka',
     'species': 2,
@@ -978,6 +1207,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 77,
+    'slug': 'mina-carolina',
     'firstName': 'Mina',
     'lastName': 'Carolina',
     'species': 2,
@@ -991,6 +1221,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 78,
+    'slug': 'milieus-zeremski',
     'firstName': 'Milieus',
     'lastName': 'Zeremski',
     'species': 2,
@@ -1004,6 +1235,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 79,
+    'slug': 'nack-tierce',
     'firstName': 'Nack',
     'lastName': 'Tierce',
     'species': 2,
@@ -1017,6 +1249,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 80,
+    'slug': 'thomas-wagner',
     'firstName': 'Thomas',
     'lastName': 'Wagner',
     'species': 2,
@@ -1030,6 +1263,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 81,
+    'slug': 'theo-magath',
     'firstName': 'Theo',
     'lastName': 'Magath',
     'species': 2,
@@ -1043,6 +1277,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 82,
+    'slug': 'koslow',
     'firstName': 'Koslow',
     'lastName': null,
     'species': 2,
@@ -1056,6 +1291,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 83,
+    'slug': 'carlo',
     'firstName': 'Carlo',
     'lastName': null,
     'species': 2,
@@ -1069,6 +1305,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 84,
+    'slug': 'calvi',
     'firstName': 'Calvi',
     'lastName': null,
     'species': 2,
@@ -1081,59 +1318,8 @@ const heroes: HeroType[] = [
     'mbti': 1
   },
   {
-    'id': 85,
-    'firstName': 'Reiner',
-    'lastName': 'Braun',
-    'species': 3,
-    'age': 21,
-    'height': 188,
-    'weight': 83,
-    'residence': 2,
-    'status': 1,
-    'alias': ['Armored Titan', 'Armor'],
-    'mbti': 12
-  },
-  {
-    'id': 86,
-    'firstName': 'Pieck',
-    'lastName': 'Finger',
-    'species': 3,
-    'age': null,
-    'height': 155,
-    'weight': 42,
-    'residence': 2,
-    'status': 1,
-    'alias': ['Cart Titan', 'Cart', 'Quadruped-type'],
-    'mbti': 2
-  },
-  {
-    'id': 87,
-    'firstName': 'Porco',
-    'lastName': 'Galliard',
-    'species': 3,
-    'age': null,
-    'height': 175,
-    'weight': 75,
-    'residence': 2,
-    'status': 1,
-    'alias': ['Jaw Titan', 'Jaw', 'Pock'],
-    'mbti': 15
-  },
-  {
-    'id': 88,
-    'firstName': 'Falco',
-    'lastName': 'Grice',
-    'species': 2,
-    'age': null,
-    'height': 140,
-    'weight': 34,
-    'residence': 2,
-    'status': 1,
-    'alias': ['Ben'],
-    'mbti': 7
-  },
-  {
     'id': 89,
+    'slug': 'colt-grice',
     'firstName': 'Colt',
     'lastName': 'Grice',
     'species': 2,
@@ -1146,33 +1332,8 @@ const heroes: HeroType[] = [
     'mbti': 12
   },
   {
-    'id': 90,
-    'firstName': 'Gabi',
-    'lastName': 'Braun',
-    'species': 2,
-    'age': 12,
-    'height': 138,
-    'weight': 30,
-    'residence': 2,
-    'status': 1,
-    'alias': ['Mia'],
-    'mbti': 16
-  },
-  {
-    'id': 91,
-    'firstName': 'Annie',
-    'lastName': 'Leonhart',
-    'species': 3,
-    'age': 20,
-    'height': 153,
-    'weight': 54,
-    'residence': 7,
-    'status': 3,
-    'alias': ['Female Titan', 'Female'],
-    'mbti': 13
-  },
-  {
     'id': 92,
+    'slug': 'udo',
     'firstName': 'Udo',
     'lastName': null,
     'species': 2,
@@ -1186,6 +1347,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 93,
+    'slug': 'zofia',
     'firstName': 'Zofia',
     'lastName': null,
     'species': 2,
@@ -1198,20 +1360,8 @@ const heroes: HeroType[] = [
     'mbti': 13
   },
   {
-    'id': 94,
-    'firstName': 'Bertholdt',
-    'lastName': 'Hoover',
-    'species': 3,
-    'age': 16,
-    'height': 192,
-    'weight': 81,
-    'residence': 6,
-    'status': 2,
-    'alias': ['Colossal Titan', 'Bertl'],
-    'mbti': 10
-  },
-  {
     'id': 95,
+    'slug': 'marcel-galliard',
     'firstName': 'Marcel',
     'lastName': 'Galliard',
     'species': 3,
@@ -1225,6 +1375,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 96,
+    'slug': 'tom-xaver',
     'firstName': 'Tom',
     'lastName': 'Xaver',
     'species': 3,
@@ -1237,20 +1388,8 @@ const heroes: HeroType[] = [
     'mbti': 4
   },
   {
-    'id': 97,
-    'firstName': 'Eren',
-    'lastName': 'Kruger',
-    'species': 3,
-    'age': null,
-    'height': 188,
-    'weight': 78,
-    'residence': 2,
-    'status': 2,
-    'alias': ['Attack Titan', 'The Owl'],
-    'mbti': 1
-  },
-  {
     'id': 98,
+    'slug': 'gross',
     'firstName': 'Gross',
     'lastName': null,
     'species': 2,
@@ -1263,20 +1402,8 @@ const heroes: HeroType[] = [
     'mbti': 11
   },
   {
-    'id': 99,
-    'firstName': 'Historia',
-    'lastName': 'Reiss',
-    'species': 2,
-    'age': 19,
-    'height': 145,
-    'weight': 42,
-    'residence': 6,
-    'status': 1,
-    'alias': ['Christa Lenz', 'Goddess', 'True Queen of the Walls', 'Queen Historia'],
-    'mbti': 12
-  },
-  {
     'id': 100,
+    'slug': 'wald-100',
     'firstName': 'Wald',
     'lastName': null,
     'species': 2,
@@ -1290,6 +1417,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 101,
+    'slug': 'nicholas-lovof',
     'firstName': 'Nicholas',
     'lastName': 'Lovof',
     'species': 2,
@@ -1303,6 +1431,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 102,
+    'slug': 'rod-reiss',
     'firstName': 'Rod',
     'lastName': 'Reiss',
     'species': 4,
@@ -1316,6 +1445,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 103,
+    'slug': 'ulklin-reiss',
     'firstName': 'Ulklin',
     'lastName': 'Reiss',
     'species': 2,
@@ -1329,6 +1459,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 104,
+    'slug': 'rods-wife',
     'firstName': 'Rod\'s wife',
     'lastName': null,
     'species': 2,
@@ -1342,6 +1473,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 105,
+    'slug': 'florian-reiss',
     'firstName': 'Florian',
     'lastName': 'Reiss',
     'species': 2,
@@ -1355,6 +1487,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 106,
+    'slug': 'abel-reiss',
     'firstName': 'Abel',
     'lastName': 'Reiss',
     'species': 2,
@@ -1368,6 +1501,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 107,
+    'slug': 'dirk-reiss',
     'firstName': 'Dirk',
     'lastName': 'Reiss',
     'species': 2,
@@ -1381,6 +1515,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 108,
+    'slug': 'frieda-reiss',
     'firstName': 'Frieda',
     'lastName': 'Reiss',
     'species': 3,
@@ -1394,6 +1529,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 109,
+    'slug': 'uri-reiss',
     'firstName': 'Uri',
     'lastName': 'Reiss',
     'species': 3,
@@ -1407,6 +1543,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 110,
+    'slug': 'rod-and-uris-father',
     'firstName': 'Rod and Uri\'s father',
     'lastName': null,
     'species': 3,
@@ -1420,6 +1557,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 111,
+    'slug': 'karl-fritz',
     'firstName': 'Karl',
     'lastName': 'Fritz',
     'species': 3,
@@ -1428,19 +1566,12 @@ const heroes: HeroType[] = [
     'weight': null,
     'residence': null,
     'status': 2,
-    'alias': [
-      '145th King',
-      'King of the Walls',
-      'Founding Titan',
-      'First Reiss King',
-      'First King',
-      'King Reiss',
-      'King Fritz'
-    ],
+    'alias': ['145th King', 'King of the Walls', 'Founding Titan', 'First Reiss King', 'First King', 'King Reiss', 'King Fritz'],
     'mbti': 5
   },
   {
     'id': 112,
+    'slug': 'fine-tybur',
     'firstName': 'Fine',
     'lastName': 'Tybur',
     'species': 2,
@@ -1454,6 +1585,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 113,
+    'slug': 'lara-tybur',
     'firstName': 'Lara',
     'lastName': 'Tybur',
     'species': 3,
@@ -1467,6 +1599,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 114,
+    'slug': 'willy-tybur',
     'firstName': 'Willy',
     'lastName': 'Tybur',
     'species': 2,
@@ -1480,6 +1613,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 115,
+    'slug': 'kiyomi-azumabito',
     'firstName': 'Kiyomi',
     'lastName': 'Azumabito',
     'species': 2,
@@ -1493,6 +1627,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 116,
+    'slug': 'ellie',
     'firstName': 'Ellie',
     'lastName': null,
     'species': 2,
@@ -1506,6 +1641,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 117,
+    'slug': 'petras-father',
     'firstName': 'Petra\'s father',
     'lastName': null,
     'species': 2,
@@ -1519,6 +1655,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 118,
+    'slug': 'stohess-mayor',
     'firstName': 'Stohess',
     'lastName': 'Mayor',
     'species': 2,
@@ -1532,6 +1669,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 119,
+    'slug': 'roderich',
     'firstName': 'Roderich',
     'lastName': null,
     'species': 2,
@@ -1545,6 +1683,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 120,
+    'slug': 'jeans-mother',
     'firstName': 'Jean\'s mother',
     'lastName': null,
     'species': 2,
@@ -1558,6 +1697,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 121,
+    'slug': 'artur-braus',
     'firstName': 'Artur',
     'lastName': 'Braus',
     'species': 2,
@@ -1571,6 +1711,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 122,
+    'slug': 'kaya',
     'firstName': 'Kaya',
     'lastName': null,
     'species': 2,
@@ -1584,6 +1725,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 123,
+    'slug': 'ms-springer',
     'firstName': 'Ms. Springer',
     'lastName': null,
     'species': 2,
@@ -1597,6 +1739,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 124,
+    'slug': 'carly-stratmann',
     'firstName': 'Carly',
     'lastName': 'Stratmann',
     'species': 2,
@@ -1610,6 +1753,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 125,
+    'slug': 'elliot-stratmann',
     'firstName': 'Elliot',
     'lastName': 'Stratmann',
     'species': 2,
@@ -1623,6 +1767,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 126,
+    'slug': 'lou',
     'firstName': 'Lou',
     'lastName': null,
     'species': 2,
@@ -1636,6 +1781,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 127,
+    'slug': 'ralph',
     'firstName': 'Ralph',
     'lastName': null,
     'species': 2,
@@ -1649,6 +1795,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 128,
+    'slug': 'djel-sannes',
     'firstName': 'Djel',
     'lastName': 'Sannes',
     'species': 2,
@@ -1662,6 +1809,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 129,
+    'slug': 'fritz-figurehead',
     'firstName': 'Fritz (figurehead)',
     'lastName': null,
     'species': 2,
@@ -1675,6 +1823,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 130,
+    'slug': 'aurille',
     'firstName': 'Aurille',
     'lastName': null,
     'species': 2,
@@ -1688,6 +1837,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 131,
+    'slug': 'gerald',
     'firstName': 'Gerald',
     'lastName': null,
     'species': 2,
@@ -1701,6 +1851,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 132,
+    'slug': 'deltoff',
     'firstName': 'Deltoff',
     'lastName': null,
     'species': 2,
@@ -1714,6 +1865,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 133,
+    'slug': 'flegel-reeves',
     'firstName': 'Flegel',
     'lastName': 'Reeves',
     'species': 2,
@@ -1727,6 +1879,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 134,
+    'slug': 'roy',
     'firstName': 'Roy',
     'lastName': null,
     'species': 2,
@@ -1740,6 +1893,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 135,
+    'slug': 'peaure',
     'firstName': 'Peaure',
     'lastName': null,
     'species': 2,
@@ -1753,6 +1907,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 136,
+    'slug': 'nicolo',
     'firstName': 'Nicolo',
     'lastName': null,
     'species': 2,
@@ -1766,6 +1921,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 137,
+    'slug': 'lisa-braus',
     'firstName': 'Lisa',
     'lastName': 'Braus',
     'species': 2,
@@ -1779,6 +1935,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 138,
+    'slug': 'moses-mother',
     'firstName': 'Moses\' mother',
     'lastName': null,
     'species': 2,
@@ -1792,6 +1949,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 139,
+    'slug': 'mirror-man',
     'firstName': 'Mirror',
     'lastName': 'Man',
     'species': 2,
@@ -1805,6 +1963,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 140,
+    'slug': 'yan',
     'firstName': 'Yan',
     'lastName': null,
     'species': 2,
@@ -1818,6 +1977,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 141,
+    'slug': 'dimo-reeves',
     'firstName': 'Dimo',
     'lastName': 'Reeves',
     'species': 2,
@@ -1831,6 +1991,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 142,
+    'slug': 'pastor-nick',
     'firstName': 'Pastor Nick',
     'lastName': null,
     'species': 2,
@@ -1844,6 +2005,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 143,
+    'slug': 'mr-springer',
     'firstName': 'Mr. Springer',
     'lastName': null,
     'species': 4,
@@ -1857,6 +2019,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 144,
+    'slug': 'sunny-springer',
     'firstName': 'Sunny',
     'lastName': 'Springer',
     'species': 4,
@@ -1870,6 +2033,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 145,
+    'slug': 'martin-springer',
     'firstName': 'Martin',
     'lastName': 'Springer',
     'species': 4,
@@ -1883,6 +2047,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 146,
+    'slug': 'wald-146',
     'firstName': 'Wald',
     'lastName': null,
     'species': 2,
@@ -1896,6 +2061,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 147,
+    'slug': 'kemper-boltz',
     'firstName': 'Kemper',
     'lastName': 'Boltz',
     'species': 2,
@@ -1909,6 +2075,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 148,
+    'slug': 'armins-grandfather',
     'firstName': 'Armin\'s grandfather',
     'lastName': null,
     'species': 2,
@@ -1922,6 +2089,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 149,
+    'slug': 'alma',
     'firstName': 'Alma',
     'lastName': null,
     'species': 2,
@@ -1935,6 +2103,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 150,
+    'slug': 'grisha-jaeger',
     'firstName': 'Grisha',
     'lastName': 'Jaeger',
     'species': 3,
@@ -1948,6 +2117,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 151,
+    'slug': 'carla-jaeger',
     'firstName': 'Carla',
     'lastName': 'Jaeger',
     'species': 2,
@@ -1961,6 +2131,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 152,
+    'slug': 'mikasas-mother',
     'firstName': 'Mikasa\'s mother',
     'lastName': null,
     'species': 2,
@@ -1974,6 +2145,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 153,
+    'slug': 'mikasas-father',
     'firstName': 'Mikasa\'s father',
     'lastName': null,
     'species': 2,
@@ -1987,6 +2159,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 154,
+    'slug': 'kuchel-ackermann',
     'firstName': 'Kuchel',
     'lastName': 'Ackermann',
     'species': 2,
@@ -2000,6 +2173,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 155,
+    'slug': 'kennys-grandpa',
     'firstName': 'Kenny\'s grandpa',
     'lastName': null,
     'species': 2,
@@ -2013,6 +2187,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 156,
+    'slug': 'mr-smith',
     'firstName': 'Mr. Smith',
     'lastName': null,
     'species': 2,
@@ -2026,6 +2201,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 157,
+    'slug': 'finger',
     'firstName': 'Finger',
     'lastName': null,
     'species': 2,
@@ -2039,6 +2215,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 158,
+    'slug': 'reiners-father',
     'firstName': 'Reiner\'s father',
     'lastName': null,
     'species': 2,
@@ -2052,6 +2229,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 159,
+    'slug': 'grishas-mother',
     'firstName': 'Grisha\'s mother',
     'lastName': null,
     'species': 2,
@@ -2065,6 +2243,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 160,
+    'slug': 'mr-jaeger',
     'firstName': 'Mr. Jaeger',
     'lastName': null,
     'species': 2,
@@ -2078,6 +2257,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 161,
+    'slug': 'mr-leonhart',
     'firstName': 'Mr. Leonhart',
     'lastName': null,
     'species': 2,
@@ -2091,6 +2271,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 162,
+    'slug': 'karina-braun',
     'firstName': 'Karina',
     'lastName': 'Braun',
     'species': 2,
@@ -2103,20 +2284,8 @@ const heroes: HeroType[] = [
     'mbti': 9
   },
   {
-    'id': 163,
-    'firstName': 'Ymir',
-    'lastName': null,
-    'species': 3,
-    'age': 75,
-    'height': 172,
-    'weight': 63,
-    'residence': null,
-    'status': 2,
-    'alias': ['Freckles', 'Lady Ymir', 'Jaw Titan'],
-    'mbti': 13
-  },
-  {
     'id': 164,
+    'slug': 'dina-fritz',
     'firstName': 'Dina',
     'lastName': 'Fritz',
     'species': 4,
@@ -2130,6 +2299,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 165,
+    'slug': 'comrade-d',
     'firstName': 'Comrade D',
     'lastName': null,
     'species': 4,
@@ -2143,6 +2313,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 166,
+    'slug': 'talking-titan',
     'firstName': 'Talking Titan',
     'lastName': null,
     'species': 4,
@@ -2156,6 +2327,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 167,
+    'slug': 'grice',
     'firstName': 'Grice',
     'lastName': null,
     'species': 2,
@@ -2169,6 +2341,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 168,
+    'slug': 'fay-jaeger',
     'firstName': 'Fay',
     'lastName': 'Jaeger',
     'species': 2,
@@ -2181,20 +2354,8 @@ const heroes: HeroType[] = [
     'mbti': 6
   },
   {
-    'id': 169,
-    'firstName': 'Yelena',
-    'lastName': null,
-    'species': 2,
-    'age': null,
-    'height': 190,
-    'weight': 63,
-    'residence': null,
-    'status': 1,
-    'alias': [],
-    'mbti': 1
-  },
-  {
     'id': 170,
+    'slug': 'onyankopon',
     'firstName': 'Onyankopon',
     'lastName': null,
     'species': 2,
@@ -2207,20 +2368,8 @@ const heroes: HeroType[] = [
     'mbti': 7
   },
   {
-    'id': 171,
-    'firstName': 'Zeke',
-    'lastName': 'Jaeger',
-    'species': 3,
-    'age': 29,
-    'height': 183,
-    'weight': 92,
-    'residence': 2,
-    'status': 3,
-    'alias': ['Beast Titan', 'Monkey', 'Wonderboy', 'Beardo'],
-    'mbti': 2
-  },
-  {
     'id': 172,
+    'slug': 'greiz',
     'firstName': 'Greiz',
     'lastName': null,
     'species': 2,
@@ -2234,6 +2383,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 173,
+    'slug': 'ogweno',
     'firstName': 'Ogweno',
     'lastName': null,
     'species': 2,
@@ -2247,6 +2397,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 174,
+    'slug': 'nambia',
     'firstName': 'Nambia',
     'lastName': null,
     'species': 2,
@@ -2259,31 +2410,8 @@ const heroes: HeroType[] = [
     'mbti': null
   },
   {
-    'id': 175,
-    'firstName': 'Eren',
-    'lastName': 'Jaeger',
-    'species': 3,
-    'age': 19,
-    'height': 183,
-    'weight': 82,
-    'residence': 6,
-    'status': 1,
-    'alias': [
-      'Suicidal Maniac',
-      'Titan boy',
-      'Attack Titan',
-      'Mysterious Titan',
-      'Berserk Titan',
-      'Titan being rampant,Founding Titan',
-      'Founder',
-      'Mister Kruger',
-      'Usurper',
-      'War Hammer Titan'
-    ],
-    'mbti': 14
-  },
-  {
     'id': 176,
+    'slug': 'samuel-linke-jackson',
     'firstName': 'Samuel',
     'lastName': 'Linke-Jackson',
     'species': 2,
@@ -2297,6 +2425,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 177,
+    'slug': 'louise',
     'firstName': 'Louise',
     'lastName': null,
     'species': 2,
@@ -2309,20 +2438,8 @@ const heroes: HeroType[] = [
     'mbti': 5
   },
   {
-    'id': 178,
-    'firstName': 'Floch',
-    'lastName': 'Forster',
-    'species': 2,
-    'age': null,
-    'height': 180,
-    'weight': 71,
-    'residence': 6,
-    'status': 1,
-    'alias': [],
-    'mbti': 3
-  },
-  {
     'id': 179,
+    'slug': 'wim',
     'firstName': 'Wim',
     'lastName': null,
     'species': 2,
@@ -2336,6 +2453,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 180,
+    'slug': 'holger',
     'firstName': 'Holger',
     'lastName': null,
     'species': 2,
@@ -2349,6 +2467,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 181,
+    'slug': 'surma',
     'firstName': 'Surma',
     'lastName': null,
     'species': 2,
@@ -2362,6 +2481,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 182,
+    'slug': 'sawney',
     'firstName': 'Sawney',
     'lastName': null,
     'species': 5,
@@ -2375,6 +2495,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 183,
+    'slug': 'beane',
     'firstName': 'Beane',
     'lastName': null,
     'species': 5,
@@ -2388,6 +2509,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 184,
+    'slug': 'helos',
     'firstName': 'Helos',
     'lastName': null,
     'species': 2,
@@ -2401,6 +2523,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 185,
+    'slug': 'devil-of-all-earth',
     'firstName': 'Devil of All Earth',
     'lastName': null,
     'species': 6,
@@ -2414,6 +2537,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 186,
+    'slug': 'ymir-fritz',
     'firstName': 'Ymir',
     'lastName': 'Fritz',
     'species': 3,
@@ -2427,6 +2551,7 @@ const heroes: HeroType[] = [
   },
   {
     'id': 187,
+    'slug': 'dhalis-zachary',
     'firstName': 'Dhalis',
     'lastName': 'Zachary',
     'species': 2,
@@ -2437,6 +2562,48 @@ const heroes: HeroType[] = [
     'status': 1,
     'alias': [],
     'mbti': 4
+  },
+  {
+    'id': 7,
+    'slug': 'buchwald',
+    'firstName': 'Buchwald',
+    'lastName': null,
+    'species': 1,
+    'age': null,
+    'height': 160,
+    'weight': 450,
+    'residence': 6,
+    'status': 1,
+    'alias': [],
+    'mbti': null
+  },
+  {
+    'id': 10,
+    'slug': 'charrette',
+    'firstName': 'Charrette',
+    'lastName': null,
+    'species': 1,
+    'age': null,
+    'height': 160,
+    'weight': 450,
+    'residence': 6,
+    'status': 2,
+    'alias': [],
+    'mbti': null
+  },
+  {
+    'id': 11,
+    'slug': 'varis',
+    'firstName': 'Varis',
+    'lastName': null,
+    'species': 4,
+    'age': null,
+    'height': null,
+    'weight': null,
+    'residence': null,
+    'status': 2,
+    'alias': [],
+    'mbti': null
   }
 ];
 

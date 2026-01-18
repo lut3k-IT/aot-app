@@ -73,12 +73,12 @@ const HowToUse = ({ variant = 'icon' }: HowToUseProps) => {
             <p>{t('howToUse:details.description')}</p>
             <ExampleSection>
               <Link
-                href={`${RoutePath.HERO_DETAILS}/1`}
+                href={`${RoutePath.HERO_DETAILS}/armin-arlelt`}
                 className={'rounded-md'}
               >
                 <MbtiFrame mbtiId={5}>
                   <CharacterPicture
-                    imgSource={'/assets/img/heroes/1.jpg'}
+                    imgSource={'/assets/img/heroes/armin-arlelt.jpg'}
                     variant={'roundedBtm'}
                   />
                 </MbtiFrame>

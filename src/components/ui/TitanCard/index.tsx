@@ -24,7 +24,7 @@ const cnContainer = 'flex gap-4 h-27';
 
 const TitanCard = (props: TitanCardProps) => {
   const { data, favorites, heroesData } = props;
-  const { id, mbti, name = '', allegiance, currentInheritor } = data;
+  const { id, mbti, name = '', allegiance, currentInheritor, slug } = data;
 
   const { t } = useTranslation();
   const isShowingSpoilers = useAppSelector((state) => state.spoilerMode);
@@ -38,12 +38,12 @@ const TitanCard = (props: TitanCardProps) => {
   return (
     <div className={cnContainer}>
       <Link
-        href={`${RoutePath.TITAN_DETAILS}/${id}`}
+        href={`${RoutePath.TITAN_DETAILS}/${slug}`}
         className={'rounded-md'}
       >
         <MbtiFrame mbtiId={mbti}>
           <CharacterPicture
-            imgSource={`/assets/img/titans/${id}.jpg`}
+            imgSource={`/assets/img/titans/${slug}.jpg`}
             alt={`${name} - Attack on Titan ${t('common:brand')}`}
             variant={'roundedBtm'}
           />

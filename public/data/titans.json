@@ -2,24 +2,51 @@
   {
     "id": 1,
     "name": "Founding Titan",
-    "otherNames": ["Coordinate", "Royal family's power", "Scream", "God"],
-    "abilities": ["Titan behavorial control", "Memory manipulation of Subjects of Ymir"],
+    "otherNames": [
+      "Coordinate",
+      "Royal family's power",
+      "Scream",
+      "God"
+    ],
+    "abilities": [
+      "Titan behavorial control",
+      "Memory manipulation of Subjects of Ymir"
+    ],
     "currentInheritor": 175,
-    "formerInheritors": [150, 108, 109, 110, 111, 186],
-    "allegiance": [1],
+    "formerInheritors": [
+      150,
+      108,
+      109,
+      110,
+      111,
+      186
+    ],
+    "allegiance": [
+      1
+    ],
     "height": 1300,
-    "mbti": 7
+    "mbti": 7,
+    "slug": "founding-titan"
   },
   {
     "id": 2,
     "name": "Armored Titan",
-    "otherNames": ["Armor", "Marley's Shield"],
-    "abilities": ["Armored skin", "Hardening"],
+    "otherNames": [
+      "Armor",
+      "Marley's Shield"
+    ],
+    "abilities": [
+      "Armored skin",
+      "Hardening"
+    ],
     "currentInheritor": 85,
     "formerInheritors": [],
-    "allegiance": [2],
+    "allegiance": [
+      2
+    ],
     "height": 1500,
-    "mbti": 15
+    "mbti": 15,
+    "slug": "armored-titan"
   },
   {
     "id": 3,
@@ -33,15 +60,23 @@
     ],
     "abilities": [],
     "currentInheritor": 175,
-    "formerInheritors": [150, 97],
-    "allegiance": [1],
+    "formerInheritors": [
+      150,
+      97
+    ],
+    "allegiance": [
+      1
+    ],
     "height": 1500,
-    "mbti": 1
+    "mbti": 1,
+    "slug": "attack-titan"
   },
   {
     "id": 4,
     "name": "Beast Titan",
-    "otherNames": ["Monkey"],
+    "otherNames": [
+      "Monkey"
+    ],
     "abilities": [
       "Powerful and accurate throwing",
       "Hardening",
@@ -49,64 +84,130 @@
       "Can turn Subjects of Ymir into Titans that he can crudely control (Users with Royal Blood only)"
     ],
     "currentInheritor": 171,
-    "formerInheritors": [96],
-    "allegiance": [6, 3, 4],
+    "formerInheritors": [
+      96
+    ],
+    "allegiance": [
+      6,
+      3,
+      4
+    ],
     "height": 1700,
-    "mbti": 4
+    "mbti": 4,
+    "slug": "beast-titan"
   },
   {
     "id": 5,
     "name": "Cart Titan",
-    "otherNames": ["Cart, Cartman", "Quadruped-type", "Quadrupedal-type"],
-    "abilities": ["Quadrupedal form", "High endurance", "Great speed", "Speech"],
+    "otherNames": [
+      "Cart, Cartman",
+      "Quadruped-type",
+      "Quadrupedal-type"
+    ],
+    "abilities": [
+      "Quadrupedal form",
+      "High endurance",
+      "Great speed",
+      "Speech"
+    ],
     "currentInheritor": 86,
     "formerInheritors": [],
-    "allegiance": [2],
+    "allegiance": [
+      2
+    ],
     "height": 400,
-    "mbti": null
+    "mbti": null,
+    "slug": "cart-titan"
   },
   {
     "id": 6,
     "name": "Colossal Titan",
-    "otherNames": ["Colossal", "God of Destruction"],
-    "abilities": ["Explosive transformation", "Immense size and strength", "Steam emission"],
+    "otherNames": [
+      "Colossal",
+      "God of Destruction"
+    ],
+    "abilities": [
+      "Explosive transformation",
+      "Immense size and strength",
+      "Steam emission"
+    ],
     "currentInheritor": 1,
-    "formerInheritors": [94],
-    "allegiance": [1, 4],
+    "formerInheritors": [
+      94
+    ],
+    "allegiance": [
+      1,
+      4
+    ],
     "height": 6000,
-    "mbti": 9
+    "mbti": 9,
+    "slug": "colossal-titan"
   },
   {
     "id": 7,
     "name": "Female Titan",
-    "otherNames": ["Female-looking Titan", "Woman Type Titan"],
-    "abilities": ["Versatility", "Titan Attraction", "Crystallization"],
+    "otherNames": [
+      "Female-looking Titan",
+      "Woman Type Titan"
+    ],
+    "abilities": [
+      "Versatility",
+      "Titan Attraction",
+      "Crystallization"
+    ],
     "currentInheritor": 91,
     "formerInheritors": [],
-    "allegiance": [2, 5],
+    "allegiance": [
+      2,
+      5
+    ],
     "height": 1400,
-    "mbti": 13
+    "mbti": 13,
+    "slug": "female-titan"
   },
   {
     "id": 8,
     "name": "Jaw Titan",
-    "otherNames": ["Jaw"],
-    "abilities": ["Powerful jaw strength", "Hardened claws", "Great speed and agility"],
+    "otherNames": [
+      "Jaw"
+    ],
+    "abilities": [
+      "Powerful jaw strength",
+      "Hardened claws",
+      "Great speed and agility"
+    ],
     "currentInheritor": 87,
-    "formerInheritors": [163, 95],
-    "allegiance": [2],
+    "formerInheritors": [
+      163,
+      95
+    ],
+    "allegiance": [
+      2
+    ],
     "height": 500,
-    "mbti": 16
+    "mbti": 16,
+    "slug": "jaw-titan"
   },
   {
     "id": 9,
     "name": "War Hammer Titan",
-    "otherNames": ["War Hammer"],
-    "abilities": ["Structural hardening", "Remote operation"],
+    "otherNames": [
+      "War Hammer"
+    ],
+    "abilities": [
+      "Structural hardening",
+      "Remote operation"
+    ],
     "currentInheritor": 175,
-    "formerInheritors": [113],
-    "allegiance": [1, 4],
+    "formerInheritors": [
+      113
+    ],
+    "allegiance": [
+      1,
+      4
+    ],
     "height": 1500,
-    "mbti": 1
+    "mbti": 1,
+    "slug": "war-hammer-titan"
   }
 ]

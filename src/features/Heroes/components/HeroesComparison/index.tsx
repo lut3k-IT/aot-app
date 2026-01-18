@@ -16,6 +16,7 @@ import PictureWithSelect from './components/PictureWithSelect';
 export type HeroTypeSelected = HeroType | null;
 export type HeroForSelect = {
   id: number;
+  slug: string;
   value: string;
 };
 
@@ -35,6 +36,7 @@ const HeroesComparison = () => {
       heroes.map((hero) => {
         return {
           id: hero.id,
+          slug: hero.slug,
           value: `${hero.firstName} ${hero.lastName || ''}`
         };
       })
