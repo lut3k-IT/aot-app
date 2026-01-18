@@ -1,5 +1,6 @@
 import { cva, VariantProps } from 'class-variance-authority';
 import { Image } from 'lucide-react';
+import NextImage from 'next/image';
 
 import { ImageSourceType } from '@/constants/types';
 import { cn } from '@/lib/utils';
@@ -36,13 +37,35 @@ interface CharacterPictureProps extends VariantProps<typeof characterPictureVari
 const CharacterPicture = (props: CharacterPictureProps) => {
   const { imgSource, className, variant, size, alt } = props;
 
+  let width = 84;
+  let height = 84;
+
+  if (size === 'lg') {
+    width = 128;
+    height = 128;
+  } else if (size === 'xl') {
+    width = 160;
+    height = 160;
+  }
+
+  const isFull = size === 'full';
+
   return (
     <Avatar className={cn(characterPictureVariants({ variant, size }), className)}>
       <AvatarImage
         src={imgSource}
-        alt={alt}
-        loading='lazy'
-      />
+        asChild
+      >
+        <NextImage
+          src={imgSource}
+          alt={alt || ''}
+          width={isFull ? undefined : width}
+          height={isFull ? undefined : height}
+          fill={isFull}
+          className={'object-cover'}
+          priority={size === 'xl'} // Optimize LCP for large avatars
+        />
+      </AvatarImage>
       <AvatarFallback className={cn(characterPictureVariants({ variant, size }))}>
         <Image className={'h-1/2 w-1/2 text-muted2-foreground'} />
       </AvatarFallback>

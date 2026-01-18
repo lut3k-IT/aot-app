@@ -45,8 +45,8 @@ export const ns = ['common', 'quiz', 'quotations', 'charts'];
 
 export const initOptions: InitOptions = {
   resources,
-  fallbackLng: LanguageShortName.ENGLISH,
-  lng: getLocalStorageItem(LocalStorageKey.LANGUAGE) || LanguageShortName.ENGLISH,
+  fallbackLng: LanguageShortName.POLISH,
+  lng: LanguageShortName.POLISH,
   debug: true,
   load: 'languageOnly',
   ns,

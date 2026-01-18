@@ -5,9 +5,8 @@ import { Check, SquareMousePointer } from 'lucide-react';
 import CharacterPicture from '@/components/ui/CharacterPicture';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '@/components/ui/Command';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/Popover';
+import { HeroForSelect, HeroTypeSelected } from '@/constants/types';
 import { cn } from '@/lib/utils';
-
-import { HeroForSelect, HeroTypeSelected } from '../..';
 
 interface PictureWithSelectProps {
   componentId: number;

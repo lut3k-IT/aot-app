@@ -15,7 +15,7 @@ const AotLogo = (props: AotLogoProps) => {
 
   return (
     <Link
-      href={RoutePath.HEROES}
+      href={RoutePath.LANDING}
       className={cn(
         'flex items-center gap-2 rounded-md ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
         className
@@ -25,7 +25,12 @@ const AotLogo = (props: AotLogoProps) => {
         name={'aot'}
         size={'lg'}
       />
-      <div className='mt-0.5 h-5 font-vector text-3xl leading-none'>{t('common:brand')}</div>
+      <div
+        suppressHydrationWarning
+        className='mt-0.5 h-5 font-vector text-3xl leading-none'
+      >
+        {t('common:brand')}
+      </div>
     </Link>
   );
 };

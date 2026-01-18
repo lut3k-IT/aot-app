@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { usePathname } from 'next/navigation';
 

@@ -35,6 +35,7 @@ const NavigationElement = (props: NavigationElementProps) => {
         />
       </div>
       <div
+        suppressHydrationWarning
         className={classNames('w-full text-center text-xs font-medium leading-none text-muted-foreground transition', {
           'translate-y-0.5 !text-foreground': isActive
         })}

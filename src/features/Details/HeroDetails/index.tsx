@@ -1,11 +1,13 @@
+'use client';
+
 import { useTranslation } from 'react-i18next';
 
 import { useApiErrorToast } from '@/components/hooks/useApiErrorToast';
 import useAppSelector from '@/components/hooks/useAppSelector';
 import { useToggleFavorite } from '@/components/hooks/useToggleFavorite';
-import AppHelmet from '@/components/ui/AppHelmet';
 import ButtonGoBack from '@/components/ui/ButtonGoBack';
 import CharacterPicture from '@/components/ui/CharacterPicture';
+import DynamicTitle from '@/components/ui/DynamicTitle';
 import FavoriteButton from '@/components/ui/FavoriteButton';
 import { MBTI_GROUPS_NAMES } from '@/constants/constants';
 import { RoutePath } from '@/constants/enums';
@@ -45,10 +47,7 @@ const HeroDetails = ({ routeSlug }: HeroDetailsProps) => {
 
   return (
     <DetailsContainer>
-      <AppHelmet
-        title={`${hero.firstName} ${hero.lastName || ''}`}
-        description={`${hero.firstName} ${hero.lastName || ''} - ${t('common:brand')}`}
-      />
+      <DynamicTitle title={`${hero.firstName} ${hero.lastName || ''}`} />
       <ButtonGoBack
         fallbackRoute={RoutePath.HEROES_GALLERY}
         aria-label={t('common:navigation.goBack')}

@@ -16,10 +16,26 @@ const Footer = () => {
         }
       >
         <HowToUse variant={'text'} />
-        <Link href={RoutePath.ABOUT}>{t('common:title.about')}</Link>
-        <Link href={RoutePath.CHANGELOG}>{t('common:title.changelog')}</Link>
-        <Link href={RoutePath.TERMS_OF_SERVICE}>{t('common:title.termsAndConditions')}</Link>
+        <Link
+          suppressHydrationWarning
+          href={RoutePath.ABOUT}
+        >
+          {t('common:title.about')}
+        </Link>
+        <Link
+          suppressHydrationWarning
+          href={RoutePath.CHANGELOG}
+        >
+          {t('common:title.changelog')}
+        </Link>
+        <Link
+          suppressHydrationWarning
+          href={RoutePath.TERMS_OF_SERVICE}
+        >
+          {t('common:title.termsAndConditions')}
+        </Link>
         <a
+          suppressHydrationWarning
           href={ExternalUrl.PORTFOLIO}
           target='_blank'
           rel='noreferrer'

@@ -85,3 +85,10 @@ export interface HeroFilters {
   sortDirection: SortDirection;
   filters: HeroFilterCriteria;
 }
+
+export type HeroTypeSelected = HeroType | undefined;
+export interface HeroForSelect {
+  id: number;
+  slug: string;
+  value: string;
+}

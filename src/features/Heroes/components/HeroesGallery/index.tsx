@@ -7,7 +7,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import { useApiErrorToast } from '@/components/hooks/useApiErrorToast';
 import useAppSelector from '@/components/hooks/useAppSelector';
-import AppHelmet from '@/components/ui/AppHelmet';
+import DynamicTitle from '@/components/ui/DynamicTitle';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import Pagination, { DEFAULT_PAGE, DEFAULT_PAGE_SIZES } from '@/components/ui/Pagination';
 import { ElementsIds, Param, SortDirection } from '@/constants/enums';
@@ -143,24 +143,26 @@ const HeroesGallery = () => {
   /* ------------------------------- error toast ------------------------------- */
 
   return (
-    <GalleryWrapper>
-      <AppHelmet title={`${t('common:title.heroes')} ${t('common:tab.gallery')}`} />
-      {pageHeadingDestination && createPortal(<Filter />, pageHeadingDestination)}
-      <Content
-        hasData={hasData}
-        hasDataToShow={hasDataToShow}
-        isLoading={isLoading}
-        paginatedHeroes={paginatedHeroes}
-        favoriteHeroesIds={favoriteHeroesIds}
-      />
-      {hasDataToShow && !isLoading && (
-        <Pagination
-          itemsCount={filteredHeroes.length}
-          totalPages={totalPages}
-          className={'col-span-full'}
+    <>
+      <DynamicTitle title={`${t('common:title.heroes')} ${t('common:tab.gallery')}`} />
+      <GalleryWrapper>
+        {pageHeadingDestination && createPortal(<Filter />, pageHeadingDestination)}
+        <Content
+          hasData={hasData}
+          hasDataToShow={hasDataToShow}
+          isLoading={isLoading}
+          paginatedHeroes={paginatedHeroes}
+          favoriteHeroesIds={favoriteHeroesIds}
         />
-      )}
-    </GalleryWrapper>
+        {hasDataToShow && !isLoading && (
+          <Pagination
+            itemsCount={filteredHeroes.length}
+            totalPages={totalPages}
+            className={'col-span-full'}
+          />
+        )}
+      </GalleryWrapper>
+    </>
   );
 };
 

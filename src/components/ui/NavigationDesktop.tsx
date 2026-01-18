@@ -32,6 +32,7 @@ const NavigationElement = (props: NavigationElementProps) => {
         />
       </div>
       <div
+        suppressHydrationWarning
         className={classNames('w-full text-lg font-medium leading-none text-foreground', {
           '!text-primary-foreground': isActive
         })}

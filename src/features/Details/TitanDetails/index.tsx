@@ -1,11 +1,13 @@
+'use client';
+
 import { useTranslation } from 'react-i18next';
 
 import { useApiErrorToast } from '@/components/hooks/useApiErrorToast';
 import useAppSelector from '@/components/hooks/useAppSelector';
 import { useToggleFavorite } from '@/components/hooks/useToggleFavorite';
-import AppHelmet from '@/components/ui/AppHelmet';
 import ButtonGoBack from '@/components/ui/ButtonGoBack';
 import CharacterPicture from '@/components/ui/CharacterPicture';
+import DynamicTitle from '@/components/ui/DynamicTitle';
 import FavoriteButton from '@/components/ui/FavoriteButton';
 import { MBTI_GROUPS_NAMES } from '@/constants/constants';
 import { RoutePath } from '@/constants/enums';
@@ -51,10 +53,7 @@ const TitanDetails = ({ routeSlug }: TitanDetailsProps) => {
 
   return (
     <DetailsContainer>
-      <AppHelmet
-        title={titan.name}
-        description={`${titan.name} - Attack on Titan ${t('common:brand')}`}
-      />
+      <DynamicTitle title={titan.name} />
       <ButtonGoBack
         fallbackRoute={RoutePath.TITANS}
         aria-label={t('common:navigation.goBack')}

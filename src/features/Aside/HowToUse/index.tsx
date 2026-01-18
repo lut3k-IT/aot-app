@@ -45,7 +45,7 @@ const HowToUse = ({ variant = 'icon' }: HowToUseProps) => {
             aria-label={t('common:howToUse')}
           />
         ) : (
-          <a>{t('common:howToUse')}</a>
+          <a suppressHydrationWarning>{t('common:howToUse')}</a>
         )}
       </DialogTrigger>
       <DialogContent className={'h-[37.5rem] max-h-[100svh]'}>

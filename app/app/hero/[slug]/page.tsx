@@ -1,12 +1,29 @@
-'use client';
+import { Metadata } from 'next';
 
-import { useParams } from 'next/navigation';
-
+import heroes from '@/data/heroes';
 import HeroDetails from '@/features/Details/HeroDetails';
 
-export default function HeroDetailsPage() {
-  const params = useParams();
-  const slug = params.slug as string;
+type Props = {
+  params: { slug: string };
+};
 
-  return <HeroDetails routeSlug={slug} />;
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const hero = heroes.find((h) => h.slug === params.slug);
+
+  if (!hero) {
+    return {
+      title: 'Hero Not Found | AOT APP'
+    };
+  }
+
+  const fullName = `${hero.firstName} ${hero.lastName || ''}`.trim();
+
+  return {
+    title: `${fullName} | AOT APP`,
+    description: `${fullName} - Explore Attack on Titan character details.`
+  };
+}
+
+export default function HeroDetailsPage({ params }: Props) {
+  return <HeroDetails routeSlug={params.slug} />;
 }
