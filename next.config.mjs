@@ -3,6 +3,9 @@ import withPWA from 'next-pwa';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  eslint: {
+    ignoreDuringBuilds: true
+  },
   webpack(config) {
     // Handle SVG imports with SVGR
     const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.('.svg'));

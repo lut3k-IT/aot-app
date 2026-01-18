@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect } from 'react';
 
 import useAppDispatch from '@/components/hooks/useAppDispatch';
@@ -9,14 +11,6 @@ let didInit = false;
 
 const Init = () => {
   const dispatch = useAppDispatch();
-  // const heroes = useAppSelector((state) => state.heroes.data);
-
-  // useEffect(() => {
-  //   heroes.forEach((hero) => {
-  //     const img = new Image();
-  //     img.src = `/assets/img/heroes/${hero.id}.jpg`;
-  //   });
-  // }, [heroes]);
 
   useEffect(() => {
     if (didInit) return;
