@@ -64,6 +64,7 @@ const CharacterPicture = (props: CharacterPictureProps) => {
           fill={isFull}
           className={'object-cover'}
           priority={size === 'xl'} // Optimize LCP for large avatars
+          unoptimized
         />
       </AvatarImage>
       <AvatarFallback className={cn(characterPictureVariants({ variant, size }))}>
