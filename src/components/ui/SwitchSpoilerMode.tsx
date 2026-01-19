@@ -35,6 +35,7 @@ const SwitchSpoilerMode = (props: SwitchSpoilerModeProps) => {
         onCheckedChange={handleToggle}
       />
       <Label
+        suppressHydrationWarning
         htmlFor='spoiler-mode'
         className='text-md font-medium leading-none'
       >

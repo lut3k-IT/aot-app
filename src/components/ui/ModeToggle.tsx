@@ -37,7 +37,12 @@ const ModeToggle = (props: ModeToggleProps) => {
         name={'moon'}
         className='absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100'
       />
-      <span className='sr-only'>{t('common:ui.modeToggle.title')}</span>
+      <span
+        suppressHydrationWarning
+        className='sr-only'
+      >
+        {t('common:ui.modeToggle.title')}
+      </span>
     </Button>
   );
 
@@ -59,8 +64,18 @@ const ModeToggle = (props: ModeToggleProps) => {
             className='absolute top-0 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100'
           />
         </div>
-        <span className='sr-only'>{t('common:ui.modeToggle.title')}</span>
-        <span className={'px-1 font-medium'}>{themeName}</span>
+        <span
+          suppressHydrationWarning
+          className='sr-only'
+        >
+          {t('common:ui.modeToggle.title')}
+        </span>
+        <span
+          suppressHydrationWarning
+          className={'px-1 font-medium'}
+        >
+          {themeName}
+        </span>
       </Button>
     </span>
   );

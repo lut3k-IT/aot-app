@@ -1,7 +1,9 @@
-/* eslint-disable no-undef */
 import { cn } from '@/lib/utils';
 
 import { Badge } from './Badge';
+
+// Version from package.json - in production, this could be injected at build time
+const APP_VERSION = process.env.NEXT_PUBLIC_APP_VERSION || '0.5.1';
 
 interface AppVersionBadgeProps {
   className?: string;

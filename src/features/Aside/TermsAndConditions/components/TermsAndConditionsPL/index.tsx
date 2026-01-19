@@ -68,11 +68,11 @@ const TermsAndConditionsPL = () => {
           <p>
             <strong>Website</strong> refers to AOT APP, accessible from{' '}
             <a
-              href='https://aot.lut3k.com/'
+              href='https://aot.kacperlutynski.pl/'
               rel='external nofollow noopener noreferrer'
               target='_blank'
             >
-              https://aot.lut3k.com/
+              https://aot.kacperlutynski.pl/
             </a>
           </p>
         </li>

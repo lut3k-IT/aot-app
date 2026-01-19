@@ -23,7 +23,7 @@ import {
   X
 } from 'lucide-react';
 
-import { ReactComponent as Aot } from '@/assets/icons/aot-icon.svg';
+import AotIcon from '@/assets/icons/aot-icon.svg';
 import { cn } from '@/lib/utils';
 
 const iconVariants = cva('text-current', {
@@ -70,7 +70,11 @@ export type IconNames =
   | 'chevronFirst'
   | 'chevronLast';
 
-type Icons = Record<IconNames, React.ElementType>;
+// Icons that have their own colors and shouldn't have fill overridden
+const customColorIcons: IconNames[] = ['aot'];
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Icons = Record<IconNames, React.ComponentType<any>>;
 
 export interface IconProps extends Partial<LucideIcon>, VariantProps<typeof iconVariants> {
   name: IconNames;
@@ -83,7 +87,7 @@ const Icon = ({ name, size, variant, color, isFilled = false, className, ...prop
   const iconsSet: Icons = {
     arrowDownWideNarrow: ArrowDownWideNarrow,
     arrowDownNarrowWide: ArrowDownNarrowWide,
-    aot: Aot,
+    aot: AotIcon,
     heart: Heart,
     dna: Dna,
     filter: Filter,
@@ -113,6 +117,20 @@ const Icon = ({ name, size, variant, color, isFilled = false, className, ...prop
   );
 
   const iconColor = color ? color : 'currentColor';
+
+  // Don't override colors for custom SVGs that have their own fill
+  const isCustomColorIcon = customColorIcons.includes(name);
+
+  if (isCustomColorIcon) {
+    // For custom SVGs, ensure viewBox is preserved for proper scaling
+    return (
+      <IconComponent
+        className={iconClass}
+        viewBox='0 0 112 112'
+        {...props}
+      />
+    );
+  }
 
   return (
     <IconComponent

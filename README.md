@@ -7,7 +7,7 @@
 AOT APP is a fan-made web application based on the popular anime Attack on Titan. It was created for
 fans who want to improve their viewing experience and deepen their knowledge of the series&apos; rich universe.
 
-Explore the app: <a href="https://aot.lut3k.com" target="_blank">aot.lut3k.com</a>
+Explore the app: <a href="https://aot.kacperlutynski.pl" target="_blank">aot.kacperlutynski.pl</a>
 
 <div align="center">
   <img src="public/assets/img/AOT-APP-iPhone-13-mockup.png" alt="AOT APP iPhone mockup" style="width: 300px;">

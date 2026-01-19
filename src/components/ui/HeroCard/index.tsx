@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import { RoutePath } from '@/constants/enums';
 import { FavoriteType, HeroType } from '@/constants/types';
@@ -23,7 +23,7 @@ const cnContainer = 'flex gap-4 h-27';
 
 const HeroCard = (props: HeroCardProps) => {
   const { data, favorites } = props;
-  const { id, mbti, firstName = '', lastName = '', residence } = data;
+  const { id, mbti, firstName = '', lastName = '', residence, slug } = data;
 
   const { t } = useTranslation();
   const isShowingSpoilers = useAppSelector((state) => state.spoilerMode);
@@ -36,12 +36,12 @@ const HeroCard = (props: HeroCardProps) => {
   return (
     <div className={cnContainer}>
       <Link
-        to={`${RoutePath.HERO_DETAILS}/${id}`}
+        href={`${RoutePath.HERO_DETAILS}/${slug}`}
         className={'rounded-md'}
       >
         <MbtiFrame mbtiId={mbti}>
           <CharacterPicture
-            imgSource={`/assets/img/heroes/${id}.jpg`}
+            imgSource={`/assets/img/heroes/${slug}.jpg`}
             alt={`${firstName} ${lastName} - Attack on Titan ${t('common:brand')}`}
             variant={'roundedBtm'}
           />

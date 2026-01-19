@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react';
+'use client';
+
+import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSearchParams } from 'react-router-dom';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import { useToast } from '@/components/hooks/useToast';
 import { Button } from '@/components/ui/Button';
@@ -57,7 +59,9 @@ import {
 const Filter = () => {
   const { t } = useTranslation();
   const { toast } = useToast();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const { state, dispatch } = useFilterReducer();
 
@@ -160,10 +164,9 @@ const Filter = () => {
 
     dispatch({ type: 'SET_SEARCH', payload: state.search.trim() });
 
-    setSearchParams((searchParams) => {
-      updateSearchParams(searchParams, parameters);
-      return searchParams;
-    });
+    const newParams = new URLSearchParams(searchParams.toString());
+    updateSearchParams(newParams, parameters);
+    router.push(pathname + '?' + newParams.toString());
 
     toast({
       title: t('notifications:common.filtersApplied')
@@ -206,7 +209,7 @@ const Filter = () => {
     dispatch({ type: 'SET_SORT_DIRECTION', payload: sortDirection });
     dispatch({ type: 'SET_HAS_ONLY_FAVORITES', payload: hasOnlyFavorites });
     dispatch({ type: 'SET_SEARCH', payload: search });
-  }, [searchParams]);
+  }, [searchParams, dispatch]);
 
   return (
     <Dialog

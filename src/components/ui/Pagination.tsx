@@ -1,11 +1,14 @@
+'use client';
+
+import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSearchParams } from 'react-router-dom';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/Select';
 import { Param } from '@/constants/enums';
 import { cn } from '@/lib/utils';
 import { scrollToTop } from '@/utils/helpers';
-import { deleteSomeSearchParams, getSafePageNumberFromSearchParam } from '@/utils/paramsHelpers';
+import { getSafePageNumberFromSearchParam } from '@/utils/paramsHelpers';
 
 import { Button } from './Button';
 
@@ -23,7 +26,9 @@ const Pagination = (props: PaginationProps) => {
   const { itemsCount, totalPages, pageSizeOptions = DEFAULT_PAGE_SIZES, className } = props;
 
   const { t } = useTranslation();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   const page = getSafePageNumberFromSearchParam(searchParams);
   const pageSize = Number(searchParams.get(Param.PAGE_SIZE)) || DEFAULT_PAGE_SIZES[0];
@@ -31,35 +36,44 @@ const Pagination = (props: PaginationProps) => {
   const firstElement = page * pageSize - pageSize + 1;
   const lastElement = page !== totalPages ? page * pageSize : itemsCount;
 
+  const createQueryString = useCallback(
+    (params: { name: string; value: string | null }[]) => {
+      const newParams = new URLSearchParams(searchParams.toString());
+      params.forEach(({ name, value }) => {
+        if (value === null) {
+          newParams.delete(name);
+        } else {
+          newParams.set(name, value);
+        }
+      });
+      return newParams.toString();
+    },
+    [searchParams]
+  );
+
   /* -------------------------------- handlers -------------------------------- */
 
   const handleChangePage = (newPage: number) => {
     if (newPage <= 1) {
-      deleteSomeSearchParams(setSearchParams, [Param.PAGE]);
+      router.push(pathname + '?' + createQueryString([{ name: Param.PAGE, value: null }]));
       return;
     }
     if (newPage > totalPages) {
-      setSearchParams((searchParams) => {
-        searchParams.set(Param.PAGE, totalPages.toString());
-        return searchParams;
-      });
+      router.push(pathname + '?' + createQueryString([{ name: Param.PAGE, value: totalPages.toString() }]));
       return;
     }
     page !== newPage && scrollToTop();
-    setSearchParams((searchParams) => {
-      searchParams.set(Param.PAGE, newPage.toString());
-      return searchParams;
-    });
+    router.push(pathname + '?' + createQueryString([{ name: Param.PAGE, value: newPage.toString() }]));
   };
 
   const handleChangePageSize = (pageSize: string) => {
-    setSearchParams((searchParams) => {
-      searchParams.delete(Param.PAGE);
-      +pageSize !== DEFAULT_PAGE_SIZES[0]
-        ? searchParams.set(Param.PAGE_SIZE, pageSize)
-        : searchParams.delete(Param.PAGE_SIZE);
-      return searchParams;
-    });
+    const params: { name: string; value: string | null }[] = [{ name: Param.PAGE, value: null }];
+    if (+pageSize !== DEFAULT_PAGE_SIZES[0]) {
+      params.push({ name: Param.PAGE_SIZE, value: pageSize });
+    } else {
+      params.push({ name: Param.PAGE_SIZE, value: null });
+    }
+    router.push(pathname + '?' + createQueryString(params));
   };
 
   return (

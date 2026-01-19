@@ -29,7 +29,10 @@ const PageHeading = (props: PageHeadingProps) => {
         className
       )}
     >
-      <div className={'text-4xl font-bold leading-none tracking-wide text-muted2-foreground'}>
+      <div
+        suppressHydrationWarning
+        className={'text-4xl font-bold leading-none tracking-wide text-muted2-foreground'}
+      >
         {t('common:time.year.singular')} {year}
       </div>
       <div id={ElementsIds.PAGE_HEADING_OPTIONS} />

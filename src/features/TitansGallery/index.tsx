@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
@@ -5,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { useApiErrorToast } from '@/components/hooks/useApiErrorToast';
 import useAppSelector from '@/components/hooks/useAppSelector';
 import useIsLandscape from '@/components/hooks/useIsLandscape';
-import AppHelmet from '@/components/ui/AppHelmet';
+import DynamicTitle from '@/components/ui/DynamicTitle';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import MovingPanel from '@/components/ui/MovingPanel';
 import PageHeading from '@/components/ui/PageHeading';
@@ -38,7 +40,7 @@ const TitansGallery = () => {
 
   return (
     <>
-      <AppHelmet title={`${t('common:title.titans')} ${t('common:tab.gallery')}`} />
+      <DynamicTitle title={`${t('common:title.titans')} ${t('common:tab.gallery')}`} />
       <MovingPanel className={isLandscape ? '' : 'md:pt-0'}>
         <PageHeading className={isLandscape ? '' : 'md:pt-0'} />
         {pageHeadingDestination &&

@@ -23,6 +23,7 @@ export interface HeroType {
   readonly id: number;
   readonly firstName: string;
   readonly lastName: string | null;
+  readonly slug: string;
   readonly species: number;
   readonly age: number | null;
   readonly height: number | null;
@@ -36,6 +37,7 @@ export interface HeroType {
 export interface TitanType {
   readonly id: number;
   readonly name: string;
+  readonly slug: string;
   readonly otherNames: string[];
   readonly abilities: string[];
   readonly currentInheritor: number | null;
@@ -82,4 +84,11 @@ export interface HeroFilters {
   sort: HeroSortOption;
   sortDirection: SortDirection;
   filters: HeroFilterCriteria;
+}
+
+export type HeroTypeSelected = HeroType | undefined;
+export interface HeroForSelect {
+  id: number;
+  slug: string;
+  value: string;
 }

@@ -1,7 +1,8 @@
+'use client';
+
 import { useTranslation } from 'react-i18next';
 
 import useIsMobileOrLandscape from '@/components/hooks/useIsMobileOrLandscape';
-import AppHelmet from '@/components/ui/AppHelmet';
 import { LanguageShortName } from '@/constants/enums';
 
 import TermsAndConditionsEN from './components/TermsAndConditionsEN';
@@ -14,7 +15,6 @@ const TermsAndConditions = () => {
 
   return (
     <div className={isMobileLandscape ? 'pt-body-start' : ''}>
-      <AppHelmet title={t('common:title.termsAndConditions')} />
       {i18n.language === LanguageShortName.ENGLISH ? <TermsAndConditionsEN /> : <TermsAndConditionsPL />}
     </div>
   );

@@ -1,7 +1,9 @@
+'use client';
+
 import { useTranslation } from 'react-i18next';
 
 import useIsMobileOrLandscape from '@/components/hooks/useIsMobileOrLandscape';
-import AppHelmet from '@/components/ui/AppHelmet';
+import DynamicTitle from '@/components/ui/DynamicTitle';
 import { LanguageShortName } from '@/constants/enums';
 
 import AboutEN from './components/AboutEN';
@@ -14,7 +16,7 @@ const About = () => {
 
   return (
     <div className={isMobileLandscape ? 'pt-body-start' : ''}>
-      <AppHelmet title={t('common:title.about')} />
+      <DynamicTitle title={t('common:title.about')} />
       {i18n.language === LanguageShortName.ENGLISH ? <AboutEN /> : <AboutPL />}
     </div>
   );

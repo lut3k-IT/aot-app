@@ -1,13 +1,13 @@
+'use client';
+
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
 
 import { useApiErrorToast } from '@/components/hooks/useApiErrorToast';
 import useAppSelector from '@/components/hooks/useAppSelector';
 import { useToggleFavorite } from '@/components/hooks/useToggleFavorite';
-import useValidateIdFromParam from '@/components/hooks/useValidateIdFromParam';
-import AppHelmet from '@/components/ui/AppHelmet';
 import ButtonGoBack from '@/components/ui/ButtonGoBack';
 import CharacterPicture from '@/components/ui/CharacterPicture';
+import DynamicTitle from '@/components/ui/DynamicTitle';
 import FavoriteButton from '@/components/ui/FavoriteButton';
 import { MBTI_GROUPS_NAMES } from '@/constants/constants';
 import { RoutePath } from '@/constants/enums';
@@ -20,21 +20,23 @@ import DetailsContainer from '../components/DetailsContainer';
 import MBTIBar from '../components/MBTIBar';
 import Tiles from './components/Tiles';
 
-const TitanDetails = () => {
-  const { id } = useParams();
+interface TitanDetailsProps {
+  routeSlug?: string;
+}
+
+const TitanDetails = ({ routeSlug }: TitanDetailsProps) => {
   const { t } = useTranslation();
 
-  const paramTitanId = useValidateIdFromParam(id);
+  if (!routeSlug) throw new Error('URL is incompatible.');
 
   const originalTitans = useAppSelector((state) => state.titans.data);
   const originalHeroes = useAppSelector((state) => state.heroes.data);
   const favoriteTitansIds = useAppSelector((state) => state.titans.favoriteIds);
-  // const fetchingStatus = useAppSelector((state) => state.titans.status);
   const fetchingError = useAppSelector((state) => state.titans.error);
   useApiErrorToast(fetchingError);
 
-  const titan = originalTitans.find((titan) => titan.id === paramTitanId);
-  const isFavorite = isInFavorites(paramTitanId, favoriteTitansIds);
+  const titan = originalTitans.find((titan) => titan.slug === routeSlug);
+  const isFavorite = titan ? isInFavorites(titan.id, favoriteTitansIds) : false;
   const currentInheritor = titan?.currentInheritor ? getHeroName(titan.currentInheritor, originalHeroes) : '-';
   const formerInheritors =
     titan && titan.formerInheritors.length > 0
@@ -51,10 +53,7 @@ const TitanDetails = () => {
 
   return (
     <DetailsContainer>
-      <AppHelmet
-        title={titan.name}
-        description={`${titan.name} - Attack on Titan ${t('common:brand')}`}
-      />
+      <DynamicTitle title={titan.name} />
       <ButtonGoBack
         fallbackRoute={RoutePath.TITANS}
         aria-label={t('common:navigation.goBack')}
@@ -62,7 +61,7 @@ const TitanDetails = () => {
       <div className={'details-profile-wrapper'}>
         <MBTIBar mbtiGroupName={mbtiGroupName} />
         <CharacterPicture
-          imgSource={`/assets/img/titans/${paramTitanId}.jpg`}
+          imgSource={`/assets/img/titans/${titan.slug}.jpg`}
           alt={`${titan.name} - Attack on Titan ${t('common:brand')}`}
           size={'xl'}
           variant={'circle'}

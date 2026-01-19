@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import { Button } from '@/components/ui/Button';
 import CharacterPicture from '@/components/ui/CharacterPicture';
@@ -45,7 +45,7 @@ const HowToUse = ({ variant = 'icon' }: HowToUseProps) => {
             aria-label={t('common:howToUse')}
           />
         ) : (
-          <a>{t('common:howToUse')}</a>
+          <a suppressHydrationWarning>{t('common:howToUse')}</a>
         )}
       </DialogTrigger>
       <DialogContent className={'h-[37.5rem] max-h-[100svh]'}>
@@ -73,12 +73,12 @@ const HowToUse = ({ variant = 'icon' }: HowToUseProps) => {
             <p>{t('howToUse:details.description')}</p>
             <ExampleSection>
               <Link
-                to={`${RoutePath.HERO_DETAILS}/1`}
+                href={`${RoutePath.HERO_DETAILS}/armin-arlelt`}
                 className={'rounded-md'}
               >
                 <MbtiFrame mbtiId={5}>
                   <CharacterPicture
-                    imgSource={'/assets/img/heroes/1.jpg'}
+                    imgSource={'/assets/img/heroes/armin-arlelt.jpg'}
                     variant={'roundedBtm'}
                   />
                 </MbtiFrame>

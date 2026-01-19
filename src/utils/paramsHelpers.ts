@@ -1,41 +1,23 @@
-import { URLSearchParams } from 'url';
-
-import { SetURLSearchParams } from 'react-router-dom';
+import { ReadonlyURLSearchParams } from 'next/navigation';
 
 import { DEFAULT_PAGE } from '@/components/ui/Pagination';
 import { Param } from '@/constants/enums';
 
-export const getNumberParam = (searchParams: URLSearchParams, paramName: Param, defaultValue: number) => {
+type SearchParamsType = URLSearchParams | ReadonlyURLSearchParams;
+
+export const getNumberParam = (searchParams: SearchParamsType, paramName: Param, defaultValue: number) => {
   const paramValue = searchParams.get(paramName) === null ? defaultValue : Number(searchParams.get(paramName));
   return isNaN(paramValue) ? defaultValue : paramValue;
 };
 
-export const getBooleanParam = (searchParams: URLSearchParams, paramName: Param) => {
+export const getBooleanParam = (searchParams: SearchParamsType, paramName: Param) => {
   const paramValue = searchParams.get(paramName)?.toLowerCase();
   if (paramValue === 'true') return true;
   return false;
 };
 
-export const getSafePageNumberFromSearchParam = (searchParams: URLSearchParams) =>
+export const getSafePageNumberFromSearchParam = (searchParams: SearchParamsType) =>
   Number(searchParams.get(Param.PAGE)) > 0 ? Number(searchParams.get(Param.PAGE)) : DEFAULT_PAGE;
-
-export const deleteSomeSearchParams = (setSearchParams: SetURLSearchParams, paramNames: Param[]) => {
-  setSearchParams((searchParams) => {
-    paramNames.forEach((paramName) => {
-      searchParams.delete(paramName);
-    });
-    return searchParams;
-  });
-};
-
-export const setSomeSearchParams = (setSearchParams: SetURLSearchParams, paramNames: Param[], paramValue: string) => {
-  setSearchParams((searchParams) => {
-    paramNames.forEach((paramName) => {
-      searchParams.set(paramName, paramValue);
-    });
-    return searchParams;
-  });
-};
 
 const handleNullValue = (searchParams: URLSearchParams, param: Param) => {
   searchParams.delete(param);

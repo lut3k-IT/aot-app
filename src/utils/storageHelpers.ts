@@ -1,4 +1,5 @@
 export const getLocalStorageItem = (key: string) => {
+  if (typeof window === 'undefined') return null;
   const value = window.localStorage.getItem(key);
   if (value === '') {
     return null;
@@ -7,6 +8,7 @@ export const getLocalStorageItem = (key: string) => {
 };
 
 export const setLocalStorageItem = (key: string, value: string) => {
+  if (typeof window === 'undefined') return;
   if (value == null) {
     value = '';
   }
@@ -14,6 +16,7 @@ export const setLocalStorageItem = (key: string, value: string) => {
 };
 
 export const getSessionStorageItem = (key: string) => {
+  if (typeof window === 'undefined') return null;
   const value = window.sessionStorage.getItem(key);
   if (value === '') {
     return null;
@@ -22,6 +25,7 @@ export const getSessionStorageItem = (key: string) => {
 };
 
 export const setSessionStorageItem = (key: string, value: string) => {
+  if (typeof window === 'undefined') return;
   if (value == null) {
     value = '';
   }

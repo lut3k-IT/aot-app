@@ -5,9 +5,8 @@ import { Check, SquareMousePointer } from 'lucide-react';
 import CharacterPicture from '@/components/ui/CharacterPicture';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '@/components/ui/Command';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/Popover';
+import { HeroForSelect, HeroTypeSelected } from '@/constants/types';
 import { cn } from '@/lib/utils';
-
-import { HeroForSelect, HeroTypeSelected } from '../..';
 
 interface PictureWithSelectProps {
   componentId: number;
@@ -28,7 +27,7 @@ const PictureWithSelect = (props: PictureWithSelectProps) => {
       className={cn('focus-visible-styles max-h-[8rem] w-full max-w-[8rem] rounded-full', className)}
     >
       <CharacterPicture
-        imgSource={selectedHero ? `/assets/img/heroes/${selectedHero.id}.jpg` : undefined}
+        imgSource={selectedHero ? `/assets/img/heroes/${selectedHero.slug}.jpg` : undefined}
         alt={selectedHero?.firstName || 'Hero to compare'}
         size={'full'}
         variant={'circle'}

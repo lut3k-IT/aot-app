@@ -1,13 +1,13 @@
+'use client';
+
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
 
 import { useApiErrorToast } from '@/components/hooks/useApiErrorToast';
 import useAppSelector from '@/components/hooks/useAppSelector';
 import { useToggleFavorite } from '@/components/hooks/useToggleFavorite';
-import useValidateIdFromParam from '@/components/hooks/useValidateIdFromParam';
-import AppHelmet from '@/components/ui/AppHelmet';
 import ButtonGoBack from '@/components/ui/ButtonGoBack';
 import CharacterPicture from '@/components/ui/CharacterPicture';
+import DynamicTitle from '@/components/ui/DynamicTitle';
 import FavoriteButton from '@/components/ui/FavoriteButton';
 import { MBTI_GROUPS_NAMES } from '@/constants/constants';
 import { RoutePath } from '@/constants/enums';
@@ -20,21 +20,22 @@ import DetailsContainer from '../components/DetailsContainer';
 import MBTIBar from '../components/MBTIBar';
 import Tiles from './components/Tiles';
 
-const HeroDetails = () => {
-  const { id } = useParams();
+interface HeroDetailsProps {
+  routeSlug?: string;
+}
+
+const HeroDetails = ({ routeSlug }: HeroDetailsProps) => {
   const { t } = useTranslation();
 
-  const paramHeroId = useValidateIdFromParam(id);
+  if (!routeSlug) throw new Error('URL is incompatible.');
 
   const originalHeroes = useAppSelector((state) => state.heroes.data);
   const favoriteHeroesIds = useAppSelector((state) => state.heroes.favoriteIds);
-  // const fetchingStatus = useAppSelector((state) => state.heroes.status);
   const fetchingError = useAppSelector((state) => state.heroes.error);
-  // const isLoading = fetchingStatus === 'loading';
   useApiErrorToast(fetchingError);
 
-  const hero = originalHeroes.find((hero) => hero.id === paramHeroId);
-  const isFavorite = isInFavorites(paramHeroId, favoriteHeroesIds);
+  const hero = originalHeroes.find((hero) => hero.slug === routeSlug);
+  const isFavorite = hero ? isInFavorites(hero.id, favoriteHeroesIds) : false;
 
   const mbtiObj = mbti.find((data) => data.id === hero?.mbti);
   const mbtiGroupName: MbtiGroups = mbtiObj ? MBTI_GROUPS_NAMES[mbtiObj.mbtiGroup - 1] : 'default';
@@ -46,10 +47,7 @@ const HeroDetails = () => {
 
   return (
     <DetailsContainer>
-      <AppHelmet
-        title={`${hero.firstName} ${hero.lastName || ''}`}
-        description={`${hero.firstName} ${hero.lastName || ''} - ${t('common:brand')}`}
-      />
+      <DynamicTitle title={`${hero.firstName} ${hero.lastName || ''}`} />
       <ButtonGoBack
         fallbackRoute={RoutePath.HEROES_GALLERY}
         aria-label={t('common:navigation.goBack')}
@@ -57,7 +55,7 @@ const HeroDetails = () => {
       <div className={'details-profile-wrapper'}>
         <MBTIBar mbtiGroupName={mbtiGroupName} />
         <CharacterPicture
-          imgSource={`/assets/img/heroes/${paramHeroId}.jpg`}
+          imgSource={`/assets/img/heroes/${hero.slug}.jpg`}
           alt={`${hero.firstName} ${hero.lastName} - Attack on Titan ${t('common:brand')}`}
           size={'xl'}
           variant={'circle'}

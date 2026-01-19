@@ -1,8 +1,10 @@
+'use client';
+
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useBestScore } from '@/components/hooks/useBestScore';
-import AppHelmet from '@/components/ui/AppHelmet';
+import DynamicTitle from '@/components/ui/DynamicTitle';
 import { shuffle } from '@/utils/helpers';
 
 import Answers from './components/Answers';
@@ -19,7 +21,9 @@ const Quiz = () => {
 
   const [shuffledIndices, setShuffledIndices] = useState<number[] | null>(null);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const translatedQuestions: any[] = useMemo(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     () => (t('questions', { ns: 'quiz', returnObjects: true }) as any[]) || [],
     [t]
   );
@@ -70,10 +74,8 @@ const Quiz = () => {
   }
 
   return (
-    <div
-      className={'flex w-full items-center justify-center pt-body-start md:pt-0'}
-    >
-      <AppHelmet title={t('common:title.quiz')} />
+    <div className={'flex w-full items-center justify-center pt-body-start md:pt-0'}>
+      <DynamicTitle title={t('common:title.quiz')} />
       <div className={'w-full'}>
         <QuizCard>
           {isShowResult ? (

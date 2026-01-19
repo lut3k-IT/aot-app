@@ -69,8 +69,8 @@
 @font-face {
   font-family: 'Vector';
   src:
-    url('/src/assets/fonts/vector_regular_otf-webfont.woff2') format('woff2'),
-    url('/src/assets/fonts/vector_regular_otf-webfont.woff') format('woff');
+    url('/fonts/vector_regular_otf-webfont.woff2') format('woff2'),
+    url('/fonts/vector_regular_otf-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -186,7 +186,7 @@
     }
 
     & code {
-      @apply font-mono relative rounded bg-muted px-[0.3rem] py-[0.2rem] text-sm font-semibold;
+      @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
     }
   }
 }

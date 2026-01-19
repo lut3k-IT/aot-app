@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
+import Link from 'next/link';
 
 import { ExternalUrl, RoutePath } from '@/constants/enums';
 import { cn } from '@/lib/utils';
@@ -119,7 +119,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return linkTo ? (
       <Link
         className={'contents'}
-        to={linkTo}
+        href={linkTo}
       >
         {ButtonComponent}
       </Link>

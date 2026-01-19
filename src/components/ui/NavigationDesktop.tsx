@@ -1,6 +1,8 @@
+'use client';
+
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+import Link from 'next/link';
 
 import { navigationData, NavigationElementProps } from '@/data/navigation';
 
@@ -11,11 +13,11 @@ const NavigationElement = (props: NavigationElementProps) => {
   const { data } = props;
   const { t } = useTranslation();
 
-  const isActive = useIsMatchingRouteSegment(data.route);
+  const isActive = useIsMatchingRouteSegment(data.route, 2);
 
   return (
     <Link
-      to={data.route}
+      href={data.route}
       className={classNames('flex w-full items-center gap-3 rounded-md px-4 py-2.5', {
         'bg-primary': isActive
       })}
@@ -30,6 +32,7 @@ const NavigationElement = (props: NavigationElementProps) => {
         />
       </div>
       <div
+        suppressHydrationWarning
         className={classNames('w-full text-lg font-medium leading-none text-foreground', {
           '!text-primary-foreground': isActive
         })}
