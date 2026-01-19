@@ -61,6 +61,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@netlify/plugin-nextjs": "^5.15.5",
     "@svgr/webpack": "^8.1.0",
     "@types/node": "^20.14.6",
     "@types/numeral": "^2.0.5",
