@@ -22,12 +22,11 @@ const LandingPage = () => {
       {/* Animated background grid - Fixed to stay in background while scrolling */}
       <div className='fixed inset-0 z-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]' />
 
-      {/* Gradient orbs - Fixed */}
-      <div className='fixed left-1/4 top-1/4 -z-10 h-96 w-96 animate-pulse rounded-full bg-red-600/20 blur-3xl' />
-      <div className='fixed bottom-1/4 right-1/4 -z-10 h-96 w-96 animate-pulse rounded-full bg-orange-600/10 blur-3xl' />
-
       {/* Hero Section */}
       <section className='relative z-10 flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 text-center'>
+        <div className='absolute left-[30%] top-[30%] -z-10 h-64 w-64 animate-[pulse_6s_ease-in-out_infinite] rounded-full bg-red-600/20 blur-3xl' />
+        <div className='absolute right-[30%] top-[30%] -z-10 h-64 w-64 animate-[pulse_8s_ease-in-out_infinite] rounded-full bg-orange-600/20 blur-3xl delay-1000' />
+        <div className='absolute left-1/2 top-1/2 -z-10 h-96 w-96 -translate-x-1/2 -translate-y-1/2 animate-[pulse_10s_ease-in-out_infinite] rounded-full bg-red-900/10 blur-3xl delay-500' />
         <div
           className={`transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
         >
