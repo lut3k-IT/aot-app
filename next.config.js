@@ -1,4 +1,9 @@
-import withPWA from 'next-pwa';
+const withPWA = require('@ducanh2912/next-pwa').default({
+  dest: 'public',
+  disable: process.env.NODE_ENV === 'development',
+  register: true,
+  skipWaiting: true
+});
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -8,7 +13,7 @@ const nextConfig = {
   },
   webpack(config) {
     // Handle SVG imports with SVGR
-    const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.('.svg'));
+    const fileLoaderRule = config.module.rules.find((rule) => rule.test && rule.test.test && rule.test.test('.svg'));
 
     config.module.rules.push(
       // Reapply the existing rule, but only for svg imports ending in ?url
@@ -33,11 +38,4 @@ const nextConfig = {
   }
 };
 
-const pwaConfig = withPWA({
-  dest: 'public',
-  disable: process.env.NODE_ENV === 'development',
-  register: true,
-  skipWaiting: true
-});
-
-export default pwaConfig(nextConfig);
+module.exports = withPWA(nextConfig);
