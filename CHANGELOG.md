@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.6.0](https://github.com/lut3k-IT/aot-app/compare/v0.5.1...v0.6.0) (2026-01-19)
+
+
+### Features
+
+* **agent-rules:** add project rules definition file ([c4f4cd7](https://github.com/lut3k-IT/aot-app/commit/c4f4cd739d0b1b2ffcc9d40028719e2a01f2c40b))
+* **landing:** add landing page FAQ, features, about sections and footer ([cb4a2bd](https://github.com/lut3k-IT/aot-app/commit/cb4a2bd35ca6063574dfe5d8626438515980d3fc))
+* migrate from Vite to Next.js 14+ with App Router ([4e85688](https://github.com/lut3k-IT/aot-app/commit/4e85688a829c49f104fab4b4ff9c2349ec9f875e))
+
+
+### Bug Fixes
+
+* **app:** resolve hydration errors and implement dynamic page titles ([c0c7bb9](https://github.com/lut3k-IT/aot-app/commit/c0c7bb9082fecd49a91d736febdc048955723306))
+
 ## [0.5.1](https://github.com/lut3k-IT/aot-app/compare/v0.5.0...v0.5.1) (2025-12-23)
 
 
