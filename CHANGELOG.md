@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.1](https://github.com/lut3k-IT/aot-app/compare/v0.6.0...v0.6.1) (2026-01-19)
+
+
+### Bug Fixes
+
+* **ui:** add unoptimized prop to CharacterPicture to resolve image loading errors ([62a31c6](https://github.com/lut3k-IT/aot-app/commit/62a31c655c03ac6ab6aa217a29e13274ba16c55f))
+
 ## [0.6.0](https://github.com/lut3k-IT/aot-app/compare/v0.5.1...v0.6.0) (2026-01-19)
 
 
