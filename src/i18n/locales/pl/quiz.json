@@ -2,114 +2,218 @@
   "questions": [
     {
       "id": 1,
-      "question": "Piosenki z openingów \"Attack on Titan\" wykonuje zespół:",
-      "options": ["Linked Horizon", "SID", "Die Gazette", "14:00"],
-      "correctAnswer": 0
+      "question": "Co terroryzuje ludzkość?",
+      "options": ["Osy", "Tytani", "Węże", "Bogowie"],
+      "correctAnswer": 1
     },
     {
       "id": 2,
-      "question": "Co zrobił Hannes, gdy po raz pierwszy spotkał Tytana Uśmiechniętego? (Atak Tytanów)",
-      "options": [
-        "Uciekł ratując Erena i Mikasę",
-        "Został zjedzony, gdy sparaliżowany strachem nie mógł się ruszyć",
-        "Walczył z nim i zginął",
-        "Walczył z nim i wygrał"
-      ],
-      "correctAnswer": 0
+      "question": "Co otacza obszar, w którym żyją ludzie?",
+      "options": ["Rzeka", "Gęsty las", "Ocean", "Mury"],
+      "correctAnswer": 3
     },
     {
       "id": 3,
-      "question": "Kto ocalił Mikasę Ackerman przed bandytami w \"Shingeki no Kyojin\"?",
-      "options": ["Korpus Stacjonarny", "Dot Pixis", "Eren Jaeger", "Grisha Jaeger"],
-      "correctAnswer": 2
-    },
-    {
-      "id": 4,
-      "question": "Ending drugiej serii \"Attack on Titan\" przedstawia:",
-      "options": [
-        "Wydarzenia na długo przed fabułą właściwą",
-        "Wydarzenia niezwiązane z fabułą",
-        "Wydarzenia równoległe do fabuły właściwej",
-        "Wydarzenia dziejące się prawdopodobnie po zakończeniu serii"
-      ],
+      "question": "Jak nazywa się najbardziej zewnętrzny mur chroniący ludzi?",
+      "options": ["Mur Maria", "Mur Rose", "Mur Sina", "Mur Tytan"],
       "correctAnswer": 0
     },
     {
+      "id": 4,
+      "question": "Która gałąź wojska chroni Rodzinę Królewską?",
+      "options": ["Zwiadowcy", "Garnizon", "Żandarmeria Wojskowa", "Tajne służby"],
+      "correctAnswer": 2
+    },
+    {
       "id": 5,
-      "question": "Przy kim Berthold wymiękał? (Atak Tytanów)",
-      "options": ["Przy Historii", "Przy Annie", "Przy Ymir", "Przy Mikasie"],
+      "question": "Którego członka rodziny Eren widział pożeranego przez Tytana?",
+      "options": ["Ojca", "Matkę", "Brata", "Siostrę"],
       "correctAnswer": 1
     },
     {
       "id": 6,
-      "question": "Annie Leonhart z \"Attack on Titan\" jest wyjątkowo dobra w:",
-      "options": [
-        "Analizie i dedukcji",
-        "Skutecznym zabijaniu tytanów",
-        "W korzystaniu ze sprzętu do trójwymiarowego manewru",
-        "W walce wręcz"
-      ],
-      "correctAnswer": 3
+      "question": "Jak nazywa się środkowy mur?",
+      "options": ["Mur Sina", "Mur Tytan", "Mur Rose", "Mur Utopia"],
+      "correctAnswer": 2
     },
     {
       "id": 7,
-      "question": "Drugim - zaraz po Levi'u Ackermanie z \"Attack on Titan\"- najsilniejszym żołnierzem ludzkości jest:",
-      "options": ["Mikasa", "Erwin", "Eren", "Mike"],
+      "question": "Jak nazywa się najbardziej wewnętrzny mur?",
+      "options": ["Mur Utopia", "Mur Tytan", "Mur Paradis", "Mur Sina"],
       "correctAnswer": 3
     },
     {
       "id": 8,
-      "question": "Kto ocalił Reinera przed pożarciem przez Ymir w \"Attack on Titan\"?",
-      "options": ["Marcel", "Christa", "Bertholdt", "Annie"],
-      "correctAnswer": 0
-    },
-    {
-      "id": 9,
-      "question": "Czym zajmował się ojciec Sashy? (Atak Tytanów)",
-      "options": ["Hodowlą zwierząt", "Rolnictwem", "Górnictwem", "Myślistwem"],
+      "question": "Kim jest adoptowana siostra Erena?",
+      "options": ["Annie Leonhart", "Sasha Braus", "Hange Zoe", "Mikasa Ackerman"],
       "correctAnswer": 3
     },
     {
+      "id": 9,
+      "question": "Kto w historii jako pierwszy człowiek okazuje się być Tytanem?",
+      "options": ["Eren", "Armin", "Mikasa", "Annie"],
+      "correctAnswer": 0
+    },
+    {
       "id": 10,
-      "question": "Jak brzmiało prawdziwe imię Ymir? (Atak Tytanów)",
-      "options": ["Christa", "Nie wiadomo", "Marta", "Sasha"],
+      "question": "Gdzie Tytan Kolosalny wybił dziurę w Murze Maria?",
+      "options": ["Trost", "Shiganshina", "Calaneth", "Utopia"],
       "correctAnswer": 1
     },
     {
       "id": 11,
-      "question": "Kto był tytanem kolosalnym? (Atak Tytanów)",
-      "options": ["Bertholdt Hoover", "Reiner Braun", "Annie Leonhart", "Eren Jaeger"],
-      "correctAnswer": 0
+      "question": "Kto zajął pierwsze miejsce w 104. Korpusie Treningowym?",
+      "options": ["Eren", "Armin", "Mikasa", "Annie"],
+      "correctAnswer": 2
     },
     {
       "id": 12,
-      "question": "Jaki kolor włosów (w anime \"Atak tytanów\") miała Petra Ral?",
-      "options": ["Rude", "Białe", "Blond", "Czarne"],
-      "correctAnswer": 0
+      "question": "Jaki zawód wykonywał Grisha Jaeger?",
+      "options": ["Żołnierz", "Polityk", "Lekarz", "Prawnik"],
+      "correctAnswer": 2
     },
     {
       "id": 13,
-      "question": "Kto będąc w formie ludzkiej zabił najwięcej tytanów? (Atak tytanów)",
-      "options": ["Levi", "Mikasa", "Petra", "Eren"],
-      "correctAnswer": 1
+      "question": "Która gałąź wojska próbuje odzyskać tereny od Tytanów?",
+      "options": ["Zwiadowcy", "Garnizon", "Łowcy Tytanów", "Żandarmeria Wojskowa"],
+      "correctAnswer": 0
     },
     {
       "id": 14,
-      "question": "Kto - oprócz Lynne, Henninga i Nanaby - zginął podczas obrony zamku Utgard w \"Attack on Titan\"?",
-      "options": ["Galliard", "Mike", "Marco", "Gelgar"],
+      "question": "Jak nazywa się sprzęt używany do przemieszczania się?",
+      "options": [
+        "Sprzęt chwytający",
+        "Urządzenie skaczące",
+        "Bojowy zestaw podróżny",
+        "Sprzęt do manewrów przestrzennych"
+      ],
       "correctAnswer": 3
     },
     {
       "id": 15,
-      "question": "Co ukradła Sasha w dzień drugiego ataku tytanów na mury? (Atak Tytanów)",
-      "options": ["Chleb", "Szynkę", "Zakazaną książkę", "Ziemniaki"],
-      "correctAnswer": 1
+      "question": "Kto jest uważany za \"najsilniejszego żołnierza ludzkości\"?",
+      "options": ["Eren", "Mikasa", "Levi", "Marco"],
+      "correctAnswer": 2
     },
     {
       "id": 16,
-      "question": "Podczas odbijania Shiganshiny, gdzie ukrył się Reiner? (Atak Tytanów)",
-      "options": ["W środku murów", "W jednym z budynków", "Czekał na murze", "W beczce"],
+      "question": "Kim jest Kobiecy Tytan?",
+      "options": ["Mikasa", "Annie", "Dina", "Sasha"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 17,
+      "question": "Która gałąź wojska pilnuje murów i ludności cywilnej?",
+      "options": ["Zwiadowcy", "Garnizon", "Siły Obrony Muru", "Żandarmeria Wojskowa"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 18,
+      "question": "Kto jest dowódcą Zwiadowców?",
+      "options": ["Levi", "Erwin Smith", "Mikasa", "Jean Kirschtein"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 19,
+      "question": "Kto jest najlepszym przyjacielem Erena?",
+      "options": ["Armin Arlert", "Jean Kirschtein", "Sasha Braus", "Reiner Braun"],
       "correctAnswer": 0
+    },
+    {
+      "id": 20,
+      "question": "Kto jest ojcem Erena?",
+      "options": ["Keith Shadis", "Marco Bodt", "Grisha Yeager", "Conny Springer"],
+      "correctAnswer": 2
+    },
+    {
+      "id": 21,
+      "question": "Jakim rodzajem Tytana jest Eren?",
+      "options": ["Opancerzony Tytan", "Kolosalny Tytan", "Zwierzęcy Tytan", "Tytan Atakujący"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 22,
+      "question": "Do której gałęzi wojska wstępuje Mikasa?",
+      "options": ["Zwiadowcy", "Garnizon", "Żandarmeria Wojskowa", "Żadnej"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 23,
+      "question": "Co robi Annie, gdy zostaje schwytana?",
+      "options": ["Ucieka", "Ujawnia informacje", "Krystalizuje się", "Zabija się"],
+      "correctAnswer": 2
+    },
+    {
+      "id": 24,
+      "question": "Kto odkrywa, że Annie jest Kobiecym Tytanem?",
+      "options": ["Armin", "Eren", "Mikasa", "Levi"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 25,
+      "question": "Kto jest instruktorem Południowej Dywizji 104. Korpusu Treningowego?",
+      "options": ["Levi", "Dot Pyxis", "Erwin Smith", "Keith Shadis"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 26,
+      "question": "Kto NIE znalazł się w pierwszej dziesiątce 104. Korpusu Treningowego?",
+      "options": ["Eren", "Armin", "Reiner Braun", "Annie"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 27,
+      "question": "Kto uszczelnia dziurę w Murze Rose?",
+      "options": ["Eren", "Armin", "Annie", "Levi"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 28,
+      "question": "Czym dowodzi Dot Pixis?",
+      "options": ["Garnizonem", "Żandarmerią Wojskową", "105. Korpusem Kadetów", "Jest na emeryturze"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 29,
+      "question": "Jakie imię nadano jednemu ze schwytanych tytanów?",
+      "options": ["Joe", "John", "Macho", "Bean"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 30,
+      "question": "Kto stoi na czele całego wojska?",
+      "options": ["Keith Sadies", "Nicholas Lovof", "Dhalis Zachary", "Ian Dietrich"],
+      "correctAnswer": 2
+    },
+    {
+      "id": 31,
+      "question": "Kim jest pastor, który chce śmierci Erena?",
+      "options": ["Nick", "Joe", "Jean", "Marco"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 32,
+      "question": "Kto odpowiada za ochronę Erena podczas próby uszczelnienia Muru Rose?",
+      "options": ["Mikasa", "Ian Dietrich", "Levi", "Erwin Smith"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 33,
+      "question": "Do jakiej grupy Eren jest zmuszony dołączyć, aby ocenić jego moce?",
+      "options": ["Zwiadowcy", "Żandarmeria Wojskowa", "Garnizon", "Oddział Specjalny"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 34,
+      "question": "Kto jest dowódcą Żandarmerii Wojskowej?",
+      "options": ["Bertholdt Hoover", "Historia Reiss", "Thomas Wagner", "Nile Dawk"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 35,
+      "question": "Która gałąź wojska jest uważana za najbardziej niekompetentną?",
+      "options": ["Zwiadowcy", "Żandarmeria Wojskowa", "Garnizon", "Wszystkie"],
+      "correctAnswer": 1
     }
   ],
   "nextQuestion": "Następne pytanie",
@@ -117,5 +221,11 @@
   "quizCompleted": "Quiz ukończony!",
   "yourScore": "Twój wynik",
   "restartQuiz": "Restartuj quiz",
-  "questionCounter": "Pytanie {{current}} z {{total}}"
+  "questionCounter": "Pytanie {{current}} z {{total}}",
+  "evaluation": {
+    "perfect": "Perfekcyjny wynik!",
+    "excellent": "Wspaniale!",
+    "good": "Dobra robota!",
+    "tryAgain": "Spróbuj ponownie!"
+  }
 }

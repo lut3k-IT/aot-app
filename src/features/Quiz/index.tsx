@@ -17,6 +17,7 @@ const Quiz = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [isShowResult, setIsShowResult] = useState(false);
+  const [answerHistory, setAnswerHistory] = useState<boolean[]>([]);
   const { bestScore, updateBestScore } = useBestScore();
 
   const [shuffledIndices, setShuffledIndices] = useState<number[] | null>(null);
@@ -49,9 +50,11 @@ const Quiz = () => {
   }, [isShowResult, score, updateBestScore]);
 
   const handleAnswer = (answer: number) => {
-    if (questions[currentQuestionIndex] && answer === questions[currentQuestionIndex].correctAnswer) {
+    const isCorrect = questions[currentQuestionIndex] && answer === questions[currentQuestionIndex].correctAnswer;
+    if (isCorrect) {
       setScore(score + 1);
     }
+    setAnswerHistory([...answerHistory, isCorrect]);
   };
 
   const handleNextQuestion = () => {
@@ -67,6 +70,7 @@ const Quiz = () => {
     setCurrentQuestionIndex(0);
     setScore(0);
     setIsShowResult(false);
+    setAnswerHistory([]);
   };
 
   if (questions.length === 0) {
@@ -74,34 +78,35 @@ const Quiz = () => {
   }
 
   return (
-    <div className={'flex w-full items-center justify-center pt-body-start md:pt-0'}>
+    <div className={'flex min-h-[70vh] w-full items-center justify-center py-8'}>
       <DynamicTitle title={t('common:title.quiz')} />
-      <div className={'w-full'}>
-        <QuizCard>
-          {isShowResult ? (
-            <Result
-              score={score}
-              total={questions.length}
-              bestScore={bestScore}
-              onRestart={handleRestart}
+      <QuizCard>
+        {isShowResult ? (
+          <Result
+            score={score}
+            total={questions.length}
+            bestScore={bestScore}
+            onRestart={handleRestart}
+          />
+        ) : (
+          <>
+            <Question
+              key={`question-${currentQuestionIndex}`}
+              question={questions[currentQuestionIndex].question}
+              currentQuestion={currentQuestionIndex + 1}
+              totalQuestions={questions.length}
+              answerHistory={answerHistory}
             />
-          ) : (
-            <>
-              <Question
-                question={questions[currentQuestionIndex].question}
-                currentQuestion={currentQuestionIndex + 1}
-                totalQuestions={questions.length}
-              />
-              <Answers
-                options={questions[currentQuestionIndex].options}
-                correctAnswer={questions[currentQuestionIndex].correctAnswer}
-                onAnswer={handleAnswer}
-                onNext={handleNextQuestion}
-              />
-            </>
-          )}
-        </QuizCard>
-      </div>
+            <Answers
+              key={`answers-${currentQuestionIndex}`}
+              options={questions[currentQuestionIndex].options}
+              correctAnswer={questions[currentQuestionIndex].correctAnswer}
+              onAnswer={handleAnswer}
+              onNext={handleNextQuestion}
+            />
+          </>
+        )}
+      </QuizCard>
     </div>
   );
 };
