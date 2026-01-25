@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 
 import useAppDispatch from '@/components/hooks/useAppDispatch';
@@ -52,7 +53,7 @@ const Init = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  return shouldShowSplash ? <SplashScreen /> : null;
+  return <AnimatePresence>{shouldShowSplash && <SplashScreen key='splash-screen' />}</AnimatePresence>;
 };
 
 export default Init;

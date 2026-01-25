@@ -1,11 +1,17 @@
 'use client';
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Loader2 } from 'lucide-react';
 
 const SplashScreen = () => {
   return (
-    <div className='fixed inset-0 z-50 flex h-full w-full items-center justify-center bg-background'>
+    <motion.div
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3, ease: 'easeOut' }}
+      className='fixed inset-0 z-50 flex h-full w-full items-center justify-center bg-background'
+    >
       <div className='flex flex-col items-center gap-4'>
         <div className='relative h-24 w-24'>
           <img
@@ -16,7 +22,7 @@ const SplashScreen = () => {
         </div>
         <Loader2 className='h-8 w-8 animate-spin text-primary' />
       </div>
-    </div>
+    </motion.div>
   );
 };
 
