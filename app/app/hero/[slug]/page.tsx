@@ -4,11 +4,12 @@ import heroes from '@/data/heroes';
 import HeroDetails from '@/features/Details/HeroDetails';
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const hero = heroes.find((h) => h.slug === params.slug);
+  const { slug } = await params;
+  const hero = heroes.find((h) => h.slug === slug);
 
   if (!hero) {
     return {
@@ -24,6 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function HeroDetailsPage({ params }: Props) {
-  return <HeroDetails routeSlug={params.slug} />;
+export default async function HeroDetailsPage({ params }: Props) {
+  const { slug } = await params;
+  return <HeroDetails routeSlug={slug} />;
 }

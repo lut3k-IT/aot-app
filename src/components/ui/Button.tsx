@@ -54,80 +54,77 @@ export interface ButtonProps
   iconPosition?: 'left' | 'right';
   iconSize?: IconSizes;
   iconProps?: Partial<IconProps>;
+  ref?: React.Ref<HTMLButtonElement>;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      className,
-      variant,
-      size,
-      asChild = false,
-      linkTo,
-      iconName,
-      iconPosition = 'left',
-      iconSize = 'sm',
-      iconProps,
-      children,
-      ...props
-    },
-    ref
-  ) => {
-    const MainComponent = asChild ? Slot : 'button';
-    const IconComponent = iconName && (
-      <Icon
-        name={iconName}
-        size={iconSize}
-        {...iconProps}
-      />
-    );
-    const Content = (
-      <>
-        {iconPosition === 'left' ? IconComponent : null}
-        {children ? children : null}
-        {iconPosition === 'right' ? IconComponent : null}
-      </>
-    );
+const Button = ({
+  className,
+  variant,
+  size,
+  asChild = false,
+  linkTo,
+  iconName,
+  iconPosition = 'left',
+  iconSize = 'sm',
+  iconProps,
+  children,
+  ref,
+  ...props
+}: ButtonProps) => {
+  const MainComponent = asChild ? Slot : 'button';
+  const IconComponent = iconName && (
+    <Icon
+      name={iconName}
+      size={iconSize}
+      {...iconProps}
+    />
+  );
+  const Content = (
+    <>
+      {iconPosition === 'left' ? IconComponent : null}
+      {children ? children : null}
+      {iconPosition === 'right' ? IconComponent : null}
+    </>
+  );
 
-    let iconBasedClass = null;
-    if (children && iconName) {
-      switch (size) {
-        case 'default':
-          iconBasedClass = iconPosition === 'left' ? 'pl-3' : 'pr-3';
-          break;
-        case 'sm':
-          iconBasedClass = iconPosition === 'left' ? 'pl-2.5' : 'pr-2.5';
-          break;
-        case 'lg':
-          iconBasedClass = iconPosition === 'left' ? 'pl-7' : 'pr-7';
-          break;
-        default:
-          break;
-      }
+  let iconBasedClass = null;
+  if (children && iconName) {
+    switch (size) {
+      case 'default':
+        iconBasedClass = iconPosition === 'left' ? 'pl-3' : 'pr-3';
+        break;
+      case 'sm':
+        iconBasedClass = iconPosition === 'left' ? 'pl-2.5' : 'pr-2.5';
+        break;
+      case 'lg':
+        iconBasedClass = iconPosition === 'left' ? 'pl-7' : 'pr-7';
+        break;
+      default:
+        break;
     }
-
-    const ButtonComponent = (
-      <MainComponent
-        className={cn(buttonVariants({ variant, size }), iconBasedClass, className)}
-        ref={ref}
-        {...props}
-      >
-        {Content}
-      </MainComponent>
-    );
-
-    return linkTo ? (
-      <Link
-        className={'contents'}
-        href={linkTo}
-      >
-        {ButtonComponent}
-      </Link>
-    ) : (
-      ButtonComponent
-    );
   }
-);
+
+  const ButtonComponent = (
+    <MainComponent
+      className={cn(buttonVariants({ variant, size }), iconBasedClass, className)}
+      ref={ref}
+      {...props}
+    >
+      {Content}
+    </MainComponent>
+  );
+
+  return linkTo ? (
+    <Link
+      className={'contents'}
+      href={linkTo}
+    >
+      {ButtonComponent}
+    </Link>
+  ) : (
+    ButtonComponent
+  );
+};
 Button.displayName = 'Button';
 
 export { Button, buttonVariants };

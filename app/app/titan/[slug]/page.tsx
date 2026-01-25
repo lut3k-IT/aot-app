@@ -7,7 +7,7 @@ import { TitanType } from '@/constants/types';
 import TitanDetails from '@/features/Details/TitanDetails';
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -16,7 +16,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const fileContents = await fs.readFile(filePath, 'utf8');
     const titans: TitanType[] = JSON.parse(fileContents);
 
-    const titan = titans.find((t) => t.slug === params.slug);
+    const { slug } = await params;
+    const titan = titans.find((t) => t.slug === slug);
 
     if (!titan) {
       return {
@@ -36,6 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default function TitanDetailsPage({ params }: Props) {
-  return <TitanDetails routeSlug={params.slug} />;
+export default async function TitanDetailsPage({ params }: Props) {
+  const { slug } = await params;
+  return <TitanDetails routeSlug={slug} />;
 }
