@@ -9,7 +9,7 @@ import { useApiErrorToast } from '@/components/hooks/useApiErrorToast';
 import useAppSelector from '@/components/hooks/useAppSelector';
 import DynamicTitle from '@/components/ui/DynamicTitle';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
-import Pagination, { DEFAULT_PAGE, DEFAULT_PAGE_SIZES } from '@/components/ui/Pagination';
+import Pagination, { DEFAULT_PAGE_SIZES } from '@/components/ui/Pagination';
 import { ElementsIds, Param, SortDirection } from '@/constants/enums';
 import { HeroFilters, HeroSortOption } from '@/constants/types';
 import { filterHeroes, paginateHeroes } from '@/features/Heroes/utils/heroesProcessing';
@@ -38,16 +38,12 @@ const HeroesGallery = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const [totalPages, setTotalPages] = useState(DEFAULT_PAGE);
-
   const originalHeroes = useAppSelector((state) => state.heroes.data);
   const favoriteHeroesIds = useAppSelector((state) => state.heroes.favoriteIds);
   const fetchingStatus = useAppSelector((state) => state.heroes.status);
   const fetchingError = useAppSelector((state) => state.heroes.error);
   const isLoading = fetchingStatus === 'loading';
   useApiErrorToast(fetchingError);
-
-  const [paginatedHeroes, setPaginatedHeroes] = useState(originalHeroes);
 
   const hasData = originalHeroes.length > 0;
 
@@ -104,13 +100,12 @@ const HeroesGallery = () => {
 
   /* ------------------------------- pagination ------------------------------- */
 
-  useEffect(() => {
+  // Optimization: Derive pagination state to avoid unnecessary re-renders caused by useEffect syncing
+  const { paginatedHeroes, totalPages } = useMemo(() => {
     const page = getSafePageNumberFromSearchParam(searchParams);
     const pageSize = Number(searchParams.get(Param.PAGE_SIZE)) || DEFAULT_PAGE_SIZES[0];
 
-    const { paginatedHeroes, totalPages } = paginateHeroes(filteredHeroes, page, pageSize);
-    setPaginatedHeroes(paginatedHeroes);
-    setTotalPages(totalPages);
+    return paginateHeroes(filteredHeroes, page, pageSize);
   }, [filteredHeroes, searchParams]);
 
   /* --------------------------------- params --------------------------------- */
