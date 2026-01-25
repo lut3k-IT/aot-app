@@ -4,11 +4,12 @@ import QuotationDetails from '@/features/QuotationDetails';
 import quotations from '@/i18n/locales/en/quotations.json';
 
 type Props = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const text = (quotations as Record<string, string>)[params.id];
+  const { id } = await params;
+  const text = (quotations as Record<string, string>)[id];
 
   if (!text) {
     return {
@@ -24,6 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function QuotationDetailsPage({ params }: Props) {
-  return <QuotationDetails routeId={params.id} />;
+export default async function QuotationDetailsPage({ params }: Props) {
+  const { id } = await params;
+  return <QuotationDetails routeId={id} />;
 }
