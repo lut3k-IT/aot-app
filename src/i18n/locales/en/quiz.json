@@ -3,386 +3,211 @@
     {
       "id": 1,
       "question": "What has been terrorizing humans?",
-      "options": [
-        "Wasps",
-        "Titans",
-        "Snakes",
-        "Gods"
-      ],
+      "options": ["Wasps", "Titans", "Snakes", "Gods"],
       "correctAnswer": 1
     },
     {
       "id": 2,
       "question": "What surrounds the area where humans live?",
-      "options": [
-        "A River",
-        "Thick Forrest",
-        "The Ocean",
-        "Walls"
-      ],
+      "options": ["A River", "Thick Forrest", "The Ocean", "Walls"],
       "correctAnswer": 3
     },
     {
       "id": 3,
       "question": "What is the outermost wall protecting the humans called?",
-      "options": [
-        "Wall Maria",
-        "Wall Rose",
-        "Wall Sheena",
-        "Wall Titan"
-      ],
+      "options": ["Wall Maria", "Wall Rose", "Wall Sheena", "Wall Titan"],
       "correctAnswer": 0
     },
     {
       "id": 4,
       "question": "Which branch of the military protects the Royal Family?",
-      "options": [
-        "Scout Regiment",
-        "Garrison Regiment",
-        "Military Police Brigade",
-        "Secret Service"
-      ],
+      "options": ["Scout Regiment", "Garrison Regiment", "Military Police Brigade", "Secret Service"],
       "correctAnswer": 2
     },
     {
       "id": 5,
       "question": "Which family member does Eren watch get eaten by a Titan?",
-      "options": [
-        "Father",
-        "Mother",
-        "Brother",
-        "Sister"
-      ],
+      "options": ["Father", "Mother", "Brother", "Sister"],
       "correctAnswer": 1
     },
     {
       "id": 6,
       "question": "What is the name of the second outermost wall?",
-      "options": [
-        "Wall Sheena",
-        "Wall Titan",
-        "Wall Rose",
-        "Wall Utopia"
-      ],
+      "options": ["Wall Sheena", "Wall Titan", "Wall Rose", "Wall Utopia"],
       "correctAnswer": 2
     },
     {
       "id": 7,
       "question": "What is the name of the innermost wall?",
-      "options": [
-        "Wall Utopia",
-        "Wall Titan",
-        "Wall Paradis",
-        "Wall Sheena"
-      ],
+      "options": ["Wall Utopia", "Wall Titan", "Wall Paradis", "Wall Sheena"],
       "correctAnswer": 3
     },
     {
       "id": 8,
       "question": "Who is Eren's adopted sister?",
-      "options": [
-        "Annie Leonhart",
-        "Sasha Braus",
-        "Hange Zoe",
-        "Mikasa Ackerman"
-      ],
+      "options": ["Annie Leonhart", "Sasha Braus", "Hange Zoe", "Mikasa Ackerman"],
       "correctAnswer": 3
     },
     {
       "id": 9,
       "question": "In the story, who is the first human shown to be a Titan?",
-      "options": [
-        "Eren",
-        "Armin",
-        "Mikasa",
-        "Annie"
-      ],
+      "options": ["Eren", "Armin", "Mikasa", "Annie"],
       "correctAnswer": 0
     },
     {
       "id": 10,
       "question": "Where does the Colossal Titan knock a hole in Wall Maria?",
-      "options": [
-        "Trost",
-        "Shiganshina",
-        "Calaneth",
-        "Utopia"
-      ],
+      "options": ["Trost", "Shiganshina", "Calaneth", "Utopia"],
       "correctAnswer": 1
     },
     {
       "id": 11,
       "question": "Who is ranked first in the Southern Division in the 104th Training Corps?",
-      "options": [
-        "Eren",
-        "Armin",
-        "Mikasa",
-        "Annie"
-      ],
+      "options": ["Eren", "Armin", "Mikasa", "Annie"],
       "correctAnswer": 2
     },
     {
       "id": 12,
       "question": "What was Grisha Yeager's job?",
-      "options": [
-        "Soldier",
-        "Politician",
-        "Doctor",
-        "Lawyer"
-      ],
+      "options": ["Soldier", "Politician", "Doctor", "Lawyer"],
       "correctAnswer": 2
     },
     {
       "id": 13,
       "question": "Which branch of the military tries to reclaim land from Titans?",
-      "options": [
-        "Scout Regiment",
-        "Garrison Regiment",
-        "Titan Hunters",
-        "Military Police Brigade"
-      ],
+      "options": ["Scout Regiment", "Garrison Regiment", "Titan Hunters", "Military Police Brigade"],
       "correctAnswer": 0
     },
     {
       "id": 14,
       "question": "What's the equipment used for grappling called?",
-      "options": [
-        "Grappling Equipment",
-        "Jumping Device",
-        "Combat Traveling Gear",
-        "3D Maneuver Gear"
-      ],
+      "options": ["Grappling Equipment", "Jumping Device", "Combat Traveling Gear", "3D Maneuver Gear"],
       "correctAnswer": 3
     },
     {
       "id": 15,
       "question": "Who is considered \"humanity's strongest soldier?\"",
-      "options": [
-        "Eren",
-        "Mikasa",
-        "Levi",
-        "Marco"
-      ],
+      "options": ["Eren", "Mikasa", "Levi", "Marco"],
       "correctAnswer": 2
     },
     {
       "id": 16,
       "question": "Who is the Female Titan?",
-      "options": [
-        "Mikasa",
-        "Annie",
-        "Dina",
-        "Sasha"
-      ],
+      "options": ["Mikasa", "Annie", "Dina", "Sasha"],
       "correctAnswer": 1
     },
     {
       "id": 17,
       "question": "Which branch of the military guards the walls and the general population?",
-      "options": [
-        "Scout Regiment",
-        "Garrison Regiment",
-        "Wall Defense Force",
-        "Military Police Brigade"
-      ],
+      "options": ["Scout Regiment", "Garrison Regiment", "Wall Defense Force", "Military Police Brigade"],
       "correctAnswer": 1
     },
     {
       "id": 18,
       "question": "Who is the commander of the Scout Regiment?",
-      "options": [
-        "Levi",
-        "Erwin Smith",
-        "Mikasa",
-        "Jean Kirschtein"
-      ],
+      "options": ["Levi", "Erwin Smith", "Mikasa", "Jean Kirschtein"],
       "correctAnswer": 1
     },
     {
       "id": 19,
       "question": "Who is Eren's best friend?",
-      "options": [
-        "Armin Arlert",
-        "Jean Kirschtein",
-        "Sasha Braus",
-        "Reiner Braun"
-      ],
+      "options": ["Armin Arlert", "Jean Kirschtein", "Sasha Braus", "Reiner Braun"],
       "correctAnswer": 0
     },
     {
       "id": 20,
       "question": "Who is Eren's father?",
-      "options": [
-        "Keith Shadis",
-        "Marco Bodt",
-        "Grisha Yeager",
-        "Conny Springer"
-      ],
+      "options": ["Keith Shadis", "Marco Bodt", "Grisha Yeager", "Conny Springer"],
       "correctAnswer": 2
     },
     {
       "id": 21,
       "question": "What kind of Titan is Eren?",
-      "options": [
-        "Armored Titan",
-        "Colossal Titan",
-        "Beast Titan",
-        "Attack Titan"
-      ],
+      "options": ["Armored Titan", "Colossal Titan", "Beast Titan", "Attack Titan"],
       "correctAnswer": 3
     },
     {
       "id": 22,
       "question": "Which branch of the military does Mikasa join?",
-      "options": [
-        "Scout Regiment",
-        "Garrison Regiment",
-        "Military Police Brigade",
-        "None"
-      ],
+      "options": ["Scout Regiment", "Garrison Regiment", "Military Police Brigade", "None"],
       "correctAnswer": 0
     },
     {
       "id": 23,
       "question": "What does Annie do when she is captured?",
-      "options": [
-        "Escapes",
-        "Gives Out Information",
-        "Crystallizes",
-        "Kills Herself"
-      ],
+      "options": ["Escapes", "Gives Out Information", "Crystallizes", "Kills Herself"],
       "correctAnswer": 2
     },
     {
       "id": 24,
       "question": "Who finds out Annie is the Female Titan?",
-      "options": [
-        "Armin",
-        "Eren",
-        "Mikasa",
-        "Levi"
-      ],
+      "options": ["Armin", "Eren", "Mikasa", "Levi"],
       "correctAnswer": 0
     },
     {
       "id": 25,
       "question": "Who is the instructor of the Southern Division in the 104th Training Corps?",
-      "options": [
-        "Levi",
-        "Dot Pyxis",
-        "Erwin Smith",
-        "Keith Shadis"
-      ],
+      "options": ["Levi", "Dot Pyxis", "Erwin Smith", "Keith Shadis"],
       "correctAnswer": 3
     },
     {
       "id": 26,
       "question": "Who is NOT ranked in the top ten of the Southern Division in the 104th Training Corps?",
-      "options": [
-        "Eren",
-        "Armin",
-        "Reiner Braun",
-        "Annie"
-      ],
+      "options": ["Eren", "Armin", "Reiner Braun", "Annie"],
       "correctAnswer": 1
     },
     {
       "id": 27,
       "question": "Who seals the hole in Wall Rose?",
-      "options": [
-        "Eren",
-        "Armin",
-        "Annie",
-        "Levi"
-      ],
+      "options": ["Eren", "Armin", "Annie", "Levi"],
       "correctAnswer": 0
     },
     {
       "id": 28,
       "question": "What does Dot Pyxis command?",
-      "options": [
-        "Garrison Regiment",
-        "Military Police Regiment",
-        "105th Cadet Corps",
-        "He's retired"
-      ],
+      "options": ["Garrison Regiment", "Military Police Regiment", "105th Cadet Corps", "He's retired"],
       "correctAnswer": 0
     },
     {
       "id": 29,
       "question": "Which name was given to one of the captured Titans before it was killed?",
-      "options": [
-        "Joe",
-        "John",
-        "Macho",
-        "Bean"
-      ],
+      "options": ["Joe", "John", "Macho", "Bean"],
       "correctAnswer": 3
     },
     {
       "id": 30,
       "question": "Who leads the entire Military?",
-      "options": [
-        "Keith Sadies",
-        "Nicholas Lovof",
-        "Dhalis Zachary",
-        "Ian Dietrich"
-      ],
+      "options": ["Keith Sadies", "Nicholas Lovof", "Dhalis Zachary", "Ian Dietrich"],
       "correctAnswer": 2
     },
     {
       "id": 31,
       "question": "Who is the Minister who wants Eren killed?",
-      "options": [
-        "Nick",
-        "Joe",
-        "Jean",
-        "Marco"
-      ],
+      "options": ["Nick", "Joe", "Jean", "Marco"],
       "correctAnswer": 0
     },
     {
       "id": 32,
       "question": "Who is in charge of protecting Eren when he tries to seal Wall Rose?",
-      "options": [
-        "Mikasa",
-        "Ian Dietrich",
-        "Levi",
-        "Erwin Smith"
-      ],
+      "options": ["Mikasa", "Ian Dietrich", "Levi", "Erwin Smith"],
       "correctAnswer": 1
     },
     {
       "id": 33,
       "question": "What group is Eren forced to join so they can assess his Titan powers?",
-      "options": [
-        "Scout Regiment",
-        "Military Police Regiment",
-        "Garrison Regiment",
-        "Special Forces"
-      ],
+      "options": ["Scout Regiment", "Military Police Regiment", "Garrison Regiment", "Special Forces"],
       "correctAnswer": 0
     },
     {
       "id": 34,
       "question": "Who is the commander of the Military Police Regiment?",
-      "options": [
-        "Bertholdt Hoover",
-        "Historia Reiss",
-        "Thomas Wagner",
-        "Nile Dawk"
-      ],
+      "options": ["Bertholdt Hoover", "Historia Reiss", "Thomas Wagner", "Nile Dawk"],
       "correctAnswer": 3
     },
     {
       "id": 35,
       "question": "Which is considered the most incompetent branch of the Military?",
-      "options": [
-        "Scout Regiment",
-        "Military Police Regiment",
-        "Garrison Regiment",
-        "All of them"
-      ],
+      "options": ["Scout Regiment", "Military Police Regiment", "Garrison Regiment", "All of them"],
       "correctAnswer": 1
     }
   ],
@@ -391,5 +216,11 @@
   "quizCompleted": "Quiz completed!",
   "yourScore": "Your score",
   "restartQuiz": "Restart quiz",
-  "questionCounter": "Question {{current}} of {{total}}"
+  "questionCounter": "Question {{current}} of {{total}}",
+  "evaluation": {
+    "perfect": "Perfect Score!",
+    "excellent": "Excellent!",
+    "good": "Good job!",
+    "tryAgain": "Try again!"
+  }
 }

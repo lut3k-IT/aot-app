@@ -221,5 +221,11 @@
   "quizCompleted": "Quiz ukończony!",
   "yourScore": "Twój wynik",
   "restartQuiz": "Restartuj quiz",
-  "questionCounter": "Pytanie {{current}} z {{total}}"
+  "questionCounter": "Pytanie {{current}} z {{total}}",
+  "evaluation": {
+    "perfect": "Perfekcyjny wynik!",
+    "excellent": "Wspaniale!",
+    "good": "Dobra robota!",
+    "tryAgain": "Spróbuj ponownie!"
+  }
 }

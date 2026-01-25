@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
 
 import { Button } from '@/components/ui/Button';
 import { shuffle } from '@/utils/helpers';
@@ -16,20 +17,18 @@ const Answers: React.FC<AnswersProps> = ({ options, correctAnswer, onAnswer, onN
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
 
-  const [shuffledIndices, setShuffledIndices] = useState<number[]>([]);
-
-  useEffect(() => {
+  // Initialize immediately to ensure staggered animation works with present children
+  const [shuffledIndices] = useState<number[]>(() => {
     const originalIndices = options.map((_, index) => index);
-    setShuffledIndices(shuffle(originalIndices));
-  }, [correctAnswer]);
+    return shuffle(originalIndices);
+  });
 
   const shuffledOptions = useMemo(() => {
     return shuffledIndices.map((shuffledIndex) => ({
       text: options[shuffledIndex],
-      originalIndex: shuffledIndex,
+      originalIndex: shuffledIndex
     }));
   }, [options, shuffledIndices]);
-
 
   const handleAnswer = (answer: number) => {
     if (isAnswered) return;
@@ -45,40 +44,83 @@ const Answers: React.FC<AnswersProps> = ({ options, correctAnswer, onAnswer, onN
     onNext();
   };
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 }
+  };
+
   return (
-    <div>
-      <div className={'grid grid-cols-1 gap-4 md:grid-cols-2'}>
+    <motion.div>
+      <motion.div
+        className={'grid grid-cols-1 gap-4 md:grid-cols-2'}
+        variants={container}
+        initial='hidden'
+        animate='show'
+      >
         {shuffledOptions.map(({ text, originalIndex }) => {
           const isCorrect = originalIndex === correctAnswer;
           const isSelected = selectedAnswer === originalIndex;
-          let buttonVariant: 'outline' | 'success-outline' | 'destructive-outline' = 'outline';
+
+          let buttonVariant: 'outline' | 'success-outline' | 'destructive-outline' | 'secondary' | 'default' =
+            'outline';
+          let borderClass = 'border-2 border-slate-200 dark:border-slate-800';
+
           if (isAnswered) {
             if (isCorrect) {
               buttonVariant = 'success-outline';
+              borderClass = 'border-2 border-success';
             } else if (isSelected) {
               buttonVariant = 'destructive-outline';
+              borderClass = 'border-2 border-destructive';
             }
           }
 
           return (
-            <Button
+            <motion.div
               key={text}
-              onClick={() => handleAnswer(originalIndex)}
-              className={'w-full justify-center h-auto'}
-              variant={buttonVariant as 'default'}
-              disabled={isAnswered}
+              variants={item}
             >
-              {text}
-            </Button>
+              <Button
+                onClick={() => handleAnswer(originalIndex)}
+                className={`h-auto min-h-[4rem] w-full justify-center px-6 text-lg transition-all duration-200 hover:scale-[1.01] ${borderClass}`}
+                variant={buttonVariant as 'default'}
+                disabled={isAnswered}
+              >
+                {text}
+              </Button>
+            </motion.div>
           );
         })}
+      </motion.div>
+      <div className='mt-8 flex min-h-[4rem] items-center justify-center'>
+        {isAnswered && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3 }}
+          >
+            <Button
+              onClick={handleNext}
+              size='lg'
+              className='px-12 font-bold'
+            >
+              {t('nextQuestion')}
+            </Button>
+          </motion.div>
+        )}
       </div>
-      {isAnswered && (
-        <div className={'mt-4 text-center'}>
-          <Button onClick={handleNext}>{t('nextQuestion')}</Button>
-        </div>
-      )}
-    </div>
+    </motion.div>
   );
 };
 
