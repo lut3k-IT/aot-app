@@ -31,3 +31,6 @@ public/workbox-*.js
 *.sln
 *.sw?
 !/.agent
+
+# Build Info
+*.tsbuildinfo
