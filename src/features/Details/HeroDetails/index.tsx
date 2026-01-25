@@ -50,7 +50,7 @@ const HeroDetails = ({ routeSlug }: HeroDetailsProps) => {
     <DetailsContainer>
       <DynamicTitle title={`${hero.firstName} ${hero.lastName || ''}`} />
       <ButtonGoBack
-        fallbackRoute={RoutePath.HEROES_GALLERY}
+        fallbackRoute={RoutePath.HEROES}
         aria-label={t('common:navigation.goBack')}
       />
       <div className={'details-profile-wrapper'}>

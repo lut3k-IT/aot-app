@@ -17,7 +17,7 @@ export const navigationData: INavigationElement[] = [
   {
     id: 1,
     name: 'common:title.heroes',
-    route: RoutePath.HEROES_GALLERY,
+    route: RoutePath.HEROES,
     iconName: 'user'
   },
   {

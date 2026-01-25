@@ -20,7 +20,7 @@ const ErrorComponent = ({ statusText, message }: ErrorComponentProps) => {
         <i>{message}</i>
       </pre>
       <ButtonGoBack
-        fallbackRoute={RoutePath.HEROES_GALLERY}
+        fallbackRoute={RoutePath.HEROES}
         aria-label={t('common:navigation.goBack')}
       />
     </div>

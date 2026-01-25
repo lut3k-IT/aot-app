@@ -48,11 +48,11 @@ const Heroes = () => {
 
   const handleTabChange = (value: string) => {
     setCurrentTab(value as TabValue);
-    let targetPath = RoutePath.HEROES_GALLERY;
+    let targetPath = RoutePath.HEROES;
     if (value === TabValue.CHARTS) {
-      targetPath = RoutePath.HEROES_CHARTS;
+      targetPath = RoutePath.CHARTS;
     } else if (value === TabValue.COMPARISON) {
-      targetPath = RoutePath.HEROES_COMPARISON;
+      targetPath = RoutePath.COMPARISON;
     }
     router.push(targetPath);
   };
@@ -60,10 +60,10 @@ const Heroes = () => {
   const handleClearParams = () => {
     const targetPath =
       currentTab === TabValue.GALLERY
-        ? RoutePath.HEROES_GALLERY
+        ? RoutePath.HEROES
         : currentTab === TabValue.CHARTS
-          ? RoutePath.HEROES_CHARTS
-          : RoutePath.HEROES_COMPARISON;
+          ? RoutePath.CHARTS
+          : RoutePath.COMPARISON;
     router.push(targetPath);
   };
 
