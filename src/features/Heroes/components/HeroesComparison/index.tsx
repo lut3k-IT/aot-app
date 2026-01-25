@@ -97,7 +97,7 @@ const HeroesComparison = () => {
                 />
                 <DetailItem
                   title={t('data:species.title')}
-                  value={SpoilerContent(data ? getSpeciesName(data.species, t) : null)}
+                  value={<SpoilerContent>{data ? getSpeciesName(data.species, t) : null}</SpoilerContent>}
                   isFirstColumn={isFirstColumn}
                   isLastColumn={isLastColumn}
                   isOddRow
@@ -109,14 +109,16 @@ const HeroesComparison = () => {
 
                 <DetailItem
                   title={t('data:status.title')}
-                  value={SpoilerContent(
-                    data ? (
-                      <HeroStatus
-                        statusId={data.status}
-                        className={'font-medium'}
-                      />
-                    ) : null
-                  )}
+                  value={
+                    <SpoilerContent>
+                      {data ? (
+                        <HeroStatus
+                          statusId={data.status}
+                          className={'font-medium'}
+                        />
+                      ) : null}
+                    </SpoilerContent>
+                  }
                   isFirstColumn={isFirstColumn}
                   isLastColumn={isLastColumn}
                   isOddRow

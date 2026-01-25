@@ -4,9 +4,13 @@ import useAppSelector from '@/components/hooks/useAppSelector';
 import Icon from '@/components/ui/Icon';
 import { selectSpoilerMode } from '@/store/spoilerModeSlice';
 
-const SpoilerContent = (content: React.ReactNode): React.ReactNode => {
+interface SpoilerContentProps {
+  children: React.ReactNode;
+}
+
+const SpoilerContent = ({ children }: SpoilerContentProps) => {
   const isShowingSpoilers = useAppSelector(selectSpoilerMode);
-  return isShowingSpoilers ? content || '-' : <Icon name={'eyeOff'} />;
+  return isShowingSpoilers ? children || '-' : <Icon name={'eyeOff'} />;
 };
 
 export default SpoilerContent;
