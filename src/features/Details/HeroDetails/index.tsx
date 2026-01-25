@@ -15,7 +15,7 @@ import { MbtiGroups } from '@/constants/types';
 import mbti from '@/data/mbti';
 import { selectHeroesData, selectHeroesError, selectHeroesFavoriteIds } from '@/store/heroesSlice';
 import { addFavorite, removeFavorite } from '@/store/heroesSlice';
-import { isInFavorites } from '@/utils/dataHelpers';
+import { getHeroImageSource, isInFavorites } from '@/utils/dataHelpers';
 
 import DetailsContainer from '../components/DetailsContainer';
 import MBTIBar from '../components/MBTIBar';
@@ -56,7 +56,7 @@ const HeroDetails = ({ routeSlug }: HeroDetailsProps) => {
       <div className={'details-profile-wrapper'}>
         <MBTIBar mbtiGroupName={mbtiGroupName} />
         <CharacterPicture
-          imgSource={`/assets/img/heroes/${hero.slug}.jpg`}
+          imgSource={getHeroImageSource(hero.slug)}
           alt={`${hero.firstName} ${hero.lastName} - Attack on Titan ${t('common:brand')}`}
           size={'xl'}
           variant={'circle'}

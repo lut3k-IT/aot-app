@@ -6,7 +6,7 @@ import { RoutePath } from '@/constants/enums';
 import { FavoriteType, HeroType } from '@/constants/types';
 import { addFavorite, removeFavorite } from '@/store/heroesSlice';
 import { selectSpoilerMode } from '@/store/spoilerModeSlice';
-import { getResidenceName, isInFavorites } from '@/utils/dataHelpers';
+import { getHeroImageSource, getResidenceName, isInFavorites } from '@/utils/dataHelpers';
 
 import useAppSelector from '../../hooks/useAppSelector';
 import { useToggleFavorite } from '../../hooks/useToggleFavorite';
@@ -42,7 +42,7 @@ const HeroCard = (props: HeroCardProps) => {
       >
         <MbtiFrame mbtiId={mbti}>
           <CharacterPicture
-            imgSource={`/assets/img/heroes/${slug}.jpg`}
+            imgSource={getHeroImageSource(slug)}
             alt={`${firstName} ${lastName} - Attack on Titan ${t('common:brand')}`}
             variant={'roundedBtm'}
           />

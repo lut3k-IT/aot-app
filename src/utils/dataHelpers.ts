@@ -95,3 +95,12 @@ export const findSortDirection = (direction: string | null) => {
   const values = Object.values(SortDirection);
   return values.includes(direction as SortDirection) ? (direction as SortDirection) : null;
 };
+
+const MISSING_IMAGES = ['rods-wife', 'ms-springer'];
+
+export const getHeroImageSource = (slug: string): string | undefined => {
+  if (MISSING_IMAGES.includes(slug)) {
+    return undefined;
+  }
+  return `/assets/img/heroes/${slug}.jpg`;
+};
