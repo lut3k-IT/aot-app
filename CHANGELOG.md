@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.7.0](https://github.com/lut3k-IT/aot-app/compare/v0.6.1...v0.7.0) (2026-01-25)
+
+
+### Features
+
+* new quiz questions ([ffa4619](https://github.com/lut3k-IT/aot-app/commit/ffa46197c25cbac0b747ddd8071c2fee8169dba3))
+* **quiz:** redesign ui with animations and enhanced result screen ([d36bc47](https://github.com/lut3k-IT/aot-app/commit/d36bc47a38cae0e66ab85b6c919130d6e0cea06c))
+* **ui:** add fade out animation to splash screen ([49ee035](https://github.com/lut3k-IT/aot-app/commit/49ee0354e4f2f15c571c7479c4e2869cdcfdc234))
+* update to React 19 ([41fb116](https://github.com/lut3k-IT/aot-app/commit/41fb1160ee60dd5cf129ff6f35d9413b24dc5a84))
+
+
+### Bug Fixes
+
+* **quiz:** fix disappearing buttons on language change ([b252dc2](https://github.com/lut3k-IT/aot-app/commit/b252dc27aef4da204c0f7a820c42e9bb426de0cb))
+* **quotations:** remove invalid translation key from page title ([d3a9415](https://github.com/lut3k-IT/aot-app/commit/d3a9415d3f9576c4eba37525541112bdd4330bc0))
+* remove forwardRef ([d753eda](https://github.com/lut3k-IT/aot-app/commit/d753edaa6ca3c8c55577b4965b124cdbee8d000d))
+
 ## [0.6.1](https://github.com/lut3k-IT/aot-app/compare/v0.6.0...v0.6.1) (2026-01-19)
 
 
