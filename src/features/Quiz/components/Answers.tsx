@@ -72,17 +72,20 @@ const Answers: React.FC<AnswersProps> = ({ options, correctAnswer, onAnswer, onN
           const isCorrect = originalIndex === correctAnswer;
           const isSelected = selectedAnswer === originalIndex;
 
-          let buttonVariant: 'outline' | 'success-outline' | 'destructive-outline' | 'secondary' | 'default' =
-            'outline';
-          let borderClass = 'border-2 border-slate-200 dark:border-slate-800';
+          let buttonVariant: 'outline' | 'success' | 'destructive' | 'secondary' | 'default' = 'outline';
+          let borderClass = 'border-2 border-border';
+          let textClass = 'text-foreground';
 
           if (isAnswered) {
+            textClass = 'text-white';
             if (isCorrect) {
-              buttonVariant = 'success-outline';
-              borderClass = 'border-2 border-success';
+              buttonVariant = 'success';
+              borderClass = 'border-2 border-transparent';
             } else if (isSelected) {
-              buttonVariant = 'destructive-outline';
-              borderClass = 'border-2 border-destructive';
+              buttonVariant = 'destructive';
+              borderClass = 'border-2 border-transparent';
+            } else {
+              textClass = 'text-muted-foreground opacity-50';
             }
           }
 
@@ -93,7 +96,7 @@ const Answers: React.FC<AnswersProps> = ({ options, correctAnswer, onAnswer, onN
             >
               <Button
                 onClick={() => handleAnswer(originalIndex)}
-                className={`h-auto min-h-[4rem] w-full justify-center px-6 text-lg transition-all duration-200 hover:scale-[1.01] ${borderClass}`}
+                className={`h-auto min-h-[4rem] w-full justify-center px-6 text-lg font-semibold transition-all duration-200 ${borderClass} ${textClass}`}
                 variant={buttonVariant as 'default'}
                 disabled={isAnswered}
               >
