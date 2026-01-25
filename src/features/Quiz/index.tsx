@@ -13,7 +13,7 @@ import QuizCard from './components/QuizCard';
 import Result from './components/Result';
 
 const Quiz = () => {
-  const { t } = useTranslation(['quiz', 'common']);
+  const { t, i18n } = useTranslation(['quiz', 'common']);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [isShowResult, setIsShowResult] = useState(false);
@@ -91,14 +91,14 @@ const Quiz = () => {
         ) : (
           <>
             <Question
-              key={`question-${currentQuestionIndex}`}
+              key={`question-${currentQuestionIndex}-${i18n.language}`}
               question={questions[currentQuestionIndex].question}
               currentQuestion={currentQuestionIndex + 1}
               totalQuestions={questions.length}
               answerHistory={answerHistory}
             />
             <Answers
-              key={`answers-${currentQuestionIndex}`}
+              key={`answers-${currentQuestionIndex}-${i18n.language}`}
               options={questions[currentQuestionIndex].options}
               correctAnswer={questions[currentQuestionIndex].correctAnswer}
               onAnswer={handleAnswer}
