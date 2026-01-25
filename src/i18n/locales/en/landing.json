@@ -1,0 +1,61 @@
+{
+  "hero": {
+    "title": "AOT app",
+    "description": "Explore the world of <1>Attack on Titan</1> like never before. Browse characters, quotes and test yourself in the quiz.",
+    "enterApp": "Enter App",
+    "learnMore": "Learn more"
+  },
+  "about": {
+    "title": "The perfect companion for watching",
+    "description1": "We created this app to make it easier for you to follow the storyline. You will find key information presented in a clear way.",
+    "description2": "Speed and convenience are our strengths. Thanks to advanced filters and comparison tool, you will instantly find the characters you are interested in, without unnecessary noise.",
+    "moreAboutProject": "More about the project"
+  },
+  "features": {
+    "title": "Everything in one place",
+    "description": "Discover features prepared especially for fans of the series. Designed to deepen your experience.",
+    "items": {
+      "database": {
+        "title": "Character Database",
+        "description": "Browse profiles of hundreds of characters and get to know their stats."
+      },
+      "quotations": {
+        "title": "Quotations",
+        "description": "Get inspired by the words of your favorite characters. Discover iconic lines from the anime."
+      },
+      "quiz": {
+        "title": "Knowledge Quiz",
+        "description": "Check how well you know the world of Attack on Titan by taking the quiz."
+      },
+      "favorites": {
+        "title": "Favorites",
+        "description": "Create your own collection of favorite characters and have quick access to them."
+      }
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "description": "Find answers to your questions about the project.",
+    "items": {
+      "free": {
+        "question": "Is the app free to use?",
+        "answer": "Yes, AOT APP is a fan project created out of passion. Using all features is completely free and requires no fees."
+      },
+      "spoilers": {
+        "question": "Are there spoilers in the app?",
+        "answer": "We try to mark content that may be spoilers for people who have not finished the series."
+      },
+      "mobile": {
+        "question": "Does the app work on mobile devices?",
+        "answer": "Yes, the app was designed as a PWA (Progressive Web App). It works great on phones and tablets, and you can even install it on your home screen."
+      },
+      "source": {
+        "question": "Where does the information in the database come from?",
+        "answer": "Data is collected based on official data books, manga and Attack on Titan (Shingeki no Kyojin) anime."
+      }
+    }
+  },
+  "footer": {
+    "description": "Comprehensive knowledge base and tools for Attack on Titan fans."
+  }
+}

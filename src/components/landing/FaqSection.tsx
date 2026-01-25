@@ -1,33 +1,36 @@
+'use client';
+
+import { useTranslation } from 'react-i18next';
+
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const faqItems = [
   {
-    question: 'Czy korzystanie z aplikacji jest darmowe?',
-    answer:
-      'Tak, AOT APP to projekt fanowski stworzony z pasji. Korzystanie ze wszystkich funkcji jest całkowicie darmowe i nie wymaga żadnych opłat.'
+    question: 'faq.items.free.question',
+    answer: 'faq.items.free.answer'
   },
   {
-    question: 'Czy w aplikacji znajdują się spoilery?',
-    answer: 'Staramy się oznaczać treści, które mogą być spoilerami dla osób, które nie dokończyły serii.'
+    question: 'faq.items.spoilers.question',
+    answer: 'faq.items.spoilers.answer'
   },
   {
-    question: 'Czy aplikacja działa na urządzeniach mobilnych?',
-    answer:
-      'Tak, aplikacja została zaprojektowana jako PWA (Progressive Web App). Działa świetnie na telefonach i tabletach, a nawet możesz ją zainstalować na ekranie głównym.'
+    question: 'faq.items.mobile.question',
+    answer: 'faq.items.mobile.answer'
   },
   {
-    question: 'Skąd pochodzą informacje w bazie?',
-    answer:
-      'Dane gromadzone są na podstawie oficjalnych databooków, mangi oraz anime Attack on Titan (Shingeki no Kyojin).'
+    question: 'faq.items.source.question',
+    answer: 'faq.items.source.answer'
   }
 ];
 
 export const FaqSection = () => {
+  const { t } = useTranslation('landing');
+
   return (
     <section className='container mx-auto max-w-4xl px-4 py-24 md:px-6'>
       <div className='mb-12 text-center'>
-        <h2 className='mb-4 text-3xl font-bold tracking-tight text-white sm:text-4xl'>Najczęściej zadawane pytania</h2>
-        <p className='text-zinc-400'>Znajdź odpowiedzi na nurtujące Cię pytania dotyczące projektu.</p>
+        <h2 className='mb-4 text-3xl font-bold tracking-tight text-white sm:text-4xl'>{t('faq.title')}</h2>
+        <p className='text-zinc-400'>{t('faq.description')}</p>
       </div>
       <Accordion
         type='single'
@@ -41,9 +44,9 @@ export const FaqSection = () => {
             className='border-zinc-800'
           >
             <AccordionTrigger className='text-lg font-medium text-white hover:text-red-500 hover:no-underline'>
-              {item.question}
+              {t(item.question)}
             </AccordionTrigger>
-            <AccordionContent className='text-zinc-400'>{item.answer}</AccordionContent>
+            <AccordionContent className='text-zinc-400'>{t(item.answer)}</AccordionContent>
           </AccordionItem>
         ))}
       </Accordion>
