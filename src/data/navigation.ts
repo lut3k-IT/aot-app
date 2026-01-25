@@ -6,6 +6,7 @@ export interface INavigationElement {
   id: number;
   name: string;
   route: string;
+  relatedRoutes?: string[];
   iconName: IconNames;
 }
 
@@ -18,6 +19,7 @@ export const navigationData: INavigationElement[] = [
     id: 1,
     name: 'common:title.heroes',
     route: RoutePath.HEROES,
+    relatedRoutes: [RoutePath.CHARTS, RoutePath.COMPARISON],
     iconName: 'user'
   },
   {

@@ -13,7 +13,7 @@ import Icon from './Icon';
 const NavigationElement = (props: NavigationElementProps) => {
   const { data } = props;
   const { t } = useTranslation();
-  const isActive = useIsMatchingRouteSegment(data.route, 2);
+  const isActive = useIsMatchingRouteSegment([data.route, ...(data.relatedRoutes || [])], 2);
 
   return (
     <Link
