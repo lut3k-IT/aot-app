@@ -13,6 +13,7 @@ import { MBTI_GROUPS_NAMES } from '@/constants/constants';
 import { RoutePath } from '@/constants/enums';
 import { MbtiGroups } from '@/constants/types';
 import mbti from '@/data/mbti';
+import { selectHeroesData, selectHeroesError, selectHeroesFavoriteIds } from '@/store/heroesSlice';
 import { addFavorite, removeFavorite } from '@/store/heroesSlice';
 import { isInFavorites } from '@/utils/dataHelpers';
 
@@ -29,9 +30,9 @@ const HeroDetails = ({ routeSlug }: HeroDetailsProps) => {
 
   if (!routeSlug) throw new Error('URL is incompatible.');
 
-  const originalHeroes = useAppSelector((state) => state.heroes.data);
-  const favoriteHeroesIds = useAppSelector((state) => state.heroes.favoriteIds);
-  const fetchingError = useAppSelector((state) => state.heroes.error);
+  const originalHeroes = useAppSelector(selectHeroesData);
+  const favoriteHeroesIds = useAppSelector(selectHeroesFavoriteIds);
+  const fetchingError = useAppSelector(selectHeroesError);
   useApiErrorToast(fetchingError);
 
   const hero = originalHeroes.find((hero) => hero.slug === routeSlug);

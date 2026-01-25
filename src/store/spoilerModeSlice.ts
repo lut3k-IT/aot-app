@@ -1,24 +1,26 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { getLocalStorageItem, setLocalStorageItem } from '@/utils/storageHelpers';
-
-import { Bool, LocalStorageKey } from './../constants/enums';
+import type { RootState } from './index';
 
 const spoilerModeSlice = createSlice({
-  name: LocalStorageKey.SPOILER_MODE,
-  initialState: getLocalStorageItem(LocalStorageKey.SPOILER_MODE) === Bool.TRUE ? true : false,
+  name: 'spoilerMode',
+  initialState: false,
   reducers: {
+    setSpoilerMode: (_state, action: PayloadAction<boolean>) => {
+      return action.payload;
+    },
     enableSpoilerMode: () => {
-      setLocalStorageItem(LocalStorageKey.SPOILER_MODE, Bool.TRUE);
       return true;
     },
     disableSpoilerMode: () => {
-      setLocalStorageItem(LocalStorageKey.SPOILER_MODE, Bool.FALSE);
       return false;
     }
   }
 });
 
-export const { enableSpoilerMode, disableSpoilerMode } = spoilerModeSlice.actions;
+// Selector
+export const selectSpoilerMode = (state: RootState) => state.spoilerMode;
+
+export const { setSpoilerMode, enableSpoilerMode, disableSpoilerMode } = spoilerModeSlice.actions;
 
 export default spoilerModeSlice;

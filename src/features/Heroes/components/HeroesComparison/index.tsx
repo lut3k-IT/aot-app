@@ -12,6 +12,7 @@ import HeroStatus from '@/components/ui/HeroStatus';
 import MovingPanel from '@/components/ui/MovingPanel';
 import SpoilerContent from '@/components/ui/SpoilerContent';
 import { HeroForSelect, HeroType, HeroTypeSelected } from '@/constants/types';
+import { selectHeroesData } from '@/store/heroesSlice';
 import { getMbtiShortName, getResidenceName, getSpeciesName } from '@/utils/dataHelpers';
 
 import DetailItem from './components/DetailItem';
@@ -28,7 +29,7 @@ const HeroesComparison = () => {
   const [selectedHeroes, setSelectedHeroes] = useState<HeroTypeSelected[]>(DEFAULT_COMPARISON_STATE);
   const [heroesForSelect, setHeroesForSelect] = useState<HeroForSelect[]>([]);
 
-  const heroes = useAppSelector((state) => state.heroes.data);
+  const heroes = useAppSelector(selectHeroesData);
 
   useEffect(() => {
     setHeroesForSelect(

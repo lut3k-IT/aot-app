@@ -12,6 +12,8 @@ import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import MovingPanel from '@/components/ui/MovingPanel';
 import PageHeading from '@/components/ui/PageHeading';
 import { ElementsIds } from '@/constants/enums';
+import { selectHeroesData } from '@/store/heroesSlice';
+import { selectTitansData, selectTitansError, selectTitansFavoriteIds, selectTitansStatus } from '@/store/titansSlice';
 
 import SwitchFavorites from '../../components/ui/SwitchFavorites';
 import Content from './components/Content';
@@ -20,12 +22,12 @@ const TitansGallery = () => {
   const { t } = useTranslation();
   const isLandscape = useIsLandscape();
 
-  const originalTitans = useAppSelector((state) => state.titans.data);
-  const originalHeroes = useAppSelector((state) => state.heroes.data);
+  const originalTitans = useAppSelector(selectTitansData);
+  const originalHeroes = useAppSelector(selectHeroesData);
 
-  const favoriteTitansIds = useAppSelector((state) => state.titans.favoriteIds);
-  const fetchingStatus = useAppSelector((state) => state.titans.status);
-  const fetchingError = useAppSelector((state) => state.titans.error);
+  const favoriteTitansIds = useAppSelector(selectTitansFavoriteIds);
+  const fetchingStatus = useAppSelector(selectTitansStatus);
+  const fetchingError = useAppSelector(selectTitansError);
   const isLoading = fetchingStatus === 'loading';
   useApiErrorToast(fetchingError);
 

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useToggleFavorite } from '@/components/hooks/useToggleFavorite';
 import { RoutePath } from '@/constants/enums';
 import { FavoriteType, HeroType, TitanType } from '@/constants/types';
+import { selectSpoilerMode } from '@/store/spoilerModeSlice';
 import { addFavorite, removeFavorite } from '@/store/titansSlice';
 import { getAllegianceNames, getHeroName, isInFavorites } from '@/utils/dataHelpers';
 
@@ -27,7 +28,7 @@ const TitanCard = (props: TitanCardProps) => {
   const { id, mbti, name = '', allegiance, currentInheritor, slug } = data;
 
   const { t } = useTranslation();
-  const isShowingSpoilers = useAppSelector((state) => state.spoilerMode);
+  const isShowingSpoilers = useAppSelector(selectSpoilerMode);
 
   const currentInheritorName = useMemo(() => getHeroName(currentInheritor, heroesData), [currentInheritor, heroesData]);
   const allegianceNames = useMemo(() => getAllegianceNames(allegiance, t), [allegiance, t]);
