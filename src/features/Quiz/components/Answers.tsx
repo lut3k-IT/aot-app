@@ -63,7 +63,7 @@ const Answers: React.FC<AnswersProps> = ({ options, correctAnswer, onAnswer, onN
   return (
     <motion.div>
       <motion.div
-        className={'grid grid-cols-1 gap-4 md:grid-cols-2'}
+        className={'grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4'}
         variants={container}
         initial='hidden'
         animate='show'
@@ -73,19 +73,17 @@ const Answers: React.FC<AnswersProps> = ({ options, correctAnswer, onAnswer, onN
           const isSelected = selectedAnswer === originalIndex;
 
           let buttonVariant: 'outline' | 'success' | 'destructive' | 'secondary' | 'default' = 'outline';
-          let borderClass = 'border-2 border-border';
-          let textClass = 'text-foreground';
+          let extraClasses = 'border-2 border-border text-foreground';
 
           if (isAnswered) {
-            textClass = 'text-white';
             if (isCorrect) {
               buttonVariant = 'success';
-              borderClass = 'border-2 border-transparent';
+              extraClasses = 'border-2 border-transparent text-white';
             } else if (isSelected) {
               buttonVariant = 'destructive';
-              borderClass = 'border-2 border-transparent';
+              extraClasses = 'border-2 border-transparent text-white';
             } else {
-              textClass = 'text-muted-foreground opacity-50';
+              extraClasses = 'border-2 border-border text-muted-foreground opacity-50';
             }
           }
 
@@ -96,8 +94,8 @@ const Answers: React.FC<AnswersProps> = ({ options, correctAnswer, onAnswer, onN
             >
               <Button
                 onClick={() => handleAnswer(originalIndex)}
-                className={`h-auto min-h-[4rem] w-full justify-center px-6 text-lg font-semibold transition-all duration-200 ${borderClass} ${textClass}`}
-                variant={buttonVariant as 'default'}
+                className={`h-auto min-h-12 w-full justify-center px-6 text-lg font-semibold transition-all duration-200 md:min-h-16 ${extraClasses}`}
+                variant={buttonVariant}
                 disabled={isAnswered}
               >
                 {text}
@@ -106,7 +104,7 @@ const Answers: React.FC<AnswersProps> = ({ options, correctAnswer, onAnswer, onN
           );
         })}
       </motion.div>
-      <div className='mt-8 flex min-h-[4rem] items-center justify-center'>
+      <div className='mt-4 flex min-h-[4rem] items-center justify-center md:mt-8'>
         {isAnswered && (
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}

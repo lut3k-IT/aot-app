@@ -2,8 +2,11 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import classNames from 'classnames';
 
 import { useBestScore } from '@/components/hooks/useBestScore';
+import useIsLandscape from '@/components/hooks/useIsLandscape';
+import useIsMobile from '@/components/hooks/useIsMobile';
 import DynamicTitle from '@/components/ui/DynamicTitle';
 import { shuffle } from '@/utils/helpers';
 
@@ -19,6 +22,8 @@ const Quiz = () => {
   const [isShowResult, setIsShowResult] = useState(false);
   const [answerHistory, setAnswerHistory] = useState<boolean[]>([]);
   const { bestScore, updateBestScore } = useBestScore();
+  const isMobile = useIsMobile();
+  const isLandscape = useIsLandscape();
 
   const [shuffledIndices, setShuffledIndices] = useState<number[] | null>(null);
 
@@ -78,7 +83,12 @@ const Quiz = () => {
   }
 
   return (
-    <div className={'flex min-h-[70vh] w-full items-center justify-center py-8'}>
+    <div
+      className={classNames('flex min-h-[70vh] w-full items-start justify-center pb-8', {
+        'pt-body-pad-start': isMobile,
+        'pt-16': isLandscape
+      })}
+    >
       <DynamicTitle title={t('common:title.quiz')} />
       <QuizCard>
         {isShowResult ? (
