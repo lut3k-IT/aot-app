@@ -13,6 +13,7 @@ import Pagination, { DEFAULT_PAGE, DEFAULT_PAGE_SIZES } from '@/components/ui/Pa
 import { ElementsIds, Param, SortDirection } from '@/constants/enums';
 import { HeroFilters, HeroSortOption } from '@/constants/types';
 import { filterHeroes, paginateHeroes } from '@/features/Heroes/utils/heroesProcessing';
+import { selectHeroesData, selectHeroesError, selectHeroesFavoriteIds, selectHeroesStatus } from '@/store/heroesSlice';
 import {
   getMbtiByShortName,
   getResidenceByKeyName,
@@ -40,10 +41,10 @@ const HeroesGallery = () => {
 
   const [totalPages, setTotalPages] = useState(DEFAULT_PAGE);
 
-  const originalHeroes = useAppSelector((state) => state.heroes.data);
-  const favoriteHeroesIds = useAppSelector((state) => state.heroes.favoriteIds);
-  const fetchingStatus = useAppSelector((state) => state.heroes.status);
-  const fetchingError = useAppSelector((state) => state.heroes.error);
+  const originalHeroes = useAppSelector(selectHeroesData);
+  const favoriteHeroesIds = useAppSelector(selectHeroesFavoriteIds);
+  const fetchingStatus = useAppSelector(selectHeroesStatus);
+  const fetchingError = useAppSelector(selectHeroesError);
   const isLoading = fetchingStatus === 'loading';
   useApiErrorToast(fetchingError);
 

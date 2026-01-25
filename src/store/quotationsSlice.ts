@@ -1,20 +1,23 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { LocalStorageKey, PromiseStatus } from '@/constants/enums';
+import { PromiseStatus } from '@/constants/enums';
 import { ErrorType, FavoriteType, QuotationType } from '@/constants/types';
 import i18n from '@/i18n/i18n';
-import { getLocalStorageItem, setLocalStorageItem } from '@/utils/storageHelpers';
+
+import type { RootState } from './index';
 
 export const loadQuotations = createAsyncThunk('quotations/load', async () => {
   const quotations = i18n.getResourceBundle(i18n.language, 'quotations');
-  const data = Object.entries(quotations).map(
-    ([id, text]) => ({ id: Number(id), text } as QuotationType)
-  );
+  const data = Object.entries(quotations).map(([id, text]) => ({ id: Number(id), text }) as QuotationType);
   return data;
 });
 
-const savedFavoriteIds = getLocalStorageItem(LocalStorageKey.FAV_QUOTATIONS);
-const initialFavoriteIds: FavoriteType[] = savedFavoriteIds ? JSON.parse(savedFavoriteIds) : [];
+interface QuotationsState {
+  data: QuotationType[];
+  status: PromiseStatus;
+  error: ErrorType;
+  favoriteIds: FavoriteType[];
+}
 
 const quotationsSlice = createSlice({
   name: 'quotations',
@@ -22,18 +25,19 @@ const quotationsSlice = createSlice({
     data: [] as QuotationType[],
     status: PromiseStatus.IDLE,
     error: undefined as ErrorType,
-    favoriteIds: initialFavoriteIds
-  },
+    favoriteIds: [] as FavoriteType[]
+  } as QuotationsState,
   reducers: {
-    addFavorite: (state, action) => {
+    setQuotationsFavoriteIds: (state, action: PayloadAction<FavoriteType[]>) => {
+      state.favoriteIds = action.payload;
+    },
+    addFavorite: (state, action: PayloadAction<number>) => {
       if (!state.favoriteIds.includes(action.payload)) {
         state.favoriteIds.push(action.payload);
-        setLocalStorageItem(LocalStorageKey.FAV_QUOTATIONS, JSON.stringify(state.favoriteIds));
       }
     },
-    removeFavorite: (state, action) => {
-      state.favoriteIds = state.favoriteIds.filter((id: number) => id !== action.payload);
-      setLocalStorageItem(LocalStorageKey.FAV_QUOTATIONS, JSON.stringify(state.favoriteIds));
+    removeFavorite: (state, action: PayloadAction<number>) => {
+      state.favoriteIds = state.favoriteIds.filter((id) => id !== action.payload);
     }
   },
   extraReducers: (builder) => {
@@ -52,6 +56,12 @@ const quotationsSlice = createSlice({
   }
 });
 
-export const { addFavorite, removeFavorite } = quotationsSlice.actions;
+// Selectors
+export const selectQuotationsData = (state: RootState) => state.quotations.data;
+export const selectQuotationsFavoriteIds = (state: RootState) => state.quotations.favoriteIds;
+export const selectQuotationsStatus = (state: RootState) => state.quotations.status;
+export const selectQuotationsError = (state: RootState) => state.quotations.error;
+
+export const { setQuotationsFavoriteIds, addFavorite, removeFavorite } = quotationsSlice.actions;
 
 export default quotationsSlice;

@@ -1,12 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { LocalStorageKey, PromiseStatus } from '@/constants/enums';
+import { PromiseStatus } from '@/constants/enums';
 import { ErrorType, FavoriteType, HeroType } from '@/constants/types';
 import heroes from '@/data/heroes';
-import { getLocalStorageItem, setLocalStorageItem } from '@/utils/storageHelpers';
 
-const savedFavoriteIds = getLocalStorageItem(LocalStorageKey.FAV_HEROES);
-const initialFavoriteIds: FavoriteType[] = savedFavoriteIds ? JSON.parse(savedFavoriteIds) : [];
+import type { RootState } from './index';
+
+interface HeroesState {
+  data: HeroType[];
+  status: PromiseStatus;
+  error: ErrorType;
+  favoriteIds: FavoriteType[];
+}
 
 const heroesSlice = createSlice({
   name: 'heroes',
@@ -14,22 +19,29 @@ const heroesSlice = createSlice({
     data: heroes as HeroType[],
     status: PromiseStatus.IDLE,
     error: undefined as ErrorType,
-    favoriteIds: initialFavoriteIds
-  },
+    favoriteIds: [] as FavoriteType[]
+  } as HeroesState,
   reducers: {
-    addFavorite: (state, action) => {
+    setHeroesFavoriteIds: (state, action: PayloadAction<FavoriteType[]>) => {
+      state.favoriteIds = action.payload;
+    },
+    addFavorite: (state, action: PayloadAction<number>) => {
       if (!state.favoriteIds.includes(action.payload)) {
         state.favoriteIds.push(action.payload);
-        setLocalStorageItem(LocalStorageKey.FAV_HEROES, JSON.stringify(state.favoriteIds));
       }
     },
-    removeFavorite: (state, action) => {
-      state.favoriteIds = state.favoriteIds.filter((id: number) => id !== action.payload);
-      setLocalStorageItem(LocalStorageKey.FAV_HEROES, JSON.stringify(state.favoriteIds));
+    removeFavorite: (state, action: PayloadAction<number>) => {
+      state.favoriteIds = state.favoriteIds.filter((id) => id !== action.payload);
     }
   }
 });
 
-export const { addFavorite, removeFavorite } = heroesSlice.actions;
+// Selectors
+export const selectHeroesData = (state: RootState) => state.heroes.data;
+export const selectHeroesFavoriteIds = (state: RootState) => state.heroes.favoriteIds;
+export const selectHeroesStatus = (state: RootState) => state.heroes.status;
+export const selectHeroesError = (state: RootState) => state.heroes.error;
+
+export const { setHeroesFavoriteIds, addFavorite, removeFavorite } = heroesSlice.actions;
 
 export default heroesSlice;

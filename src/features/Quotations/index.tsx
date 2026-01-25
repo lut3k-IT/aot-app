@@ -12,6 +12,12 @@ import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import MovingPanel from '@/components/ui/MovingPanel';
 import PageHeading from '@/components/ui/PageHeading';
 import { ElementsIds } from '@/constants/enums';
+import {
+  selectQuotationsData,
+  selectQuotationsError,
+  selectQuotationsFavoriteIds,
+  selectQuotationsStatus
+} from '@/store/quotationsSlice';
 
 import SwitchFavorites from '../../components/ui/SwitchFavorites';
 import RenderQuotations from './components/RenderQuotations';
@@ -20,10 +26,10 @@ const Quotations = () => {
   const { t } = useTranslation();
   const isLandscape = useIsLandscape();
 
-  const quotations = useAppSelector((state) => state.quotations.data);
-  const favoriteIds = useAppSelector((state) => state.quotations.favoriteIds);
-  const fetchingStatus = useAppSelector((state) => state.quotations.status);
-  const fetchingError = useAppSelector((state) => state.quotations.error);
+  const quotations = useAppSelector(selectQuotationsData);
+  const favoriteIds = useAppSelector(selectQuotationsFavoriteIds);
+  const fetchingStatus = useAppSelector(selectQuotationsStatus);
+  const fetchingError = useAppSelector(selectQuotationsError);
   const isLoading = fetchingStatus === 'loading';
   useApiErrorToast(fetchingError);
 

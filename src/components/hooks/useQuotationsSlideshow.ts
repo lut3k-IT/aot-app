@@ -1,6 +1,7 @@
 // src/components/hooks/useQuotations.ts
 import { useEffect, useRef, useState } from 'react';
 
+import { selectQuotationsData } from '@/store/quotationsSlice';
 import { getRandomQuotation } from '@/utils/quotationHelpers';
 
 import useAppSelector from './useAppSelector';
@@ -12,7 +13,7 @@ export const useQuotationsSlideshow = () => {
   const textRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
 
-  const originalQuotations = useAppSelector((state) => state.quotations.data);
+  const originalQuotations = useAppSelector(selectQuotationsData);
   const [remainingQuotations, setRemainingQuotations] = useState([...originalQuotations]);
   const [currentQuotation, setCurrentQuotation] = useState(getRandomQuotation(remainingQuotations));
 

@@ -3,6 +3,7 @@ import useIsLandscape from '@/components/hooks/useIsLandscape';
 import useIsMobileOrLandscape from '@/components/hooks/useIsMobileOrLandscape';
 import { useToggleFavorite } from '@/components/hooks/useToggleFavorite';
 import { addFavorite, removeFavorite } from '@/store/quotationsSlice';
+import { selectQuotationsError, selectQuotationsFavoriteIds } from '@/store/quotationsSlice';
 import { isInFavorites } from '@/utils/dataHelpers';
 
 import useAppSelector from '../../hooks/useAppSelector';
@@ -15,9 +16,9 @@ const QuotationBar = () => {
   const isMobileLandscape = useIsMobileOrLandscape();
   const isLandscape = useIsLandscape();
 
-  const favoriteQuotationsIds = useAppSelector((state) => state.quotations.favoriteIds);
+  const favoriteQuotationsIds = useAppSelector(selectQuotationsFavoriteIds);
   // const fetchingStatus = useAppSelector((state) => state.quotations.status);
-  const fetchingError = useAppSelector((state) => state.quotations.error);
+  const fetchingError = useAppSelector(selectQuotationsError);
   // const isLoading = fetchingStatus === 'loading';
   useApiErrorToast(fetchingError);
 

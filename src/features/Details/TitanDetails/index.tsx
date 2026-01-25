@@ -13,6 +13,8 @@ import { MBTI_GROUPS_NAMES } from '@/constants/constants';
 import { RoutePath } from '@/constants/enums';
 import { MbtiGroups } from '@/constants/types';
 import mbti from '@/data/mbti';
+import { selectHeroesData } from '@/store/heroesSlice';
+import { selectTitansData, selectTitansError, selectTitansFavoriteIds } from '@/store/titansSlice';
 import { addFavorite, removeFavorite } from '@/store/titansSlice';
 import { getHeroName, isInFavorites } from '@/utils/dataHelpers';
 
@@ -29,10 +31,10 @@ const TitanDetails = ({ routeSlug }: TitanDetailsProps) => {
 
   if (!routeSlug) throw new Error('URL is incompatible.');
 
-  const originalTitans = useAppSelector((state) => state.titans.data);
-  const originalHeroes = useAppSelector((state) => state.heroes.data);
-  const favoriteTitansIds = useAppSelector((state) => state.titans.favoriteIds);
-  const fetchingError = useAppSelector((state) => state.titans.error);
+  const originalTitans = useAppSelector(selectTitansData);
+  const originalHeroes = useAppSelector(selectHeroesData);
+  const favoriteTitansIds = useAppSelector(selectTitansFavoriteIds);
+  const fetchingError = useAppSelector(selectTitansError);
   useApiErrorToast(fetchingError);
 
   const titan = originalTitans.find((titan) => titan.slug === routeSlug);

@@ -14,6 +14,7 @@ import { Card } from '@/components/ui/Card';
 import DynamicTitle from '@/components/ui/DynamicTitle';
 import FavoriteButton from '@/components/ui/FavoriteButton';
 import { RoutePath } from '@/constants/enums';
+import { selectQuotationsData, selectQuotationsError, selectQuotationsFavoriteIds } from '@/store/quotationsSlice';
 import { addFavorite, removeFavorite } from '@/store/quotationsSlice';
 import { isInFavorites } from '@/utils/dataHelpers';
 
@@ -28,9 +29,9 @@ const QuotationDetails = ({ routeId }: QuotationDetailsProps) => {
 
   const paramQuotationId = useValidateIdFromParam(routeId);
 
-  const quotations = useAppSelector((state) => state.quotations.data);
-  const favoriteQuotationsId = useAppSelector((state) => state.quotations.favoriteIds);
-  const fetchingError = useAppSelector((state) => state.quotations.error);
+  const quotations = useAppSelector(selectQuotationsData);
+  const favoriteQuotationsId = useAppSelector(selectQuotationsFavoriteIds);
+  const fetchingError = useAppSelector(selectQuotationsError);
   useApiErrorToast(fetchingError);
 
   const quotation = quotations.find((quotation) => quotation.id === paramQuotationId);
