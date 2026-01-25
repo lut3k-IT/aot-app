@@ -1,8 +1,9 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { LocalStorageKey, PromiseStatus } from '@/constants/enums';
+import { PromiseStatus } from '@/constants/enums';
 import { ErrorType, FavoriteType, TitanType } from '@/constants/types';
-import { getLocalStorageItem, setLocalStorageItem } from '@/utils/storageHelpers';
+
+import type { RootState } from './index';
 
 export const loadTitans = createAsyncThunk('titans/load', async () => {
   const response = await fetch('/data/titans.json');
@@ -10,8 +11,12 @@ export const loadTitans = createAsyncThunk('titans/load', async () => {
   return data;
 });
 
-const savedFavoriteIds = getLocalStorageItem(LocalStorageKey.FAV_TITANS);
-const initialFavoriteIds: FavoriteType[] = savedFavoriteIds ? JSON.parse(savedFavoriteIds) : [];
+interface TitansState {
+  data: TitanType[];
+  status: PromiseStatus;
+  error: ErrorType;
+  favoriteIds: FavoriteType[];
+}
 
 const titansSlice = createSlice({
   name: 'titans',
@@ -19,18 +24,19 @@ const titansSlice = createSlice({
     data: [] as TitanType[],
     status: PromiseStatus.IDLE,
     error: undefined as ErrorType,
-    favoriteIds: initialFavoriteIds
-  },
+    favoriteIds: [] as FavoriteType[]
+  } as TitansState,
   reducers: {
-    addFavorite: (state, action) => {
+    setTitansFavoriteIds: (state, action: PayloadAction<FavoriteType[]>) => {
+      state.favoriteIds = action.payload;
+    },
+    addFavorite: (state, action: PayloadAction<number>) => {
       if (!state.favoriteIds.includes(action.payload)) {
         state.favoriteIds.push(action.payload);
-        setLocalStorageItem(LocalStorageKey.FAV_TITANS, JSON.stringify(state.favoriteIds));
       }
     },
-    removeFavorite: (state, action) => {
-      state.favoriteIds = state.favoriteIds.filter((id: number) => id !== action.payload);
-      setLocalStorageItem(LocalStorageKey.FAV_TITANS, JSON.stringify(state.favoriteIds));
+    removeFavorite: (state, action: PayloadAction<number>) => {
+      state.favoriteIds = state.favoriteIds.filter((id) => id !== action.payload);
     }
   },
   extraReducers: (builder) => {
@@ -49,6 +55,12 @@ const titansSlice = createSlice({
   }
 });
 
-export const { addFavorite, removeFavorite } = titansSlice.actions;
+// Selectors
+export const selectTitansData = (state: RootState) => state.titans.data;
+export const selectTitansFavoriteIds = (state: RootState) => state.titans.favoriteIds;
+export const selectTitansStatus = (state: RootState) => state.titans.status;
+export const selectTitansError = (state: RootState) => state.titans.error;
+
+export const { setTitansFavoriteIds, addFavorite, removeFavorite } = titansSlice.actions;
 
 export default titansSlice;

@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { cn } from '@/lib/utils';
 import { disableSpoilerMode, enableSpoilerMode } from '@/store/spoilerModeSlice';
+import { selectSpoilerMode } from '@/store/spoilerModeSlice';
 
 import useAppDispatch from '../hooks/useAppDispatch';
 import useAppSelector from '../hooks/useAppSelector';
@@ -17,7 +18,7 @@ const SwitchSpoilerMode = (props: SwitchSpoilerModeProps) => {
   const { t } = useTranslation();
 
   const dispatch = useAppDispatch();
-  const isShowingSpoilers = useAppSelector((state) => state.spoilerMode);
+  const isShowingSpoilers = useAppSelector(selectSpoilerMode);
 
   const handleToggle = () => {
     if (isShowingSpoilers) {

@@ -8,7 +8,9 @@ import useAppDispatch from '@/components/hooks/useAppDispatch';
 import useAppSelector from '@/components/hooks/useAppSelector';
 import DynamicTitle from '@/components/ui/DynamicTitle';
 import SplashScreen from '@/components/ui/SplashScreen';
+import { selectQuotationsStatus } from '@/store/quotationsSlice';
 import { loadQuotations } from '@/store/quotationsSlice';
+import { selectTitansStatus } from '@/store/titansSlice';
 import { loadTitans } from '@/store/titansSlice';
 
 let didInit = false;
@@ -19,8 +21,8 @@ const Init = () => {
   const [shouldShowSplash, setShouldShowSplash] = useState(true);
 
   // Loading states
-  const quotationsStatus = useAppSelector((state) => state.quotations.status);
-  const titansStatus = useAppSelector((state) => state.titans.status);
+  const quotationsStatus = useAppSelector(selectQuotationsStatus);
+  const titansStatus = useAppSelector(selectTitansStatus);
 
   // Check if initial data is loaded
   const isQuotationsLoaded = quotationsStatus === 'succeeded' || quotationsStatus === 'failed';
