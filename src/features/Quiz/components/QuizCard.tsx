@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 interface QuizCardProps {
   children: React.ReactNode;
@@ -6,9 +7,14 @@ interface QuizCardProps {
 
 const QuizCard: React.FC<QuizCardProps> = ({ children }) => {
   return (
-    <div className='w-full max-w-2xl rounded-lg bg-card p-8 m-auto'>
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
+      className='m-auto w-full max-w-2xl'
+    >
       {children}
-    </div>
+    </motion.div>
   );
 };
 

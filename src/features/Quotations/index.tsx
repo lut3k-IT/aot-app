@@ -38,7 +38,7 @@ const Quotations = () => {
 
   return (
     <>
-      <DynamicTitle title={`${t('common:title.quotations')} ${t('common:tab.list')}`} />
+      <DynamicTitle title={t('common:title.quotations')} />
       <MovingPanel className={isLandscape ? '' : 'md:pt-0'}>
         <PageHeading className={isLandscape ? '' : 'md:pt-0'} />
         {pageHeadingDestination &&
