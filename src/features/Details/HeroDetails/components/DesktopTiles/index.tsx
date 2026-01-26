@@ -22,7 +22,7 @@ const DesktopTiles = (props: DesktopTilesProps) => {
       />
       <DetailsTile
         title={t('data:species.title')}
-        value={SpoilerContent(getSpeciesName(hero.species, t))}
+        value={<SpoilerContent>{getSpeciesName(hero.species, t)}</SpoilerContent>}
       />
       <DetailsTile
         title={t('data:residence.title')}
@@ -30,13 +30,15 @@ const DesktopTiles = (props: DesktopTilesProps) => {
       />
       <DetailsTile
         title={t('data:status.title')}
-        value={SpoilerContent(
-          <HeroStatus
-            statusId={hero.status}
-            className={'font-medium'}
-            textAbbreviation={'long'}
-          />
-        )}
+        value={
+          <SpoilerContent>
+            <HeroStatus
+              statusId={hero.status}
+              className={'font-medium'}
+              textAbbreviation={'long'}
+            />
+          </SpoilerContent>
+        }
       />
       <DetailsTile
         title={t('data:age.title')}

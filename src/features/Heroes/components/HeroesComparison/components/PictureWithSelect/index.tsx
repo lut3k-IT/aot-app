@@ -31,7 +31,7 @@ const PictureWithSelect = (props: PictureWithSelectProps) => {
         alt={selectedHero?.firstName || 'Hero to compare'}
         size={'full'}
         variant={'circle'}
-        className={'max-h-[8rem] max-w-[8rem] outline-dashed outline-2 outline-offset-4 outline-muted2'}
+        className={'outline-subtle max-h-[8rem] max-w-[8rem] outline-dashed outline-2 outline-offset-4'}
       />
     </button>
   );
@@ -43,7 +43,7 @@ const PictureWithSelect = (props: PictureWithSelectProps) => {
     >
       <div
         className={
-          'flex-center aspect-square h-auto w-full flex-col gap-1 rounded-full bg-accent text-muted-foreground outline-dashed outline-2 outline-offset-4 outline-muted2'
+          'flex-center outline-subtle aspect-square h-auto w-full flex-col gap-1 rounded-full bg-accent text-muted-foreground outline-dashed outline-2 outline-offset-4'
         }
       >
         <SquareMousePointer size={'2.5rem'} />

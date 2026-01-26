@@ -31,11 +31,11 @@ const MobileTiles = (props: MobileTIlesProps) => {
       />
       <DetailsTile
         title={t('data:currentInheritor')}
-        value={SpoilerContent(currentInheritor)}
+        value={<SpoilerContent>{currentInheritor}</SpoilerContent>}
       />
       <DetailsTile
         title={t('data:formerInheritors')}
-        value={SpoilerContent(formerInheritors)}
+        value={<SpoilerContent>{formerInheritors}</SpoilerContent>}
       />
       <DetailsTile
         title={t('data:otherNames')}

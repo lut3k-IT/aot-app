@@ -17,8 +17,7 @@ const Changelog = () => {
   useEffect(() => {
     const fetchChangelog = async () => {
       try {
-        const url = new URL('/CHANGELOG.md', import.meta.url).toString();
-        const res = await fetch(url);
+        const res = await fetch('/CHANGELOG.md');
 
         if (!res.ok) {
           throw new Error('Could not fetch changelog data');
@@ -34,7 +33,10 @@ const Changelog = () => {
     fetchChangelog();
   }, []);
 
-  const versions = changelogContent.split('\n## ');
+  // Remove the first line (# Changelog) to avoid duplicate title
+  const contentWithoutTitle = changelogContent.replace(/^# Changelog\r?\n\r?\n?/, '');
+
+  const versions = contentWithoutTitle.split('\n## ');
   const latestVersions = versions
     .slice(0, MAX_VERSIONS_TO_SHOW)
     .map((version, index) => (index === 0 ? version : `## ${version}`))

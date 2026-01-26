@@ -7,9 +7,18 @@ import Providers from '@/components/providers/Providers';
 import '@/index.css';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://aot.kacperlutynski.pl'),
   title: 'AOT APP',
   description:
     "Explore the world of 'Attack on Titan' better with the AOT APP! Created by fans, this app will make watching anime easier for you. Find information about characters, browse quotes, save favorites and compare characters. Discover their personalities with the MBTI system.",
+  keywords: ['Attack on Titan', 'AOT', 'Shingeki no Kyojin', 'anime', 'characters', 'MBTI', 'quiz', 'quotes', 'titans'],
+  robots: {
+    index: true,
+    follow: true
+  },
+  alternates: {
+    canonical: 'https://aot.kacperlutynski.pl'
+  },
   openGraph: {
     title: 'AOT APP',
     description:

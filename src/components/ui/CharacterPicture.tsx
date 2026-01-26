@@ -52,23 +52,25 @@ const CharacterPicture = (props: CharacterPictureProps) => {
 
   return (
     <Avatar className={cn(characterPictureVariants({ variant, size }), className)}>
-      <AvatarImage
-        src={imgSource}
-        asChild
-      >
-        <NextImage
+      {imgSource ? (
+        <AvatarImage
           src={imgSource}
-          alt={alt || ''}
-          width={isFull ? undefined : width}
-          height={isFull ? undefined : height}
-          fill={isFull}
-          className={'object-cover'}
-          priority={size === 'xl'} // Optimize LCP for large avatars
-          unoptimized
-        />
-      </AvatarImage>
+          asChild
+        >
+          <NextImage
+            src={imgSource}
+            alt={alt || ''}
+            width={isFull ? undefined : width}
+            height={isFull ? undefined : height}
+            fill={isFull}
+            className={'object-cover'}
+            priority={size === 'xl'} // Optimize LCP for large avatars
+            unoptimized
+          />
+        </AvatarImage>
+      ) : null}
       <AvatarFallback className={cn(characterPictureVariants({ variant, size }))}>
-        <Image className={'h-1/2 w-1/2 text-muted2-foreground'} />
+        <Image className={'text-subtle-foreground h-1/2 w-1/2'} />
       </AvatarFallback>
     </Avatar>
   );

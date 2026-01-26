@@ -13,29 +13,35 @@ const NavigationElement = (props: NavigationElementProps) => {
   const { data } = props;
   const { t } = useTranslation();
 
-  const isActive = useIsMatchingRouteSegment(data.route, 2);
+  const isActive = useIsMatchingRouteSegment([data.route, ...(data.relatedRoutes || [])], 2);
 
   return (
     <Link
       href={data.route}
-      className={classNames('flex w-full items-center gap-3 rounded-md px-4 py-2.5', {
-        'bg-primary': isActive
+      className={classNames('group flex w-full items-center gap-3 rounded-md px-4 py-2.5 transition-all duration-200', {
+        'bg-primary': isActive,
+        'hover:bg-accent': !isActive
       })}
     >
       <div className={'flex justify-center'}>
         <Icon
           name={data.iconName}
           size={'sm'}
-          className={classNames('z-30 text-foreground', {
-            '!text-primary-foreground': isActive
+          className={classNames('z-30 text-foreground transition-colors duration-200', {
+            '!text-primary-foreground': isActive,
+            'group-hover:text-accent-foreground': !isActive
           })}
         />
       </div>
       <div
         suppressHydrationWarning
-        className={classNames('w-full text-lg font-medium leading-none text-foreground', {
-          '!text-primary-foreground': isActive
-        })}
+        className={classNames(
+          'w-full text-lg font-medium leading-none text-foreground transition-colors duration-200',
+          {
+            '!text-primary-foreground': isActive,
+            'group-hover:text-accent-foreground': !isActive
+          }
+        )}
       >
         {t(data.name)}
       </div>

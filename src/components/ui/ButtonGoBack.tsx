@@ -16,7 +16,7 @@ interface ButtonGoBackProps {
 
 const ButtonGoBack = (props: ButtonGoBackProps) => {
   const { t } = useTranslation();
-  const { text = t('common:navigation.goBack'), className, fallbackRoute = RoutePath.HEROES_GALLERY } = props;
+  const { text = t('common:navigation.goBack'), className, fallbackRoute = RoutePath.HEROES } = props;
   const router = useRouter();
 
   const handleGoBack = () => {

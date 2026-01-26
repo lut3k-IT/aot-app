@@ -22,10 +22,10 @@ enum TabValue {
 const tabsTriggerClassName = 'flex-1';
 
 const getTabValueFromPathname = (pathname: string) => {
-  if (pathname.includes('/charts')) {
+  if (pathname === RoutePath.CHARTS) {
     return TabValue.CHARTS;
   }
-  if (pathname.includes('/comparison')) {
+  if (pathname === RoutePath.COMPARISON) {
     return TabValue.COMPARISON;
   }
   return TabValue.GALLERY;
@@ -68,21 +68,21 @@ const HeroesLayoutClient = ({ children }: HeroesLayoutClientProps) => {
               className={tabsTriggerClassName}
               asChild
             >
-              <Link href={RoutePath.HEROES_GALLERY}>{t('common:tab.gallery')}</Link>
+              <Link href={RoutePath.HEROES}>{t('common:tab.gallery')}</Link>
             </TabsTrigger>
             <TabsTrigger
               value={TabValue.COMPARISON}
               className={tabsTriggerClassName}
               asChild
             >
-              <Link href={RoutePath.HEROES_COMPARISON}>{t('common:tab.comparison')}</Link>
+              <Link href={RoutePath.COMPARISON}>{t('common:tab.comparison')}</Link>
             </TabsTrigger>
             <TabsTrigger
               value={TabValue.CHARTS}
               className={tabsTriggerClassName}
               asChild
             >
-              <Link href={RoutePath.HEROES_CHARTS}>{t('common:tab.charts')}</Link>
+              <Link href={RoutePath.CHARTS}>{t('common:tab.charts')}</Link>
             </TabsTrigger>
           </TabsList>
         </Tabs>

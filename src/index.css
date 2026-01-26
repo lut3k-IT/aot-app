@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  /* todo match others with "muted" */
   :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
@@ -17,12 +16,12 @@
     --secondary-foreground: 0 0% 9%;
     --muted: 0 0% 96.1%;
     --muted-foreground: 0 0% 45.1%;
-    --muted2: 0, 0%, 96.1%;
-    --muted2-foreground: 0 0% 82%;
+    --subtle: 0, 0%, 96.1%;
+    --subtle-foreground: 0 0% 82%;
     --accent: 0 0% 96.1%;
     --accent-foreground: 0 0% 9%;
-    --destructive: 269, 66%, 50%;
-    --destructive-foreground: 266, 95%, 97%;
+    --destructive: 269 66% 50%;
+    --destructive-foreground: 266 95% 97%;
     --success: 142.1 76.2% 36.3%;
     --success-foreground: 144.9 80.4% 97.4%;
     --border: 0 0% 89.8%;
@@ -49,12 +48,12 @@
     --secondary-foreground: 0 0% 90%;
     --muted: 0 0% 9%;
     --muted-foreground: 0 0% 60%;
-    --muted2: 0, 0%, 11%;
-    --muted2-foreground: 0 0% 45%;
+    --subtle: 0, 0%, 11%;
+    --subtle-foreground: 0 0% 45%;
     --accent: 0 0% 5%;
     --accent-foreground: 0 0% 80%;
-    --destructive: 269, 80%, 66%;
-    --destructive-foreground: 266, 95%, 97%;
+    --destructive: 269 80% 66%;
+    --destructive-foreground: 266 95% 97%;
     --success: 142.1 76.2% 36.3%;
     --success-foreground: 144.9 80.4% 97.4%;
     --border: 0 0% 13%;
@@ -152,7 +151,7 @@
     }
 
     & h1 {
-      @apply mb-8 text-4xl font-extrabold lg:text-5xl;
+      @apply mb-8 text-4xl font-bold lg:text-5xl;
     }
 
     & h2 {

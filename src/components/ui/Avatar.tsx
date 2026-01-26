@@ -17,7 +17,7 @@ const avatarVariants = cva('relative flex h-10 w-10 overflow-hidden', {
   }
 });
 
-const avatarFallbackVariants = cva('relative flex h-full w-full items-center justify-center bg-muted2', {
+const avatarFallbackVariants = cva('relative flex h-full w-full items-center justify-center bg-subtle', {
   variants: {
     variant: {
       circle: 'rounded-full',
@@ -33,8 +33,7 @@ const avatarFallbackVariants = cva('relative flex h-full w-full items-center jus
 interface AvatarProps extends VariantProps<typeof avatarVariants>, React.ComponentProps<typeof AvatarPrimitive.Root> {}
 
 interface AvatarFallbackProps
-  extends VariantProps<typeof avatarFallbackVariants>,
-    React.ComponentProps<typeof AvatarPrimitive.Fallback> {}
+  extends VariantProps<typeof avatarFallbackVariants>, React.ComponentProps<typeof AvatarPrimitive.Fallback> {}
 
 const Avatar = ({ className, variant, ref, ...props }: AvatarProps) => (
   <AvatarPrimitive.Root

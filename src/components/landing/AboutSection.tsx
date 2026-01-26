@@ -1,8 +1,13 @@
+'use client';
+
+import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 
 import { Button } from '@/components/ui/Button';
 
 export const AboutSection = () => {
+  const { t } = useTranslation('landing');
+
   return (
     <section className='relative w-full overflow-hidden bg-zinc-950 py-24'>
       <div className='absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-zinc-800 to-transparent' />
@@ -11,15 +16,13 @@ export const AboutSection = () => {
         <div className='grid gap-12 lg:grid-cols-2 lg:gap-8'>
           <div className='flex flex-col justify-center space-y-6'>
             <h2 className='bg-gradient-to-r from-white to-zinc-400 bg-clip-text pb-2 text-3xl font-bold leading-tight tracking-tight text-transparent sm:text-4xl md:text-5xl'>
-              Idealny pomocnik podczas oglądania
+              {t('about.title')}
             </h2>
             <p className='max-w-[600px] text-zinc-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
-              Stworzyliśmy tę aplikację, aby ułatwić Ci śledzenie fabuły. Znajdziesz tu kluczowe informacje podane w
-              przejrzysty sposób.
+              {t('about.description1')}
             </p>
             <p className='max-w-[600px] text-zinc-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
-              Szybkość i wygoda to nasze atuty. Dzięki zaawansowanym filtrom i porównywarce błyskawicznie znajdziesz
-              interesujące Cię postacie, bez zbędnego szumu.
+              {t('about.description2')}
             </p>
             <div className='flex flex-col gap-2 min-[400px]:flex-row'>
               <Link href='/app/about'>
@@ -27,7 +30,7 @@ export const AboutSection = () => {
                   variant='outline'
                   className='border-zinc-700 bg-transparent text-white hover:bg-zinc-800'
                 >
-                  Więcej o projekcie
+                  {t('about.moreAboutProject')}
                 </Button>
               </Link>
             </div>

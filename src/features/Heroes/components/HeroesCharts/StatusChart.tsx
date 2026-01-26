@@ -4,34 +4,37 @@ import { useTranslation } from 'react-i18next';
 import { useRouter } from 'next/navigation';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 
+import useAppSelector from '@/components/hooks/useAppSelector';
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { Param, RoutePath } from '@/constants/enums';
 import heroes from '@/data/heroes';
-import mbtiData from '@/data/mbti';
+import statuses from '@/data/statuses';
+import { selectSpoilerMode } from '@/store/spoilerModeSlice';
 
-const mbtiCounts = heroes.reduce(
+const statusCounts = heroes.reduce(
   (acc, hero) => {
-    if (hero.mbti) {
-      acc[hero.mbti] = (acc[hero.mbti] || 0) + 1;
+    if (hero.status) {
+      acc[hero.status] = (acc[hero.status] || 0) + 1;
     }
     return acc;
   },
   {} as Record<string, number>
 );
 
-const chartData = mbtiData.map((mbti) => ({
-  name: mbti.shortName,
-  count: mbtiCounts[mbti.id] || 0,
-  shortName: mbti.shortName
-}));
-
-const MbtiChart = () => {
+const StatusChart = () => {
   const { t } = useTranslation();
   const router = useRouter();
+  const isSpoilerMode = useAppSelector(selectSpoilerMode);
+
+  const chartData = statuses.map((status) => ({
+    name: t(`data:status.${status.keyName}.short`),
+    count: statusCounts[status.id] || 0,
+    keyName: status.keyName
+  }));
 
   const chartConfig = {
     count: {
-      label: t('charts:mbtiChart.count'),
+      label: t('charts:statusChart.count'),
       color: 'hsl(var(--primary))'
     }
   } satisfies ChartConfig;
@@ -39,8 +42,8 @@ const MbtiChart = () => {
   return (
     <div className='flex flex-col gap-4'>
       <div className='space-y-1'>
-        <h2>{t('charts:mbtiChart.title')}</h2>
-        <p className='text-muted-foreground'>{t('charts:mbtiChart.description')}</p>
+        <h2>{t('charts:statusChart.title')}</h2>
+        <p className='text-muted-foreground'>{t('charts:statusChart.description')}</p>
       </div>
       <ChartContainer
         config={chartConfig}
@@ -71,9 +74,11 @@ const MbtiChart = () => {
             dataKey='count'
             radius={4}
             fill='var(--color-count)'
-            className='cursor-pointer'
+            className={isSpoilerMode ? 'cursor-pointer' : ''}
             onClick={(data) => {
-              router.push(`${RoutePath.HEROES}?${Param.MBTI}=${data.shortName}`);
+              if (isSpoilerMode) {
+                router.push(`${RoutePath.HEROES}?${Param.STATUS}=${data.keyName}`);
+              }
             }}
           />
         </BarChart>
@@ -82,4 +87,4 @@ const MbtiChart = () => {
   );
 };
 
-export default MbtiChart;
+export default StatusChart;

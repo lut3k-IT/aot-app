@@ -65,7 +65,6 @@ const LanguageSwitcher = (props: LanguageSwitcherProps) => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          suppressHydrationWarning
           aria-label={currentLanguageName}
           {...buttonProps}
         >

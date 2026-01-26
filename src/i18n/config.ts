@@ -12,6 +12,8 @@ import {
   dataPL,
   howToUseEN,
   howToUsePL,
+  landingEN,
+  landingPL,
   notificationsEN,
   notificationsPL,
   quizEN,
@@ -28,7 +30,8 @@ const resources = {
     howToUse: howToUseEN,
     quiz: quizEN,
     quotations: quotationsEN,
-    charts: chartsEN
+    charts: chartsEN,
+    landing: landingEN
   },
   pl: {
     common: commonPL,
@@ -37,16 +40,17 @@ const resources = {
     howToUse: howToUsePL,
     quiz: quizPL,
     quotations: quotationsPL,
-    charts: chartsPL
+    charts: chartsPL,
+    landing: landingPL
   }
 };
 
-export const ns = ['common', 'quiz', 'quotations', 'charts'];
+export const ns = ['common', 'quiz', 'quotations', 'charts', 'landing'];
 
 export const initOptions: InitOptions = {
   resources,
   fallbackLng: LanguageShortName.POLISH,
-  lng: LanguageShortName.POLISH,
+
   debug: true,
   load: 'languageOnly',
   ns,

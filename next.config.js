@@ -35,6 +35,17 @@ const nextConfig = {
     fileLoaderRule.exclude = /\.svg$/i;
 
     return config;
+  },
+  env: {
+    NEXT_PUBLIC_APP_VERSION: require('./package.json').version
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.buymeacoffee.com'
+      }
+    ]
   }
 };
 

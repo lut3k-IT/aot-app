@@ -11,7 +11,7 @@ const QuizCard: React.FC<QuizCardProps> = ({ children }) => {
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
-      className='m-auto w-full max-w-2xl'
+      className='mx-auto w-full max-w-2xl'
     >
       {children}
     </motion.div>

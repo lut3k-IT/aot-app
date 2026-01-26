@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { Trans, useTranslation } from 'react-i18next';
 import { ArrowDown } from 'lucide-react';
 import Link from 'next/link';
 
@@ -11,6 +12,7 @@ import { LandingFooter } from '@/components/landing/LandingFooter';
 import { Button } from '@/components/ui/Button';
 
 const LandingPage = () => {
+  const { t } = useTranslation('landing');
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -32,7 +34,7 @@ const LandingPage = () => {
         >
           <h1 className='mb-2 font-vector text-7xl font-bold tracking-tight text-white md:text-9xl'>
             <span className='bg-gradient-to-r from-red-500 via-orange-400 to-red-600 bg-clip-text px-1 text-transparent'>
-              AOT app
+              {t('hero.title')}
             </span>
           </h1>
         </div>
@@ -40,8 +42,18 @@ const LandingPage = () => {
         <p
           className={`mt-8 max-w-xl text-lg text-zinc-400 transition-all delay-300 duration-1000 md:text-xl ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
         >
-          Odkryj świat <span className='font-semibold text-white'>Attack on Titan</span> jak nigdy wcześniej. Przeglądaj
-          postacie, cytaty i sprawdź się w quizie.
+          <Trans
+            i18nKey='hero.description'
+            t={t}
+            components={{
+              1: (
+                <span
+                  key='1'
+                  className='font-semibold text-white'
+                />
+              )
+            }}
+          />
         </p>
 
         <div
@@ -52,7 +64,7 @@ const LandingPage = () => {
               size='lg'
               className='group relative overflow-hidden bg-gradient-to-r from-red-600 to-red-700 px-8 py-6 text-lg font-semibold text-white transition-all hover:from-red-500 hover:to-red-600 hover:shadow-lg hover:shadow-red-900/30'
             >
-              <span className='relative z-10'>Wejdź do aplikacji</span>
+              <span className='relative z-10'>{t('hero.enterApp')}</span>
               <div className='absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 group-hover:translate-x-full' />
             </Button>
           </Link>
@@ -62,7 +74,7 @@ const LandingPage = () => {
               size='lg'
               className='border-zinc-600 bg-zinc-900/50 px-8 py-6 text-lg text-white backdrop-blur-sm transition-all hover:border-zinc-500 hover:bg-zinc-800 hover:text-white'
             >
-              Dowiedz się więcej
+              {t('hero.learnMore')}
             </Button>
           </Link>
         </div>
