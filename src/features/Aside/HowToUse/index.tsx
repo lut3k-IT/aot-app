@@ -65,7 +65,7 @@ const HowToUse = ({ variant = 'icon' }: HowToUseProps) => {
             <h2>{t('howToUse:actionYear.title')}</h2>
             <p>{t('howToUse:actionYear.description')}</p>
             <ExampleSection>
-              <div className={'text-4xl font-bold leading-none tracking-wide text-muted2-foreground'}>
+              <div className={'text-subtle-foreground text-4xl font-bold leading-none tracking-wide'}>
                 {t('common:time.year.singular')} {YEAR}
               </div>
             </ExampleSection>

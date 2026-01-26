@@ -70,7 +70,7 @@ const CharacterPicture = (props: CharacterPictureProps) => {
         </AvatarImage>
       ) : null}
       <AvatarFallback className={cn(characterPictureVariants({ variant, size }))}>
-        <Image className={'h-1/2 w-1/2 text-muted2-foreground'} />
+        <Image className={'text-subtle-foreground h-1/2 w-1/2'} />
       </AvatarFallback>
     </Avatar>
   );
