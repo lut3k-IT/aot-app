@@ -3,5 +3,15 @@
     "title": "Rozkład typów osobowości MBTI",
     "description": "Wykres przedstawiający rozkład typów osobowości MBTI wśród postaci.",
     "count": "Liczba"
+  },
+  "residenceChart": {
+    "title": "Rozkład miejsc zamieszkania",
+    "description": "Wykres przedstawiający rozkład miejsc zamieszkania wśród postaci.",
+    "count": "Liczba"
+  },
+  "statusChart": {
+    "title": "Rozkład statusów",
+    "description": "Wykres przedstawiający rozkład statusów wśród postaci.",
+    "count": "Liczba"
   }
 }

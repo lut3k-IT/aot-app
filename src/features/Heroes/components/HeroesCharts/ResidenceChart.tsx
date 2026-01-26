@@ -5,29 +5,29 @@ import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import heroes from '@/data/heroes';
-import mbtiData from '@/data/mbti';
+import residences from '@/data/residences';
 
-const mbtiCounts = heroes.reduce(
+const residenceCounts = heroes.reduce(
   (acc, hero) => {
-    if (hero.mbti) {
-      acc[hero.mbti] = (acc[hero.mbti] || 0) + 1;
+    if (hero.residence) {
+      acc[hero.residence] = (acc[hero.residence] || 0) + 1;
     }
     return acc;
   },
   {} as Record<string, number>
 );
 
-const chartData = mbtiData.map((mbti) => ({
-  name: mbti.shortName,
-  count: mbtiCounts[mbti.id] || 0
-}));
-
-const MbtiChart = () => {
+const ResidenceChart = () => {
   const { t } = useTranslation();
+
+  const chartData = residences.map((residence) => ({
+    name: t(`data:residence.${residence.keyName}`),
+    count: residenceCounts[residence.id] || 0
+  }));
 
   const chartConfig = {
     count: {
-      label: t('charts:mbtiChart.count'),
+      label: t('charts:residenceChart.count'),
       color: 'hsl(var(--primary))'
     }
   } satisfies ChartConfig;
@@ -35,8 +35,8 @@ const MbtiChart = () => {
   return (
     <div className='flex flex-col gap-4'>
       <div className='space-y-1'>
-        <h2>{t('charts:mbtiChart.title')}</h2>
-        <p className='text-muted-foreground'>{t('charts:mbtiChart.description')}</p>
+        <h2>{t('charts:residenceChart.title')}</h2>
+        <p className='text-muted-foreground'>{t('charts:residenceChart.description')}</p>
       </div>
       <ChartContainer
         config={chartConfig}
@@ -74,4 +74,4 @@ const MbtiChart = () => {
   );
 };
 
-export default MbtiChart;
+export default ResidenceChart;

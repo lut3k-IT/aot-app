@@ -3,5 +3,15 @@
     "title": "MBTI Personality Types Distribution",
     "description": "A chart showing the distribution of MBTI personality types among the characters.",
     "count": "Count"
+  },
+  "residenceChart": {
+    "title": "Residence Distribution",
+    "description": "A chart showing the distribution of residences among the characters.",
+    "count": "Count"
+  },
+  "statusChart": {
+    "title": "Status Distribution",
+    "description": "A chart showing the distribution of statuses among the characters.",
+    "count": "Count"
   }
 }
