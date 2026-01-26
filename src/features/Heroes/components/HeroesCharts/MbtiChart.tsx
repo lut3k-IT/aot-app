@@ -7,6 +7,21 @@ import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } f
 import heroes from '@/data/heroes';
 import mbtiData from '@/data/mbti';
 
+const mbtiCounts = heroes.reduce(
+  (acc, hero) => {
+    if (hero.mbti) {
+      acc[hero.mbti] = (acc[hero.mbti] || 0) + 1;
+    }
+    return acc;
+  },
+  {} as Record<string, number>
+);
+
+const chartData = mbtiData.map((mbti) => ({
+  name: mbti.shortName,
+  count: mbtiCounts[mbti.id] || 0
+}));
+
 const MbtiChart = () => {
   const { t } = useTranslation();
 
@@ -16,21 +31,6 @@ const MbtiChart = () => {
       color: 'hsl(var(--primary))'
     }
   } satisfies ChartConfig;
-
-  const mbtiCounts = heroes.reduce(
-    (acc, hero) => {
-      if (hero.mbti) {
-        acc[hero.mbti] = (acc[hero.mbti] || 0) + 1;
-      }
-      return acc;
-    },
-    {} as Record<string, number>
-  );
-
-  const chartData = mbtiData.map((mbti) => ({
-    name: mbti.shortName,
-    count: mbtiCounts[mbti.id] || 0
-  }));
 
   return (
     <>
