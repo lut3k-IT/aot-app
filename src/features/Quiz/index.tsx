@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import { useBestScore } from '@/components/hooks/useBestScore';
 import useIsLandscape from '@/components/hooks/useIsLandscape';
 import useIsMobile from '@/components/hooks/useIsMobile';
+import useIsMobileOrLandscape from '@/components/hooks/useIsMobileOrLandscape';
 import DynamicTitle from '@/components/ui/DynamicTitle';
 import { shuffle } from '@/utils/helpers';
 
@@ -24,6 +25,7 @@ const Quiz = () => {
   const { bestScore, updateBestScore } = useBestScore();
   const isMobile = useIsMobile();
   const isLandscape = useIsLandscape();
+  const isMobileOrLandscape = useIsMobileOrLandscape();
 
   const [shuffledIndices, setShuffledIndices] = useState<number[] | null>(null);
 
@@ -84,9 +86,11 @@ const Quiz = () => {
 
   return (
     <div
-      className={classNames('flex min-h-[70vh] w-full items-start justify-center pb-8', {
-        'pt-body-pad-start': isMobile,
-        'pt-16': isLandscape
+      className={classNames('flex w-full justify-center', {
+        'pt-32': isMobile && !isLandscape,
+        'pt-8': isLandscape,
+        'min-h-[calc(100svh-14rem)] items-center': !isMobileOrLandscape,
+        'min-h-[calc(100svh-10rem)] flex-col items-center': isMobileOrLandscape
       })}
     >
       <DynamicTitle title={t('common:title.quiz')} />
