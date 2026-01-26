@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
@@ -7,14 +9,18 @@ import remarkGfm from 'remark-gfm';
 
 import useIsMobileOrLandscape from '@/components/hooks/useIsMobileOrLandscape';
 
-const MAX_VERSIONS_TO_SHOW = 5;
+interface ChangelogProps {
+  initialContent?: string;
+}
 
-const Changelog = () => {
-  const [changelogContent, setChangelogContent] = useState('');
+const Changelog = ({ initialContent = '' }: ChangelogProps) => {
+  const [changelogContent, setChangelogContent] = useState(initialContent);
   const isMobileLandscape = useIsMobileOrLandscape();
   const { t } = useTranslation();
 
   useEffect(() => {
+    if (initialContent) return;
+
     const fetchChangelog = async () => {
       try {
         const res = await fetch('/CHANGELOG.md');
@@ -37,10 +43,7 @@ const Changelog = () => {
   const contentWithoutTitle = changelogContent.replace(/^# Changelog\r?\n\r?\n?/, '');
 
   const versions = contentWithoutTitle.split('\n## ');
-  const latestVersions = versions
-    .slice(0, MAX_VERSIONS_TO_SHOW)
-    .map((version, index) => (index === 0 ? version : `## ${version}`))
-    .join('');
+  const allVersions = versions.map((version, index) => (index === 0 ? version : `## ${version}`)).join('');
 
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   const CustomH2 = ({ children, ...props }: any) => {
@@ -84,7 +87,7 @@ const Changelog = () => {
             h2: CustomH2
           }}
         >
-          {latestVersions}
+          {allVersions}
         </ReactMarkdown>
       </div>
     </div>
