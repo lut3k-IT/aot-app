@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.1](https://github.com/lut3k-IT/aot-app/compare/v0.8.0...v0.8.1) (2026-01-26)
+
+
+### Bug Fixes
+
+* **changelog:** read from root file and display all versions ([8fcb8fc](https://github.com/lut3k-IT/aot-app/commit/8fcb8fc0a0afa24db470b0bb24d2e74a51c6704a))
+
 ## [0.8.0](https://github.com/lut3k-IT/aot-app/compare/v0.7.0...v0.8.0) (2026-01-26)
 
 
