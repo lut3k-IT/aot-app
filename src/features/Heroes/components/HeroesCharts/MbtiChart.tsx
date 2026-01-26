@@ -1,9 +1,11 @@
 'use client';
 
 import { useTranslation } from 'react-i18next';
+import { useRouter } from 'next/navigation';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
+import { Param, RoutePath } from '@/constants/enums';
 import heroes from '@/data/heroes';
 import mbtiData from '@/data/mbti';
 
@@ -19,11 +21,13 @@ const mbtiCounts = heroes.reduce(
 
 const chartData = mbtiData.map((mbti) => ({
   name: mbti.shortName,
-  count: mbtiCounts[mbti.id] || 0
+  count: mbtiCounts[mbti.id] || 0,
+  shortName: mbti.shortName
 }));
 
 const MbtiChart = () => {
   const { t } = useTranslation();
+  const router = useRouter();
 
   const chartConfig = {
     count: {
@@ -67,6 +71,10 @@ const MbtiChart = () => {
             dataKey='count'
             radius={4}
             fill='var(--color-count)'
+            className='cursor-pointer'
+            onClick={(data) => {
+              router.push(`${RoutePath.HEROES}?${Param.MBTI}=${data.shortName}`);
+            }}
           />
         </BarChart>
       </ChartContainer>

@@ -1,11 +1,15 @@
 'use client';
 
 import { useTranslation } from 'react-i18next';
+import { useRouter } from 'next/navigation';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 
+import useAppSelector from '@/components/hooks/useAppSelector';
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
+import { Param, RoutePath } from '@/constants/enums';
 import heroes from '@/data/heroes';
 import statuses from '@/data/statuses';
+import { selectSpoilerMode } from '@/store/spoilerModeSlice';
 
 const statusCounts = heroes.reduce(
   (acc, hero) => {
@@ -19,10 +23,13 @@ const statusCounts = heroes.reduce(
 
 const StatusChart = () => {
   const { t } = useTranslation();
+  const router = useRouter();
+  const isSpoilerMode = useAppSelector(selectSpoilerMode);
 
   const chartData = statuses.map((status) => ({
     name: t(`data:status.${status.keyName}.short`),
-    count: statusCounts[status.id] || 0
+    count: statusCounts[status.id] || 0,
+    keyName: status.keyName
   }));
 
   const chartConfig = {
@@ -67,6 +74,12 @@ const StatusChart = () => {
             dataKey='count'
             radius={4}
             fill='var(--color-count)'
+            className={isSpoilerMode ? 'cursor-pointer' : ''}
+            onClick={(data) => {
+              if (isSpoilerMode) {
+                router.push(`${RoutePath.HEROES}?${Param.STATUS}=${data.keyName}`);
+              }
+            }}
           />
         </BarChart>
       </ChartContainer>

@@ -1,9 +1,11 @@
 'use client';
 
 import { useTranslation } from 'react-i18next';
+import { useRouter } from 'next/navigation';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
+import { Param, RoutePath } from '@/constants/enums';
 import heroes from '@/data/heroes';
 import residences from '@/data/residences';
 
@@ -19,10 +21,12 @@ const residenceCounts = heroes.reduce(
 
 const ResidenceChart = () => {
   const { t } = useTranslation();
+  const router = useRouter();
 
   const chartData = residences.map((residence) => ({
     name: t(`data:residence.${residence.keyName}`),
-    count: residenceCounts[residence.id] || 0
+    count: residenceCounts[residence.id] || 0,
+    keyName: residence.keyName
   }));
 
   const chartConfig = {
@@ -67,6 +71,10 @@ const ResidenceChart = () => {
             dataKey='count'
             radius={4}
             fill='var(--color-count)'
+            className='cursor-pointer'
+            onClick={(data) => {
+              router.push(`${RoutePath.HEROES}?${Param.RESIDENCE}=${data.keyName}`);
+            }}
           />
         </BarChart>
       </ChartContainer>
