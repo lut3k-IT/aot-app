@@ -1,5 +1,31 @@
 # Changelog
 
+## [0.8.0](https://github.com/lut3k-IT/aot-app/compare/v0.7.0...v0.8.0) (2026-01-26)
+
+
+### Features
+
+* **app:** improve seo, add sitemap and restructure heroes routing ([c7752c6](https://github.com/lut3k-IT/aot-app/commit/c7752c6f375ea09bfa33189fb85a0159f48da1e8))
+* **charts:** Add click interactions with gallery filters and spoiler protection for status chart ([30ab23a](https://github.com/lut3k-IT/aot-app/commit/30ab23ae44bce6c3c0021554a7654a53b4ca8ec3))
+* **charts:** Add residence and status distribution charts ([fdbf7a3](https://github.com/lut3k-IT/aot-app/commit/fdbf7a3eda906510308780bcbc2800077743b403))
+* **i18n:** enable language detection and internationalize landing page ([1cafc0c](https://github.com/lut3k-IT/aot-app/commit/1cafc0c742d0c60c9a5f0648d6ac09dec8461840))
+* **navigation:** improve active states and add hover effects ([d4dd5d4](https://github.com/lut3k-IT/aot-app/commit/d4dd5d45d53cfd1b1c5d5b00edbfa4d1b39a25d4))
+
+
+### Bug Fixes
+
+* **navigation:** highlight heroes tab on comparisons and charts pages ([385b7c8](https://github.com/lut3k-IT/aot-app/commit/385b7c89c9c700ee46363bad137dca8a1403b55e))
+* **quiz:** adjust layout spacing and fix answer button styles ([6bf6e23](https://github.com/lut3k-IT/aot-app/commit/6bf6e237b28275995f0a3c400d32345a4959da50))
+* **ui:** fix hydration errors, heroes comparison crash and mobile touch events ([ea551e7](https://github.com/lut3k-IT/aot-app/commit/ea551e73f0ab41f460f92b75da8f761a305b63c5))
+* **ui:** handle missing hero images to prevent 404 errors ([cd76d2e](https://github.com/lut3k-IT/aot-app/commit/cd76d2e4d162a65bc35a8d02956aa5aaec7ac31b))
+* **ui:** synchronize app version with package.json ([354fd65](https://github.com/lut3k-IT/aot-app/commit/354fd65a1e75afa75154330781299c9f479cc461))
+
+
+### Performance Improvements
+
+* optimize splash screen image and mbti chart rendering ([8503962](https://github.com/lut3k-IT/aot-app/commit/850396218dd9eaca41d5b73b2b1d84124c1f981d))
+* **ui:** optimize buymeacoffee button with next/image ([d23cdf3](https://github.com/lut3k-IT/aot-app/commit/d23cdf344717d070de38a5499b0b690b68597397))
+
 ## [0.7.0](https://github.com/lut3k-IT/aot-app/compare/v0.6.1...v0.7.0) (2026-01-25)
 
 
