@@ -48,7 +48,8 @@ const LanguageSwitcher = (props: LanguageSwitcherProps) => {
     setLocalStorageItem(LocalStorageKey.LANGUAGE, lang);
   };
 
-  const currentLanguageName = availableLanguages.find((obj) => obj.id === i18n.language)?.label;
+  const currentLanguageName =
+    availableLanguages.find((obj) => obj.id === (i18n.resolvedLanguage || i18n.language))?.label || LanguageName.POLISH;
 
   const buttonProps =
     variant === Device.MOBILE

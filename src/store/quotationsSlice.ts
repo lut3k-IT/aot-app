@@ -7,7 +7,12 @@ import i18n from '@/i18n/i18n';
 import type { RootState } from './index';
 
 export const loadQuotations = createAsyncThunk('quotations/load', async () => {
-  const quotations = i18n.getResourceBundle(i18n.language, 'quotations');
+  const quotations = i18n.getResourceBundle(i18n.resolvedLanguage || i18n.language, 'quotations');
+
+  if (!quotations) {
+    return [];
+  }
+
   const data = Object.entries(quotations).map(([id, text]) => ({ id: Number(id), text }) as QuotationType);
   return data;
 });
