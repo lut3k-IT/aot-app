@@ -20,7 +20,7 @@ export const useQuotationsSlideshow = () => {
   const [loopCount, setLoopCount] = useState(0);
   const [animationDuration, setAnimationDuration] = useState('20s');
 
-  const speed = isMobile ? 15000 : 30000;
+  const speed = isMobile ? 60 : 80; // pixels / s
 
   useEffect(() => {
     setRemainingQuotations([...originalQuotations]);
@@ -28,13 +28,15 @@ export const useQuotationsSlideshow = () => {
   }, [originalQuotations]);
 
   useEffect(() => {
-    if (textRef.current && textRef.current.parentElement) {
+    if (textRef.current) {
       const textWidth = textRef.current.offsetWidth;
-      const scrollContainerWidth = textRef.current.parentElement.offsetWidth;
-      const newAnimationDuration = scrollContainerWidth * (textWidth / speed);
+      // The CSS animation uses translate-x-[100vw], so the text starts at 100vw regardless of container width.
+      // Total distance to travel = 100vw (entry offset) + textWidth (to clear the container completely).
+      const distance = window.innerWidth + textWidth;
+      const newAnimationDuration = distance / speed;
       setAnimationDuration(`${newAnimationDuration}s`);
     }
-  }, [currentQuotation, isMobile]);
+  }, [currentQuotation, isMobile, speed]);
 
   useEffect(() => {
     const textElement = textRef.current;
