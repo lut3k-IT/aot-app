@@ -8,6 +8,8 @@ import {
   chartsPL,
   commonEN,
   commonPL,
+  comparisonEN,
+  comparisonPL,
   dataEN,
   dataPL,
   howToUseEN,
@@ -25,6 +27,7 @@ import {
 const resources = {
   en: {
     common: commonEN,
+    comparison: comparisonEN,
     notifications: notificationsEN,
     data: dataEN,
     howToUse: howToUseEN,
@@ -35,6 +38,7 @@ const resources = {
   },
   pl: {
     common: commonPL,
+    comparison: comparisonPL,
     notifications: notificationsPL,
     data: dataPL,
     howToUse: howToUsePL,
@@ -45,7 +49,7 @@ const resources = {
   }
 };
 
-export const ns = ['common', 'quiz', 'quotations', 'charts', 'landing'];
+export const ns = ['common', 'comparison', 'quiz', 'quotations', 'charts', 'landing'];
 
 export const initOptions: InitOptions = {
   resources,

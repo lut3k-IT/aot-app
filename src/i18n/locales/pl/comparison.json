@@ -1,0 +1,8 @@
+{
+  "title": "Porównanie postaci",
+  "addCharacter": "Dodaj postać",
+  "removeCharacter": "Usuń postać",
+  "highlightDifferences": "Podświetl różnice",
+  "noCharacters": "Wybierz postacie do porównania",
+  "limitReached": "Osiągnięto limit postaci"
+}

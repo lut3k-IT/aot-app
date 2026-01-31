@@ -86,5 +86,24 @@
   "otherNames": "Pseudonimy",
   "abilities": "Umiejętności",
   "currentInheritor": "Obecny dziedzic",
-  "formerInheritors": "Dawni dziedzice"
+  "formerInheritors": "Dawni dziedzice",
+  "attributes": {
+    "status": "Status",
+    "species": "Gatunek",
+    "age": "Wiek",
+    "height": "Wzrost",
+    "weight": "Waga",
+    "residence": "Pobyt",
+    "mbti": "MBTI",
+    "alias": "Pseudonimy"
+  },
+  "location": {
+    "hizuru": "Hizuru",
+    "marley": "Mare",
+    "paradisIsland": "Wyspa Paradis",
+    "underground": "Podziemie",
+    "wallMaria": "Mur Maria",
+    "wallRose": "Mur Rose",
+    "wallSina": "Mur Sina"
+  }
 }

@@ -16,6 +16,8 @@ const characterPictureVariants = cva('', {
       circle: 'rounded-full'
     },
     size: {
+      '2xs': 'w-[24px] h-[24px]',
+      xs: 'w-[40px] h-[40px]',
       md: 'w-[84px] h-[84px]',
       lg: 'w-[128px] h-[128px]',
       xl: 'w-[160px] h-[160px]',
@@ -40,7 +42,13 @@ const CharacterPicture = (props: CharacterPictureProps) => {
   let width = 84;
   let height = 84;
 
-  if (size === 'lg') {
+  if (size === '2xs') {
+    width = 24;
+    height = 24;
+  } else if (size === 'xs') {
+    width = 40;
+    height = 40;
+  } else if (size === 'lg') {
     width = 128;
     height = 128;
   } else if (size === 'xl') {
@@ -70,7 +78,7 @@ const CharacterPicture = (props: CharacterPictureProps) => {
         </AvatarImage>
       ) : null}
       <AvatarFallback className={cn(characterPictureVariants({ variant, size }))}>
-        <Image className={'text-subtle-foreground h-1/2 w-1/2'} />
+        <Image className={'h-1/2 w-1/2 text-subtle-foreground'} />
       </AvatarFallback>
     </Avatar>
   );

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 
-import HeroesComparison from '@/features/Heroes/components/HeroesComparison';
+import Comparison from '@/features/Comparison';
 
 export const metadata: Metadata = {
   title: 'Comparison | AOT APP',
@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function ComparisonPage() {
-  return <HeroesComparison />;
+  return <Comparison />;
 }
