@@ -113,6 +113,10 @@
       "close": "Zamknij menu"
     }
   },
+  "range": {
+    "min": "Minimum",
+    "max": "Maksimum"
+  },
   "soon": "Wkrótce",
   "howToUse": "Jak korzystać",
   "pwa": {
