@@ -85,8 +85,16 @@ export const getSpeciesByKeyName = (keyName: string) => {
   return species.find((data) => data.keyName === keyName);
 };
 
-export const isInFavorites = (currId: number, favIdsArray: FavoriteType[]) =>
-  !!favIdsArray.find((fav) => fav === currId);
+const favSetCache = new WeakMap<FavoriteType[], Set<FavoriteType>>();
+
+export const isInFavorites = (currId: number, favIdsArray: FavoriteType[]) => {
+  let favSet = favSetCache.get(favIdsArray);
+  if (!favSet) {
+    favSet = new Set(favIdsArray);
+    favSetCache.set(favIdsArray, favSet);
+  }
+  return favSet.has(currId);
+};
 
 export const findHeroSortBy = (option: string | null) =>
   sortOptions.includes(option as HeroSortOption) ? (option as HeroSortOption) : null;
