@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { RoutePath } from '@/constants/enums';
 import { cn } from '@/lib/utils';
 import { addFavorite, removeFavorite } from '@/store/quotationsSlice';
-import { isInFavorites } from '@/utils/dataHelpers';
 
 import { useToggleFavorite } from '../hooks/useToggleFavorite';
 import { Card } from './Card';
@@ -13,13 +12,12 @@ import HeartButton from './HeartButton';
 interface QuotationCardProps {
   id: number;
   text: React.ReactNode;
-  favoritesList: number[];
+  isFavorite: boolean;
   className?: string;
 }
 
 const QuotationCard = (props: QuotationCardProps) => {
-  const { id, text, favoritesList, className } = props;
-  const isFavorite = isInFavorites(id, favoritesList);
+  const { id, text, isFavorite, className } = props;
   const toggleFavorite = useToggleFavorite(isFavorite, id, addFavorite, removeFavorite);
 
   return (
@@ -36,4 +34,4 @@ const QuotationCard = (props: QuotationCardProps) => {
   );
 };
 
-export default QuotationCard;
+export default React.memo(QuotationCard);
