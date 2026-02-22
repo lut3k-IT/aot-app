@@ -1,12 +1,12 @@
-import { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 
 import { RoutePath } from '@/constants/enums';
-import { FavoriteType, HeroType } from '@/constants/types';
+import { HeroType } from '@/constants/types';
 import { addFavorite, removeFavorite } from '@/store/heroesSlice';
 import { selectSpoilerMode } from '@/store/spoilerModeSlice';
-import { getHeroImageSource, getResidenceName, isInFavorites } from '@/utils/dataHelpers';
+import { getHeroImageSource, getResidenceName } from '@/utils/dataHelpers';
 
 import useAppSelector from '../../hooks/useAppSelector';
 import { useToggleFavorite } from '../../hooks/useToggleFavorite';
@@ -17,22 +17,21 @@ import DetailsBoxes from './components/DetailsBoxes';
 
 interface HeroCardProps {
   data: HeroType;
-  favorites: FavoriteType[];
+  isFavorite: boolean;
 }
 
 const cnContainer = 'flex gap-4 h-27';
 
 const HeroCard = (props: HeroCardProps) => {
-  const { data, favorites } = props;
+  const { data, isFavorite } = props;
   const { id, mbti, firstName = '', lastName = '', residence, slug } = data;
 
   const { t } = useTranslation();
   const isShowingSpoilers = useAppSelector(selectSpoilerMode);
 
   const residenceName = useMemo(() => getResidenceName(residence, t), [residence, t]);
-  const isCurrentFavorite = useMemo(() => isInFavorites(id, favorites), [id, favorites]);
 
-  const toggleFavorite = useToggleFavorite(isCurrentFavorite, id, addFavorite, removeFavorite);
+  const toggleFavorite = useToggleFavorite(isFavorite, id, addFavorite, removeFavorite);
 
   return (
     <div className={cnContainer}>
@@ -56,7 +55,7 @@ const HeroCard = (props: HeroCardProps) => {
           </div>
           <HeartButton
             className={'absolute right-0 top-0'}
-            isFilled={isCurrentFavorite}
+            isFilled={isFavorite}
             onToggleFavorite={toggleFavorite}
           />
         </div>
@@ -73,4 +72,4 @@ const HeroCard = (props: HeroCardProps) => {
   );
 };
 
-export default HeroCard;
+export default memo(HeroCard);
