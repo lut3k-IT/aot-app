@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.9.0](https://github.com/lut3k-IT/aot-app/compare/v0.8.1...v0.9.0) (2026-02-22)
+
+
+### Features
+
+* **a11y:** Add aria-labels to Filter inputs ([65327c2](https://github.com/lut3k-IT/aot-app/commit/65327c229fb1d7084d37d0e24e8d06daf936b7b0))
+* **comparison:** implement character comparison feature ([528025d](https://github.com/lut3k-IT/aot-app/commit/528025df313e8984bc1f2d0eee98f80de2cb07fe))
+
+
+### Bug Fixes
+
+* **i18n:** resolve language detection and initial load issues ([eca98a7](https://github.com/lut3k-IT/aot-app/commit/eca98a71e79f93401a27b29b1ef92abe4ab42f8f))
+* **quotation-bar:** normalize animation speed using constant velocity ([acb27f6](https://github.com/lut3k-IT/aot-app/commit/acb27f6c4a372126cc11c48fc8609e9e73af8e66))
+
+
+### Performance Improvements
+
+* optimize data helpers with Map lookups and WeakMap cache ([edd77e7](https://github.com/lut3k-IT/aot-app/commit/edd77e7422cd0bd108973e6ac6ac8c640551b843))
+* optimize favorite titans filtering using Set ([7e94359](https://github.com/lut3k-IT/aot-app/commit/7e943595283d6564cb6931a3e9df88c4c8799009))
+* optimize filtering logic in TitansGallery Content ([204d7ae](https://github.com/lut3k-IT/aot-app/commit/204d7aed5102ba8a5755b8cef1ade4586f5cfd1b))
+* Optimize HeroCard to prevent unnecessary re-renders ([1e40fac](https://github.com/lut3k-IT/aot-app/commit/1e40fac356777c6855803dfceecc8d0c99cd809f))
+* optimize isInFavorites with Set and WeakMap cache ([61b0033](https://github.com/lut3k-IT/aot-app/commit/61b0033f8bb1702e16a8c0de90be7ee7b6c85c9e))
+
 ## [0.8.1](https://github.com/lut3k-IT/aot-app/compare/v0.8.0...v0.8.1) (2026-01-26)
 
 
