@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.2](https://github.com/lut3k-IT/aot-app/compare/v0.8.1...v0.8.2) (2026-02-22)
+
+
+### Performance Improvements
+
+* optimize data helpers with Map lookups and WeakMap cache ([edd77e7](https://github.com/lut3k-IT/aot-app/commit/edd77e7422cd0bd108973e6ac6ac8c640551b843))
+
 ## [0.8.1](https://github.com/lut3k-IT/aot-app/compare/v0.8.0...v0.8.1) (2026-01-26)
 
 
