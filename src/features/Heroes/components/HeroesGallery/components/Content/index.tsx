@@ -3,6 +3,7 @@ import HeroCard from '@/components/ui/HeroCard';
 import MultipleSkeletons from '@/components/ui/MultipleSkeletons';
 import NoResults from '@/components/ui/NoResults';
 import { FavoriteType, HeroType } from '@/constants/types';
+import { isInFavorites } from '@/utils/dataHelpers';
 
 interface ContentProps {
   hasData: boolean;
@@ -26,7 +27,7 @@ const Content = (props: ContentProps) => {
   return paginatedHeroes.map((hero) => (
     <HeroCard
       data={hero}
-      favorites={favoriteHeroesIds}
+      isFavorite={isInFavorites(hero.id, favoriteHeroesIds)}
       key={hero.id}
     />
   ));
