@@ -23,11 +23,9 @@ const Content = (props: ContentProps) => {
     return <MultipleSkeletons skeletonComponent={CharacterCardSkeleton} />;
   }
 
-  const favoriteTitansSet = useMemo(() => new Set(favoriteTitansIds), [favoriteTitansIds]);
-
   const filteredAndFavoriteTitans = useMemo(
-    () => paginatedTitans.filter((titan) => !shouldShowFavorites || favoriteTitansSet.has(titan.id)),
-    [paginatedTitans, shouldShowFavorites, favoriteTitansSet]
+    () => paginatedTitans.filter((titan) => !shouldShowFavorites || isInFavorites(titan.id, favoriteTitansIds)),
+    [paginatedTitans, shouldShowFavorites, favoriteTitansIds]
   );
 
   const heroesMap = useMemo(() => {
