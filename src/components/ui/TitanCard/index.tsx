@@ -1,13 +1,13 @@
-import { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 
 import { useToggleFavorite } from '@/components/hooks/useToggleFavorite';
 import { RoutePath } from '@/constants/enums';
-import { FavoriteType, HeroType, TitanType } from '@/constants/types';
+import { TitanType } from '@/constants/types';
 import { selectSpoilerMode } from '@/store/spoilerModeSlice';
 import { addFavorite, removeFavorite } from '@/store/titansSlice';
-import { getAllegianceNames, getHeroName, isInFavorites } from '@/utils/dataHelpers';
+import { getAllegianceNames } from '@/utils/dataHelpers';
 
 import useAppSelector from '../../hooks/useAppSelector';
 import CharacterPicture from '../CharacterPicture';
@@ -17,24 +17,22 @@ import DetailsBoxes from './components/DetailsBoxes';
 
 interface TitanCardProps {
   data: TitanType;
-  favorites: FavoriteType[];
-  heroesData: HeroType[];
+  isFavorite: boolean;
+  currentInheritorName: string;
 }
 
 const cnContainer = 'flex gap-4 h-27';
 
-const TitanCard = (props: TitanCardProps) => {
-  const { data, favorites, heroesData } = props;
-  const { id, mbti, name = '', allegiance, currentInheritor, slug } = data;
+const TitanCard = memo((props: TitanCardProps) => {
+  const { data, isFavorite, currentInheritorName } = props;
+  const { id, mbti, name = '', allegiance, slug } = data;
 
   const { t } = useTranslation();
   const isShowingSpoilers = useAppSelector(selectSpoilerMode);
 
-  const currentInheritorName = useMemo(() => getHeroName(currentInheritor, heroesData), [currentInheritor, heroesData]);
   const allegianceNames = useMemo(() => getAllegianceNames(allegiance, t), [allegiance, t]);
-  const isCurrentFavorite = useMemo(() => isInFavorites(id, favorites), [id, favorites]);
 
-  const toggleFavorite = useToggleFavorite(isCurrentFavorite, id, addFavorite, removeFavorite);
+  const toggleFavorite = useToggleFavorite(isFavorite, id, addFavorite, removeFavorite);
 
   return (
     <div className={cnContainer}>
@@ -60,7 +58,7 @@ const TitanCard = (props: TitanCardProps) => {
           )}
           <HeartButton
             className={'absolute right-0 top-0'}
-            isFilled={isCurrentFavorite}
+            isFilled={isFavorite}
             onToggleFavorite={toggleFavorite}
           />
         </div>
@@ -73,6 +71,8 @@ const TitanCard = (props: TitanCardProps) => {
       </div>
     </div>
   );
-};
+});
+
+TitanCard.displayName = 'TitanCard';
 
 export default TitanCard;
