@@ -5,6 +5,7 @@ import MultipleSkeletons from '@/components/ui/MultipleSkeletons';
 import NoResults from '@/components/ui/NoResults';
 import TitanCard from '@/components/ui/TitanCard';
 import { FavoriteType, HeroType, TitanType } from '@/constants/types';
+import { isInFavorites } from '@/utils/dataHelpers';
 
 interface ContentProps {
   paginatedTitans: TitanType[];
@@ -23,7 +24,7 @@ const Content = (props: ContentProps) => {
   }
 
   const filteredAndFavoriteTitans = useMemo(
-    () => paginatedTitans.filter((titan) => !shouldShowFavorites || favoriteTitansIds.includes(titan.id)),
+    () => paginatedTitans.filter((titan) => !shouldShowFavorites || isInFavorites(titan.id, favoriteTitansIds)),
     [paginatedTitans, shouldShowFavorites, favoriteTitansIds]
   );
 
