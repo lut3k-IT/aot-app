@@ -34,6 +34,13 @@ export const filterHeroes = (data: HeroType[], filters: HeroFilters, favoriteHer
   const speciesIds = new Set(filters.filters.species.map((s) => s.id));
   const residenceIds = new Set(filters.filters.residences.map((r) => r.id));
 
+  const isAgeFilterSameAsDefault =
+    filters.filters.age[0] === DEFAULT_AGE[0] && filters.filters.age[1] === DEFAULT_AGE[1];
+  const isHeightFilterSameAsDefault =
+    filters.filters.height[0] === DEFAULT_HEIGHT[0] && filters.filters.height[1] === DEFAULT_HEIGHT[1];
+  const isWeightFilterSameAsDefault =
+    filters.filters.weight[0] === DEFAULT_WEIGHT[0] && filters.filters.weight[1] === DEFAULT_WEIGHT[1];
+
   const filteredData = data.filter((hero) => {
     if (filters.filters.hasOnlyFavorites && !favoriteIdsSet.has(hero.id)) return false;
 
@@ -42,16 +49,10 @@ export const filterHeroes = (data: HeroType[], filters: HeroFilters, favoriteHer
       if (!fullHeroName.includes(lowerCaseSearch)) return false;
     }
 
-    const isAgeFilterSameAsDefault =
-      filters.filters.age[0] === DEFAULT_AGE[0] && filters.filters.age[1] === DEFAULT_AGE[1];
     if (!isAgeFilterSameAsDefault && !matchesRangeFilter(hero.age, filters.filters.age)) return false;
 
-    const isHeightFilterSameAsDefault =
-      filters.filters.height[0] === DEFAULT_HEIGHT[0] && filters.filters.height[1] === DEFAULT_HEIGHT[1];
     if (!isHeightFilterSameAsDefault && !matchesRangeFilter(hero.height, filters.filters.height)) return false;
 
-    const isWeightFilterSameAsDefault =
-      filters.filters.weight[0] === DEFAULT_WEIGHT[0] && filters.filters.weight[1] === DEFAULT_WEIGHT[1];
     if (!isWeightFilterSameAsDefault && !matchesRangeFilter(hero.weight, filters.filters.weight)) return false;
 
     if (statusIds.size > 0 && (hero.status === null || !statusIds.has(hero.status))) return false;
