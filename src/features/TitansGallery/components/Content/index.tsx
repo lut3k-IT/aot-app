@@ -22,9 +22,11 @@ const Content = (props: ContentProps) => {
     return <MultipleSkeletons skeletonComponent={CharacterCardSkeleton} />;
   }
 
+  const favoriteTitansSet = useMemo(() => new Set(favoriteTitansIds), [favoriteTitansIds]);
+
   const filteredAndFavoriteTitans = useMemo(
-    () => paginatedTitans.filter((titan) => !shouldShowFavorites || favoriteTitansIds.includes(titan.id)),
-    [paginatedTitans, shouldShowFavorites, favoriteTitansIds]
+    () => paginatedTitans.filter((titan) => !shouldShowFavorites || favoriteTitansSet.has(titan.id)),
+    [paginatedTitans, shouldShowFavorites, favoriteTitansSet]
   );
 
   if (!hasData || filteredAndFavoriteTitans.length === 0) {
