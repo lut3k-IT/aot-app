@@ -113,6 +113,10 @@
       "close": "Close sidebar"
     }
   },
+  "range": {
+    "min": "Minimum",
+    "max": "Maximum"
+  },
   "soon": "Soon",
   "howToUse": "How to use",
   "pwa": {
