@@ -17,7 +17,7 @@ const About = () => {
   return (
     <div className={isMobileLandscape ? 'pt-body-start' : ''}>
       <DynamicTitle title={t('common:title.about')} />
-      {i18n.language === LanguageShortName.ENGLISH ? <AboutEN /> : <AboutPL />}
+      {(i18n.resolvedLanguage || i18n.language) === LanguageShortName.ENGLISH ? <AboutEN /> : <AboutPL />}
     </div>
   );
 };

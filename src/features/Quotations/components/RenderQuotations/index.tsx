@@ -5,6 +5,7 @@ import NoResults from '@/components/ui/NoResults';
 import QuotationCard from '@/components/ui/QuotationCard';
 import QuotationCardSkeleton from '@/components/ui/QuotationCardSkeleton';
 import { FavoriteType, QuotationType } from '@/constants/types';
+import { isInFavorites } from '@/utils/dataHelpers';
 
 interface RenderQuotationsProps {
   quotations: QuotationType[];
@@ -21,9 +22,11 @@ const RenderQuotations = (props: RenderQuotationsProps) => {
     return <MultipleSkeletons skeletonComponent={QuotationCardSkeleton} />;
   }
 
+  const favoriteIdsSet = useMemo(() => new Set(favoriteIds), [favoriteIds]);
+
   const filteredQuotations = useMemo(
-    () => quotations.filter((quotation) => !shouldShowFavorites || favoriteIds.includes(quotation.id)),
-    [quotations, shouldShowFavorites, favoriteIds]
+    () => quotations.filter((quotation) => !shouldShowFavorites || favoriteIdsSet.has(quotation.id)),
+    [quotations, shouldShowFavorites, favoriteIdsSet]
   );
 
   if (!hasData || filteredQuotations.length === 0) {
@@ -35,7 +38,7 @@ const RenderQuotations = (props: RenderQuotationsProps) => {
       key={quotation.id}
       id={quotation.id}
       text={quotation.text}
-      favoritesList={favoriteIds}
+      isFavorite={isInFavorites(quotation.id, favoriteIds)}
     />
   ));
 };

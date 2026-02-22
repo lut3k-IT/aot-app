@@ -86,5 +86,24 @@
   "otherNames": "Aliases",
   "abilities": "Abilities",
   "currentInheritor": "Current inheritor",
-  "formerInheritors": "Former inheritors"
+  "formerInheritors": "Former inheritors",
+  "attributes": {
+    "status": "Status",
+    "species": "Species",
+    "age": "Age",
+    "height": "Height",
+    "weight": "Weight",
+    "residence": "Residence",
+    "mbti": "MBTI",
+    "alias": "Aliases"
+  },
+  "location": {
+    "hizuru": "Hizuru",
+    "marley": "Marley",
+    "paradisIsland": "Paradis Island",
+    "underground": "Underground",
+    "wallMaria": "Wall Maria",
+    "wallRose": "Wall Rose",
+    "wallSina": "Wall Sina"
+  }
 }

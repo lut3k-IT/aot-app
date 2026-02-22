@@ -1,0 +1,8 @@
+{
+  "title": "Character comparison",
+  "addCharacter": "Add character",
+  "removeCharacter": "Remove character",
+  "highlightDifferences": "Highlight differences",
+  "noCharacters": "Select characters to compare",
+  "limitReached": "Character limit reached"
+}

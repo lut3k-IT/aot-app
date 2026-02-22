@@ -15,7 +15,11 @@ const TermsAndConditions = () => {
 
   return (
     <div className={isMobileLandscape ? 'pt-body-start' : ''}>
-      {i18n.language === LanguageShortName.ENGLISH ? <TermsAndConditionsEN /> : <TermsAndConditionsPL />}
+      {(i18n.resolvedLanguage || i18n.language) === LanguageShortName.ENGLISH ? (
+        <TermsAndConditionsEN />
+      ) : (
+        <TermsAndConditionsPL />
+      )}
     </div>
   );
 };

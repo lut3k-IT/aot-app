@@ -1,5 +1,6 @@
 export { default as chartsEN } from './en/charts.json';
 export { default as commonEN } from './en/common.json';
+export { default as comparisonEN } from './en/comparison.json';
 export { default as dataEN } from './en/data.json';
 export { default as howToUseEN } from './en/howToUse.json';
 export { default as landingEN } from './en/landing.json';
@@ -8,6 +9,7 @@ export { default as quizEN } from './en/quiz.json';
 export { default as quotationsEN } from './en/quotations.json';
 export { default as chartsPL } from './pl/charts.json';
 export { default as commonPL } from './pl/common.json';
+export { default as comparisonPL } from './pl/comparison.json';
 export { default as dataPL } from './pl/data.json';
 export { default as howToUsePL } from './pl/howToUse.json';
 export { default as landingPL } from './pl/landing.json';

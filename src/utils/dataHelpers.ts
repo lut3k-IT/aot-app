@@ -21,7 +21,7 @@ const mbtiMap = new Map(mbti.map((item) => [item.id, item]));
 const mbtiShortNameMap = new Map(mbti.map((item) => [item.shortName, item]));
 const mbtiGroupMap = new Map(mbtiGroup.map((item) => [item.id, item]));
 
-const favSetCache = new WeakMap<FavoriteType[], Set<number>>();
+const favSetCache = new WeakMap<FavoriteType[], Set<FavoriteType>>();
 
 export const toggleStateDataById = <T extends { id: number }>(
   data: T,
@@ -99,12 +99,12 @@ export const getSpeciesByKeyName = (keyName: string) => {
 };
 
 export const isInFavorites = (currId: number, favIdsArray: FavoriteType[]) => {
-  let set = favSetCache.get(favIdsArray);
-  if (!set) {
-    set = new Set(favIdsArray);
-    favSetCache.set(favIdsArray, set);
+  let favSet = favSetCache.get(favIdsArray);
+  if (!favSet) {
+    favSet = new Set(favIdsArray);
+    favSetCache.set(favIdsArray, favSet);
   }
-  return set.has(currId);
+  return favSet.has(currId);
 };
 
 export const findHeroSortBy = (option: string | null) =>

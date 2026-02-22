@@ -318,6 +318,7 @@ const Filter = () => {
                   onChange={(e) =>
                     dispatch({ type: 'SET_SELECTED_AGE', payload: [+e.target.value, state.selectedAge[1]] })
                   }
+                  aria-label={`${t('data:age.title')} (${t('common:range.min')})`}
                 />
                 <Input
                   type={'number'}
@@ -328,6 +329,7 @@ const Filter = () => {
                   onChange={(e) =>
                     dispatch({ type: 'SET_SELECTED_AGE', payload: [state.selectedAge[0], +e.target.value] })
                   }
+                  aria-label={`${t('data:age.title')} (${t('common:range.max')})`}
                 />
               </div>
               <Slider
@@ -355,6 +357,7 @@ const Filter = () => {
                   onChange={(e) =>
                     dispatch({ type: 'SET_SELECTED_HEIGHT', payload: [+e.target.value, state.selectedHeight[1]] })
                   }
+                  aria-label={`${t('data:height.title')} (${t('common:range.min')})`}
                 />
                 <Input
                   type={'number'}
@@ -365,6 +368,7 @@ const Filter = () => {
                   onChange={(e) =>
                     dispatch({ type: 'SET_SELECTED_HEIGHT', payload: [state.selectedHeight[0], +e.target.value] })
                   }
+                  aria-label={`${t('data:height.title')} (${t('common:range.max')})`}
                 />
               </div>
               <Slider
@@ -392,6 +396,7 @@ const Filter = () => {
                   onChange={(e) =>
                     dispatch({ type: 'SET_SELECTED_WEIGHT', payload: [+e.target.value, state.selectedWeight[1]] })
                   }
+                  aria-label={`${t('data:weight.title')} (${t('common:range.min')})`}
                 />
                 <Input
                   type={'number'}
@@ -402,6 +407,7 @@ const Filter = () => {
                   onChange={(e) =>
                     dispatch({ type: 'SET_SELECTED_WEIGHT', payload: [state.selectedWeight[0], +e.target.value] })
                   }
+                  aria-label={`${t('data:weight.title')} (${t('common:range.max')})`}
                 />
               </div>
               <Slider
@@ -509,6 +515,7 @@ const Filter = () => {
                 id='show-only-favorites'
                 checked={state.hasOnlyFavorites}
                 onCheckedChange={(v) => dispatch({ type: 'SET_HAS_ONLY_FAVORITES', payload: v })}
+                aria-label={t('common:filter.showOnlyFavorites')}
               />
             </FilterSegment>
           </div>
