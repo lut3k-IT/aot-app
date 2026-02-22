@@ -21,9 +21,11 @@ const RenderQuotations = (props: RenderQuotationsProps) => {
     return <MultipleSkeletons skeletonComponent={QuotationCardSkeleton} />;
   }
 
+  const favoriteIdsSet = useMemo(() => new Set(favoriteIds), [favoriteIds]);
+
   const filteredQuotations = useMemo(
-    () => quotations.filter((quotation) => !shouldShowFavorites || favoriteIds.includes(quotation.id)),
-    [quotations, shouldShowFavorites, favoriteIds]
+    () => quotations.filter((quotation) => !shouldShowFavorites || favoriteIdsSet.has(quotation.id)),
+    [quotations, shouldShowFavorites, favoriteIdsSet]
   );
 
   if (!hasData || filteredQuotations.length === 0) {
