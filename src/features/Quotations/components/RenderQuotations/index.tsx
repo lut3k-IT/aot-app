@@ -5,6 +5,7 @@ import NoResults from '@/components/ui/NoResults';
 import QuotationCard from '@/components/ui/QuotationCard';
 import QuotationCardSkeleton from '@/components/ui/QuotationCardSkeleton';
 import { FavoriteType, QuotationType } from '@/constants/types';
+import { isInFavorites } from '@/utils/dataHelpers';
 
 interface RenderQuotationsProps {
   quotations: QuotationType[];
@@ -35,7 +36,7 @@ const RenderQuotations = (props: RenderQuotationsProps) => {
       key={quotation.id}
       id={quotation.id}
       text={quotation.text}
-      favoritesList={favoriteIds}
+      isFavorite={isInFavorites(quotation.id, favoriteIds)}
     />
   ));
 };
