@@ -19,6 +19,25 @@ const Providers = ({ children }: ProvidersProps) => {
   const [isI18nReady, setIsI18nReady] = useState(false);
 
   useEffect(() => {
+    // Monkey patch removeChild and insertBefore to prevent crashes from Google Translate
+    if (typeof Node !== 'undefined' && Node.prototype) {
+      const originalRemoveChild = Node.prototype.removeChild;
+      Node.prototype.removeChild = function <T extends Node>(child: T): T {
+        if (child.parentNode !== this) {
+          return child;
+        }
+        return originalRemoveChild.call(this, child) as T;
+      };
+
+      const originalInsertBefore = Node.prototype.insertBefore;
+      Node.prototype.insertBefore = function <T extends Node>(newNode: T, referenceNode: Node | null): T {
+        if (referenceNode && referenceNode.parentNode !== this) {
+          return newNode;
+        }
+        return originalInsertBefore.call(this, newNode, referenceNode) as T;
+      };
+    }
+
     // Wait for i18next to be fully initialized with the correct language
     if (i18next.isInitialized) {
       setIsI18nReady(true);
