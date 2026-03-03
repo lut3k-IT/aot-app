@@ -47,7 +47,9 @@ const QuotationDetails = ({ routeId }: QuotationDetailsProps) => {
       <DynamicTitle title={t('common:title.quotations')} />
       <ButtonGoBack fallbackRoute={RoutePath.QUOTATIONS} />
       <Card className={'mt-8 p-4'}>
-        <p>{quotation.text}</p>
+        <p>
+          <span>{quotation.text}</span>
+        </p>
       </Card>
       <FavoriteButton
         isFavorite={isFavorite}

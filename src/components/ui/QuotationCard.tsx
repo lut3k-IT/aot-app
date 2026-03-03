@@ -23,7 +23,9 @@ const QuotationCard = (props: QuotationCardProps) => {
   return (
     <Link href={`${RoutePath.QUOTATION_DETAILS}/${id}`}>
       <Card className={cn('relative h-full w-full rounded-md border p-4 pr-14', className)}>
-        <div className={'text-md line-clamp-3 overflow-hidden'}>{text}</div>
+        <div className={'text-md line-clamp-3 overflow-hidden'}>
+          <span>{text}</span>
+        </div>
         <HeartButton
           className={'absolute right-3 top-3'}
           isFilled={isFavorite}

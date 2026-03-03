@@ -34,7 +34,7 @@ const BarContent = (props: BarContentProps) => {
             animation: `horizontal-scroll-animation ${animationDuration} linear infinite`
           }}
         >
-          {currentQuotation.text || ''}
+          <span>{currentQuotation.text || ''}</span>
         </div>
       </Link>
       <HeartButton
