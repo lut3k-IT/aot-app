@@ -21,6 +21,7 @@ const characterPictureVariants = cva('', {
       md: 'w-[84px] h-[84px]',
       lg: 'w-[128px] h-[128px]',
       xl: 'w-[160px] h-[160px]',
+      '2xl': 'w-[200px] h-[200px]',
       full: 'w-full h-full'
     }
   },
@@ -54,6 +55,9 @@ const CharacterPicture = (props: CharacterPictureProps) => {
   } else if (size === 'xl') {
     width = 160;
     height = 160;
+  } else if (size === '2xl') {
+    width = 200;
+    height = 200;
   }
 
   const isFull = size === 'full';
@@ -72,7 +76,7 @@ const CharacterPicture = (props: CharacterPictureProps) => {
             height={isFull ? undefined : height}
             fill={isFull}
             className={'object-cover'}
-            priority={size === 'xl'} // Optimize LCP for large avatars
+            priority={size === 'xl' || size === '2xl'} // Optimize LCP for large avatars
             unoptimized
           />
         </AvatarImage>
