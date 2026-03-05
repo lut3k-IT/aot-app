@@ -1,34 +1,26 @@
 'use client';
 
-import { useTranslation } from 'react-i18next';
-
 import { useApiErrorToast } from '@/components/hooks/useApiErrorToast';
 import useAppSelector from '@/components/hooks/useAppSelector';
 import { useToggleFavorite } from '@/components/hooks/useToggleFavorite';
-import ButtonGoBack from '@/components/ui/ButtonGoBack';
-import CharacterPicture from '@/components/ui/CharacterPicture';
 import DynamicTitle from '@/components/ui/DynamicTitle';
-import FavoriteButton from '@/components/ui/FavoriteButton';
 import { MBTI_GROUPS_NAMES } from '@/constants/constants';
-import { RoutePath } from '@/constants/enums';
 import { MbtiGroups } from '@/constants/types';
 import mbti from '@/data/mbti';
 import { selectHeroesData } from '@/store/heroesSlice';
-import { selectTitansData, selectTitansError, selectTitansFavoriteIds } from '@/store/titansSlice';
-import { addFavorite, removeFavorite } from '@/store/titansSlice';
+import { addFavorite, removeFavorite, selectTitansData, selectTitansError, selectTitansFavoriteIds } from '@/store/titansSlice';
 import { getHeroName, isInFavorites } from '@/utils/dataHelpers';
 
 import DetailsContainer from '../components/DetailsContainer';
-import MBTIBar from '../components/MBTIBar';
-import Tiles from './components/Tiles';
+import TitanMbtiCard from './components/TitanMbtiCard';
+import TitanProfileHeader from './components/TitanProfileHeader';
+import TitanStatsGrid from './components/TitanStatsGrid';
 
 interface TitanDetailsProps {
   routeSlug?: string;
 }
 
 const TitanDetails = ({ routeSlug }: TitanDetailsProps) => {
-  const { t } = useTranslation();
-
   if (!routeSlug) throw new Error('URL is incompatible.');
 
   const originalTitans = useAppSelector(selectTitansData);
@@ -37,7 +29,7 @@ const TitanDetails = ({ routeSlug }: TitanDetailsProps) => {
   const fetchingError = useAppSelector(selectTitansError);
   useApiErrorToast(fetchingError);
 
-  const titan = originalTitans.find((titan) => titan.slug === routeSlug);
+  const titan = originalTitans.find((t) => t.slug === routeSlug);
   const isFavorite = titan ? isInFavorites(titan.id, favoriteTitansIds) : false;
   const currentInheritor = titan?.currentInheritor ? getHeroName(titan.currentInheritor, originalHeroes) : '-';
   const formerInheritors =
@@ -56,29 +48,23 @@ const TitanDetails = ({ routeSlug }: TitanDetailsProps) => {
   return (
     <DetailsContainer>
       <DynamicTitle title={titan.name} />
-      <ButtonGoBack
-        fallbackRoute={RoutePath.TITANS}
-        aria-label={t('common:navigation.goBack')}
+
+      <TitanProfileHeader
+        titan={titan}
+        mbtiGroupName={mbtiGroupName}
+        isFavorite={isFavorite}
+        onToggleFavorite={toggleFavorite}
       />
-      <div className={'details-profile-wrapper'}>
-        <MBTIBar mbtiGroupName={mbtiGroupName} />
-        <CharacterPicture
-          imgSource={`/assets/img/titans/${titan.slug}.jpg`}
-          alt={`${titan.name} - Attack on Titan ${t('common:brand')}`}
-          size={'xl'}
-          variant={'circle'}
-          className={'mt-5 border-4 border-background'}
-        />
-      </div>
-      <div className={'details-character-name'}>{titan.name}</div>
-      <Tiles
+
+      <TitanMbtiCard
+        mbtiId={titan.mbti}
+        mbtiGroupName={mbtiGroupName}
+      />
+
+      <TitanStatsGrid
         titan={titan}
         currentInheritor={currentInheritor}
         formerInheritors={formerInheritors}
-      />
-      <FavoriteButton
-        isFavorite={isFavorite}
-        onToggleFavorite={toggleFavorite}
       />
     </DetailsContainer>
   );

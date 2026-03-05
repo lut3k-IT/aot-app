@@ -3,6 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import {
   ArrowDownNarrowWide,
   ArrowDownWideNarrow,
+  Calendar,
   ChevronFirst,
   ChevronLast,
   ChevronLeft,
@@ -14,13 +15,20 @@ import {
   HelpCircle,
   Loader2,
   LucideIcon,
+  MapPin,
   Menu,
   Moon,
   PenLine,
   Quote,
+  Ruler,
+  Scale,
+  Shield,
   Sun,
+  Tag,
   User,
-  X
+  Users,
+  X,
+  Zap
 } from 'lucide-react';
 
 import AotIcon from '@/assets/icons/aot-icon.svg';
@@ -68,7 +76,15 @@ export type IconNames =
   | 'chevronLeft'
   | 'chevronRight'
   | 'chevronFirst'
-  | 'chevronLast';
+  | 'chevronLast'
+  | 'mapPin'
+  | 'calendar'
+  | 'ruler'
+  | 'scale'
+  | 'shield'
+  | 'tag'
+  | 'users'
+  | 'zap';
 
 // Icons that have their own colors and shouldn't have fill overridden
 const customColorIcons: IconNames[] = ['aot'];
@@ -104,7 +120,15 @@ const Icon = ({ name, size, variant, color, isFilled = false, className, ...prop
     chevronLeft: ChevronLeft,
     chevronRight: ChevronRight,
     chevronFirst: ChevronFirst,
-    chevronLast: ChevronLast
+    chevronLast: ChevronLast,
+    mapPin: MapPin,
+    calendar: Calendar,
+    ruler: Ruler,
+    scale: Scale,
+    shield: Shield,
+    tag: Tag,
+    users: Users,
+    zap: Zap
   };
   const IconComponent = iconsSet[name];
 
