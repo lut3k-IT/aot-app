@@ -21,17 +21,17 @@ const PageHeading = (props: PageHeadingProps) => {
   return (
     <div
       className={classNames(
-        'sticky mb-2 flex items-center justify-between bg-background py-4',
+        'sticky mb-2 flex flex-col gap-3 bg-background py-2 md:flex-row md:items-center md:justify-between md:py-4',
         {
           'md:dark:bg-card': !isMobileLandscape,
-          '!py-2': isLandscape
+          '!gap-1 !py-1': isLandscape
         },
         className
       )}
     >
       <div
         suppressHydrationWarning
-        className={'text-subtle-foreground text-4xl font-bold leading-none tracking-wide'}
+        className={'text-4xl font-bold leading-none tracking-wide text-subtle-foreground'}
       >
         {t('common:time.year.singular')} {year}
       </div>

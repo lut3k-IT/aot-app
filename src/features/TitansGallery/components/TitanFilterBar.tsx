@@ -132,6 +132,16 @@ const TitanFilterBar = () => {
 
   const filterContent = (
     <>
+      {/* Sort — mobile only */}
+      <div className='md:hidden'>
+        <SortControl
+          sortBy={sortBy}
+          sortDirection={sortDirection}
+          sortOptions={TITAN_SORT_OPTIONS}
+          onSortByChange={handleSortByChange}
+          onSortDirectionToggle={handleSortDirectionToggle}
+        />
+      </div>
       {/* Allegiance */}
       <FilterSection title={t('data:allegiance.title')}>
         <div className='flex flex-wrap gap-1.5'>
@@ -153,10 +163,8 @@ const TitanFilterBar = () => {
 
   const topBar = (
     <div className='flex items-center gap-2'>
-      <button
-        type='button'
+      <div
         className='flex items-center gap-1.5'
-        onClick={() => handleToggleFavorites(!hasOnlyFavorites)}
         aria-label={t('common:filter.showOnlyFavorites')}
       >
         <Heart
@@ -165,22 +173,24 @@ const TitanFilterBar = () => {
         <Switch
           checked={hasOnlyFavorites}
           onCheckedChange={handleToggleFavorites}
-          aria-hidden
         />
-      </button>
+      </div>
       <SearchInput
         value={search}
         onSearch={handleSearch}
         placeholder={t('common:filter.searchTitansPlaceholder')}
-        className='w-40 sm:w-56'
+        className='min-w-0 flex-1 md:w-56 md:flex-none'
       />
-      <SortControl
-        sortBy={sortBy}
-        sortDirection={sortDirection}
-        sortOptions={TITAN_SORT_OPTIONS}
-        onSortByChange={handleSortByChange}
-        onSortDirectionToggle={handleSortDirectionToggle}
-      />
+      {/* Sort — desktop only; shown in FilterSheet on mobile */}
+      <div className='hidden md:flex'>
+        <SortControl
+          sortBy={sortBy}
+          sortDirection={sortDirection}
+          sortOptions={TITAN_SORT_OPTIONS}
+          onSortByChange={handleSortByChange}
+          onSortDirectionToggle={handleSortDirectionToggle}
+        />
+      </div>
       {/* Filter toggle — desktop only */}
       <div className='relative hidden md:block'>
         <Button
@@ -200,6 +210,15 @@ const TitanFilterBar = () => {
           </span>
         )}
       </div>
+      {/* Filter trigger — mobile only, compact icon in heading row */}
+      <div className='md:hidden'>
+        <FilterSheet
+          compact
+          activeFilterCount={activeFilters.length}
+        >
+          {filterContent}
+        </FilterSheet>
+      </div>
     </div>
   );
 
@@ -218,13 +237,6 @@ const TitanFilterBar = () => {
             {filterContent}
           </div>
         </FilterPanel>
-      </div>
-
-      {/* Mobile: Sheet with its own trigger */}
-      <div className='md:hidden'>
-        <FilterSheet activeFilterCount={activeFilters.length}>
-          {filterContent}
-        </FilterSheet>
       </div>
 
       {/* Active filter chips */}
