@@ -66,10 +66,8 @@ const QuotationFilterBar = () => {
 
   const topBar = (
     <div className='flex items-center gap-2'>
-      <button
-        type='button'
+      <div
         className='flex items-center gap-1.5'
-        onClick={() => handleToggleFavorites(!hasOnlyFavorites)}
         aria-label={t('common:filter.showOnlyFavorites')}
       >
         <Heart
@@ -78,14 +76,13 @@ const QuotationFilterBar = () => {
         <Switch
           checked={hasOnlyFavorites}
           onCheckedChange={handleToggleFavorites}
-          aria-hidden
         />
-      </button>
+      </div>
       <SearchInput
         value={search}
         onSearch={handleSearch}
         placeholder={t('common:filter.searchQuotationsPlaceholder')}
-        className='w-40 sm:w-56'
+        className='min-w-0 flex-1 md:w-56 md:flex-none'
       />
     </div>
   );

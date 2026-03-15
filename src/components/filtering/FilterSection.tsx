@@ -13,16 +13,21 @@ interface FilterSectionProps {
 
 const FilterSection = ({ title, children, className, inline }: FilterSectionProps) => {
   return (
-    <div className={cn(inline ? 'flex items-start gap-3' : 'space-y-1.5', className)}>
+    <div
+      className={cn(
+        inline ? 'space-y-1.5 sm:flex sm:items-start sm:gap-3 sm:space-y-0' : 'space-y-1.5',
+        className
+      )}
+    >
       <span
         className={cn(
           'text-xs font-medium text-muted-foreground',
-          inline && 'w-[6.5rem] shrink-0 pt-1 text-right'
+          inline && 'sm:w-[6.5rem] sm:shrink-0 sm:pt-1 sm:text-right'
         )}
       >
         {title}
       </span>
-      {children}
+      {inline ? <div className='min-w-0 sm:flex-1'>{children}</div> : children}
     </div>
   );
 };
