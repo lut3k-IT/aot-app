@@ -44,7 +44,9 @@
     "sortBy": "Sort by",
     "showOnlyFavorites": "Show only favorites",
     "search": "Search",
-    "searchPlaceholder": "Type hero name"
+    "searchPlaceholder": "Type hero name",
+    "searchTitansPlaceholder": "Search titans...",
+    "searchQuotationsPlaceholder": "Search quotations..."
   },
   "sort": {
     "title": "Sort",
@@ -69,7 +71,8 @@
       "weight": "Weight",
       "mbti": "MBTI",
       "species": "Species",
-      "residence": "Residence"
+      "residence": "Residence",
+      "name": "Name"
     }
   },
   "spoilerMode": {

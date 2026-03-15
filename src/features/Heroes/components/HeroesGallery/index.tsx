@@ -12,6 +12,7 @@ import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import Pagination, { DEFAULT_PAGE, DEFAULT_PAGE_SIZES } from '@/components/ui/Pagination';
 import { ElementsIds, Param, SortDirection } from '@/constants/enums';
 import { HeroFilters, HeroSortOption } from '@/constants/types';
+import { DEFAULT_AGE, DEFAULT_HEIGHT, DEFAULT_SORT, DEFAULT_SORT_DIRECTION, DEFAULT_WEIGHT } from '@/features/Heroes/constants';
 import { filterHeroes, paginateHeroes } from '@/features/Heroes/utils/heroesProcessing';
 import { selectHeroesData, selectHeroesError, selectHeroesFavoriteIds, selectHeroesStatus } from '@/store/heroesSlice';
 import {
@@ -24,14 +25,7 @@ import { filterArrayFromNullish } from '@/utils/helpers';
 import { getSafePageNumberFromSearchParam } from '@/utils/paramsHelpers';
 
 import Content from './components/Content';
-import Filter from './components/Filter';
-import {
-  DEFAULT_AGE,
-  DEFAULT_HEIGHT,
-  DEFAULT_SORT,
-  DEFAULT_SORT_DIRECTION,
-  DEFAULT_WEIGHT
-} from './components/Filter/utils';
+import HeroFilterBar from './components/HeroFilterBar';
 
 const HeroesGallery = () => {
   const { t } = useTranslation();
@@ -40,6 +34,11 @@ const HeroesGallery = () => {
   const pathname = usePathname();
 
   const [totalPages, setTotalPages] = useState(DEFAULT_PAGE);
+  const [paginationDestination, setPaginationDestination] = useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    setPaginationDestination(document.getElementById(ElementsIds.PAGE_PAGINATION));
+  }, []);
 
   const originalHeroes = useAppSelector(selectHeroesData);
   const favoriteHeroesIds = useAppSelector(selectHeroesFavoriteIds);
@@ -51,12 +50,6 @@ const HeroesGallery = () => {
   const [paginatedHeroes, setPaginatedHeroes] = useState(originalHeroes);
 
   const hasData = originalHeroes.length > 0;
-
-  const [pageHeadingDestination, setPageHeadingDestination] = useState<HTMLElement | null>(null);
-
-  useEffect(() => {
-    setPageHeadingDestination(document.getElementById(ElementsIds.PAGE_HEADING_OPTIONS));
-  }, []);
 
   /* --------------------------------- filters -------------------------------- */
 
@@ -141,13 +134,11 @@ const HeroesGallery = () => {
     }
   }, [searchParams, filteredHeroes, totalPages, router, pathname, createQueryString]);
 
-  /* ------------------------------- error toast ------------------------------- */
-
   return (
     <>
       <DynamicTitle title={`${t('common:title.heroes')} ${t('common:tab.gallery')}`} />
       <GalleryWrapper>
-        {pageHeadingDestination && createPortal(<Filter />, pageHeadingDestination)}
+        <HeroFilterBar />
         <Content
           hasData={hasData}
           hasDataToShow={hasDataToShow}
@@ -155,14 +146,14 @@ const HeroesGallery = () => {
           paginatedHeroes={paginatedHeroes}
           favoriteHeroesIds={favoriteHeroesIds}
         />
-        {hasDataToShow && !isLoading && (
-          <Pagination
-            itemsCount={filteredHeroes.length}
-            totalPages={totalPages}
-            className={'col-span-full'}
-          />
-        )}
       </GalleryWrapper>
+      {hasDataToShow && !isLoading && paginationDestination && createPortal(
+        <Pagination
+          itemsCount={filteredHeroes.length}
+          totalPages={totalPages}
+        />,
+        paginationDestination
+      )}
     </>
   );
 };

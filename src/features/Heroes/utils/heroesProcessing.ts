@@ -1,10 +1,6 @@
 import { SortDirection } from '@/constants/enums';
 import { FavoriteType, HeroFilters, HeroType } from '@/constants/types';
-import {
-  DEFAULT_AGE,
-  DEFAULT_HEIGHT,
-  DEFAULT_WEIGHT
-} from '@/features/Heroes/components/HeroesGallery/components/Filter/utils';
+import { DEFAULT_AGE, DEFAULT_HEIGHT, DEFAULT_WEIGHT } from '@/features/Heroes/constants';
 
 type SortType = number | string | string[] | null;
 

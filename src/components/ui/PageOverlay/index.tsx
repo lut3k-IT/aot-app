@@ -5,6 +5,8 @@ import React from 'react';
 import classNames from 'classnames';
 import { usePathname } from 'next/navigation';
 
+import { ElementsIds } from '@/constants/enums';
+
 import useIsLandscape from '../../hooks/useIsLandscape';
 import useIsMobile from '../../hooks/useIsMobile';
 import useIsMobileOrLandscape from '../../hooks/useIsMobileOrLandscape';
@@ -38,6 +40,7 @@ const MobileOverlay = ({ children }: PageOverlayProps) => {
         })}
       >
         {children}
+        <div id={ElementsIds.PAGE_PAGINATION} className='empty:hidden' />
       </main>
       <NavigationMobile />
       <Toaster />
@@ -61,12 +64,12 @@ const DesktopOverlay = ({ children }: PageOverlayProps) => {
         <SidebarDesktop />
         <div className={'grid h-[calc(100svh-3rem)] grid-rows-[2.5rem_1fr_1.25rem] gap-6'}>
           <QuotationBar />
-          <Card className={'h-full overflow-hidden p-4'}>
+          <Card className={'flex h-full flex-col overflow-hidden p-4'}>
             <ScrollArea
               viewportRef={scrollAreaRef}
               id='inner'
               type={'always'}
-              className={'-mr-3 h-full pr-3'}
+              className={'-mr-3 min-h-0 flex-1 pr-3'}
             >
               <main
                 id='outlet-wrapper'
@@ -75,6 +78,7 @@ const DesktopOverlay = ({ children }: PageOverlayProps) => {
                 {children}
               </main>
             </ScrollArea>
+            <div id={ElementsIds.PAGE_PAGINATION} className='empty:hidden relative z-10 shadow-panel-bottom-card' />
           </Card>
           <Footer />
         </div>

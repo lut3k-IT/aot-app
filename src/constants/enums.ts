@@ -5,7 +5,8 @@ export enum Bool {
 
 export enum ElementsIds {
   ROOT = 'root',
-  PAGE_HEADING_OPTIONS = 'page-heading-options'
+  PAGE_HEADING_OPTIONS = 'page-heading-options',
+  PAGE_PAGINATION = 'page-pagination'
 }
 
 export enum Theme {
@@ -40,7 +41,8 @@ export enum Param {
   PAGE = 'page',
   PAGE_SIZE = 'page_size',
   FAVORITES = 'favorites',
-  SEARCH = 'search'
+  SEARCH = 'search',
+  ALLEGIANCE = 'allegiance'
 }
 
 export enum RoutePath {
