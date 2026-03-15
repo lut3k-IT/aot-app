@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSearchParams } from 'next/navigation';
 
 import { useApiErrorToast } from '@/components/hooks/useApiErrorToast';
 import useAppSelector from '@/components/hooks/useAppSelector';
@@ -11,16 +11,21 @@ import DynamicTitle from '@/components/ui/DynamicTitle';
 import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import MovingPanel from '@/components/ui/MovingPanel';
 import PageHeading from '@/components/ui/PageHeading';
-import { ElementsIds } from '@/constants/enums';
+import { Param, SortDirection } from '@/constants/enums';
+import { TitanSortOption } from '@/constants/types';
 import { selectHeroesData } from '@/store/heroesSlice';
 import { selectTitansData, selectTitansError, selectTitansFavoriteIds, selectTitansStatus } from '@/store/titansSlice';
+import { getBooleanParam } from '@/utils/paramsHelpers';
 
-import SwitchFavorites from '../../components/ui/SwitchFavorites';
 import Content from './components/Content';
+import TitanFilterBar from './components/TitanFilterBar';
+import { filterTitans } from './utils/titansProcessing';
+import { DEFAULT_TITAN_SORT, DEFAULT_TITAN_SORT_DIRECTION } from './constants';
 
 const TitansGallery = () => {
   const { t } = useTranslation();
   const isLandscape = useIsLandscape();
+  const searchParams = useSearchParams();
 
   const originalTitans = useAppSelector(selectTitansData);
   const originalHeroes = useAppSelector(selectHeroesData);
@@ -31,37 +36,41 @@ const TitansGallery = () => {
   const isLoading = fetchingStatus === 'loading';
   useApiErrorToast(fetchingError);
 
-  const [shouldShowFavorites, setShouldShowFavorites] = useState(false);
   const hasData = originalTitans.length > 0;
 
-  const [pageHeadingDestination, setPageHeadingDestination] = useState<HTMLElement | null>(null);
+  /* --------------------------------- filters -------------------------------- */
 
-  useEffect(() => {
-    setPageHeadingDestination(document.getElementById(ElementsIds.PAGE_HEADING_OPTIONS));
-  }, []);
+  const filteredTitans = useMemo(() => {
+    const search = searchParams.get(Param.SEARCH);
+    const sortBy = (searchParams.get(Param.SORT) as TitanSortOption) || DEFAULT_TITAN_SORT;
+    const sortDirection = (searchParams.get(Param.SORT_DIRECTION) as SortDirection) || DEFAULT_TITAN_SORT_DIRECTION;
+    const allegiance = searchParams.getAll(Param.ALLEGIANCE).map(Number).filter((n) => !isNaN(n));
+    const hasOnlyFavorites = getBooleanParam(searchParams, Param.FAVORITES);
+
+    return filterTitans(
+      originalTitans,
+      { search, sort: sortBy, sortDirection, allegiance, hasOnlyFavorites },
+      favoriteTitansIds
+    );
+  }, [originalTitans, searchParams, favoriteTitansIds]);
+
+  const hasDataToShow = filteredTitans.length > 0;
 
   return (
     <>
       <DynamicTitle title={`${t('common:title.titans')} ${t('common:tab.gallery')}`} />
       <MovingPanel className={isLandscape ? '' : 'md:pt-0'}>
         <PageHeading className={isLandscape ? '' : 'md:pt-0'} />
-        {pageHeadingDestination &&
-          createPortal(
-            <SwitchFavorites
-              shouldShowFavorites={shouldShowFavorites}
-              onCheckedChange={setShouldShowFavorites}
-            />,
-            pageHeadingDestination
-          )}
       </MovingPanel>
       <GalleryWrapper>
+        <TitanFilterBar />
         <Content
-          paginatedTitans={originalTitans}
-          shouldShowFavorites={shouldShowFavorites}
+          titans={filteredTitans}
           favoriteTitansIds={favoriteTitansIds}
           originalHeroes={originalHeroes}
           isLoading={isLoading}
           hasData={hasData}
+          hasDataToShow={hasDataToShow}
         />
       </GalleryWrapper>
     </>

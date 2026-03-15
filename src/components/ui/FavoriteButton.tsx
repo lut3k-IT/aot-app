@@ -6,17 +6,21 @@ import { Button } from './Button';
 interface FavoriteButtonProps {
   isFavorite: boolean;
   onToggleFavorite: () => void;
+  className?: string;
 }
 
 const FavoriteButton = (props: FavoriteButtonProps) => {
-  const { isFavorite, onToggleFavorite } = props;
+  const { isFavorite, onToggleFavorite, className } = props;
   const { t } = useTranslation();
 
   return (
     <Button
-      className={classNames('mt-8 w-full', {
-        'text-muted-foreground': !isFavorite
-      })}
+      className={classNames(
+        {
+          'text-muted-foreground': !isFavorite
+        },
+        className
+      )}
       iconName={'heart'}
       variant={!isFavorite ? 'secondary' : 'defaultInvert'}
       iconProps={{

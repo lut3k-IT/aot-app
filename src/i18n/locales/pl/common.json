@@ -44,7 +44,9 @@
     "sortBy": "Sortuj według",
     "showOnlyFavorites": "Pokaż tylko ulubione",
     "search": "Szukaj",
-    "searchPlaceholder": "Wpisz nazwę postaci"
+    "searchPlaceholder": "Wpisz nazwę postaci",
+    "searchTitansPlaceholder": "Szukaj tytanów...",
+    "searchQuotationsPlaceholder": "Szukaj cytatów..."
   },
   "sort": {
     "title": "Sortuj",
@@ -69,7 +71,8 @@
       "weight": "Waga",
       "mbti": "MBTI",
       "species": "Gatunek",
-      "residence": "Miejsce zamieszkania"
+      "residence": "Miejsce zamieszkania",
+      "name": "Nazwa"
     }
   },
   "spoilerMode": {

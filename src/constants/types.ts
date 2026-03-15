@@ -92,3 +92,22 @@ export interface HeroForSelect {
   slug: string;
   value: string;
 }
+
+/* ------------------------------ Titan Filters ----------------------------- */
+
+export type TitanSortOption = 'id' | 'name' | 'height';
+
+export interface TitanFilters {
+  search?: string | null;
+  sort: TitanSortOption;
+  sortDirection: SortDirection;
+  allegiance: number[];
+  hasOnlyFavorites: boolean;
+}
+
+/* --------------------------- Quotation Filters ---------------------------- */
+
+export interface QuotationFilters {
+  search?: string | null;
+  hasOnlyFavorites: boolean;
+}

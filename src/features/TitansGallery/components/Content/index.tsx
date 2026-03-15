@@ -8,25 +8,16 @@ import { FavoriteType, HeroType, TitanType } from '@/constants/types';
 import { isInFavorites } from '@/utils/dataHelpers';
 
 interface ContentProps {
-  paginatedTitans: TitanType[];
-  shouldShowFavorites: boolean;
+  titans: TitanType[];
   favoriteTitansIds: FavoriteType[];
   originalHeroes: HeroType[];
   isLoading: boolean;
   hasData: boolean;
+  hasDataToShow: boolean;
 }
 
 const Content = (props: ContentProps) => {
-  const { paginatedTitans, shouldShowFavorites, favoriteTitansIds, originalHeroes, isLoading, hasData } = props;
-
-  if (isLoading) {
-    return <MultipleSkeletons skeletonComponent={CharacterCardSkeleton} />;
-  }
-
-  const filteredAndFavoriteTitans = useMemo(
-    () => paginatedTitans.filter((titan) => !shouldShowFavorites || isInFavorites(titan.id, favoriteTitansIds)),
-    [paginatedTitans, shouldShowFavorites, favoriteTitansIds]
-  );
+  const { titans, favoriteTitansIds, originalHeroes, isLoading, hasData, hasDataToShow } = props;
 
   const heroesMap = useMemo(() => {
     const map = new Map<number, string>();
@@ -36,11 +27,15 @@ const Content = (props: ContentProps) => {
     return map;
   }, [originalHeroes]);
 
-  if (!hasData || filteredAndFavoriteTitans.length === 0) {
+  if (isLoading) {
+    return <MultipleSkeletons skeletonComponent={CharacterCardSkeleton} />;
+  }
+
+  if (!hasData || !hasDataToShow) {
     return <NoResults />;
   }
 
-  return filteredAndFavoriteTitans.map((titan) => (
+  return titans.map((titan) => (
     <TitanCard
       data={titan}
       isFavorite={isInFavorites(titan.id, favoriteTitansIds)}

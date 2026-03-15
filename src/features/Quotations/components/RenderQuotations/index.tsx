@@ -1,5 +1,3 @@
-import { useMemo } from 'react';
-
 import MultipleSkeletons from '@/components/ui/MultipleSkeletons';
 import NoResults from '@/components/ui/NoResults';
 import QuotationCard from '@/components/ui/QuotationCard';
@@ -9,31 +7,24 @@ import { isInFavorites } from '@/utils/dataHelpers';
 
 interface RenderQuotationsProps {
   quotations: QuotationType[];
-  shouldShowFavorites: boolean;
   favoriteIds: FavoriteType[];
   isLoading: boolean;
   hasData: boolean;
+  hasDataToShow: boolean;
 }
 
 const RenderQuotations = (props: RenderQuotationsProps) => {
-  const { quotations, shouldShowFavorites, favoriteIds, isLoading, hasData } = props;
+  const { quotations, favoriteIds, isLoading, hasData, hasDataToShow } = props;
 
   if (isLoading) {
     return <MultipleSkeletons skeletonComponent={QuotationCardSkeleton} />;
   }
 
-  const favoriteIdsSet = useMemo(() => new Set(favoriteIds), [favoriteIds]);
-
-  const filteredQuotations = useMemo(
-    () => quotations.filter((quotation) => !shouldShowFavorites || favoriteIdsSet.has(quotation.id)),
-    [quotations, shouldShowFavorites, favoriteIdsSet]
-  );
-
-  if (!hasData || filteredQuotations.length === 0) {
+  if (!hasData || !hasDataToShow) {
     return <NoResults />;
   }
 
-  return filteredQuotations.map((quotation) => (
+  return quotations.map((quotation) => (
     <QuotationCard
       key={quotation.id}
       id={quotation.id}

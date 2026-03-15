@@ -8,7 +8,7 @@ import mbtiGroup from '@/data/mbtiGroup';
 import residences from '@/data/residences';
 import species from '@/data/species';
 import statuses from '@/data/statuses';
-import { sortOptions } from '@/features/Heroes/components/HeroesGallery/components/Filter/utils';
+import { HERO_SORT_OPTIONS } from '@/features/Heroes/constants';
 
 const allegianceMap = new Map(allegiances.map((item) => [item.id, item]));
 const residenceMap = new Map(residences.map((item) => [item.id, item]));
@@ -108,7 +108,7 @@ export const isInFavorites = (currId: number, favIdsArray: FavoriteType[]) => {
 };
 
 export const findHeroSortBy = (option: string | null) =>
-  sortOptions.includes(option as HeroSortOption) ? (option as HeroSortOption) : null;
+  HERO_SORT_OPTIONS.includes(option as HeroSortOption) ? (option as HeroSortOption) : null;
 
 export const findSortDirection = (direction: string | null) => {
   const values = Object.values(SortDirection);
