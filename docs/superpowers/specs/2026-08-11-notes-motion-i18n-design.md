@@ -25,7 +25,7 @@ Siedem zmian w AOT-APP, ujętych w jeden spec i jeden plan wdrożenia:
 | Zasięg notatek | Bohaterowie i tytani | Obie galerie mają bliźniacze strony szczegółów; pominięcie tytanów byłoby widoczną dziurą. |
 | Charakter animacji serca | Puls + pierścień + cząstki, poniżej 0,5 s | Czytelne przy szybkim klikaniu po galerii, bez rozpraszania. |
 | Zakres tłumaczeń | Wszystko oprócz cytatów z anime | Cytaty to wypowiedzi bohaterów znane z oficjalnych tłumaczeń i dubbingu; własna wersja brzmiałaby obco. |
-| Lista języków | es, pt-BR, de, fr, it, ru, ja, zh, ko, tr | Największe języki skrzyżowane z realnym fandomem anime; wszystkie pisane od lewej do prawej. |
+| Lista języków | es, pt, de, fr, it, ru, ja, zh, ko, tr | Największe języki skrzyżowane z realnym fandomem anime; wszystkie pisane od lewej do prawej. Portugalski w wariancie brazylijskim, ale pod kodem `pt` — konfiguracja i18next ma `load: 'languageOnly'`, które i tak obcięłoby `pt-BR` do `pt`. |
 | Ładowanie tłumaczeń | Dociąganie języka na żądanie | Przy 12 językach komplet w paczce to setki kilobajtów tekstu pobieranego przez każdego odwiedzającego. |
 | Pseudonimy a spoilery | Ukrywane wszystkie | Ręczna klasyfikacja ~40 pozycji to subiektywna ocena, a jedno przeoczenie psuje cały tryb spoilerów. |
 | Zasięg animacji | Wspólny słownik ruchu + zastosowanie w kluczowych miejscach | „Wszędzie” dosłownie oznacza 161 komponentów — męczące dla oka i wolne na telefonie. |
@@ -149,7 +149,7 @@ Zmiana języka w trakcie quizu przepisuje treść pytania i odpowiedzi, zachowuj
 | Kod | Nazwa w interfejsie |
 | --- | --- |
 | `es` | Español |
-| `pt-BR` | Português (BR) |
+| `pt` | Português (BR) |
 | `de` | Deutsch |
 | `fr` | Français |
 | `it` | Italiano |
