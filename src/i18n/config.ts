@@ -1,6 +1,6 @@
 import { InitOptions } from 'i18next';
 
-import { LanguageShortName, LocalStorageKey } from '@/constants/enums';
+import { LanguageName, LanguageShortName, LocalStorageKey } from '@/constants/enums';
 import { getLocalStorageItem } from '@/utils/storageHelpers';
 
 import {
@@ -49,13 +49,29 @@ const resources = {
   }
 };
 
+/** Kolejnosc pozycji na liscie wyboru jezyka. Polski i angielski sa w glownej paczce, reszta doladowywana. */
+export const LANGUAGE_OPTIONS: { id: LanguageShortName; label: LanguageName }[] = [
+  { id: LanguageShortName.POLISH, label: LanguageName.POLISH },
+  { id: LanguageShortName.ENGLISH, label: LanguageName.ENGLISH },
+  { id: LanguageShortName.SPANISH, label: LanguageName.SPANISH },
+  { id: LanguageShortName.PORTUGUESE, label: LanguageName.PORTUGUESE },
+  { id: LanguageShortName.GERMAN, label: LanguageName.GERMAN },
+  { id: LanguageShortName.FRENCH, label: LanguageName.FRENCH },
+  { id: LanguageShortName.ITALIAN, label: LanguageName.ITALIAN },
+  { id: LanguageShortName.RUSSIAN, label: LanguageName.RUSSIAN },
+  { id: LanguageShortName.TURKISH, label: LanguageName.TURKISH },
+  { id: LanguageShortName.JAPANESE, label: LanguageName.JAPANESE },
+  { id: LanguageShortName.CHINESE, label: LanguageName.CHINESE },
+  { id: LanguageShortName.KOREAN, label: LanguageName.KOREAN }
+];
+
 export const ns = ['common', 'comparison', 'quiz', 'quotations', 'charts', 'landing'];
 
 export const initOptions: InitOptions = {
   resources,
   fallbackLng: LanguageShortName.POLISH,
 
-  debug: true,
+  debug: process.env.NODE_ENV === 'development',
   load: 'languageOnly',
   ns,
   defaultNS: 'common',

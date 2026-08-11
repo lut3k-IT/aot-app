@@ -8,6 +8,7 @@ import i18next from 'i18next';
 
 import { ThemeProvider } from '@/components/ui/ThemeProvider';
 import { LocalStorageKey, Theme } from '@/constants/enums';
+import { isLazyLanguage, loadLanguageResources } from '@/i18n/loadLanguage';
 import { store } from '@/store';
 
 import '@/i18n/i18n';
@@ -39,13 +40,27 @@ const Providers = ({ children }: ProvidersProps) => {
       };
     }
 
-    // Wait for i18next to be fully initialized with the correct language
-    if (i18next.isInitialized) {
+    // Wait for i18next to be fully initialized with the correct language.
+    // Jezyk wykryty w przegladarce moze byc jednym z doladowywanych — wtedy trzeba
+    // poczekac na jego zasoby, inaczej interfejs mignalby jezykiem awaryjnym.
+    const markReady = async () => {
+      const detectedLanguage = i18next.resolvedLanguage || i18next.language;
+
+      if (detectedLanguage && isLazyLanguage(detectedLanguage)) {
+        try {
+          await loadLanguageResources(detectedLanguage);
+        } catch {
+          // Brak zasobow wykrytego jezyka nie moze zablokowac uruchomienia — zostaje jezyk awaryjny.
+        }
+      }
+
       setIsI18nReady(true);
+    };
+
+    if (i18next.isInitialized) {
+      markReady();
     } else {
-      i18next.on('initialized', () => {
-        setIsI18nReady(true);
-      });
+      i18next.on('initialized', markReady);
     }
   }, []);
 

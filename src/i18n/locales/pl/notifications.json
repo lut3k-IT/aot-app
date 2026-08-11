@@ -3,7 +3,8 @@
     "noResults": "Brak wyników",
     "tryDifferentSettings": "Spróbuj innych ustawień",
     "somethingWentWrong": "Coś poszło nie tak!",
-    "tryAgainLater": "Spróbuj ponownie później."
+    "tryAgainLater": "Spróbuj ponownie później.",
+    "languageLoadFailed": "Nie udało się wczytać języka. Sprawdź połączenie."
   },
   "success": {},
   "common": {

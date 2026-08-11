@@ -72,12 +72,37 @@ export enum ExternalUrl {
 
 export enum LanguageName {
   ENGLISH = 'English',
-  POLISH = 'Polski'
+  POLISH = 'Polski',
+  SPANISH = 'Español',
+  PORTUGUESE = 'Português (BR)',
+  GERMAN = 'Deutsch',
+  FRENCH = 'Français',
+  ITALIAN = 'Italiano',
+  RUSSIAN = 'Русский',
+  JAPANESE = '日本語',
+  CHINESE = '中文',
+  KOREAN = '한국어',
+  TURKISH = 'Türkçe'
 }
 
+/**
+ * Portugalski ma kod `pt`, nie `pt-BR` — i18next dziala z `load: 'languageOnly'`,
+ * ktore i tak obcieloby kod regionalny, a wtedy zasob nie zostalby odnaleziony.
+ * Tresc pozostaje brazylijska.
+ */
 export enum LanguageShortName {
   ENGLISH = 'en',
-  POLISH = 'pl'
+  POLISH = 'pl',
+  SPANISH = 'es',
+  PORTUGUESE = 'pt',
+  GERMAN = 'de',
+  FRENCH = 'fr',
+  ITALIAN = 'it',
+  RUSSIAN = 'ru',
+  JAPANESE = 'ja',
+  CHINESE = 'zh',
+  KOREAN = 'ko',
+  TURKISH = 'tr'
 }
 
 /* ------------------------------ LocalStorage ------------------------------ */
