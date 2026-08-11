@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/Badge';
 import ButtonGoBack from '@/components/ui/ButtonGoBack';
 import CharacterPicture from '@/components/ui/CharacterPicture';
 import HeartButton from '@/components/ui/HeartButton';
+import SpoilerContent from '@/components/ui/SpoilerContent';
 import { RoutePath } from '@/constants/enums';
 import { HeroType, MbtiGroups } from '@/constants/types';
 import { cn } from '@/lib/utils';
@@ -62,15 +63,17 @@ const HeroProfileHeader = ({ hero, mbtiGroupName, isFavorite, onToggleFavorite }
 
         {hero.alias.length > 0 && (
           <div className={'mt-2 flex flex-wrap justify-center gap-1.5 px-4'}>
-            {hero.alias.map((alias) => (
-              <Badge
-                key={alias}
-                variant={'secondary'}
-                className={'text-xs'}
-              >
-                {alias}
-              </Badge>
-            ))}
+            <SpoilerContent>
+              {hero.alias.map((alias) => (
+                <Badge
+                  key={alias}
+                  variant={'secondary'}
+                  className={'text-xs'}
+                >
+                  {alias}
+                </Badge>
+              ))}
+            </SpoilerContent>
           </div>
         )}
       </div>

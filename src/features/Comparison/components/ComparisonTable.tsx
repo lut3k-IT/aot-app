@@ -8,6 +8,7 @@ import { X } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import CharacterPicture from '@/components/ui/CharacterPicture';
 import { ScrollArea, ScrollBar } from '@/components/ui/ScrollArea';
+import SpoilerContent from '@/components/ui/SpoilerContent';
 import { HeroType } from '@/constants/types';
 import mbti from '@/data/mbti';
 import residences from '@/data/residences';
@@ -28,6 +29,8 @@ interface AttributeConfig {
   labelKey: string;
   getValue: (hero: HeroType, t: (key: string) => string) => string;
   getRawValue: (hero: HeroType) => string | number | null;
+  /** Atrybut ukrywany w trybie ukrywania spoilerow. Dotyczy wylacznie warstwy prezentacji. */
+  isSpoiler?: boolean;
 }
 
 const attributeConfigs: AttributeConfig[] = [
@@ -89,7 +92,8 @@ const attributeConfigs: AttributeConfig[] = [
     key: 'alias',
     labelKey: 'data:attributes.alias',
     getValue: (hero) => (hero.alias.length > 0 ? hero.alias.join(', ') : '-'),
-    getRawValue: (hero) => (hero.alias.length > 0 ? hero.alias.join(',') : null)
+    getRawValue: (hero) => (hero.alias.length > 0 ? hero.alias.join(',') : null),
+    isSpoiler: true
   }
 ];
 
@@ -156,7 +160,13 @@ const ComparisonTable = ({ heroes, isHighlightDifferences, onRemoveHero }: Compa
                   className={`rounded-md px-2 py-1.5 transition-colors ${getHighlightClass(config.key)}`}
                 >
                   <div className='text-xs text-muted-foreground'>{t(config.labelKey)}</div>
-                  <div className='text-sm font-medium'>{config.getValue(hero, t)}</div>
+                  <div className='text-sm font-medium'>
+                    {config.isSpoiler ? (
+                      <SpoilerContent>{config.getValue(hero, t)}</SpoilerContent>
+                    ) : (
+                      config.getValue(hero, t)
+                    )}
+                  </div>
                 </div>
               ))}
             </div>

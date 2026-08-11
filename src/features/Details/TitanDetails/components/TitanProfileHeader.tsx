@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/Badge';
 import ButtonGoBack from '@/components/ui/ButtonGoBack';
 import CharacterPicture from '@/components/ui/CharacterPicture';
 import HeartButton from '@/components/ui/HeartButton';
+import SpoilerContent from '@/components/ui/SpoilerContent';
 import { RoutePath } from '@/constants/enums';
 import { MbtiGroups, TitanType } from '@/constants/types';
 import { cn } from '@/lib/utils';
@@ -60,15 +61,17 @@ const TitanProfileHeader = ({ titan, mbtiGroupName, isFavorite, onToggleFavorite
 
         {titan.otherNames.length > 0 && (
           <div className={'mt-2 flex flex-wrap justify-center gap-1.5 px-4'}>
-            {titan.otherNames.map((name) => (
-              <Badge
-                key={name}
-                variant={'secondary'}
-                className={'text-xs'}
-              >
-                {name}
-              </Badge>
-            ))}
+            <SpoilerContent>
+              {titan.otherNames.map((name) => (
+                <Badge
+                  key={name}
+                  variant={'secondary'}
+                  className={'text-xs'}
+                >
+                  {name}
+                </Badge>
+              ))}
+            </SpoilerContent>
           </div>
         )}
       </div>
