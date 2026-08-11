@@ -1,9 +1,11 @@
 import { useMemo } from 'react';
+import { motion } from 'framer-motion';
 
 import CharacterCardSkeleton from '@/components/ui/CharacterCardSkeleton';
 import MultipleSkeletons from '@/components/ui/MultipleSkeletons';
 import NoResults from '@/components/ui/NoResults';
 import TitanCard from '@/components/ui/TitanCard';
+import { fadeInUp, getStaggerDelay } from '@/constants/motion';
 import { FavoriteType, HeroType, TitanType } from '@/constants/types';
 import { isInFavorites } from '@/utils/dataHelpers';
 
@@ -35,15 +37,20 @@ const Content = (props: ContentProps) => {
     return <NoResults />;
   }
 
-  return titans.map((titan) => (
-    <TitanCard
-      data={titan}
-      isFavorite={isInFavorites(titan.id, favoriteTitansIds)}
-      currentInheritorName={
-        (titan.currentInheritor !== null && heroesMap.get(titan.currentInheritor)) || ' '
-      }
+  return titans.map((titan, index) => (
+    <motion.div
       key={titan.id}
-    />
+      variants={fadeInUp}
+      initial={'hidden'}
+      animate={'show'}
+      transition={{ delay: getStaggerDelay(index) }}
+    >
+      <TitanCard
+        data={titan}
+        isFavorite={isInFavorites(titan.id, favoriteTitansIds)}
+        currentInheritorName={(titan.currentInheritor !== null && heroesMap.get(titan.currentInheritor)) || ' '}
+      />
+    </motion.div>
   ));
 };
 

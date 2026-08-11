@@ -1,7 +1,10 @@
+import { motion } from 'framer-motion';
+
 import MultipleSkeletons from '@/components/ui/MultipleSkeletons';
 import NoResults from '@/components/ui/NoResults';
 import QuotationCard from '@/components/ui/QuotationCard';
 import QuotationCardSkeleton from '@/components/ui/QuotationCardSkeleton';
+import { fadeInUp, getStaggerDelay } from '@/constants/motion';
 import { FavoriteType, QuotationType } from '@/constants/types';
 import { isInFavorites } from '@/utils/dataHelpers';
 
@@ -24,13 +27,20 @@ const RenderQuotations = (props: RenderQuotationsProps) => {
     return <NoResults />;
   }
 
-  return quotations.map((quotation) => (
-    <QuotationCard
+  return quotations.map((quotation, index) => (
+    <motion.div
       key={quotation.id}
-      id={quotation.id}
-      text={quotation.text}
-      isFavorite={isInFavorites(quotation.id, favoriteIds)}
-    />
+      variants={fadeInUp}
+      initial={'hidden'}
+      animate={'show'}
+      transition={{ delay: getStaggerDelay(index) }}
+    >
+      <QuotationCard
+        id={quotation.id}
+        text={quotation.text}
+        isFavorite={isInFavorites(quotation.id, favoriteIds)}
+      />
+    </motion.div>
   ));
 };
 

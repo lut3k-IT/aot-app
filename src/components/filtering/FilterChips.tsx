@@ -2,9 +2,11 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { AnimatePresence, motion } from 'framer-motion';
 import { X } from 'lucide-react';
 
 import { Badge } from '@/components/ui/Badge';
+import { MOTION_DURATION, scaleIn } from '@/constants/motion';
 import { cn } from '@/lib/utils';
 
 export interface ActiveFilter {
@@ -26,23 +28,33 @@ const FilterChips = ({ activeFilters, onClearAll, className }: FilterChipsProps)
 
   return (
     <div className={cn('flex flex-wrap items-center gap-1.5 col-span-full', className)}>
-      {activeFilters.map((filter) => (
-        <Badge
-          key={filter.key}
-          variant='outline'
-          className='gap-1 py-0.5 pl-2 pr-1 text-xs'
-        >
-          <span>{filter.label}</span>
-          <button
-            type='button'
-            onClick={filter.onRemove}
-            className='ml-0.5 rounded-full p-0.5 hover:bg-accent'
-            aria-label={`${t('common:action.reset')} ${filter.label}`}
+      {/* Klucz jest na elemencie opakowujacym — AnimatePresence potrzebuje go na swoim bezposrednim dziecku. */}
+      <AnimatePresence initial={false}>
+        {activeFilters.map((filter) => (
+          <motion.div
+            key={filter.key}
+            variants={scaleIn}
+            initial={'hidden'}
+            animate={'show'}
+            exit={{ opacity: 0, scale: 0.96, transition: { duration: MOTION_DURATION.fast } }}
           >
-            <X className='h-3 w-3' />
-          </button>
-        </Badge>
-      ))}
+            <Badge
+              variant='outline'
+              className='gap-1 py-0.5 pl-2 pr-1 text-xs'
+            >
+              <span>{filter.label}</span>
+              <button
+                type='button'
+                onClick={filter.onRemove}
+                className='ml-0.5 rounded-full p-0.5 hover:bg-accent'
+                aria-label={`${t('common:action.reset')} ${filter.label}`}
+              >
+                <X className='h-3 w-3' />
+              </button>
+            </Badge>
+          </motion.div>
+        ))}
+      </AnimatePresence>
       <button
         type='button'
         onClick={onClearAll}

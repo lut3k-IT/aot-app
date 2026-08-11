@@ -3,6 +3,7 @@
 import { type ReactNode, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -12,6 +13,7 @@ import MovingPanel from '@/components/ui/MovingPanel';
 import PageHeading from '@/components/ui/PageHeading';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/Tabs';
 import { RoutePath } from '@/constants/enums';
+import { pageTransition } from '@/constants/motion';
 
 enum TabValue {
   GALLERY = 'gallery',
@@ -88,7 +90,15 @@ const HeroesLayoutClient = ({ children }: HeroesLayoutClientProps) => {
         </Tabs>
         <PageHeading />
       </MovingPanel>
-      {children}
+      {/* Klucz oparty na sciezce sprawia, ze zmiana zakladki odtwarza animacje wejscia. */}
+      <motion.div
+        key={pathname}
+        variants={pageTransition}
+        initial={'hidden'}
+        animate={'show'}
+      >
+        {children}
+      </motion.div>
     </>
   );
 };
