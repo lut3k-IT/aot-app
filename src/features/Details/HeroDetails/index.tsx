@@ -10,6 +10,7 @@ import mbti from '@/data/mbti';
 import { addFavorite, removeFavorite, selectHeroesData, selectHeroesError, selectHeroesFavoriteIds } from '@/store/heroesSlice';
 import { isInFavorites } from '@/utils/dataHelpers';
 
+import CharacterNote from '../components/CharacterNote';
 import DetailsContainer from '../components/DetailsContainer';
 import HeroMbtiCard from './components/HeroMbtiCard';
 import HeroProfileHeader from './components/HeroProfileHeader';
@@ -55,6 +56,10 @@ const HeroDetails = ({ routeSlug }: HeroDetailsProps) => {
         mbtiGroupName={mbtiGroupName}
       />
       <HeroStatsGrid hero={hero} />
+      <CharacterNote
+        entity={'hero'}
+        id={hero.id}
+      />
     </DetailsContainer>
   );
 };

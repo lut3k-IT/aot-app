@@ -10,7 +10,8 @@
     "changesApplied": "Changes applied",
     "filtersApplied": "Filters applied",
     "removedFromFavorites": "Removed from favorites",
-    "addedToFavorites": "Added to favorites"
+    "addedToFavorites": "Added to favorites",
+    "noteRemoved": "Note deleted"
   },
   "launchDialog": {
     "title": "Welcome to the Beta version of the AOT APP!",

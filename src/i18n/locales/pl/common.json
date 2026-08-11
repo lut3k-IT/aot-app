@@ -126,5 +126,22 @@
     "updateAvailable": "Dostępna nowa treść, kliknij przycisk, aby odświeżyć.",
     "reload": "Odśwież",
     "close": "Zamknij"
+  },
+  "notes": {
+    "title": "Moja notatka",
+    "empty": "Zapisz własne przemyślenia o tej postaci.",
+    "add": "Dodaj notatkę",
+    "edit": "Edytuj",
+    "remove": "Usuń",
+    "done": "Gotowe",
+    "placeholder": "Wpisz notatkę…",
+    "counter": "{{current}} / {{max}} znaków",
+    "saved": "Zapisano",
+    "updatedAt": "Ostatnia zmiana: {{date}}",
+    "storageHint": "Notatki są przechowywane wyłącznie w tej przeglądarce.",
+    "removeConfirmTitle": "Usunąć notatkę?",
+    "removeConfirmDescription": "Treści nie da się odzyskać.",
+    "cancel": "Anuluj",
+    "filterLabel": "Z notatkami"
   }
 }

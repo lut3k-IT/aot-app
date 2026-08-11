@@ -11,6 +11,7 @@ import { selectHeroesData } from '@/store/heroesSlice';
 import { addFavorite, removeFavorite, selectTitansData, selectTitansError, selectTitansFavoriteIds } from '@/store/titansSlice';
 import { getHeroName, isInFavorites } from '@/utils/dataHelpers';
 
+import CharacterNote from '../components/CharacterNote';
 import DetailsContainer from '../components/DetailsContainer';
 import TitanMbtiCard from './components/TitanMbtiCard';
 import TitanProfileHeader from './components/TitanProfileHeader';
@@ -65,6 +66,10 @@ const TitanDetails = ({ routeSlug }: TitanDetailsProps) => {
         titan={titan}
         currentInheritor={currentInheritor}
         formerInheritors={formerInheritors}
+      />
+      <CharacterNote
+        entity={'titan'}
+        id={titan.id}
       />
     </DetailsContainer>
   );

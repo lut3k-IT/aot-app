@@ -126,5 +126,22 @@
     "updateAvailable": "New content available, click on reload button to update.",
     "reload": "Reload",
     "close": "Close"
+  },
+  "notes": {
+    "title": "My note",
+    "empty": "Save your own thoughts about this character.",
+    "add": "Add a note",
+    "edit": "Edit",
+    "remove": "Delete",
+    "done": "Done",
+    "placeholder": "Write a note…",
+    "counter": "{{current}} / {{max}} characters",
+    "saved": "Saved",
+    "updatedAt": "Last edited: {{date}}",
+    "storageHint": "Notes are stored only in this browser.",
+    "removeConfirmTitle": "Delete this note?",
+    "removeConfirmDescription": "The text cannot be recovered.",
+    "cancel": "Cancel",
+    "filterLabel": "With notes"
   }
 }

@@ -10,7 +10,8 @@
     "changesApplied": "Zmiany zostały zastosowane",
     "filtersApplied": "Filtry zostały zastosowane",
     "removedFromFavorites": "Usunięto z ulubionych",
-    "addedToFavorites": "Dodano do ulubionych"
+    "addedToFavorites": "Dodano do ulubionych",
+    "noteRemoved": "Notatka usunięta"
   },
   "launchDialog": {
     "title": "Witaj w wersji Beta AOT APP!",
