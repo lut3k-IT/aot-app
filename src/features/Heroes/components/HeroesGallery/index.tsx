@@ -87,7 +87,8 @@ const HeroesGallery = () => {
         hasAge: hasAge,
         hasHeight: hasHeight,
         hasWeight: hasWeight,
-        hasOnlyFavorites: hasOnlyFavorites
+        hasOnlyFavorites: hasOnlyFavorites,
+        hasOnlyNoted: false
       }
     };
 

@@ -49,7 +49,7 @@ const TitansGallery = () => {
 
     return filterTitans(
       originalTitans,
-      { search, sort: sortBy, sortDirection, allegiance, hasOnlyFavorites },
+      { search, sort: sortBy, sortDirection, allegiance, hasOnlyFavorites, hasOnlyNoted: false },
       favoriteTitansIds
     );
   }, [originalTitans, searchParams, favoriteTitansIds]);

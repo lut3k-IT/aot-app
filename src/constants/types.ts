@@ -54,6 +54,16 @@ export interface QuotationType {
 
 export type FavoriteType = number;
 
+export type NoteEntity = 'hero' | 'titan';
+
+export interface NoteType {
+  text: string;
+  /** Znacznik czasu ostatniej zmiany w formacie ISO 8601. */
+  updatedAt: string;
+}
+
+export type NotesByEntity = Record<NoteEntity, Record<number, NoteType>>;
+
 export type MbtiGroups = 'default' | 'analysts' | 'diplomats' | 'sentinels' | 'explorers';
 
 /* --------------------------------- Filters -------------------------------- */
@@ -75,6 +85,7 @@ export interface HeroFilterCriteria {
   hasHeight: boolean;
   hasWeight: boolean;
   hasOnlyFavorites: boolean;
+  hasOnlyNoted: boolean;
 }
 
 export type HeroSortOption = keyof HeroType;
@@ -103,6 +114,7 @@ export interface TitanFilters {
   sortDirection: SortDirection;
   allegiance: number[];
   hasOnlyFavorites: boolean;
+  hasOnlyNoted: boolean;
 }
 
 /* --------------------------- Quotation Filters ---------------------------- */

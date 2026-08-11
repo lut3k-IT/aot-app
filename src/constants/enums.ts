@@ -42,7 +42,8 @@ export enum Param {
   PAGE_SIZE = 'page_size',
   FAVORITES = 'favorites',
   SEARCH = 'search',
-  ALLEGIANCE = 'allegiance'
+  ALLEGIANCE = 'allegiance',
+  NOTES = 'notes'
 }
 
 export enum RoutePath {
@@ -88,7 +89,8 @@ export enum LocalStorageKey {
   FAV_TITANS = 'favTitans',
   FAV_QUOTATIONS = 'favQuotations',
   THEME = 'vite-ui-theme',
-  BEST_SCORE = 'bestScore'
+  BEST_SCORE = 'bestScore',
+  NOTES = 'characterNotes'
 }
 
 /* ------------------------------ Data related ------------------------------ */
