@@ -30,15 +30,24 @@ CardHeader.displayName = 'CardHeader';
 
 const CardTitle = ({
   className,
+  headingLevel = 'h3',
   ref,
   ...props
-}: React.HTMLAttributes<HTMLHeadingElement> & { ref?: React.Ref<HTMLParagraphElement> }) => (
-  <h3
-    ref={ref}
-    className={cn('text-2xl font-medium leading-none tracking-tight', className)}
-    {...props}
-  />
-);
+}: React.HTMLAttributes<HTMLHeadingElement> & {
+  ref?: React.Ref<HTMLHeadingElement>;
+  /** Poziom naglowka. Domyslnie h3; na stronach szczegolow uzywamy h2, aby nie przeskakiwac poziomow po h1. */
+  headingLevel?: 'h2' | 'h3' | 'h4';
+}) => {
+  const HeadingTag = headingLevel;
+
+  return (
+    <HeadingTag
+      ref={ref}
+      className={cn('text-2xl font-medium leading-none tracking-tight', className)}
+      {...props}
+    />
+  );
+};
 CardTitle.displayName = 'CardTitle';
 
 const CardDescription = ({
