@@ -1,48 +1,39 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 
 import { Button } from '@/components/ui/Button';
-import { shuffle } from '@/utils/helpers';
 
 interface AnswersProps {
   options: string[];
+  /** Kolejnosc wariantow wyliczona raz na rozgrywke w komponencie nadrzednym. */
+  optionOrder: number[];
   correctAnswer: number;
+  selectedAnswer: number | null;
+  isAnswered: boolean;
   onAnswer: (answer: number) => void;
   onNext: () => void;
 }
 
-const Answers: React.FC<AnswersProps> = ({ options, correctAnswer, onAnswer, onNext }) => {
+const Answers: React.FC<AnswersProps> = ({
+  options,
+  optionOrder,
+  correctAnswer,
+  selectedAnswer,
+  isAnswered,
+  onAnswer,
+  onNext
+}) => {
   const { t } = useTranslation('quiz');
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
-  const [isAnswered, setIsAnswered] = useState(false);
-
-  // Initialize immediately to ensure staggered animation works with present children
-  const [shuffledIndices] = useState<number[]>(() => {
-    const originalIndices = options.map((_, index) => index);
-    return shuffle(originalIndices);
-  });
 
   const shuffledOptions = useMemo(() => {
-    return shuffledIndices.map((shuffledIndex) => ({
+    const order = optionOrder.length === options.length ? optionOrder : options.map((_, index) => index);
+
+    return order.map((shuffledIndex) => ({
       text: options[shuffledIndex],
       originalIndex: shuffledIndex
     }));
-  }, [options, shuffledIndices]);
-
-  const handleAnswer = (answer: number) => {
-    if (isAnswered) return;
-
-    setSelectedAnswer(answer);
-    setIsAnswered(true);
-    onAnswer(answer);
-  };
-
-  const handleNext = () => {
-    setSelectedAnswer(null);
-    setIsAnswered(false);
-    onNext();
-  };
+  }, [options, optionOrder]);
 
   const container = {
     hidden: { opacity: 0 },
@@ -88,12 +79,14 @@ const Answers: React.FC<AnswersProps> = ({ options, correctAnswer, onAnswer, onN
           }
 
           return (
+            // Klucz oparty na indeksie wariantu, a nie na jego tresci — zmiana jezyka
+            // przepisuje napisy w istniejacych przyciskach zamiast wymieniac je na nowe.
             <motion.div
-              key={text}
+              key={originalIndex}
               variants={item}
             >
               <Button
-                onClick={() => handleAnswer(originalIndex)}
+                onClick={() => onAnswer(originalIndex)}
                 className={`h-auto min-h-12 w-full justify-center px-6 text-lg font-semibold transition-all duration-200 md:min-h-16 ${extraClasses}`}
                 variant={buttonVariant}
                 disabled={isAnswered}
@@ -112,7 +105,7 @@ const Answers: React.FC<AnswersProps> = ({ options, correctAnswer, onAnswer, onN
             transition={{ duration: 0.3 }}
           >
             <Button
-              onClick={handleNext}
+              onClick={onNext}
               size='lg'
               className='px-12 font-bold'
             >
