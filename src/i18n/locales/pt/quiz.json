@@ -1,0 +1,231 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "O que vem aterrorizando os humanos?",
+      "options": ["Vespas", "Titãs", "Serpentes", "Deuses"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 2,
+      "question": "O que cerca a região onde os humanos vivem?",
+      "options": ["Um rio", "Uma floresta densa", "O oceano", "Muralhas"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 3,
+      "question": "Como se chama a muralha mais externa que protege os humanos?",
+      "options": ["Muralha Maria", "Muralha Rose", "Muralha Sina", "Muralha Titã"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 4,
+      "question": "Qual divisão militar protege a família real?",
+      "options": ["Tropa de Exploração", "Tropa de Guarnição", "Polícia Militar", "Serviço Secreto"],
+      "correctAnswer": 2
+    },
+    {
+      "id": 5,
+      "question": "Qual familiar Eren vê ser devorado por um titã?",
+      "options": ["Pai", "Mãe", "Irmão", "Irmã"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 6,
+      "question": "Como se chama a segunda muralha mais externa?",
+      "options": ["Muralha Sina", "Muralha Titã", "Muralha Rose", "Muralha Utopia"],
+      "correctAnswer": 2
+    },
+    {
+      "id": 7,
+      "question": "Como se chama a muralha mais interna?",
+      "options": ["Muralha Utopia", "Muralha Titã", "Muralha Paradis", "Muralha Sina"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 8,
+      "question": "Quem é a irmã adotiva de Eren?",
+      "options": ["Annie Leonhart", "Sasha Braus", "Hange Zoë", "Mikasa Ackerman"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 9,
+      "question": "Na história, quem é o primeiro humano mostrado como titã?",
+      "options": ["Eren", "Armin", "Mikasa", "Annie"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 10,
+      "question": "Onde o Titã Colossal abre um buraco na Muralha Maria?",
+      "options": ["Trost", "Shiganshina", "Calaneth", "Utopia"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 11,
+      "question": "Quem ficou em primeiro lugar na Divisão Sul do 104º Corpo de Treinamento?",
+      "options": ["Eren", "Armin", "Mikasa", "Annie"],
+      "correctAnswer": 2
+    },
+    {
+      "id": 12,
+      "question": "Qual era a profissão de Grisha Jaeger?",
+      "options": ["Soldado", "Político", "Médico", "Advogado"],
+      "correctAnswer": 2
+    },
+    {
+      "id": 13,
+      "question": "Qual divisão militar tenta retomar territórios dos titãs?",
+      "options": ["Tropa de Exploração", "Tropa de Guarnição", "Caçadores de titãs", "Polícia Militar"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 14,
+      "question": "Como se chama o equipamento usado para se deslocar pelo ar?",
+      "options": [
+        "Equipamento de arpões",
+        "Dispositivo de salto",
+        "Equipamento de deslocamento em combate",
+        "Equipamento de Manobras Tridimensionais"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 15,
+      "question": "Quem é considerado \"o soldado mais forte da humanidade\"?",
+      "options": ["Eren", "Mikasa", "Levi", "Marco"],
+      "correctAnswer": 2
+    },
+    {
+      "id": 16,
+      "question": "Quem é a Titã Fêmea?",
+      "options": ["Mikasa", "Annie", "Dina", "Sasha"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 17,
+      "question": "Qual divisão militar guarda as muralhas e a população em geral?",
+      "options": ["Tropa de Exploração", "Tropa de Guarnição", "Força de Defesa das Muralhas", "Polícia Militar"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 18,
+      "question": "Quem é o comandante da Tropa de Exploração?",
+      "options": ["Levi", "Erwin Smith", "Mikasa", "Jean Kirstein"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 19,
+      "question": "Quem é o melhor amigo de Eren?",
+      "options": ["Armin Arlert", "Jean Kirstein", "Sasha Braus", "Reiner Braun"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 20,
+      "question": "Quem é o pai de Eren?",
+      "options": ["Keith Shadis", "Marco Bott", "Grisha Jaeger", "Connie Springer"],
+      "correctAnswer": 2
+    },
+    {
+      "id": 21,
+      "question": "Que tipo de titã é Eren?",
+      "options": ["Titã Blindado", "Titã Colossal", "Titã Besta", "Titã de Ataque"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 22,
+      "question": "A qual divisão militar Mikasa se junta?",
+      "options": ["Tropa de Exploração", "Tropa de Guarnição", "Polícia Militar", "Nenhuma"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 23,
+      "question": "O que Annie faz quando é capturada?",
+      "options": ["Foge", "Entrega informações", "Se cristaliza", "Tira a própria vida"],
+      "correctAnswer": 2
+    },
+    {
+      "id": 24,
+      "question": "Quem descobre que Annie é a Titã Fêmea?",
+      "options": ["Armin", "Eren", "Mikasa", "Levi"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 25,
+      "question": "Quem é o instrutor da Divisão Sul do 104º Corpo de Treinamento?",
+      "options": ["Levi", "Dot Pixis", "Erwin Smith", "Keith Shadis"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 26,
+      "question": "Quem NÃO está entre os dez primeiros da Divisão Sul do 104º Corpo de Treinamento?",
+      "options": ["Eren", "Armin", "Reiner Braun", "Annie"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 27,
+      "question": "Quem sela o buraco da Muralha Rose?",
+      "options": ["Eren", "Armin", "Annie", "Levi"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 28,
+      "question": "O que Dot Pixis comanda?",
+      "options": ["Tropa de Guarnição", "Polícia Militar", "105º Corpo de Cadetes", "Ele está aposentado"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 29,
+      "question": "Que nome foi dado a um dos titãs capturados antes de ele ser morto?",
+      "options": ["Joe", "John", "Macho", "Bean"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 30,
+      "question": "Quem lidera todo o exército?",
+      "options": ["Keith Shadis", "Nicholas Lovof", "Darius Zackly", "Ian Dietrich"],
+      "correctAnswer": 2
+    },
+    {
+      "id": 31,
+      "question": "Quem é o ministro que quer Eren morto?",
+      "options": ["Nick", "Joe", "Jean", "Marco"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 32,
+      "question": "Quem fica encarregado de proteger Eren quando ele tenta selar a Muralha Rose?",
+      "options": ["Mikasa", "Ian Dietrich", "Levi", "Erwin Smith"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 33,
+      "question": "A qual grupo Eren é obrigado a se juntar para avaliarem seus poderes de titã?",
+      "options": ["Tropa de Exploração", "Polícia Militar", "Tropa de Guarnição", "Forças Especiais"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 34,
+      "question": "Quem é o comandante da Polícia Militar?",
+      "options": ["Bertholdt Hoover", "Historia Reiss", "Thomas Wagner", "Nile Dok"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 35,
+      "question": "Qual é considerada a divisão mais incompetente do exército?",
+      "options": ["Tropa de Exploração", "Polícia Militar", "Tropa de Guarnição", "Todas elas"],
+      "correctAnswer": 1
+    }
+  ],
+  "nextQuestion": "Próxima pergunta",
+  "bestScore": "Melhor pontuação",
+  "quizCompleted": "Quiz concluído!",
+  "yourScore": "Sua pontuação",
+  "restartQuiz": "Reiniciar quiz",
+  "questionCounter": "Pergunta {{current}} de {{total}}",
+  "evaluation": {
+    "perfect": "Pontuação perfeita!",
+    "excellent": "Excelente!",
+    "good": "Bom trabalho!",
+    "tryAgain": "Tente de novo!"
+  }
+}

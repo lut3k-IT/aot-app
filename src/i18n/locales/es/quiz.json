@@ -1,0 +1,231 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "¿Qué ha estado aterrorizando a los humanos?",
+      "options": ["Avispas", "Titanes", "Serpientes", "Dioses"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 2,
+      "question": "¿Qué rodea la zona donde viven los humanos?",
+      "options": ["Un río", "Un bosque espeso", "El océano", "Muros"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 3,
+      "question": "¿Cómo se llama el muro más exterior que protege a los humanos?",
+      "options": ["Muro María", "Muro Rose", "Muro Sina", "Muro Titán"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 4,
+      "question": "¿Qué cuerpo del ejército protege a la familia real?",
+      "options": ["Cuerpo de Exploración", "Tropas Estacionarias", "Policía Militar", "Servicio Secreto"],
+      "correctAnswer": 2
+    },
+    {
+      "id": 5,
+      "question": "¿A qué miembro de su familia ve Eren devorado por un titán?",
+      "options": ["Padre", "Madre", "Hermano", "Hermana"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 6,
+      "question": "¿Cómo se llama el segundo muro más exterior?",
+      "options": ["Muro Sina", "Muro Titán", "Muro Rose", "Muro Utopía"],
+      "correctAnswer": 2
+    },
+    {
+      "id": 7,
+      "question": "¿Cómo se llama el muro más interior?",
+      "options": ["Muro Utopía", "Muro Titán", "Muro Paradis", "Muro Sina"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 8,
+      "question": "¿Quién es la hermana adoptiva de Eren?",
+      "options": ["Annie Leonhart", "Sasha Braus", "Hange Zoë", "Mikasa Ackerman"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 9,
+      "question": "En la historia, ¿quién es el primer humano que se muestra como titán?",
+      "options": ["Eren", "Armin", "Mikasa", "Annie"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 10,
+      "question": "¿Dónde abre el Titán Colosal un agujero en el Muro María?",
+      "options": ["Trost", "Shiganshina", "Calaneth", "Utopía"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 11,
+      "question": "¿Quién ocupa el primer puesto de la División Sur del 104.º Cuerpo de Entrenamiento?",
+      "options": ["Eren", "Armin", "Mikasa", "Annie"],
+      "correctAnswer": 2
+    },
+    {
+      "id": 12,
+      "question": "¿Cuál era el oficio de Grisha Jaeger?",
+      "options": ["Soldado", "Político", "Médico", "Abogado"],
+      "correctAnswer": 2
+    },
+    {
+      "id": 13,
+      "question": "¿Qué cuerpo del ejército intenta recuperar territorio de los titanes?",
+      "options": ["Cuerpo de Exploración", "Tropas Estacionarias", "Cazadores de titanes", "Policía Militar"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 14,
+      "question": "¿Cómo se llama el equipo que se usa para desplazarse por el aire?",
+      "options": [
+        "Equipo de arpones",
+        "Dispositivo de salto",
+        "Equipo de desplazamiento de combate",
+        "Equipo de maniobras tridimensionales"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 15,
+      "question": "¿Quién es considerado «el soldado más fuerte de la humanidad»?",
+      "options": ["Eren", "Mikasa", "Levi", "Marco"],
+      "correctAnswer": 2
+    },
+    {
+      "id": 16,
+      "question": "¿Quién es la Titán Femenina?",
+      "options": ["Mikasa", "Annie", "Dina", "Sasha"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 17,
+      "question": "¿Qué cuerpo del ejército vigila los muros y a la población?",
+      "options": ["Cuerpo de Exploración", "Tropas Estacionarias", "Fuerza de Defensa de los Muros", "Policía Militar"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 18,
+      "question": "¿Quién es el comandante del Cuerpo de Exploración?",
+      "options": ["Levi", "Erwin Smith", "Mikasa", "Jean Kirstein"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 19,
+      "question": "¿Quién es el mejor amigo de Eren?",
+      "options": ["Armin Arlert", "Jean Kirstein", "Sasha Braus", "Reiner Braun"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 20,
+      "question": "¿Quién es el padre de Eren?",
+      "options": ["Keith Shadis", "Marco Bott", "Grisha Jaeger", "Connie Springer"],
+      "correctAnswer": 2
+    },
+    {
+      "id": 21,
+      "question": "¿Qué clase de titán es Eren?",
+      "options": ["Titán Acorazado", "Titán Colosal", "Titán Bestia", "Titán de Ataque"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 22,
+      "question": "¿A qué cuerpo del ejército se une Mikasa?",
+      "options": ["Cuerpo de Exploración", "Tropas Estacionarias", "Policía Militar", "Ninguno"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 23,
+      "question": "¿Qué hace Annie cuando la capturan?",
+      "options": ["Escapa", "Revela información", "Se cristaliza", "Se quita la vida"],
+      "correctAnswer": 2
+    },
+    {
+      "id": 24,
+      "question": "¿Quién descubre que Annie es la Titán Femenina?",
+      "options": ["Armin", "Eren", "Mikasa", "Levi"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 25,
+      "question": "¿Quién es el instructor de la División Sur del 104.º Cuerpo de Entrenamiento?",
+      "options": ["Levi", "Dot Pixis", "Erwin Smith", "Keith Shadis"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 26,
+      "question": "¿Quién NO está entre los diez primeros de la División Sur del 104.º Cuerpo de Entrenamiento?",
+      "options": ["Eren", "Armin", "Reiner Braun", "Annie"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 27,
+      "question": "¿Quién sella el agujero del Muro Rose?",
+      "options": ["Eren", "Armin", "Annie", "Levi"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 28,
+      "question": "¿Qué manda Dot Pixis?",
+      "options": ["Tropas Estacionarias", "Policía Militar", "105.º Cuerpo de Cadetes", "Está retirado"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 29,
+      "question": "¿Qué nombre recibió uno de los titanes capturados antes de morir?",
+      "options": ["Joe", "John", "Macho", "Bean"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 30,
+      "question": "¿Quién dirige todo el ejército?",
+      "options": ["Keith Shadis", "Nicholas Lovof", "Darius Zackly", "Ian Dietrich"],
+      "correctAnswer": 2
+    },
+    {
+      "id": 31,
+      "question": "¿Quién es el ministro que quiere que maten a Eren?",
+      "options": ["Nick", "Joe", "Jean", "Marco"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 32,
+      "question": "¿Quién se encarga de proteger a Eren cuando intenta sellar el Muro Rose?",
+      "options": ["Mikasa", "Ian Dietrich", "Levi", "Erwin Smith"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 33,
+      "question": "¿A qué grupo se ve obligado a unirse Eren para que evalúen su poder titán?",
+      "options": ["Cuerpo de Exploración", "Policía Militar", "Tropas Estacionarias", "Fuerzas Especiales"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 34,
+      "question": "¿Quién es el comandante de la Policía Militar?",
+      "options": ["Bertholdt Hoover", "Historia Reiss", "Thomas Wagner", "Nile Dok"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 35,
+      "question": "¿Cuál se considera el cuerpo más incompetente del ejército?",
+      "options": ["Cuerpo de Exploración", "Policía Militar", "Tropas Estacionarias", "Todos ellos"],
+      "correctAnswer": 1
+    }
+  ],
+  "nextQuestion": "Siguiente pregunta",
+  "bestScore": "Mejor puntuación",
+  "quizCompleted": "¡Cuestionario completado!",
+  "yourScore": "Tu puntuación",
+  "restartQuiz": "Reiniciar cuestionario",
+  "questionCounter": "Pregunta {{current}} de {{total}}",
+  "evaluation": {
+    "perfect": "¡Puntuación perfecta!",
+    "excellent": "¡Excelente!",
+    "good": "¡Buen trabajo!",
+    "tryAgain": "¡Inténtalo de nuevo!"
+  }
+}

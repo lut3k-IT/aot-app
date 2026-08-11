@@ -1,0 +1,23 @@
+{
+  "error": {
+    "noResults": "Nenhum resultado encontrado",
+    "tryDifferentSettings": "Tente outras configurações",
+    "somethingWentWrong": "Algo deu errado!",
+    "tryAgainLater": "Tente novamente mais tarde.",
+    "languageLoadFailed": "Não foi possível carregar o idioma. Verifique sua conexão."
+  },
+  "success": {},
+  "common": {
+    "changesApplied": "Alterações aplicadas",
+    "filtersApplied": "Filtros aplicados",
+    "removedFromFavorites": "Removido dos favoritos",
+    "addedToFavorites": "Adicionado aos favoritos",
+    "noteRemoved": "Nota excluída"
+  },
+  "launchDialog": {
+    "title": "Bem-vindo à versão beta do AOT APP!",
+    "description1": "Este é um aplicativo web onde você encontra informações sobre os personagens do anime Ataque dos Titãs (Shingeki no Kyojin), navega por uma coleção de citações e as adiciona aos favoritos.",
+    "description2": "O aplicativo está em desenvolvimento, então podem aparecer falhas. Se você quiser relatar um erro ou compartilhar suas próprias ideias, pode falar com o autor do aplicativo no Discord — lut3k.",
+    "description3": "Esta página é um projeto de fãs e não tem vínculo com os criadores ou as editoras oficiais de Ataque dos Titãs."
+  }
+}

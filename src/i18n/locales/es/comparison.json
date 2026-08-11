@@ -1,0 +1,8 @@
+{
+  "title": "Comparación de personajes",
+  "addCharacter": "Añadir personaje",
+  "removeCharacter": "Quitar personaje",
+  "highlightDifferences": "Resaltar diferencias",
+  "noCharacters": "Selecciona personajes para comparar",
+  "limitReached": "Límite de personajes alcanzado"
+}

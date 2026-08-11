@@ -1,0 +1,109 @@
+{
+  "firstName": "Nombre",
+  "lastName": "Apellido",
+  "residence": {
+    "title": "Residencia",
+    "hizuru": "Hizuru",
+    "marley": "Marley",
+    "paradisIsland": "Isla Paradis",
+    "underground": "Subterráneo",
+    "wallMaria": "Muro María",
+    "wallRose": "Muro Rose",
+    "wallSina": "Muro Sina"
+  },
+  "status": {
+    "title": "Estado",
+    "alive": {
+      "short": "Vivo",
+      "long": "Vivo"
+    },
+    "dead": {
+      "short": "Muerto",
+      "long": "Muerto"
+    },
+    "unknown": {
+      "short": "Desc.",
+      "long": "Desconocido"
+    }
+  },
+  "species": {
+    "title": "Especie",
+    "horse": "Caballo",
+    "human": "Humano",
+    "humanTitan": "Humano, titán inteligente",
+    "titanHuman": "Titán (antes humano)",
+    "titan": "Titán",
+    "unknown": "Desconocida"
+  },
+  "allegiance": {
+    "title": "Lealtad",
+    "eldia": "Eldia",
+    "marley": "Marley",
+    "eldiaForm": "Eldia (antes)",
+    "marleyForm": "Marley (antes)",
+    "eldiaHeld": "Eldia (bajo custodia)",
+    "none": "Ninguna"
+  },
+  "mbti": {
+    "title": "MBTI",
+    "architect": "arquitecto",
+    "logician": "lógico",
+    "commander": "comandante",
+    "debater": "polemista",
+    "advocate": "abogado",
+    "mediator": "mediador",
+    "protagonist": "protagonista",
+    "campaigner": "activista",
+    "logistician": "logista",
+    "defender": "defensor",
+    "executive": "ejecutivo",
+    "consul": "cónsul",
+    "virtuoso": "virtuoso",
+    "adventurer": "aventurero",
+    "entrepreneur": "emprendedor",
+    "entertainer": "animador",
+    "unknown": "desconocido"
+  },
+  "mbtiGroup": {
+    "title": "Grupo MBTI",
+    "analysts": "analistas",
+    "diplomats": "diplomáticos",
+    "sentinels": "centinelas",
+    "explorers": "exploradores"
+  },
+  "age": {
+    "title": "Edad",
+    "boolean": "Tiene edad"
+  },
+  "height": {
+    "title": "Altura",
+    "boolean": "Tiene altura"
+  },
+  "weight": {
+    "title": "Peso",
+    "boolean": "Tiene peso"
+  },
+  "otherNames": "Alias",
+  "abilities": "Habilidades",
+  "currentInheritor": "Heredero actual",
+  "formerInheritors": "Herederos anteriores",
+  "attributes": {
+    "status": "Estado",
+    "species": "Especie",
+    "age": "Edad",
+    "height": "Altura",
+    "weight": "Peso",
+    "residence": "Residencia",
+    "mbti": "MBTI",
+    "alias": "Alias"
+  },
+  "location": {
+    "hizuru": "Hizuru",
+    "marley": "Marley",
+    "paradisIsland": "Isla Paradis",
+    "underground": "Subterráneo",
+    "wallMaria": "Muro María",
+    "wallRose": "Muro Rose",
+    "wallSina": "Muro Sina"
+  }
+}

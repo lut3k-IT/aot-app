@@ -1,0 +1,147 @@
+{
+  "brand": "AOT APP",
+  "description": "Explore melhor o mundo de \"Ataque dos Titãs\" com o AOT APP! Criado por fãs, este aplicativo vai facilitar a sua experiência com o anime. Encontre informações sobre os personagens, navegue pelas citações, salve favoritos e compare personagens. Descubra as personalidades deles com o sistema MBTI.",
+  "title": {
+    "heroes": "Heróis",
+    "titans": "Titãs",
+    "quiz": "Quiz",
+    "quotations": "Citações",
+    "about": "Sobre",
+    "changelog": "Novidades",
+    "privacyPolicy": "Política de privacidade",
+    "termsAndConditions": "Termos e condições",
+    "portfolio": "kacperlutynski.pl"
+  },
+  "favorites": "Favoritos",
+  "tab": {
+    "gallery": "Galeria",
+    "charts": "Gráficos",
+    "comparison": "Comparação"
+  },
+  "preposition": {
+    "of": "de"
+  },
+  "action": {
+    "submit": "Enviar",
+    "continue": "Continuar",
+    "cancel": "Cancelar",
+    "addToFavorites": "Adicionar aos favoritos",
+    "removeFromFavorites": "Remover dos favoritos",
+    "save": "Salvar",
+    "saveChanges": "Salvar alterações",
+    "reset": "Redefinir",
+    "resetAll": "Redefinir tudo",
+    "select": {
+      "title": "Selecionar",
+      "hero": "Selecionar herói",
+      "titan": "Selecionar titã"
+    }
+  },
+  "filter": {
+    "title": "Filtrar",
+    "hasInfoAbout": "Tem informação sobre",
+    "heroesDesc": "Ajuste os filtros e salve as alterações.",
+    "sortBy": "Ordenar por",
+    "showOnlyFavorites": "Mostrar apenas favoritos",
+    "search": "Buscar",
+    "searchPlaceholder": "Digite o nome do herói",
+    "searchTitansPlaceholder": "Buscar titãs...",
+    "searchQuotationsPlaceholder": "Buscar citações..."
+  },
+  "sort": {
+    "title": "Ordenar",
+    "direction": {
+      "toggle": "Inverter ordem",
+      "asc": {
+        "short": "Cresc.",
+        "long": "Crescente"
+      },
+      "desc": {
+        "short": "Decresc.",
+        "long": "Decrescente"
+      }
+    },
+    "value": {
+      "id": "Padrão",
+      "firstName": "Nome",
+      "lastName": "Sobrenome",
+      "status": "Situação",
+      "age": "Idade",
+      "height": "Altura",
+      "weight": "Peso",
+      "mbti": "MBTI",
+      "species": "Espécie",
+      "residence": "Residência",
+      "name": "Nome"
+    }
+  },
+  "spoilerMode": {
+    "hide": "Ocultar spoilers",
+    "show": "Mostrar spoilers"
+  },
+  "form": {},
+  "error": {
+    "oops": "Ops",
+    "unexpectedError": "Erro inesperado",
+    "routeNotFound": "Rota não encontrada",
+    "backToHomepage": "Voltar à página inicial",
+    "notFound": "Não encontrado"
+  },
+  "navigation": {
+    "goBack": "Voltar"
+  },
+  "time": {
+    "year": {
+      "singular": "Ano",
+      "plural": "Anos",
+      "pluralFew": "Anos"
+    }
+  },
+  "ui": {
+    "modeToggle": {
+      "title": "Alternar modo",
+      "dark": "Escuro",
+      "light": "Claro",
+      "system": "Sistema"
+    },
+    "pagination": {
+      "firstPage": "Primeira página",
+      "previousPage": "Página anterior",
+      "nextPage": "Próxima página",
+      "lastPage": "Última página"
+    },
+    "sidebar": {
+      "title": "Barra lateral",
+      "open": "Abrir barra lateral",
+      "close": "Fechar barra lateral"
+    }
+  },
+  "range": {
+    "min": "Mínimo",
+    "max": "Máximo"
+  },
+  "soon": "Em breve",
+  "howToUse": "Como usar",
+  "pwa": {
+    "updateAvailable": "Novo conteúdo disponível, clique no botão para atualizar.",
+    "reload": "Atualizar",
+    "close": "Fechar"
+  },
+  "notes": {
+    "title": "Minha nota",
+    "empty": "Registre suas próprias impressões sobre este personagem.",
+    "add": "Adicionar nota",
+    "edit": "Editar",
+    "remove": "Excluir",
+    "done": "Pronto",
+    "placeholder": "Escreva uma nota…",
+    "counter": "{{current}} / {{max}} caracteres",
+    "saved": "Salvo",
+    "updatedAt": "Última alteração: {{date}}",
+    "storageHint": "As notas ficam salvas somente neste navegador.",
+    "removeConfirmTitle": "Excluir esta nota?",
+    "removeConfirmDescription": "O texto não poderá ser recuperado.",
+    "cancel": "Cancelar",
+    "filterLabel": "Com notas"
+  }
+}

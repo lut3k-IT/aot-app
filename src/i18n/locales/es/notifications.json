@@ -1,0 +1,23 @@
+{
+  "error": {
+    "noResults": "No se encontraron resultados",
+    "tryDifferentSettings": "Prueba con otros ajustes",
+    "somethingWentWrong": "¡Algo salió mal!",
+    "tryAgainLater": "Inténtalo de nuevo más tarde.",
+    "languageLoadFailed": "No se pudo cargar el idioma. Comprueba tu conexión."
+  },
+  "success": {},
+  "common": {
+    "changesApplied": "Cambios aplicados",
+    "filtersApplied": "Filtros aplicados",
+    "removedFromFavorites": "Eliminado de favoritos",
+    "addedToFavorites": "Añadido a favoritos",
+    "noteRemoved": "Nota eliminada"
+  },
+  "launchDialog": {
+    "title": "¡Bienvenido a la versión beta de AOT APP!",
+    "description1": "Esta es una aplicación web donde puedes encontrar información sobre los personajes del anime Ataque a los Titanes (Shingeki no Kyojin), explorar una colección de citas y añadirlas a tus favoritas.",
+    "description2": "La aplicación está en desarrollo, por lo que pueden aparecer errores. Si quieres informar de un fallo o compartir tus propias ideas, puedes contactar con el autor de la aplicación en Discord — lut3k.",
+    "description3": "Esta página es un proyecto de fans y no está afiliada a los creadores ni a las editoriales oficiales de Ataque a los Titanes."
+  }
+}

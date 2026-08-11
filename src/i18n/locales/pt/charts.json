@@ -1,0 +1,17 @@
+{
+  "mbtiChart": {
+    "title": "Distribuição dos tipos de personalidade MBTI",
+    "description": "Um gráfico que mostra a distribuição dos tipos de personalidade MBTI entre os personagens.",
+    "count": "Quantidade"
+  },
+  "residenceChart": {
+    "title": "Distribuição por residência",
+    "description": "Um gráfico que mostra a distribuição das residências entre os personagens.",
+    "count": "Quantidade"
+  },
+  "statusChart": {
+    "title": "Distribuição por situação",
+    "description": "Um gráfico que mostra a distribuição das situações entre os personagens.",
+    "count": "Quantidade"
+  }
+}

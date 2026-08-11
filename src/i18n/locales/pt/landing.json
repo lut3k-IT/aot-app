@@ -1,0 +1,61 @@
+{
+  "hero": {
+    "title": "AOT app",
+    "description": "Explore o mundo de <1>Ataque dos Titãs</1> como nunca antes. Navegue por personagens e citações e teste seus conhecimentos no quiz.",
+    "enterApp": "Entrar no app",
+    "learnMore": "Saiba mais"
+  },
+  "about": {
+    "title": "O companheiro perfeito para maratonar",
+    "description1": "Criamos este aplicativo para facilitar o acompanhamento da história. Você encontra as informações principais apresentadas de forma clara.",
+    "description2": "Rapidez e praticidade são os nossos pontos fortes. Com filtros avançados e a ferramenta de comparação, você encontra na hora os personagens que procura, sem ruído desnecessário.",
+    "moreAboutProject": "Mais sobre o projeto"
+  },
+  "features": {
+    "title": "Tudo em um só lugar",
+    "description": "Descubra recursos preparados especialmente para os fãs da série. Feitos para aprofundar a sua experiência.",
+    "items": {
+      "database": {
+        "title": "Banco de dados de personagens",
+        "description": "Navegue pelos perfis de centenas de personagens e conheça seus atributos."
+      },
+      "quotations": {
+        "title": "Citações",
+        "description": "Inspire-se nas palavras dos seus personagens favoritos. Descubra as falas icônicas do anime."
+      },
+      "quiz": {
+        "title": "Quiz de conhecimento",
+        "description": "Veja o quanto você conhece o mundo de Ataque dos Titãs respondendo ao quiz."
+      },
+      "favorites": {
+        "title": "Favoritos",
+        "description": "Monte a sua coleção de personagens favoritos e tenha acesso rápido a eles."
+      }
+    }
+  },
+  "faq": {
+    "title": "Perguntas frequentes",
+    "description": "Encontre respostas para suas dúvidas sobre o projeto.",
+    "items": {
+      "free": {
+        "question": "O aplicativo é gratuito?",
+        "answer": "Sim, o AOT APP é um projeto de fãs feito por paixão. Usar todos os recursos é totalmente gratuito e não exige nenhum pagamento."
+      },
+      "spoilers": {
+        "question": "Existem spoilers no aplicativo?",
+        "answer": "Procuramos sinalizar o conteúdo que pode ser spoiler para quem ainda não terminou a série."
+      },
+      "mobile": {
+        "question": "O aplicativo funciona em dispositivos móveis?",
+        "answer": "Sim, o aplicativo foi projetado como PWA (Progressive Web App). Funciona muito bem em celulares e tablets, e você pode até instalá-lo na tela inicial."
+      },
+      "source": {
+        "question": "De onde vêm as informações do banco de dados?",
+        "answer": "Os dados são reunidos a partir dos guias oficiais, do mangá e do anime de Ataque dos Titãs (Shingeki no Kyojin)."
+      }
+    }
+  },
+  "footer": {
+    "description": "Base de conhecimento completa e ferramentas para os fãs de Ataque dos Titãs."
+  }
+}
