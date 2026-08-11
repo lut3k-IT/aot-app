@@ -23,6 +23,7 @@ import {
   Ruler,
   Scale,
   Shield,
+  StickyNote,
   Sun,
   Tag,
   User,
@@ -82,6 +83,7 @@ export type IconNames =
   | 'ruler'
   | 'scale'
   | 'shield'
+  | 'stickyNote'
   | 'tag'
   | 'users'
   | 'zap';
@@ -126,6 +128,7 @@ const Icon = ({ name, size, variant, color, isFilled = false, className, ...prop
     ruler: Ruler,
     scale: Scale,
     shield: Shield,
+    stickyNote: StickyNote,
     tag: Tag,
     users: Users,
     zap: Zap

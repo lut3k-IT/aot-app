@@ -15,6 +15,7 @@ import { HeroFilters, HeroSortOption } from '@/constants/types';
 import { DEFAULT_AGE, DEFAULT_HEIGHT, DEFAULT_SORT, DEFAULT_SORT_DIRECTION, DEFAULT_WEIGHT } from '@/features/Heroes/constants';
 import { filterHeroes, paginateHeroes } from '@/features/Heroes/utils/heroesProcessing';
 import { selectHeroesData, selectHeroesError, selectHeroesFavoriteIds, selectHeroesStatus } from '@/store/heroesSlice';
+import { selectNotedIds } from '@/store/notesSlice';
 import {
   getMbtiByShortName,
   getResidenceByKeyName,
@@ -42,6 +43,7 @@ const HeroesGallery = () => {
 
   const originalHeroes = useAppSelector(selectHeroesData);
   const favoriteHeroesIds = useAppSelector(selectHeroesFavoriteIds);
+  const notedHeroesIds = useAppSelector(selectNotedIds('hero'));
   const fetchingStatus = useAppSelector(selectHeroesStatus);
   const fetchingError = useAppSelector(selectHeroesError);
   const isLoading = fetchingStatus === 'loading';
@@ -70,6 +72,7 @@ const HeroesGallery = () => {
     const sortBy = (searchParams.get(Param.SORT) as HeroSortOption) || DEFAULT_SORT;
     const sortDirection = (searchParams.get(Param.SORT_DIRECTION) as SortDirection) || DEFAULT_SORT_DIRECTION;
     const hasOnlyFavorites = !!searchParams.get(Param.FAVORITES);
+    const hasOnlyNoted = !!searchParams.get(Param.NOTES);
     const search = searchParams.get(Param.SEARCH);
 
     const filters: HeroFilters = {
@@ -88,12 +91,12 @@ const HeroesGallery = () => {
         hasHeight: hasHeight,
         hasWeight: hasWeight,
         hasOnlyFavorites: hasOnlyFavorites,
-        hasOnlyNoted: false
+        hasOnlyNoted: hasOnlyNoted
       }
     };
 
-    return filterHeroes(originalHeroes, filters, favoriteHeroesIds);
-  }, [originalHeroes, searchParams, favoriteHeroesIds]);
+    return filterHeroes(originalHeroes, filters, favoriteHeroesIds, notedHeroesIds);
+  }, [originalHeroes, searchParams, favoriteHeroesIds, notedHeroesIds]);
 
   const hasDataToShow = filteredHeroes.length > 0;
 

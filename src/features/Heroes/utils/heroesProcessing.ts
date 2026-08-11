@@ -22,9 +22,15 @@ function matchesRangeFilter(heroValue: number | null, filterRange: number[]): bo
   return heroValue >= min && heroValue <= max;
 }
 
-export const filterHeroes = (data: HeroType[], filters: HeroFilters, favoriteHeroesIds?: FavoriteType[]) => {
+export const filterHeroes = (
+  data: HeroType[],
+  filters: HeroFilters,
+  favoriteHeroesIds?: FavoriteType[],
+  notedHeroesIds?: number[]
+) => {
   const lowerCaseSearch = filters.search?.toLowerCase() ?? '';
   const favoriteIdsSet = new Set(favoriteHeroesIds);
+  const notedIdsSet = new Set(notedHeroesIds);
   const statusIds = new Set(filters.filters.status.map((s) => s.id));
   const mbtiIds = new Set(filters.filters.mbti.map((m) => m.id));
   const speciesIds = new Set(filters.filters.species.map((s) => s.id));
@@ -39,6 +45,7 @@ export const filterHeroes = (data: HeroType[], filters: HeroFilters, favoriteHer
 
   const filteredData = data.filter((hero) => {
     if (filters.filters.hasOnlyFavorites && !favoriteIdsSet.has(hero.id)) return false;
+    if (filters.filters.hasOnlyNoted && !notedIdsSet.has(hero.id)) return false;
 
     if (lowerCaseSearch) {
       const fullHeroName = `${hero.firstName} ${hero.lastName ?? ''}`.toLowerCase();

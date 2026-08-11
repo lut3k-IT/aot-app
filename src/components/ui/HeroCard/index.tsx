@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { RoutePath } from '@/constants/enums';
 import { HeroType } from '@/constants/types';
 import { addFavorite, removeFavorite } from '@/store/heroesSlice';
+import { selectNoteFor } from '@/store/notesSlice';
 import { selectSpoilerMode } from '@/store/spoilerModeSlice';
 import { getHeroImageSource, getResidenceName } from '@/utils/dataHelpers';
 
@@ -12,6 +13,7 @@ import useAppSelector from '../../hooks/useAppSelector';
 import { useToggleFavorite } from '../../hooks/useToggleFavorite';
 import CharacterPicture from '../CharacterPicture';
 import HeartButton from '../HeartButton';
+import Icon from '../Icon';
 import MbtiFrame from '../MbtiFrame';
 import DetailsBoxes from './components/DetailsBoxes';
 
@@ -28,6 +30,7 @@ const HeroCard = (props: HeroCardProps) => {
 
   const { t } = useTranslation();
   const isShowingSpoilers = useAppSelector(selectSpoilerMode);
+  const note = useAppSelector(selectNoteFor('hero', id));
 
   const residenceName = useMemo(() => getResidenceName(residence, t), [residence, t]);
 
@@ -49,7 +52,17 @@ const HeroCard = (props: HeroCardProps) => {
       </Link>
       <div className={'flex flex-1 flex-col justify-between'}>
         <div className={'relative mt-0.5 flex w-full flex-col gap-1'}>
-          <div className={'pr-10 text-lg font-medium leading-none'}>{`${firstName || ''} ${lastName || ''}`}</div>
+          <div className={'flex items-center gap-1.5 pr-10 text-lg font-medium leading-none'}>
+            <span>{`${firstName || ''} ${lastName || ''}`}</span>
+            {note && (
+              <Icon
+                name={'stickyNote'}
+                size={'xs'}
+                variant={'gray'}
+                aria-label={t('common:notes.title')}
+              />
+            )}
+          </div>
           <div className={'pr-10 text-sm font-medium capitalize leading-none text-muted-foreground'}>
             {residenceName}
           </div>

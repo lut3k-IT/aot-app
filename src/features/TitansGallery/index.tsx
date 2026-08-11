@@ -14,6 +14,7 @@ import PageHeading from '@/components/ui/PageHeading';
 import { Param, SortDirection } from '@/constants/enums';
 import { TitanSortOption } from '@/constants/types';
 import { selectHeroesData } from '@/store/heroesSlice';
+import { selectNotedIds } from '@/store/notesSlice';
 import { selectTitansData, selectTitansError, selectTitansFavoriteIds, selectTitansStatus } from '@/store/titansSlice';
 import { getBooleanParam } from '@/utils/paramsHelpers';
 
@@ -31,6 +32,7 @@ const TitansGallery = () => {
   const originalHeroes = useAppSelector(selectHeroesData);
 
   const favoriteTitansIds = useAppSelector(selectTitansFavoriteIds);
+  const notedTitansIds = useAppSelector(selectNotedIds('titan'));
   const fetchingStatus = useAppSelector(selectTitansStatus);
   const fetchingError = useAppSelector(selectTitansError);
   const isLoading = fetchingStatus === 'loading';
@@ -46,13 +48,15 @@ const TitansGallery = () => {
     const sortDirection = (searchParams.get(Param.SORT_DIRECTION) as SortDirection) || DEFAULT_TITAN_SORT_DIRECTION;
     const allegiance = searchParams.getAll(Param.ALLEGIANCE).map(Number).filter((n) => !isNaN(n));
     const hasOnlyFavorites = getBooleanParam(searchParams, Param.FAVORITES);
+    const hasOnlyNoted = getBooleanParam(searchParams, Param.NOTES);
 
     return filterTitans(
       originalTitans,
-      { search, sort: sortBy, sortDirection, allegiance, hasOnlyFavorites, hasOnlyNoted: false },
-      favoriteTitansIds
+      { search, sort: sortBy, sortDirection, allegiance, hasOnlyFavorites, hasOnlyNoted },
+      favoriteTitansIds,
+      notedTitansIds
     );
-  }, [originalTitans, searchParams, favoriteTitansIds]);
+  }, [originalTitans, searchParams, favoriteTitansIds, notedTitansIds]);
 
   const hasDataToShow = filteredTitans.length > 0;
 

@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
-import { ChevronDown, Heart, SlidersHorizontal } from 'lucide-react';
+import { ChevronDown, Heart, SlidersHorizontal, StickyNote } from 'lucide-react';
 
 import {
   ActiveFilter,
@@ -65,6 +65,7 @@ const HeroFilterBar = () => {
   const hasHeight = getBooleanParam(searchParams, Param.HAS_HEIGHT);
   const hasWeight = getBooleanParam(searchParams, Param.HAS_WEIGHT);
   const hasOnlyFavorites = getBooleanParam(searchParams, Param.FAVORITES);
+  const hasOnlyNoted = getBooleanParam(searchParams, Param.NOTES);
 
   /* -------------------------------- handlers -------------------------------- */
 
@@ -136,6 +137,13 @@ const HeroFilterBar = () => {
     [setParam]
   );
 
+  const handleToggleNoted = useCallback(
+    (isChecked: boolean) => {
+      setParam(Param.NOTES, isChecked ? 'true' : null);
+    },
+    [setParam]
+  );
+
   /* ------------------------------ active filters ----------------------------- */
 
   const allFilterParams = [
@@ -153,6 +161,7 @@ const HeroFilterBar = () => {
     Param.HAS_HEIGHT,
     Param.HAS_WEIGHT,
     Param.FAVORITES,
+    Param.NOTES,
     Param.SEARCH,
     Param.SORT,
     Param.SORT_DIRECTION
@@ -247,6 +256,14 @@ const HeroFilterBar = () => {
       });
     }
 
+    if (hasOnlyNoted) {
+      filters.push({
+        key: 'noted',
+        label: t('common:notes.filterLabel'),
+        onRemove: () => setParam(Param.NOTES, null)
+      });
+    }
+
     if (sortBy !== DEFAULT_SORT) {
       filters.push({
         key: 'sort',
@@ -287,6 +304,7 @@ const HeroFilterBar = () => {
     hasHeight,
     hasWeight,
     hasOnlyFavorites,
+    hasOnlyNoted,
     sortBy,
     sortDirection,
     search,
@@ -464,6 +482,16 @@ const HeroFilterBar = () => {
         <Switch
           checked={hasOnlyFavorites}
           onCheckedChange={handleToggleFavorites}
+        />
+      </div>
+      <div
+        className='flex items-center gap-1.5'
+        aria-label={t('common:notes.filterLabel')}
+      >
+        <StickyNote className='h-5 w-5 text-foreground' />
+        <Switch
+          checked={hasOnlyNoted}
+          onCheckedChange={handleToggleNoted}
         />
       </div>
       <SearchInput

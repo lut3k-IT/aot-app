@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
-import { ChevronDown, Heart, SlidersHorizontal } from 'lucide-react';
+import { ChevronDown, Heart, SlidersHorizontal, StickyNote } from 'lucide-react';
 
 import {
   ActiveFilter,
@@ -42,6 +42,7 @@ const TitanFilterBar = () => {
   const sortDirection = (searchParams.get(Param.SORT_DIRECTION) as SortDirection) || DEFAULT_TITAN_SORT_DIRECTION;
   const selectedAllegiances = searchParams.getAll(Param.ALLEGIANCE);
   const hasOnlyFavorites = getBooleanParam(searchParams, Param.FAVORITES);
+  const hasOnlyNoted = getBooleanParam(searchParams, Param.NOTES);
 
   /* -------------------------------- handlers -------------------------------- */
 
@@ -71,9 +72,23 @@ const TitanFilterBar = () => {
     [setParam]
   );
 
+  const handleToggleNoted = useCallback(
+    (isChecked: boolean) => {
+      setParam(Param.NOTES, isChecked ? 'true' : null);
+    },
+    [setParam]
+  );
+
   /* ------------------------------ active filters ----------------------------- */
 
-  const allFilterParams = [Param.ALLEGIANCE, Param.FAVORITES, Param.SEARCH, Param.SORT, Param.SORT_DIRECTION];
+  const allFilterParams = [
+    Param.ALLEGIANCE,
+    Param.FAVORITES,
+    Param.NOTES,
+    Param.SEARCH,
+    Param.SORT,
+    Param.SORT_DIRECTION
+  ];
 
   const activeFilters = useMemo(() => {
     const filters: ActiveFilter[] = [];
@@ -94,6 +109,14 @@ const TitanFilterBar = () => {
         key: 'favorites',
         label: t('common:favorites'),
         onRemove: () => setParam(Param.FAVORITES, null)
+      });
+    }
+
+    if (hasOnlyNoted) {
+      filters.push({
+        key: 'noted',
+        label: t('common:notes.filterLabel'),
+        onRemove: () => setParam(Param.NOTES, null)
       });
     }
 
@@ -122,7 +145,7 @@ const TitanFilterBar = () => {
     }
 
     return filters;
-  }, [selectedAllegiances, hasOnlyFavorites, search, sortBy, sortDirection, t, toggleArrayParam, setParam]);
+  }, [selectedAllegiances, hasOnlyFavorites, hasOnlyNoted, search, sortBy, sortDirection, t, toggleArrayParam, setParam]);
 
   const handleClearAll = useCallback(() => {
     clearAll(allFilterParams);
@@ -173,6 +196,16 @@ const TitanFilterBar = () => {
         <Switch
           checked={hasOnlyFavorites}
           onCheckedChange={handleToggleFavorites}
+        />
+      </div>
+      <div
+        className='flex items-center gap-1.5'
+        aria-label={t('common:notes.filterLabel')}
+      >
+        <StickyNote className='h-5 w-5 text-foreground' />
+        <Switch
+          checked={hasOnlyNoted}
+          onCheckedChange={handleToggleNoted}
         />
       </div>
       <SearchInput

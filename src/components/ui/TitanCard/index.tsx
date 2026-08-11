@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useToggleFavorite } from '@/components/hooks/useToggleFavorite';
 import { RoutePath } from '@/constants/enums';
 import { TitanType } from '@/constants/types';
+import { selectNoteFor } from '@/store/notesSlice';
 import { selectSpoilerMode } from '@/store/spoilerModeSlice';
 import { addFavorite, removeFavorite } from '@/store/titansSlice';
 import { getAllegianceNames } from '@/utils/dataHelpers';
@@ -12,6 +13,7 @@ import { getAllegianceNames } from '@/utils/dataHelpers';
 import useAppSelector from '../../hooks/useAppSelector';
 import CharacterPicture from '../CharacterPicture';
 import HeartButton from '../HeartButton';
+import Icon from '../Icon';
 import MbtiFrame from '../MbtiFrame';
 import DetailsBoxes from './components/DetailsBoxes';
 
@@ -29,6 +31,7 @@ const TitanCard = memo((props: TitanCardProps) => {
 
   const { t } = useTranslation();
   const isShowingSpoilers = useAppSelector(selectSpoilerMode);
+  const note = useAppSelector(selectNoteFor('titan', id));
 
   const allegianceNames = useMemo(() => getAllegianceNames(allegiance, t), [allegiance, t]);
 
@@ -50,7 +53,17 @@ const TitanCard = memo((props: TitanCardProps) => {
       </Link>
       <div className={'flex flex-1 flex-col justify-between'}>
         <div className={'relative mt-0.5 flex w-full flex-col gap-1'}>
-          <div className={'pr-10 text-lg font-medium leading-none'}>{name || ''}</div>
+          <div className={'flex items-center gap-1.5 pr-10 text-lg font-medium leading-none'}>
+            <span>{name || ''}</span>
+            {note && (
+              <Icon
+                name={'stickyNote'}
+                size={'xs'}
+                variant={'gray'}
+                aria-label={t('common:notes.title')}
+              />
+            )}
+          </div>
           {isShowingSpoilers && (
             <div className={'pr-10 text-sm font-medium capitalize leading-none text-muted-foreground'}>
               {currentInheritorName}

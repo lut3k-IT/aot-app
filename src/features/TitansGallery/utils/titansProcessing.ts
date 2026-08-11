@@ -15,13 +15,20 @@ const sortWithNullsLastDesc = (a: SortType, b: SortType) => {
   return a < b ? 1 : a > b ? -1 : 0;
 };
 
-export const filterTitans = (data: TitanType[], filters: TitanFilters, favoriteTitanIds?: FavoriteType[]) => {
+export const filterTitans = (
+  data: TitanType[],
+  filters: TitanFilters,
+  favoriteTitanIds?: FavoriteType[],
+  notedTitansIds?: number[]
+) => {
   const lowerCaseSearch = filters.search?.toLowerCase() ?? '';
   const favoriteIdsSet = new Set(favoriteTitanIds);
+  const notedIdsSet = new Set(notedTitansIds);
   const allegianceFilter = new Set(filters.allegiance);
 
   const filteredData = data.filter((titan) => {
     if (filters.hasOnlyFavorites && !favoriteIdsSet.has(titan.id)) return false;
+    if (filters.hasOnlyNoted && !notedIdsSet.has(titan.id)) return false;
 
     if (lowerCaseSearch) {
       const searchableText = [titan.name, ...titan.otherNames].join(' ').toLowerCase();
