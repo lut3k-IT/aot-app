@@ -1,6 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 
+import { useLayoutVariant } from '@/components/providers/LayoutVariantProvider';
+import { isOpenShellVariant } from '@/constants/layoutVariants';
+
 import useIsLandscape from '../hooks/useIsLandscape';
 import useIsMobileOrLandscape from '../hooks/useIsMobileOrLandscape';
 import { ScrollDirectionName, useScrollDirection } from '../hooks/useScrollDirection';
@@ -17,15 +20,24 @@ const MovingPanel = (props: MovingPanelProps) => {
   const isMobileLandscape = useIsMobileOrLandscape();
   const isLandscape = useIsLandscape();
 
+  const { variant } = useLayoutVariant();
+  const isOpenShell = isOpenShellVariant(variant);
+
   const scrollDirection = useScrollDirection();
-  const computedClass = scrollDirection === ScrollDirectionName.DOWN ? translateClassName : 'translate-y-0';
+
+  // W otwartej powłoce panel zostaje przyklejony na stałe. Chowanie go przy przewijaniu
+  // zabierałoby wyszukiwarkę i filtry dokładnie wtedy, gdy przegląda się długą galerię.
+  const isHidingOnScroll = !isOpenShell && scrollDirection === ScrollDirectionName.DOWN;
+  const computedClass = isHidingOnScroll ? translateClassName : 'translate-y-0';
 
   return (
     <div
       className={classNames(
         'sticky top-0 z-20 w-full bg-background shadow-panel-bottom-bg transition-transform ',
         {
-          'md:-mt-2 md:pt-2 md:shadow-panel-bottom-card md:dark:bg-card': !isMobileLandscape
+          // Tło karty tylko wtedy, gdy treść faktycznie leży na karcie.
+          'md:-mt-2 md:pt-2 md:shadow-panel-bottom-card md:dark:bg-card': !isMobileLandscape && !isOpenShell,
+          'md:-mt-2 md:pt-2': !isMobileLandscape && isOpenShell
         },
         computedClass,
         className

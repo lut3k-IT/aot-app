@@ -22,6 +22,40 @@ const mbtiFrameVariants = cva('flex flex-col w-min rounded-md border-2 overflow-
   }
 });
 
+/** Kropka w tym samym kluczu kolorów co ramka — dla widoków bez miejsca na pełną ramkę. */
+const mbtiDotVariants = cva('inline-block h-2 w-2 shrink-0 rounded-full', {
+  variants: {
+    variant: {
+      default: 'bg-neutral-400',
+      analysts: 'bg-violet-500',
+      diplomats: 'bg-emerald-500',
+      sentinels: 'bg-cyan-500',
+      explorers: 'bg-yellow-500'
+    }
+  },
+  defaultVariants: {
+    variant: 'default'
+  }
+});
+
+export const getMbtiGroupVariant = (mbtiId: number | null): MbtiGroups => {
+  const mbtiObj = mbti.find((data) => data.id === mbtiId);
+
+  return (mbtiObj?.mbtiGroup ? MBTI_GROUPS_NAMES[mbtiObj.mbtiGroup - 1] : 'default') as MbtiGroups;
+};
+
+interface MbtiDotProps {
+  mbtiId: number | null;
+  className?: string;
+}
+
+export const MbtiDot = ({ mbtiId, className }: MbtiDotProps) => (
+  <span
+    aria-hidden
+    className={cn(mbtiDotVariants({ variant: getMbtiGroupVariant(mbtiId) }), className)}
+  />
+);
+
 interface MbtiFrameProps extends VariantProps<typeof mbtiFrameVariants>, React.HTMLAttributes<HTMLDivElement> {
   mbtiId: number | null;
   children: React.ReactNode;
@@ -31,11 +65,8 @@ const MbtiFrame = (props: MbtiFrameProps) => {
   const { mbtiId, children, variant, ...rest } = props;
 
   const mbtiName = mbtiId ? getMbtiShortName(mbtiId) : '—';
-  const mbtiObj = mbti.find((data) => data.id === mbtiId);
 
-  const autonomousVariant = variant
-    ? variant
-    : ((mbtiObj?.mbtiGroup ? MBTI_GROUPS_NAMES[mbtiObj.mbtiGroup - 1] : 'default') as MbtiGroups);
+  const autonomousVariant = variant ? variant : getMbtiGroupVariant(mbtiId);
 
   return (
     <div

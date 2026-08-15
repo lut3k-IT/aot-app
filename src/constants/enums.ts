@@ -6,7 +6,8 @@ export enum Bool {
 export enum ElementsIds {
   ROOT = 'root',
   PAGE_HEADING_OPTIONS = 'page-heading-options',
-  PAGE_PAGINATION = 'page-pagination'
+  PAGE_PAGINATION = 'page-pagination',
+  PAGE_FILTERS_ASIDE = 'page-filters-aside'
 }
 
 export enum Theme {
@@ -43,7 +44,8 @@ export enum Param {
   FAVORITES = 'favorites',
   SEARCH = 'search',
   ALLEGIANCE = 'allegiance',
-  NOTES = 'notes'
+  NOTES = 'notes',
+  VIEW = 'view'
 }
 
 export enum RoutePath {
@@ -115,7 +117,9 @@ export enum LocalStorageKey {
   FAV_QUOTATIONS = 'favQuotations',
   THEME = 'vite-ui-theme',
   BEST_SCORE = 'bestScore',
-  NOTES = 'characterNotes'
+  NOTES = 'characterNotes',
+  /** Tylko dev: wybrany wariant układu z przełącznika layoutu. */
+  LAYOUT_VARIANT = 'devLayoutVariant'
 }
 
 /* ------------------------------ Data related ------------------------------ */

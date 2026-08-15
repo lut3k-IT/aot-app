@@ -46,7 +46,9 @@
     "search": "Buscar",
     "searchPlaceholder": "Digite o nome do herói",
     "searchTitansPlaceholder": "Buscar titãs...",
-    "searchQuotationsPlaceholder": "Buscar citações..."
+    "searchQuotationsPlaceholder": "Buscar citações...",
+    "viewGrid": "Visualização em grade",
+    "viewList": "Visualização em lista"
   },
   "sort": {
     "title": "Ordenar",

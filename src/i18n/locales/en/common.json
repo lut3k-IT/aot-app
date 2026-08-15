@@ -46,7 +46,9 @@
     "search": "Search",
     "searchPlaceholder": "Type hero name",
     "searchTitansPlaceholder": "Search titans...",
-    "searchQuotationsPlaceholder": "Search quotations..."
+    "searchQuotationsPlaceholder": "Search quotations...",
+    "viewGrid": "Grid view",
+    "viewList": "List view"
   },
   "sort": {
     "title": "Sort",

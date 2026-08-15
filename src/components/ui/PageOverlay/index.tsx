@@ -5,7 +5,9 @@ import React from 'react';
 import classNames from 'classnames';
 import { usePathname } from 'next/navigation';
 
+import { useLayoutVariant } from '@/components/providers/LayoutVariantProvider';
 import { ElementsIds } from '@/constants/enums';
+import { isOpenShellVariant } from '@/constants/layoutVariants';
 
 import useIsLandscape from '../../hooks/useIsLandscape';
 import useIsMobile from '../../hooks/useIsMobile';
@@ -18,6 +20,7 @@ import SidebarDesktop from '../SidebarDesktop';
 import { Toaster } from '../Toaster';
 import TopBarMobile from '../TopBarMobile';
 import Footer from './components/Footer';
+import OpenDesktopOverlay from './components/OpenDesktopOverlay';
 
 interface PageOverlayProps {
   children: React.ReactNode;
@@ -48,7 +51,8 @@ const MobileOverlay = ({ children }: PageOverlayProps) => {
   );
 };
 
-const DesktopOverlay = ({ children }: PageOverlayProps) => {
+/** Układ obecny: karta na pełną wysokość okna z własnym paskiem przewijania. */
+const CardDesktopOverlay = ({ children }: PageOverlayProps) => {
   const pathname = usePathname();
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
@@ -85,6 +89,16 @@ const DesktopOverlay = ({ children }: PageOverlayProps) => {
       </div>
       <Toaster />
     </div>
+  );
+};
+
+const DesktopOverlay = ({ children }: PageOverlayProps) => {
+  const { variant } = useLayoutVariant();
+
+  return isOpenShellVariant(variant) ? (
+    <OpenDesktopOverlay>{children}</OpenDesktopOverlay>
+  ) : (
+    <CardDesktopOverlay>{children}</CardDesktopOverlay>
   );
 };
 
