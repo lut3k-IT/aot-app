@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 
 import CharacterCardSkeleton from '@/components/ui/CharacterCardSkeleton';
 import HeroCard from '@/components/ui/HeroCard';
-import HeroRow, { HeroRowHeader } from '@/components/ui/HeroRow';
 import MultipleSkeletons from '@/components/ui/MultipleSkeletons';
 import NoResults from '@/components/ui/NoResults';
 import { fadeInUp, getStaggerDelay } from '@/constants/motion';
@@ -15,11 +14,10 @@ interface ContentProps {
   isLoading: boolean;
   paginatedHeroes: HeroType[];
   favoriteHeroesIds: FavoriteType[];
-  isListView?: boolean;
 }
 
 const Content = (props: ContentProps) => {
-  const { hasData, isLoading, hasDataToShow, paginatedHeroes, favoriteHeroesIds, isListView } = props;
+  const { hasData, isLoading, hasDataToShow, paginatedHeroes, favoriteHeroesIds } = props;
 
   if (isLoading) {
     return <MultipleSkeletons skeletonComponent={CharacterCardSkeleton} />;
@@ -27,21 +25,6 @@ const Content = (props: ContentProps) => {
 
   if (!hasData || !hasDataToShow) {
     return <NoResults />;
-  }
-
-  if (isListView) {
-    return (
-      <>
-        <HeroRowHeader />
-        {paginatedHeroes.map((hero) => (
-          <HeroRow
-            key={hero.id}
-            data={hero}
-            isFavorite={isInFavorites(hero.id, favoriteHeroesIds)}
-          />
-        ))}
-      </>
-    );
   }
 
   return paginatedHeroes.map((hero, index) => (

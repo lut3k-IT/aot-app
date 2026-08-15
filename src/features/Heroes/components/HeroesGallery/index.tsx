@@ -7,12 +7,10 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import { useApiErrorToast } from '@/components/hooks/useApiErrorToast';
 import useAppSelector from '@/components/hooks/useAppSelector';
-import { useLayoutVariant } from '@/components/providers/LayoutVariantProvider';
 import DynamicTitle from '@/components/ui/DynamicTitle';
-import GalleryWrapper, { GALLERY_MIN_COLUMN } from '@/components/ui/GalleryWrapper';
+import GalleryWrapper from '@/components/ui/GalleryWrapper';
 import Pagination, { DEFAULT_PAGE, DEFAULT_PAGE_SIZES } from '@/components/ui/Pagination';
 import { ElementsIds, Param, SortDirection } from '@/constants/enums';
-import { isOpenShellVariant, LayoutVariant } from '@/constants/layoutVariants';
 import { HeroFilters, HeroSortOption } from '@/constants/types';
 import { DEFAULT_AGE, DEFAULT_HEIGHT, DEFAULT_SORT, DEFAULT_SORT_DIRECTION, DEFAULT_WEIGHT } from '@/features/Heroes/constants';
 import { filterHeroes, paginateHeroes } from '@/features/Heroes/utils/heroesProcessing';
@@ -28,21 +26,19 @@ import { filterArrayFromNullish } from '@/utils/helpers';
 import { getSafePageNumberFromSearchParam } from '@/utils/paramsHelpers';
 
 import Content from './components/Content';
-import HeroFilterBar, { HeroesViewMode } from './components/HeroFilterBar';
+import HeroFilterBar from './components/HeroFilterBar';
 
-/** Otwarta powłoka daje szerszą kolumnę treści, więc karty mogą zejść z 20 do 18 rem. */
-const OPEN_SHELL_MIN_COLUMN = '18rem';
+/**
+ * Węższa kolumna niż domyślne 20 rem galerii: karta postaci jest pozioma i niska, więc
+ * przy 18 rem nadal się mieści, a na szerokim ekranie daje cztery kolumny zamiast trzech.
+ */
+const HERO_MIN_COLUMN = '18rem';
 
 const HeroesGallery = () => {
   const { t } = useTranslation();
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-
-  const { variant } = useLayoutVariant();
-  const isOpenShell = isOpenShellVariant(variant);
-  const isFiltersAside = variant === LayoutVariant.ASIDE;
-  const isListView = variant === LayoutVariant.LIST && searchParams.get(Param.VIEW) !== HeroesViewMode.GRID;
 
   const [totalPages, setTotalPages] = useState(DEFAULT_PAGE);
   const [paginationDestination, setPaginationDestination] = useState<HTMLElement | null>(null);
@@ -148,38 +144,19 @@ const HeroesGallery = () => {
     }
   }, [searchParams, filteredHeroes, totalPages, router, pathname, createQueryString]);
 
-  const gallery = (
-    <GalleryWrapper
-      minColumnWidth={isListView ? null : isOpenShell ? OPEN_SHELL_MIN_COLUMN : GALLERY_MIN_COLUMN}
-      className={isListView ? 'gap-y-0.5' : undefined}
-    >
-      <HeroFilterBar />
-      <Content
-        hasData={hasData}
-        hasDataToShow={hasDataToShow}
-        isLoading={isLoading}
-        paginatedHeroes={paginatedHeroes}
-        favoriteHeroesIds={favoriteHeroesIds}
-        isListView={isListView}
-      />
-    </GalleryWrapper>
-  );
-
   return (
     <>
       <DynamicTitle title={`${t('common:title.heroes')} ${t('common:tab.gallery')}`} />
-      {isFiltersAside ? (
-        <div className={'flex items-start gap-8'}>
-          {/* Cel portalu dla treści filtrów — wypełnia go HeroFilterBar. */}
-          <aside
-            id={ElementsIds.PAGE_FILTERS_ASIDE}
-            className={'sticky top-32 max-h-[calc(100svh-9rem)] w-64 shrink-0 overflow-y-auto pr-2'}
-          />
-          <div className={'min-w-0 flex-1'}>{gallery}</div>
-        </div>
-      ) : (
-        gallery
-      )}
+      <GalleryWrapper minColumnWidth={HERO_MIN_COLUMN}>
+        <HeroFilterBar />
+        <Content
+          hasData={hasData}
+          hasDataToShow={hasDataToShow}
+          isLoading={isLoading}
+          paginatedHeroes={paginatedHeroes}
+          favoriteHeroesIds={favoriteHeroesIds}
+        />
+      </GalleryWrapper>
       {hasDataToShow && !isLoading && paginationDestination && createPortal(
         <Pagination
           itemsCount={filteredHeroes.length}

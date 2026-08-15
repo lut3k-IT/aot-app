@@ -46,9 +46,7 @@
     "search": "Szukaj",
     "searchPlaceholder": "Wpisz nazwę postaci",
     "searchTitansPlaceholder": "Szukaj tytanów...",
-    "searchQuotationsPlaceholder": "Szukaj cytatów...",
-    "viewGrid": "Widok siatki",
-    "viewList": "Widok listy"
+    "searchQuotationsPlaceholder": "Szukaj cytatów..."
   },
   "sort": {
     "title": "Sortuj",

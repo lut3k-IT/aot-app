@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
-import { ChevronDown, Heart, LayoutGrid, List, SlidersHorizontal, StickyNote } from 'lucide-react';
+import { ChevronDown, Heart, SlidersHorizontal, StickyNote } from 'lucide-react';
 
 import {
   ActiveFilter,
@@ -17,11 +17,9 @@ import {
   SortControl,
   useFilterParams
 } from '@/components/filtering';
-import { useLayoutVariant } from '@/components/providers/LayoutVariantProvider';
 import { Button } from '@/components/ui/Button';
 import { Switch } from '@/components/ui/Switch';
 import { ElementsIds, Param, SortDirection } from '@/constants/enums';
-import { LayoutVariant } from '@/constants/layoutVariants';
 import { HeroSortOption } from '@/constants/types';
 import mbtiData from '@/data/mbti';
 import residencesData from '@/data/residences';
@@ -38,29 +36,15 @@ import {
 import { cn } from '@/lib/utils';
 import { getBooleanParam, getNumberParam } from '@/utils/paramsHelpers';
 
-export enum HeroesViewMode {
-  GRID = 'grid',
-  LIST = 'list'
-}
-
 const HeroFilterBar = () => {
   const { t } = useTranslation();
   const { searchParams, setParam, setParams, toggleArrayParam, clearAll } = useFilterParams();
 
-  const { variant } = useLayoutVariant();
-  const isFiltersAside = variant === LayoutVariant.ASIDE;
-  const hasViewToggle = variant === LayoutVariant.LIST;
-  const isGridView = searchParams.get(Param.VIEW) === HeroesViewMode.GRID;
-
   const [headingDestination, setHeadingDestination] = useState<HTMLElement | null>(null);
-  const [asideDestination, setAsideDestination] = useState<HTMLElement | null>(null);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   useEffect(() => {
     setHeadingDestination(document.getElementById(ElementsIds.PAGE_HEADING_OPTIONS));
-    // Kolumna filtrów istnieje tylko w wariancie B, więc cel portalu trzeba odczytać ponownie
-    // po każdej zmianie układu.
-    setAsideDestination(document.getElementById(ElementsIds.PAGE_FILTERS_ASIDE));
-  }, [variant]);
+  }, []);
 
   /* -------------------------------- read params ------------------------------- */
 
@@ -156,14 +140,6 @@ const HeroFilterBar = () => {
   const handleToggleNoted = useCallback(
     (isChecked: boolean) => {
       setParam(Param.NOTES, isChecked ? 'true' : null);
-    },
-    [setParam]
-  );
-
-  const handleViewChange = useCallback(
-    (mode: HeroesViewMode) => {
-      // Lista jest w tym wariancie domyślna, więc nie zaśmieca adresu parametrem.
-      setParam(Param.VIEW, mode === HeroesViewMode.GRID ? HeroesViewMode.GRID : null);
     },
     [setParam]
   );
@@ -534,52 +510,25 @@ const HeroFilterBar = () => {
           onSortDirectionToggle={handleSortDirectionToggle}
         />
       </div>
-      {/* Grid/list switch — only in the layout variant that offers a list view */}
-      {hasViewToggle && (
-        <div className='hidden items-center rounded-md border border-input bg-background p-0.5 md:flex'>
-          <Button
-            variant={isGridView ? 'secondary' : 'ghost'}
-            size='sm'
-            className='h-8 w-8 p-0'
-            onClick={() => handleViewChange(HeroesViewMode.GRID)}
-            aria-pressed={isGridView}
-            aria-label={t('common:filter.viewGrid')}
-          >
-            <LayoutGrid className='h-4 w-4' />
-          </Button>
-          <Button
-            variant={isGridView ? 'ghost' : 'secondary'}
-            size='sm'
-            className='h-8 w-8 p-0'
-            onClick={() => handleViewChange(HeroesViewMode.LIST)}
-            aria-pressed={!isGridView}
-            aria-label={t('common:filter.viewList')}
-          >
-            <List className='h-4 w-4' />
-          </Button>
-        </div>
-      )}
-      {/* Filter toggle — desktop only; redundant when filters live in their own column */}
-      {!isFiltersAside && (
-        <div className='relative hidden md:block'>
-          <Button
-            variant='outline'
-            size='sm'
-            className='h-9 gap-1.5 bg-background'
-            onClick={() => setIsFilterOpen((prev) => !prev)}
-            aria-expanded={isFilterOpen}
-          >
-            <SlidersHorizontal className='h-4 w-4' />
-            {t('common:filter.title')}
-            <ChevronDown className={cn('h-4 w-4 transition-transform', isFilterOpen && 'rotate-180')} />
-          </Button>
-          {activeFilters.length > 0 && (
-            <span className='absolute -right-2 -top-2 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1.5 text-[0.65rem] font-semibold text-primary-foreground'>
-              {activeFilters.length}
-            </span>
-          )}
-        </div>
-      )}
+      {/* Filter toggle — desktop only */}
+      <div className='relative hidden md:block'>
+        <Button
+          variant='outline'
+          size='sm'
+          className='h-9 gap-1.5 bg-background'
+          onClick={() => setIsFilterOpen((prev) => !prev)}
+          aria-expanded={isFilterOpen}
+        >
+          <SlidersHorizontal className='h-4 w-4' />
+          {t('common:filter.title')}
+          <ChevronDown className={cn('h-4 w-4 transition-transform', isFilterOpen && 'rotate-180')} />
+        </Button>
+        {activeFilters.length > 0 && (
+          <span className='absolute -right-2 -top-2 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1.5 text-[0.65rem] font-semibold text-primary-foreground'>
+            {activeFilters.length}
+          </span>
+        )}
+      </div>
       {/* Filter trigger — mobile only, compact icon in heading row */}
       <div className='md:hidden'>
         <FilterSheet
@@ -597,31 +546,15 @@ const HeroFilterBar = () => {
       {/* Portal search+sort+filter button into the "Year 854" heading row */}
       {headingDestination && createPortal(topBar, headingDestination)}
 
-      {/* Filters get their own permanent column instead of a collapsible panel */}
-      {isFiltersAside &&
-        asideDestination &&
-        createPortal(
-          <div className='space-y-3 pb-4'>
-            <div className='flex items-center gap-2 text-sm font-semibold'>
-              <SlidersHorizontal className='h-4 w-4' />
-              {t('common:filter.title')}
-            </div>
-            {filterContent}
-          </div>,
-          asideDestination
-        )}
-
       {/* Desktop: Collapsible filter panel (controlled externally by topBar button) */}
-      {!isFiltersAside && (
-        <div className='hidden md:block'>
-          <FilterPanel
-            open={isFilterOpen}
-            onOpenChange={setIsFilterOpen}
-          >
-            {filterContent}
-          </FilterPanel>
-        </div>
-      )}
+      <div className='hidden md:block'>
+        <FilterPanel
+          open={isFilterOpen}
+          onOpenChange={setIsFilterOpen}
+        >
+          {filterContent}
+        </FilterPanel>
+      </div>
 
       {/* Active filter chips */}
       <FilterChips

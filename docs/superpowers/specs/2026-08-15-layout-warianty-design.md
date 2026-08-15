@@ -1,7 +1,7 @@
 # Warianty układu powłoki desktopowej
 
 Data: 2026-08-15
-Status: do oceny wizualnej na dev
+Status: zamknięte — wybrany wariant A, rusztowanie wariantów usunięte
 
 ## Problem
 
@@ -76,9 +76,21 @@ to wyrównane kolumny do porównywania wartości, nie liczba postaci na ekranie.
   karta zachowuje swój kolor.
 - Przełączanie wariantów działa na żywo, bez przeładowania strony.
 
-## Po decyzji
+## Decyzja
 
-Zostaje jeden układ. Do usunięcia: `layoutVariants.ts`, `LayoutVariantProvider`,
-`DevLayoutSwitcher`, klucz `LAYOUT_VARIANT` w pamięci przeglądarki, gałęzie warunkowe
-w `PageOverlay`, `MovingPanel`, `PageHeading`, `HeroesGallery` i `HeroFilterBar`, oraz
-niewybrane komponenty (`HeroRow` albo `OpenDesktopOverlay`/`CardDesktopOverlay`).
+Wybrany **wariant A**. Otwarta powłoka jest jedynym układem desktopowym; `DesktopOverlay`
+w `PageOverlay` renderuje ją bezpośrednio, bez żadnego przełącznika.
+
+Usunięte razem z rusztowaniem: `layoutVariants.ts`, `LayoutVariantProvider`,
+`DevLayoutSwitcher`, `OpenDesktopOverlay`, `HeroRow`, `MbtiDot`, klucz `LAYOUT_VARIANT`
+w pamięci przeglądarki, `ElementsIds.PAGE_FILTERS_ASIDE`, `Param.VIEW`, klucze
+`filter.viewGrid` i `filter.viewList` w czterech językach oraz cień `panel-bottom-card`,
+który po zniknięciu karty nie miał już czego podkładać.
+
+Dwie rzeczy zostały z tej rundy na stałe:
+
+- `GalleryWrapper` przyjmuje `minColumnWidth`; galeria postaci schodzi do 18 rem, reszta
+  zostaje przy domyślnych 20 rem.
+- `MovingPanel` chowa się przy przewijaniu tylko na mobile. Wcześniej ten kod na desktopie
+  nigdy się nie odpalał, bo okno się nie przewijało; po otwarciu powłoki zacząłby zabierać
+  wyszukiwarkę i filtry w trakcie przeglądania galerii.

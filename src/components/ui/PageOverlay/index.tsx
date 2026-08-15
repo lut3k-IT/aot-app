@@ -1,26 +1,19 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
 import React from 'react';
 import classNames from 'classnames';
-import { usePathname } from 'next/navigation';
 
-import { useLayoutVariant } from '@/components/providers/LayoutVariantProvider';
 import { ElementsIds } from '@/constants/enums';
-import { isOpenShellVariant } from '@/constants/layoutVariants';
 
 import useIsLandscape from '../../hooks/useIsLandscape';
 import useIsMobile from '../../hooks/useIsMobile';
 import useIsMobileOrLandscape from '../../hooks/useIsMobileOrLandscape';
-import { Card } from '../Card';
 import NavigationMobile from '../NavigationMobile';
 import QuotationBar from '../QuotationBar';
-import { ScrollArea } from '../ScrollArea';
 import SidebarDesktop from '../SidebarDesktop';
 import { Toaster } from '../Toaster';
 import TopBarMobile from '../TopBarMobile';
 import Footer from './components/Footer';
-import OpenDesktopOverlay from './components/OpenDesktopOverlay';
 
 interface PageOverlayProps {
   children: React.ReactNode;
@@ -51,54 +44,43 @@ const MobileOverlay = ({ children }: PageOverlayProps) => {
   );
 };
 
-/** Układ obecny: karta na pełną wysokość okna z własnym paskiem przewijania. */
-const CardDesktopOverlay = ({ children }: PageOverlayProps) => {
-  const pathname = usePathname();
-  const scrollAreaRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (scrollAreaRef.current) {
-      scrollAreaRef.current.scrollTo(0, 0);
-    }
-  }, [pathname]);
-
+/**
+ * Treść przewija się razem z całą stroną, tak jak na zwykłej witrynie. Wcześniejszy układ
+ * zamykał ją w karcie przyklejonej do wysokości okna z własnym paskiem przewijania, przez
+ * co na same postacie zostawało niecałe pół ekranu.
+ *
+ * Nawigacja przykleja się do góry i zajmuje pełną wysokość okna, więc mimo długiego
+ * przewijania zawsze jest pod ręką. Szerokość idzie do 1600 px, co przy tej samej karcie
+ * postaci daje cztery kolumny zamiast dwóch.
+ */
+const DesktopOverlay = ({ children }: PageOverlayProps) => {
   return (
-    <div className={'mx-auto h-[100svh] max-w-7xl'}>
-      <div className={'grid h-full grid-cols-[15rem_1fr] gap-6 p-page-desktop'}>
-        <SidebarDesktop />
-        <div className={'grid h-[calc(100svh-3rem)] grid-rows-[2.5rem_1fr_1.25rem] gap-6'}>
-          <QuotationBar />
-          <Card className={'flex h-full flex-col overflow-hidden p-4'}>
-            <ScrollArea
-              viewportRef={scrollAreaRef}
-              id='inner'
-              type={'always'}
-              className={'-mr-3 min-h-0 flex-1 pr-3'}
-            >
-              <main
-                id='outlet-wrapper'
-                className={'p-2'}
-              >
-                {children}
-              </main>
-            </ScrollArea>
-            <div id={ElementsIds.PAGE_PAGINATION} className='empty:hidden relative z-10 shadow-panel-bottom-card' />
-          </Card>
-          <Footer />
+    <div className={'mx-auto w-full max-w-[100rem] px-8'}>
+      <div className={'grid grid-cols-[15rem_1fr] gap-10'}>
+        <div className={'sticky top-0 h-[100svh] py-page-desktop'}>
+          <SidebarDesktop />
+        </div>
+        <div className={'flex min-h-[100svh] min-w-0 flex-col pb-page-desktop'}>
+          <div className={'pb-4 pt-page-desktop'}>
+            <QuotationBar />
+          </div>
+          <main
+            id={'outlet-wrapper'}
+            className={'min-w-0 flex-1'}
+          >
+            {children}
+          </main>
+          <div
+            id={ElementsIds.PAGE_PAGINATION}
+            className={'empty:hidden pt-6'}
+          />
+          <div className={'pt-10'}>
+            <Footer />
+          </div>
         </div>
       </div>
       <Toaster />
     </div>
-  );
-};
-
-const DesktopOverlay = ({ children }: PageOverlayProps) => {
-  const { variant } = useLayoutVariant();
-
-  return isOpenShellVariant(variant) ? (
-    <OpenDesktopOverlay>{children}</OpenDesktopOverlay>
-  ) : (
-    <CardDesktopOverlay>{children}</CardDesktopOverlay>
   );
 };
 
