@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { motion, useAnimationControls } from 'framer-motion';
 
-import { HEART_SPRING } from '@/constants/motion';
+import { HEART_PULSE } from '@/constants/motion';
 import { cn } from '@/lib/utils';
 
 import { Button } from './Button';
@@ -21,15 +21,23 @@ const HeartButton = (props: HeartButtonProps) => {
   const { t } = useTranslation();
   const [burstKey, setBurstKey] = useState(0);
   const wasFilledRef = useRef(isFilled);
+  const pulseControls = useAnimationControls();
 
-  // Efekt odpala sie wylacznie przy przejsciu z nieulubionego na ulubione,
-  // dzieki czemu miejsca uzycia przycisku pozostaja nietkniete.
+  // Puls sterowany imperatywnie, a nie przez `animate` z tablica klatek.
+  // Deklaratywna wersja odtwarzalaby animacje przy montowaniu, przez co kazde
+  // serce w galerii pulsowaloby po wejsciu na strone.
+  // Efekt odpala sie wylacznie przy zmianie stanu, dzieki czemu miejsca uzycia
+  // przycisku pozostaja nietkniete.
   useEffect(() => {
-    if (isFilled && !wasFilledRef.current) {
+    if (isFilled === wasFilledRef.current) return;
+    wasFilledRef.current = isFilled;
+
+    if (isFilled) {
       setBurstKey((previous) => previous + 1);
     }
-    wasFilledRef.current = isFilled;
-  }, [isFilled]);
+
+    pulseControls.start({ scale: isFilled ? [1, 1.35, 1] : [1, 0.9, 1] });
+  }, [isFilled, pulseControls]);
 
   return (
     <Button
@@ -42,8 +50,8 @@ const HeartButton = (props: HeartButtonProps) => {
       <HeartBurst burstKey={burstKey} />
       <motion.span
         className={'block'}
-        animate={{ scale: isFilled ? [1, 1.35, 1] : [1, 0.9, 1] }}
-        transition={HEART_SPRING}
+        animate={pulseControls}
+        transition={HEART_PULSE}
       >
         <Icon
           size={iconSize}

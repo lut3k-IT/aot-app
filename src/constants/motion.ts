@@ -10,12 +10,16 @@ export const MOTION_DURATION = {
 /** Standardowa krzywa wyjścia. Ruch startuje szybko i wyhamowuje. */
 export const MOTION_EASE = [0.16, 1, 0.3, 1] as const;
 
-/** Sprężystość zarezerwowana dla animacji serca. */
-export const HEART_SPRING: Transition = {
-  type: 'spring',
-  stiffness: 500,
-  damping: 15,
-  mass: 0.5
+/**
+ * Puls serca — trzy klatki: stan spoczynku, wychylenie, powrót.
+ * Celowo tween, nie sprężyna: framer-motion obsługuje sprężynę wyłącznie dla dwóch
+ * klatek i przy dłuższej sekwencji przerywa animację błędem w konsoli.
+ * `times` przesuwa szczyt na wczesną fazę, co daje odczucie sprężystego odbicia.
+ */
+export const HEART_PULSE: Transition = {
+  duration: 0.35,
+  ease: MOTION_EASE,
+  times: [0, 0.4, 1]
 };
 
 /** Maksymalna liczba elementów objętych kaskadą — dalsze pojawiają się bez narastającego opóźnienia. */
