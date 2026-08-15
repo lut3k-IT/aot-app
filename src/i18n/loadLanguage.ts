@@ -21,6 +21,26 @@ const BUNDLED_LANGUAGES: string[] = [LanguageShortName.POLISH, LanguageShortName
 
 const loadedLanguages = new Set<string>(BUNDLED_LANGUAGES);
 
+/**
+ * Lokalizacje dayjs jako jawna mapa importow — po jednym na obslugiwany jezyk.
+ * Sciezka budowana ze zmiennej (`dayjs/locale/${x}.js`) kazalaby webpackowi zbudowac
+ * kontekst nad wszystkimi ~140 plikami lokalizacji dayjs. W trybie dev tak rozdmuchana
+ * kompilacja potrafi przekroczyc limit czasu ladowania chunka i wywalic ChunkLoadError.
+ * Statyczne specyfikatory daja dokladnie tyle malych chunkow, ile mamy jezykow.
+ */
+const DAYJS_LOCALE_LOADERS: Record<string, () => Promise<unknown>> = {
+  [LanguageShortName.SPANISH]: () => import('dayjs/locale/es'),
+  [LanguageShortName.PORTUGUESE]: () => import('dayjs/locale/pt-br'),
+  [LanguageShortName.GERMAN]: () => import('dayjs/locale/de'),
+  [LanguageShortName.FRENCH]: () => import('dayjs/locale/fr'),
+  [LanguageShortName.ITALIAN]: () => import('dayjs/locale/it'),
+  [LanguageShortName.RUSSIAN]: () => import('dayjs/locale/ru'),
+  [LanguageShortName.JAPANESE]: () => import('dayjs/locale/ja'),
+  [LanguageShortName.CHINESE]: () => import('dayjs/locale/zh-cn'),
+  [LanguageShortName.KOREAN]: () => import('dayjs/locale/ko'),
+  [LanguageShortName.TURKISH]: () => import('dayjs/locale/tr')
+};
+
 /** Kody lokalizacji dayjs rozniace sie od kodow jezykow aplikacji. */
 const DAYJS_LOCALES: Record<string, string> = {
   [LanguageShortName.PORTUGUESE]: 'pt-br',
@@ -30,11 +50,16 @@ const DAYJS_LOCALES: Record<string, string> = {
 export const isLazyLanguage = (language: string) => !BUNDLED_LANGUAGES.includes(language);
 
 const loadDayjsLocale = async (language: string) => {
-  const locale = DAYJS_LOCALES[language] || language;
+  const loadLocale = DAYJS_LOCALE_LOADERS[language];
+
+  if (!loadLocale) {
+    dayjs.locale('en');
+    return;
+  }
 
   try {
-    await import(`dayjs/locale/${locale}.js`);
-    dayjs.locale(locale);
+    await loadLocale();
+    dayjs.locale(DAYJS_LOCALES[language] || language);
   } catch {
     // Brak lokalizacji dayjs nie moze blokowac zmiany jezyka interfejsu.
     dayjs.locale('en');
