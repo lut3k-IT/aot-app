@@ -9,40 +9,23 @@ export const AboutSection = () => {
   const { t } = useTranslation('landing');
 
   return (
-    <section className='relative w-full overflow-hidden bg-zinc-950 py-24'>
-      <div className='absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-zinc-800 to-transparent' />
-
-      <div className='container relative z-10 mx-auto px-4 md:px-6'>
-        <div className='grid gap-12 lg:grid-cols-2 lg:gap-8'>
-          <div className='flex flex-col justify-center space-y-6'>
-            <h2 className='bg-gradient-to-r from-white to-zinc-400 bg-clip-text pb-2 text-3xl font-bold leading-tight tracking-tight text-transparent sm:text-4xl md:text-5xl'>
-              {t('about.title')}
-            </h2>
-            <p className='max-w-[600px] text-zinc-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
-              {t('about.description1')}
-            </p>
-            <p className='max-w-[600px] text-zinc-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
-              {t('about.description2')}
-            </p>
-            <div className='flex flex-col gap-2 min-[400px]:flex-row'>
-              <Link href='/app/about'>
-                <Button
-                  variant='outline'
-                  className='border-zinc-700 bg-transparent text-white hover:bg-zinc-800'
-                >
-                  {t('about.moreAboutProject')}
-                </Button>
-              </Link>
-            </div>
-          </div>
-          <div className='flex items-center justify-center'>
-            <div className='relative h-[400px] w-full max-w-[500px] overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/50 p-2'>
-              <div className='absolute inset-0 bg-gradient-to-br from-red-500/10 via-transparent to-orange-500/10' />
-              <div className='flex h-full w-full items-center justify-center'>
-                <span className='text-9xl opacity-20'>⚔️</span>
-              </div>
-            </div>
-          </div>
+    <section
+      id='about'
+      className='scroll-mt-12 border-t border-zinc-900 py-24 md:py-32'
+    >
+      <div className='mx-auto grid max-w-5xl gap-8 px-6 md:px-10 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:gap-16'>
+        <h2 className='text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl'>{t('about.title')}</h2>
+        <div className='flex flex-col items-start gap-6'>
+          <p className='text-lg leading-relaxed text-zinc-300'>{t('about.description1')}</p>
+          <p className='text-lg leading-relaxed text-zinc-400'>{t('about.description2')}</p>
+          <Link href='/app/about'>
+            <Button
+              variant='outline'
+              className='border-zinc-700 bg-transparent text-white hover:border-zinc-600 hover:bg-zinc-900 hover:text-white'
+            >
+              {t('about.moreAboutProject')}
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

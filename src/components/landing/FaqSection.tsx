@@ -27,29 +27,32 @@ export const FaqSection = () => {
   const { t } = useTranslation('landing');
 
   return (
-    <section className='container mx-auto max-w-4xl px-4 py-24 md:px-6'>
-      <div className='mb-12 text-center'>
-        <h2 className='mb-4 text-3xl font-bold tracking-tight text-white sm:text-4xl'>{t('faq.title')}</h2>
-        <p className='text-zinc-400'>{t('faq.description')}</p>
+    <section className='border-t border-zinc-900 py-24 md:py-32'>
+      <div className='mx-auto max-w-5xl px-6 md:px-10'>
+        <h2 className='text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl'>{t('faq.title')}</h2>
+        <p className='mt-4 max-w-2xl text-lg leading-relaxed text-zinc-400'>{t('faq.description')}</p>
+
+        <Accordion
+          type='single'
+          collapsible
+          className='mt-12 max-w-3xl'
+        >
+          {faqItems.map((item) => (
+            <AccordionItem
+              key={item.question}
+              value={item.question}
+              className='border-zinc-900'
+            >
+              <AccordionTrigger className='py-5 text-left text-lg font-medium text-white transition-colors hover:text-red-500 hover:no-underline'>
+                {t(item.question)}
+              </AccordionTrigger>
+              <AccordionContent className='max-w-2xl text-base leading-relaxed text-zinc-400'>
+                {t(item.answer)}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
-      <Accordion
-        type='single'
-        collapsible
-        className='w-full'
-      >
-        {faqItems.map((item, index) => (
-          <AccordionItem
-            key={index}
-            value={`item-${index}`}
-            className='border-zinc-800'
-          >
-            <AccordionTrigger className='text-lg font-medium text-white hover:text-red-500 hover:no-underline'>
-              {t(item.question)}
-            </AccordionTrigger>
-            <AccordionContent className='text-zinc-400'>{t(item.answer)}</AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
     </section>
   );
 };
