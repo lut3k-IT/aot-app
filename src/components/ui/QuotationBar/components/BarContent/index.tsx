@@ -24,8 +24,8 @@ const BarContent = (props: BarContentProps) => {
         href={`${RoutePath.QUOTATION_DETAILS}/${currentQuotation.id}`}
         className={'focus-visible-styles relative line-clamp-1 w-full overflow-hidden'}
       >
-        <div className={'absolute left-0 top-0 z-10 h-full w-2 bg-gradient-to-r from-card'} />
-        <div className={'absolute right-0 top-0 z-10 h-full w-2 bg-gradient-to-l from-card'} />
+        <div className={'absolute left-0 top-0 z-10 h-full w-2 bg-linear-to-r from-card'} />
+        <div className={'absolute right-0 top-0 z-10 h-full w-2 bg-linear-to-l from-card'} />
         <div
           ref={textRef}
           key={currentQuotation.id}

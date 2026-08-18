@@ -31,7 +31,7 @@ const TitanProfileHeader = ({ titan, mbtiGroupName, isFavorite, onToggleFavorite
       transition={{ duration: 0.45 }}
     >
       {/* Full-width cover banner */}
-      <div className={cn('relative h-52 w-full rounded-lg bg-gradient-to-b to-transparent', colors.gradient)}>
+      <div className={cn('relative h-52 w-full rounded-lg bg-linear-to-b to-transparent', colors.gradient)}>
         <div className={'absolute left-3 top-3 z-10'}>
           <ButtonGoBack
             fallbackRoute={RoutePath.TITANS}
@@ -41,7 +41,7 @@ const TitanProfileHeader = ({ titan, mbtiGroupName, isFavorite, onToggleFavorite
       </div>
 
       {/* Avatar + name — avatar overlaps the cover */}
-      <div className={'flex flex-col items-center -mt-[150px]'}>
+      <div className={'flex flex-col items-center mt-[-150px]'}>
         <CharacterPicture
           imgSource={`/assets/img/titans/${titan.slug}.jpg`}
           alt={`${titan.name} - Attack on Titan ${t('common:brand')}`}

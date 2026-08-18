@@ -17,7 +17,7 @@ const DetailsTile = (props: DetailsTileProps) => {
     <div
       className={classNames('flex-center flex flex-col gap-2 rounded-md bg-muted p-4', {
         [`col-span-${span}`]: span,
-        '!p-2': isMobile
+        'p-2!': isMobile
       })}
     >
       <div className={'text-center font-bold text-muted-foreground'}>{title}</div>

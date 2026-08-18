@@ -42,7 +42,7 @@ const MovingPanel = (props: MovingPanelProps) => {
           className={classNames(
             'h-body-start w-full bg-background',
             {
-              '!h-12': isLandscape
+              'h-12!': isLandscape
             },
             classNameSpacer
           )}

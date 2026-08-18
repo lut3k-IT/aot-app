@@ -131,7 +131,7 @@ const CharacterNote = ({ entity, id }: CharacterNoteProps) => {
             </>
           ) : note ? (
             <>
-              <p className={'whitespace-pre-wrap break-words text-sm'}>{note.text}</p>
+              <p className={'whitespace-pre-wrap wrap-break-word text-sm'}>{note.text}</p>
               <p className={'text-xs text-muted-foreground'}>
                 {t('common:notes.updatedAt', { date: dayjs(note.updatedAt).format('DD.MM.YYYY') })}
               </p>

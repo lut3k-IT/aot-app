@@ -35,7 +35,7 @@ const SortControl = ({
         value={sortBy}
         onValueChange={onSortByChange}
       >
-        <SelectTrigger className='h-9 w-[9rem] font-medium'>
+        <SelectTrigger className='h-9 w-36 font-medium'>
           <SelectValue placeholder={t('common:filter.sortBy')} />
         </SelectTrigger>
         <SelectContent>

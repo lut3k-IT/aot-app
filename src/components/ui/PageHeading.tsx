@@ -21,7 +21,7 @@ const PageHeading = (props: PageHeadingProps) => {
       className={classNames(
         'sticky mb-2 flex flex-col gap-3 bg-background py-2 md:flex-row md:items-center md:justify-between md:py-4',
         {
-          '!gap-1 !py-1': isLandscape
+          'gap-1! py-1!': isLandscape
         },
         className
       )}

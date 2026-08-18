@@ -145,7 +145,7 @@ const Result: React.FC<ResultProps> = ({ score, total, bestScore, onRestart }) =
 
       <div className='grid w-full max-w-md grid-cols-2 gap-4'>
         <motion.div
-          className='rounded-xl bg-muted/50 p-4 shadow-sm'
+          className='rounded-xl bg-muted/50 p-4 shadow-xs'
           initial={{ x: -20, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: 0.7 }}
@@ -160,7 +160,7 @@ const Result: React.FC<ResultProps> = ({ score, total, bestScore, onRestart }) =
         </motion.div>
 
         <motion.div
-          className='rounded-xl bg-muted/50 p-4 shadow-sm'
+          className='rounded-xl bg-muted/50 p-4 shadow-xs'
           initial={{ x: 20, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: 0.8 }}

@@ -22,7 +22,7 @@ const DetailItem = (props: DetailItemProps) => {
       })}
     >
       <div className={'text-base font-bold leading-none text-muted-foreground'}>{title}</div>
-      <div className={'break-words text-center text-lg leading-6'}>{value || '-'}</div>
+      <div className={'wrap-break-word text-center text-lg leading-6'}>{value || '-'}</div>
     </div>
   );
 };

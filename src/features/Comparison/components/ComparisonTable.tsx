@@ -129,7 +129,7 @@ const ComparisonTable = ({ heroes, isHighlightDifferences, onRemoveHero }: Compa
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
             transition={{ delay: index * 0.05 }}
-            className='comparison-card relative flex w-52 flex-shrink-0 flex-col rounded-lg border bg-card p-4'
+            className='comparison-card relative flex w-52 shrink-0 flex-col rounded-lg border bg-card p-4'
           >
             <Button
               variant='ghost'

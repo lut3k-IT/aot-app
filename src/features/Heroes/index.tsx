@@ -85,8 +85,8 @@ const Heroes = () => {
   return (
     <>
       <MovingPanel
-        translateClassName={classNames('-translate-y-[3.5rem]', {
-          '!-translate-y-[3rem]': isLandscape
+        translateClassName={classNames('-translate-y-14', {
+          '-translate-y-12!': isLandscape
         })}
       >
         <Tabs
@@ -94,7 +94,7 @@ const Heroes = () => {
           onValueChange={handleTabChange}
           className={classNames('w-full pt-4', {
             'md:pt-0': !isMobileLandscape,
-            '!pt-2': isLandscape
+            'pt-2!': isLandscape
           })}
         >
           <TabsList className='flex w-full justify-between'>

@@ -1,9 +1,12 @@
 {
-  "plugins": ["prettier-plugin-tailwindcss"],
+  "plugins": [
+    "prettier-plugin-tailwindcss"
+  ],
   "jsxSingleQuote": true,
   "singleQuote": true,
   "trailingComma": "none",
   "arrowParens": "always",
   "singleAttributePerLine": true,
-  "printWidth": 120
+  "printWidth": 120,
+  "tailwindStylesheet": "./src/index.css"
 }

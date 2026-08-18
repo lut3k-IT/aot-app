@@ -30,7 +30,7 @@ const MobileOverlay = ({ children }: PageOverlayProps) => {
       <QuotationBar />
       <main
         id='inner'
-        className={classNames('[&>*]:px-4', {
+        className={classNames('*:px-4', {
           'pb-body-pad-end': isMobile && !isLandscape,
           'pb-4': isMobileLandscape
         })}
@@ -57,10 +57,10 @@ const DesktopOverlay = ({ children }: PageOverlayProps) => {
   return (
     <div className={'mx-auto w-full max-w-[100rem] px-8'}>
       <div className={'grid grid-cols-[15rem_1fr] gap-10'}>
-        <div className={'sticky top-0 h-[100svh] py-page-desktop'}>
+        <div className={'sticky top-0 h-svh py-page-desktop'}>
           <SidebarDesktop />
         </div>
-        <div className={'flex min-h-[100svh] min-w-0 flex-col pb-page-desktop'}>
+        <div className={'flex min-h-svh min-w-0 flex-col pb-page-desktop'}>
           <div className={'pb-4 pt-page-desktop'}>
             <QuotationBar />
           </div>
