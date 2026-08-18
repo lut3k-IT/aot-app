@@ -1,9 +1,11 @@
 export type { ActiveFilter } from './FilterChips';
 export { default as FilterChips } from './FilterChips';
 export { default as FilterChipToggle } from './FilterChipToggle';
+export { default as FilterIconToggle } from './FilterIconToggle';
 export { default as FilterPanel } from './FilterPanel';
 export { default as FilterSection } from './FilterSection';
 export { default as FilterSheet } from './FilterSheet';
+export { default as FilterToggle } from './FilterToggle';
 export { default as RangeFilter } from './RangeFilter';
 export { default as SearchInput } from './SearchInput';
 export { default as SortControl } from './SortControl';

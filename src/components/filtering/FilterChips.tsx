@@ -28,7 +28,7 @@ const FilterChips = ({ activeFilters, onClearAll, className }: FilterChipsProps)
 
   return (
     <div className={cn('flex flex-wrap items-center gap-1.5 col-span-full', className)}>
-      {/* Klucz jest na elemencie opakowujacym — AnimatePresence potrzebuje go na swoim bezposrednim dziecku. */}
+      {/* Klucz jest na elemencie opakowującym, bo AnimatePresence potrzebuje go na swoim bezpośrednim dziecku. */}
       <AnimatePresence initial={false}>
         {activeFilters.map((filter) => (
           <motion.div

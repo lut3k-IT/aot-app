@@ -5,8 +5,7 @@ import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import { Heart } from 'lucide-react';
 
-import { ActiveFilter, FilterChips, SearchInput, useFilterParams } from '@/components/filtering';
-import { Switch } from '@/components/ui/Switch';
+import { ActiveFilter, FilterChips, FilterToggle, SearchInput, useFilterParams } from '@/components/filtering';
 import { ElementsIds, Param } from '@/constants/enums';
 import { getBooleanParam } from '@/utils/paramsHelpers';
 
@@ -65,24 +64,18 @@ const QuotationFilterBar = () => {
   }, [clearAll, allFilterParams]);
 
   const topBar = (
-    <div className='flex items-center gap-2'>
-      <div
-        className='flex items-center gap-1.5'
-        aria-label={t('common:filter.showOnlyFavorites')}
-      >
-        <Heart
-          className='h-5 w-5 text-foreground'
-        />
-        <Switch
-          checked={hasOnlyFavorites}
-          onCheckedChange={handleToggleFavorites}
-        />
-      </div>
+    <div className='flex items-center justify-end gap-2'>
+      <FilterToggle
+        icon={Heart}
+        isChecked={hasOnlyFavorites}
+        onCheckedChange={handleToggleFavorites}
+        label={t('common:filter.showOnlyFavorites')}
+      />
       <SearchInput
         value={search}
         onSearch={handleSearch}
         placeholder={t('common:filter.searchQuotationsPlaceholder')}
-        className='min-w-0 flex-1 md:w-56 md:flex-none'
+        className='min-w-0 flex-1 @4xl/bar:max-w-64'
       />
     </div>
   );

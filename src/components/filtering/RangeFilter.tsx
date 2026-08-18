@@ -74,7 +74,7 @@ const RangeFilter = ({ label, unit, min, max, currentRange, defaultRange, onComm
             onChange={handleMinChange}
             aria-label={`${label} (${t('common:range.min')})`}
           />
-          <span className='text-xs text-muted-foreground'>—</span>
+          <span className='text-xs text-muted-foreground'>–</span>
           <Input
             type='number'
             className='h-7 w-12 px-1.5 text-center text-xs'
