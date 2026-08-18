@@ -18,7 +18,7 @@ const SidebarMobile = () => {
   const isLandscape = useIsLandscape();
 
   const handleClick = () => {
-    buttonRef.current && buttonRef.current.click();
+    buttonRef.current?.click();
   };
 
   return (

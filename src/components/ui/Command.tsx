@@ -18,7 +18,7 @@ const Command = ({ className, ref, ...props }: React.ComponentProps<typeof Comma
 );
 Command.displayName = CommandPrimitive.displayName;
 
-interface CommandDialogProps extends DialogProps {}
+type CommandDialogProps = DialogProps;
 
 const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
   return (
@@ -35,7 +35,7 @@ const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
 const CommandInput = ({ className, ref, ...props }: React.ComponentProps<typeof CommandPrimitive.Input>) => (
   <div
     className='flex items-center border-b px-3'
-    // eslint-disable-next-line react/no-unknown-property
+
     cmdk-input-wrapper=''
   >
     <Search className='mr-2 h-4 w-4 shrink-0 opacity-50' />
