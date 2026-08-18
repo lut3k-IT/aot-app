@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.13.0](https://github.com/lut3k-IT/aot-app/compare/v0.12.0...v0.13.0) (2026-08-18)
+
+
+### Features
+
+* **deps:** migrate to Tailwind CSS 4 ([3693452](https://github.com/lut3k-IT/aot-app/commit/3693452a1a220126034f8d641509934556cfe1f9))
+* **deps:** Next 16 and ESLint 9 on flat config ([eb2e6d9](https://github.com/lut3k-IT/aot-app/commit/eb2e6d9f748dba709a5c96259273378c9aa975d3))
+
+
+### Bug Fixes
+
+* **filters:** keep the filter bar on a single row ([788a082](https://github.com/lut3k-IT/aot-app/commit/788a082454ad033dd72829a2fc6643918ad5f0ae))
+* **ui:** restore pointer cursor and background quote mark ([5d2e121](https://github.com/lut3k-IT/aot-app/commit/5d2e1212e113f18e6321124a695fe9a922c71405))
+
 ## [0.12.0](https://github.com/lut3k-IT/aot-app/compare/v0.11.0...v0.12.0) (2026-08-16)
 
 
