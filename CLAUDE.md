@@ -82,3 +82,28 @@ Sorted by `simple-import-sort` plugin. Order: node builtins → react/third-part
 - `@typescript-eslint/no-explicit-any`: error
 - SVGs imported as React components via `@svgr/webpack`
 - PWA enabled in production (disabled in dev)
+
+### Commit Messages
+
+Conventional Commits, **written in English** — subject and body alike.
+
+This is not cosmetic. `release-please` builds `CHANGELOG.md` straight from commit
+subjects, and that changelog is rendered to users at `/app/changelog`. A Polish
+subject line ends up verbatim in the public changelog and breaks its consistency
+(this happened in 0.12.0 and had to be translated by hand afterwards).
+
+Keep the subject under ~72 characters and scope it (`fix(filters): ...`).
+Only `feat` and `fix` reach the changelog; `chore`, `docs`, `refactor` and `test`
+stay out of it.
+
+## Releases
+
+`release-please` runs on every push to `main` (`.github/workflows/release.yml`).
+It opens a release PR that bumps `package.json` and prepends a `CHANGELOG.md`
+section; merging that PR creates the tag and the GitHub release.
+
+So: merge `dev` into `main`, then merge the release PR that shows up.
+Never edit the version in `package.json` by hand.
+
+`CHANGELOG.md` in the repository root is the single source of truth — the changelog
+page reads that file directly.

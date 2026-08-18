@@ -5,26 +5,26 @@
 
 ### Features
 
-* **favorites:** animacja dodania do ulubionych w calej aplikacji ([27ce05e](https://github.com/lut3k-IT/aot-app/commit/27ce05e9423adcf0b692fb73e2deb5bd9f4bf6eb))
-* **i18n:** dwanascie jezykow i dociaganie tlumaczen na zadanie ([d66bbec](https://github.com/lut3k-IT/aot-app/commit/d66bbecf91d7c88dc58af4eb3065c16de6d5a920))
-* **i18n:** tlumaczenie hiszpanskie i portugalskie ([3c5efc3](https://github.com/lut3k-IT/aot-app/commit/3c5efc329fa1d776330d1dd0d319dede2e3cb5c7))
-* **landing:** przebudowa strony startowej na uklad tekstowy ([2a9945e](https://github.com/lut3k-IT/aot-app/commit/2a9945e200de2985e1e020a6fd043ac46ab7ff65))
-* **layout:** cztery przelaczalne warianty ukladu do oceny na dev ([5321115](https://github.com/lut3k-IT/aot-app/commit/532111546048a5031c6d62f800e608beb44ecefc))
-* **layout:** otwarta strona jako staly uklad desktopowy ([c79859f](https://github.com/lut3k-IT/aot-app/commit/c79859f523bd4ea8f20d0ed3ad623103f1b941a0))
-* **motion:** spojne animacje galerii, zakladek i chipow filtrow ([0d59064](https://github.com/lut3k-IT/aot-app/commit/0d590649783c84e4fc0e1f00012f283422bb63c5))
-* **motion:** wspolny slownik ruchu i poszanowanie redukcji animacji ([80a85de](https://github.com/lut3k-IT/aot-app/commit/80a85de51dd67764c7267c047860cf6ec493ce0e))
-* **notes:** karta notatki na stronach bohatera i tytana ([633fc1e](https://github.com/lut3k-IT/aot-app/commit/633fc1ef87b03821a830a28ea6a670073b0c7dc7))
-* **notes:** stan notatek i zapis w pamieci przegladarki ([16825e4](https://github.com/lut3k-IT/aot-app/commit/16825e48cc8bb1f31b9daa8a579a0112df7e5061))
-* **notes:** znacznik notatki na kartach i filtr z notatkami ([959b0af](https://github.com/lut3k-IT/aot-app/commit/959b0af723e0fe2566b390609120665c9da4ac04))
-* **spoilers:** ukrywanie pseudonimow w trybie ukrywania spoilerow ([f05a4ac](https://github.com/lut3k-IT/aot-app/commit/f05a4ac425f64d06ebf444f7cab7fbcce065921d))
+* **favorites:** add-to-favourites animation across the app ([27ce05e](https://github.com/lut3k-IT/aot-app/commit/27ce05e9423adcf0b692fb73e2deb5bd9f4bf6eb))
+* **i18n:** twelve languages with translations fetched on demand ([d66bbec](https://github.com/lut3k-IT/aot-app/commit/d66bbecf91d7c88dc58af4eb3065c16de6d5a920))
+* **i18n:** Spanish and Portuguese translations ([3c5efc3](https://github.com/lut3k-IT/aot-app/commit/3c5efc329fa1d776330d1dd0d319dede2e3cb5c7))
+* **landing:** rebuild the landing page around a text layout ([2a9945e](https://github.com/lut3k-IT/aot-app/commit/2a9945e200de2985e1e020a6fd043ac46ab7ff65))
+* **layout:** four switchable layout variants for review on dev ([5321115](https://github.com/lut3k-IT/aot-app/commit/532111546048a5031c6d62f800e608beb44ecefc))
+* **layout:** open page as the permanent desktop layout ([c79859f](https://github.com/lut3k-IT/aot-app/commit/c79859f523bd4ea8f20d0ed3ad623103f1b941a0))
+* **motion:** consistent gallery, tab and filter chip animations ([0d59064](https://github.com/lut3k-IT/aot-app/commit/0d590649783c84e4fc0e1f00012f283422bb63c5))
+* **motion:** shared motion vocabulary and respect for reduced motion ([80a85de](https://github.com/lut3k-IT/aot-app/commit/80a85de51dd67764c7267c047860cf6ec493ce0e))
+* **notes:** note card on character and titan pages ([633fc1e](https://github.com/lut3k-IT/aot-app/commit/633fc1ef87b03821a830a28ea6a670073b0c7dc7))
+* **notes:** note state persisted to browser storage ([16825e4](https://github.com/lut3k-IT/aot-app/commit/16825e48cc8bb1f31b9daa8a579a0112df7e5061))
+* **notes:** note marker on cards and a notes filter ([959b0af](https://github.com/lut3k-IT/aot-app/commit/959b0af723e0fe2566b390609120665c9da4ac04))
+* **spoilers:** hide aliases in spoiler-free mode ([f05a4ac](https://github.com/lut3k-IT/aot-app/commit/f05a4ac425f64d06ebf444f7cab7fbcce065921d))
 
 
 ### Bug Fixes
 
-* **a11y:** konfigurowalny poziom naglowka karty ([cd10053](https://github.com/lut3k-IT/aot-app/commit/cd10053e8ba2789b17d17f715ff1af0666a2df51))
-* **i18n:** jawna mapa lokalizacji dayjs zamiast dynamicznej sciezki ([f070341](https://github.com/lut3k-IT/aot-app/commit/f070341fb6cd9a48ed58c77670c143f1ff74425f))
-* **motion:** puls serca bez sprezyny i bez odtwarzania przy montowaniu ([9091e7e](https://github.com/lut3k-IT/aot-app/commit/9091e7e59d2b3b50ce4e8bf6b38e6f20eb530248))
-* **quiz:** zmiana jezyka nie resetuje odpowiedzi i nie dolicza punktu ([335f22b](https://github.com/lut3k-IT/aot-app/commit/335f22b76e77785083de0560a7e243fdbee7d7ea))
+* **a11y:** configurable card heading level ([cd10053](https://github.com/lut3k-IT/aot-app/commit/cd10053e8ba2789b17d17f715ff1af0666a2df51))
+* **i18n:** explicit dayjs locale map instead of a dynamic path ([f070341](https://github.com/lut3k-IT/aot-app/commit/f070341fb6cd9a48ed58c77670c143f1ff74425f))
+* **motion:** heart pulse without spring and without replaying on mount ([9091e7e](https://github.com/lut3k-IT/aot-app/commit/9091e7e59d2b3b50ce4e8bf6b38e6f20eb530248))
+* **quiz:** changing language no longer resets answers or awards a point ([335f22b](https://github.com/lut3k-IT/aot-app/commit/335f22b76e77785083de0560a7e243fdbee7d7ea))
 
 ## [0.11.0](https://github.com/lut3k-IT/aot-app/compare/v0.10.0...v0.11.0) (2026-03-15)
 
