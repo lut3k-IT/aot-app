@@ -1,6 +1,219 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin 'tailwindcss-animate';
+
+@custom-variant dark (&:is(.dark *));
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+
+/*
+  `inline` jest tu kluczowe. Bez niego Tailwind wypuszcza `--color-background: hsl(var(--background))`
+  jako zmienną na `:root`, a przeglądarka podstawia `var(--background)` już w momencie deklaracji,
+  czyli zawsze wartością z motywu jasnego. Nadpisanie w `.dark` nie miałoby wtedy żadnego skutku.
+  Z `inline` wartość ląduje wprost w klasie (`background-color: hsl(var(--background))`) i rozwiązuje
+  się dopiero na elemencie, więc tryb ciemny działa tak jak w Tailwind 3.
+*/
+@theme inline {
+  --breakpoint-*: initial;
+  --breakpoint-sm: 425px;
+  --breakpoint-2sm: 560px;
+  --breakpoint-md: 768px;
+  --breakpoint-2md: 834px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-2lg: 1280px;
+  --breakpoint-xl: 1440px;
+  --breakpoint-2xl: 2560px;
+
+  --font-vector: Vector, sans-serif;
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-subtle: hsl(var(--subtle));
+  --color-subtle-foreground: hsl(var(--subtle-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-success: hsl(var(--success));
+  --color-success-foreground: hsl(var(--success-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --spacing-page-mobile: 1rem;
+  --spacing-page-desktop: 1.5rem;
+  --spacing-body-start: 5.25rem;
+  --spacing-body-pad-start: 6.375rem;
+  --spacing-body-end: 4rem;
+  --spacing-body-pad-end: 5rem;
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 4px);
+  --radius-sm: calc(var(--radius) - 8px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  --shadow-panel-bottom-bg: 0px 0px 6px 6px hsl(var(--background));
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility h-input {
+  @apply h-10;
+}
+
+@utility min-touch-target-wrapper {
+  @apply flex-center;
+  min-width: 2rem;
+  min-height: 2rem;
+}
+
+@utility scroll-area {
+  @apply -mx-2 -mr-4 h-full pr-2;
+}
+
+@utility details-tiles-wrapper {
+  @apply mt-8 grid grid-cols-[repeat(auto-fill,minmax(10rem,1fr))] gap-4;
+}
+
+@utility details-profile-wrapper {
+  @apply relative mt-6 flex flex-col items-center;
+}
+
+@utility details-character-name {
+  @apply mt-2 w-full text-center text-2xl font-medium;
+}
+
+@utility article {
+  @apply mx-auto max-w-3xl p-6;
+
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    @apply mb-4 scroll-m-20 tracking-tight text-foreground;
+  }
+
+  & h1 {
+    @apply mb-8 text-4xl font-bold lg:text-5xl;
+  }
+
+  & h2 {
+    @apply mb-4 mt-10 border-b pb-2 text-3xl font-semibold first:mt-0;
+  }
+
+  & h3 {
+    @apply mb-4 mt-8 text-2xl font-semibold;
+  }
+
+  & h4 {
+    @apply mb-4 mt-6 text-xl font-semibold;
+  }
+
+  & p {
+    @apply mb-6 leading-7 not-first:mt-6;
+  }
+
+  & ul {
+    @apply my-6 ml-6 list-disc [&>li]:mt-2;
+  }
+
+  & ol {
+    @apply my-6 ml-6 list-decimal [&>li]:mt-2;
+  }
+
+  & blockquote {
+    @apply mt-6 border-l-2 border-primary pl-6 italic;
+  }
+
+  & a {
+    @apply font-medium underline underline-offset-4 transition-colors hover:text-primary;
+  }
+
+  & code {
+    @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
+  }
+}
+
+@utility flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@utility h-body-no-scroll {
+  height: calc(100vh - 80px);
+}
+
+@utility w-screen-pad {
+  width: calc(100vw - 32px);
+}
+
+@utility w-screen-pad-lg {
+  width: calc(100vw - 64px);
+}
+
+@utility focus-visible-styles {
+  @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+}
 
 @layer base {
   :root {
@@ -67,13 +280,15 @@
   }
 }
 
-@font-face {
-  font-family: 'Vector';
-  src:
-    url('/fonts/vector_regular_otf-webfont.woff2') format('woff2'),
-    url('/fonts/vector_regular_otf-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+@layer utilities {
+  @font-face {
+    font-family: 'Vector';
+    src:
+      url('/fonts/vector_regular_otf-webfont.woff2') format('woff2'),
+      url('/fonts/vector_regular_otf-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
 }
 
 @layer base {
@@ -109,112 +324,31 @@
   a:hover {
     @apply cursor-pointer;
   }
-}
 
-@layer components {
-  .h-input {
-    @apply h-10;
-  }
+  /*
+    Tailwind 3 ustawiał `cursor: pointer` na każdym przycisku w swoim resecie, Tailwind 4
+    już tego nie robi (przyjmuje kursor domyślny, zgodnie z zachowaniem natywnych kontrolek).
+    Po migracji zniknęła więc łapka z quizu, serduszek, przycisku filtrów i wszystkiego
+    innego, co jest przyciskiem.
 
-  .min-touch-target-wrapper {
-    @apply flex-center;
-    min-width: 2rem;
-    min-height: 2rem;
-  }
-
-  .scroll-area {
-    @apply -mx-2 -mr-4 h-full pr-2;
-  }
-
-  .details-tiles-wrapper {
-    @apply mt-8 grid grid-cols-[repeat(auto-fill,_minmax(10rem,_1fr))] gap-4;
-  }
-
-  .details-profile-wrapper {
-    @apply relative mt-6 flex flex-col items-center;
-  }
-
-  .details-character-name {
-    @apply mt-2 w-full text-center text-2xl font-medium;
-  }
-
-  .article {
-    @apply mx-auto max-w-3xl p-6;
-
-    & h1,
-    & h2,
-    & h3,
-    & h4,
-    & h5,
-    & h6 {
-      @apply mb-4 scroll-m-20 tracking-tight text-foreground;
-    }
-
-    & h1 {
-      @apply mb-8 text-4xl font-bold lg:text-5xl;
-    }
-
-    & h2 {
-      @apply mb-4 mt-10 border-b pb-2 text-3xl font-semibold first:mt-0;
-    }
-
-    & h3 {
-      @apply mb-4 mt-8 text-2xl font-semibold;
-    }
-
-    & h4 {
-      @apply mb-4 mt-6 text-xl font-semibold;
-    }
-
-    & p {
-      @apply mb-6 leading-7 [&:not(:first-child)]:mt-6;
-    }
-
-    & ul {
-      @apply my-6 ml-6 list-disc [&>li]:mt-2;
-    }
-
-    & ol {
-      @apply my-6 ml-6 list-decimal [&>li]:mt-2;
-    }
-
-    & blockquote {
-      @apply mt-6 border-l-2 border-primary pl-6 italic;
-    }
-
-    & a {
-      @apply font-medium underline underline-offset-4 transition-colors hover:text-primary;
-    }
-
-    & code {
-      @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
-    }
+    Ta reguła przywraca dawne zachowanie raz, dla całej aplikacji. Nowy przycisk dostaje
+    ją automatycznie, więc nie trzeba o niej pamiętać przy każdym komponencie.
+    `:not(:disabled)` zostawia nieaktywnym kontrolkom kursor domyślny, bo łapka na czymś,
+    czego nie da się kliknąć, myli.
+  */
+  button:not(:disabled),
+  [role='button']:not(:disabled),
+  [role='switch']:not(:disabled),
+  [role='tab']:not(:disabled),
+  [role='option']:not([aria-disabled='true']),
+  label:has(> input[type='checkbox']:not(:disabled)),
+  label:has(> input[type='radio']:not(:disabled)),
+  summary {
+    @apply cursor-pointer;
   }
 }
 
 @layer utilities {
-  .flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .h-body-no-scroll {
-    height: calc(100vh - 80px);
-  }
-
-  .w-screen-pad {
-    width: calc(100vw - 32px);
-  }
-
-  .w-screen-pad-lg {
-    width: calc(100vw - 64px);
-  }
-
-  .focus-visible-styles {
-    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
-  }
-
   @keyframes horizontal-scroll-animation {
     to {
       transform: translateX(-100%);

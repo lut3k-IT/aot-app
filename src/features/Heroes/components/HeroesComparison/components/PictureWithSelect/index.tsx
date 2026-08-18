@@ -24,14 +24,14 @@ const PictureWithSelect = (props: PictureWithSelectProps) => {
   const characterPicture = (
     <button
       aria-label={t('common:action.select.hero')}
-      className={cn('focus-visible-styles max-h-[8rem] w-full max-w-[8rem] rounded-full', className)}
+      className={cn('focus-visible-styles max-h-32 w-full max-w-32 rounded-full', className)}
     >
       <CharacterPicture
         imgSource={selectedHero ? `/assets/img/heroes/${selectedHero.slug}.jpg` : undefined}
         alt={selectedHero?.firstName || 'Hero to compare'}
         size={'full'}
         variant={'circle'}
-        className={'outline-subtle max-h-[8rem] max-w-[8rem] outline-dashed outline-2 outline-offset-4'}
+        className={'outline-subtle max-h-32 max-w-32 outline-dashed outline-2 outline-offset-4'}
       />
     </button>
   );
@@ -39,7 +39,7 @@ const PictureWithSelect = (props: PictureWithSelectProps) => {
   const emptyPicture = (
     <button
       aria-label={t('common:action.select.hero')}
-      className={cn('focus-visible-styles max-h-[8rem] w-full max-w-[8rem] rounded-full', className)}
+      className={cn('focus-visible-styles max-h-32 w-full max-w-32 rounded-full', className)}
     >
       <div
         className={
@@ -59,7 +59,7 @@ const PictureWithSelect = (props: PictureWithSelectProps) => {
     >
       <PopoverTrigger asChild>{selectedHero ? characterPicture : emptyPicture}</PopoverTrigger>
       <PopoverContent
-        className='w-[12.5rem] p-0'
+        className='w-50 p-0'
         sideOffset={16}
       >
         <Command>

@@ -12,13 +12,13 @@ import {
   FilterPanel,
   FilterSection,
   FilterSheet,
+  FilterToggle,
   RangeFilter,
   SearchInput,
   SortControl,
   useFilterParams
 } from '@/components/filtering';
 import { Button } from '@/components/ui/Button';
-import { Switch } from '@/components/ui/Switch';
 import { ElementsIds, Param, SortDirection } from '@/constants/enums';
 import { HeroSortOption } from '@/constants/types';
 import mbtiData from '@/data/mbti';
@@ -322,8 +322,10 @@ const HeroFilterBar = () => {
 
   const filterContent = (
     <div className='space-y-3'>
-      {/* Sort — mobile only */}
-      <div className='md:hidden'>
+      {/* Sortowanie dla przypadku, gdy nie mieści się w pasku.
+          W wysuwanym panelu na telefonie kontener `panel` nie istnieje, więc zapytanie
+          nigdy nie trafia i sortowanie jest tam zawsze dostępne. */}
+      <div className='@4xl/panel:hidden'>
         <SortControl
           sortBy={sortBy}
           sortDirection={sortDirection}
@@ -471,38 +473,30 @@ const HeroFilterBar = () => {
   );
 
   const topBar = (
-    <div className='flex items-center gap-2'>
-      <div
-        className='flex items-center gap-1.5'
-        aria-label={t('common:filter.showOnlyFavorites')}
-      >
-        <Heart
-          className='h-5 w-5 text-foreground'
-        />
-        <Switch
-          checked={hasOnlyFavorites}
-          onCheckedChange={handleToggleFavorites}
-        />
-      </div>
-      <div
-        className='flex items-center gap-1.5'
-        aria-label={t('common:notes.filterLabel')}
-      >
-        <StickyNote className='h-5 w-5 text-foreground' />
-        <Switch
-          checked={hasOnlyNoted}
-          onCheckedChange={handleToggleNoted}
-        />
-      </div>
+    <div className='flex items-center justify-end gap-2'>
+      <FilterToggle
+        icon={Heart}
+        isChecked={hasOnlyFavorites}
+        onCheckedChange={handleToggleFavorites}
+        label={t('common:filter.showOnlyFavorites')}
+      />
+      <FilterToggle
+        icon={StickyNote}
+        isChecked={hasOnlyNoted}
+        onCheckedChange={handleToggleNoted}
+        label={t('common:notes.filterLabel')}
+      />
       <SearchInput
         value={search}
         onSearch={handleSearch}
         placeholder={t('common:filter.searchPlaceholder')}
-        className='min-w-0 flex-1 md:w-56 md:flex-none'
+        className='min-w-0 flex-1 @4xl/bar:max-w-64'
       />
-      {/* Sort — desktop only; shown in FilterSheet on mobile */}
-      <div className='hidden md:flex'>
+      {/* Sortowanie wchodzi do paska dopiero przy 42rem jego własnej szerokości.
+          Wcześniej wypychało pasek poza kolumnę. Poniżej tego progu siedzi w panelu filtrów. */}
+      <div className='hidden shrink-0 @2xl/bar:flex'>
         <SortControl
+          isToolbar
           sortBy={sortBy}
           sortDirection={sortDirection}
           sortOptions={HERO_SORT_OPTIONS}
@@ -510,18 +504,21 @@ const HeroFilterBar = () => {
           onSortDirectionToggle={handleSortDirectionToggle}
         />
       </div>
-      {/* Filter toggle — desktop only */}
-      <div className='relative hidden md:block'>
+      {/* Rozwijany panel filtrów; poniżej 42rem paska przycisk zwija się do samej ikony */}
+      <div className='relative hidden shrink-0 md:block'>
         <Button
           variant='outline'
           size='sm'
-          className='h-9 gap-1.5 bg-background'
+          className='h-9 gap-1.5 bg-background @max-2xl/bar:w-9 @max-2xl/bar:p-0'
           onClick={() => setIsFilterOpen((prev) => !prev)}
           aria-expanded={isFilterOpen}
+          aria-label={t('common:filter.title')}
         >
           <SlidersHorizontal className='h-4 w-4' />
-          {t('common:filter.title')}
-          <ChevronDown className={cn('h-4 w-4 transition-transform', isFilterOpen && 'rotate-180')} />
+          <span className='@max-2xl/bar:hidden'>{t('common:filter.title')}</span>
+          <ChevronDown
+            className={cn('h-4 w-4 transition-transform @max-2xl/bar:hidden', isFilterOpen && 'rotate-180')}
+          />
         </Button>
         {activeFilters.length > 0 && (
           <span className='absolute -right-2 -top-2 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1.5 text-[0.65rem] font-semibold text-primary-foreground'>
@@ -529,8 +526,8 @@ const HeroFilterBar = () => {
           </span>
         )}
       </div>
-      {/* Filter trigger — mobile only, compact icon in heading row */}
-      <div className='md:hidden'>
+      {/* Filtry na telefonie: wysuwany panel pod kompaktową ikoną */}
+      <div className='shrink-0 md:hidden'>
         <FilterSheet
           compact
           activeFilterCount={activeFilters.length}
@@ -547,7 +544,7 @@ const HeroFilterBar = () => {
       {headingDestination && createPortal(topBar, headingDestination)}
 
       {/* Desktop: Collapsible filter panel (controlled externally by topBar button) */}
-      <div className='hidden md:block'>
+      <div className='@container/panel hidden md:block'>
         <FilterPanel
           open={isFilterOpen}
           onOpenChange={setIsFilterOpen}

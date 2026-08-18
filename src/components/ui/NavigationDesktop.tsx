@@ -28,7 +28,7 @@ const NavigationElement = (props: NavigationElementProps) => {
           name={data.iconName}
           size={'sm'}
           className={classNames('z-30 text-foreground transition-colors duration-200', {
-            '!text-primary-foreground': isActive,
+            'text-primary-foreground!': isActive,
             'group-hover:text-accent-foreground': !isActive
           })}
         />
@@ -38,7 +38,7 @@ const NavigationElement = (props: NavigationElementProps) => {
         className={classNames(
           'w-full text-lg font-medium leading-none text-foreground transition-colors duration-200',
           {
-            '!text-primary-foreground': isActive,
+            'text-primary-foreground!': isActive,
             'group-hover:text-accent-foreground': !isActive
           }
         )}

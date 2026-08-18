@@ -13,8 +13,8 @@ const LandingPage = () => {
   const { t } = useTranslation('landing');
 
   return (
-    <main className='min-h-[100svh] bg-zinc-950 text-zinc-100'>
-      <section className='mx-auto flex min-h-[100svh] max-w-5xl flex-col justify-center px-6 py-24 md:px-10'>
+    <main className='min-h-svh bg-zinc-950 text-zinc-100'>
+      <section className='mx-auto flex min-h-svh max-w-5xl flex-col justify-center px-6 py-24 md:px-10'>
         <h1 className='font-vector text-6xl font-bold leading-none tracking-tight text-white sm:text-7xl md:text-8xl'>
           {t('hero.title')}
         </h1>

@@ -12,7 +12,7 @@ const Footer = () => {
     <ScrollArea className={'h-5 w-full whitespace-nowrap px-4'}>
       <footer
         className={
-          'mx-auto flex w-full items-center justify-center gap-8 [&>*:hover]:underline [&>*]:text-sm [&>*]:text-muted-foreground'
+          'mx-auto flex w-full items-center justify-center gap-8 [&>*:hover]:underline *:text-sm *:text-muted-foreground'
         }
       >
         <HowToUse variant={'text'} />

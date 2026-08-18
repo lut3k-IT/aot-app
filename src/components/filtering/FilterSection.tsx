@@ -22,7 +22,7 @@ const FilterSection = ({ title, children, className, inline }: FilterSectionProp
       <span
         className={cn(
           'text-xs font-medium text-muted-foreground',
-          inline && 'sm:w-[6.5rem] sm:shrink-0 sm:pt-1 sm:text-right'
+          inline && 'sm:w-26 sm:shrink-0 sm:pt-1 sm:text-right'
         )}
       >
         {title}

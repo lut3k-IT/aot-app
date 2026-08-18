@@ -23,7 +23,7 @@ const NoteEditor = ({ value, isSaved, onChange, onBlur }: NoteEditorProps) => {
         onBlur={onBlur}
         maxLength={NOTE_MAX_LENGTH}
         placeholder={t('common:notes.placeholder')}
-        className={'min-h-[7rem] resize-y'}
+        className={'min-h-28 resize-y'}
         autoFocus={true}
       />
       <div className={'flex items-center justify-between text-xs text-muted-foreground'}>

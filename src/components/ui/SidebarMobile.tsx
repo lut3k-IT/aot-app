@@ -18,12 +18,12 @@ const SidebarMobile = () => {
   const isLandscape = useIsLandscape();
 
   const handleClick = () => {
-    buttonRef.current && buttonRef.current.click();
+    buttonRef.current?.click();
   };
 
   return (
     <div className={'flex h-full w-full flex-col items-center justify-between gap-6 rounded-md bg-background'}>
-      <div className={'flex w-full flex-col text-start [&_*]:text-foreground'}>
+      <div className={'flex w-full flex-col text-start **:text-foreground'}>
         <DialogClose ref={buttonRef} />
         <Button
           variant={'link'}
@@ -60,7 +60,7 @@ const SidebarMobile = () => {
       </div>
       <div
         className={classNames('flex flex-col items-center gap-14 pb-14', {
-          '!flex-row flex-wrap justify-center gap-6 !pb-4': isLandscape
+          'flex-row! flex-wrap justify-center gap-6 pb-4!': isLandscape
         })}
       >
         <LanguageSwitcher />

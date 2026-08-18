@@ -62,7 +62,7 @@ const Pagination = (props: PaginationProps) => {
       router.push(pathname + '?' + createQueryString([{ name: Param.PAGE, value: totalPages.toString() }]));
       return;
     }
-    page !== newPage && scrollToTop();
+    if (page !== newPage) scrollToTop();
     router.push(pathname + '?' + createQueryString([{ name: Param.PAGE, value: newPage.toString() }]));
   };
 
@@ -83,7 +83,7 @@ const Pagination = (props: PaginationProps) => {
           value={pageSize.toString()}
           onValueChange={(v: string) => handleChangePageSize(v)}
         >
-          <SelectTrigger className='h-9 w-[4.5rem]'>
+          <SelectTrigger className='h-9 w-18'>
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -108,7 +108,7 @@ const Pagination = (props: PaginationProps) => {
           className={'h-9 w-9'}
           iconName={'chevronFirst'}
           onClick={() => {
-            page !== 1 && scrollToTop();
+            if (page !== 1) scrollToTop();
             handleChangePage(1);
           }}
           aria-label={t('common:ui.pagination.firstPage')}
@@ -135,7 +135,7 @@ const Pagination = (props: PaginationProps) => {
           className={'h-9 w-9'}
           iconName={'chevronLast'}
           onClick={() => {
-            page !== totalPages && scrollToTop();
+            if (page !== totalPages) scrollToTop();
             handleChangePage(totalPages);
           }}
           aria-label={t('common:ui.pagination.lastPage')}

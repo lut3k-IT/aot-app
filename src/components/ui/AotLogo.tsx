@@ -17,7 +17,7 @@ const AotLogo = (props: AotLogoProps) => {
     <Link
       href={RoutePath.LANDING}
       className={cn(
-        'flex items-center gap-2 rounded-md ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+        'flex items-center gap-2 rounded-md ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
         className
       )}
     >

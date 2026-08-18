@@ -33,7 +33,7 @@ const HeroProfileHeader = ({ hero, mbtiGroupName, isFavorite, onToggleFavorite }
       transition={{ duration: 0.45 }}
     >
       {/* Full-width cover banner */}
-      <div className={cn('relative h-52 w-full rounded-lg bg-gradient-to-b to-transparent', colors.gradient)}>
+      <div className={cn('relative h-52 w-full rounded-lg bg-linear-to-b to-transparent', colors.gradient)}>
         <div className={'absolute left-3 top-3 z-10'}>
           <ButtonGoBack
             fallbackRoute={RoutePath.HEROES}
@@ -43,7 +43,7 @@ const HeroProfileHeader = ({ hero, mbtiGroupName, isFavorite, onToggleFavorite }
       </div>
 
       {/* Avatar + name — avatar overlaps the cover */}
-      <div className={'flex flex-col items-center -mt-[150px]'}>
+      <div className={'flex flex-col items-center mt-[-150px]'}>
         <CharacterPicture
           imgSource={getHeroImageSource(hero.slug)}
           alt={`${fullName} - Attack on Titan ${t('common:brand')}`}

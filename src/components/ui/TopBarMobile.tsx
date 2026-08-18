@@ -23,7 +23,7 @@ const SidebarAndButton = () => (
     <DialogContentSidebar
       forceMount
       className={
-        'inset-y-0 right-0 h-full w-[16.375rem] transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:rounded-none'
+        'inset-y-0 right-0 h-full w-65.5 transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:rounded-none'
       }
     >
       <SidebarMobile />
@@ -37,7 +37,7 @@ const TopBarMobile = () => {
   return (
     <header
       className={classNames('fixed z-30 flex h-12 w-full items-center gap-2 border-b bg-background px-page-mobile', {
-        '!w-[calc(100vw-5rem)]': isLandscape
+        'w-[calc(100vw-5rem)]!': isLandscape
       })}
     >
       <AotLogo />

@@ -1,5 +1,5 @@
 import { cva, VariantProps } from 'class-variance-authority';
-import { Image } from 'lucide-react';
+import { ImageIcon } from 'lucide-react';
 import NextImage from 'next/image';
 
 import { ImageSourceType } from '@/constants/types';
@@ -82,7 +82,7 @@ const CharacterPicture = (props: CharacterPictureProps) => {
         </AvatarImage>
       ) : null}
       <AvatarFallback className={cn(characterPictureVariants({ variant, size }))}>
-        <Image className={'h-1/2 w-1/2 text-subtle-foreground'} />
+        <ImageIcon className={'h-1/2 w-1/2 text-subtle-foreground'} />
       </AvatarFallback>
     </Avatar>
   );

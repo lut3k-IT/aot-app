@@ -55,9 +55,24 @@ const QuotationDetails = ({ routeId }: QuotationDetailsProps) => {
         transition={{ duration: 0.4 }}
         className={'mt-6'}
       >
-        <Card className={'p-6'}>
-          <span className={'block select-none text-6xl leading-none text-muted-foreground/30'}>&#8220;</span>
-          <p className={'mt-2 text-base leading-relaxed'}>{quotation.text}</p>
+        <Card className={'relative overflow-hidden p-6'}>
+          {/*
+            Cudzysłów jest ozdobnikiem tła, nie treścią. Wcześniej stał jako blok nad
+            cytatem i spychał go w dół; teraz siedzi poza układem, wtulony w róg karty
+            i przycięty jej krawędzią.
+
+            `aria-hidden` i `select-none` trzymają go poza odczytem czytnika ekranu
+            i poza zaznaczeniem, bo sam cytat jest już w <p> niżej.
+          */}
+          <span
+            aria-hidden
+            className={
+              'pointer-events-none absolute -left-1 -top-10 select-none text-9xl leading-none text-muted-foreground/10'
+            }
+          >
+            &#8220;
+          </span>
+          <p className={'relative text-base leading-relaxed'}>{quotation.text}</p>
         </Card>
       </motion.div>
     </DetailsContainer>

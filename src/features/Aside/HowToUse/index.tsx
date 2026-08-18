@@ -48,7 +48,7 @@ const HowToUse = ({ variant = 'icon' }: HowToUseProps) => {
           <a suppressHydrationWarning>{t('common:howToUse')}</a>
         )}
       </DialogTrigger>
-      <DialogContent className={'h-[37.5rem] max-h-[100svh]'}>
+      <DialogContent className={'h-150 max-h-svh'}>
         <DialogHeader>
           <DialogTitle>{t('howToUse:dialog.title')}</DialogTitle>
           <DialogDescription>{t('howToUse:dialog.description')}</DialogDescription>

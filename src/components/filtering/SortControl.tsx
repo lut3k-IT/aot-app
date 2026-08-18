@@ -16,6 +16,12 @@ interface SortControlProps {
   onSortDirectionToggle: () => void;
   i18nPrefix?: string;
   className?: string;
+  /**
+   * Wariant do paska filtrów: blokuje ściskanie kontrolki przez sąsiadów.
+   * Sam pasek pokazuje sortowanie dopiero przy 42rem swojej szerokości
+   * (patrz HeroFilterBar), więc nie ma tu potrzeby dodatkowego zwężania.
+   */
+  isToolbar?: boolean;
 }
 
 const SortControl = ({
@@ -25,7 +31,8 @@ const SortControl = ({
   onSortByChange,
   onSortDirectionToggle,
   i18nPrefix = 'common:sort.value',
-  className
+  className,
+  isToolbar
 }: SortControlProps) => {
   const { t } = useTranslation();
 
@@ -35,7 +42,7 @@ const SortControl = ({
         value={sortBy}
         onValueChange={onSortByChange}
       >
-        <SelectTrigger className='h-9 w-[9rem] font-medium'>
+        <SelectTrigger className={cn('h-9 w-36 font-medium', isToolbar && 'shrink-0')}>
           <SelectValue placeholder={t('common:filter.sortBy')} />
         </SelectTrigger>
         <SelectContent>
@@ -56,7 +63,7 @@ const SortControl = ({
         iconName={sortDirection === SortDirection.ASC ? 'arrowDownNarrowWide' : 'arrowDownWideNarrow'}
         iconPosition='right'
         size='sm'
-        className='h-9 w-20 bg-background'
+        className={cn('h-9 w-20 bg-background', isToolbar && 'shrink-0')}
         onClick={onSortDirectionToggle}
         aria-label={t('common:sort.direction.toggle')}
       >

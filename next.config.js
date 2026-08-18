@@ -8,9 +8,6 @@ const withPWA = require('@ducanh2912/next-pwa').default({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  eslint: {
-    ignoreDuringBuilds: true
-  },
   webpack(config) {
     // Handle SVG imports with SVGR
     const fileLoaderRule = config.module.rules.find((rule) => rule.test && rule.test.test && rule.test.test('.svg'));

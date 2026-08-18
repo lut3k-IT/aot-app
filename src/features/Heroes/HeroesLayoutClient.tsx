@@ -53,15 +53,15 @@ const HeroesLayoutClient = ({ children }: HeroesLayoutClientProps) => {
   return (
     <>
       <MovingPanel
-        translateClassName={classNames('-translate-y-[3.5rem]', {
-          '!-translate-y-[3rem]': isLandscape
+        translateClassName={classNames('-translate-y-14', {
+          '-translate-y-12!': isLandscape
         })}
       >
         <Tabs
           value={currentTab}
           className={classNames('w-full pt-4', {
             'md:pt-0': !isMobileLandscape,
-            '!pt-2': isLandscape
+            'pt-2!': isLandscape
           })}
         >
           <TabsList className='flex w-full justify-between'>

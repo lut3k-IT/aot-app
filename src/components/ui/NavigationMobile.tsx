@@ -25,7 +25,7 @@ const NavigationElement = (props: NavigationElementProps) => {
           name={data.iconName}
           size={'sm'}
           className={classNames('z-30 text-muted-foreground transition-colors duration-200', {
-            '!text-primary-foreground': isActive,
+            'text-primary-foreground!': isActive,
             'group-hover:text-foreground': !isActive
           })}
         />
@@ -33,8 +33,8 @@ const NavigationElement = (props: NavigationElementProps) => {
           className={classNames(
             'absolute -top-0.5 h-[1.5rem] w-12 rounded-full bg-primary transition-all duration-300',
             {
-              '!w-6 !bg-background': !isActive,
-              'group-hover:!bg-accent': !isActive
+              'w-6! bg-background!': !isActive,
+              'group-hover:bg-accent!': !isActive
             }
           )}
         />
@@ -44,7 +44,7 @@ const NavigationElement = (props: NavigationElementProps) => {
         className={classNames(
           'w-full text-center text-xs font-medium leading-none text-muted-foreground transition-all duration-200',
           {
-            'translate-y-0.5 !text-foreground': isActive,
+            'translate-y-0.5 text-foreground!': isActive,
             'group-hover:text-foreground': !isActive
           }
         )}
@@ -61,7 +61,7 @@ const NavigationMobile = () => {
   return (
     <nav
       className={classNames('fixed bottom-0 z-40 flex w-full justify-evenly border-t bg-background', {
-        'left-0 top-0 h-[100vh] !w-20 flex-col items-center border-r border-t-0': isLandscape
+        'left-0 top-0 h-screen w-20! flex-col items-center border-r border-t-0': isLandscape
       })}
     >
       {navigationData.map((element) => {
