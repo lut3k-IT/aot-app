@@ -11,10 +11,10 @@
 
 /*
   `inline` jest tu kluczowe. Bez niego Tailwind wypuszcza `--color-background: hsl(var(--background))`
-  jako zmienna na `:root`, a przegladarka podstawia `var(--background)` juz w momencie deklaracji —
-  czyli zawsze wartoscia z motywu jasnego. Nadpisanie w `.dark` nie mialoby wtedy zadnego skutku.
-  Z `inline` wartosc ladzie wprost w klasie (`background-color: hsl(var(--background))`) i rozwiazuje
-  sie dopiero na elemencie, wiec tryb ciemny dziala tak jak w Tailwind 3.
+  jako zmienną na `:root`, a przeglądarka podstawia `var(--background)` już w momencie deklaracji,
+  czyli zawsze wartością z motywu jasnego. Nadpisanie w `.dark` nie miałoby wtedy żadnego skutku.
+  Z `inline` wartość ląduje wprost w klasie (`background-color: hsl(var(--background))`) i rozwiązuje
+  się dopiero na elemencie, więc tryb ciemny działa tak jak w Tailwind 3.
 */
 @theme inline {
   --breakpoint-*: initial;
@@ -322,6 +322,28 @@
   }
 
   a:hover {
+    @apply cursor-pointer;
+  }
+
+  /*
+    Tailwind 3 ustawiał `cursor: pointer` na każdym przycisku w swoim resecie, Tailwind 4
+    już tego nie robi (przyjmuje kursor domyślny, zgodnie z zachowaniem natywnych kontrolek).
+    Po migracji zniknęła więc łapka z quizu, serduszek, przycisku filtrów i wszystkiego
+    innego, co jest przyciskiem.
+
+    Ta reguła przywraca dawne zachowanie raz, dla całej aplikacji. Nowy przycisk dostaje
+    ją automatycznie, więc nie trzeba o niej pamiętać przy każdym komponencie.
+    `:not(:disabled)` zostawia nieaktywnym kontrolkom kursor domyślny, bo łapka na czymś,
+    czego nie da się kliknąć, myli.
+  */
+  button:not(:disabled),
+  [role='button']:not(:disabled),
+  [role='switch']:not(:disabled),
+  [role='tab']:not(:disabled),
+  [role='option']:not([aria-disabled='true']),
+  label:has(> input[type='checkbox']:not(:disabled)),
+  label:has(> input[type='radio']:not(:disabled)),
+  summary {
     @apply cursor-pointer;
   }
 }
